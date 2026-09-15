@@ -1,0 +1,48 @@
+DAILY TECH BRIEF: 09:00 PERSONAL TEAMS DELIVERY
+
+Run daily at 09:00 Asia/Seoul. The automation settings provide the local project directory.
+Deliver only to the current user's Microsoft Scout Teams bot using m_send_teams_message.
+Do not send to a Teams channel, group chat, other person, email, or an inferred recipient.
+Do not search Microsoft 365 private data. No public publishing is authorized by this delivery procedure.
+
+1. Use the current date injected by Scout, interpreted in Asia/Seoul.
+   Run: python3 briefing.py delivery --date YYYY-MM-DD
+   Use today's actual date. Do not send yesterday's report when today's draft is missing.
+   The output contains the exact source-grounded report preview split into UTF-8 bounded parts, its digest, total part count, and pending part indexes.
+   If no parts are pending, the issue has already been delivered; exit without a duplicate notification.
+   If a draft is missing or validation fails, send a short honest message ONLY to the user:
+   "오늘의 Daily Tech Brief가 아직 준비되지 않았습니다. 수집 또는 검증 단계에서 문제가 발생해 이전 보고서를 대신 보내지 않았습니다."
+   Record the failure in the automation run result. Never invent a report or report delivery success.
+
+2. Check m_relay_status. If not connected, report the delivery failure in this run; do not silently use a different recipient or service.
+   Do not change settings, permissions or credentials unattended.
+   The user must reconnect the Teams relay if disconnected.
+
+3. In the output order, for EACH pending part:
+   Send its exact text verbatim through m_send_teams_message.
+   Only after that tool reports successful delivery, run:
+   python3 briefing.py record --date YYYY-MM-DD --digest ACTUAL_DIGEST --part ACTUAL_ZERO_BASED_INDEX
+   The program persists a receipt and marks repositories/papers introduced only when all parts are confirmed sent.
+   If a send or receipt-write fails, stop and state the failed index/digest. Do not retry a send whose success is ambiguous.
+   On a later explicit retry, re-read the delivery output and send only its pending parts.
+   Never call record before successful sending, never mark all parts at once, and never fabricate a successful response.
+   This automation has teamsNotify=never to avoid a duplicate automatic summary.
+
+4. The report itself is the exact preview for public publication and explains that approval is needed.
+   Do not promote or push the issue automatically. The user can approve this dated report in the resulting conversation.
+   If the user explicitly approves the shown content later, re-read the draft/digest and ensure it matches that exact preview:
+   python3 briefing.py promote --date YYYY-MM-DD --digest ACTUAL_APPROVED_DIGEST --approved
+   A subsequent change to the report requires a new preview, not reuse of an old approval.
+
+5. Approved publication procedure, only after that explicit confirmation:
+   Run the existing unittest suite and python3 briefing.py build.
+   Inspect git status; do not include .local, credentials, unrelated changes or unpublished drafts.
+   Append the new reports/YYYY-MM-DD.json without removing older reports. The build regenerates the complete latest-first archive and keeps each dated permalink.
+   Commit only the approved reports/YYYY-MM-DD.json with a descriptive message and the required co-author trailer.
+   Push to the already configured hellices/daily-tech-brief repository; never infer a different remote.
+   Wait for the Pages workflow to complete successfully and open the exact dated public page to confirm this issue was deployed.
+   Check that the rendered header's data-issue-digest equals the approved digest, not merely that the URL returns 200.
+   Only after verified success:
+   python3 briefing.py record-publication --date YYYY-MM-DD --digest ACTUAL_APPROVED_DIGEST
+   Notify only the user with the verified dated page link.
+   If any stage fails, say what failed and do not claim the issue is publicly available.

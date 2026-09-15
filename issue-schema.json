@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Daily Tech Brief issue",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "date", "generated_at", "headline", "summary", "coverage", "github_snapshot", "repositories", "papers", "discussions", "cncf"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "date": {"type": "string", "format": "date"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "headline": {"$ref": "#/$defs/text"},
+    "summary": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/text"}},
+    "coverage": {
+      "type": "object",
+      "required": ["github", "papers", "community", "cncf"],
+      "additionalProperties": false,
+      "properties": {
+        "github": {"$ref": "#/$defs/coverage"},
+        "papers": {"$ref": "#/$defs/coverage"},
+        "community": {"$ref": "#/$defs/coverage"},
+        "cncf": {"$ref": "#/$defs/coverage"}
+      }
+    },
+    "github_snapshot": {"anyOf": [{"$ref": "#/$defs/snapshot"}, {"type": "null"}]},
+    "github_previous_snapshot": {"$ref": "#/$defs/snapshot"},
+    "repositories": {"type": "array", "maxItems": 10, "items": {"$ref": "#/$defs/repository"}},
+    "papers": {"type": "array", "maxItems": 5, "items": {"$ref": "#/$defs/paper"}},
+    "discussions": {"type": "array", "maxItems": 7, "items": {"$ref": "#/$defs/discussion"}},
+    "cncf": {"type": "array", "maxItems": 5, "items": {"$ref": "#/$defs/change"}}
+  },
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+    "sources": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/url"}},
+    "coverage": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "note", "sources"],
+      "properties": {
+        "status": {"enum": ["ok", "partial", "unavailable"]},
+        "note": {"$ref": "#/$defs/text"},
+        "sources": {"$ref": "#/$defs/sources"}
+      }
+    },
+    "snapshot": {
+      "type": "object", "additionalProperties": false,
+      "required": ["captured_at", "source", "entries"],
+      "properties": {
+        "captured_at": {"type": "string", "format": "date-time"},
+        "source": {"const": "https://github.com/trending?since=weekly"},
+        "entries": {
+          "type": "array", "minItems": 1, "maxItems": 10,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["repository", "rank", "weekly_stars"],
+            "properties": {
+              "repository": {"$ref": "#/$defs/text"},
+              "rank": {"type": "integer", "minimum": 1, "maximum": 10},
+              "weekly_stars": {"type": ["integer", "null"], "minimum": 0}
+            }
+          }
+        }
+      }
+    },
+    "repository": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository", "url", "rank", "summary", "why_now", "use_case", "caution", "sources"],
+      "properties": {
+        "repository": {"$ref": "#/$defs/text"},
+        "url": {"$ref": "#/$defs/url"},
+        "rank": {"type": "integer", "minimum": 1, "maximum": 10},
+        "novelty": {"enum": ["first_observed", "new_entry", "first_introduction"]},
+        "summary": {"$ref": "#/$defs/text"},
+        "why_now": {"$ref": "#/$defs/text"},
+        "use_case": {"$ref": "#/$defs/text"},
+        "caution": {"$ref": "#/$defs/text"},
+        "sources": {"$ref": "#/$defs/sources"}
+      }
+    },
+    "paper": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "title", "url", "first_published", "topics", "evidence", "abstract_summary", "method", "findings", "limitations", "practical_value", "sources"],
+      "properties": {
+        "id": {"$ref": "#/$defs/text"},
+        "title": {"$ref": "#/$defs/text"},
+        "url": {"$ref": "#/$defs/url"},
+        "first_published": {"type": "string", "format": "date"},
+        "topics": {"type": "array", "minItems": 1, "maxItems": 5, "items": {"$ref": "#/$defs/text"}},
+        "evidence": {"enum": ["full_text", "abstract_only"]},
+        "abstract_summary": {"$ref": "#/$defs/text"},
+        "method": {"$ref": "#/$defs/text"},
+        "findings": {"$ref": "#/$defs/text"},
+        "limitations": {"$ref": "#/$defs/text"},
+        "practical_value": {"$ref": "#/$defs/text"},
+        "sources": {"$ref": "#/$defs/sources"}
+      }
+    },
+    "discussion": {
+      "type": "object", "additionalProperties": false,
+      "required": ["title", "url", "summary", "significance", "caveat", "sources"],
+      "properties": {
+        "title": {"$ref": "#/$defs/text"},
+        "url": {"$ref": "#/$defs/url"},
+        "summary": {"$ref": "#/$defs/text"},
+        "significance": {"$ref": "#/$defs/text"},
+        "caveat": {"$ref": "#/$defs/text"},
+        "sources": {"$ref": "#/$defs/sources"}
+      }
+    },
+    "change": {
+      "type": "object", "additionalProperties": false,
+      "required": ["title", "url", "published", "category", "summary", "impact", "sources"],
+      "properties": {
+        "title": {"$ref": "#/$defs/text"},
+        "url": {"$ref": "#/$defs/url"},
+        "published": {"type": "string", "format": "date"},
+        "category": {"$ref": "#/$defs/text"},
+        "summary": {"$ref": "#/$defs/text"},
+        "impact": {"$ref": "#/$defs/text"},
+        "sources": {"$ref": "#/$defs/sources"}
+      }
+    }
+  }
+}
