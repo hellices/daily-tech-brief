@@ -4,7 +4,7 @@ Run at 08:00 Asia/Seoul. The automation settings provide the local project direc
 Use the current date injected by Scout, converted to Asia/Seoul where necessary.
 Write all editorial content in Korean. Do not send notifications or publish anything during this collection run.
 
-1. Read this file, issue-schema.json, and run:
+1. Read this file, issue-schema.json, tags.json, and run:
    python3 briefing.py context --date YYYY-MM-DD
    Use the actual current date, not this literal placeholder.
    The context is persistent introduction history, not a claim about everything the user has seen outside this briefing.
@@ -75,6 +75,15 @@ Write all editorial content in Korean. Do not send notifications or publish anyt
 
 7. Compose an issue conforming to issue-schema.json:
    headline, exactly three overview lines, four coverage notes, observed snapshot, repositories, papers, discussions and CNCF.
+   Always keep the four sections distinct: GitHub repositories, AI papers, HN/GeekNews/Reddit community, and CNCF changes.
+   Every item in all four sections MUST have a tags array with 1-5 canonical IDs from tags.json; prefer 2-4 specific, evidence-supported tags.
+   Reuse the controlled vocabulary instead of inventing day-specific or spelling-variant tags.
+   English/Korean aliases such as agents/에이전트, memory/메모리, k8s/쿠버네티스 map to agent, memory, kubernetes.
+   Stage normalizes aliases, deduplicates, sorts and rejects unknown tags. Do not disable this validation or add a new tag silently.
+   If no tag fits, choose an accurate existing broader tag and record the taxonomy limitation privately; propose a registry addition for review.
+   Paper topics can remain short descriptive text, but tags are the canonical search/filter keys.
+   Do not use dates, URLs, authors, section names or arbitrary adjectives as tags. Avoid applying all AI tags to every paper.
+   Tags are displayed in Teams/report items, aggregated on date entries and indexed with all editorial text for browser-only keyword/tag lookup.
    Keep headline as the editorial topic; the reader automatically prefixes the date in page titles, headings and archive links.
    Keep each day's draft as its own dated file. Never delete or overwrite an earlier day's report to make room for a new issue.
    Every coverage note states the time window, source/access status, item shortfall if any, and relevant novelty limitations.

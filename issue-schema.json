@@ -32,6 +32,11 @@
     "text": {"type": "string", "minLength": 1},
     "url": {"type": "string", "format": "uri", "pattern": "^https://"},
     "sources": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/url"}},
+    "tags": {
+      "description": "1-5 canonical IDs from tags.json. Required when staging new issues; optional only for legacy schema-v1 reports.",
+      "type": "array", "minItems": 1, "maxItems": 5, "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"}
+    },
     "coverage": {
       "type": "object", "additionalProperties": false,
       "required": ["status", "note", "sources"],
@@ -65,6 +70,7 @@
       "type": "object", "additionalProperties": false,
       "required": ["repository", "url", "rank", "summary", "why_now", "use_case", "caution", "sources"],
       "properties": {
+        "tags": {"$ref": "#/$defs/tags"},
         "repository": {"$ref": "#/$defs/text"},
         "url": {"$ref": "#/$defs/url"},
         "rank": {"type": "integer", "minimum": 1, "maximum": 10},
@@ -80,6 +86,7 @@
       "type": "object", "additionalProperties": false,
       "required": ["id", "title", "url", "first_published", "topics", "evidence", "abstract_summary", "method", "findings", "limitations", "practical_value", "sources"],
       "properties": {
+        "tags": {"$ref": "#/$defs/tags"},
         "id": {"$ref": "#/$defs/text"},
         "title": {"$ref": "#/$defs/text"},
         "url": {"$ref": "#/$defs/url"},
@@ -98,6 +105,7 @@
       "type": "object", "additionalProperties": false,
       "required": ["title", "url", "summary", "significance", "caveat", "sources"],
       "properties": {
+        "tags": {"$ref": "#/$defs/tags"},
         "title": {"$ref": "#/$defs/text"},
         "url": {"$ref": "#/$defs/url"},
         "summary": {"$ref": "#/$defs/text"},
@@ -110,6 +118,7 @@
       "type": "object", "additionalProperties": false,
       "required": ["title", "url", "published", "category", "summary", "impact", "sources"],
       "properties": {
+        "tags": {"$ref": "#/$defs/tags"},
         "title": {"$ref": "#/$defs/text"},
         "url": {"$ref": "#/$defs/url"},
         "published": {"type": "string", "format": "date"},

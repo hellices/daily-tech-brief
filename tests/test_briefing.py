@@ -2,6 +2,7 @@ import copy
 import importlib.util
 import json
 from pathlib import Path
+import re
 import tempfile
 import unittest
 
@@ -31,6 +32,7 @@ def example_issue():
         },
         "repositories": [{
             "repository": "fixture/tool",
+            "tags": ["agent", "developer-tools"],
             "url": "https://github.com/fixture/tool",
             "rank": 1,
             "summary": "A fixture repository.",
@@ -41,6 +43,7 @@ def example_issue():
         }],
         "papers": [{
             "id": "arxiv:2609.00001v2",
+            "tags": ["evaluation", "memory"],
             "title": "Fixture paper",
             "url": "https://arxiv.org/abs/2609.00001",
             "first_published": "2026-09-01",
@@ -55,6 +58,7 @@ def example_issue():
         }],
         "discussions": [{
             "title": "Fixture discussion",
+            "tags": ["developer-tools"],
             "url": "https://example.org/story",
             "summary": "A fixture discussion summary.",
             "significance": "Unit testing only.",
@@ -63,6 +67,7 @@ def example_issue():
         }],
         "cncf": [{
             "title": "Fixture release",
+            "tags": ["kubernetes", "release"],
             "url": "https://example.org/release",
             "published": "2026-09-15",
             "category": "release",
@@ -363,6 +368,107 @@ class BriefingTests(unittest.TestCase):
             self.assertIn('href="./daily/2026-09-17/index.html"', homepage)
             self.assertLess(homepage.index("2026-09-17"), homepage.index("2026-09-16"))
             self.assertIn(">2026-09-17 · Local test fixture, not a real briefing</a>", homepage)
+
+    def test_tags_normalize_aliases_and_reject_unknown_or_excessive_tags(self):
+        b = self.api()
+        self.assertEqual(b.normalize_tags([" Memory ", "메모리", "AGENTS", "agent"]), ["agent", "memory"])
+        self.assertEqual(b.normalize_tags(["k8s", "쿠버네티스"]), ["kubernetes"])
+        for tags in ([], ["made-up-tag"], "memory",
+                     ["agent", "memory", "harness", "evaluation", "kubernetes", "security"]):
+            with self.assertRaises(ValueError):
+                b.normalize_tags(tags)
+
+    def test_tag_registry_has_unique_stable_ids_and_unambiguous_aliases(self):
+        b = self.api()
+        entries = b.TAXONOMY["tags"]
+        self.assertEqual(b.TAXONOMY["version"], 1)
+        self.assertEqual(len(entries), len(b.TAGS))
+        for entry in entries:
+            self.assertRegex(entry["id"], r"^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$")
+            for name in [entry["id"], entry["label"], *entry["aliases"]]:
+                self.assertEqual(b.normalize_tags([name]), [entry["id"]])
+
+    def test_staging_requires_tags_for_every_new_item_and_normalizes_them(self):
+        b = self.api()
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            issue = example_issue()
+            del issue["papers"][0]["tags"]
+            with self.assertRaisesRegex(ValueError, "tags"):
+                b.stage_issue(root, issue)
+            issue["papers"][0]["tags"] = ["메모리", "eval", "Memory"]
+            b.stage_issue(root, issue)
+            self.assertEqual(b.load_draft(root, issue["date"])["papers"][0]["tags"],
+                             ["evaluation", "memory"])
+
+    def test_legacy_untagged_reports_remain_readable_and_searchable(self):
+        b = self.api()
+        issue = example_issue()
+        for name in ("repositories", "papers", "discussions", "cncf"):
+            for item in issue[name]:
+                del item["tags"]
+        b.validate_issue(issue, b.empty_state())
+        index = b.build_search_index([issue])
+        self.assertEqual(len(index["items"]), 4)
+        self.assertTrue(all(item["tags"] == [] for item in index["items"]))
+        self.assertEqual(index["tags"], [])
+
+    def test_item_links_and_search_index_cover_all_sections_and_paper_details(self):
+        b = self.api()
+        issue = example_issue()
+        index = b.build_search_index([issue])
+        self.assertEqual({item["section"] for item in index["items"]},
+                         {"github", "papers", "community", "cncf"})
+        self.assertEqual(len({item["id"] for item in index["items"]}), 4)
+        rendered = b.render_issue(issue)
+        for item in index["items"]:
+            anchor = item["href"].split("#")[1]
+            self.assertIn('id="' + anchor + '"', rendered)
+            self.assertTrue(item["href"].startswith("./daily/2026-09-16/index.html#item-"))
+        paper = next(item for item in index["items"] if item["section"] == "papers")
+        self.assertIn("A fixture reported result.", paper["body"])
+        self.assertIn("Not a real paper.", paper["body"])
+        self.assertIn("메모리", paper["search_text"])
+        self.assertIn("memory", paper["search_text"])
+        self.assertIn("Fixture summary one", paper["search_text"])
+        self.assertIn("../../index.html#tag=memory", rendered)
+        self.assertIn("태그:", b.report_text(issue))
+        self.assertEqual(next(tag["count"] for tag in index["tags"] if tag["id"] == "developer-tools"), 2)
+
+    def test_search_data_is_escaped_and_anchors_do_not_depend_on_item_order(self):
+        b = self.api()
+        issue = example_issue()
+        item = issue["papers"][0]
+        anchor = b.item_anchor("papers", item)
+        item["title"] = "A changed editorial title"
+        self.assertEqual(b.item_anchor("papers", item), anchor)
+        issue["headline"] = "</script><script>alert('external content')</script>"
+        page = b.render_home([issue])
+        self.assertNotIn("</script><script>alert", page)
+        self.assertIn("\\u003c/script>", page)
+        self.assertIn('id="search-form"', page)
+        self.assertIn('id="search-section"', page)
+        self.assertIn('id="search-from"', page)
+        self.assertIn('id="search-to"', page)
+        self.assertIn('id="date-archive"', page)
+        self.assertIn('name="tag" value="memory"', page)
+        self.assertIn("./index.html#tag=memory", page)
+        payload = re.search(r'<script id="search-data" type="application/json">(.*?)</script>', page, re.S)
+        self.assertIsNotNone(payload)
+        parsed = json.loads(payload.group(1))
+        self.assertEqual(parsed["items"][0]["issue_title"], b.issue_title(issue))
+        self.assertEqual({item["section"] for item in parsed["items"]}, set(b.SECTIONS))
+
+    def test_empty_daily_issue_still_counts_as_a_public_report(self):
+        b = self.api()
+        issue = example_issue()
+        for name in b.ITEM_COLLECTIONS.values():
+            issue[name] = []
+        b.validate_issue(issue, b.empty_state())
+        index = b.build_search_index([issue])
+        self.assertEqual(index["report_dates"], ["2026-09-16"])
+        self.assertEqual(index["items"], [])
+        self.assertEqual(index["tags"], [])
 
 
 if __name__ == "__main__":

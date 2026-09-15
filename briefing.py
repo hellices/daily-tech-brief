@@ -11,14 +11,19 @@ import json
 from pathlib import Path
 import re
 import tempfile
+import unicodedata
 from urllib.parse import parse_qs, parse_qsl, urlencode, urlsplit, urlunsplit
 from zoneinfo import ZoneInfo
 
 
 ROOT = Path(__file__).resolve().parent
 SCHEMA = json.loads((ROOT / "issue-schema.json").read_text(encoding="utf-8"))
+TAXONOMY = json.loads((ROOT / "tags.json").read_text(encoding="utf-8"))
+TAGS = {tag["id"]: tag for tag in TAXONOMY["tags"]}
 KST = ZoneInfo("Asia/Seoul")
 SECTIONS = ("github", "papers", "community", "cncf")
+ITEM_COLLECTIONS = {"github": "repositories", "papers": "papers", "community": "discussions", "cncf": "cncf"}
+SECTION_LABELS = {"github": "GitHub", "papers": "AI 논문", "community": "커뮤니티", "cncf": "CNCF"}
 MAX_PART_BYTES = 16000
 
 
@@ -30,6 +35,27 @@ def require(condition, message):
 def text(value, name):
     require(isinstance(value, str) and bool(value.strip()), name + " must be nonempty text")
     return value
+
+
+def tag_key(value):
+    return re.sub(r"[\s_]+", "-", unicodedata.normalize("NFKC", text(value, "tag")).strip().casefold())
+
+
+def normalize_tags(values):
+    require(isinstance(values, list) and 1 <= len(values) <= 10, "Item tags must be a nonempty array")
+    lookup = {}
+    for identifier, tag in TAGS.items():
+        for alias in [identifier, tag["label"], *tag["aliases"]]:
+            key = tag_key(alias)
+            require(key not in lookup or lookup[key] == identifier, "Ambiguous tag alias: " + alias)
+            lookup[key] = identifier
+    normalized = set()
+    for value in values:
+        key = tag_key(value)
+        require(key in lookup, "Unknown tag: " + value + "; use tags.json")
+        normalized.add(lookup[key])
+    require(len(normalized) <= 5, "An item may have at most five canonical tags")
+    return sorted(normalized)
 
 
 def iso_day(value):
@@ -189,6 +215,9 @@ def validate_issue(issue, state):
                 "Unavailable coverage cannot contain supposedly verified items")
         for item in issue[name]:
             check_fields(item, SCHEMA["$defs"][definition])
+            if "tags" in item:
+                require(item["tags"] == normalize_tags(item["tags"]),
+                        "Stored tags must be unique, sorted canonical IDs")
             safe_url(item.get("url"))
             source_list(item)
 
@@ -319,6 +348,10 @@ def introduce(issue, state):
 def stage_issue(root, issue):
     state = load_state(root)
     issue = copy.deepcopy(issue)
+    for name in ITEM_COLLECTIONS.values():
+        for item in issue.get(name, []):
+            require("tags" in item, "New items require tags from tags.json")
+            item["tags"] = normalize_tags(item["tags"])
     comparison = context_for(issue["date"], state)["previous_snapshot"]
     if comparison is not None and "github_previous_snapshot" not in issue:
         issue["github_previous_snapshot"] = comparison
@@ -362,6 +395,8 @@ def report_text(issue):
         lines.extend(["", title, issue["coverage"][coverage]["note"]])
         for number, item in enumerate(issue[name], 1):
             lines.extend(["", str(number) + ". " + item.get("title", item.get("repository", ""))])
+            if item.get("tags"):
+                lines.append("태그: " + " · ".join(TAGS[tag]["label"] for tag in item["tags"]))
             if name == "papers":
                 evidence = "본문 확인" if item["evidence"] == "full_text" else "초록만 확인"
                 lines.append("최초 발표: " + item["first_published"] + " · " + evidence)
@@ -453,6 +488,89 @@ def issue_title(issue):
     return issue["date"] + " · " + issue["headline"]
 
 
+def item_anchor(section, item):
+    if section == "github":
+        identifier = repository_id(item["repository"])
+    elif section == "papers":
+        identifier = canonical_paper_id(item["id"])
+    else:
+        identifier = canonical_url(item["url"])
+    digest = hashlib.sha256(identifier.encode("utf-8")).hexdigest()[:16]
+    return "item-" + section + "-" + digest
+
+
+def tags_html(tags, base):
+    if not tags:
+        return ""
+    return '<div class="tag-list" aria-label="태그">' + "".join(
+        '<a class="tag-chip" href="' + base + "index.html#" + urlencode({"tag": tag}) + '">'
+        + escape(TAGS[tag]["label"]) + "</a>" for tag in tags) + "</div>"
+
+
+def build_search_index(issues):
+    items, counts = [], {}
+    for issue in sorted(issues, key=lambda entry: entry["date"], reverse=True):
+        for section, collection in ITEM_COLLECTIONS.items():
+            for item in issue[collection]:
+                tags = item.get("tags", [])
+                for tag in tags:
+                    counts[tag] = counts.get(tag, 0) + 1
+                title = item.get("title", item.get("repository", ""))
+                body = " ".join(value for key, value in item.items()
+                                if isinstance(value, str) and key not in
+                                ("id", "url", "title", "repository", "novelty", "evidence"))
+                terms = " ".join(" ".join([tag, TAGS[tag]["label"], *TAGS[tag]["aliases"]]) for tag in tags)
+                anchor = item_anchor(section, item)
+                items.append({
+                    "id": issue["date"] + ":" + anchor, "date": issue["date"],
+                    "section": section, "section_label": SECTION_LABELS[section],
+                    "title": title, "issue_title": issue_title(issue),
+                    "summary": item.get("abstract_summary", item.get("summary", "")), "body": body,
+                    "search_text": " ".join([issue["date"], issue["headline"], title, body, item["url"],
+                                             SECTION_LABELS[section], terms, *item.get("topics", []),
+                                             *issue["summary"], issue["coverage"][section]["note"]]),
+                    "tags": tags, "href": "./daily/" + issue["date"] + "/index.html#" + anchor,
+                })
+    return {
+        "version": 1, "report_dates": sorted({issue["date"] for issue in issues}, reverse=True),
+        "sections": [{"id": key, "label": label} for key, label in SECTION_LABELS.items()],
+        "tags": [{**TAGS[tag], "count": counts[tag]} for tag in sorted(counts, key=lambda key: (-counts[key], key))],
+        "items": items,
+    }
+
+
+def search_html(index):
+    tags = "".join(
+        '<label class="tag-option"><input type="checkbox" name="tag" value="' + escape(tag["id"])
+        + '">' + escape(tag["label"]) + ' <span class="tag-count">' + str(tag["count"]) + "</span></label>"
+        for tag in index["tags"])
+    if not tags:
+        tags = '<p class="meta">첫 보고서가 게시되면 태그가 표시됩니다.</p>'
+    options = '<option value="">전체 섹션</option>' + "".join(
+        '<option value="' + key + '">' + escape(label) + "</option>" for key, label in SECTION_LABELS.items())
+    payload = json.dumps(index, ensure_ascii=False, separators=(",", ":"))
+    payload = payload.replace("&", "\\u0026").replace("<", "\\u003c").replace("\u2028", "\\u2028").replace("\u2029", "\\u2029")
+    return "".join([
+        '<section id="archive-search"><h2>보고서 찾기</h2>',
+        '<p class="search-help">누적된 보고서의 제목·요약·상세 내용을 검색합니다. 조건은 함께 적용됩니다.</p>',
+        '<form id="search-form" role="search"><div class="search-controls">',
+        '<label class="search-query-label" for="search-query">검색어',
+        '<input id="search-query" type="search" placeholder="예: agent memory, 쿠버네티스" autocomplete="off"></label>',
+        '<label for="search-section">섹션<select id="search-section">', options, "</select></label>",
+        '<label for="search-from">시작일<input id="search-from" type="date"></label>',
+        '<label for="search-to">종료일<input id="search-to" type="date"></label></div>',
+        '<fieldset class="tag-filter"><legend>태그 · 여러 개 선택하면 모두 포함</legend>',
+        '<div id="search-tags">', tags, '</div></fieldset>',
+        '<div class="search-actions"><button type="submit">검색</button>',
+        '<button id="search-reset" type="button">초기화</button></div></form>',
+        '<p id="search-status" role="status" aria-live="polite">검색 기능을 준비하고 있습니다.</p>',
+        '<div id="search-results" class="search-results" hidden></div>',
+        '<button id="search-more" type="button" hidden>더 보기</button>',
+        '<noscript><p class="notice">검색에는 JavaScript가 필요합니다. 아래 날짜별 목록에서 모든 보고서를 읽을 수 있습니다.</p></noscript></section>',
+        '<script id="search-data" type="application/json">', payload, "</script>",
+    ])
+
+
 def render_issue(issue):
     result = [
         '<header class="hero" data-issue-digest="' + issue_digest(issue)
@@ -479,9 +597,11 @@ def render_issue(issue):
             result.append('<p class="notice">이번 호에는 조건을 충족하는 신규 항목이 없습니다.</p>')
         for index, item in enumerate(issue[name], 1):
             title = item.get("title", item.get("repository", ""))
-            result.extend(['<article class="article-item"><div class="item-heading">',
+            result.extend(['<article class="article-item" id="' + item_anchor(section, item)
+                           + '"><div class="item-heading">',
                            '<span class="item-number">' + str(index).zfill(2) + "</span>",
                            "<h3>" + link(item["url"], title) + "</h3></div>"])
+            result.append(tags_html(item.get("tags", []), "../../"))
             if name == "repositories":
                 labels = {"first_observed": "첫 관측", "new_entry": "신규 진입", "first_introduction": "첫 소개"}
                 badge = labels.get(item.get("novelty"), "첫 소개")
@@ -510,7 +630,8 @@ def render_home(issues):
         "<h1>매일 오전 9시, 개발자를 위한 기술 브리핑</h1>",
         '<p class="lede">GitHub · AI Papers · Community · CNCF</p>',
         "<p>오늘의 핵심만 먼저 읽고, 필요한 내용은 깊게 살펴보세요.</p></header>",
-        "<section><h2>보고서 아카이브</h2>",
+        search_html(build_search_index(issues)),
+        '<section id="date-archive"><h2>보고서 아카이브</h2>',
     ]
     if not issues:
         body.append('<p class="empty-state">첫 보고서를 준비하고 있습니다.</p>')
@@ -520,9 +641,13 @@ def render_home(issues):
             url = "./daily/" + issue["date"] + "/index.html"
             body.extend(['<article class="archive-card"><p class="eyebrow">' + issue["date"] + "</p>",
                          '<h3><a href="' + url + '">' + escape(issue_title(issue)) + "</a></h3>",
-                         "<p>" + escape(issue["summary"][0]) + "</p></article>"])
+                         "<p>" + escape(issue["summary"][0]) + "</p>",
+                         tags_html(sorted({tag for collection in ITEM_COLLECTIONS.values()
+                                           for item in issue[collection] for tag in item.get("tags", [])}), "./"),
+                         "</article>"])
         body.append("</div>")
     body.append("</section>")
+    body.append("<script>" + (ROOT / "search.js").read_text(encoding="utf-8") + "</script>")
     return "\n".join(body)
 
 

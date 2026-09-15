@@ -35,7 +35,7 @@ Do not search Microsoft 365 private data. No public publishing is authorized by 
    A subsequent change to the report requires a new preview, not reuse of an old approval.
 
 5. Approved publication procedure, only after that explicit confirmation:
-   Run the existing unittest suite and python3 briefing.py build.
+   Run python3 -m unittest discover -s tests -q, node --test tests/search.test.cjs, and python3 briefing.py build.
    Inspect git status; do not include .local, credentials, unrelated changes or unpublished drafts.
    Append the new reports/YYYY-MM-DD.json without removing older reports. The build regenerates the complete latest-first archive and keeps each dated permalink.
    Commit only the approved reports/YYYY-MM-DD.json with a descriptive message and the required co-author trailer.
