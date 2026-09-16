@@ -327,6 +327,16 @@ test('mount defaults to the static archive with counts of unique published repor
   assert.equal(nodes['search-more'].hidden, true);
 });
 
+test('unchanged blur change does not replace the result link during a click', () => {
+  const { nodes } = browser();
+  nodes['search-query'].value = 'memory';
+  nodes['search-form'].dispatch('input');
+  const first = nodes['search-results'].children[0];
+  assert.ok(first);
+  nodes['search-form'].dispatch('change');
+  assert.equal(nodes['search-results'].children[0], first);
+});
+
 test('explicit report dates count published issues even when some have no indexed items', () => {
   const data = {
     ...fixture(),

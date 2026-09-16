@@ -1,56 +1,50 @@
-DAILY TECH BRIEF: 09:00 PERSONAL TEAMS DELIVERY
+DAILY TECH BRIEF: ONE SHORT HTML MESSAGE AT 09:00
 
-Run daily at 09:00 Asia/Seoul. The automation settings provide the local project directory.
-Deliver only to the current user's Teams self-chat ("You" / "나와의 채팅") using workiq_send_chat_message.
-Do not send to a Teams channel, group chat, other person, email, or an inferred recipient.
-Do not search Microsoft 365 private content. Resolving the signed-in user's own identity/destination and confirming these sends is allowed.
-No public publishing is authorized by this delivery procedure.
+The user wants a compact, readable Teams digest, NOT multipart plain-text report contents.
+Use only the current user's Teams self-chat ("You" / "나와의 채팅"). The private automation settings specify the approved account.
 
-1. Resolve the destination before preparing any sends:
-   Call m_m365_status to confirm sign-in and read the signed-in user's exact UPN.
-   Require that it equals the approved recipient UPN in the private automation settings. Never guess an address or switch accounts.
-   Call workiq_create_chat_by_email with that exact email. Require the returned chatId to be "48:notes".
-   If authentication, resolution or the self-chat check fails, stop and report the exact failure in the automation run.
-   Never search recent chats to choose a recipient. A connected bot relay is neither required nor proof of self-chat delivery.
-   Do not change settings, permissions or credentials unattended.
+1. Resolve the destination.
+   Call m_m365_status; require the signed-in UPN to match the approved UPN in automation settings.
+   Call workiq_create_chat_by_email with that exact email and require chatId="48:notes".
+   Do not search recent chats or send to a channel, group, another person, email, or bot.
+   Do not change permissions/authentication/settings unattended.
 
-2. Use the current date injected by Scout, interpreted in Asia/Seoul.
-   Run: python3 briefing.py delivery --date YYYY-MM-DD
-   Use today's actual date. Do not send yesterday's report when today's draft is missing.
-   The output contains the exact source-grounded report preview split into UTF-8 bounded parts, its digest, total part count, and pending part indexes.
-   If no parts are pending, the issue has already been delivered; exit without a duplicate notification.
-   If a draft is missing or validation fails, send a short honest message ONLY to the resolved self-chat:
-   "오늘의 Daily Tech Brief가 아직 준비되지 않았습니다. 수집 또는 검증 단계에서 문제가 발생해 이전 보고서를 대신 보내지 않았습니다."
-   Record the failure in the automation run result. Never invent a report or report delivery success.
+2. Prepare the current day's digest.
+   Use the current injected date interpreted in Asia/Seoul.
+   Run python3 briefing.py digest --date YYYY-MM-DD.
+   It returns content_type="html", message, issue_digest, message_digest, mode and already_sent.
+   If already_sent=true, stop without another notification.
+   The message is Technical Spotlight, at most3short highlights, and descriptive links. Keep the HTML paragraphs, bold text and bullets exactly as generated.
+   Never call the legacy full-report delivery command for routine Teams messages.
+   If the current report has a verified publication record, mode=published and links lead to the dated report and its sections.
+   If it is not published, mode=preview: direct source links and an honest publication-pending note are used. Never claim an unpublished or stale page is ready.
+   Do not make up a dated URL that is not verified. Report content approval still requires the full exact preview in Scout.
+   If today's draft is missing or invalid, send only a short HTML paragraph to self-chat:
+   <p>오늘의 Daily Tech Brief가 아직 준비되지 않았습니다. 이전 보고서를 대신 보내지 않았습니다.</p>
+   Surface the precise operational failure in the private run result, not as raw stack traces in the reader message.
 
-3. In the output order, for EACH pending part:
-   Send its exact text verbatim through workiq_send_chat_message with the resolved chatId and contentType="text".
-   Only after that tool reports successful delivery, run:
-   python3 briefing.py record --date YYYY-MM-DD --digest ACTUAL_DIGEST --part ACTUAL_ZERO_BASED_INDEX
-   The program persists a receipt and marks repositories/papers introduced only when all parts are confirmed sent.
-   If a send or receipt-write fails, stop and state the failed index/digest. Do not retry a send whose success is ambiguous.
-   On a later explicit retry, re-read the delivery output and send only its pending parts.
-   Never call record before successful sending, never mark all parts at once, and never fabricate a successful response.
-   After all successful sends, re-run delivery and require pending_parts=[] before declaring the complete report delivered.
-   Keep each returned Teams message ID in the private run result for troubleshooting, never in public report files.
-   This automation has teamsNotify=never to avoid a duplicate automatic summary.
+3. Send and record one actual success.
+   Use workiq_send_chat_message(chatId=resolvedSelfChat, content=exactMessage, contentType="html").
+   Only after a successful response with an actual message ID, run:
+   python3 briefing.py record-digest --date YYYY-MM-DD --mode ACTUAL_MODE --message-digest ACTUAL_MESSAGE_DIGEST --message-id ACTUAL_MESSAGE_ID
+   Re-run python3 briefing.py digest --date YYYY-MM-DD --mode ACTUAL_MODE and require already_sent=true.
+   Preserve old full-report receipts and other revision receipts. Compact digest receipts are separate by revision and preview/published mode.
+   If a send succeeds but recording fails, stop and retain the message ID; do not blindly resend.
+   If send success is ambiguous or a tool fails, stop and report the exact error privately.
+   Do not send an additional automatic summary. teamsNotify=never avoids duplicate notifications.
+   A message to self-chat is not a bot command channel; do not claim replying there publishes a report.
 
-4. The report itself is the exact preview for public publication and explains that approval is needed.
-   Do not promote or push the issue automatically. The user can approve this dated report in a Scout conversation.
-   Self-chat is a reading destination, not a bot command channel; do not claim that replying there triggers publication.
-   If the user explicitly approves the shown content later, re-read the draft/digest and ensure it matches that exact preview:
-   python3 briefing.py promote --date YYYY-MM-DD --digest ACTUAL_APPROVED_DIGEST --approved
-   A subsequent change to the report requires a new preview, not reuse of an old approval.
+4. Publication remains a separate approved operation.
+   Show the exact full report preview and its public destination to the user in Scout and wait for approval.
+   On approval: python3 briefing.py promote --date YYYY-MM-DD --digest APPROVED_ISSUE_DIGEST --approved.
+   Run the existing Python/Node tests and python3 briefing.py build; inspect the intended diff, commit and push only approved public changes.
+   Preserve older dates. An explicitly requested same-day overwrite changes the same reports/YYYY-MM-DD.json and the same permalink.
+   Wait for successful Pages deployment and verify the dated page's data-issue-digest equals APPROVED_ISSUE_DIGEST.
+   Then run python3 briefing.py record-publication --date YYYY-MM-DD --digest APPROVED_ISSUE_DIGEST.
+   A confirmed publication can be followed by the compact published-mode digest, using the same send/record steps above.
 
-5. Approved publication procedure, only after that explicit confirmation:
-   Run python3 -m unittest discover -s tests -q, node --test tests/search.test.cjs, and python3 briefing.py build.
-   Inspect git status; do not include .local, credentials, unrelated changes or unpublished drafts.
-   Append the new reports/YYYY-MM-DD.json without removing older reports. The build regenerates the complete latest-first archive and keeps each dated permalink.
-   Commit only the approved reports/YYYY-MM-DD.json with a descriptive message and the required co-author trailer.
-   Push to the already configured hellices/daily-tech-brief repository; never infer a different remote.
-   Wait for the Pages workflow to complete successfully and open the exact dated public page to confirm this issue was deployed.
-   Check that the rendered header's data-issue-digest equals the approved digest, not merely that the URL returns 200.
-   Only after verified success:
-   python3 briefing.py record-publication --date YYYY-MM-DD --digest ACTUAL_APPROVED_DIGEST
-   Notify only the resolved self-chat with the verified dated page link using workiq_send_chat_message and contentType="text".
-   If any stage fails, say what failed and do not claim the issue is publicly available.
+5. Same-day corrections.
+   Prepare schema2 revision=N+1, supersedes=currentDraftDigest, and a short revision_note.
+   Use python3 briefing.py revise --file LOCAL_JSON --expected-digest CURRENT_DRAFT_DIGEST.
+   This preserves old draft/receipt history and leaves the public file unchanged until the corrected exact preview is approved.
+   Never clear state, force-overwrite the draft, or pretend old receipts mean a changed digest was delivered.

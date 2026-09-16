@@ -12,7 +12,8 @@ MODULE_PATH = Path(__file__).resolve().parents[1] / "briefing.py"
 
 def example_issue():
     return {
-        "schema_version": 1,
+        "schema_version": 2,
+        "lead": {"section": "papers", "url": "https://arxiv.org/abs/2609.00001"},
         "date": "2026-09-16",
         "generated_at": "2026-09-16T08:30:00+09:00",
         "headline": "Local test fixture, not a real briefing",
@@ -60,9 +61,6 @@ def example_issue():
             "title": "Fixture discussion",
             "tags": ["developer-tools"],
             "url": "https://example.org/story",
-            "summary": "A fixture discussion summary.",
-            "significance": "Unit testing only.",
-            "caveat": "Not a real story.",
             "sources": ["https://news.ycombinator.com/item?id=1"],
         }],
         "cncf": [{
@@ -244,7 +242,9 @@ class BriefingTests(unittest.TestCase):
         self.assertIn("workiq_send_chat_message", instructions)
         self.assertNotIn("m_send_teams_message", instructions)
         self.assertNotIn("m_relay_status", instructions)
-        self.assertIn('contentType="text"', instructions)
+        self.assertIn('contentType="html"', instructions)
+        self.assertIn("briefing.py digest", instructions)
+        self.assertIn("briefing.py record-digest", instructions)
 
     def test_normal_source_links_are_not_split_across_delivery_parts(self):
         b = self.api()
@@ -372,6 +372,7 @@ class BriefingTests(unittest.TestCase):
             second["github_snapshot"]["captured_at"] = "2026-09-17T08:00:00+09:00"
             second["repositories"] = []
             second["papers"] = []
+            second["lead"] = {"section": "cncf", "url": second["cncf"][0]["url"]}
             b.stage_issue(root, second)
             staged_second = b.load_draft(root, second["date"])
             b.promote_issue(root, second["date"], b.issue_digest(staged_second))
@@ -420,6 +421,9 @@ class BriefingTests(unittest.TestCase):
     def test_legacy_untagged_reports_remain_readable_and_searchable(self):
         b = self.api()
         issue = example_issue()
+        issue["schema_version"] = 1
+        issue.pop("lead")
+        issue["discussions"][0].update(summary="Legacy summary", significance="Legacy relevance", caveat="Legacy caveat")
         for name in ("repositories", "papers", "discussions", "cncf"):
             for item in issue[name]:
                 del item["tags"]
@@ -480,11 +484,300 @@ class BriefingTests(unittest.TestCase):
         issue = example_issue()
         for name in b.ITEM_COLLECTIONS.values():
             issue[name] = []
+        issue["lead"] = None
         b.validate_issue(issue, b.empty_state())
         index = b.build_search_index([issue])
         self.assertEqual(index["report_dates"], ["2026-09-16"])
         self.assertEqual(index["items"], [])
         self.assertEqual(index["tags"], [])
+
+    def test_new_papers_require_full_text_but_legacy_reports_preserve_caveats(self):
+        b = self.api()
+        issue = example_issue()
+        issue["papers"][0]["evidence"] = "abstract_only"
+        with self.assertRaisesRegex(ValueError, "full text"):
+            b.validate_issue(issue, b.empty_state())
+        issue["schema_version"] = 1
+        issue.pop("lead")
+        issue["discussions"][0].update(summary="Legacy", significance="Legacy", caveat="Legacy")
+        b.validate_issue(issue, b.empty_state())
+        self.assertIn("초록만 확인", b.render_issue(issue))
+        with tempfile.TemporaryDirectory() as folder:
+            with self.assertRaisesRegex(ValueError, "version 2"):
+                b.stage_issue(Path(folder), issue)
+
+    def test_editorial_lead_references_one_real_item_and_has_top_priority(self):
+        b = self.api()
+        issue = example_issue()
+        issue["headline"] = "The one standout result"
+        body = b.render_issue(issue)
+        self.assertIn('class="lead-story"', body)
+        self.assertIn('href="#' + b.item_anchor("papers", issue["papers"][0]) + '"', body)
+        self.assertLess(body.index('class="lead-story"'), body.index('id="github"'))
+        self.assertIn("Technical Spotlight", b.report_text(issue))
+        self.assertIn("Technical Spotlight", body)
+        self.assertNotIn("오늘의 한 가지", body)
+        self.assertNotIn("오늘의 한 가지", b.report_text(issue))
+        index = b.build_search_index([issue])
+        lead_result = next(item for item in index["items"] if item["section"] == "papers")
+        self.assertIn("The one standout result", lead_result["search_text"])
+        for item in index["items"]:
+            if item["section"] != "papers":
+                self.assertNotIn("The one standout result", item["search_text"])
+        issue["lead"]["url"] = "https://arxiv.org/abs/2609.99999"
+        with self.assertRaisesRegex(ValueError, "lead"):
+            b.validate_issue(issue, b.empty_state())
+
+    def test_community_is_a_link_list_in_html_and_teams(self):
+        b = self.api()
+        issue = example_issue()
+        issue["discussions"][0]["sources"].insert(0, issue["discussions"][0]["url"])
+        b.validate_issue(issue, b.empty_state())
+        html = b.render_issue(issue)
+        section = html.split('<section id="community">')[1].split("</section>")[0]
+        self.assertIn("Fixture discussion", section)
+        self.assertIn("https://example.org/story", section)
+        self.assertIn("https://news.ycombinator.com/item?id=1", section)
+        self.assertNotIn("<dl>", section)
+        self.assertEqual(section.count('href="https://example.org/story"'), 1)
+        message = b.report_text(issue).split("HN · 긱뉴스 · Reddit")[1].split("\nCNCF")[0]
+        self.assertIn("Fixture discussion", message)
+        self.assertNotIn("사실과 의견:", message)
+        self.assertEqual(message.count("https://example.org/story"), 1)
+        issue["discussions"][0]["summary"] = "Unwanted explanation"
+        with self.assertRaisesRegex(ValueError, "link-only"):
+            b.validate_issue(issue, b.empty_state())
+
+    def test_revised_report_preserves_original_receipts_and_public_version_until_approved(self):
+        b = self.api()
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            old = example_issue()
+            b.stage_issue(root, old)
+            old_digest = b.issue_digest(old)
+            b.promote_issue(root, old["date"], old_digest)
+            state = b.load_state(root)
+            parts = b.delivery_parts(old)
+            for part in range(len(parts)):
+                state = b.record_receipt(old, state, old_digest, part, len(parts))
+            b.save_state(root, state)
+            old_receipt = copy.deepcopy(state["receipts"][old["date"]])
+            revised = copy.deepcopy(old)
+            revised.update(revision=2, supersedes=old_digest, revision_note="Read full text and simplify community.",
+                           headline="A revised single standout")
+            with self.assertRaisesRegex(ValueError, "revise"):
+                b.stage_issue(root, revised)
+            with self.assertRaisesRegex(ValueError, "digest"):
+                b.revise_issue(root, revised, "wrong")
+            b.revise_issue(root, revised, old_digest)
+            self.assertEqual(b.issue_digest(b.load_json(root / "reports" / (old["date"] + ".json"))), old_digest)
+            self.assertEqual(b.load_state(root)["receipts"][old["date"]], old_receipt)
+            self.assertEqual(b.delivery_key(revised), "2026-09-16:r2")
+            self.assertNotIn(b.delivery_key(revised), b.load_state(root)["receipts"])
+            archive = list((root / ".local" / "revisions" / old["date"]).glob("*.json"))
+            self.assertEqual(len(archive), 1)
+            self.assertEqual(b.issue_digest(b.load_json(archive[0])), old_digest)
+            b.promote_issue(root, old["date"], b.issue_digest(revised))
+            self.assertEqual(b.load_json(root / "reports" / (old["date"] + ".json"))["revision"], 2)
+            state = b.load_state(root)
+            for part in range(len(b.delivery_parts(revised))):
+                state = b.record_receipt(revised, state, b.issue_digest(revised), part, len(b.delivery_parts(revised)))
+            self.assertTrue(state["receipts"]["2026-09-16:r2"]["complete"])
+            self.assertEqual(state["receipts"][old["date"]], old_receipt)
+            self.assertIn("수정본 r2", b.report_text(revised))
+
+    def test_revision_rejects_partial_delivery_wrong_revision_and_changed_public_base(self):
+        b = self.api()
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            old = example_issue()
+            old["papers"][0]["method"] = "Long method. " * 3000
+            b.stage_issue(root, old)
+            digest = b.issue_digest(old)
+            b.promote_issue(root, old["date"], digest)
+            revised = copy.deepcopy(old)
+            revised.update(revision=3, supersedes=digest, revision_note="Changes")
+            with self.assertRaisesRegex(ValueError, "next revision"):
+                b.revise_issue(root, revised, digest)
+            revised["revision"] = 2
+            state = b.record_receipt(old, b.load_state(root), digest, 0, len(b.delivery_parts(old)))
+            b.save_state(root, state)
+            with self.assertRaisesRegex(ValueError, "partial delivery"):
+                b.revise_issue(root, revised, digest)
+
+    def test_revision_promotion_requires_the_unchanged_approved_public_base(self):
+        b = self.api()
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            old = example_issue()
+            b.stage_issue(root, old)
+            digest = b.issue_digest(old)
+            b.promote_issue(root, old["date"], digest)
+            revised = copy.deepcopy(old)
+            revised.update(revision=2, supersedes=digest, revision_note="A deliberate correction",
+                           headline="Revised headline")
+            b.revise_issue(root, revised, digest)
+            concurrent = copy.deepcopy(old)
+            concurrent["headline"] = "A different public change"
+            b.atomic_json(root / "reports" / (old["date"] + ".json"), concurrent)
+            with self.assertRaisesRegex(ValueError, "Public base digest"):
+                b.promote_issue(root, old["date"], b.issue_digest(revised))
+            self.assertEqual(b.load_json(root / "reports" / (old["date"] + ".json")), concurrent)
+
+    def test_delivered_legacy_issue_can_be_revised_without_erasing_legacy_receipts(self):
+        b = self.api()
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            old = example_issue()
+            old["schema_version"] = 1
+            old.pop("lead")
+            old["papers"][0]["evidence"] = "abstract_only"
+            old["discussions"][0].update(summary="Old summary", significance="Old explanation", caveat="Old caveat")
+            digest = b.issue_digest(old)
+            b.atomic_json(root / ".local" / "drafts" / (old["date"] + ".json"), old)
+            b.atomic_json(root / "reports" / (old["date"] + ".json"), old)
+            state = b.empty_state()
+            for index in range(len(b.delivery_parts(old))):
+                state = b.record_receipt(old, state, digest, index, len(b.delivery_parts(old)))
+            b.save_state(root, state)
+            revised = example_issue()
+            revised.update(revision=2, supersedes=digest, revision_note="Full-text rewrite")
+            b.revise_issue(root, revised, digest)
+            self.assertTrue(b.load_state(root)["receipts"][old["date"]]["complete"])
+            self.assertEqual(b.load_draft(root, old["date"])["schema_version"], 2)
+            self.assertEqual(b.load_json(root / "reports" / (old["date"] + ".json"))["schema_version"], 1)
+
+    def test_v2_accepts_twelve_unique_community_links_and_rejects_a_thirteenth(self):
+        b = self.api()
+        issue = example_issue()
+        source = issue["discussions"][0]
+        issue["discussions"] = [
+            {**source, "url": "https://example.org/story/" + str(index)}
+            for index in range(12)
+        ]
+        b.validate_issue(issue, b.empty_state())
+        issue["discussions"].append({**source, "url": "https://example.org/story/12"})
+        with self.assertRaisesRegex(ValueError, "item limit"):
+            b.validate_issue(issue, b.empty_state())
+
+    def test_github_summary_keeps_all_ten_ranks_and_only_three_featured_items(self):
+        b = self.api()
+        issue = example_issue()
+        sample = issue["repositories"][0]
+        issue["repositories"] = [
+            {**sample, "repository": "fixture/repo-" + str(i),
+             "url": "https://github.com/fixture/repo-" + str(i), "rank": i}
+            for i in range(1, 11)
+        ]
+        issue["github_snapshot"]["entries"] = [
+            {"repository": r["repository"], "rank": r["rank"], "weekly_stars": 1000 + r["rank"]}
+            for r in issue["repositories"]
+        ]
+        issue["github_featured"] = ["fixture/repo-5", "fixture/repo-9", "fixture/repo-4"]
+        b.validate_issue(issue, b.empty_state())
+        html = b.render_issue(issue).split('<section id="github">')[1].split("</section>")[0]
+        self.assertIn('class="github-table"', html)
+        self.assertEqual(html.count('class="repo-overview-row"'), 10)
+        self.assertEqual(html.count('class="article-item repo-feature"'), 3)
+        self.assertIn('class="repo-overflow"', html)
+        self.assertIn("1,005", html)
+        for r in issue["repositories"]:
+            self.assertEqual(html.count('id="' + b.item_anchor("github", r) + '"'), 1)
+        issue["github_featured"].append("fixture/repo-1")
+        with self.assertRaisesRegex(ValueError, "featured"):
+            b.validate_issue(issue, b.empty_state())
+
+    def test_github_snapshot_only_rows_do_not_reinvent_old_descriptions(self):
+        b = self.api()
+        issue = example_issue()
+        issue["github_snapshot"]["entries"].append({"repository": "fixture/old", "rank": 2, "weekly_stars": None})
+        html = b.render_issue(issue)
+        self.assertIn("fixture/old", html)
+        self.assertIn("이번 호 상세 제외", html)
+        issue["github_featured"] = ["fixture/old"]
+        with self.assertRaisesRegex(ValueError, "featured"):
+            b.validate_issue(issue, b.empty_state())
+
+    def test_teams_digest_is_one_formatted_short_message_with_deployed_links(self):
+        b = self.api()
+        issue = example_issue()
+        issue["teams"] = {
+            "spotlight": ["A concise technical result.", "Trigger rate is not task success."],
+            "highlights": [
+                {"section": "github", "url": issue["repositories"][0]["url"], "text": "Context management"},
+                {"section": "cncf", "url": issue["cncf"][0]["url"], "text": "Runtime update"},
+            ],
+        }
+        b.validate_issue(issue, b.empty_state())
+        message = b.teams_digest_html(issue, published=True)
+        self.assertIn("<strong>Technical Spotlight</strong>", message)
+        self.assertIn("<p>A concise technical result.</p>", message)
+        self.assertEqual(message.count("<li>"), 2)
+        self.assertIn("https://hellices.github.io/daily-tech-brief/daily/2026-09-16/", message)
+        self.assertNotIn(issue["papers"][0]["method"], message)
+        self.assertNotIn(issue["repositories"][0]["use_case"], message)
+        self.assertLess(len(message.encode("utf-8")), 8000)
+        unpublished = b.teams_digest_html(issue, published=False)
+        self.assertNotIn("/daily/2026-09-16/", unpublished)
+        self.assertIn("상세 보고서 게시 승인 대기", unpublished)
+        issue["teams"]["spotlight"][0] = "<script>unsafe</script>"
+        self.assertNotIn("<script>", b.teams_digest_html(issue, published=True))
+
+    def test_teams_highlights_reject_unlinked_items_and_oversized_copy(self):
+        b = self.api()
+        issue = example_issue()
+        issue["teams"] = {"spotlight": ["A short result."],
+                          "highlights": [{"section": "papers", "url": "https://example.org/missing", "text": "Missing"}]}
+        with self.assertRaisesRegex(ValueError, "highlight"):
+            b.validate_issue(issue, b.empty_state())
+        issue["teams"]["highlights"] = []
+        issue["teams"]["spotlight"] = ["x" * 501]
+        with self.assertRaisesRegex(ValueError, "spotlight"):
+            b.validate_issue(issue, b.empty_state())
+
+    def test_compact_receipts_do_not_reuse_full_report_receipts(self):
+        b = self.api()
+        issue = example_issue()
+        state = b.empty_state()
+        for index in range(len(b.delivery_parts(issue))):
+            state = b.record_receipt(issue, state, b.issue_digest(issue), index, len(b.delivery_parts(issue)))
+        message = b.teams_digest_html(issue, published=False)
+        payload_digest = b.text_digest(message)
+        updated = b.record_digest_receipt(issue, state, payload_digest, message, "teams-message-123", "preview")
+        self.assertTrue(updated["receipts"][issue["date"]]["complete"])
+        key = b.delivery_key(issue) + ":digest:preview"
+        self.assertEqual(updated["digest_receipts"][key]["message_id"], "teams-message-123")
+        self.assertEqual(b.record_digest_receipt(issue, updated, payload_digest, message, "teams-message-123", "preview"), updated)
+        with self.assertRaisesRegex(ValueError, "digest"):
+            b.record_digest_receipt(issue, state, "wrong", message, "teams-message-123", "preview")
+        with self.assertRaisesRegex(ValueError, "message"):
+            b.record_digest_receipt(issue, state, payload_digest, message, "", "preview")
+
+    def test_digest_links_require_confirmed_current_publication_and_are_idempotent(self):
+        b = self.api()
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            issue = example_issue()
+            b.stage_issue(root, issue)
+            preview = b.digest_payload(root, issue["date"])
+            self.assertEqual(preview["mode"], "preview")
+            self.assertEqual(preview["content_type"], "html")
+            with self.assertRaisesRegex(ValueError, "publication"):
+                b.digest_payload(root, issue["date"], "published")
+            b.promote_issue(root, issue["date"], b.issue_digest(issue))
+            self.assertEqual(b.digest_payload(root, issue["date"])["mode"], "preview")
+            b.record_publication(root, issue["date"], b.issue_digest(issue))
+            published = b.digest_payload(root, issue["date"])
+            self.assertEqual(published["mode"], "published")
+            state = b.record_digest_receipt(issue, b.load_state(root), published["message_digest"],
+                                            published["message"], "sent-123", "published")
+            b.save_state(root, state)
+            self.assertTrue(b.digest_payload(root, issue["date"])["already_sent"])
+            self.assertIsNone(b.digest_payload(root, issue["date"])["message"])
+            changed = copy.deepcopy(issue)
+            changed["summary"][0] = "Changed after the short message was sent"
+            with self.assertRaisesRegex(ValueError, "digest delivery"):
+                b.stage_issue(root, changed)
 
 
 if __name__ == "__main__":

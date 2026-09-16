@@ -402,7 +402,7 @@
     }
 
     function readControls() {
-      currentFilters = {
+      const nextFilters = {
         q: queryInput.value,
         section: sectionInput.value,
         tags: Array.from(tagsInput.querySelectorAll('input[name="tag"]'))
@@ -410,6 +410,8 @@
         from: fromInput.value,
         to: toInput.value,
       };
+      if (encodeFilters(nextFilters) === encodeFilters(currentFilters)) return;
+      currentFilters = nextFilters;
       visibleLimit = PAGE_SIZE;
       sectionInput.setAttribute(
         'aria-invalid',

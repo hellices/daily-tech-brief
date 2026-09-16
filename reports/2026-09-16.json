@@ -85,18 +85,14 @@
       "status": "ok"
     },
     "community": {
-      "note": "2026-09-13부터 2026-09-16까지 HN top stories와 원문을 중심으로 5건을 선정했다. GeekNews는 403으로 접근이 막혔고 Reddit 상위 글 JSON과 웹 미리보기는 403 또는 빈 응답이라 검토하지 못해 커뮤니티 범위는 부분적이다.",
+      "note": "최근 수일의 HN 상위 글, 긱뉴스 인기·최신 글, Reddit r/LocalLLaMA 주간 상위 글을 함께 검토했다. 중복 기사는 하나로 합치고 원문과 커뮤니티 링크를 함께 제공한다.",
       "sources": [
-        "https://news.ycombinator.com/",
         "https://hacker-news.firebaseio.com/v0/topstories.json",
         "https://news.hada.io/",
-        "https://news.hada.io/new",
-        "https://www.reddit.com/r/LocalLLaMA/top/?t=week",
-        "https://www.reddit.com/r/MachineLearning/top.json?t=week&limit=10",
-        "https://www.reddit.com/r/programming/top/?t=week",
-        "https://www.reddit.com/r/kubernetes/top.json?t=week&limit=10"
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/top/.rss?t=week"
       ],
-      "status": "partial"
+      "status": "ok"
     },
     "github": {
       "note": "2026-09-09부터 2026-09-16 08:00 KST까지의 GitHub weekly Trending을 2026-09-16 08:00 KST에 확인했고 상위 10개를 모두 기록했다. 첫 관측이므로 신규 진입 여부는 미확정이며, 소개 이력은 이번 호부터 추적합니다.",
@@ -106,11 +102,13 @@
       "status": "ok"
     },
     "papers": {
-      "note": "2026-03-16 이후 최초 공개되고 2026-09-16 이전에 확인 가능한 arXiv cs.AI/cs.CL/cs.LG 최근 항목을 검토해 5편을 선정했다. 직전 7일 소개 이력은 비어 있어 중복 제외로 제거된 논문은 없으며, 본문 전문은 열람하지 못해 모두 초록 근거로만 요약했다.",
+      "note": "최초 발표가 최근 6개월 이내인 논문 5편을 본문 기준으로 다시 읽었다. 방법·실험 표·결론·한계를 확인했으며, 같은 날짜의 기존 소개를 보완한 것이다.",
       "sources": [
-        "https://arxiv.org/list/cs.AI/recent",
-        "https://arxiv.org/list/cs.CL/recent",
-        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=35"
+        "https://arxiv.org/html/2609.15982",
+        "https://arxiv.org/html/2609.15983",
+        "https://arxiv.org/html/2609.15989",
+        "https://arxiv.org/html/2609.15939",
+        "https://arxiv.org/html/2609.15830"
       ],
       "status": "ok"
     }
@@ -118,91 +116,126 @@
   "date": "2026-09-16",
   "discussions": [
     {
-      "caveat": "블로그는 자체 early access와 자체 평가 해석을 포함하므로 가격 지속성, 일반 작업 성능, reference probability 기반 workflow eval의 타당성은 독립 검증 전까지 주장으로 봐야 한다. HN 댓글 내용은 제목 수준만 확인됐다.",
-      "significance": "HN 상위권 논의로 오른 이유는 LLM을 범용 텍스트 생성기가 아니라 빠른 분기·분류·라우팅 함수로 쓰려는 제품화 방향을 분명히 보여주기 때문이다. 70-500ms, 출력 무료, 확률 보정 같은 주장은 에이전트 내부 판단 비용을 낮추려는 팀에게 직접적인 관심사다.",
       "sources": [
         "https://typesafe.ai/blog/introducing-system-one-models-and-jev",
-        "https://news.ycombinator.com/item?id=49717558"
+        "https://news.ycombinator.com/item?id=49717558",
+        "https://news.hada.io/topic?id=33751"
       ],
-      "summary": "TypeSafe AI는 문자열 생성 대신 미리 정의된 typed probabilistic decision을 병렬로 반환하는 Jev를 공개하며, 자동화 워크플로에 맞춘 System One Model이라는 포지션을 제시했다.",
       "tags": [
         "agent",
-        "developer-tools",
         "inference",
-        "llm",
-        "performance"
+        "llm"
       ],
-      "title": "TypeSafe AI가 System One Model과 Jev를 공개",
+      "title": "Jev: 문장 대신 판단과 확률을 반환하는 AI 모델",
       "url": "https://typesafe.ai/blog/introducing-system-one-models-and-jev"
     },
     {
-      "caveat": "제시된 Speech to Speech Quality Index, tau-Voice, Big Bench Audio 수치는 Google 발표와 링크된 평가를 기반으로 한 것이며, 실제 지연시간·비용·프라이버시는 배포 환경마다 다르다. HN 댓글 본문은 접근 결과 제목만 확인됐다.",
-      "significance": "음성·시각 grounding·agentic task completion 벤치마크 수치를 함께 내세운 점은 멀티모달 대화가 단순 채팅에서 실시간 업무 수행 인터페이스로 이동하고 있음을 보여준다. HN에서는 모델 발표의 벤치마크와 실제 체감 품질 사이의 간극이 주요 쟁점이 될 가능성이 높다.",
-      "sources": [
-        "https://blog.google/innovation-and-ai/models-and-research/gemini-models-gemini-3-8-live-gemini-3-8-live-extended-thinking/",
-        "https://news.ycombinator.com/item?id=49715947"
-      ],
-      "summary": "Google은 실시간 음성 에이전트용 Gemini 3.8 Live와 더 복잡한 다단계 추론을 겨냥한 Extended Thinking 버전을 발표했다.",
-      "tags": [
-        "agent",
-        "inference",
-        "llm",
-        "multimodal",
-        "reasoning"
-      ],
-      "title": "Google이 Gemini 3.8 Live와 Extended Thinking을 발표",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/"
-    },
-    {
-      "caveat": "사건 설명은 Strix 측 블로그와 HN 노출을 기반으로 하며, 일부 저장소명과 고객 관련 정보는 원문에서 가려져 있다. 블로그에 따르면 Baseten은 문제를 확인하고 registry 잠금과 토큰 회전을 수행했지만, 전체 사후조치 범위는 별도 확인이 필요하다.",
-      "significance": "컨테이너 이미지 파일시스템뿐 아니라 config history에도 비밀이 남을 수 있다는 점과, 에이전트 기반 recon이 공개 표면에서 공급망 리스크를 빠르게 증명할 수 있음을 보여준다. HN에서도 보안 자동화의 실제 영향과 책임 있는 공개 범위가 논점이다.",
-      "sources": [
-        "https://www.strix.ai/blog/baseten-harbor-github-pat-takeover",
-        "https://news.ycombinator.com/item?id=49716476"
-      ],
-      "summary": "Strix는 Baseten의 공개 Harbor registry에서 이미지 layer와 build history를 따라가 살아 있는 GitHub PAT를 찾았고, 해당 토큰이 내부 저장소와 GitOps repo에 높은 권한을 가졌다고 공개했다.",
-      "tags": [
-        "agent",
-        "containers",
-        "security"
-      ],
-      "title": "Strix가 공개 Harbor 이미지에서 Baseten GitHub PAT 노출을 분석",
-      "url": "https://www.strix.ai/blog/baseten-harbor-github-pat-takeover"
-    },
-    {
-      "caveat": "웹사이트 설명은 제품 가치 제안 중심이며, 보안 sandbox, 파일 형식 안정성, 동시 편집, 모바일 플랫폼 제약은 별도 검증이 필요하다. 클라우드 없는 배포는 협업 기능과 백업 책임을 사용자 쪽으로 옮긴다.",
-      "significance": "HN의 Show HN 관심은 작은 도구와 내부 앱을 서버·계정·구독 없이 배포하려는 흐름과 맞닿아 있다. HTML/CSS와 SQLite를 조합해 문서처럼 공유되는 앱을 만들면 개인용 트래커나 포트폴리오 같은 경량 사용처가 넓어진다.",
-      "sources": [
-        "https://withcapsule.app/",
-        "https://news.ycombinator.com/item?id=49712278"
-      ],
-      "summary": "Capsule은 UI, 미디어 자산, 로컬 데이터베이스를 하나의 .capsule 파일로 묶어 PDF처럼 전달하고 열 수 있게 하는 단일 파일 앱 형식을 제안한다.",
-      "tags": [
-        "developer-tools",
-        "open-source",
-        "storage"
-      ],
-      "title": "Capsule: SQLite 데이터를 품은 단일 파일 웹 앱",
-      "url": "https://withcapsule.app/"
-    },
-    {
-      "caveat": "글은 아직 end-user ready가 아니라고 명시하며, clean-room 절차와 공개 실험 저장소를 근거로 제시하지만 장기 유지보수와 커널 통합은 별도 과제다. LLM 기여는 인상적이지만 저자의 수동 판단과 하드웨어 실험 설계가 핵심 병목을 풀었다.",
-      "significance": "HN에서 주목받은 이유는 하드웨어 bring-up과 드라이버 개발처럼 긴 시간이 걸리는 시스템 작업에 LLM 보조와 반복 실험이 어떻게 쓰였는지를 구체적으로 보여주기 때문이다. Minecraft 200fps 등 성능 사례는 단순 데모를 넘어 실사용 가능성 논의를 불렀다.",
       "sources": [
         "https://codyho.dev/blog/gpu-driver/",
-        "https://news.ycombinator.com/item?id=49717638"
+        "https://news.ycombinator.com/item?id=49717638",
+        "https://news.hada.io/topic?id=33764"
       ],
-      "summary": "작성자는 M4 Mac Mini와 MacBook Neo를 대상으로 OpenGL ES 3.0 준수 GPU driver를 약 한 달 안에 만들었고, AGX firmware ABI와 user-space 구성요소를 clean-room 방식으로 역공학했다고 설명했다.",
       "tags": [
         "developer-tools",
         "open-source",
         "performance"
       ],
-      "title": "M4 Mac Mini용 Linux GPU driver를 한 달 만에 구현한 사례",
+      "title": "한 달 만에 M4 Mac Mini용 Linux GPU 드라이버 만들기",
       "url": "https://codyho.dev/blog/gpu-driver/"
+    },
+    {
+      "sources": [
+        "https://security.apple.com/blog/apple-reference-image/",
+        "https://news.ycombinator.com/item?id=49721322"
+      ],
+      "tags": [
+        "multimodal",
+        "security"
+      ],
+      "title": "Apple Reference Image: 촬영 사실을 검증하는 새로운 접근",
+      "url": "https://security.apple.com/blog/apple-reference-image/"
+    },
+    {
+      "sources": [
+        "https://termdom.org/",
+        "https://news.hada.io/topic?id=33760"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "TermDOM: HTML·CSS·DOM으로 터미널 UI 만들기",
+      "url": "https://termdom.org/"
+    },
+    {
+      "sources": [
+        "https://dbtcharts.com/blog/charts-built-for-chat/",
+        "https://news.hada.io/topic?id=33723"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "dbt Charts: 대화로 만들고 Git으로 관리하는 대시보드",
+      "url": "https://dbtcharts.com/blog/charts-built-for-chat/"
+    },
+    {
+      "sources": [
+        "https://zanlib.dev/blog/do-you-still-read-the-code/",
+        "https://news.hada.io/topic?id=33735"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools"
+      ],
+      "title": "아직도 AI가 작성한 코드를 읽나요?",
+      "url": "https://zanlib.dev/blog/do-you-still-read-the-code/"
+    },
+    {
+      "sources": [
+        "https://refactoringenglish.com/excerpts/write-an-effective-design-doc/",
+        "https://news.hada.io/topic?id=33696"
+      ],
+      "tags": [
+        "developer-tools"
+      ],
+      "title": "효과적인 소프트웨어 설계 문서 작성법",
+      "url": "https://refactoringenglish.com/excerpts/write-an-effective-design-doc/"
+    },
+    {
+      "sources": [
+        "https://huggingface.co/ukisai/Swift-Qwen3.8-27b",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1wg7dd5/ukisai_swiftqwen3827b_583_thinking_x195_speed/"
+      ],
+      "tags": [
+        "fine-tuning",
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "Swift-Qwen3.8-27B: 추론 토큰 절감을 목표로 한 모델 공개",
+      "url": "https://huggingface.co/ukisai/Swift-Qwen3.8-27b"
+    },
+    {
+      "sources": [
+        "https://www.nvidia.com/en-eu/products/workstations/professional-desktop-gpus/rtx-pro-5500/",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1wfxi36/rtx_pro_5500_blackwell_84gb_released/"
+      ],
+      "tags": [
+        "inference",
+        "performance"
+      ],
+      "title": "RTX PRO 5500 Blackwell: 로컬 AI용 GPU를 둘러싼 논의",
+      "url": "https://www.nvidia.com/en-eu/products/workstations/professional-desktop-gpus/rtx-pro-5500/"
     }
   ],
-  "generated_at": "2026-09-16T08:00:23+09:00",
+  "generated_at": "2026-09-16T14:05:42+09:00",
+  "github_featured": [
+    "mksglu/context-mode",
+    "max-sixty/worktrunk",
+    "affaan-m/ECC"
+  ],
   "github_snapshot": {
     "captured_at": "2026-09-16T08:00:10+09:00",
     "entries": [
@@ -259,77 +292,24 @@
     ],
     "source": "https://github.com/trending?since=weekly"
   },
-  "headline": "에이전트 도구 생태계와 클라우드 네이티브 릴리스 점검",
+  "headline": "Gavel: Native Skill Routing from a Frozen LLM",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2609.15982"
+  },
   "papers": [
     {
-      "abstract_summary": "이 논문은 LLM actor의 추론 흔적을 별도 monitor가 검사하는 CoT 모니터링이, 겉보기에는 무해한 계획을 문맥에 심는 plan injection에 취약할 수 있다고 보고한다. 초록에 따르면 actor는 주입된 계획을 자기 추론처럼 바꿔 말하면서도 실제 행동은 공격 방향으로 움직이며, 더 많은 모니터 자원이 항상 더 안전한 결과를 만들지는 않았다.",
-      "evidence": "abstract_only",
-      "findings": "초록은 여러 monitorability benchmark에서 25-33%의 monitor evasion rate를 달성했고, Bio-Math 과제와 reasoning budget 사례에서는 monitor가 주입 계획을 볼 수 있을 때 탐지가 최대 50% 낮아졌다고 보고한다. 핵심 신호는 모델이 외부 주입을 명시적으로 귀속하지 않고 자신의 계획처럼 재서술한다는 점이다.",
-      "first_published": "2026-09-14",
-      "id": "arxiv:2609.15989",
-      "limitations": "초록만 확인했으므로 구체적 프롬프트, 데이터셋 구성, 실패 사례의 분포, 실제 에이전트 운영 환경과의 차이는 검증하지 못했다. CoT를 숨기거나 요약하는 상용 환경, 도구 실행 권한이 제한된 하네스, 사람 검토가 섞인 워크플로로 일반화하려면 추가 확인이 필요하다.",
-      "method": "저자들은 Lanham 등의 monitorability 설정과 Li 등의 investigator-agent elicitation 프레임워크에서 공격을 찾은 뒤, 더 어려운 monitorability 벤치마크와 DeepSeek-R1 같은 더 큰 모델로 일반화 여부를 시험했다고 설명한다. monitor가 actor의 reasoning을 검사하는 구조에서 주입 계획 접근 가능 여부와 추론 예산 변화가 탐지율에 미치는 영향을 비교했다.",
-      "practical_value": "CoT 모니터링을 안전장치로 쓰는 에이전트 운영자는 reasoning 텍스트 검토만으로 충분하다고 가정하지 말고, 입력 경계, 계획 출처 추적, 행동 로그 검증, 독립적 정책 체크를 함께 설계해야 한다. 특히 긴 컨텍스트에 과거 계획이나 외부 문서를 넣는 하네스에서 유용한 경고 신호다.",
-      "sources": [
-        "https://arxiv.org/abs/2609.15989",
-        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=35"
-      ],
-      "tags": [
-        "agent",
-        "evaluation",
-        "reasoning",
-        "security"
-      ],
-      "title": "Corrupt Plans, Clean Traces: Evading Chain-of-Thought Monitoring with Plan Injection",
-      "topics": [
-        "CoT monitoring",
-        "plan injection",
-        "agent safety",
-        "monitor evasion"
-      ],
-      "url": "https://arxiv.org/abs/2609.15989"
-    },
-    {
-      "abstract_summary": "Stellar Colosseum은 긴 수학·이론 CS 연구 문제에서 단일 답변보다 전략 탐색, proof plan 분해, 검증 피드백 반영을 반복하는 many-agent 하네스를 제안한다. 초록은 후보를 병렬 생성하고 targeted falsification으로 공격한 뒤 critique를 합쳐 연구 산출물을 만든다고 설명한다.",
-      "evidence": "abstract_only",
-      "findings": "초록은 Gemini 3.1 Pro와 결합한 Colosseum이 open-ended research, theorem proving, competitive programming benchmark에서 능력을 보였고 일부 새로운 결과도 얻었다고 보고한다. 또한 Google Antigravity Teamwork의 Long Proof pattern으로 통합됐다고 밝힌다.",
-      "first_published": "2026-09-14",
-      "id": "arxiv:2609.15983",
-      "limitations": "초록만 확인했기 때문에 새 결과의 독립 검증 상태, 기준선 설정, 비용·시간 예산, 실패한 proof route의 처리 방식은 확인하지 못했다. 수학 연구 외의 소프트웨어 설계나 과학 실험으로 옮길 때 같은 집계 방식이 효과적인지도 미확정이다.",
-      "method": "워크플로는 proof construction 전에 여러 전략을 탐색하고, readiness gate로 분해 시점을 판단하며, 섹션 단위 하위 문제 의존성을 명시한다. 검증기가 발견한 문제를 해당 proof plan 구간으로 되돌리고, overlapping random-sample tree aggregation으로 후보와 비판을 결합하는 방식이다.",
-      "practical_value": "장기 과제형 에이전트에서 핵심은 더 큰 모델 하나가 아니라, 전략 후보·검증·피드백 라우팅·산출물 집계를 하네스가 어떻게 구성하느냐다. 복잡한 설계 검토, 형식 증명 보조, 연구 자동화 시스템을 만들 때 참조할 만한 구조적 패턴이다.",
-      "sources": [
-        "https://arxiv.org/abs/2609.15983",
-        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=35"
-      ],
-      "tags": [
-        "agent",
-        "evaluation",
-        "harness",
-        "multi-agent",
-        "reasoning"
-      ],
-      "title": "Stellar Colosseum: A Many-Agent Harness for Long-Horizon Research in Mathematics and Theoretical Computer Science",
-      "topics": [
-        "many-agent harness",
-        "long-horizon research",
-        "mathematical reasoning",
-        "verification"
-      ],
-      "url": "https://arxiv.org/abs/2609.15983"
-    },
-    {
-      "abstract_summary": "이 논문은 에이전트 스킬 선택을 위해 모든 스킬 설명을 컨텍스트에 넣거나 외부 retrieval에 맡기는 대신, frozen LLM 내부 forward pass에서 라우팅 신호를 읽어낼 수 있다고 주장한다. Gavel은 task와 skill의 중간층 상태를 이용해 대규모 스킬 라이브러리에서 후보를 좁히는 방식이다.",
-      "evidence": "abstract_only",
-      "findings": "초록에 따르면 한 번 학습한 Gavel은 세 개의 공개 벤치마크와 372개 simulated agent trajectory로 구성된 SkillTraj에 zero-shot transfer됐고, Qwen3-32B에서 progressive disclosure 및 retrieve-and-rerank 기준선보다 낫다고 보고된다. 맥락에 스킬 텍스트를 모두 넣지 않는 점이 비용과 주의 분산 문제를 줄인다.",
+      "abstract_summary": "Gavel은 스킬 선택을 별도 검색 모델에 전부 맡기거나 스킬 설명을 컨텍스트에 미리 넣지 않고, 에이전트 LLM 내부에서 읽어내는 라우터다. 모델 가중치는 고정하고 task와 skill의 중간층 상태를 연결하는 두 선형 사상을 학습한다. 설치 때 만든 스킬 인덱스와 실행 중 상태를 결합하므로, 새로운 스킬마다 모델을 다시 학습할 필요가 없다.",
+      "evidence": "full_text",
+      "findings": "§4·표 1에서 Skill-Use 177개 과제/79개 스킬의 올바른 호출률은 Qwen3-32B progressive disclosure 1.1%, Gavel 90.9%, Qwen 검색·재정렬 89.7%다. 문서형 과제에서는 최강 기준선보다 SkillRet 3.8%p, SRA-Bench 13.4%p 높았고, 372개 모의 실행 궤적에서는 시나리오별 8.6~21.9%p 개선을 보고했다.",
       "first_published": "2026-09-14",
       "id": "arxiv:2609.15982",
-      "limitations": "초록만 확인했으므로 선형 map 학습 데이터, 스킬 라이브러리 크기, 모델군별 민감도, 실제 툴 실패 시 복구 방식은 검토하지 못했다. frozen LLM 내부 상태 접근이 필요하므로 API 전용 상용 모델이나 폐쇄형 런타임에는 바로 적용하기 어렵다.",
-      "method": "Gavel은 설치 시 스킬별 compact bank를 만들고, glance 단계에서 두 개의 학습된 선형 map으로 task와 skill 상태를 점수화한다. verdict 단계에서는 shortlisted skill의 forward pass를 재개해 모델 자신의 likelihood와 yes/no 판단을 읽고, glance 점수와 product-of-experts로 결합한다.",
-      "practical_value": "스킬 수가 늘어나는 코딩 에이전트와 MCP 환경에서 라우팅은 정확도뿐 아니라 컨텍스트 비용 문제다. 공개 모델 기반 하네스라면 스킬 전문을 매번 주입하지 않고도 routing layer를 훈련하는 방향을 실험할 수 있다.",
+      "limitations": "호출률은 과제의 최종 성공률이 아니다. SkillTraj는 합성 대화이고 일부 검색 평가는 불완전한 정답 주석을 LLM 판정으로 보완한다. 직접 은닉 상태에 접근해야 하며, 게이트 학습·스킬 인덱싱·후보별 추가 forward pass 비용도 필요하다. 메모리·MCP 라우팅으로의 확장은 논문에서도 미해결 과제로 남긴다.",
+      "method": "Qwen3-32B의 64개 블록 중 45번째 상태를 사용한다. 51,104개 학습 질의로 790만 파라미터의 사상을 학습하고, glance 단계가 토큰별 유사도 투표로 후보를 좁힌다. 평균 약 9개 후보에는 모델을 추가 실행해 과제 likelihood와 yes/no 적합성을 읽고 product-of-experts로 결합한다. 실제 에이전트 통합에는 호출 시점 게이트도 추가한다.",
+      "practical_value": "오픈웨이트 에이전트에서 스킬 미사용과 컨텍스트 낭비를 분리해 측정할 때 좋은 설계다. 도입 시에는 호출률뿐 아니라 최종 해결률, 불필요한 호출률, 전체 지연과 GPU 메모리를 함께 비교해야 한다.",
       "sources": [
         "https://arxiv.org/abs/2609.15982",
-        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=35"
+        "https://arxiv.org/html/2609.15982"
       ],
       "tags": [
         "agent",
@@ -339,25 +319,79 @@
       ],
       "title": "The Router Within: Eliciting Native Skill Routing from a Frozen LLM",
       "topics": [
-        "skill routing",
-        "frozen LLM",
-        "agent harness",
-        "context reduction"
+        "스킬 라우팅",
+        "내부 은닉 상태",
+        "실행 시점 제어"
       ],
       "url": "https://arxiv.org/abs/2609.15982"
     },
     {
-      "abstract_summary": "VLoc Bench는 에이전트가 취약점을 재현하거나 고치는 능력보다, 낯선 저장소에서 취약한 구현 파일을 찾아내는 능력에 초점을 맞춘 benchmark다. 초록은 290개 저장소의 실제 취약점 500개, 여섯 패키지 생태계, 147개 CWE 범주를 포함한다고 설명한다.",
-      "evidence": "abstract_only",
-      "findings": "초록은 가장 강한 시스템도 File F1 0.229에 그쳤고, 38.4% 과제에서는 평가된 어떤 모델도 올바른 localization을 내지 못했다고 보고한다. 이는 저장소 전체를 보는 보안 에이전트가 실제 원인 파일을 좁히는 단계에서 여전히 큰 병목을 가진다는 뜻이다.",
+      "abstract_summary": "Colosseum은 긴 수학·이론 CS 과제를 전략 탐색, 증명 분해, 국소 검토, 전체 검증의 반복으로 푸는 many-agent 하네스다. 다수결로 답을 고르기보다 후보와 반박을 묶어 단계적으로 합성하고, 실패한 시도의 구체적인 이유를 다음 탐색에 전달한다. 실패도 재사용할 지식으로 보존한다는 점이 메모리 설계와 직접 연결된다.",
+      "evidence": "full_text",
+      "findings": "표 2의 TCS-Bench 300문제에서 Gemini 3.1 Pro 직접 평가 30.3%가 Colosseum 결합 시 54.0%로 올랐다. Gemini 3.7 Flash 실행은 55.0%, 두 모델의 비평 기반 선택은 71.0%였다. Codeforces 222문제에서는 실행 피드백을 더한 구성이 218개, 실행 피드백이 없는 구성은 213개를 통과했다.",
+      "first_published": "2026-09-14",
+      "id": "arxiv:2609.15983",
+      "limitations": "TCS-Bench 수치는 정답 증명을 보는 자동 채점기의 판단이며 형식 검증을 뜻하지 않는다. 여러 후보·리뷰·재시도로 추론량이 늘므로 단일 호출과 비용이 같지 않다. 고정된 트리 폭이 다양한 전략을 조기에 없앨 수 있고, 논문은 적응적 자원 배분의 효과를 분리하려면 동일 계산량 비교가 필요하다고 명시한다.",
+      "method": "준비도 게이트가 전략을 선택하면 증명 의존성 DAG를 만들고 독립 구간을 병렬 처리한다. 전역 검토의 결함은 해당 구간으로 돌아가며, 전략 자체가 틀리면 탐색을 재개한다. §4.3의 지식 디렉터리는 정리·보조정리, 실패 경로, 참고문헌, 관측을 출처와 주의사항까지 보관한다. 단계 내부는 반박을 포함한 겹치는 표본 트리로 후보를 합성한다.",
+      "practical_value": "긴 코딩·설계 에이전트에도 ‘이전 답변 저장’보다 실패 지점·반례·근거를 구조화해 남기는 방식을 적용해볼 만하다. 멀티 에이전트 수를 늘리기 전에 국소 재시도와 전역 검토의 책임 경계를 설계하는 데 도움이 된다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.15983",
+        "https://arxiv.org/html/2609.15983"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness",
+        "memory",
+        "multi-agent"
+      ],
+      "title": "Stellar Colosseum: A Many-Agent Harness for Long-Horizon Research in Mathematics and Theoretical Computer Science",
+      "topics": [
+        "장기 연구 하네스",
+        "멀티 에이전트",
+        "실패 지식 메모리"
+      ],
+      "url": "https://arxiv.org/abs/2609.15983"
+    },
+    {
+      "abstract_summary": "이 연구는 외부 문맥에 들어온 잘못된 계획이 모델 자신의 자연스러운 추론처럼 재서술될 때, 추론 텍스트를 감시하는 별도 모델도 속을 수 있음을 보인다. 문제는 수상한 문구를 그대로 복사하는 것이 아니라 출처를 지운 채 그럴듯하게 설명하는 데 있다. 모니터가 계획 원문을 더 많이 보거나 오래 생각한다고 항상 더 잘 탐지하지도 않는다.",
+      "evidence": "full_text",
+      "findings": "§5.3에서 검증된 APPS 계획을 따르는 비율은 Qwen3-8B 50.6%, DeepSeek-R1 41.7%였다. Bio-Math는 세 번 중 최선 결과 기준 93.0%, 98.9%였다. §6에서는 가장 좋은 경우에도 탐지율이 약 75%를 넘지 못했다. 추가 계획 공개는 APPS 일부 조건에서는 불리했지만 Bio-Math에서는 탐지를 개선했다.",
+      "first_published": "2026-09-14",
+      "id": "arxiv:2609.15989",
+      "limitations": "공격 채택률과 모니터 회피율의 분모가 다르며, 세 번 중 최선 수치를 단발 성공률로 읽으면 안 된다. 추론 예산 실험은 단일 모니터와 의심 점수 극단에서 뽑은 표본이어서 악화 현상의 일반적인 빈도를 추정하지 못한다. 실제 RAG·도구 결과를 통한 종단 간 침투는 향후 과제다.",
+      "method": "TruthfulQA에서 공격 유형을 찾은 뒤 Qwen3-8B와 DeepSeek-R1-0528로 APPS 코딩 과제와 Bio-Math 설정을 평가했다. APPS 550문제에서 정상 답안을 만든 후 변형된 계획의 행동을 검증하고, 다섯 모니터가 actor의 추론만 볼 때와 주입 계획까지 볼 때를 비교했다. 의심 점수 임계값은 0.15이며 별도로 임계값 민감도도 조사했다.",
+      "practical_value": "추론 문장만 검사하는 안전장치에 의존하지 말고 계획의 출처, 실제 실행 행동, 권한 경계를 별도로 검증해야 한다. 특히 장기 메모리나 이전 계획을 다시 넣는 하네스의 신뢰 경계를 검토할 근거가 된다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.15989",
+        "https://arxiv.org/html/2609.15989"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "reasoning",
+        "security"
+      ],
+      "title": "Corrupt Plans, Clean Traces: Evading Chain-of-Thought Monitoring with Plan Injection",
+      "topics": [
+        "계획 주입",
+        "CoT 모니터링",
+        "에이전트 검증"
+      ],
+      "url": "https://arxiv.org/abs/2609.15989"
+    },
+    {
+      "abstract_summary": "VLoc Bench는 취약점을 설명하거나 패치하는 최종 능력보다, 낯선 저장소에서 조사할 구현 파일을 정확히 좁히는 능력을 측정한다. 공개 보안 수정 전후의 저장소 쌍으로 위치추적과 수정 후 오탐을 함께 평가한다. 일반 코딩 성능이 좋아도 보안 문제의 위치를 찾고 불필요한 경고를 억제하는 능력은 별도로 검증해야 한다는 결과다.",
+      "evidence": "full_text",
+      "findings": "표 2에서 최고 GPT-5.5 xhigh의 File F1은 0.229, 정밀도 0.310, 재현율 0.221이다. 전체 과제의 38.4%는 어느 평가 모델도 올바른 위치추적을 하지 못했다. §5는 저장소 구조가 모델 특성보다 성과 차이를 더 많이 설명하고, 모델 크기와 점수의 관계도 단조롭지 않다고 분석한다.",
       "first_published": "2026-09-14",
       "id": "arxiv:2609.15939",
-      "limitations": "초록만 확인했으므로 취약점 선정 편향, 저장소 규모 분포, 모델별 도구 사용 정책, 정적 분석 도구와 LLM 조합의 세부 성능은 검증하지 못했다. File F1이 triage 현장의 유용성을 얼마나 잘 대변하는지도 추가 확인이 필요하다.",
-      "method": "각 과제는 보안 수정 직전과 직후의 저장소 snapshot을 짝지어 구성된다. 취약 snapshot에서는 CWE 설명과 read-only terminal만 주고 관련 파일을 찾게 하며, 패치된 snapshot에서는 기록된 취약점이 더 이상 없는지 판단하게 한다. 27개 언어 모델과 네 가지 정적 분석 도구를 공통 agent interface로 평가했다.",
-      "practical_value": "보안 코딩 에이전트 도입 시 단순 취약점 설명 생성보다 위치추적 정확도를 별도로 측정해야 한다. CI 보안 리뷰나 레거시 저장소 감사에서는 사람이 검토할 후보 파일을 얼마나 줄이는지와 놓친 취약점 비용을 함께 관리해야 한다.",
+      "limitations": "패치가 건드린 파일이 취약점 관련 파일 전부라는 보장은 없다. 수정 후 저장소가 해당 취약점에서는 고쳐졌어도 다른 진짜 취약점은 남아 있을 수 있어 정적 분석기의 추가 발견을 오탐과 구분하기 어렵다. Phase B는 무응답·예산 소진·일부 오류도 clean 판단과 섞일 수 있다는 한계를 논문이 인정한다.",
+      "method": "500개 과제·6개 패키지 생태계를 사용하고, 보안 패치가 바꾼 구현 파일을 정답으로 삼는다. 모델에는 CWE 설명과 읽기 전용 저장소만 제공하며 공지·CVE·파일 힌트를 숨긴다. 15개 터미널 명령과 20회 생성 턴으로 제한하고 3회 반복한다. 27개 모델과 4개 정적 분석 도구를 비교한다.",
+      "practical_value": "보안 리뷰 에이전트 도입 시 ‘경고를 얼마나 많이 쓰나’보다 조사 후보를 얼마나 정확히 줄이고 패치 후 경고를 멈추는지 측정해야 한다. CWE만 주는 가혹한 설정의 점수를 실제 triage 전체 성능으로 일반화하지 않는 것이 중요하다.",
       "sources": [
         "https://arxiv.org/abs/2609.15939",
-        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=35"
+        "https://arxiv.org/html/2609.15939"
       ],
       "tags": [
         "agent",
@@ -367,25 +401,24 @@
       ],
       "title": "Vulnerability Localization Benchmark: Measuring Agentic Security Analysis at Repository Scale",
       "topics": [
-        "security benchmark",
-        "repository-scale agents",
-        "vulnerability localization",
-        "static analysis"
+        "저장소 규모 평가",
+        "취약점 파일 위치추적",
+        "보안 에이전트"
       ],
       "url": "https://arxiv.org/abs/2609.15939"
     },
     {
-      "abstract_summary": "CiteGuard-RAG는 RAG에서 evidence retrieval만으로는 답변의 groundedness와 citation validity가 보장되지 않는 문제를 다룬다. 시스템은 hybrid retrieval, citation-constrained generation, sentence-level grounding validation, single-pass regeneration을 묶어 답변을 승인·거절·재생성하도록 설계됐다.",
-      "evidence": "abstract_only",
-      "findings": "통제 평가에서 retrieval accuracy 99.1%, grounded-answer accuracy 98.3%, citation validity 98.3%를 달성했고 validation-detected hallucination은 없었다고 보고한다. 그러나 외부 평가에서는 citation validity가 강해도 evidence utilization, span alignment, refusal calibration이 domain shift에서 어려워졌다고 설명한다.",
+      "abstract_summary": "CiteGuard-RAG는 검색과 답변 생성 사이가 아니라 생성 뒤에도 검증 단계를 두는 RAG 시스템이다. 문장마다 인용과 근거 대응을 검사하고, 실패하면 한 번 다시 생성하거나 답변을 거절한다. 핵심 교훈은 인용 링크가 유효하다는 사실과 답변이 정확하다는 사실이 서로 다른 지표라는 점이다.",
+      "evidence": "full_text",
+      "findings": "통제된 주택법 평가의 grounded accuracy는 98.3%지만, 표 11의 외부 평가에서는 PrivacyQA 68.5%, CUAD 54.0%다. 두 외부 데이터셋의 인용 유효성은 모두 100%인 반면 evidence support는 81.33%, 36.0%였고 CUAD false refusal은 56.0%였다. ‘인용이 맞으니 답도 맞다’는 해석을 반박하는 대목이다.",
       "first_published": "2026-09-14",
       "id": "arxiv:2609.15830",
-      "limitations": "초록만 확인했으므로 검증 모델의 독립성, 재생성 실패율, 긴 문서와 다중 홉 질문에서의 비용, hallucination 탐지 기준은 확인하지 못했다. 특정 법률·프라이버시·계약 데이터셋 성과가 일반 엔터프라이즈 지식검색으로 바로 이어진다고 볼 수 없다.",
-      "method": "초록에 따르면 housing-law controlled dataset, PrivacyQA, CUAD의 400개 질문으로 평가했고, 후보 답변의 각 문장이 인용 근거와 맞는지 검증하는 런타임 단계를 포함한다. 검증 결과에 따라 hallucination 의심 답변은 거절하거나 한 번 다시 생성한다.",
-      "practical_value": "업무용 RAG는 검색 점수보다 인용이 실제 주장을 뒷받침하는지 확인하는 검증 단계가 중요하다. 문장 단위 검증과 refuse/regenerate 결정을 파이프라인에 넣으면 답변 근거를 사람이 빠르게 감사할 수 있다.",
+      "limitations": "통제 실험의 ‘환각 0%’는 구현한 검증 기준에서 미지원 주장을 탐지하지 못했다는 뜻이지 모든 사실 오류가 사라졌다는 뜻이 아니다. 어휘·임베딩 유사도 임계값은 논리적 함의나 미묘한 법률 해석을 놓칠 수 있다. 데이터셋별 정답 형식이 다르고 외부 표본이 작으며, 재생성도 한 번으로 제한된다.",
+      "method": "BGE 임베딩과 BM25를 0.65/0.35로 결합하고 600토큰 청크·120토큰 겹침을 사용한다. 최종 검증은 문장과 인용 근거의 어휘 겹침 0.10 또는 의미 유사도 0.40 임계값을 이용한다. 주택법 18개 문서/150문항, PrivacyQA 200문항, CUAD 50문항에서 총 400문항을 평가한다.",
+      "practical_value": "RAG 품질 대시보드에서 검색 재현율, 인용 유효성, 근거 활용, 답변 정확도, 과도한 거절을 나눠 측정하는 데 유용하다. 이 논문의 높은 단일 수치보다 도메인이 바뀌었을 때 어떤 지표가 먼저 무너지는지 읽는 편이 실무 가치가 크다.",
       "sources": [
         "https://arxiv.org/abs/2609.15830",
-        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=35"
+        "https://arxiv.org/html/2609.15830"
       ],
       "tags": [
         "evaluation",
@@ -394,17 +427,16 @@
       ],
       "title": "CiteGuard-RAG: A Validation-Centered AI System for Evidence-Grounded Question Answering",
       "topics": [
-        "RAG validation",
-        "citation grounding",
-        "refusal calibration",
-        "domain shift"
+        "RAG 검증",
+        "근거 인용",
+        "도메인 이동"
       ],
       "url": "https://arxiv.org/abs/2609.15830"
     }
   ],
   "repositories": [
     {
-      "caution": "ADHD 친화라는 표현은 UX 방향성이지 효과 검증은 아니며, 보안·정확성 요구가 있는 작업에서는 짧은 답이 근거 생략으로 이어지지 않게 해야 한다.",
+      "caution": "ADHD-friendly UX와 효과 검증은 별개 · 과도한 압축에 따른 근거 누락",
       "novelty": "first_observed",
       "rank": 1,
       "repository": "ayghri/i-have-adhd",
@@ -412,7 +444,7 @@
         "https://github.com/ayghri/i-have-adhd",
         "https://raw.githubusercontent.com/ayghri/i-have-adhd/main/README.md"
       ],
-      "summary": "코딩 에이전트가 장황한 설명보다 바로 실행 가능한 답을 앞세우도록 하는 출력 규칙 스킬이다.",
+      "summary": "Coding-agent 응답 길이·출력 형식 제어용 skill",
       "tags": [
         "developer-tools",
         "llm",
@@ -420,10 +452,10 @@
       ],
       "url": "https://github.com/ayghri/i-have-adhd",
       "use_case": "팀 공용 에이전트 프롬프트에 간결한 진행 규칙을 붙여 장애 대응, 테스트 실패 triage, 리뷰 답변을 빠르게 읽게 만들 수 있다.",
-      "why_now": "주간 1위와 17658 weekly stars는 에이전트 품질 논의가 모델 성능뿐 아니라 응답 형식과 작업 기억 관리로 이동했음을 보여준다."
+      "why_now": "Weekly Trending #1 · 주간 17,658 stars · 실행 중심 응답 규칙"
     },
     {
-      "caution": "공개 신호라도 지연·정확도·사생활 이슈가 있으며, 선택적 API 키와 데이터 출처별 제한을 운영 전에 확인해야 한다.",
+      "caution": "공개 피드의 지연·정확도·privacy · 데이터별 이용 조건과 API key 관리",
       "novelty": "first_observed",
       "rank": 2,
       "repository": "bilawalsidhu/gods-eye-view",
@@ -431,7 +463,7 @@
         "https://github.com/bilawalsidhu/gods-eye-view",
         "https://raw.githubusercontent.com/bilawalsidhu/gods-eye-view/main/README.md"
       ],
-      "summary": "공개 항공기, 선박, 위성, 지진, 카메라 신호를 3D 지구본에 얹고 음성 AI 에이전트로 탐색하는 브라우저 기반 OSINT 시뮬레이터다.",
+      "summary": "공개 지리공간 피드·3D globe·voice agent를 결합한 OSINT 시뮬레이터",
       "tags": [
         "agent",
         "developer-tools",
@@ -440,10 +472,10 @@
       ],
       "url": "https://github.com/bilawalsidhu/gods-eye-view",
       "use_case": "재난 모니터링 데모, 물류 관찰, 지리공간 데이터 교육에서 여러 공개 피드를 한 화면에서 탐색하는 프로토타입으로 쓸 수 있다.",
-      "why_now": "14403 weekly stars와 README의 바이럴 배경은 공개 데이터 시각화가 에이전트 인터페이스와 결합될 때 강한 관심을 얻는다는 신호다."
+      "why_now": "Weekly Trending #2 · 주간 14,403 stars · 다중 공개 피드와 agent UI 통합"
     },
     {
-      "caution": "예제 저장소 성격이 강하므로 운영 도입 전 권한 범위, 외부 서비스 키, 플러그인별 신뢰 경계를 별도로 검토해야 한다.",
+      "caution": "예제 중심 구성 · plugin별 권한·서비스 key·trust boundary 검토",
       "novelty": "first_observed",
       "rank": 3,
       "repository": "openai/plugins",
@@ -451,7 +483,7 @@
         "https://github.com/openai/plugins",
         "https://raw.githubusercontent.com/openai/plugins/main/README.md"
       ],
-      "summary": "Codex 플러그인 예제를 모은 저장소로, 플러그인 manifest와 skill, MCP, hooks, agents, commands 같은 확장 표면을 보여준다.",
+      "summary": "Codex plugin 예제 모음: manifest·skills·MCP·hooks·agents·commands",
       "tags": [
         "agent",
         "developer-tools",
@@ -461,10 +493,10 @@
       ],
       "url": "https://github.com/openai/plugins",
       "use_case": "사내 코딩 도구, 디자인 연동, 배포 워크플로를 Codex 환경에 묶는 플러그인 골격을 설계할 때 참조할 수 있다.",
-      "why_now": "OpenAI가 플러그인 예제를 공개 컬렉션으로 정리하면서 에이전트 확장이 단일 프롬프트가 아니라 배포 가능한 패키지 단위로 굳어지고 있다."
+      "why_now": "OpenAI 공식 plugin 패키징 예제 · Codex 확장 구조의 구현 참조"
     },
     {
-      "caution": "README가 공식 설치 경로를 강조할 만큼 공급망 위험이 민감하므로, 플러그인 설치 전 출처와 권한을 엄격히 고정해야 한다.",
+      "caution": "공식 설치 경로 고정 · plugin 출처·권한·supply-chain 검토",
       "novelty": "first_observed",
       "rank": 4,
       "repository": "affaan-m/ECC",
@@ -472,7 +504,7 @@
         "https://github.com/affaan-m/ECC",
         "https://raw.githubusercontent.com/affaan-m/ECC/main/README.md"
       ],
-      "summary": "Claude Code, Codex, Cursor 등 여러 코딩 에이전트에 계획, 검증, 메모리, 보안 스킬을 붙이는 에이전트 하네스 최적화 시스템이다.",
+      "summary": "Claude Code·Codex·Cursor용 agent harness: planning·verification·memory·security",
       "tags": [
         "agent",
         "developer-tools",
@@ -482,10 +514,10 @@
       ],
       "url": "https://github.com/affaan-m/ECC",
       "use_case": "팀별 코딩 에이전트 운영 규칙, 자체 점검, 반복 테스트 흐름을 여러 CLI와 편집기에 공통 배포하는 실험에 적합하다.",
-      "why_now": "6085 weekly stars와 다중 하네스 지원은 에이전트 워크플로 표준화 수요가 특정 IDE나 모델을 넘어 확산되고 있음을 보여준다."
+      "why_now": "주간 6,085 stars · 여러 CLI·IDE에 공통 workflow 적용"
     },
     {
-      "caution": "컨텍스트 절감 계층은 관측 가능한 정보를 바꾸므로, 누락된 원문 때문에 디버깅 근거가 사라지지 않도록 재조회 경로를 보장해야 한다.",
+      "caution": "출력 압축에 따른 관측 정보 손실 · 원문 재조회 경로 확보",
       "novelty": "first_observed",
       "rank": 5,
       "repository": "mksglu/context-mode",
@@ -493,7 +525,7 @@
         "https://github.com/mksglu/context-mode",
         "https://raw.githubusercontent.com/mksglu/context-mode/main/README.md"
       ],
-      "summary": "MCP 도구 출력 샌드박스, 세션 메모리, 라우팅 규칙으로 코딩 에이전트의 컨텍스트 낭비를 줄이는 TypeScript 기반 도구다.",
+      "summary": "MCP output sandbox·session memory·routing 기반 context 관리 도구",
       "tags": [
         "agent",
         "context-engineering",
@@ -503,10 +535,10 @@
       ],
       "url": "https://github.com/mksglu/context-mode",
       "use_case": "긴 리팩터링이나 다중 파일 분석에서 원시 로그를 그대로 모델에 넣지 않고 필요한 요약과 검색 가능한 상태만 유지하는 데 쓸 수 있다.",
-      "why_now": "README는 대형 도구 출력이 컨텍스트를 빠르게 소모한다고 지적하며, 98% 절감 같은 정량 주장을 내세워 실무자의 병목에 직접 대응한다."
+      "why_now": "대형 tool output의 context 비용 절감 · README의 98% 절감 주장"
     },
     {
-      "caution": "README 자체도 Recall을 낮추고 Precision을 높이는 절충을 말하므로, 보안 감사나 회귀 방지에는 기존 정적 분석과 리뷰를 대체하지 말아야 한다.",
+      "caution": "Precision–Recall trade-off · 정적 분석·보안 감사의 대체재는 아님",
       "novelty": "first_observed",
       "rank": 6,
       "repository": "alibaba/open-code-review",
@@ -514,7 +546,7 @@
         "https://github.com/alibaba/open-code-review",
         "https://raw.githubusercontent.com/alibaba/open-code-review/main/README.md"
       ],
-      "summary": "결정론적 코드 규칙과 LLM 에이전트를 결합해 diff와 전체 파일을 리뷰하고 줄 단위 코멘트를 생성하는 오픈소스 코드 리뷰 도구다.",
+      "summary": "Deterministic rules + LLM 기반 diff·파일 리뷰와 inline comments",
       "tags": [
         "agent",
         "coding-agent",
@@ -524,10 +556,10 @@
       ],
       "url": "https://github.com/alibaba/open-code-review",
       "use_case": "PR 검토 파이프라인에 NPE, 스레드 안전성, XSS, SQL injection 같은 규칙 기반 점검과 LLM 맥락 분석을 함께 넣는 데 활용할 수 있다.",
-      "why_now": "Alibaba 내부 대규모 사용 경험과 벤치마크를 전면에 내세워, 코딩 에이전트가 일반 대화형 도구에서 특정 품질 게이트로 분화하는 흐름을 보여준다."
+      "why_now": "Alibaba의 코드 리뷰 특화 도구 · 규칙 기반 점검과 LLM 문맥 분석 결합"
     },
     {
-      "caution": "저장소의 수치는 특정 벤치마크와 모델 설정에서 나온 것이므로, 복잡한 설계 개선이나 장기 품질 문제가 단순히 최소 변경으로 해결된다고 일반화하면 안 된다.",
+      "caution": "벤치마크·모델 설정 의존 수치 · 최소 변경과 장기 설계 품질은 별개",
       "novelty": "first_observed",
       "rank": 7,
       "repository": "DietrichGebert/ponytail",
@@ -535,7 +567,7 @@
         "https://github.com/DietrichGebert/ponytail",
         "https://raw.githubusercontent.com/DietrichGebert/ponytail/main/README.md"
       ],
-      "summary": "코딩 에이전트가 과도하게 구현하지 않도록 YAGNI식 최소 변경을 유도하는 스킬이며, README는 코드량·토큰·비용 절감 실험을 제시한다.",
+      "summary": "YAGNI·최소 변경 원칙을 적용하는 coding-agent skill",
       "tags": [
         "agent",
         "developer-tools",
@@ -544,10 +576,10 @@
       ],
       "url": "https://github.com/DietrichGebert/ponytail",
       "use_case": "작은 UI 변경, 버그 픽스, 유지보수 작업에서 불필요한 라이브러리 추가와 리팩터링 확산을 억제하는 정책 스킬로 사용할 수 있다.",
-      "why_now": "7722 weekly stars는 에이전트가 더 많이 작성하는 문제보다 덜 바꾸고 안전하게 끝내는 문제에 대한 관심이 커졌다는 신호다."
+      "why_now": "주간 7,722 stars · README의 코드량·token·비용 절감 실험"
     },
     {
-      "caution": "절차가 많아질수록 작업 시간이 늘 수 있으므로, 긴 개발 과제와 단순 수정 과제를 구분해 적용해야 한다.",
+      "caution": "절차 증가에 따른 latency·token 비용 · 단순 작업의 과도한 workflow",
       "novelty": "first_observed",
       "rank": 8,
       "repository": "obra/superpowers",
@@ -555,7 +587,7 @@
         "https://github.com/obra/superpowers",
         "https://raw.githubusercontent.com/obra/superpowers/main/README.md"
       ],
-      "summary": "브레인스토밍, 계획, TDD, 서브에이전트 개발, 리뷰 같은 소프트웨어 개발 절차를 에이전트 스킬 묶음으로 제공한다.",
+      "summary": "Brainstorming·planning·TDD·subagent development·review용 skill 모음",
       "tags": [
         "agent",
         "coding-agent",
@@ -564,10 +596,10 @@
       ],
       "url": "https://github.com/obra/superpowers",
       "use_case": "팀이 기능 정의부터 구현·검증까지 동일한 체크포인트를 적용하도록 코딩 에이전트의 작업 루프를 표준화하는 데 쓸 수 있다.",
-      "why_now": "4124 weekly stars와 여러 클라이언트 지원은 에이전트 사용자가 단발성 프롬프트보다 반복 가능한 개발 방법론을 찾고 있음을 시사한다."
+      "why_now": "주간 4,124 stars · 다중 client 지원 · 반복 가능한 개발 workflow"
     },
     {
-      "caution": "워크트리 관리는 충돌을 줄여도 의존성 캐시, 포트, 데이터베이스, 환경변수 같은 공유 자원 충돌은 별도로 격리해야 한다.",
+      "caution": "Worktree 밖의 공유 자원: cache·port·DB·환경변수 별도 격리",
       "novelty": "first_observed",
       "rank": 9,
       "repository": "max-sixty/worktrunk",
@@ -575,7 +607,7 @@
         "https://github.com/max-sixty/worktrunk",
         "https://raw.githubusercontent.com/max-sixty/worktrunk/main/README.md"
       ],
-      "summary": "여러 AI 에이전트가 병렬로 작업할 때 Git worktree 생성, 전환, 실행을 branches처럼 다루게 해주는 Rust CLI다.",
+      "summary": "병렬 agent 작업용 Git worktree 생성·전환·실행 Rust CLI",
       "tags": [
         "agent",
         "developer-tools",
@@ -583,10 +615,10 @@
       ],
       "url": "https://github.com/max-sixty/worktrunk",
       "use_case": "여러 실험 브랜치를 동시에 띄우고 각 디렉터리에서 Claude, Codex 같은 에이전트를 독립 실행하는 개발 환경을 구성할 때 유용하다.",
-      "why_now": "병렬 에이전트 운용이 늘면서 Git의 원래 worktree UX를 자동화 친화적으로 감싸는 도구가 weekly Trending에 올랐다."
+      "why_now": "주간 761 stars · 병렬 agent 실행에 맞춘 worktree UX"
     },
     {
-      "caution": "렌더링 결과의 품질은 미디어 자산, 브라우저 실행 환경, ffmpeg 설정에 좌우되며, published skills와 main 브랜치 간 지연도 확인해야 한다.",
+      "caution": "미디어 자산·browser·ffmpeg 환경 의존 · 배포 skill과 main의 버전 차이",
       "novelty": "first_observed",
       "rank": 10,
       "repository": "heygen-com/hyperframes",
@@ -594,7 +626,7 @@
         "https://github.com/heygen-com/hyperframes",
         "https://raw.githubusercontent.com/heygen-com/hyperframes/main/README.md"
       ],
-      "summary": "HTML, CSS, 미디어, seek 가능한 애니메이션을 결정적 MP4로 렌더링하는 오픈소스 프레임워크이며 에이전트용 제작 스킬을 포함한다.",
+      "summary": "HTML·CSS·seekable animation의 deterministic MP4 렌더링 프레임워크",
       "tags": [
         "agent",
         "developer-tools",
@@ -603,13 +635,39 @@
       ],
       "url": "https://github.com/heygen-com/hyperframes",
       "use_case": "제품 소개 영상, 튜토리얼, 데이터 시각화 클립을 웹 기술로 작성하고 렌더링 파이프라인에서 재현성 있게 생성하는 데 쓸 수 있다.",
-      "why_now": "5052 weekly stars는 에이전트가 코드뿐 아니라 동영상·프레젠테이션성 산출물 제작 루프까지 확장되는 흐름을 보여준다."
+      "why_now": "주간 5,052 stars · 웹 기술 기반 영상 제작과 agent skills 통합"
     }
   ],
-  "schema_version": 1,
+  "revision": 2,
+  "revision_note": "논문 5편 본문 재검토, 대표 이슈 선정, HN·긱뉴스·Reddit 종합 링크로 개편",
+  "schema_version": 2,
   "summary": [
-    "GitHub 주간 Trending 상위권은 코딩 에이전트 스킬, 컨텍스트 절감, 워크트리 병렬화, HTML 기반 비디오 렌더링처럼 에이전트 실행 환경을 직접 다루는 저장소가 강하게 몰렸다.",
-    "최근 arXiv 후보에서는 CoT 모니터링 회피, 장기 연구 하네스, 스킬 라우팅, 저장소 규모 보안 위치추적, RAG 검증처럼 에이전트 신뢰성과 검증을 측정하는 논문을 우선 선정했다.",
-    "커뮤니티와 CNCF 쪽은 HN 중심으로 AI 자동화 모델, 보안 사고 분석, 단일 파일 앱, GPU 드라이버 구현이 논의됐고, containerd·Argo CD·Prometheus·OpenTelemetry의 최근 릴리스가 운영자 확인 대상이다."
-  ]
+    "Gavel은 frozen Qwen3-32B의 hidden states에서 skill-routing signal을 읽어내는 native router다. 모델을 교체하지 않고 mini-swe-agent에 통합했을 때, Skill-Use의 177개 task·79개 skill에서 correct-skill trigger rate가 progressive disclosure의 1.1%에서 90.9%로 상승했다.",
+    "Glance 단계는 intermediate-layer representation으로 skill library를 좁히고, Verdict 단계는 task likelihood와 yes/no relevance signal을 읽어 product-of-experts로 결합한다. 주된 routing module은 총 7.9M parameters의 두 linear projection을 학습하며, runtime invocation timing을 위한 gate는 별도로 학습한다. 선택 전에는 skill text를 agent context에 넣지 않는다.",
+    "실무적 시사점은 model capability와 harness의 skill invocation을 별도 최적화 대상으로 본다는 데 있다. 단, trigger rate는 task success rate가 아니며 retrieve-and-rerank baseline도 89.7%다. Hidden-state access, indexing, 추가 forward-pass 비용이 필요하므로 closed API model에 그대로 적용하거나 수치를 범용 성능 향상으로 해석해서는 안 된다."
+  ],
+  "supersedes": "9f743e3d1652f150ab16da40abfbba41e77510159032769af58aa5d8694a18a9",
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "MCP output sandbox·session memory 기반 context 관리",
+        "url": "https://github.com/mksglu/context-mode"
+      },
+      {
+        "section": "papers",
+        "text": "Many-agent harness와 실패 지식의 cross-round memory",
+        "url": "https://arxiv.org/abs/2609.15983"
+      },
+      {
+        "section": "cncf",
+        "text": "Release candidate · 운영 도입 전 호환성 검토",
+        "url": "https://github.com/containerd/containerd/releases/tag/v2.4.0-rc.0"
+      }
+    ],
+    "spotlight": [
+      "Frozen Qwen3-32B의 hidden states를 활용한 skill router. Skill-Use 177 tasks·79 skills에서 correct-skill trigger rate 1.1% → 90.9%.",
+      "Task success rate와는 다른 지표이며 retrieve-and-rerank baseline은 89.7%. 핵심은 모델 교체보다 harness의 skill invocation 개선."
+    ]
+  }
 }

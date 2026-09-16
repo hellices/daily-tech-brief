@@ -5,7 +5,49 @@
   "additionalProperties": false,
   "required": ["schema_version", "date", "generated_at", "headline", "summary", "coverage", "github_snapshot", "repositories", "papers", "discussions", "cncf"],
   "properties": {
-    "schema_version": {"const": 1},
+    "schema_version": {"enum": [1, 2]},
+    "revision": {"type": "integer", "minimum": 1},
+    "supersedes": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "revision_note": {"$ref": "#/$defs/text"},
+    "github_featured": {
+      "description": "Editorially selected 2-3 repositories, or all when fewer than two qualify.",
+      "type": "array", "maxItems": 3, "uniqueItems": true,
+      "items": {"$ref": "#/$defs/text"}
+    },
+    "teams": {
+      "type": "object", "additionalProperties": false,
+      "required": ["spotlight", "highlights"],
+      "properties": {
+        "spotlight": {"type": "array", "minItems": 1, "maxItems": 3,
+                      "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "highlights": {
+          "type": "array", "maxItems": 3,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["section", "url", "text"],
+            "properties": {
+              "section": {"enum": ["github", "papers", "community", "cncf"]},
+              "url": {"$ref": "#/$defs/url"},
+              "text": {"type": "string", "minLength": 1, "maxLength": 160}
+            }
+          }
+        }
+      }
+    },
+    "lead": {
+      "description": "Required for version 2: one current item that drives the headline and all three opening paragraphs. Null only when the issue has no items.",
+      "anyOf": [
+        {"type": "null"},
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["section", "url"],
+          "properties": {
+            "section": {"enum": ["github", "papers", "community", "cncf"]},
+            "url": {"$ref": "#/$defs/url"}
+          }
+        }
+      ]
+    },
     "date": {"type": "string", "format": "date"},
     "generated_at": {"type": "string", "format": "date-time"},
     "headline": {"$ref": "#/$defs/text"},
@@ -25,7 +67,7 @@
     "github_previous_snapshot": {"$ref": "#/$defs/snapshot"},
     "repositories": {"type": "array", "maxItems": 10, "items": {"$ref": "#/$defs/repository"}},
     "papers": {"type": "array", "maxItems": 5, "items": {"$ref": "#/$defs/paper"}},
-    "discussions": {"type": "array", "maxItems": 7, "items": {"$ref": "#/$defs/discussion"}},
+    "discussions": {"type": "array", "maxItems": 12, "items": {"$ref": "#/$defs/discussion"}},
     "cncf": {"type": "array", "maxItems": 5, "items": {"$ref": "#/$defs/change"}}
   },
   "$defs": {
@@ -103,7 +145,8 @@
     },
     "discussion": {
       "type": "object", "additionalProperties": false,
-      "required": ["title", "url", "summary", "significance", "caveat", "sources"],
+      "description": "Version 2 uses title/url/sources/tags only; explanatory fields are for legacy version 1.",
+      "required": ["title", "url", "sources"],
       "properties": {
         "tags": {"$ref": "#/$defs/tags"},
         "title": {"$ref": "#/$defs/text"},

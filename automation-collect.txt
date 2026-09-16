@@ -27,8 +27,15 @@ Write all editorial content in Korean. Do not send notifications or publish anyt
    Only feature repositories absent from introduced_repositories. Do not refill the list with rank 11+ or already introduced items.
    Compare with previous_snapshot: new_entry requires actual evidence of absence from the previous observed top ten.
    With no previous observation use first_observed, not new_entry. Otherwise use first_introduction if already ranked but not yet introduced.
-   Read each featured repository's public README/docs. Summarize what it does, why the observed momentum matters, one use case, and a meaningful caveat.
-   Target 200-350 Korean characters per repository across all four fields. Avoid generic marketing and unsupported adoption claims.
+   Read each featured repository's public README/docs. Summarize what it does, its observed momentum, one use case, and a meaningful caveat.
+   Write summary (개요), why_now (주목 이유), and caution (주의) as short noun phrases, technical keywords, or observed metrics, not full sentences.
+   Prefer 1-3 concise phrases separated by " · "; preserve standard technical terms. Keep use_case as one useful explanatory sentence.
+   For why_now use verified weekly stars/rank or a concrete differentiating feature; avoid speculative claims that a ranking proves an industry trend.
+   Target about 120-250 Korean characters across all four fields when possible. Do not add filler to reach a length target.
+   Apply this format consistently in the web report and Teams delivery; the renderer uses the same field values for both.
+   Set github_featured to the owner/repository IDs of 2-3 strongest first-introduction items (or all if fewer than two qualify).
+   Select them editorially by practical usefulness and novelty, not simply by rank. The reader shows the observed Top10 in a compact table, with only these picks expanded.
+   Keep full data for the remaining eligible items for search and optional details; do not remove them to shorten the reader.
    On the first run state: "첫 관측이므로 신규 진입 여부는 미확정이며, 소개 이력은 이번 호부터 추적합니다."
 
 4. AI research: select exactly five strong papers when there are enough qualifying candidates.
@@ -39,11 +46,15 @@ Write all editorial content in Korean. Do not send notifications or publish anyt
    Prefer genuinely unintroduced work even outside the mandatory seven-day exclusion when history supports that distinction.
    Cover diverse angles: agent planning/tools/multi-agent systems, long-term memory/retrieval, agent harness/runtime/sandbox, evaluation/reliability, and adjacent efficient inference.
    Do not force each topic every day; select on novelty, evidence quality and usefulness, not social hype alone.
-   Read the abstract and relevant method/experiments/limitations from accessible primary full text. Set evidence=full_text only if actually read.
-   If only the abstract is accessible, set evidence=abstract_only, explicitly attribute reported results to the abstract, and do not invent detailed experiments or limitations.
+   Read the abstract AND method, experiments/results, and limitations from accessible primary full text. Set evidence=full_text only after actually reading those sections.
+   Try the official arXiv HTML, PDF, or author-provided full text. If full text is inaccessible, replace the candidate with another eligible, accessible paper.
+   New version-2 reports reject abstract_only evidence. Do not merely delete an access caveat or relabel unread papers full_text.
+   Keep a private evidence note under .local/research with full-text URLs, sections read, and key table/figure references.
    Each paper: 3-4-sentence original Korean abstract summary (roughly 200-350 characters), followed by method, findings, limitations and practical value.
    Target roughly 650-1000 Korean characters per paper in total; put essential meaning up front, technical substance in details.
    Distinguish reported benchmark numbers from established generalization. Include evaluation setting and important caveats when quoting quantitative gains.
+   The limitations field describes actual limitations: evaluation scope, sample size, baselines, cost, failure modes, or generalization. Clearly label your own inference.
+   Do not fill every limitations field with boilerplate about not having read the paper. If you did not read it, do not include it.
    Do not copy or translate a full copyrighted abstract verbatim. Summarize in your own words.
    If fewer than five meet the window, novelty, access and quality requirements, keep fewer and set partial coverage with the exact reason. No filler.
 
@@ -54,14 +65,35 @@ Write all editorial content in Korean. Do not send notifications or publish anyt
    https://hacker-news.firebaseio.com/v0/topstories.json
    https://news.hada.io/
    https://news.hada.io/new
+   https://news.hada.io/rss/news
    https://www.reddit.com/r/LocalLLaMA/top/?t=week
    https://www.reddit.com/r/MachineLearning/top/?t=week
    https://www.reddit.com/r/programming/top/?t=week
    https://www.reddit.com/r/kubernetes/top/?t=week
+   Verified recovery routes:
+   - GeekNews: https://news.hada.io/rss/news is the site's official Atom feed (advertised by its page).
+     Normal browser DOM at https://news.hada.io/ provides ranked entries and primary article/topic URLs.
+     A simplified web extractor may return only the page title despite real entries existing; inspect the DOM/feed rather than declaring an outage.
+   - Reddit: https://www.reddit.com/r/LocalLLaMA/top/.rss?t=week is an official Atom representation of weekly top posts.
+     Feed entries contain published timestamps, Reddit thread links and HTML-encoded content with original outbound links.
+     Other subreddits may expose the same documented .rss pattern; verify each response, never assume success.
+   - HN: use the official Firebase topstories/item APIs when a simplified front-page extraction misses the list.
+   For official GeekNews/Reddit feeds, use python3 feed_fetch.py --date YYYY-MM-DD --url OFFICIAL_FEED_URL.
+   It caches successful XML once per run/date and records request diagnostics privately under .local/research/feeds.
+   On 429, honor Retry-After (seconds or HTTP date); without that header wait60seconds then120seconds. At most2retries and300seconds total wait.
+   If Retry-After exceeds the wait budget, defer until it expires rather than retrying early. A403 is not a transient429: do not keep retrying or bypass access controls.
+   Avoid downloading the same feed again merely to paginate tool output; parse the saved response.
+   Do not expose raw HTTP codes, retry counts, or sleep logs in the report. If coverage remains incomplete, state only the meaningful source limitation.
+   A successful Reddit feed read does not establish access to every subreddit or comment thread; describe exactly what was reviewed.
    Prioritize AI engineering, developer tooling, open source, cloud/Kubernetes, observability and distributed systems.
-   Select about 4-7 meaningful stories, fewer if weak. Merge the same underlying event across sites, using its primary URL as the canonical item URL.
+   Select about 8-12 high-signal links across the three communities, fewer if weak. Merge the same underlying event across sites, using its primary URL as the canonical item URL.
    Include discussion thread URLs in sources. Read the linked original when available.
-   For each: what happened, why it matters, and where community opinion or uncertainty differs from verified facts.
+   Produce a combined link list, not three separate editorial essays. Each discussion item has only title, url, sources and tags.
+   Use a concise faithful Korean article title; do NOT write summary, significance, caveat, opinion or interpretation paragraphs.
+   Retain one or more actual community thread URLs in sources so readers can open the conversation.
+   On an access error, inspect normal public browser access and officially published feeds before marking the whole source unavailable.
+   Confirm the response contains actual current entries, not an error/login/empty page. Never bypass CAPTCHAs, login, rate limits or access controls.
+   Record attempted route, response outcome and usable evidence in .local/research. An error on one endpoint is not proof that every supported route failed.
    State which communities were inaccessible rather than implying they were reviewed. Avoid sensational claims and vote-count comparisons across platforms.
    Review recent local drafts/public reports to avoid repeating yesterday's unchanged story; include an update only when materially new.
 
@@ -73,8 +105,24 @@ Write all editorial content in Korean. Do not send notifications or publish anyt
    Say who is affected and whether there is a concrete action, avoiding unverified urgency.
    Inspect recent issues to avoid repeating unchanged announcements.
 
-7. Compose an issue conforming to issue-schema.json:
-   headline, exactly three overview lines, four coverage notes, observed snapshot, repositories, papers, discussions and CNCF.
+7. After reviewing ALL four sections, choose exactly ONE standout item for the entire issue:
+   Compare novelty, quality of evidence, concrete engineering relevance and likely significance across repositories, papers, community and CNCF.
+   Avoid always picking a paper by habit. A practical release or repository can be the lead when it is genuinely the strongest item.
+   Write a specific, compelling, factually bounded headline about that ONE item, not a vague omnibus list of today's topics.
+   Use a professional technical noun phrase, preferably "Technology: Core Mechanism", not a sentence or clickbait result claim.
+   Preserve established terms such as Native Skill Routing, Frozen LLM, retrieval, harness, and inference instead of forced Korean translations.
+   Keep the explanatory prose readable in Korean, but use the original technical term where translation loses precision.
+   Example headline style: "Gavel: Native Skill Routing from a Frozen LLM". The upper section label is "Technical Spotlight", not a conversational daily-pick label.
+   Set lead={"section":"github|papers|community|cncf","url":"the exact primary URL of the selected included item"}.
+   All three summary strings focus on that same lead: (1) what changed or was discovered, (2) the most important evidence/detail, (3) why it matters and one caveat.
+   Do not use the three strings to recap three unrelated sections. The rest of the report remains below in its four sections.
+   If no items qualify at all, lead=null and the headline/summary honestly explain the collection outcome; do not invent a lead.
+   Compose schema_version=2 with headline, lead, exactly three opening paragraphs in summary, four coverage notes, snapshot, repositories, papers, discussions and CNCF.
+   Include teams={spotlight:[one to three short paragraphs],highlights:[up to three objects with section,url,text]}.
+   The Teams spotlight is a compact2-3sentence version of the lead, including the most important metric caveat; do not copy all three long report paragraphs.
+   Highlights reference actual included items and use short text(<=160characters each). Prefer variety and avoid repeating the lead.
+   Total Teams message target: one short HTML message, not the full report; the runtime renders paragraphs, bold labels, bullets and descriptive report links.
+   New daily reports start at revision1 (omit revision or use 1). Only a separately user-requested correction may use the revise workflow.
    Always keep the four sections distinct: GitHub repositories, AI papers, HN/GeekNews/Reddit community, and CNCF changes.
    Every item in all four sections MUST have a tags array with 1-5 canonical IDs from tags.json; prefer 2-4 specific, evidence-supported tags.
    Reuse the controlled vocabulary instead of inventing day-specific or spelling-variant tags.
@@ -83,13 +131,13 @@ Write all editorial content in Korean. Do not send notifications or publish anyt
    If no tag fits, choose an accurate existing broader tag and record the taxonomy limitation privately; propose a registry addition for review.
    Paper topics can remain short descriptive text, but tags are the canonical search/filter keys.
    Do not use dates, URLs, authors, section names or arbitrary adjectives as tags. Avoid applying all AI tags to every paper.
-   Tags are displayed in Teams/report items, aggregated on date entries and indexed with all editorial text for browser-only keyword/tag lookup.
+   Tags are displayed on detailed items, aggregated on date entries and indexed for search. Community stays a compact link list but retains tags in its data/index.
    Keep headline as the editorial topic; the reader automatically prefixes the date in page titles, headings and archive links.
    Keep each day's draft as its own dated file. Never delete or overwrite an earlier day's report to make room for a new issue.
    Every coverage note states the time window, source/access status, item shortfall if any, and relevant novelty limitations.
    All URLs must be HTTPS, credential-free, primary or discussion sources actually opened.
    Use plain text in field values, not HTML or Markdown tables.
-   The date must be today's KST date; generated_at must include a timezone offset and match that date.
+   The date must be today's KST date; generated_at must be the actual completion time with timezone offset, not a copied collection-start timestamp.
    Never include recipient addresses, machine paths, work context, private notes or identifying author metadata.
 
 8. Save incoming JSON under .local/incoming/YYYY-MM-DD.json with the available file-edit tool, then run:
