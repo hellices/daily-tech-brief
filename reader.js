@@ -21,7 +21,26 @@
     return fragment.includes('=') ? 'archive-search' : fragment;
   }
 
+  function setupNavigationMenu(menu, document) {
+    if (!menu) return;
+    const summary = menu.querySelector('summary');
+    document.addEventListener('pointerdown', (event) => {
+      if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menu.open) {
+        event.preventDefault();
+        menu.open = false;
+        summary.focus();
+      }
+    });
+    menu.querySelectorAll('a').forEach((anchor) => {
+      anchor.addEventListener('click', () => { menu.open = false; });
+    });
+  }
+
   function mountReader(document, window) {
+    setupNavigationMenu(document.getElementById('report-menu'), document);
     const form = document.getElementById('header-search');
     const query = document.getElementById('header-search-query');
     const searchLink = document.querySelector('[data-header-search-link]');
@@ -35,7 +54,7 @@
       ['INPUT', 'TEXTAREA', 'SELECT'].includes(element.tagName) || element.isContentEditable
     );
     const closeMenus = () => {
-      document.querySelectorAll('.mobile-navigation[open],.mobile-outline[open]').forEach((menu) => {
+      document.querySelectorAll('.mobile-outline[open]').forEach((menu) => {
         menu.open = false;
       });
     };
@@ -78,7 +97,7 @@
       if (fragment === 'archive-search' && localQuery) localQuery.focus({ preventScroll: true });
       target.scrollIntoView();
     }
-    document.querySelectorAll('.mobile-navigation a,.mobile-outline a').forEach((anchor) => {
+    document.querySelectorAll('.mobile-outline a').forEach((anchor) => {
       anchor.addEventListener('click', closeMenus);
     });
     window.addEventListener('hashchange', revealFragment);
@@ -117,7 +136,7 @@
     }
   }
 
-  if (typeof module !== 'undefined' && module.exports) module.exports = { searchDestination, activeSection, fragmentTarget };
+  if (typeof module !== 'undefined' && module.exports) module.exports = { searchDestination, activeSection, fragmentTarget, setupNavigationMenu };
   if (typeof document !== 'undefined') {
     const start = () => mountReader(document, window);
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start, { once: true });

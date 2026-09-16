@@ -830,7 +830,7 @@ class BriefingTests(unittest.TestCase):
             b.build_site(root)
             page = (root / "site/daily/2026-09-16/index.html").read_text(encoding="utf-8")
             self.assertIn('class="docs-shell"', page)
-            self.assertIn('class="docs-navigation"', page)
+            self.assertIn('class="navigation-panel"', page)
             self.assertIn('class="docs-outline"', page)
             self.assertIn('id="header-search"', page)
             self.assertIn('id="header-search-query"', page)
@@ -838,6 +838,17 @@ class BriefingTests(unittest.TestCase):
             self.assertNotIn("@@OUTLINE@@", page)
             self.assertNotIn("@@READER_SCRIPT@@", page)
             self.assertEqual((root / "reports" / (issue["date"] + ".json")).read_bytes(), before)
+
+    def test_left_navigation_is_a_single_collapsed_header_hamburger(self):
+        b = self.api()
+        template = (MODULE_PATH.parent / "template.html").read_text(encoding="utf-8")
+        self.assertIn('<details id="report-menu" class="navigation-menu">', template)
+        self.assertNotIn('<details id="report-menu" class="navigation-menu" open', template)
+        self.assertIn('aria-label="보고서 탐색 메뉴"', template)
+        self.assertNotIn('<aside class="docs-navigation">', template)
+        self.assertNotIn('<details class="mobile-navigation">', template)
+        self.assertEqual(template.count("@@NAVIGATION@@"), 1)
+        self.assertIn('<aside class="docs-outline">', template)
 
 
 if __name__ == "__main__":

@@ -33,3 +33,36 @@ test('search filter fragments route to the archive search area while item anchor
   assert.equal(fragmentTarget('#item-papers-abcdef'), 'item-papers-abcdef');
   assert.equal(fragmentTarget(''), null);
 });
+
+test('hamburger disclosure closes on Escape, outside interaction and navigation', () => {
+  const { setupNavigationMenu } = api();
+  const handlers = new Map();
+  const linkHandlers = new Map();
+  let focused = false;
+  const summary = { focus() { focused = true; } };
+  const inside = {};
+  const link = { addEventListener(type, handler) { linkHandlers.set(type, handler); } };
+  const menu = {
+    open: false,
+    querySelector() { return summary; },
+    querySelectorAll() { return [link]; },
+    contains(target) { return target === inside || target === summary; },
+  };
+  const document = { addEventListener(type, handler) { handlers.set(type, handler); } };
+  setupNavigationMenu(menu, document);
+  assert.equal(menu.open, false);
+  menu.open = true;
+  handlers.get('pointerdown')({ target: inside });
+  assert.equal(menu.open, true);
+  handlers.get('pointerdown')({ target: {} });
+  assert.equal(menu.open, false);
+  menu.open = true;
+  let prevented = false;
+  handlers.get('keydown')({ key: 'Escape', preventDefault() { prevented = true; } });
+  assert.equal(menu.open, false);
+  assert.equal(prevented, true);
+  assert.equal(focused, true);
+  menu.open = true;
+  linkHandlers.get('click')();
+  assert.equal(menu.open, false);
+});
