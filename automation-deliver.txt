@@ -37,7 +37,7 @@ Use only the current user's Teams self-chat ("You" / "나와의 채팅"). The pr
 4. Publication remains a separate approved operation.
    Show the exact full report preview and its public destination to the user in Scout and wait for approval.
    On approval: python3 briefing.py promote --date YYYY-MM-DD --digest APPROVED_ISSUE_DIGEST --approved.
-   Run the existing Python/Node tests and python3 briefing.py build; inspect the intended diff, commit and push only approved public changes.
+   Run python3 -m unittest discover -s tests -q, node --test tests/*.test.cjs, and python3 briefing.py build; inspect the intended diff, commit and push only approved public changes.
    Preserve older dates. An explicitly requested same-day overwrite changes the same reports/YYYY-MM-DD.json and the same permalink.
    Wait for successful Pages deployment and verify the dated page's data-issue-digest equals APPROVED_ISSUE_DIGEST.
    Then run python3 briefing.py record-publication --date YYYY-MM-DD --digest APPROVED_ISSUE_DIGEST.

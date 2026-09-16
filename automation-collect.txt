@@ -113,6 +113,11 @@ Write all editorial content in Korean. Do not send notifications or publish anyt
    Preserve established terms such as Native Skill Routing, Frozen LLM, retrieval, harness, and inference instead of forced Korean translations.
    Keep the explanatory prose readable in Korean, but use the original technical term where translation loses precision.
    Example headline style: "Gavel: Native Skill Routing from a Frozen LLM". The upper section label is "Technical Spotlight", not a conversational daily-pick label.
+   Diagrams are OPTIONAL, not a daily slot or decoration. Omit them unless they explain an otherwise difficult mechanism, dependency, comparison or data flow.
+   Before proposing an SVG, map every node/edge and its conditions to the paper's actual sections, equations, tables or figures.
+   Distinguish author claims, reproduced evidence and your abstraction. Preserve important alternative/no-op paths and avoid implying unsupported causal or architectural relations.
+   If the proposed picture is only a row of stage names or oversimplifies the mechanism, use the text/table instead.
+   Keep diagram candidates and their evidence review under .local/research; only add a diagram to the public catalog after reviewing its accuracy and explaining why it improves understanding.
    Set lead={"section":"github|papers|community|cncf","url":"the exact primary URL of the selected included item"}.
    All three summary strings focus on that same lead: (1) what changed or was discovered, (2) the most important evidence/detail, (3) why it matters and one caveat.
    Do not use the three strings to recap three unrelated sections. The rest of the report remains below in its four sections.

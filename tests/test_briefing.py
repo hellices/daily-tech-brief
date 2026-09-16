@@ -779,6 +779,66 @@ class BriefingTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "digest delivery"):
                 b.stage_issue(root, changed)
 
+    def test_document_outline_uses_real_sections_and_item_anchors(self):
+        b = self.api()
+        issue = example_issue()
+        outline = b.render_outline(issue)
+        html = b.render_issue(issue)
+        for anchor in ("spotlight", "github", "papers", "community", "cncf"):
+            self.assertIn('href="#' + anchor + '"', outline)
+            self.assertIn('id="' + anchor + '"', html)
+        self.assertIn('href="#' + b.item_anchor("papers", issue["papers"][0]) + '"', outline)
+        self.assertIn('href="#' + b.item_anchor("github", issue["repositories"][0]) + '"', outline)
+        self.assertIn('aria-label="이 문서의 목차"', outline)
+
+    def test_document_navigation_links_to_search_tags_archive_and_actual_dates(self):
+        b = self.api()
+        issue = example_issue()
+        nav = b.render_navigation([issue], issue, "../../")
+        self.assertIn("../../index.html#archive-search", nav)
+        self.assertIn("../../index.html#search-tags", nav)
+        self.assertIn("../../index.html#date-archive", nav)
+        self.assertIn("../../daily/2026-09-16/index.html", nav)
+        self.assertIn('aria-current="page"', nav)
+        self.assertIn("2026-09-16", nav)
+
+    def test_unselected_spotlight_svg_is_omitted_without_changing_report_data(self):
+        b = self.api()
+        issue = example_issue()
+        issue["papers"][0]["id"] = "arxiv:2609.15982"
+        issue["papers"][0]["url"] = "https://arxiv.org/abs/2609.15982"
+        issue["lead"]["url"] = issue["papers"][0]["url"]
+        digest = b.issue_digest(issue)
+        html = b.render_issue(issue)
+        self.assertNotIn('<section id="architecture"', html)
+        self.assertNotIn('href="#architecture"', b.render_outline(issue))
+        self.assertEqual(b.issue_digest(issue), digest)
+        other = example_issue()
+        self.assertNotIn('<section id="architecture"', b.render_issue(other))
+        self.assertNotIn('href="#architecture"', b.render_outline(other))
+
+    def test_full_template_build_has_sidebar_outline_and_header_search_without_mutating_report(self):
+        b = self.api()
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "template.html").write_text((MODULE_PATH.parent / "template.html").read_text(encoding="utf-8"),
+                                                encoding="utf-8")
+            issue = example_issue()
+            b.stage_issue(root, issue)
+            b.promote_issue(root, issue["date"], b.issue_digest(issue))
+            before = (root / "reports" / (issue["date"] + ".json")).read_bytes()
+            b.build_site(root)
+            page = (root / "site/daily/2026-09-16/index.html").read_text(encoding="utf-8")
+            self.assertIn('class="docs-shell"', page)
+            self.assertIn('class="docs-navigation"', page)
+            self.assertIn('class="docs-outline"', page)
+            self.assertIn('id="header-search"', page)
+            self.assertIn('id="header-search-query"', page)
+            self.assertNotIn("@@NAVIGATION@@", page)
+            self.assertNotIn("@@OUTLINE@@", page)
+            self.assertNotIn("@@READER_SCRIPT@@", page)
+            self.assertEqual((root / "reports" / (issue["date"] + ".json")).read_bytes(), before)
+
 
 if __name__ == "__main__":
     unittest.main()

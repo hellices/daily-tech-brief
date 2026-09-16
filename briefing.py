@@ -14,6 +14,7 @@ import tempfile
 import unicodedata
 from urllib.parse import parse_qs, parse_qsl, urlencode, urlsplit, urlunsplit
 from zoneinfo import ZoneInfo
+from diagram_reader import diagram_for, validated_svg
 
 
 ROOT = Path(__file__).resolve().parent
@@ -790,6 +791,66 @@ def digest_payload(root, day, mode=None):
             "already_sent": prior is not None, "message": None if prior else message}
 
 
+def diagram_html(issue):
+    if not issue.get("lead"):
+        return ""
+    diagram = diagram_for(issue["lead"]["url"])
+    if diagram is None:
+        return ""
+    return "".join([
+        '<section id="architecture" class="spotlight-diagram"><h2>Architecture</h2>',
+        '<figure><div class="diagram-scroll" tabindex="0" aria-label="'
+        + escape(diagram["title"], quote=True) + '">',
+        validated_svg(ROOT / "diagrams" / diagram["file"]), "</div>",
+        '<p class="diagram-mobile-hint">작은 화면에서는 다이어그램을 좌우로 스크롤할 수 있습니다.</p>',
+        "<figcaption>" + escape(diagram["caption"]) + " "
+        + " · ".join(link(url, "논문 §3") for url in diagram["sources"]) + "</figcaption></figure></section>",
+    ])
+
+
+def render_outline(issue=None):
+    entries = []
+    if issue is None:
+        entries = [("archive-search", "보고서 찾기", 0), ("search-tags", "태그 필터", 1),
+                   ("date-archive", "보고서 아카이브", 0)]
+    else:
+        entries.append(("spotlight", "Technical Spotlight", 0))
+        if issue.get("lead") and diagram_for(issue["lead"]["url"]):
+            entries.append(("architecture", "Architecture", 0))
+        entries.append(("github", "GitHub Trending", 0))
+        for item in featured_repositories(issue):
+            entries.append((item_anchor("github", item), item["repository"], 1))
+        entries.append(("papers", "AI Papers", 0))
+        for item in issue["papers"]:
+            title = item["title"].split(": ", 1)[0]
+            entries.append((item_anchor("papers", item), title, 1))
+        entries.extend([("community", "Community Links", 0), ("cncf", "CNCF Updates", 0)])
+    return '<nav class="outline-nav" aria-label="이 문서의 목차"><p class="nav-label">이 문서에서</p><ul>' + "".join(
+        '<li class="outline-depth-' + str(depth) + '"><a href="#' + anchor
+        + '" data-outline-link="' + anchor + '">' + escape(label) + "</a></li>"
+        for anchor, label, depth in entries) + "</ul></nav>"
+
+
+def render_navigation(issues, current, base):
+    home = base + "index.html"
+    out = ['<nav class="docs-nav" aria-label="보고서 탐색"><p class="nav-label">Daily Tech Brief</p>',
+           '<a href="' + home + '#date-archive">보고서 아카이브</a>',
+           '<a href="' + home + '#archive-search" data-search-link>보고서 찾기</a>',
+           '<a href="' + home + '#search-tags">태그로 찾아보기</a>',
+           '<p class="nav-label nav-group">분야별 보기</p>']
+    for section, label in SECTION_LABELS.items():
+        out.append('<a href="' + home + "#section=" + section + '">' + escape(label) + "</a>")
+    if issues:
+        out.append('<p class="nav-label nav-group">최근 보고서</p>')
+        for issue in sorted(issues, key=lambda value: value["date"], reverse=True)[:12]:
+            active = ' aria-current="page"' if current and issue["date"] == current["date"] else ""
+            out.append('<a class="nav-report" href="' + base + "daily/" + issue["date"]
+                       + '/index.html"' + active + '><span>' + issue["date"] + '</span><span class="nav-report-title">'
+                       + escape(issue["headline"]) + "</span></a>")
+    out.append("</nav>")
+    return "\n".join(out)
+
+
 def build_search_index(issues):
     items, counts = [], {}
     for issue in sorted(issues, key=lambda entry: entry["date"], reverse=True):
@@ -871,12 +932,13 @@ def render_issue(issue):
                       + escape(issue["revision_note"]) + "</p>")
     if issue.get("lead"):
         lead = lead_item(issue)
-        result.extend(['<div class="lead-story"><p class="eyebrow">Technical Spotlight</p>',
+        result.extend(['<div class="lead-story" id="spotlight"><p class="eyebrow">Technical Spotlight</p>',
                        *['<p class="lead-paragraph">' + escape(line) + "</p>" for line in issue["summary"]],
                        '<a class="lead-jump" href="#' + item_anchor(issue["lead"]["section"], lead)
                        + '">선정 항목 자세히 읽기</a></div>'])
     else:
-        result.append('<ul class="summary-list">' + "".join("<li>" + escape(line) + "</li>" for line in issue["summary"]) + "</ul>")
+        result.append('<ul class="summary-list" id="spotlight">' + "".join("<li>" + escape(line) + "</li>" for line in issue["summary"]) + "</ul>")
+    result.append(diagram_html(issue))
     result.extend([
         '<nav class="section-nav" aria-label="보고서 목차"><a href="#github">GitHub</a>'
         '<a href="#papers">AI 논문</a><a href="#community">커뮤니티</a><a href="#cncf">CNCF</a></nav>',
@@ -982,8 +1044,11 @@ def build_site(root, output=None):
         if re.fullmatch(r"\d{4}-\d{2}-\d{2}", old_page.parent.name) and old_page.parent.name not in active_dates:
             old_page.unlink()
 
-    def write_page(path, title, base, body):
+    def write_page(path, title, base, body, issue=None):
         page = template.replace("@@TITLE@@", escape(title)).replace("@@BASE@@", base)
+        page = page.replace("@@NAVIGATION@@", render_navigation(issues, issue, base))
+        page = page.replace("@@OUTLINE@@", render_outline(issue))
+        page = page.replace("@@READER_SCRIPT@@", (ROOT / "reader.js").read_text(encoding="utf-8"))
         page = page.replace("@@CONTENT@@", body)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(page, encoding="utf-8")
@@ -991,7 +1056,7 @@ def build_site(root, output=None):
     write_page(output / "index.html", "보고서 아카이브", "./", render_home(issues))
     for issue in issues:
         write_page(output / "daily" / issue["date"] / "index.html",
-                   issue_title(issue), "../../", render_issue(issue))
+                   issue_title(issue), "../../", render_issue(issue), issue)
     (output / ".nojekyll").touch()
     return len(issues)
 

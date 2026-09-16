@@ -26,7 +26,7 @@ jobs:
       - name: Validate briefing behavior
         run: python3 -m unittest discover -s tests -q
       - name: Validate archive filters
-        run: node --test tests/search.test.cjs
+        run: node --test tests/*.test.cjs
       - name: Build approved reports only
         run: python3 briefing.py build
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
