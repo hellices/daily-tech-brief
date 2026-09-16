@@ -230,6 +230,22 @@ class BriefingTests(unittest.TestCase):
         self.assertIn("Not a real paper.", "".join(parts))
         self.assertIn("https://arxiv.org/abs/2609.00001", "".join(parts))
 
+    def test_delivery_does_not_claim_an_approved_report_is_still_waiting(self):
+        b = self.api()
+        message = b.report_text(example_issue())
+        self.assertNotIn("공개 게시 대기:", message)
+        self.assertIn("https://hellices.github.io/daily-tech-brief/", message)
+        self.assertIn("아직 공개하지 않은 보고서는", message)
+
+    def test_delivery_instructions_use_only_the_resolved_self_chat(self):
+        instructions = (MODULE_PATH.parent / "automation-deliver.txt").read_text(encoding="utf-8")
+        self.assertIn("workiq_create_chat_by_email", instructions)
+        self.assertIn("48:notes", instructions)
+        self.assertIn("workiq_send_chat_message", instructions)
+        self.assertNotIn("m_send_teams_message", instructions)
+        self.assertNotIn("m_relay_status", instructions)
+        self.assertIn('contentType="text"', instructions)
+
     def test_normal_source_links_are_not_split_across_delivery_parts(self):
         b = self.api()
         issue = example_issue()

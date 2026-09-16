@@ -405,8 +405,8 @@ def report_text(issue):
             for field, label in fields:
                 lines.append(label + ": " + item[field])
             lines.extend(["원문: " + item["url"], "출처: " + " · ".join(item["sources"])])
-    lines.extend(["", "공개 게시 대기: 위 내용이 GitHub Pages에 공개될 보고서 미리보기입니다.",
-                  "게시하려면 이 날짜의 보고서 게시를 승인해 주세요. 승인 전에는 공개되지 않습니다.",
+    lines.extend(["", "보고서 아카이브: https://hellices.github.io/daily-tech-brief/",
+                  "아직 공개하지 않은 보고서는 내용을 확인한 뒤 Scout에서 해당 날짜의 게시를 승인해 주세요.",
                   "공개 자료만 사용했습니다. 수집 기준: " + issue["generated_at"]])
     return "\n".join(lines)
 
