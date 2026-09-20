@@ -1,0 +1,485 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "2026-09-18부터 2026-09-21까지 CNCF announcements/blog와 주요 CNCF 프로젝트 릴리스를 확인했다. 해당 기간에 전날과 중복되지 않는 새 주요 release, security advisory, maturity/governance change는 확인하지 못해 CNCF 항목은 비워 두었다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/",
+        "https://github.com/containerd/containerd/releases",
+        "https://github.com/argoproj/argo-cd/releases",
+        "https://github.com/cilium/cilium/releases",
+        "https://github.com/cert-manager/cert-manager/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "2026-09-19부터 2026-09-21까지 HN topstories, GeekNews 공식 RSS, Reddit 공식 Atom feed의 실제 현재 항목을 확인해 10개 링크를 선별했다. 전날 다룬 OpenJev, Cloudflare RAM 절감, ZCode 등 반복 항목은 제외했다.",
+      "sources": [
+        "https://news.ycombinator.com/",
+        "https://hacker-news.firebaseio.com/v0/topstories.json",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/top/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/top/.rss?t=week",
+        "https://www.reddit.com/r/programming/top/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/top/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-09-14부터 2026-09-21 08:00 KST까지의 GitHub weekly Trending을 확인해 상위 10개를 모두 기록했다. 기존 소개 이력에 없는 home-assistant/core 1개만 신규 소개 대상으로 확장했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "2026-03-21 이후 최초 발표된 arXiv cs.AI/cs.CL/cs.LG 후보 중 최근 7일 소개 논문 20편을 제외하고, PDF 본문에서 초록·방법·평가·결과·한계를 확인한 5편을 선정했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=120"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-09-21",
+  "discussions": [
+    {
+      "sources": [
+        "https://agentexecutor.io",
+        "https://news.ycombinator.com/item?id=49780797"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "harness"
+      ],
+      "title": "Google Open Agentic Orchestrator: agent execution 전용 control plane",
+      "url": "https://agentexecutor.io"
+    },
+    {
+      "sources": [
+        "https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/",
+        "https://news.ycombinator.com/item?id=49776729"
+      ],
+      "tags": [
+        "llm",
+        "security"
+      ],
+      "title": "ChatGPT가 ad collector를 통해 다른 웹사이트 행동을 알 수 있다는 논의",
+      "url": "https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/"
+    },
+    {
+      "sources": [
+        "https://seldo.com/posts/nobody-pays-for-open-source-we-can-force-them-to/",
+        "https://news.ycombinator.com/item?id=49780064"
+      ],
+      "tags": [
+        "governance",
+        "open-source"
+      ],
+      "title": "FOSS 비용 부담을 강제할 수 있다는 오픈소스 funding 논쟁",
+      "url": "https://seldo.com/posts/nobody-pays-for-open-source-we-can-force-them-to/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=34004",
+        "https://news.ycombinator.com/item?id=49775499",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1wlgrft/qwenimage21_released/"
+      ],
+      "tags": [
+        "multimodal",
+        "open-source",
+        "performance"
+      ],
+      "title": "Qwen-Image-2.1: 소형 고효율 통합 이미지 생성·편집 모델",
+      "url": "https://news.hada.io/topic?id=34004"
+    },
+    {
+      "sources": [
+        "https://pirateface.co/",
+        "https://news.ycombinator.com/item?id=49776699",
+        "https://news.hada.io/topic?id=34011"
+      ],
+      "tags": [
+        "llm",
+        "open-source"
+      ],
+      "title": "Pirate Face: Hugging Face 모델을 checksum-verified torrent로 보존",
+      "url": "https://pirateface.co/"
+    },
+    {
+      "sources": [
+        "https://evaluation.club",
+        "https://news.ycombinator.com/item?id=49777111"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "Prompts aren't Real: prompt 평가와 실제 product behavior 간극 논의",
+      "url": "https://evaluation.club"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=34006",
+        "https://news.ycombinator.com/item?id=49772532"
+      ],
+      "tags": [
+        "agent",
+        "llm",
+        "performance"
+      ],
+      "title": "Step 5 Preview: agent task와 knowledge work용 MoE 모델 공개",
+      "url": "https://news.hada.io/topic?id=34006"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=34003"
+      ],
+      "tags": [
+        "mcp",
+        "rag",
+        "retrieval"
+      ],
+      "title": "AutoRAG Agent: 로컬 파일·메신저·이메일·노션 검색 에이전트",
+      "url": "https://news.hada.io/topic?id=34003"
+    },
+    {
+      "sources": [
+        "https://planetscale.com/blog/introducing-tin",
+        "https://news.hada.io/topic?id=33955"
+      ],
+      "tags": [
+        "developer-tools",
+        "storage"
+      ],
+      "title": "Tin: PlanetScale의 Postgres full-text search engine",
+      "url": "https://planetscale.com/blog/introducing-tin"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/comments/1wks0dv/iclr_2027_submission_50kd/"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "ICLR 2027 submission 50k+ 논의와 ML 논문 제출량 급증",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wks0dv/iclr_2027_submission_50kd/"
+    }
+  ],
+  "generated_at": "2026-09-21T08:48:00+09:00",
+  "github_featured": [
+    "home-assistant/core"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-09-20T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 14144
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-code",
+        "weekly_stars": 1620
+      },
+      {
+        "rank": 3,
+        "repository": "affaan-m/ECC",
+        "weekly_stars": 5877
+      },
+      {
+        "rank": 4,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 4703
+      },
+      {
+        "rank": 5,
+        "repository": "bilawalsidhu/gods-eye-view",
+        "weekly_stars": 11683
+      },
+      {
+        "rank": 6,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 3051
+      },
+      {
+        "rank": 7,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 776
+      },
+      {
+        "rank": 8,
+        "repository": "ayghri/i-have-adhd",
+        "weekly_stars": 7869
+      },
+      {
+        "rank": 9,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 1398
+      },
+      {
+        "rank": 10,
+        "repository": "max-sixty/worktrunk",
+        "weekly_stars": 1104
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-09-21T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 15028
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-code",
+        "weekly_stars": 1999
+      },
+      {
+        "rank": 3,
+        "repository": "affaan-m/ECC",
+        "weekly_stars": 6265
+      },
+      {
+        "rank": 4,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 4867
+      },
+      {
+        "rank": 5,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 3445
+      },
+      {
+        "rank": 6,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 1034
+      },
+      {
+        "rank": 7,
+        "repository": "bilawalsidhu/gods-eye-view",
+        "weekly_stars": 10207
+      },
+      {
+        "rank": 8,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 1359
+      },
+      {
+        "rank": 9,
+        "repository": "max-sixty/worktrunk",
+        "weekly_stars": 1141
+      },
+      {
+        "rank": 10,
+        "repository": "home-assistant/core",
+        "weekly_stars": 417
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Workspace Models: Train-Time VLM Supervision for Lightweight Robotic Memory",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2609.20820"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 복잡한 로봇 조작에서 과거 사건과 행동을 기억해야 하지만, 전체 history를 정책에 넣으면 spurious correlation과 성능 저하가 생긴다는 문제를 다룬다. 기존 방법은 배포 중 VLM을 반복 호출해 task-salient information만 압축하려고 하지만, 이 방식은 비용이 크고 control loop를 무겁게 만든다. 저자들은 VLM을 train time에만 사용해 salient history를 가벼운 workspace token으로 distill하는 대안을 제안한다.",
+      "evidence": "full_text",
+      "findings": "논문은 Workspace Models가 네 task 모두에서 가장 높은 성공률을 보였고, cross-task average가 91.5% ± 2.2였다고 보고한다. 다음으로 좋은 Keyframe baseline은 66.8% ± 3.2였으므로 큰 차이가 났다. 또한 expensive reasoning을 train time으로 옮긴 덕분에 deployment-time encoder가 더 가볍게 작동하며, Wksp+Batch+KV는 표준 HistoryDP 대비 latency를 크게 줄인다고 설명한다.",
+      "first_published": "2026-09-17",
+      "id": "arxiv:2609.20820",
+      "limitations": "저자들은 workspace model이 fully autoregressive transformer encoder에 의존해 sequence length가 길어지면 계산량이 커진다고 말한다. 또한 saliency supervision을 제공하는 VLM이 실제 control relevance를 완전히 grounding하지 못할 수 있다. hierarchical language summary나 generalist VLA와의 비교도 아직 충분하지 않아, 다양한 multi-task setting으로 확장하려면 추가 실험이 필요하다.",
+      "method": "Workspace token은 두 단계로 학습된다. 먼저 VLM이 현재 관측과 과거 정보 중 task 완료에 필요한 visual information을 식별한다. 그런 다음 set-reconstruction decoder loss가 이 정보를 latent token으로 압축하도록 훈련하며, 배포 시 policy는 VLM을 다시 부르지 않고 이 token만 조회한다. 실험은 counting under partial observability, spatial recall, past-experience adaptation을 측정하는 simulation task와 Franka FR3 real-world task를 포함한다.",
+      "practical_value": "로봇과 physical agent를 만드는 팀에게 이 논문은 memory를 단순히 긴 context로 처리하지 않는 설계 방향을 제공한다. 비싼 reasoning은 학습 단계에서 수행하고, 배포 단계에서는 압축된 task-relevant state를 빠르게 읽는 방식이 실시간 control loop에 더 적합할 수 있다. 특히 partial observability가 강한 조작 작업에서 유용한 패턴이다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.20820",
+        "https://arxiv.org/pdf/2609.20820",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=120"
+      ],
+      "tags": [
+        "memory",
+        "multimodal",
+        "performance",
+        "robotics"
+      ],
+      "title": "Workspace Models: Lightweight Robotic Memory via Saliency-Driven Supervision",
+      "topics": [
+        "robotic memory",
+        "workspace token",
+        "VLM supervision",
+        "long-horizon manipulation"
+      ],
+      "url": "https://arxiv.org/abs/2609.20820"
+    },
+    {
+      "abstract_summary": "이 논문은 LLM reinforcement learning이 training engine과 inference engine의 작은 차이, 즉 training-inference mismatch에 민감하다는 문제를 다룬다. 완전히 같은 engine으로 rollout과 training을 맞추면 효율이 떨어지므로, 저자들은 mismatch를 제거하기보다 그 불안정성의 원인을 drift로 모델링한다. Score centering은 이 drift를 additive correction으로 상쇄해 off-policy RL을 안정화하려는 방법이다.",
+      "evidence": "full_text",
+      "findings": "논문은 mismatch가 커질수록 score centering이 importance sampling 기반 방법과 같거나 더 좋은 안정성을 보였다고 보고한다. 특히 30B 설정에서는 일부 quantized mismatch 조건에서 score centering이 가장 강한 성능을 냈다. 저자들은 correction이 additive라 importance sampling과도 함께 쓸 수 있으며, severe staleness에서는 결합이 더 낫다고 설명한다.",
+      "first_published": "2026-09-17",
+      "id": "arxiv:2609.20807",
+      "limitations": "headline 결과는 의도적으로 심한 mismatch와 짧은 sequence를 proxy로 사용한 실험에서 나온다. 실제 장기 training에서 더 약한 mismatch가 누적될 때 같은 효과가 유지되는지는 추가 검증이 필요하다. 또한 score centering은 drift를 줄이지만, 남은 update는 sampler 기준 reward-score covariance를 측정하므로 staleness가 심하면 중요도 보정과 함께 써야 한다.",
+      "method": "저자들은 sampler와 trainer 사이의 persistent bias가 training step마다 누적된다고 보고, score function에 상수항을 더해 drift를 취소하는 correction을 유도한다. 실험은 Qwen3 계열 0.6B, 1.7B, 30B 모델과 Countdown 과제, FP8·FP4·INT4 KV quantization mismatch 등을 사용한다. score centering은 importance sampling과 경쟁하거나 결합되는 baseline으로 평가된다.",
+      "practical_value": "RLVR나 agent post-training을 운영하는 팀은 rollout engine과 training engine을 완전히 일치시키지 못하는 경우가 많다. Score centering은 quantization이나 serving stack 차이가 있는 현실적인 학습 파이프라인에서 drift를 줄이는 간단한 안정화 수단이 될 수 있다. 다만 실제 production recipe에는 staleness monitoring과 importance sampling 여부를 함께 설계해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.20807",
+        "https://arxiv.org/pdf/2609.20807",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=120"
+      ],
+      "tags": [
+        "fine-tuning",
+        "llm",
+        "performance"
+      ],
+      "title": "Score Centering Stabilizes Off-policy Reinforcement Learning",
+      "topics": [
+        "RL training stability",
+        "training-inference mismatch",
+        "score centering",
+        "quantization"
+      ],
+      "url": "https://arxiv.org/abs/2609.20807"
+    },
+    {
+      "abstract_summary": "JEPA-Anything은 world model이 미래 상태를 예측하고 개입 결과를 추론하는 데 유용하지만, 대부분 도메인별로 따로 설계된다는 문제에서 출발한다. 저자들은 vision, biology, clinical trajectories, control, molecular dynamics, physical fields, weather처럼 매우 다른 system에도 같은 predictive learning 원리를 적용할 수 있는지 묻는다. 제안 방법은 orthogonal predictive factorization으로 latent target을 상호보완적 factor로 나눠 학습한다.",
+      "evidence": "full_text",
+      "findings": "논문은 JEPA-Anything이 matched JEPA baseline 대비 10개 dynamics task 모두에서 reported metric을 개선했다고 보고한다. Interventional Pong에서는 single-intervention prediction error를 34.8% 줄였고, molecular rollout에서는 비교한 방법 중 네 system 모두에서 가장 낮은 one-step 및 100-step error를 기록했다고 설명한다. 또한 biological intervention 후보가 cell co-culture, organoid, tumor fragment 실험에서 지지를 받았다고 보고한다.",
+      "first_published": "2026-09-17",
+      "id": "arxiv:2609.20800",
+      "limitations": "범위가 매우 넓기 때문에 각 domain의 세부 baseline과 데이터 조건을 독립적으로 해석해야 한다. 여러 실험이 하나의 factorization 원리를 지지하지만, 특정 domain에서 왜 개선되는지에 대한 causal explanation은 제한적이다. wet-lab intervention 결과도 특정 후보와 조건에서의 지지이므로, 일반 과학 발견 자동화 성능으로 확대해서 해석하면 안 된다.",
+      "method": "프레임워크는 표준 joint-embedding predictive architecture를 확장해 target representation을 여러 orthogonal factor로 분해하고, 각 factor를 dedicated pathway가 예측한 뒤 shared predictive design 안에서 재결합한다. 실험은 representation learning, intervention prediction, out-of-distribution generalization, long-horizon dynamics를 포괄한다. 저자들은 7개 domain, 10개 matched dynamics task, 1,000개 이상의 clinical event forecasting, 4개 molecular system의 100-step rollout을 평가한다.",
+      "practical_value": "다양한 scientific AI system을 만드는 팀에게 이 논문은 domain-specific predictor를 계속 늘리는 대신, predictive factor를 분해해 재사용하는 설계 가능성을 보여준다. 특히 intervention prediction과 long-horizon dynamics를 함께 다뤄야 하는 모델에서는 monolithic target embedding보다 factorized latent state가 더 견고할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.20800",
+        "https://arxiv.org/pdf/2609.20800",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=120"
+      ],
+      "tags": [
+        "evaluation",
+        "multimodal",
+        "reasoning"
+      ],
+      "title": "JEPA-Anything: Learning Predictive Models across Different Worlds",
+      "topics": [
+        "world models",
+        "JEPA",
+        "orthogonal predictive factorization",
+        "scientific discovery"
+      ],
+      "url": "https://arxiv.org/abs/2609.20800"
+    },
+    {
+      "abstract_summary": "PosteriorBench는 과학 inverse problem에서 generative model이 그럴듯한 단일 reconstruction을 만드는지만 평가하면 부족하다는 문제를 다룬다. sparse 또는 noisy observation에는 여러 해가 동시에 맞을 수 있으므로, point estimate가 좋아도 posterior distribution을 잘못 표현할 수 있다. 저자들은 mode collapse, 과도한 confidence, incompatible solution averaging을 잡아내기 위한 distributional benchmark를 제안한다.",
+      "evidence": "full_text",
+      "findings": "본문의 통합 결과 표는 current solver들이 point accuracy와 posterior-quality metric 사이에서 상당한 차이를 보인다는 점을 보여준다. 일부 방법은 낮은 mean error를 내지만 variance나 distribution matching에서는 부족했고, guidance weight와 generation noise가 posterior variance calibration에 중요하게 작용했다. 저자들은 neural operator 계열이 resolution robustness를 개선하는 경향도 보고한다.",
+      "first_published": "2026-09-17",
+      "id": "arxiv:2609.20794",
+      "limitations": "benchmark는 네 physics task와 특정 reference posterior construction에 기반한다. 실제 과학 문제에서는 observation model, prior, boundary condition, simulator fidelity가 더 다양하며, reference posterior 자체를 만들기 어려운 경우가 많다. 또한 runtime과 posterior quality 사이의 trade-off가 커서, 가장 정확한 distribution matching 방법이 실무적으로 항상 적합하지는 않다.",
+      "method": "PosteriorBench는 Darcy flow inversion, Poisson source recovery, carbon capture and storage, light transport material inference라는 네 가지 physics-based inverse problem을 포함한다. 각 task에 대해 computationally intensive한 reference posterior를 만들고, Mean Error, Std Error, MMD, SWD, Spectral Error, runtime 같은 metric으로 solver를 비교한다. 평가 대상에는 ensemble, diffusion, neural operator 기반 solver가 포함된다.",
+      "practical_value": "과학·공학 inverse solver를 평가하는 팀은 단일 reconstruction error만 보지 말고 posterior distribution이 맞는지 확인해야 한다. PosteriorBench는 불확실성이 중요한 문제에서 generative solver가 실제로 가능한 해의 분포를 표현하는지 비교하는 기준을 제공한다. 특히 안전·설계 의사결정에 uncertainty가 들어가는 경우 유용하다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.20794",
+        "https://arxiv.org/pdf/2609.20794",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=120"
+      ],
+      "tags": [
+        "evaluation",
+        "multimodal"
+      ],
+      "title": "PosteriorBench: From Point Estimates to Posterior Matching in Evaluating Generative Inverse Solvers",
+      "topics": [
+        "inverse problems",
+        "posterior evaluation",
+        "generative solvers",
+        "scientific ML"
+      ],
+      "url": "https://arxiv.org/abs/2609.20794"
+    },
+    {
+      "abstract_summary": "dQwen3.5는 pretrained autoregressive model을 diffusion language model로 바꾸는 비용 효율적 경로를 다룬다. 기존 adaptation은 full-attention transformer에서 출발하는 경우가 많지만, 최신 AR model은 attention과 RNN layer를 섞은 hybrid architecture를 쓰는 방향으로 이동했다. 저자들은 causal 구조를 가진 hybrid backbone도 bidirectional diffusion generation에 적응될 수 있는지 Qwen3.5 계열로 실험한다.",
+      "evidence": "full_text",
+      "findings": "저자들은 hybrid-attention adaptation이 any-order와 parallel decoding을 모두 지원한다고 보고한다. dQwen3.5-9B는 비교 가능한 trunk의 DLM 중 HumanEval에서 1배를 넘는 모든 speedup 구간에서 가장 앞섰다고 설명한다. 또한 Qwen3.5-2B는 adaptation 전에는 Qwen3-1.7B보다 7개 benchmark 모두에서 낮았지만, 50B adaptation tokens 후 dQwen3.5-2B가 HumanEval, MBPP, MBPP+ 등 3개 benchmark에서 full-attention control을 앞섰다.",
+      "first_published": "2026-09-17",
+      "id": "arxiv:2609.20751",
+      "limitations": "직접적인 architecture comparison은 dQwen3.5-2B와 dQwen3-1.7B 한 쌍에 제한되며, parent model과 tokenizer가 달라 downstream 차이를 backbone 구조만으로 돌릴 수 없다. 학습 mixture 선택도 어떤 능력이 adaptation 뒤 살아남는지 크게 바꿀 수 있다. 또한 논문은 base DLM만 평가하며, SFT나 RL post-training 후 성능은 recipe에 따라 달라질 수 있다.",
+      "method": "논문은 Qwen3.5 0.8B, 2B, 4B, 9B를 adaptation해 dQwen3.5 family를 만들고, full-attention control과 비교한다. 평가에서는 any-order decoding과 parallel decoding 성질을 보기 위해 local AR-ness와 global AR-ness를 측정한다. HumanEval, MBPP, MATH500 등 benchmark에서 adaptation token 수와 decoding speedup별 정확도를 함께 비교한다.",
+      "practical_value": "DLM을 처음부터 훈련하기 어려운 팀에게 이 논문은 기존 hybrid AR backbone을 adaptation하는 실용적 경로를 보여준다. parallel decoding으로 latency를 줄이려는 inference 팀은 dQwen3.5 결과를 통해 full-attention model만 adaptation 후보가 아니라는 점을 확인할 수 있다. 다만 tokenizer와 data mixture를 고정한 더 엄격한 비교가 필요하다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.20751",
+        "https://arxiv.org/pdf/2609.20751",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=120"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "dQwen3.5: Hybrid-Attention Diffusion Language Models",
+      "topics": [
+        "diffusion language models",
+        "hybrid attention",
+        "parallel decoding",
+        "Qwen3.5"
+      ],
+      "url": "https://arxiv.org/abs/2609.20751"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "수많은 integration과 장치 권한 관리 필요 · 외부 cloud 연동보다 local privacy boundary를 우선 설계",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "home-assistant/core",
+      "sources": [
+        "https://github.com/home-assistant/core",
+        "https://raw.githubusercontent.com/home-assistant/core/dev/README.md"
+      ],
+      "summary": "Open source home automation · local control · privacy-first IoT",
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/home-assistant/core",
+      "use_case": "가정용 IoT 장치, MQTT, Raspberry Pi, 로컬 자동화를 하나의 Python 기반 platform에서 통합하려는 프로젝트의 기준 구현으로 참고할 수 있다.",
+      "why_now": "weekly Trending 10위 · 417 stars this week · 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "Workspace Models는 로봇 조작 정책이 과거 사건과 행동을 기억해야 하지만, 전체 history를 그대로 넣으면 spurious correlation이 생기고 배포 시 VLM query 비용이 커진다는 문제에서 출발한다. 저자들은 비싼 VLM 추론을 train-time supervision으로 옮기고, 배포 때는 lightweight latent memory인 workspace token만 빠르게 조회하는 방식을 제안한다.",
+    "논문은 VLM이 현재 관측과 과거 정보 중 task에 필요한 부분을 식별하게 한 뒤, 그 정보를 workspace token에 distill하도록 set-reconstruction decoder loss를 사용한다. CUBEDROP, HALFANDHALF, DRAWERRECALL 등 simulation과 Franka FR3 real-world task에서 평가했으며, Workspace Models는 네 task 평균 성공률 91.5% ± 2.2를 기록해 다음 기준선 Keyframe의 66.8% ± 3.2보다 높았다고 보고한다.",
+    "이 항목을 Technical Spotlight로 고른 이유는 agent memory를 단순히 더 긴 context로 해결하지 않고, costly reasoning을 학습 시점에 압축해 deployment-time control loop를 가볍게 만드는 구조를 보여주기 때문이다. 다만 fully autoregressive transformer encoder의 길이별 비용, VLM saliency supervision의 grounding 한계, hierarchical VLA baseline과의 비교 부재는 논문이 남긴 중요한 caveat다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "GitHub 신규 Top10은 Home Assistant Core: local control과 privacy 우선의 오픈소스 home automation 플랫폼입니다.",
+        "url": "https://github.com/home-assistant/core"
+      },
+      {
+        "section": "papers",
+        "text": "Score Centering 논문은 training-inference mismatch drift를 additive correction으로 안정화합니다.",
+        "url": "https://arxiv.org/abs/2609.20807"
+      },
+      {
+        "section": "community",
+        "text": "Google 쪽 Agentic Orchestrator 논의는 idle sandbox 비용과 suspend/resume runtime을 전면에 올렸습니다.",
+        "url": "https://agentexecutor.io"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 Workspace Models입니다. 논문은 VLM이 train time에 task-salient history를 골라 workspace token에 distill하고, 배포 때는 이 lightweight latent memory만 조회하는 robotic memory 구조를 제안합니다.",
+      "보고된 평균 성공률은 91.5% ± 2.2로 다음 기준선 66.8% ± 3.2보다 높지만, VLM saliency supervision과 sequence length 비용은 여전히 한계입니다."
+    ]
+  }
+}
