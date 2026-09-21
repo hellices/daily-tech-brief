@@ -1,0 +1,558 @@
+{
+  "cncf": [
+    {
+      "category": "patch release",
+      "impact": "Istio 1.31 운영자는 patch note를 확인하고 control plane과 data plane upgrade window를 계획해야 한다.",
+      "published": "2026-09-21",
+      "sources": [
+        "https://github.com/istio/istio/releases/tag/1.31.1",
+        "https://istio.io/news/releases/1.31.x/announcing-1.31.1/"
+      ],
+      "summary": "Istio 1.31.1은 1.31 계열의 patch release로, 공식 release notes와 artifacts가 공개됐다.",
+      "tags": [
+        "networking",
+        "release",
+        "security"
+      ],
+      "title": "Istio 1.31.1",
+      "url": "https://github.com/istio/istio/releases/tag/1.31.1"
+    },
+    {
+      "category": "patch release",
+      "impact": "아직 1.30 line을 쓰는 mesh 운영자는 현재 minor line에 맞춰 patch 적용 여부를 검토할 수 있다.",
+      "published": "2026-09-21",
+      "sources": [
+        "https://github.com/istio/istio/releases/tag/1.30.5",
+        "https://istio.io/news/releases/1.30.x/announcing-1.30.5/"
+      ],
+      "summary": "Istio 1.30.5는 1.30 계열 유지보수 patch release로, 1.31.1과 같은 날 공개됐다.",
+      "tags": [
+        "networking",
+        "release"
+      ],
+      "title": "Istio 1.30.5",
+      "url": "https://github.com/istio/istio/releases/tag/1.30.5"
+    },
+    {
+      "category": "patch release",
+      "impact": "장기 업그레이드 중인 환경은 1.29.8을 임시 patch로 적용할지, 지원되는 최신 minor로 이동할지 함께 판단해야 한다.",
+      "published": "2026-09-21",
+      "sources": [
+        "https://github.com/istio/istio/releases/tag/1.29.8",
+        "https://istio.io/news/releases/1.29.x/announcing-1.29.8/"
+      ],
+      "summary": "Istio 1.29.8은 1.29 계열의 patch release로, 이전 minor line 사용자에게 유지보수 업데이트를 제공한다.",
+      "tags": [
+        "networking",
+        "release"
+      ],
+      "title": "Istio 1.29.8",
+      "url": "https://github.com/istio/istio/releases/tag/1.29.8"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-09-19부터 2026-09-22까지 CNCF announcements/blog와 주요 CNCF 프로젝트 릴리스를 확인했다. CNCF 공식 announcements/blog에는 새 주요 글이 없었고, Istio patch release 3건을 선별했다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/",
+        "https://github.com/istio/istio/releases",
+        "https://github.com/containerd/containerd/releases",
+        "https://github.com/cilium/cilium/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "2026-09-20부터 2026-09-22까지 HN topstories, GeekNews 공식 RSS, Reddit 공식 Atom feed의 실제 현재 항목을 확인해 10개 링크를 선별했다. 최근 반복된 OpenJev, Cloudflare RAM 절감, Qwen Image 2.1 등은 제외하거나 새 관점이 있는 경우만 유지했다.",
+      "sources": [
+        "https://news.ycombinator.com/",
+        "https://hacker-news.firebaseio.com/v0/topstories.json",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/top/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/top/.rss?t=week",
+        "https://www.reddit.com/r/programming/top/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/top/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-09-15부터 2026-09-22 08:00 KST까지의 GitHub weekly Trending을 확인해 상위 10개를 모두 기록했다. 기존 소개 이력에 없는 JustVugg/colibri와 stablyai/orca 2개만 신규 소개 대상으로 확장했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "2026-03-22 이후 최초 발표된 arXiv cs.AI/cs.CL/cs.LG 후보 중 최근 7일 소개 논문 25편을 제외하고, PDF 본문에서 초록·방법·평가·결과·한계를 확인한 5편을 선정했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-09-22",
+  "discussions": [
+    {
+      "sources": [
+        "https://agentexecutor.io",
+        "https://news.ycombinator.com/item?id=49780797"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "harness"
+      ],
+      "title": "Google Open Agentic Orchestrator: agent execution 전용 control plane",
+      "url": "https://agentexecutor.io"
+    },
+    {
+      "sources": [
+        "https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/",
+        "https://news.ycombinator.com/item?id=49776729"
+      ],
+      "tags": [
+        "llm",
+        "security"
+      ],
+      "title": "ChatGPT ad collector가 다른 웹사이트 행동을 알 수 있다는 논의",
+      "url": "https://www.buchodi.com/chatgpt-now-knows-what-you-do-on-other-websites-via-ad-collector/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=34004",
+        "https://news.ycombinator.com/item?id=49775499",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1wlgrft/qwenimage21_released/"
+      ],
+      "tags": [
+        "llm",
+        "multimodal"
+      ],
+      "title": "Qwen Image 2.1: open-weight 통합 이미지 생성·편집 모델",
+      "url": "https://news.hada.io/topic?id=34004"
+    },
+    {
+      "sources": [
+        "https://pirateface.co/",
+        "https://news.ycombinator.com/item?id=49776699",
+        "https://news.hada.io/topic?id=34011"
+      ],
+      "tags": [
+        "llm",
+        "open-source"
+      ],
+      "title": "Pirate Face: Hugging Face 모델을 checksum-verified torrent로 보존",
+      "url": "https://pirateface.co/"
+    },
+    {
+      "sources": [
+        "https://evaluation.club",
+        "https://news.ycombinator.com/item?id=49777111"
+      ],
+      "tags": [
+        "agent",
+        "evaluation"
+      ],
+      "title": "Prompts aren't Real: prompt 평가와 product behavior 간극 논의",
+      "url": "https://evaluation.club"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=34006",
+        "https://news.ycombinator.com/item?id=49772532"
+      ],
+      "tags": [
+        "agent",
+        "llm",
+        "performance"
+      ],
+      "title": "Step 5 Preview: agent task와 knowledge work용 MoE 모델",
+      "url": "https://news.hada.io/topic?id=34006"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=34003"
+      ],
+      "tags": [
+        "mcp",
+        "rag",
+        "retrieval"
+      ],
+      "title": "AutoRAG Agent: 로컬 파일·메신저·이메일·노션 검색 에이전트",
+      "url": "https://news.hada.io/topic?id=34003"
+    },
+    {
+      "sources": [
+        "https://planetscale.com/blog/introducing-tin",
+        "https://news.hada.io/topic?id=33955"
+      ],
+      "tags": [
+        "developer-tools",
+        "storage"
+      ],
+      "title": "Tin: PlanetScale의 Postgres full-text search engine",
+      "url": "https://planetscale.com/blog/introducing-tin"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/comments/1wks0dv/iclr_2027_submission_50kd/"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "ICLR 2027 submission 50k+ 논의와 ML 논문 제출량 급증",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wks0dv/iclr_2027_submission_50kd/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=34088",
+        "https://news.ycombinator.com/item?id=49791509"
+      ],
+      "tags": [
+        "cloud-native",
+        "networking"
+      ],
+      "title": "미국 동부 공항 운항 중단: 주 통신 회선 장애와 백업 광케이블 절단",
+      "url": "https://news.hada.io/topic?id=34088"
+    }
+  ],
+  "generated_at": "2026-09-22T08:50:00+09:00",
+  "github_featured": [
+    "JustVugg/colibri",
+    "stablyai/orca"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-09-21T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 15028
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-code",
+        "weekly_stars": 1999
+      },
+      {
+        "rank": 3,
+        "repository": "affaan-m/ECC",
+        "weekly_stars": 6265
+      },
+      {
+        "rank": 4,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 4867
+      },
+      {
+        "rank": 5,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 3445
+      },
+      {
+        "rank": 6,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 1034
+      },
+      {
+        "rank": 7,
+        "repository": "bilawalsidhu/gods-eye-view",
+        "weekly_stars": 10207
+      },
+      {
+        "rank": 8,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 1359
+      },
+      {
+        "rank": 9,
+        "repository": "max-sixty/worktrunk",
+        "weekly_stars": 1141
+      },
+      {
+        "rank": 10,
+        "repository": "home-assistant/core",
+        "weekly_stars": 417
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-09-22T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 15504
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-code",
+        "weekly_stars": 2342
+      },
+      {
+        "rank": 3,
+        "repository": "JustVugg/colibri",
+        "weekly_stars": 7441
+      },
+      {
+        "rank": 4,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 5242
+      },
+      {
+        "rank": 5,
+        "repository": "affaan-m/ECC",
+        "weekly_stars": 6453
+      },
+      {
+        "rank": 6,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 1298
+      },
+      {
+        "rank": 7,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 3986
+      },
+      {
+        "rank": 8,
+        "repository": "stablyai/orca",
+        "weekly_stars": 5841
+      },
+      {
+        "rank": 9,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 1242
+      },
+      {
+        "rank": 10,
+        "repository": "home-assistant/core",
+        "weekly_stars": 480
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Designer-RSI: Procedural Memory Evolution from Real User Traffic",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2609.22086"
+  },
+  "papers": [
+    {
+      "abstract_summary": "Designer-RSI는 전문 그래픽 디자인이 긴 horizon의 agentic task이고, edit 가능한 artifact가 많은 interdependent action에서 나오며, reliable programmatic oracle이 없다는 문제를 다룬다. 저자들은 frozen frontier model이 230개가 넘는 design tool을 조작하게 하고, 외부 procedural memory가 경험에서 reusable design procedure를 축적하도록 한다. 이 접근은 model weight를 바꾸지 않고 skill bank를 진화시킨다.",
+      "evidence": "full_text",
+      "findings": "논문은 1,406개 real user brief와 1,869개 automatically graded trajectory를 다섯 round 동안 처리했다고 보고한다. 이 과정에서 skill bank는 초기 76개 design procedure에서 시작해 반복 subtask coverage를 넓히고 실패한 skill을 수정했다. 저자들은 human label이나 weight update 없이도 user traffic에서 procedural memory가 개선될 수 있음을 보인다.",
+      "first_published": "2026-09-18",
+      "id": "arxiv:2609.22086",
+      "limitations": "결과는 그래픽 디자인 도구와 multimodal grader가 있는 환경에 강하게 의존한다. VLM grader의 drift를 replay gate가 완화하지만, grader가 놓치는 품질 기준이나 사용자 취향은 여전히 반영하기 어렵다. 또한 skill bank 방식이 코딩, 법무, 데이터 분석처럼 oracle과 artifact 구조가 다른 domain에서 같은 방식으로 확장될지는 별도 검증이 필요하다.",
+      "method": "framework는 memory를 widen과 deepen 두 방향으로 업데이트한다. Widening은 기존 skill이 덮지 못한 recurring subtask를 cluster로 묶고 새 skill 후보를 distill한다. Deepening은 이미 있는 skill의 성공·실패 execution을 비교해 targeted edit이나 major rewrite를 만든다. 모든 변경은 replay gate를 통과해야 하며, 이 gate는 absolute VLM score 대신 성공을 망치지 않으면서 실패를 고치는지 비교한다.",
+      "practical_value": "장기 agent 제품에서는 model fine-tuning보다 외부 procedural memory를 관리하는 편이 빠르고 감사 가능할 수 있다. Designer-RSI는 사용자 traffic에서 반복되는 실패를 skill로 승격하고, 기존 skill이 regression을 만들지 않는지 replay로 확인하는 운영 루프를 보여준다. 디자인뿐 아니라 복잡한 도구 사용 agent의 skill lifecycle 설계에 참고할 만하다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.22086",
+        "https://arxiv.org/pdf/2609.22086",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "memory",
+        "multimodal"
+      ],
+      "title": "Designer-RSI: Evolving Procedural Memory from User Traffic for Agentic Graphic Design",
+      "topics": [
+        "procedural memory",
+        "graphic design agents",
+        "continual adaptation",
+        "skill replay"
+      ],
+      "url": "https://arxiv.org/abs/2609.22086"
+    },
+    {
+      "abstract_summary": "CodeMidas는 coding agent를 RL로 학습하려면 다양한 task와 reliable verifier가 필요하지만, 기존 방법이 issue나 commit 같은 development artifact에 크게 의존한다는 문제에서 출발한다. 저자들은 이미 구현된 source code 자체만을 task-specific input으로 사용해 executable RL environment를 만드는 agentic pipeline을 제안한다. 목표는 오픈소스 codebase의 구현 기능을 학습 환경으로 바꾸는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 CodeMidas task로 MiMo-V2.5를 학습했을 때 다섯 외부 benchmark에서 개선이 나타났다고 보고한다. previewed result에는 SWE-bench Pro +4.1pp, DeepSWE +11.7pp, ProgramBench +17.0pp가 포함된다. 결론에서는 작은 filtered dataset이 더 큰 unfiltered dataset보다 나을 수 있으며, 훈련 뒤 agent가 codebase를 더 많이 탐색하고 self-verification을 다양하게 수행한다고 설명한다.",
+      "first_published": "2026-09-18",
+      "id": "arxiv:2609.22068",
+      "limitations": "pipeline이 source code에서 task를 만들기 때문에, 원래 code가 수행하는 behavior를 verifier가 충분히 포착해야 한다. 자동 생성 test가 specification을 과소 또는 과대 대표하면 RL reward도 왜곡된다. 또한 source-only 방식은 issue context나 사용자 의도를 직접 반영하지 않으므로, 실제 product 요구사항과 연결하려면 별도 grounding이 필요하다.",
+      "method": "CodeMidas는 agentic compute를 environment construction 전 단계에 배치한다. agent가 기존 codebase를 탐색해 behavioral specification을 만들고, original code execution에 근거한 test를 구성하며, repeated solution rollout과 execution check로 candidate task를 검증·필터링한다. 결과 dataset은 3,100개 이상의 codebase source에서 파생된 5,545개 training task로 구성된다.",
+      "practical_value": "coding agent 학습 데이터를 늘리려는 팀은 issue mining만 기다릴 필요가 없다. CodeMidas는 이미 존재하는 codebase의 동작을 실행 가능한 task와 verifier로 바꾸는 방법을 보여준다. 이는 사내 repository에서 agent training environment를 만들 때도 유용하지만, test 품질과 filtering이 핵심 품질 게이트가 된다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.22068",
+        "https://arxiv.org/pdf/2609.22068",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "harness"
+      ],
+      "title": "CodeMidas: Scaling Agentic Coding RL Environments from Code Itself",
+      "topics": [
+        "coding RL",
+        "environment generation",
+        "source-code-derived tasks"
+      ],
+      "url": "https://arxiv.org/abs/2609.22068"
+    },
+    {
+      "abstract_summary": "이 논문은 multi-hop retrieval 실패가 모든 query에 고르게 나타나는 것이 아니라, 구조적으로 예측 가능한 subpopulation에 몰린다는 문제를 다룬다. 일반 RAG pipeline은 top-k passage를 그대로 language model에 넣지만, multi-hop question에서는 bridge passage와 answer passage 중 하나만 놓쳐도 high-confidence wrong answer가 나올 수 있다. 저자들은 retrieval score distribution으로 실패 가능성을 추정하고 abstention을 결정하는 RegimeAbstain을 제안한다.",
+      "evidence": "full_text",
+      "findings": "논문은 단일 ANN score feature가 모든 failure regime에서 최고 성능을 내지는 않으며, dataset별 dominant feature가 다르다고 보고한다. MuSiQue에서는 query length, HoVer에서는 hop-1 concentration이 더 중요하게 나타난다. RCS는 여러 failure regime에서 confidence baseline보다 일관되게 강하거나 공동 최고 AUC-AC를 보였고, 설명된 설정에서는 calibration error ECE 0.035도 보고된다.",
+      "first_published": "2026-09-18",
+      "id": "arxiv:2609.22056",
+      "limitations": "이 방법은 retrieval score feature가 실제 success 정보를 담고 있어야 작동한다. dense-only setting처럼 score와 success의 연결이 약하면 abstention 성능도 제한된다. 또한 LLM-judge pipeline에서의 confidence signal은 judge 품질과 prompt 설계에 의존하므로, 다른 corpus와 retriever로 옮길 때는 calibration을 다시 해야 한다.",
+      "method": "RegimeAbstain은 ANN similarity score에서 hop-1 concentration, query length, hop-2 score 등 feature를 계산하고 Retrieval Confidence Score를 만든다. 실험은 MuSiQue, 2WikiMultiHopQA, HoVer 세 multi-hop dataset에서 tune/test split을 사용한다. 저자들은 dense-only retrieval과 LLM-judge pipeline을 나누어, retrieval feature가 success와 mutual information을 가질 때 confident failure reduction이 가능하다는 조건도 정리한다.",
+      "practical_value": "RAG 제품에서 모든 query에 답하려는 정책은 multi-hop 질문에서 위험하다. RegimeAbstain은 retriever가 이미 계산한 score distribution만으로도 위험한 query를 일부 선별해 abstain하거나 추가 retrieval을 요청할 수 있음을 보여준다. 운영 시스템에서는 answer generation 전에 retrieval confidence gate를 두는 설계로 활용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.22056",
+        "https://arxiv.org/pdf/2609.22056",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "tags": [
+        "evaluation",
+        "rag",
+        "retrieval"
+      ],
+      "title": "Predictable Failure in Multi-Hop Retrieval: Score-Distributional Confidence Scoring and Abstention",
+      "topics": [
+        "multi-hop retrieval",
+        "abstention",
+        "retrieval confidence",
+        "failure prediction"
+      ],
+      "url": "https://arxiv.org/abs/2609.22056"
+    },
+    {
+      "abstract_summary": "이 논문은 LLM memory system이 주로 retrieval 효율에 집중해 왔지만, 가져온 memory를 신뢰해도 되는지 판단하는 단계는 부족했다는 문제를 다룬다. memory store에 맞는 정보와 틀린 정보가 함께 있을 때, 표준 RAG는 memory를 그대로 context에 넣어 hallucination을 키울 수 있다. 저자들은 retrieval과 generation 사이에 zero-parameter Memory Decision Layer를 두어 relevance, reliability, task risk를 함께 판단하게 한다.",
+      "evidence": "full_text",
+      "findings": "저자들은 conflicting memories가 있는 TruthfulQA에서 표준 RAG의 hallucination rate가 53.0%로, memory-free baseline의 23.0%보다 높았다고 보고한다. MDL은 일반 scenario에서 hallucination rate를 약 56.04% 줄이고, high-risk scenario에서는 near-zero hallucination을 달성했다고 설명한다. 추가 latency는 decision당 약 0.14ms로, LLM self-evaluation보다 훨씬 작다고 보고된다.",
+      "first_published": "2026-09-18",
+      "id": "arxiv:2609.22043",
+      "limitations": "MDL은 retrieval된 memory의 relevance, reliability, risk signal이 계산 가능하다는 전제에 의존한다. memory source 자체가 잘못 labeling되거나 risk taxonomy가 부정확하면 controller도 잘못된 abstention 또는 adoption을 할 수 있다. 또한 TruthfulQA 중심 결과가 enterprise memory, code memory, long-term personal memory로 일반화되는지는 추가 검증이 필요하다.",
+      "method": "MDL은 세 signal을 QR-based orthogonal subspace projection으로 결합하고, confidence와 consistency를 분리해 meta-working-memory signal을 만든다. decision은 LLM call 없이 geometric operation으로 수행되며, high-risk task에서는 risk inversion과 cosine gating으로 explicit abstention을 유도한다. 실험은 TruthfulQA와 여러 mainstream LLM에서 conflicting memory condition을 비교한다.",
+      "practical_value": "에이전트 memory를 운영하는 팀은 retrieved memory를 context에 넣기 전에 trust decision을 분리해야 한다. MDL은 LLM에게 다시 판단을 맡기지 않고도 빠르게 memory injection 위험을 줄이는 설계 예시다. 특히 충돌하는 장기 memory나 사용자 preference가 섞인 시스템에서 유용하다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.22043",
+        "https://arxiv.org/pdf/2609.22043",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "tags": [
+        "memory",
+        "rag",
+        "retrieval",
+        "security"
+      ],
+      "title": "An Interpretable Memory Decision Controller for LLM Agents Based on Three-Signal Complementarity: Decoupling Confidence and Consistency",
+      "topics": [
+        "memory trust",
+        "RAG hallucination",
+        "zero-parameter controller",
+        "risk-aware retrieval"
+      ],
+      "url": "https://arxiv.org/abs/2609.22043"
+    },
+    {
+      "abstract_summary": "RecreationWorld는 computer-use agent가 GUI 조작과 software development를 따로 발전시켜 왔지만, 실제 digital work는 둘을 교차해서 수행해야 한다는 문제에서 출발한다. GUI agent는 interface 뒤의 software를 만들지 못하고, terminal agent는 자신이 만든 interface를 직접 보지 못한다. 저자들은 실행 중인 reference를 보고 행동을 발견한 뒤 faithful implementation을 만드는 hybrid CUA benchmark를 제안한다.",
+      "evidence": "full_text",
+      "findings": "논문은 reference-grounded test generation으로 heterogeneous application behavior를 자동 점수화하고, high-quality open trajectory를 training data로 축적하는 구조를 제시한다. 저자들은 다섯 out-of-distribution benchmark에서 두 training run이 첫 평가 checkpoint보다 높은 성능으로 끝났다고 보고한다. 핵심 결과는 GUI exploration과 code implementation을 분리하지 않고 같은 loop에서 다룰 때 hybrid computer-use task를 더 자연스럽게 평가할 수 있다는 점이다.",
+      "first_published": "2026-09-18",
+      "id": "arxiv:2609.22000",
+      "limitations": "RecreationWorld의 평가는 reference app이 존재하고, behavior를 hidden test로 비교할 수 있다는 조건을 전제로 한다. 실제 업무에서는 reference가 없거나 요구사항이 모호할 수 있으며, visual fidelity와 accessibility behavior를 모두 정확히 점수화하기도 어렵다. 또한 다섯 platform을 다루는 harness 운영 비용과 sandbox 안정성은 실무 적용에서 큰 변수다.",
+      "method": "framework는 Ubuntu, macOS, Windows, Android, Web 다섯 platform의 reproducible environment와 native GUI control, coding tool을 하나의 harness로 제공한다. task는 reference application을 oracle로 사용하며, agent는 interface를 탐색하고 code를 작성한 뒤 시각적으로 결과를 검증한다. benchmark인 RecreationBench는 여러 domain과 platform에 걸친 250개 task를 포함한다.",
+      "practical_value": "브라우저·데스크톱·모바일을 오가며 제품을 만들거나 자동화하는 agent를 평가하려면 GUI와 coding을 함께 봐야 한다. RecreationWorld는 실행 가능한 reference를 specification으로 삼아 agent가 관찰, 구현, 검증을 모두 수행하게 만드는 평가 패턴을 제공한다. hybrid CUA training environment를 만들 때 유용한 설계다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.22000",
+        "https://arxiv.org/pdf/2609.22000",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "evaluation",
+        "harness"
+      ],
+      "title": "RecreationWorld: Scalable and Verifiable Environments for Hybrid Computer-Use Agents",
+      "topics": [
+        "computer-use agents",
+        "GUI and coding",
+        "reference recreation",
+        "cross-platform harness"
+      ],
+      "url": "https://arxiv.org/abs/2609.22000"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "속도 SLA 없음 · fast memory 부족 시 성능 저하 · 모델 precision과 router semantics를 조용히 바꾸지 않는다는 정책 확인 필요",
+      "novelty": "new_entry",
+      "rank": 3,
+      "repository": "JustVugg/colibri",
+      "sources": [
+        "https://github.com/JustVugg/colibri",
+        "https://raw.githubusercontent.com/JustVugg/colibri/main/README.md"
+      ],
+      "summary": "Pure C MoE inference · storage/RAM/VRAM multitiering · zero engine deps",
+      "tags": [
+        "inference",
+        "llm",
+        "open-source",
+        "performance"
+      ],
+      "url": "https://github.com/JustVugg/colibri",
+      "use_case": "대형 MoE 모델을 consumer hardware와 heterogeneous memory hierarchy 위에서 실험하려는 inference 연구와 로컬 서빙 프로토타입에 적합하다.",
+      "why_now": "weekly Trending 3위 · 7441 stars this week · 이전 Top10 부재"
+    },
+    {
+      "caution": "원격 SSH worktree와 GitHub/Linear 연동 권한 검토 필요 · 다중 agent 실행 시 브랜치·비밀·포트 충돌 관리 필요",
+      "novelty": "new_entry",
+      "rank": 8,
+      "repository": "stablyai/orca",
+      "sources": [
+        "https://github.com/stablyai/orca",
+        "https://raw.githubusercontent.com/stablyai/orca/main/README.md"
+      ],
+      "summary": "Agent development environment · parallel worktrees · mobile companion",
+      "tags": [
+        "agent",
+        "coding-agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/stablyai/orca",
+      "use_case": "Codex, Claude Code, OpenCode 같은 여러 coding agent를 worktree별로 병렬 실행하고 결과를 비교·리뷰·병합하는 개발 환경으로 쓸 수 있다.",
+      "why_now": "weekly Trending 8위 · 5841 stars this week · 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "Designer-RSI는 전문 그래픽 디자인처럼 결과물이 구조화된 editable artifact이고, 여러 action이 길게 얽히며, 신뢰할 만한 programmatic oracle이 없는 agent task를 다룬다. 저자들은 frontier model의 weights를 바꾸지 않고, 실제 사용자 traffic에서 반복되는 실패와 성공을 이용해 procedural memory, 즉 자연어 skill bank를 계속 진화시키는 framework를 제안한다.",
+    "시스템은 230개가 넘는 design tool을 쓰는 frozen model 위에서 동작하며, memory는 두 방향으로 바뀐다. 아직 skill이 덮지 못한 반복 subtask를 발견하면 새 skill을 추가하고, 기존 skill은 성공·실패 execution을 비교해 수정한다. 논문은 1,406개 real user brief와 1,869개 automatically graded trajectory를 다섯 round 동안 처리해, human label이나 weight update 없이 skill bank를 확장·개선했다고 보고한다.",
+    "이 항목을 Technical Spotlight로 고른 이유는 agent 개선을 model retraining이 아니라 외부 절차 기억의 widen/deepen loop로 다루기 때문이다. 다만 결과 품질은 multimodal grader와 replay gate의 신뢰도에 크게 의존하며, 그래픽 디자인 domain의 tool set과 평가 구조가 다른 지식 작업이나 코딩 작업으로 그대로 옮겨진다고 보기는 어렵다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "GitHub 신규 Top10 Orca는 여러 코딩 에이전트를 worktree 단위로 병렬 운용하는 ADE입니다.",
+        "url": "https://github.com/stablyai/orca"
+      },
+      {
+        "section": "papers",
+        "text": "CodeMidas는 기존 codebase만으로 coding RL 환경을 만들고 외부 SWE benchmark 개선을 보고했습니다.",
+        "url": "https://arxiv.org/abs/2609.22068"
+      },
+      {
+        "section": "cncf",
+        "text": "Istio 1.31.1, 1.30.5, 1.29.8 patch release가 2026-09-21에 공개됐습니다.",
+        "url": "https://github.com/istio/istio/releases/tag/1.31.1"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 Designer-RSI입니다. frozen frontier model은 그대로 두고, real user brief와 자동 채점 trajectory에서 반복 subtask를 찾아 procedural memory skill bank를 확장·수정합니다.",
+      "논문은 1,406개 brief와 1,869개 trajectory를 다섯 round 처리했다고 보고하지만, 품질은 multimodal grader와 replay gate 신뢰도에 묶입니다."
+    ]
+  }
+}
