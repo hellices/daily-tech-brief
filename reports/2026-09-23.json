@@ -1,0 +1,578 @@
+{
+  "cncf": [
+    {
+      "category": "release candidate",
+      "impact": "Agent mode를 쓰는 운영자는 WAL 안정성 관련 회귀 테스트와 rc 검증을 확인할 필요가 있다.",
+      "published": "2026-09-22",
+      "sources": [
+        "https://github.com/prometheus/prometheus/releases/tag/v3.15.0-rc.1"
+      ],
+      "summary": "Prometheus v3.15.0-rc.1은 Agent mode에서 WAL write 실패 후 WAL corruption을 피하는 TSDB bugfix를 포함한다.",
+      "tags": [
+        "observability",
+        "release"
+      ],
+      "title": "Prometheus v3.15.0-rc.1",
+      "url": "https://github.com/prometheus/prometheus/releases/tag/v3.15.0-rc.1"
+    },
+    {
+      "category": "patch release",
+      "impact": "Crossplane 2.4 사용자는 package revision 전환과 ServiceAccount ownerReference 동작을 확인하고 patch 적용을 검토해야 한다.",
+      "published": "2026-09-22",
+      "sources": [
+        "https://github.com/crossplane/crossplane/releases/tag/v2.4.2"
+      ],
+      "summary": "Crossplane v2.4.2는 package revision ServiceAccount ownership transfer bug와 보안 관련 의존성 문제를 수정하는 patch release다.",
+      "tags": [
+        "cloud-native",
+        "release",
+        "security"
+      ],
+      "title": "Crossplane v2.4.2",
+      "url": "https://github.com/crossplane/crossplane/releases/tag/v2.4.2"
+    },
+    {
+      "category": "patch release",
+      "impact": "1.31 계열 service mesh 운영자는 release notes를 확인하고 control plane/data plane upgrade window를 계획할 수 있다.",
+      "published": "2026-09-21",
+      "sources": [
+        "https://github.com/istio/istio/releases/tag/1.31.1",
+        "https://istio.io/news/releases/1.31.x/announcing-1.31.1/"
+      ],
+      "summary": "Istio 1.31.1은 1.31 계열 patch release로 artifacts와 release notes가 공개됐다.",
+      "tags": [
+        "networking",
+        "release"
+      ],
+      "title": "Istio 1.31.1",
+      "url": "https://github.com/istio/istio/releases/tag/1.31.1"
+    },
+    {
+      "category": "patch release",
+      "impact": "아직 1.30 line을 쓰는 환경은 현재 minor line에 맞는 patch 적용 또는 상위 minor upgrade를 검토해야 한다.",
+      "published": "2026-09-21",
+      "sources": [
+        "https://github.com/istio/istio/releases/tag/1.30.5",
+        "https://istio.io/news/releases/1.30.x/announcing-1.30.5/"
+      ],
+      "summary": "Istio 1.30.5는 1.30 계열 유지보수 patch release다.",
+      "tags": [
+        "networking",
+        "release"
+      ],
+      "title": "Istio 1.30.5",
+      "url": "https://github.com/istio/istio/releases/tag/1.30.5"
+    },
+    {
+      "category": "patch release",
+      "impact": "장기 업그레이드 중인 mesh는 지원되는 최신 minor로 이동할 계획과 함께 임시 patch 적용 여부를 판단해야 한다.",
+      "published": "2026-09-21",
+      "sources": [
+        "https://github.com/istio/istio/releases/tag/1.29.8",
+        "https://istio.io/news/releases/1.29.x/announcing-1.29.8/"
+      ],
+      "summary": "Istio 1.29.8은 1.29 계열 사용자에게 제공된 patch release다.",
+      "tags": [
+        "networking",
+        "release"
+      ],
+      "title": "Istio 1.29.8",
+      "url": "https://github.com/istio/istio/releases/tag/1.29.8"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-09-20부터 2026-09-23까지 CNCF announcements/blog와 주요 CNCF 프로젝트 릴리스를 확인했다. Prometheus, Crossplane, Istio의 최근 릴리스 5건을 선별했다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/",
+        "https://github.com/prometheus/prometheus/releases",
+        "https://github.com/crossplane/crossplane/releases",
+        "https://github.com/istio/istio/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "2026-09-21부터 2026-09-23까지 HN topstories, GeekNews 공식 RSS, Reddit 공식 Atom feed의 실제 현재 항목을 확인해 10개 링크를 선별했다. 전날 반복 이슈는 제외하고 신규 모델·보안·에이전트 런타임 링크를 우선했다.",
+      "sources": [
+        "https://news.ycombinator.com/",
+        "https://hacker-news.firebaseio.com/v0/topstories.json",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/top/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/top/.rss?t=week",
+        "https://www.reddit.com/r/programming/top/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/top/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-09-16부터 2026-09-23 08:00 KST까지의 GitHub weekly Trending을 확인해 상위 10개를 모두 기록했다. 기존 소개 이력에 없는 TencentCloud/Octop과 anthropics/financial-services 2개를 신규 소개 대상으로 확장했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "2026-03-23 이후 최초 발표된 arXiv cs.AI/cs.CL/cs.LG 후보 중 최근 7일 소개 논문 30편을 제외하고, PDF 본문에서 초록·방법·평가·결과·한계를 확인한 5편을 선정했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-09-23",
+  "discussions": [
+    {
+      "sources": [
+        "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+        "https://news.ycombinator.com/item?id=49805509",
+        "https://news.hada.io/topic?id=34138"
+      ],
+      "tags": [
+        "inference",
+        "llm"
+      ],
+      "title": "GPT-6 Sol과 Luna 공개",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+    },
+    {
+      "sources": [
+        "https://www.anthropic.com/claude-opus-5-5",
+        "https://news.ycombinator.com/item?id=49803892",
+        "https://news.hada.io/topic?id=34135"
+      ],
+      "tags": [
+        "coding-agent",
+        "llm"
+      ],
+      "title": "Claude Opus 5.5 출시와 성능·가격 분석",
+      "url": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    {
+      "sources": [
+        "https://blog.trailofbits.com/2026/09/21/saml-a-fractal-of-bad-design/",
+        "https://news.ycombinator.com/item?id=49806335"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "SAML: A fractal of bad design",
+      "url": "https://blog.trailofbits.com/2026/09/21/saml-a-fractal-of-bad-design/"
+    },
+    {
+      "sources": [
+        "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+        "https://news.ycombinator.com/item?id=49803959"
+      ],
+      "tags": [
+        "open-source",
+        "security"
+      ],
+      "title": "WordPress unauthenticated path traversal leading to conditional RCE advisory",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+    },
+    {
+      "sources": [
+        "https://unreallabs.ai/blog/unreal-agent/",
+        "https://news.ycombinator.com/item?id=49805748"
+      ],
+      "tags": [
+        "agent",
+        "multimodal"
+      ],
+      "title": "Unreal Agent: 3D/게임 제작 워크플로용 에이전트 논의",
+      "url": "https://unreallabs.ai/blog/unreal-agent/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=34136",
+        "https://news.ycombinator.com/item?id=49802871"
+      ],
+      "tags": [
+        "agent",
+        "security"
+      ],
+      "title": "Meta Muse에 파일시스템을 요청하자 6.8GB runtime export가 나왔다는 보고",
+      "url": "https://news.hada.io/topic?id=34136"
+    },
+    {
+      "sources": [
+        "https://benchmarkheaven.com/jev-models",
+        "https://news.ycombinator.com/item?id=49800574"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "JevBench: typed decision models reproducible benchmark",
+      "url": "https://benchmarkheaven.com/jev-models"
+    },
+    {
+      "sources": [
+        "https://github.com/geastack/examples",
+        "https://news.ycombinator.com/item?id=49807021"
+      ],
+      "tags": [
+        "developer-tools"
+      ],
+      "title": "Native apps written in TypeScript and CSS",
+      "url": "https://github.com/geastack/examples"
+    },
+    {
+      "sources": [
+        "https://github.com/naw103/foremerge",
+        "https://news.ycombinator.com/item?id=49789356"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools"
+      ],
+      "title": "Foremerge: 병렬 coding agent 간 intent conflict 사전 탐지",
+      "url": "https://github.com/naw103/foremerge"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/comments/1wnizqq/five_key_autoscaling_metrics_for_kubernetes/"
+      ],
+      "tags": [
+        "kubernetes",
+        "performance"
+      ],
+      "title": "Kubernetes autoscaling의 다섯 핵심 metric 논의",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1wnizqq/five_key_autoscaling_metrics_for_kubernetes/"
+    }
+  ],
+  "generated_at": "2026-09-23T08:53:00+09:00",
+  "github_featured": [
+    "TencentCloud/Octop",
+    "anthropics/financial-services"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-09-22T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 15504
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-code",
+        "weekly_stars": 2342
+      },
+      {
+        "rank": 3,
+        "repository": "JustVugg/colibri",
+        "weekly_stars": 7441
+      },
+      {
+        "rank": 4,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 5242
+      },
+      {
+        "rank": 5,
+        "repository": "affaan-m/ECC",
+        "weekly_stars": 6453
+      },
+      {
+        "rank": 6,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 1298
+      },
+      {
+        "rank": 7,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 3986
+      },
+      {
+        "rank": 8,
+        "repository": "stablyai/orca",
+        "weekly_stars": 5841
+      },
+      {
+        "rank": 9,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 1242
+      },
+      {
+        "rank": 10,
+        "repository": "home-assistant/core",
+        "weekly_stars": 480
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-09-23T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 14499
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-code",
+        "weekly_stars": 2731
+      },
+      {
+        "rank": 3,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 5455
+      },
+      {
+        "rank": 4,
+        "repository": "affaan-m/ECC",
+        "weekly_stars": 6865
+      },
+      {
+        "rank": 5,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 1350
+      },
+      {
+        "rank": 6,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 4197
+      },
+      {
+        "rank": 7,
+        "repository": "JustVugg/colibri",
+        "weekly_stars": 5565
+      },
+      {
+        "rank": 8,
+        "repository": "TencentCloud/Octop",
+        "weekly_stars": 2177
+      },
+      {
+        "rank": 9,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 889
+      },
+      {
+        "rank": 10,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6125
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Harness-Zero: Agent Harness Distillation into Fixed-Harness Models",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2609.24974"
+  },
+  "papers": [
+    {
+      "abstract_summary": "Harness-Zero는 agent harness가 성능을 높이지만 그 이득이 배포 시 특정 harness에 묶이는 문제를 다룬다. 최적 harness가 도메인과 모델마다 달라지면, 일반 agent는 특수 harness를 계속 라우팅하거나 낮은 공통 harness를 써야 한다. 저자들은 optimized harness의 행동을 model weights에 distill해 fixed target harness에서도 이득을 유지하게 한다.",
+      "evidence": "full_text",
+      "findings": "논문은 knowledge work, tool use, science domain 실험에서 agent-as-harness가 code-as-harness보다 frontier model에서 평균 81.1% 대 78.1%로 높았다고 보고한다. SFT 뒤 student는 specialized harness 없이 target harness만으로 macro-average task success를 23.3%에서 44.3%로 올렸고, specialized harness를 붙였을 때의 41.7%도 넘었다. 28개 harness-induced behavior의 평균 recovery는 82.3%였다.",
+      "first_published": "2026-09-21",
+      "id": "arxiv:2609.24974",
+      "limitations": "방법은 강한 harnessing model에 의존한다. 약한 model에서는 review가 해로울 수 있고, agent-as-harness가 code-as-harness보다 나은 장점도 사라질 수 있다. 또한 proposal마다 추가 model call이 필요하므로 data collection cost가 증가하며, 긴 trajectory와 큰 reference harness에서는 비용이 더 커진다.",
+      "method": "source harness와 target harness는 action space와 available information이 다르므로 source trajectory를 그대로 imitation할 수 없다. Harness-Zero는 harnessing agent를 student response boundary에 두어, student proposal을 실행 전 target harness에서 가능한 형태로 다시 쓴다. 이렇게 얻은 trajectory를 SFT supervision으로 사용해 specialized tool use, middleware-enforced behavior, skills와 memory에서 온 reusable experience를 model parameter로 옮긴다.",
+      "practical_value": "에이전트 플랫폼 팀은 harness 최적화를 deployment-time 복잡성으로만 남기지 않고, training-time supervision으로 흡수할 수 있다. Harness-Zero는 specialized harness를 계속 유지하기 어려운 조직이 하나의 고정 harness에서 더 넓은 행동을 얻는 방법을 제시한다. 다만 distillation 대상 행동이 안전하고 감사 가능하다는 검증이 선행되어야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.24974",
+        "https://arxiv.org/pdf/2609.24974",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "tags": [
+        "agent",
+        "fine-tuning",
+        "harness"
+      ],
+      "title": "Harness-Zero: Harness Distillation via Agent-as-Harness",
+      "topics": [
+        "harness distillation",
+        "agent-as-harness",
+        "fixed target harness"
+      ],
+      "url": "https://arxiv.org/abs/2609.24974"
+    },
+    {
+      "abstract_summary": "Critical-State RL은 multi-turn tool use 실패가 한 번의 model call에 달려 있을 수 있지만, 전체 reward variation만 보면 어느 call을 훈련해야 하는지 알기 어렵다는 문제를 다룬다. 후속 interaction의 randomness가 현재 action의 효과처럼 보일 수 있기 때문이다. 저자들은 task-defined candidate call과 local reward를 이용해 trainable state를 진단하는 방법을 제안한다.",
+      "evidence": "full_text",
+      "findings": "BFCL v4에서 missing-function task는 tool이 available해진 뒤 recovery response가 선택됐고, missing-argument task는 missing argument가 공급되기 전 decision response가 선택됐다. 선택된 response를 훈련하면 성능이 개선됐으며, missing-function task에서는 약 14 percentage points 개선이 보고됐다. 반대로 alternative state 훈련은 flat하거나 worse였다.",
+      "first_published": "2026-09-21",
+      "id": "arxiv:2609.24985",
+      "limitations": "four-cell study는 categorical turn selection을 검증하지만 variance magnitude나 diagnostic threshold를 정밀 calibration하지 않는다. repeat-call, Nemotron, memory setting은 matched diagnostic test라기보다 적용 사례에 가깝다. 또한 여러 설정에서 K=1이므로 더 다양한 후보 call과 긴 task에서 selection robustness를 추가 검증해야 한다.",
+      "method": "방법은 각 candidate call에서 reward가 현재 action의 효과를 포착하는지, reference policy보다 개선 여지가 있는지 먼저 검사한다. 그런 다음 nested sampling으로 action-dependent reward variation과 continuation noise를 분리하고, 선택된 state에서 contextual-bandit training을 수행한다. 실험은 Berkeley Function Calling Leaderboard v4의 missing-function, missing-argument task와 repeat-call avoidance, memory management setting을 포함한다.",
+      "practical_value": "tool-use agent를 훈련할 때 모든 turn을 같이 학습시키는 것은 비효율적일 수 있다. Critical-State RL은 어느 model call이 실제로 action-dependent signal을 갖는지 골라 local training하는 절차를 제공한다. 이는 함수 호출, 누락 인자 복구, 반복 호출 방지 같은 실무 에이전트 개선에 직접 적용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.24985",
+        "https://arxiv.org/pdf/2609.24985",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "tags": [
+        "agent",
+        "fine-tuning",
+        "tool-use"
+      ],
+      "title": "Critical-State RL: Diagnosing Trainable States for Multi-Turn Tool Use",
+      "topics": [
+        "multi-turn tool use",
+        "critical state",
+        "BFCL",
+        "local training"
+      ],
+      "url": "https://arxiv.org/abs/2609.24985"
+    },
+    {
+      "abstract_summary": "RRSI는 LLM agent의 능력이 frozen backbone model뿐 아니라 prompt, control flow, tools, memory, context management로 이루어진 harness에 크게 좌우된다는 관찰에서 출발한다. 최근 harness를 자동으로 반복 개선하는 방법은 agent-system level의 recursive self-improvement처럼 작동하지만, training task를 외워 in-distribution gain만 키울 위험이 있다. 저자들은 finite and noisy feedback을 regularize하는 harness self-improvement 방식을 제안한다.",
+      "evidence": "full_text",
+      "findings": "본문은 RRSI가 evolve set 바깥의 모든 split에서 개선됐다고 보고한다. SWE-bench Verified는 evolve set에 없었는데도 1.8 point 상승했고, agentic benchmark 세 개는 3.5-4.7 point, 7.2%-13.1% 개선을 보였다. Frontier-Eng도 4.3 Medal points, 상대 24.3% 향상됐으며 held-out split regression은 없었다.",
+      "first_published": "2026-09-21",
+      "id": "arxiv:2609.24972",
+      "limitations": "연구는 model weight를 고정한 harness-level RSI에 집중하므로, model 자체를 함께 update하는 설정은 다루지 않는다. RRSI도 유한한 evolve set과 여러 regularization hyperparameter에 의존한다. tool ecosystem이나 agent architecture가 크게 다른 장기 self-improvement process에서 같은 안정성이 유지되는지는 추가 검증이 필요하다.",
+      "method": "RRSI는 candidate proposal과 selection에 regularization을 넣는다. proposer는 temporally annealed budget으로 한 후보가 바꿀 수 있는 edit 수를 제한하고, selection은 complexity와 evaluation noise를 고려해 finite evolve set에 과적합하지 않도록 한다. 실험은 Terminal-Bench 2.1, SWE-bench Verified, Harvey LAB, JobBench, GDPval, APEX-Agents, EngDesign, Frontier-Eng 등 coding, workspace, engineering design domain을 포괄한다.",
+      "practical_value": "에이전트 운영자는 harness 자동 개선을 무조건 반복하면 benchmark-specific hack이나 불필요한 복잡성이 쌓일 수 있음을 경계해야 한다. RRSI는 self-improvement loop에도 일반화와 비용 제약을 걸어야 한다는 실용적 기준을 제시한다. 특히 내부 benchmark를 계속 재사용하는 agent platform에 중요한 경고다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.24972",
+        "https://arxiv.org/pdf/2609.24972",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness"
+      ],
+      "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
+      "topics": [
+        "recursive self-improvement",
+        "harness evolution",
+        "regularization"
+      ],
+      "url": "https://arxiv.org/abs/2609.24972"
+    },
+    {
+      "abstract_summary": "DolphinBench는 기존 memory benchmark가 질문 자체로 어떤 사실을 찾아야 하는지 알려주는 QA 형식에 치우쳐 있다는 문제를 다룬다. 실제 agent는 사용자의 장기 history에 의존해 행동하지만, task instruction이 항상 retrieval 필요성을 알려주지는 않는다. 저자들은 memory를 직접 묻는 대신 agent의 task completion으로 평가하는 benchmark를 제안한다.",
+      "evidence": "full_text",
+      "findings": "본문은 memory 평가가 단순 정확도만 요구하면 비현실적인 cost/time trade-off가 허용된다고 지적한다. DolphinBench는 각 test를 agent run으로 검증해 relevant session이 없을 때도 풀리는 문제를 제거한다. 결론에서 저자들은 더 정확한 agent가 반드시 더 느린 것은 아니고, 더 비싼 agent가 반드시 더 정확하지도 않다고 보고한다.",
+      "first_published": "2026-09-21",
+      "id": "arxiv:2609.24971",
+      "limitations": "conversation history는 실제 사용자 데이터가 아니라 synthetic data로 생성된다. 따라서 실제 writing style, 언어, 상호작용 패턴의 다양성이 충분히 반영되지 않을 수 있다. source message 기반 fact checking과 test verification으로 오류를 줄였지만, history 내부 inconsistency가 완전히 사라진다고 보기는 어렵다.",
+      "method": "DolphinBench는 세 knowledge-work persona를 구성하고, persona마다 약 500k tokens의 user message history를 제공한다. 각 persona에는 history에 의존하는 200개 task가 포함되며, test는 관련 history가 있을 때 성공하고 없을 때 실패해야 통과된다. 결과는 accuracy뿐 아니라 cost와 latency도 함께 보고해 memory system의 Pareto frontier를 본다.",
+      "practical_value": "장기 memory를 붙인 에이전트를 평가할 때는 memory QA가 아니라 실제 업무 성공 여부를 봐야 한다. DolphinBench의 with-history/without-history 검증 방식은 memory가 없으면 정말 실패하는 task만 남기는 좋은 기준이다. 제품 운영에서는 accuracy와 함께 retrieval cost, latency, memory storage 정책을 한 번에 비교해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.24971",
+        "https://arxiv.org/pdf/2609.24971",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory"
+      ],
+      "title": "DolphinBench: Mapping the Pareto Frontier of Agent Memory",
+      "topics": [
+        "agent memory",
+        "task completion",
+        "cost-latency frontier"
+      ],
+      "url": "https://arxiv.org/abs/2609.24971"
+    },
+    {
+      "abstract_summary": "GameHorizon Suite는 현대 비디오게임이 visual understanding, instruction decomposition, goal planning, action control을 함께 요구하는 측정 가능한 AI testbed라는 관점에서 출발한다. 기존 benchmark는 game 범위가 좁거나 language instruction이 부족하고, online rollout은 variance가 크다. 저자들은 시간 horizon별 능력을 나누어 평가하는 data와 benchmark suite를 제안한다.",
+      "evidence": "full_text",
+      "findings": "실험은 35개 general-purpose VLM, 4개 UMM, 2개 GUI agent, 3개 coding agent, 3개 dedicated game agent 등 47개 model을 평가한다. 논문은 thinking이 항상 성능을 올리지 않는다고 보고한다. GLM-5V-Turbo와 Doubao-Seed-2.1-Pro는 thinking으로 각각 5.6, 9.3 percentage points 개선됐지만, UI-TARS-1.5-7B와 Qwen2.5-VL-7B는 오히려 8.2, 5.9 points 떨어졌다.",
+      "first_published": "2026-09-21",
+      "id": "arxiv:2609.25001",
+      "limitations": "게임 benchmark는 specific game mechanics와 harness 구현에 민감하다. offline MCQ는 재현성이 좋지만 실제 controller performance를 완전히 대체하지 못하고, online testing은 여전히 environment variance를 갖는다. 또한 21개 AAA title이 넓은 편이지만 전체 게임 장르와 input modality를 대표한다고 보기는 어렵다.",
+      "method": "suite는 세 부분으로 구성된다. GameHorizon-Annotator는 gameplay recording에서 short-horizon operation, medium-horizon goal, long-horizon strategy를 자동으로 주석화한다. GameHorizon-Data는 21개 AAA game title과 100명의 human expert player로부터 얻은 5,000 hours recording을 frame, action, multi-horizon instruction과 정렬한다. GameHorizon-Bench는 offline MCQ 평가와 stepwise online testing을 결합한다.",
+      "practical_value": "게임은 멀티모달 에이전트의 장기 계획과 짧은 action control을 동시에 평가하기 좋은 환경이다. GameHorizon은 horizon별 실패를 분리해 model이 현재 action을 모르는지, 다음 목표를 잘못 추론하는지, 장기 전략을 놓치는지 진단할 수 있게 한다. GUI·게임·로봇 에이전트 평가 설계에 참고할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.25001",
+        "https://arxiv.org/pdf/2609.25001",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=150"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "multimodal"
+      ],
+      "title": "GameHorizon Suite: Multi-Horizon Data and Evaluation in Gameplay",
+      "topics": [
+        "gameplay benchmark",
+        "multi-horizon instructions",
+        "VLM agents"
+      ],
+      "url": "https://arxiv.org/abs/2609.25001"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "shell guardrail, PII redaction, connector OAuth 권한 검토 필요 · 로컬 실행이라도 플러그인과 remote browsing 경계 확인",
+      "novelty": "new_entry",
+      "rank": 8,
+      "repository": "TencentCloud/Octop",
+      "sources": [
+        "https://github.com/TencentCloud/Octop",
+        "https://raw.githubusercontent.com/TencentCloud/Octop/main/README.md"
+      ],
+      "summary": "Self-hosted AI assistant · multi-user, multi-agent · portable memory",
+      "tags": [
+        "agent",
+        "mcp",
+        "memory",
+        "open-source",
+        "tool-use"
+      ],
+      "url": "https://github.com/TencentCloud/Octop",
+      "use_case": "팀·가족·개인용 self-hosted assistant를 웹 대시보드, IM integration, MCP connector, RAG knowledge base와 함께 운영하려는 경우 참고할 수 있다.",
+      "why_now": "weekly Trending 8위 · 2177 stars this week · 이전 Top10 부재"
+    },
+    {
+      "caution": "투자·법률·세무 조언 아님 · 모든 산출물 human sign-off 전제 · firm별 compliance와 connector 권한 검토 필요",
+      "novelty": "new_entry",
+      "rank": 9,
+      "repository": "anthropics/financial-services",
+      "sources": [
+        "https://github.com/anthropics/financial-services",
+        "https://raw.githubusercontent.com/anthropics/financial-services/main/README.md"
+      ],
+      "summary": "Financial-services agents · Cowork plugins · Managed Agent templates",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "mcp"
+      ],
+      "url": "https://github.com/anthropics/financial-services",
+      "use_case": "투자은행, 리서치, PE, 자산관리 업무에서 pitch, earnings review, reconciliation 같은 agent workflow template을 검토할 수 있다.",
+      "why_now": "weekly Trending 9위 · 889 stars this week · 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "Harness-Zero는 agent harness가 모델 성능을 크게 끌어올리지만, 그 이득이 배포 시 특정 harness에 묶인다는 문제에서 출발한다. 도메인·인스턴스·모델마다 최적 harness가 달라지면, 일반 agent는 계속 늘어나는 특수 harness를 routing하거나 성능이 낮은 공통 harness에 머물러야 한다.",
+    "저자들은 optimized harness를 training-time guidance로 사용해, 그 harness가 유도한 행동을 fixed target harness에서 작동하는 model weights로 distill한다. 핵심은 source harness와 target harness의 action space와 정보가 다르다는 점인데, Harness-Zero는 harnessing agent가 student proposal을 실행 전 target harness에 맞게 다시 쓰는 agent-as-harness 방식으로 이 간극을 메운다.",
+    "본문은 knowledge work, tool use, science domain 실험에서 SFT 후 student가 target harness만으로 macro-average task success를 23.3%에서 44.3%로 올렸고, specialized harness를 붙였을 때의 41.7%도 넘었다고 보고한다. 다만 이 방법은 강한 harnessing model과 추가 model call 비용에 의존하므로, 약한 reviewer나 비용이 제한된 환경에서는 이득이 줄 수 있다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "GitHub 신규 Top10 Octop은 self-hosted multi-user, multi-agent AI assistant입니다.",
+        "url": "https://github.com/TencentCloud/Octop"
+      },
+      {
+        "section": "papers",
+        "text": "Critical-State RL은 multi-turn tool use에서 어떤 model call을 훈련해야 하는지 진단합니다.",
+        "url": "https://arxiv.org/abs/2609.24985"
+      },
+      {
+        "section": "cncf",
+        "text": "Crossplane v2.4.2는 package revision ServiceAccount ownership bug와 보안 의존성을 수정합니다.",
+        "url": "https://github.com/crossplane/crossplane/releases/tag/v2.4.2"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 Harness-Zero입니다. optimized harness가 유도한 행동을 agent-as-harness 방식으로 target harness-compatible trajectory로 바꿔 model weights에 distill합니다.",
+      "보고된 macro-average success는 target harness만 쓴 student가 23.3%에서 44.3%로 상승했지만, 강한 harnessing model과 추가 review call 비용이 전제입니다."
+    ]
+  }
+}
