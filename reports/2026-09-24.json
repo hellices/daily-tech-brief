@@ -1,0 +1,524 @@
+{
+  "cncf": [
+    {
+      "category": "patch release",
+      "impact": "1.37 cluster 운영자는 해당 minor line의 changelog를 확인하고 patch rollout을 계획해야 한다.",
+      "published": "2026-09-23",
+      "sources": [
+        "https://github.com/kubernetes/kubernetes/releases/tag/v1.37.1"
+      ],
+      "summary": "Kubernetes v1.37.1은 1.37 계열 patch release로 CHANGELOG와 binary download가 공개됐다.",
+      "tags": [
+        "kubernetes",
+        "release"
+      ],
+      "title": "Kubernetes v1.37.1",
+      "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.37.1"
+    },
+    {
+      "category": "patch release",
+      "impact": "아직 1.36 line을 쓰는 운영자는 현재 minor에 맞는 patch 적용 또는 상위 minor upgrade를 검토해야 한다.",
+      "published": "2026-09-23",
+      "sources": [
+        "https://github.com/kubernetes/kubernetes/releases/tag/v1.36.5"
+      ],
+      "summary": "Kubernetes v1.36.5는 1.36 계열 patch release다.",
+      "tags": [
+        "kubernetes",
+        "release"
+      ],
+      "title": "Kubernetes v1.36.5",
+      "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.36.5"
+    },
+    {
+      "category": "patch release",
+      "impact": "장기 운영 중인 1.35 cluster는 지원 정책과 changelog를 확인해 patch window를 잡을 필요가 있다.",
+      "published": "2026-09-23",
+      "sources": [
+        "https://github.com/kubernetes/kubernetes/releases/tag/v1.35.9"
+      ],
+      "summary": "Kubernetes v1.35.9는 1.35 계열 patch release다.",
+      "tags": [
+        "kubernetes",
+        "release"
+      ],
+      "title": "Kubernetes v1.35.9",
+      "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.35.9"
+    },
+    {
+      "category": "release candidate",
+      "impact": "Agent mode 사용자에게 중요한 안정성 수정이므로 rc 검증과 정식 릴리스 추적이 필요하다.",
+      "published": "2026-09-22",
+      "sources": [
+        "https://github.com/prometheus/prometheus/releases/tag/v3.15.0-rc.1"
+      ],
+      "summary": "Prometheus v3.15.0-rc.1은 Agent mode에서 failed WAL write 이후 WAL corruption을 피하는 TSDB bugfix를 포함한다.",
+      "tags": [
+        "observability",
+        "release"
+      ],
+      "title": "Prometheus v3.15.0-rc.1",
+      "url": "https://github.com/prometheus/prometheus/releases/tag/v3.15.0-rc.1"
+    },
+    {
+      "category": "patch release",
+      "impact": "Crossplane 2.4 사용자에게는 package revision 전환과 보안 dependency update를 확인할 patch다.",
+      "published": "2026-09-22",
+      "sources": [
+        "https://github.com/crossplane/crossplane/releases/tag/v2.4.2"
+      ],
+      "summary": "Crossplane v2.4.2는 ServiceAccount ownership transfer bug와 보안 관련 의존성 문제를 수정한다.",
+      "tags": [
+        "cloud-native",
+        "release",
+        "security"
+      ],
+      "title": "Crossplane v2.4.2",
+      "url": "https://github.com/crossplane/crossplane/releases/tag/v2.4.2"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-09-21부터 2026-09-24까지 CNCF announcements/blog와 주요 CNCF 프로젝트 릴리스를 확인했다. Kubernetes, Prometheus, Crossplane, Istio의 release 5건을 선별했다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/",
+        "https://github.com/kubernetes/kubernetes/releases",
+        "https://github.com/prometheus/prometheus/releases",
+        "https://github.com/crossplane/crossplane/releases",
+        "https://github.com/istio/istio/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "2026-09-22부터 2026-09-24까지 HN topstories, GeekNews 공식 RSS, Reddit 공식 Atom feed의 실제 현재 항목을 확인해 10개 링크를 선별했다. 전날 다룬 GPT-6 Sol, Claude Opus 5.5, SAML, WordPress advisory 등 반복 항목은 제외했다.",
+      "sources": [
+        "https://news.ycombinator.com/",
+        "https://hacker-news.firebaseio.com/v0/topstories.json",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/top/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/top/.rss?t=week",
+        "https://www.reddit.com/r/programming/top/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/top/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-09-17부터 2026-09-24 08:00 KST까지의 GitHub weekly Trending을 확인해 상위 10개를 모두 기록했다. Top10의 모든 저장소가 기존 소개 이력에 포함되어 신규 GitHub 확장 항목은 없었다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "2026-03-24 이후 최초 발표된 arXiv cs.AI/cs.CL/cs.LG 후보 중 최근 7일 소개 논문을 제외하고, PDF 본문에서 초록·방법·평가·결과·한계를 확인한 5편을 선정했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=120"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-09-24",
+  "discussions": [
+    {
+      "sources": [
+        "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+        "https://news.ycombinator.com/item?id=49805509"
+      ],
+      "tags": [
+        "inference",
+        "llm"
+      ],
+      "title": "GPT-6 Sol과 Luna 공개",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+    },
+    {
+      "sources": [
+        "https://www.anthropic.com/claude-opus-5-5",
+        "https://news.ycombinator.com/item?id=49803892"
+      ],
+      "tags": [
+        "coding-agent",
+        "llm"
+      ],
+      "title": "Claude Opus 5.5 출시와 성능·가격 분석",
+      "url": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=34143",
+        "https://news.ycombinator.com/item?id=49805278"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "FBI 직원 정보 탈취 주장과 샘플 검증 보도",
+      "url": "https://news.hada.io/topic?id=34143"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=34136",
+        "https://news.ycombinator.com/item?id=49802871"
+      ],
+      "tags": [
+        "agent",
+        "security"
+      ],
+      "title": "Meta Muse runtime export와 6.8GB 파일시스템 노출 논의",
+      "url": "https://news.hada.io/topic?id=34136"
+    },
+    {
+      "sources": [
+        "https://benchmarkheaven.com/jev-models",
+        "https://news.ycombinator.com/item?id=49800574"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "JevBench: typed decision model 재현 benchmark",
+      "url": "https://benchmarkheaven.com/jev-models"
+    },
+    {
+      "sources": [
+        "https://github.com/geastack/examples",
+        "https://news.ycombinator.com/item?id=49807021"
+      ],
+      "tags": [
+        "developer-tools"
+      ],
+      "title": "Native apps written in TypeScript and CSS",
+      "url": "https://github.com/geastack/examples"
+    },
+    {
+      "sources": [
+        "https://github.com/naw103/foremerge",
+        "https://news.ycombinator.com/item?id=49789356"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools"
+      ],
+      "title": "Foremerge: 병렬 coding agent 간 intent conflict 사전 탐지",
+      "url": "https://github.com/naw103/foremerge"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/comments/1wnizqq/five_key_autoscaling_metrics_for_kubernetes/"
+      ],
+      "tags": [
+        "kubernetes",
+        "performance"
+      ],
+      "title": "Kubernetes autoscaling의 다섯 핵심 metric 논의",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1wnizqq/five_key_autoscaling_metrics_for_kubernetes/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/comments/1wk979c/i_truly_think_every_major_ai_lab_is_purposefully/"
+      ],
+      "tags": [
+        "governance",
+        "open-source"
+      ],
+      "title": "Open model 규제 공포가 오픈소스 모델에 미치는 영향 논의",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wk979c/i_truly_think_every_major_ai_lab_is_purposefully/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/comments/1wo04r9/android_17_enables_certificate_transparency_and/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Android 17 certificate transparency와 custom CA 영향 논의",
+      "url": "https://www.reddit.com/r/programming/comments/1wo04r9/android_17_enables_certificate_transparency_and/"
+    }
+  ],
+  "generated_at": "2026-09-24T08:54:00+09:00",
+  "github_previous_snapshot": {
+    "captured_at": "2026-09-23T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 14499
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-code",
+        "weekly_stars": 2731
+      },
+      {
+        "rank": 3,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 5455
+      },
+      {
+        "rank": 4,
+        "repository": "affaan-m/ECC",
+        "weekly_stars": 6865
+      },
+      {
+        "rank": 5,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 1350
+      },
+      {
+        "rank": 6,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 4197
+      },
+      {
+        "rank": 7,
+        "repository": "JustVugg/colibri",
+        "weekly_stars": 5565
+      },
+      {
+        "rank": 8,
+        "repository": "TencentCloud/Octop",
+        "weekly_stars": 2177
+      },
+      {
+        "rank": 9,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 889
+      },
+      {
+        "rank": 10,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6125
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-09-24T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 12590
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-code",
+        "weekly_stars": 2754
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 1238
+      },
+      {
+        "rank": 4,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 5303
+      },
+      {
+        "rank": 5,
+        "repository": "affaan-m/ECC",
+        "weekly_stars": 6904
+      },
+      {
+        "rank": 6,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 4224
+      },
+      {
+        "rank": 7,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 1403
+      },
+      {
+        "rank": 8,
+        "repository": "JustVugg/colibri",
+        "weekly_stars": 4036
+      },
+      {
+        "rank": 9,
+        "repository": "TencentCloud/Octop",
+        "weekly_stars": 2148
+      },
+      {
+        "rank": 10,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6205
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Flash-dLLM: IO-Aware KV Caching for Diffusion LLM Inference",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2609.26796"
+  },
+  "papers": [
+    {
+      "abstract_summary": "Flash-dLLM은 diffusion LLM이 non-autoregressive generation을 가능하게 하지만, 실제 inference에서는 KV cache와 parallel decoding을 효과적으로 결합하지 못해 느리다는 문제를 다룬다. 특히 cache reuse와 parallel token verification을 함께 적용하면 GPU memory I/O가 새로운 병목이 된다. 저자들은 이 병목을 줄이는 training-free acceleration framework를 제안한다.",
+      "evidence": "full_text",
+      "findings": "Flash-Cache는 greedy decoding에서 8.0x-58.5x speedup을 보였다. confidence-aware decoding에서는 17.0x-102.2x까지 범위가 커졌고, Flash-Verify와 Flash-Cache를 함께 쓰면 모든 8개 설정에서 가장 높은 throughput을 달성해 148.0-210.6 tokens/s에 도달했다고 보고된다. 저자들은 memory efficiency와 generation quality를 유지했다고 설명한다.",
+      "first_published": "2026-09-22",
+      "id": "arxiv:2609.26796",
+      "limitations": "평가는 두 representative masked diffusion LLM과 structured-output task에 집중되어 있다. continuous-space diffusion language model에서는 cache update pattern이 다를 수 있고, long-form writing이나 dialogue처럼 confidence distribution이 flat한 open-ended generation에서는 throughput-quality trade-off가 달라질 수 있다. gamma와 beta_m도 고정 hyperparameter라 adaptive tuning 여지가 남아 있다.",
+      "method": "방법은 먼저 decoded token 중 영향이 큰 부분을 중심으로 KV cache를 재사용하고, redundant memory movement를 줄이는 fused Triton KV-cache kernel을 사용한다. 그 위에 Flash-Verify라는 draft-and-verify parallel decoding을 붙여 여러 token을 동시에 제안하되 confidence와 검증으로 품질을 유지한다. 실험은 LLaDA-1.5 등 masked diffusion LLM에서 수학 reasoning과 code generation benchmark를 사용한다.",
+      "practical_value": "dLLM을 서빙하려는 팀에게 이 논문은 parallel decoding만으로는 충분하지 않고 cache I/O를 함께 설계해야 함을 보여준다. KV cache kernel과 verification strategy를 같이 최적화하면 diffusion model의 병렬성을 실제 latency와 throughput 개선으로 바꿀 수 있다. 다만 제품 적용 전에는 open-ended workload와 memory footprint를 별도 측정해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.26796",
+        "https://arxiv.org/pdf/2609.26796",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=120"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "Flash-dLLM: IO-Aware KV Caching and Parallel Decoding for Fast, Memory-Efficient Diffusion LLMs",
+      "topics": [
+        "diffusion LLM",
+        "KV caching",
+        "parallel decoding",
+        "inference throughput"
+      ],
+      "url": "https://arxiv.org/abs/2609.26796"
+    },
+    {
+      "abstract_summary": "Agensh는 multi-agent system이 복잡한 작업 latency를 줄일 수 있지만, 중앙 orchestrator가 task allocation과 coordination을 감당하지 못해 확장성이 막힌다는 문제를 다룬다. 저자들은 중앙 orchestrator 없이 worker들이 공유 workspace와 message interface를 통해 스스로 일을 나누는 self-organized harness를 제안한다. 목표는 agent 수가 커져도 coordination 비용을 완화하는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 5개 hardest ProgramBench task에서 agent 수를 1에서 128로 늘리면 mean final test-pass rate가 19.31%에서 28.78%로 올라 약 49% relative improvement를 보였다고 보고한다. pandoc task에서는 1,024 agents가 final test-pass rate 55.06%를 기록해 1 agent의 33.89%보다 높았다. 큰 조직은 같은 성능 수준에 더 빨리 도달하는 경향도 보였다.",
+      "first_published": "2026-09-22",
+      "id": "arxiv:2609.26781",
+      "limitations": "대규모 worker 실행은 scope contention, merge conflict, duplicated work를 피하기 위한 activation schedule과 reminder에 의존한다. ProgramBench 결과가 모든 software engineering task나 tool ecosystem으로 일반화된다고 볼 수는 없다. 또한 많은 agent를 동시에 실행하는 비용과 artifact merge 안정성은 실제 운영에서 큰 제약이다.",
+      "method": "각 worker는 gather context, claim sub-task, take action, verify results, merge progress라는 cooperation loop를 반복한다. shared workspace는 proposed, ongoing, completed work를 담고, message interface는 worker 간 조율을 돕고, shared context는 재사용 가능한 finding과 work intention을 저장한다. 실험은 ProgramBench의 어려운 task와 Copilot 기반 단일 agent harness를 사용하며 6시간 budget에서 agent 수를 키운다.",
+      "practical_value": "여러 코딩 에이전트를 병렬 운용하는 팀은 중앙 planner가 모든 일을 배정하는 방식보다, work claim과 shared context를 통해 자율 분업을 유도하는 구조를 고려할 수 있다. Agensh는 agent swarm이 단순 투표가 아니라 shared workspace 기반 조직으로 동작해야 한다는 설계 방향을 보여준다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.26781",
+        "https://arxiv.org/pdf/2609.26781"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "multi-agent"
+      ],
+      "title": "Agensh: Scaling Organizational Intelligence to 1,024 Agents",
+      "topics": [
+        "multi-agent harness",
+        "self-organization",
+        "ProgramBench"
+      ],
+      "url": "https://arxiv.org/abs/2609.26781"
+    },
+    {
+      "abstract_summary": "SWE-Serve는 production inference serving 기능 구현이 모델 지원, runtime execution, public API 변경을 함께 요구하는데, 기존 coding benchmark가 이런 serving-stack 작업을 충분히 다루지 못한다는 문제를 다룬다. 저자들은 SGLang의 최근 production change에서 repository-grounded task를 구성해 agentic engineering 능력을 평가한다. 핵심은 단순 kernel 최적화가 아니라 production correctness다.",
+      "evidence": "full_text",
+      "findings": "31개 model-effort configuration과 11개 model을 평가한 결과, best-performing configuration은 75% mean pass@1을 기록했다. 그러나 end-to-end coverage가 있는 19개 task에서는 E2E test가 다른 test를 모두 통과한 patch 중 약 1/3을 거부했다. 이는 local correctness와 production serving correctness 사이의 gap을 보여준다.",
+      "first_published": "2026-09-22",
+      "id": "arxiv:2609.26777",
+      "limitations": "SWE-Serve는 SGLang 중심의 production inference stack에 특화되어 있다. 다른 serving framework나 multi-GPU distributed serving에서는 task family와 verifier가 달라질 수 있다. 또한 210분 제한이 긴 task를 수용하지만, 실제 production feature development의 review, rollout, observability 작업을 완전히 포함하지는 않는다.",
+      "method": "benchmark는 SGLang에서 파생된 53개 task와 여섯 inference engineering family를 포함한다. 각 task는 CPU 또는 단일 H100 GPU에서 실행되고, hidden verifier로 patch를 평가한다. agent는 350 step 또는 210분 제한 안에서 solution을 개발하며, infrastructure 오류가 아닌 agent error나 test failure는 재시도하지 않는다.",
+      "practical_value": "inference platform을 개발하는 팀은 coding agent 평가를 일반 SWE-bench만으로 끝내기 어렵다. SWE-Serve는 API, backend, kernel, performance, model support가 얽힌 production serving task를 따로 측정해야 함을 보여준다. 특히 E2E test가 local test를 통과한 patch를 걸러내는 비율이 높다는 점은 verifier 설계의 중요성을 강조한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.26777",
+        "https://arxiv.org/pdf/2609.26777"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "inference"
+      ],
+      "title": "SWE-Serve: Benchmarking Agentic Engineering For Production Inference Serving",
+      "topics": [
+        "production inference",
+        "SGLang",
+        "agentic engineering benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2609.26777"
+    },
+    {
+      "abstract_summary": "A2M은 MCP agent가 third-party tool server의 metadata를 의미적으로 매칭해 tool을 고르는 구조가 supply-chain risk를 만든다는 문제를 다룬다. 공격자는 직접 prompt를 주입하지 않아도 tool 설명과 return payload를 조작해 agent가 악성 tool을 호출하게 만들 수 있다. 저자들은 Attraction-to-Manipulation이라는 two-stage black-box 공격 framework를 제안한다.",
+      "evidence": "full_text",
+      "findings": "GLM-4.6에서 직접 최적화한 공격은 네 scenario 평균 malicious tool invocation rate 93.6%를 기록했다. Cognitive Denial of Service에서는 weighted token cost가 benign baseline 대비 32.4x로 늘었고, Information Exfiltration, Environment Integrity Compromise, Reasoning Degradation의 mean ASR은 74.4%였다. 다른 네 model로 transfer하면 MTIR은 63.6%, mean ASR은 24.5%로 낮아졌다.",
+      "first_published": "2026-09-22",
+      "id": "arxiv:2609.26761",
+      "limitations": "연구는 공격자가 malicious MCP tool을 등록할 수 있다는 semantic-layer threat model을 전제로 한다. network나 OS exploit은 다루지 않는다. metadata paraphrasing과 runtime information-flow control이 일부 완화책이지만 residual risk가 남는다고 보고하며, 실제 MCP marketplace의 review와 trust policy에 따라 공격 가능성은 달라진다.",
+      "method": "Attraction phase는 tool metadata를 최적화해 agent의 invocation probability를 높인다. Manipulation phase는 execution trace를 사용해 adversarial tool return을 다듬고, agent reasoning과 후속 action을 attacker-desired outcome으로 유도한다. 평가는 LiveMCPBench의 네 attack scenario와 다섯 model에서 direct attack과 transfer attack을 나누어 수행한다.",
+      "practical_value": "MCP를 운영하는 팀은 tool metadata를 단순한 설명문이 아니라 보안 경계의 일부로 봐야 한다. tool registration vetting, return payload isolation, cost anomaly detection, trusted server allowlist가 필요하다. A2M은 MCP ecosystem에서 semantic supply chain 관리가 왜 필요한지 정량적으로 보여준다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.26761",
+        "https://arxiv.org/pdf/2609.26761"
+      ],
+      "tags": [
+        "agent",
+        "mcp",
+        "security",
+        "tool-use"
+      ],
+      "title": "A2M: Trace-Optimized Agent Hijacking in the MCP Ecosystem",
+      "topics": [
+        "MCP security",
+        "tool hijacking",
+        "semantic supply chain"
+      ],
+      "url": "https://arxiv.org/abs/2609.26761"
+    },
+    {
+      "abstract_summary": "이 논문은 관련 task가 반복되는 상황에서도 표준 harness가 매번 같은 control decision을 context 안에서 다시 만들게 한다는 문제를 다룬다. 저자들은 반복되는 control을 LLM context가 아니라 reusable executable code로 옮기고, LLM call은 task-specific semantic reasoning에 남겨두는 방향을 제안한다. 핵심 문장은 context를 키우지 말고 harness를 키우라는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 task feedback에서 accepted edit이 하나의 shared harness에 축적되며, agent의 control structure가 점진적으로 나타난다고 설명한다. 이 과정은 같은 task stream에서 반복되는 decision을 prompt가 아니라 code로 이전해 context 비용을 줄이는 방향이다. 저자들은 reusable specialist agent가 strategy-free scaffold보다 더 안정적으로 반복 task를 처리할 수 있음을 보인다.",
+      "first_published": "2026-09-22",
+      "id": "arxiv:2609.26760",
+      "limitations": "harness가 code로 성장하기 때문에 잘못된 repair가 누적되면 debugging과 audit이 어려워질 수 있다. success-first gate가 prior capability regression을 막지만, held-out set이 충분하지 않으면 새로운 task family에서 실패할 수 있다. 또한 자동으로 생성된 harness code의 보안성과 maintainability는 별도 review가 필요하다.",
+      "method": "Growing Harness는 strategy-free scaffold에서 시작한다. 이 scaffold는 고정 model과 tool interface만 제공하고 task-solving controller는 담지 않는다. function-level execution trace가 실패를 bounded code surface로 국소화하면 optimizer가 여러 failure window를 함께 고치고, success-first held-out gate가 prior capability를 해치는 repair sequence를 rollback한다.",
+      "practical_value": "반복적인 agent workflow를 운영하는 팀은 매번 prompt에 전략을 길게 넣는 대신, 검증된 control logic을 harness code로 승격하는 구조를 고려할 수 있다. 이는 context 비용을 줄이고 specialist behavior를 재사용하게 해준다. 다만 harness code도 제품 코드처럼 테스트, 리뷰, rollback 정책이 필요하다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.26760",
+        "https://arxiv.org/pdf/2609.26760"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "harness"
+      ],
+      "title": "Grow the Harness, Not the Context: From Strategy-Free Scaffolds to Reusable Specialist Agents",
+      "topics": [
+        "harness learning",
+        "context reduction",
+        "specialist agents"
+      ],
+      "url": "https://arxiv.org/abs/2609.26760"
+    }
+  ],
+  "repositories": [],
+  "schema_version": 2,
+  "summary": [
+    "Flash-dLLM은 diffusion LLM이 non-autoregressive generation으로 가능성을 보이지만, 실제 배포에서는 KV cache와 parallel decoding을 함께 쓸 때 GPU memory I/O가 병목이 된다는 문제를 다룬다. 기존 가속 연구가 caching과 decoding을 따로 최적화한 반면, 저자들은 두 기법이 결합될 때 생기는 redundant memory movement를 정면으로 다룬다.",
+    "방법은 두 부분으로 구성된다. Flash-Cache는 IO-aware fused KV-cache kernel로 중복 read/write를 줄이고, Flash-Verify는 parallel draft-and-verify decoding으로 초기 token commitment의 confidence를 높인다. LLaDA-1.5 기반 수학 reasoning과 code generation 실험에서 greedy decoding은 8.0x-58.5x, confidence-aware decoding은 17.0x-102.2x speedup을 보였고, Flash-Verify와 Flash-Cache 조합은 148.0-210.6 tokens/s에 도달했다고 보고된다.",
+    "이 항목을 Technical Spotlight로 고른 이유는 diffusion LLM의 이론적 병렬성이 실제 inference throughput으로 이어지려면 cache와 verification을 시스템 수준에서 같이 설계해야 함을 보여주기 때문이다. 다만 평가는 두 masked diffusion LLM과 구조화된 reasoning·coding task에 집중되어 있어, open-ended dialogue나 continuous-space diffusion LM으로 일반화하려면 추가 검증이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "community",
+        "text": "GPT-6 Sol과 Luna 공개가 HN·GeekNews에서 가장 크게 논의됐습니다.",
+        "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+      },
+      {
+        "section": "papers",
+        "text": "A2M은 MCP tool metadata와 return payload를 조작하는 semantic supply-chain 공격을 정량화했습니다.",
+        "url": "https://arxiv.org/abs/2609.26761"
+      },
+      {
+        "section": "cncf",
+        "text": "Kubernetes 1.37.1 등 4개 supported minor patch release가 2026-09-23에 공개됐습니다.",
+        "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.37.1"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 Flash-dLLM입니다. 이 논문은 diffusion LLM inference에서 KV cache reuse와 parallel verification을 함께 쓰면 GPU memory I/O가 병목이 된다고 보고, fused KV-cache kernel과 Flash-Verify를 결합합니다.",
+      "보고된 speedup은 confidence-aware decoding에서 17.0x-102.2x, 조합 throughput은 148.0-210.6 tokens/s입니다. 단, 근거는 masked dLLM의 reasoning·coding task 중심입니다."
+    ]
+  }
+}
