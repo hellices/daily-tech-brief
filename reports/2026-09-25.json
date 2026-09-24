@@ -1,0 +1,469 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "2026-09-22부터 2026-09-25까지 CNCF announcements/blog와 주요 CNCF 프로젝트 릴리스를 확인했다. 전날 다룬 Kubernetes, Prometheus, Crossplane release 이후 중복되지 않는 새 주요 변경은 확인하지 못해 CNCF 항목은 비워 두었다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/",
+        "https://github.com/kubernetes/kubernetes/releases",
+        "https://github.com/prometheus/prometheus/releases",
+        "https://github.com/crossplane/crossplane/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "2026-09-23부터 2026-09-25까지 HN topstories, GeekNews 공식 RSS, Reddit 공식 Atom feed의 실제 현재 항목을 확인해 10개 링크를 선별했다. 최근 반복된 대형 모델 출시·Jev 논쟁은 중복을 줄이고 새 보안·개발 도구 링크를 우선했다.",
+      "sources": [
+        "https://news.ycombinator.com/",
+        "https://hacker-news.firebaseio.com/v0/topstories.json",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/top/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/top/.rss?t=week",
+        "https://www.reddit.com/r/programming/top/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/top/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-09-18부터 2026-09-25 08:00 KST까지의 GitHub weekly Trending을 확인해 상위 10개를 모두 기록했다. 기존 소개 이력에 없는 davila7/claude-code-templates 1개를 신규 소개 대상으로 확장했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "2026-03-25 이후 최초 발표된 arXiv cs.AI/cs.CL/cs.LG 후보 중 최근 7일 소개 논문을 제외하고, PDF 본문에서 초록·방법·평가·결과·한계를 확인한 5편을 선정했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=120"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-09-25",
+  "discussions": [
+    {
+      "sources": [
+        "https://f-droid.org/2026/09/24/f-droid-2.0-a-new-chapter-for-android-freedom.html",
+        "https://news.ycombinator.com/item?id=49831968"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "F-Droid 2.0: Android freedom을 위한 새 장",
+      "url": "https://f-droid.org/2026/09/24/f-droid-2.0-a-new-chapter-for-android-freedom.html"
+    },
+    {
+      "sources": [
+        "https://github.com/devdotfast/whiteboard",
+        "https://news.ycombinator.com/item?id=49833867",
+        "https://news.hada.io/topic?id=34245"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools"
+      ],
+      "title": "Whiteboard: 신중한 소프트웨어 설계를 위한 오픈소스 IDE",
+      "url": "https://github.com/devdotfast/whiteboard"
+    },
+    {
+      "sources": [
+        "https://blog.arusekk.pl/posts/srht-account-takeover/",
+        "https://news.ycombinator.com/item?id=49835996"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "Sourcehut account takeover via build logs",
+      "url": "https://blog.arusekk.pl/posts/srht-account-takeover/"
+    },
+    {
+      "sources": [
+        "https://www.instacloud.com/blogs/a-million-agents-is-a-distributed-systems-problem",
+        "https://news.ycombinator.com/item?id=49833958"
+      ],
+      "tags": [
+        "agent",
+        "distributed-systems"
+      ],
+      "title": "A Million Agents Is a Distributed System Problem",
+      "url": "https://www.instacloud.com/blogs/a-million-agents-is-a-distributed-systems-problem"
+    },
+    {
+      "sources": [
+        "https://successfulsoftware.net/2026/09/24/github-has-not-removed-malicious-imitation-software-after-3-weeks/",
+        "https://news.ycombinator.com/item?id=49832406",
+        "https://news.hada.io/topic?id=34238"
+      ],
+      "tags": [
+        "open-source",
+        "security"
+      ],
+      "title": "GitHub가 3주 동안 악성 모방 소프트웨어를 삭제하지 않았다는 사례",
+      "url": "https://successfulsoftware.net/2026/09/24/github-has-not-removed-malicious-imitation-software-after-3-weeks/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/comments/1wo7amj/we_ported_the_original_doom_to_sql/"
+      ],
+      "tags": [
+        "developer-tools"
+      ],
+      "title": "We ported the original Doom to SQL",
+      "url": "https://www.reddit.com/r/programming/comments/1wo7amj/we_ported_the_original_doom_to_sql/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/comments/1wnisw3/how_do_you_continuously_monitor_running_images/"
+      ],
+      "tags": [
+        "kubernetes",
+        "security"
+      ],
+      "title": "Kubernetes running image vulnerability monitoring 논의",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1wnisw3/how_do_you_continuously_monitor_running_images/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/comments/1wmxfjs/qwen_4_announced_at_apsara_conference/"
+      ],
+      "tags": [
+        "multimodal",
+        "open-source"
+      ],
+      "title": "Qwen 4 Apsara Conference 발표 소식",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1wmxfjs/qwen_4_announced_at_apsara_conference/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/comments/1wp6oi3/neurips_accepted_papers_are_now_visible_r/"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "NeurIPS accepted papers visibility와 review policy 논의",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wp6oi3/neurips_accepted_papers_are_now_visible_r/"
+    },
+    {
+      "sources": [
+        "https://linebender.org/blog/fearless-simd-1-0/",
+        "https://news.ycombinator.com/item?id=49800085"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "Fearless SIMD v1.0",
+      "url": "https://linebender.org/blog/fearless-simd-1-0/"
+    }
+  ],
+  "generated_at": "2026-09-25T08:51:00+09:00",
+  "github_featured": [
+    "davila7/claude-code-templates"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-09-24T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 12590
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-code",
+        "weekly_stars": 2754
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 1238
+      },
+      {
+        "rank": 4,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 5303
+      },
+      {
+        "rank": 5,
+        "repository": "affaan-m/ECC",
+        "weekly_stars": 6904
+      },
+      {
+        "rank": 6,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 4224
+      },
+      {
+        "rank": 7,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 1403
+      },
+      {
+        "rank": 8,
+        "repository": "JustVugg/colibri",
+        "weekly_stars": 4036
+      },
+      {
+        "rank": 9,
+        "repository": "TencentCloud/Octop",
+        "weekly_stars": 2148
+      },
+      {
+        "rank": 10,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6205
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-09-25T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 1895
+      },
+      {
+        "rank": 2,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 9833
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/claude-code",
+        "weekly_stars": 2762
+      },
+      {
+        "rank": 4,
+        "repository": "affaan-m/ECC",
+        "weekly_stars": 6695
+      },
+      {
+        "rank": 5,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 4522
+      },
+      {
+        "rank": 6,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 3867
+      },
+      {
+        "rank": 7,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 1358
+      },
+      {
+        "rank": 8,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6435
+      },
+      {
+        "rank": 9,
+        "repository": "TencentCloud/Octop",
+        "weekly_stars": 1877
+      },
+      {
+        "rank": 10,
+        "repository": "davila7/claude-code-templates",
+        "weekly_stars": 613
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Typed Decision Models: Schema Validity vs. Semantic Reliability",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2609.26758"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 typed decision model이 software가 바로 소비할 수 있는 schema-valid output을 만들더라도, option의 의미를 제대로 해석한다고 볼 수는 없다는 문제를 다룬다. 저자들은 option name과 rubric이 함께 있을 때 모델이 rubric보다 name에 더 끌리는지 실험한다. 핵심은 type-safe interface가 semantic-safe interface가 아니라는 점이다.",
+      "evidence": "full_text",
+      "findings": "no/yes 조건에서 rubric을 바꾸면 returned answer의 76.92%가 바뀌었다. 같은 structural operation을 0/1 이름에서 수행하면 6.50%만 바뀌어, difference-in-differences는 70.42 percentage points였다. AUC도 .94에서 .23으로 바뀌어 threshold tuning으로 고칠 수 없는 inversion을 보였지만, type-error rate는 모든 조건에서 0%였다.",
+      "first_published": "2026-09-22",
+      "id": "arxiv:2609.26758",
+      "limitations": "연구는 영어 binary workflow decision과 두 open-weight encoder checkpoint, 한 black-box service snapshot에 기반한다. 다중 option, 다른 언어, 다른 decision head geometry에서 같은 수치가 나올지는 검증되지 않았다. 또한 option naming을 잘 설계하면 위험을 줄일 수 있지만, 실제 제품의 dynamic option set에서는 일관된 검증이 필요하다.",
+      "method": "실험은 1,200개 binary workflow decision과 네 predicate를 사용한다. 각 item의 question, state, rubric wording, option name set은 그대로 두고, 어떤 rubric이 no/yes 또는 0/1 이름에 묶이는지만 바꾼다. gold label은 rubric text에 맞춰 유지되므로, 답이 바뀐다면 모델이 rubric이 아니라 option name을 따라간 것이다.",
+      "practical_value": "typed decision API를 agent routing, evaluation, authorization boundary에 쓰는 팀은 schema validity만 보고 자동 실행하면 안 된다. option name, rubric wording, option order를 perturbation test로 검증해야 한다. 특히 no/yes처럼 강한 polarity를 가진 이름은 rubric과 binding이 바뀌었을 때 model behavior가 뒤집히는지 확인해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.26758",
+        "https://arxiv.org/pdf/2609.26758"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "tool-use"
+      ],
+      "title": "Type-Safe Is Not Error-Free: A Constrained Decision Head Follows the Option Name, Not the Rubric Bound to It",
+      "topics": [
+        "typed decision models",
+        "Jev",
+        "option-name sensitivity",
+        "schema reliability"
+      ],
+      "url": "https://arxiv.org/abs/2609.26758"
+    },
+    {
+      "abstract_summary": "이 논문은 C/C++ 취약점 자동 repair에서 compile rate를 progress proxy로 쓰는 관행이 과학적으로 믿을 만한지 묻는다. patch가 컴파일된다는 사실은 중요하지만, 실제 vulnerability repair 품질과 같은 것은 아니다. 저자들은 compile rate와 whole-function similarity metric이 얼마나 쉽게 오해를 만드는지 통제 실험으로 보인다.",
+      "evidence": "full_text",
+      "findings": "compile failure의 약 64%는 model이 아니라 evaluation harness와 dataset artifact에 기인했고, 이 비율은 model 간 거의 일정했다. 동일 patch도 compiler-standard flag 하나로 compile rate가 1.8-2.7배 바뀌었다. compile feedback loop는 compile rate를 올렸지만 human fix와의 similarity는 낮아졌고, manual inspection에서는 deletion이나 placeholder style non-repair가 발견됐다.",
+      "first_published": "2026-09-22",
+      "id": "arxiv:2609.26749",
+      "limitations": "연구는 single-function C/C++ vulnerability repair에 초점을 맞춘다. repository-level patch, multi-file fix, dynamic security test가 있는 설정에서는 compile rate의 의미가 달라질 수 있다. diff_F1도 repair quality metric이 아니라 no-op이나 degenerate patch를 걸러내는 change-aware screen으로만 제안된다.",
+      "method": "실험은 Big-Vul의 203개 vulnerable function, 350M-6.7B 규모의 세 open-source code LLM, 세 prompting strategy를 사용한다. 저자들은 intervention, compiler flag, evaluation harness artifact, feedback loop 최적화, no-op baseline을 통해 compile rate와 다른 metric의 민감도를 비교한다. change-aware screen으로 diff_F1도 검토한다.",
+      "practical_value": "보안 자동 repair benchmark를 만드는 팀은 compile rate를 단독 성능 지표로 쓰면 안 된다. exact harness, compiler, no-op baseline, degenerate patch baseline을 함께 보고해야 한다. 실무 보안 리뷰에서도 컴파일 성공은 triage 통과 조건일 뿐, vulnerability가 실제로 제거됐다는 근거는 아니다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.26749",
+        "https://arxiv.org/pdf/2609.26749"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "Metrics Failure in LLM-Based Code Vulnerability Repair: An Empirical Study and a Change-Aware Screen",
+      "topics": [
+        "vulnerability repair",
+        "compile rate",
+        "Big-Vul",
+        "metric validity"
+      ],
+      "url": "https://arxiv.org/abs/2609.26749"
+    },
+    {
+      "abstract_summary": "이 논문은 prompt-to-design AI가 product design 시간을 줄인다는 주장이 많지만, software engineering에 비해 실험적 근거가 적다는 문제에서 출발한다. 저자들은 Figma Make 접근 권한이 product designer와 product manager의 design task 수행 시간과 인식에 어떤 영향을 주는지 randomized controlled trial로 평가한다. 목적은 단순한 데모가 아니라 실제 작업 시간 절감과 품질 조건을 측정하는 것이다.",
+      "evidence": "full_text",
+      "findings": "완료자 기준으로 Figma Make 접근은 cumulative time을 약 20% 줄였고, rated design task ease는 16%, perceived Figma usability은 15% 개선됐다고 보고된다. 가장 큰 절감은 product manager에게서 나타났고, product designer만 따로 보면 aggregate time saving은 통계적으로 유의하지 않았다. product manager의 이득은 더 단순한 task에서, designer의 이득은 가장 복잡한 task에서 주로 나타났다.",
+      "first_published": "2026-09-22",
+      "id": "arxiv:2609.26725",
+      "limitations": "time-to-completion 분석은 task를 완료한 참가자만 포함한다. Figma Make가 완료 가능성 자체에도 영향을 주었으므로, 완료자 subset이 treatment와 control에서 다를 수 있다. 세 task는 고정된 순서와 목표 디자인을 갖기 때문에 실제 제품 설계의 모호성, 협업, 반복 feedback을 충분히 반영하지 못한다.",
+      "method": "실험에는 product designer 50명과 product manager 50명이 참여했다. 참가자는 세 standardized design task를 AI access 조건 또는 control 조건에서 수행했다. 분석은 study task를 완료한 참가자의 time-to-completion, perceived ease, Figma usability, task complexity별 차이를 비교한다.",
+      "practical_value": "디자인 조직은 prompt-to-design tool을 모든 designer의 시간을 동일하게 줄이는 도구로 기대하기보다 역할별로 봐야 한다. 제품관리자에게는 초기 prototype과 low-complexity task에서 이득이 클 수 있고, 전문 designer에게는 복잡한 task의 보조 도구로 쓰일 가능성이 높다. 도입 평가는 시간뿐 아니라 품질과 completion rate를 함께 봐야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.26725",
+        "https://arxiv.org/pdf/2609.26725"
+      ],
+      "tags": [
+        "developer-tools",
+        "evaluation",
+        "multimodal"
+      ],
+      "title": "Does AI Save Time on Product Design? A Randomized Controlled Experiment of AI Prompt-to-Design Workflows",
+      "topics": [
+        "prompt-to-design",
+        "Figma Make",
+        "product design productivity"
+      ],
+      "url": "https://arxiv.org/abs/2609.26725"
+    },
+    {
+      "abstract_summary": "이 논문은 language model calibration, 즉 confidence와 empirical correctness의 정렬을 측정하는 방법은 이미 잘 알려져 있지만, 일반 NLP benchmark와 model release에서는 거의 보고되지 않는다는 문제를 다룬다. 모델 output이 사람에게 읽히지 않고 agent나 pipeline으로 바로 들어가는 환경에서는 confidence가 잘못된 것이 실제 피해로 이어질 수 있다. 저자들은 calibration을 LLM 평가의 first-class criterion으로 삼아야 한다고 주장한다.",
+      "evidence": "full_text",
+      "findings": "저자들은 많은 최신 capability와 safety benchmark가 성능 sequence는 길게 보고하면서 calibration은 보고하지 않는 adoption gap을 지적한다. GPT-4 technical report가 RLHF와 calibration의 관계를 문서화한 예외였지만, 이후 release에서는 이런 관행이 이어지지 않았다고 설명한다. 결론은 정확도만으로는 deployment decision을 내리기에 부족하다는 것이다.",
+      "first_published": "2026-09-22",
+      "id": "arxiv:2609.26489",
+      "limitations": "논문은 새로운 대규모 benchmark 결과보다 방법론적 argument와 reporting practice 개선에 초점을 맞춘다. Calibration metric은 binning, confidence extraction 방식, prompt phrasing에 민감하고 benchmark 간 표준화가 쉽지 않다. 따라서 단일 metric 의무화보다 task별 confidence semantics를 명확히 정의하는 작업이 필요하다.",
+      "method": "논문은 calibration metric이 대부분 benchmark에서 이미 존재하는 두 정보, confidence score와 correctness judgment만 있으면 계산 가능하다고 설명한다. deployment와 research pipeline을 나누어, overconfident mistake와 LLM-as-a-judge, synthetic data generation, active learning 같은 내부 사용처에서 miscalibration이 만드는 위험을 정리한다. ECE 같은 표준 metric의 한계와 보고 조건도 함께 논의한다.",
+      "practical_value": "LLM 평가 리포트를 만드는 팀은 accuracy, pass rate, win rate와 함께 confidence calibration을 기본 표로 넣어야 한다. 특히 model output이 judge, router, policy gate, active learning selector로 쓰이는 경우 confidence가 쓸 만한지 검증해야 한다. 이는 agent system의 자동화 범위를 정할 때 중요한 안전 신호다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.26489",
+        "https://arxiv.org/pdf/2609.26489"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "Calibration as a First-Class Criterion in LLM Evaluation",
+      "topics": [
+        "calibration",
+        "LLM evaluation",
+        "confidence",
+        "deployment risk"
+      ],
+      "url": "https://arxiv.org/abs/2609.26489"
+    },
+    {
+      "abstract_summary": "이 논문은 Representation Autoencoder가 pretrained visual encoder의 feature space에서 diffusion model을 작동하게 해주지만, off-the-shelf encoder는 reconstruction fidelity가 낮다는 문제에서 출발한다. encoder를 reconstruction objective로 fine-tuning하면 세부 visual detail은 회복된다. 그러나 저자들은 이 과정이 representation의 effective dimensionality를 줄이고, standard velocity prediction으로 diffusion model을 최적화하기 어렵게 만든다고 보인다.",
+      "evidence": "full_text",
+      "findings": "reconstruction-tuned representation은 visual detail을 더 잘 보존하지만, v-prediction에서는 optimization이 느려졌다. x0-prediction은 strong-reconstruction representation space에서 더 효율적으로 학습됐고, text-to-image generation에서도 GenEval과 DPG-Bench를 개선했다. 논문은 이를 effective-dimensionality collapse와 high-dimensional latent diffusion의 학습 난이도로 해석한다.",
+      "first_published": "2026-09-23",
+      "id": "arxiv:2609.28473",
+      "limitations": "결과는 특정 encoder와 tokenizer, flow matching 설정에 기반한다. 다른 visual foundation model, dataset, diffusion objective에서는 effective dimensionality와 optimization difficulty가 달라질 수 있다. 또한 reconstruction fidelity와 generation quality 사이의 trade-off를 완전히 해결한 것은 아니며, encoder를 generation과 understanding 양쪽에 맞게 설계하는 문제는 남아 있다.",
+      "method": "저자들은 frozen DINOv2-L, reconstruction-tuned DINOv2-L, MAE-RAE 계열 tokenizer를 비교한다. single-image overfitting test와 text-to-image generation benchmark를 통해 v-prediction과 clean data x0-prediction을 대조한다. GenEval, DPG-Bench, COCO-30k FID와 reconstruction PSNR을 함께 평가한다.",
+      "practical_value": "고해상도 생성 모델을 만들 때 pretrained encoder를 reconstruction-tuning하는 것만으로 충분하지 않다. latent geometry가 diffusion objective와 맞지 않으면 detail은 좋아져도 학습이 어려워질 수 있다. x0-prediction은 strong-reconstruction RAE를 쓰는 text-to-image pipeline에서 단순하지만 중요한 대안이 될 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.28473",
+        "https://arxiv.org/pdf/2609.28473"
+      ],
+      "tags": [
+        "multimodal",
+        "performance"
+      ],
+      "title": "On the Diffusibility of High-Dimensional Latents",
+      "topics": [
+        "representation autoencoders",
+        "diffusion models",
+        "x0 prediction",
+        "text-to-image generation"
+      ],
+      "url": "https://arxiv.org/abs/2609.28473"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "외부 sponsor skill·MCP 설치 전 권한과 데이터 접근 범위 확인 필요 · 프로젝트별 config drift 관리 필요",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "davila7/claude-code-templates",
+      "sources": [
+        "https://github.com/davila7/claude-code-templates",
+        "https://raw.githubusercontent.com/davila7/claude-code-templates/main/README.md"
+      ],
+      "summary": "Claude Code configuration CLI · templates, skills, MCP setup",
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/davila7/claude-code-templates",
+      "use_case": "Claude Code 프로젝트 설정, 스킬·MCP 설치, 템플릿 기반 초기 구성을 자동화하려는 팀이 참고할 수 있다.",
+      "why_now": "weekly Trending 10위 · 613 stars this week · 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "Type-Safe Is Not Error-Free는 typed decision model이 schema에 맞는 output을 보장하더라도, option name과 rubric을 사용자가 의도한 의미로 해석한다는 보장은 없다는 문제를 다룬다. 저자들은 decision head의 type-error rate가 0%라는 사실은 interface의 속성이지 모델 판단의 정확성 증거가 아니라고 구분한다.",
+    "실험은 1,200개 workflow decision에서 question, state, rubric text, option set은 그대로 두고 option name과 rubric의 binding만 바꿨다. no/yes 이름 뒤의 rubric을 바꾸면 answer의 76.92%가 바뀌었고, 같은 조작을 의미가 약한 0/1 이름에서 했을 때는 6.50%만 바뀌었다. 이 차이는 70.42 percentage points이며, AUC도 .94에서 .23으로 뒤집혔다고 보고된다.",
+    "이 항목을 Technical Spotlight로 고른 이유는 typed decision API와 Jev-like model이 agent routing, 평가, 자동 실행에 직접 연결되는 흐름에서 중요한 안전 경계를 보여주기 때문이다. 다만 연구는 영어 binary workflow decision과 두 open-weight encoder checkpoint, 한 black-box service 관찰에 묶여 있으므로, 다른 언어·다중 option·다른 head geometry에서는 재검증이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "GitHub 신규 Top10은 claude-code-templates: Claude Code 설정·모니터링 CLI입니다.",
+        "url": "https://github.com/davila7/claude-code-templates"
+      },
+      {
+        "section": "papers",
+        "text": "C/C++ vulnerability repair에서 compile rate가 model 품질 proxy로 부적절하다는 실험이 나왔습니다.",
+        "url": "https://arxiv.org/abs/2609.26749"
+      },
+      {
+        "section": "community",
+        "text": "F-Droid 2.0 공개가 HN에서 크게 논의됐습니다.",
+        "url": "https://f-droid.org/2026/09/24/f-droid-2.0-a-new-chapter-for-android-freedom.html"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 typed decision model의 semantic reliability입니다. 논문은 schema-valid output이 항상 의도한 rubric 해석을 뜻하지 않으며, no/yes option name만 바꿔도 답변 76.92%가 바뀌었다고 보고합니다.",
+      "AUC가 .94에서 .23으로 뒤집힌 결과는 decision API를 agent routing에 바로 연결할 때 option naming과 rubric binding을 별도 검증해야 한다는 경고입니다."
+    ]
+  }
+}
