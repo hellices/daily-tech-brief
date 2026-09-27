@@ -1,0 +1,536 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "운영자는 query.max-samples와 storage I/O가 과대 사용되던 PromQL case, reload 가능한 log level, scrape endpoint 형태 변화를 점검해야 한다.",
+      "published": "2026-09-25",
+      "sources": [
+        "https://github.com/prometheus/prometheus/releases/tag/v3.15.0"
+      ],
+      "summary": "Prometheus 3.15.0은 PromQL subquery의 불필요한 sample 평가를 막는 change, runtime.log_level reload, GOMEMLIMIT refresh interval, Unix Domain Socket scrape, OM2.0 scrape format을 포함한다.",
+      "tags": [
+        "observability",
+        "performance",
+        "release"
+      ],
+      "title": "Prometheus 3.15.0",
+      "url": "https://github.com/prometheus/prometheus/releases/tag/v3.15.0"
+    },
+    {
+      "category": "security",
+      "impact": "Kubernetes node runtime을 containerd로 운영하는 팀은 사용 중인 minor line별 패치 버전을 확인하고, image unpack annotation 및 CRI task cleanup 관련 변경을 rollout 전 검증해야 한다.",
+      "published": "2026-09-25",
+      "sources": [
+        "https://github.com/containerd/containerd/releases/tag/v2.4.1",
+        "https://github.com/containerd/containerd/releases/tag/v2.3.6"
+      ],
+      "summary": "containerd는 여러 supported line에 걸쳐 CVE-2026-53493 보안 패치와 CRI cleanup, SELinux relabeling, content upload retry, image annotation hardening 관련 수정을 공개했다.",
+      "tags": [
+        "containers",
+        "kubernetes",
+        "release",
+        "security"
+      ],
+      "title": "containerd 2.4.1 / 2.3.6 / 2.2.9 / 2.0.13 / 1.7.36 security patch line",
+      "url": "https://github.com/containerd/containerd/releases/tag/v2.4.1"
+    },
+    {
+      "category": "release",
+      "impact": "TechDocs Markdown extension 설정을 사용하는 internal developer portal은 patch line별 호환성을 확인하고 동일 설정이 line마다 다르게 해석되는 문제를 줄일 수 있다.",
+      "published": "2026-09-25",
+      "sources": [
+        "https://github.com/backstage/backstage/releases/tag/v1.55.2",
+        "https://github.com/backstage/backstage/releases/tag/v1.54.9",
+        "https://github.com/backstage/backstage/releases/tag/v1.50.7"
+      ],
+      "summary": "Backstage는 여러 maintained line에서 TechDocs Markdown extension configuration normalization fix를 포함한 patch release를 냈다.",
+      "tags": [
+        "cloud-native",
+        "developer-tools",
+        "release"
+      ],
+      "title": "Backstage 1.55.2 / 1.54.9 / 1.50.7 patch releases",
+      "url": "https://github.com/backstage/backstage/releases/tag/v1.55.2"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 CNCF 및 클라우드 네이티브 주요 프로젝트의 공개 릴리스 피드를 확인했고, 운영자가 바로 반영해야 할 릴리스 중심으로 정리했습니다.",
+      "sources": [
+        "https://github.com/prometheus/prometheus/releases",
+        "https://github.com/containerd/containerd/releases",
+        "https://github.com/backstage/backstage/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS에서 공개 링크를 확인했고, 기술적으로 중복 가치가 낮은 일반 뉴스는 제외했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 항목 중 agent-native CLI 생태계와 관련성이 높은 신규 상세 항목을 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개된 arXiv 논문 중 지난 7일 소개 이력과 겹치지 않는 agent, memory, harness, enterprise evaluation 관련 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22memory%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22evaluation%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-09-28",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://fireworks.ai/blog/ember-1"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "Ember-1",
+      "url": "https://fireworks.ai/blog/ember-1"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://shnatsel.github.io/state-of-simd-rust-2026"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "The state of SIMD in Rust in 2026",
+      "url": "https://shnatsel.github.io/state-of-simd-rust-2026"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://www.adaptivecapacitylabs.com/2026/08/24/there-is-more-to-code-review-than-automatable-detection/"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "evaluation"
+      ],
+      "title": "There is more to code review than automatable detection",
+      "url": "https://www.adaptivecapacitylabs.com/2026/08/24/there-is-more-to-code-review-than-automatable-detection/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/deepfates/imp"
+      ],
+      "tags": [
+        "developer-tools",
+        "llm",
+        "open-source"
+      ],
+      "title": "Imp is a full port of DSPy to the BEAM",
+      "url": "https://github.com/deepfates/imp"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://btrblocks.com/blog/s3_is_the_future_and_the_past/"
+      ],
+      "tags": [
+        "cloud-native",
+        "storage"
+      ],
+      "title": "S3 Is the Future, S3 Is the Past",
+      "url": "https://btrblocks.com/blog/s3_is_the_future_and_the_past/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34387"
+      ],
+      "tags": [
+        "cloud-native",
+        "developer-tools",
+        "evaluation"
+      ],
+      "title": "fakecloud - 통합 테스트를 위한 로컬 AWS 클라우드 에뮬레이터",
+      "url": "https://news.hada.io/topic?id=34387"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34384"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "언어 모델로서: 채팅 템플릿이 LLM의 자기 언급 말투를 전환함",
+      "url": "https://news.hada.io/topic?id=34384"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wr9ryk/tauon_a_new_optimizer_outperforming_muon_on/"
+      ],
+      "tags": [
+        "fine-tuning",
+        "llm",
+        "performance"
+      ],
+      "title": "Tauon: A new optimizer outperforming Muon on GPT-Mini",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wr9ryk/tauon_a_new_optimizer_outperforming_muon_on/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wqk0x2/a_little_guide_to_learning_distributed_algorithms/"
+      ],
+      "tags": [
+        "distributed-systems",
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "A Little Guide to Learning Distributed Algorithms for LLMs Training and Inference",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wqk0x2/a_little_guide_to_learning_distributed_algorithms/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wrnyer/dont_couple_your_go_code_to_github/"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "Don't couple your Go code to GitHub",
+      "url": "https://www.reddit.com/r/programming/comments/1wrnyer/dont_couple_your_go_code_to_github/"
+    }
+  ],
+  "generated_at": "2026-09-28T08:25:00+09:00",
+  "github_featured": [
+    "HKUDS/CLI-Anything"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-09-27T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 2623
+      },
+      {
+        "rank": 2,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 9547
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/claude-code",
+        "weekly_stars": 2102
+      },
+      {
+        "rank": 4,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 2616
+      },
+      {
+        "rank": 5,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 4869
+      },
+      {
+        "rank": 6,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 3189
+      },
+      {
+        "rank": 7,
+        "repository": "affaan-m/ECC",
+        "weekly_stars": 6037
+      },
+      {
+        "rank": 8,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6537
+      },
+      {
+        "rank": 9,
+        "repository": "davila7/claude-code-templates",
+        "weekly_stars": 1041
+      },
+      {
+        "rank": 10,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 5030
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-09-28T08:04:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 2633
+      },
+      {
+        "rank": 2,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 5376
+      },
+      {
+        "rank": 3,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 7282
+      },
+      {
+        "rank": 4,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 6474
+      },
+      {
+        "rank": 5,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 3015
+      },
+      {
+        "rank": 6,
+        "repository": "davila7/claude-code-templates",
+        "weekly_stars": 1142
+      },
+      {
+        "rank": 7,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6503
+      },
+      {
+        "rank": 8,
+        "repository": "vercel/next.js",
+        "weekly_stars": 280
+      },
+      {
+        "rank": 9,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 1055
+      },
+      {
+        "rank": 10,
+        "repository": "pytorch/pytorch",
+        "weekly_stars": 295
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Just-in-Time Memory: Agent Memory를 Write-Time 요약에서 Read-Time Curator로 옮기기",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2609.27334"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 기존 agent memory가 task가 끝난 직후 reflection, workflow, skill 같은 고정 artifact로 요약된다는 점을 문제로 삼는다. 미래 query가 아직 정해지지 않은 상태에서 무엇을 기억할지 결정하면, 나중에 필요한 세부 정보가 사라지고 하나의 요약이 여러 downstream task를 억지로 감당해야 한다.",
+      "evidence": "full_text",
+      "findings": "ALFWorld, WebShop, τ2-bench에서 JITMEM은 가장 강한 write-time memory baseline보다 success rate를 각각 16.2, 16.3, 3.9%p 높였다. 훈련하지 않은 curator도 경쟁력 있는 결과를 냈고, compact payload는 baseline 대비 input token을 50.3~56.3%, executor step을 28.4~31.4% 줄였다고 보고됐다.",
+      "first_published": "2026-09-23",
+      "id": "arxiv:2609.27334",
+      "limitations": "평가는 ALFWorld, WebShop, τ2-bench의 streaming protocol과 LLM judge 기반 memory update 정책에 의존한다. 초기 test sequence에는 memory bank가 비어 있어 cold-start가 존재하고, 저자들은 warm-start 분석을 별도로 다룬다.",
+      "method": "JITMEM은 성공 trajectory를 원시 형태로 보관하고, 새 task가 들어온 read time에 관련 trace를 검색한 뒤 memory curator가 그 task에 맞는 compact payload를 합성한다. payload는 같은 task에서 바로 소비되므로 curator는 지연된 장기 보상 대신 즉시 task success로 학습된다.",
+      "practical_value": "agent memory를 설계할 때 저장 시점 요약만 고도화하기보다, 원시 경험 보존과 read-time task adaptation을 분리해야 한다. 운영 환경에서는 memory payload를 task별로 생성하고 버려 privacy, token budget, stale memory 문제를 함께 줄일 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.27334",
+        "https://arxiv.org/pdf/2609.27334"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory"
+      ],
+      "title": "Just-in-Time Memory: Learning to Curate Task-Adaptive Memory for LLM Agents",
+      "topics": [
+        "agent memory",
+        "read-time curation",
+        "trajectory retrieval",
+        "task-adaptive payload"
+      ],
+      "url": "https://arxiv.org/abs/2609.27334"
+    },
+    {
+      "abstract_summary": "이 논문은 persistent memory가 모델 가중치를 바꾸지 않고 agent prompt와 skill을 개선할 수 있지만, 한 task family에서 검증된 edit가 다른 family에 전역 적용될 때 오히려 성능을 해칠 수 있다는 문제를 다룬다. 핵심은 memory edit의 인증 범위와 retrieval 범위를 맞추는 것이다.",
+      "evidence": "full_text",
+      "findings": "제안과 gate decision을 고정한 intervention에서 originating family로 retrieval을 제한하면 hidden trajectory utility가 global memory의 0.713에서 0.816으로 올라갔고, harmful deployment는 8개 중 6개에서 0개로 줄었다. 27개 paired randomized-order stream에서도 Scoped-ORC는 Global-ORC보다 mean utility를 0.063 높이고 0/63 harmful acceptance를 기록했다.",
+      "first_published": "2026-09-24",
+      "id": "arxiv:2609.29144",
+      "limitations": "ProcStream-RSI는 procedurally generated code-repair task family를 중심으로 한 평가다. 따라서 문서 검색, 고객 지원, GUI agent처럼 family 경계가 흐린 환경에서는 scope 정의와 certification signal을 별도로 설계해야 한다.",
+      "method": "저자들은 12-round code-repair stream인 ProcStream-RSI를 만들고, execution-grounded gate인 Orthogonal Regression Control(ORC)로 persistent skill edit를 수락한다. 그런 다음 accepted skill을 전역으로 검색할 때와 originating family 안에서만 검색할 때를 비교한다.",
+      "practical_value": "장기 memory를 가진 agent는 어떤 지식을 저장할지뿐 아니라 어디서 다시 꺼낼지를 함께 통제해야 한다. skill, prompt patch, workflow memory에 provenance와 scope를 붙이면 local improvement가 다른 업무군을 망가뜨리는 사고를 줄일 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.29144",
+        "https://arxiv.org/pdf/2609.29144"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory",
+        "security"
+      ],
+      "title": "Scope Before You Persist: Preventing Cross-Family Interference in Agent Memory",
+      "topics": [
+        "scoped memory",
+        "persistent skill edits",
+        "cross-family interference",
+        "code repair stream"
+      ],
+      "url": "https://arxiv.org/abs/2609.29144"
+    },
+    {
+      "abstract_summary": "이 논문은 memory system이나 self-improvement loop를 agent 외부의 특수 하네스로 계속 늘리는 대신, harness 자체를 언어의 최소 구성요소로 표현할 수 있는지 묻는다. 저자들은 JAZ의 invoke를 통해 subagent 호출, memory, continual improvement를 같은 추상화로 다룬다.",
+      "evidence": "full_text",
+      "findings": "StuLife의 recall-heavy subset에서 JAZ invoke는 70% pass rate로 CodeAct+subagents 32%와 Letta 62%를 앞섰다. AppWorld에서는 75% pass rate로 CodeAct 68%, CodeAct+subagents 71%, ACE 70%보다 높았고, 비용도 specialized harness보다 낮거나 비슷한 수준으로 보고됐다.",
+      "first_published": "2026-09-22",
+      "id": "arxiv:2609.26891",
+      "limitations": "결과는 GPT-5.4 nano를 사용한 특정 benchmark와 prompt/harness 구성에 기반한다. 논문은 최소 언어 추상화가 충분한 표현력을 보인다는 점을 강조하지만, production runtime의 권한 모델·관측성·실패 복구까지 자동으로 해결한다는 뜻은 아니다.",
+      "method": "JAZ invoke는 LLM을 함수처럼 호출하면서 context, tools, hooks를 프로그래밍 언어 수준에서 조합한다. 실험은 long-horizon recall을 요구하는 StuLife와 continual self-improvement를 다루는 AppWorld에서 CodeAct 계열, Letta, ACE 같은 specialized harness와 비교했다.",
+      "practical_value": "agent framework를 만들 때 memory, subagent, self-improvement를 각각 별도 시스템으로 붙이기 전에 공통 호출 추상화가 가능한지 검토할 필요가 있다. 단순한 harness 언어는 실험 반복과 audit surface 축소에 유리하다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.26891",
+        "https://arxiv.org/pdf/2609.26891"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "harness",
+        "memory"
+      ],
+      "title": "Harness as a Language: A Minimalist Agent Framework With Maximal Expressivity",
+      "topics": [
+        "agent harness",
+        "JAZ invoke",
+        "long-horizon memory",
+        "self-improvement"
+      ],
+      "url": "https://arxiv.org/abs/2609.26891"
+    },
+    {
+      "abstract_summary": "이 논문은 기업 agent benchmark가 명시적으로 기록된 데이터만 찾게 하면 강한 모델들을 잘 구분하지 못한다는 문제에서 출발한다. 실제 기업 업무에서는 어느 문서에도 바로 쓰여 있지 않은 사실을 여러 시스템의 상충 신호에서 추론해야 하는 경우가 많다.",
+      "evidence": "full_text",
+      "findings": "기존 computable question에서는 강한 모델들이 27문항 중 22~25개를 맞혀 benchmark가 거의 포화됐다. hidden-knowledge 문항에서는 최고 agent도 24회 시도 중 18회만 맞혔고, 6개 모델 중 4개는 어떤 agent program과 묶어도 24회 중 6회 이하에 머물렀다. 가장 어려운 유사 record 선택 문항은 전체 84회 시도 중 1회만 정답이었다.",
+      "first_published": "2026-09-24",
+      "id": "arxiv:2609.30055",
+      "limitations": "benchmark는 생성된 회사와 simulator API에 기반한다. 현실 기업의 access control, stale data, schema drift, 사람의 보완 질의까지 포함한 것은 아니므로 absolute production readiness 지표로 해석하면 안 된다.",
+      "method": "저자들은 Era by Eon benchmark에 hidden fact에 의존하는 8개 question template를 추가했다. 각 회사 데이터는 생성되지만 정답은 language model 없이 code로 계산되며, agent는 company system API를 tool로 호출해 질문당 세 번씩 답한다.",
+      "practical_value": "enterprise agent 평가는 SQL-like lookup 성공률만으로는 부족하다. 서로 다른 시스템의 불일치와 암묵적 사실을 찾아야 하는 hidden-knowledge task를 추가해야 RAG, tool orchestration, reasoning capability를 더 정확히 분리할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.30055",
+        "https://arxiv.org/pdf/2609.30055"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "reasoning",
+        "tool-use"
+      ],
+      "title": "Era by Eon: Benchmarking Enterprise Agents on Hidden Knowledge",
+      "topics": [
+        "enterprise agents",
+        "hidden knowledge",
+        "tool-use benchmark",
+        "business data reasoning"
+      ],
+      "url": "https://arxiv.org/abs/2609.30055"
+    },
+    {
+      "abstract_summary": "이 논문은 모바일 planner agent 개발을 AI가 다시 AI 개발을 돕는 closed-loop 과정으로 다룬다. 장기 mobile task는 실제 device interaction 비용이 높고 실패 원인이 다양하므로, 데이터 생산·훈련·배포가 같은 action-feedback-verification contract를 공유해야 한다는 문제의식에서 출발한다.",
+      "evidence": "full_text",
+      "findings": "MobilePA-Bench에서 Qwen-Planner-Agent는 평가된 모델·시스템 중 overall 1위를 기록했고, GPT 6 Astra 76.84%를 앞섰다고 보고됐다. harness를 추가한 paired evaluation에서는 overall score가 72.79%에서 77.79%로, Skills는 79.25%에서 86.25%로, model-harness co-evolution에서는 82.67%에서 88.50%로 상승했다.",
+      "first_published": "2026-09-24",
+      "id": "arxiv:2609.29892",
+      "limitations": "실험은 MobilePA-Bench와 내부 mobile benchmark, MCPMark 중심이며 Alibaba MAI/Qwen stack의 data flywheel과 harness 설계에 밀접하다. human-gated data production과 real-device validation 비용이 필요하므로 작은 팀이 그대로 재현하기는 어렵다.",
+      "method": "Qwen-Planner-Agent framework는 AI for Data, AI for Training, model-harness co-evolution으로 나뉜다. 데이터 단계는 human-gated agentic flywheel로 task와 trajectory를 만들고, 훈련 단계는 supervised cold start 뒤 CARE(Competence-Aware Reward-and-Advantage Engineering)를 적용한 online agentic RL을 사용한다.",
+      "practical_value": "mobile·GUI agent를 운영하는 팀은 모델만 교체하기보다 harness, memory, skill, tool feedback을 같은 loop에서 개선해야 한다. 성공률이 포화된 task에서는 CARE처럼 reward를 효율성 중심으로 전환하는 설계도 검토할 만하다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.29892",
+        "https://arxiv.org/pdf/2609.29892"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness",
+        "tool-use"
+      ],
+      "title": "Qwen-Planner-Agent: A Closed-Loop AI-for-AI Framework for Real-World Mobile Planner Agents",
+      "topics": [
+        "mobile planner agent",
+        "AI-for-AI",
+        "model-harness co-evolution",
+        "reinforcement learning"
+      ],
+      "url": "https://arxiv.org/abs/2609.29892"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "생성된 CLI가 실제 업무 시스템을 조작할 때는 권한 범위, preview mode, rollback, test fixture를 별도로 강제해야 한다.",
+      "novelty": "new_entry",
+      "rank": 9,
+      "repository": "HKUDS/CLI-Anything",
+      "sources": [
+        "https://github.com/HKUDS/CLI-Anything",
+        "https://raw.githubusercontent.com/HKUDS/CLI-Anything/HEAD/README.md"
+      ],
+      "summary": "Agent-native CLI 생성·허브 · 18개 앱 demo · 2,461 passing tests",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "harness",
+        "open-source",
+        "tool-use"
+      ],
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "use_case": "GUI·도메인 소프트웨어를 agent가 실행할 수 있는 CLI contract로 감싸고, CLI-Hub를 통해 설치·공유하려는 팀의 harness 설계 참고점이 된다.",
+      "why_now": "weekly Trending 9위 · 1055 stars this week · 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 Just-in-Time Memory입니다. 이 논문은 agent memory의 핵심 병목을 저장 시점의 고정 요약으로 보고, 원시 trajectory를 남긴 뒤 현재 task가 주어졌을 때 필요한 payload를 합성하는 read-time curation으로 문제를 다시 정의합니다.",
+    "ALFWorld, WebShop, τ2-bench에서 JITMEM은 가장 강한 write-time memory baseline보다 각각 16.2, 16.3, 3.9%p 높은 success rate를 보고했습니다. 이 결과는 어떤 내용을 기억할지보다 언제 기억을 task에 맞춰 재구성할지가 agent 성능에 직접 영향을 준다는 근거를 제공합니다.",
+    "같은 흐름에서 Scoped-ORC는 memory retrieval 범위를 certification 범위와 맞춰 harmful deployment를 줄였고, JAZ는 harness 자체를 언어 구성요소로 단순화했습니다. GitHub Trending에서는 CLI-Anything이 agent-native CLI 생태계 확장을 보여줬고, CNCF 쪽은 Prometheus 3.15.0과 containerd 보안 패치가 운영 영향이 큽니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "CLI-Anything은 GUI·도메인 소프트웨어를 agent-native CLI contract로 감싸려는 공개 프로젝트입니다.",
+        "url": "https://github.com/HKUDS/CLI-Anything"
+      },
+      {
+        "section": "papers",
+        "text": "Scoped-ORC는 persistent memory retrieval 범위를 인증 범위와 맞춰 harmful deployment를 줄입니다.",
+        "url": "https://arxiv.org/abs/2609.29144"
+      },
+      {
+        "section": "cncf",
+        "text": "Prometheus 3.15.0은 PromQL sample 평가 수정, runtime log level reload, UDS scrape 등을 포함합니다.",
+        "url": "https://github.com/prometheus/prometheus/releases/tag/v3.15.0"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 Just-in-Time Memory입니다. 논문은 agent memory를 저장 시점의 고정 요약이 아니라 현재 task가 주어진 read time의 curation 문제로 바꿔 봅니다.",
+      "ALFWorld, WebShop, τ2-bench에서 JITMEM은 가장 강한 write-time memory baseline보다 각각 16.2, 16.3, 3.9%p 높은 success rate를 보고했습니다."
+    ]
+  }
+}
