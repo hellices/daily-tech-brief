@@ -1,0 +1,523 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "Collector 운영자는 queuebatch processor 설정명을 점검하고, keepalive feature gate와 exporter queue partition cache metric을 rollout 전에 확인해야 한다. 로그 batch splitting bug fix처럼 장애 시 데이터 손실 범위에 영향을 줄 수 있는 수정도 포함된다.",
+      "published": "2026-09-28",
+      "sources": [
+        "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.162.0"
+      ],
+      "summary": "OpenTelemetry Collector 0.162.0은 queuebatch processor 이름을 queue_batch로 바꾸는 breaking change와 mdatagen processor lifecycle test 변경을 포함한다. memory_limiter extension의 refused request metric, HTTP keepalive 기본 활성화, exporterhelper partition idle timeout/cache size 설정도 추가됐다.",
+      "tags": [
+        "observability",
+        "performance",
+        "release"
+      ],
+      "title": "OpenTelemetry Collector v0.162.0",
+      "url": "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.162.0"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 확인한 주요 CNCF/클라우드 네이티브 프로젝트 중 신규 major/patch 릴리스는 OpenTelemetry Collector 0.162.0만 확인됐습니다.",
+      "sources": [
+        "https://github.com/open-telemetry/opentelemetry-collector/releases",
+        "https://github.com/kubernetes/kubernetes/releases",
+        "https://github.com/prometheus/prometheus/releases",
+        "https://github.com/containerd/containerd/releases"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, 모델, 데이터 시스템, 개발자 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 Top10 항목 중 범용 개발 플랫폼과 ML 프레임워크 항목을 상세 후보로 남겼습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 agent inference, shared memory, memory compression, harness optimization, coding-agent cost 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22evaluation%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22coding%20agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.SE)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-09-29",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/firelex/jeff"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "open-source",
+        "performance"
+      ],
+      "title": "Jeff - Jev-compatible 0.8B decision models, trained at home, around 30 ms",
+      "url": "https://github.com/firelex/jeff"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://blog.greenpants.net/ai-accountability/"
+      ],
+      "tags": [
+        "agent",
+        "governance",
+        "security"
+      ],
+      "title": "Who should be held accountable when an AI Agent accidentally acts maliciously?",
+      "url": "https://blog.greenpants.net/ai-accountability/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://stateofutopia.com/experiments/microllmlab/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "open-source"
+      ],
+      "title": "MicroLLM Lab - Try 7 tiny LLMs in the browser",
+      "url": "https://stateofutopia.com/experiments/microllmlab/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://www.worldlabs.ai/blog/amd-announcement"
+      ],
+      "tags": [
+        "multimodal",
+        "performance"
+      ],
+      "title": "World Labs Is Joining AMD",
+      "url": "https://www.worldlabs.ai/blog/amd-announcement"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://www.anthropic.com/claude-sonnet-5-5"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "llm"
+      ],
+      "title": "Sonnet 5.5",
+      "url": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://blog.cloudflare.com/cloudflare-cf-cli-launch/"
+      ],
+      "tags": [
+        "agent",
+        "cloud-native",
+        "developer-tools",
+        "tool-use"
+      ],
+      "title": "Cf: The Agentic CLI for the Cloudflare API",
+      "url": "https://blog.cloudflare.com/cloudflare-cf-cli-launch/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34456"
+      ],
+      "tags": [
+        "performance",
+        "storage"
+      ],
+      "title": "DuckDB 2.0이 더 빠른 이유",
+      "url": "https://news.hada.io/topic?id=34456"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34454"
+      ],
+      "tags": [
+        "cloud-native",
+        "distributed-systems",
+        "storage"
+      ],
+      "title": "Diskless Kafka: 브로커가 데이터를 소유하지 않으면 무엇이 달라질까",
+      "url": "https://news.hada.io/topic?id=34454"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wsbqni/qwen3vl_8b_on_a_laptop_vs_opus_55_sonnet_5_gpt56/"
+      ],
+      "tags": [
+        "evaluation",
+        "multimodal",
+        "performance"
+      ],
+      "title": "Qwen3-VL 8B on a laptop vs Opus 5.5 / Sonnet 5 / GPT-5.6 on 137 messy documents",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wsbqni/qwen3vl_8b_on_a_laptop_vs_opus_55_sonnet_5_gpt56/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wsaolh/fast_primality_testing_for_32bit_integers_via/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "Fast Primality Testing for 32-bit integers via Forisek and Jancina",
+      "url": "https://www.reddit.com/r/programming/comments/1wsaolh/fast_primality_testing_for_32bit_integers_via/"
+    }
+  ],
+  "generated_at": "2026-09-29T08:24:00+09:00",
+  "github_featured": [
+    "vercel/next.js",
+    "pytorch/pytorch"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-09-28T08:04:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 2633
+      },
+      {
+        "rank": 2,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 5376
+      },
+      {
+        "rank": 3,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 7282
+      },
+      {
+        "rank": 4,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 6474
+      },
+      {
+        "rank": 5,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 3015
+      },
+      {
+        "rank": 6,
+        "repository": "davila7/claude-code-templates",
+        "weekly_stars": 1142
+      },
+      {
+        "rank": 7,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6503
+      },
+      {
+        "rank": 8,
+        "repository": "vercel/next.js",
+        "weekly_stars": 280
+      },
+      {
+        "rank": 9,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 1055
+      },
+      {
+        "rank": 10,
+        "repository": "pytorch/pytorch",
+        "weekly_stars": 295
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-09-29T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 2606
+      },
+      {
+        "rank": 2,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 7364
+      },
+      {
+        "rank": 3,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 11089
+      },
+      {
+        "rank": 4,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 4805
+      },
+      {
+        "rank": 5,
+        "repository": "davila7/claude-code-templates",
+        "weekly_stars": 1154
+      },
+      {
+        "rank": 6,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 2705
+      },
+      {
+        "rank": 7,
+        "repository": "vercel/next.js",
+        "weekly_stars": 496
+      },
+      {
+        "rank": 8,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6227
+      },
+      {
+        "rank": 9,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 1105
+      },
+      {
+        "rank": 10,
+        "repository": "pytorch/pytorch",
+        "weekly_stars": 320
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "ActKV: Action-Guided KV Cache Management for Agentic Inference",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2609.31395"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 agentic LLM serving에서 반복적인 observation-reasoning-action loop가 KV cache를 계속 키우고, 기존 compression이 전체 출력 품질을 기준으로 삼아 실제 task progress를 만드는 action token의 중요도를 놓친다는 문제에서 출발한다. 저자들은 agent workload에서 observation과 reasoning token은 내부 사고를 돕지만 환경을 바꾸는 것은 action이라는 비대칭성에 주목한다.",
+      "evidence": "full_text",
+      "findings": "long-trace task에서 ActKV는 FullKV 정확도의 평균 98.53%를 유지하면서 peak KV cache memory는 25.98%만 사용했다. 같은 설정에서 token throughput은 FullKV 대비 3.97배, task throughput은 3.58배로 보고됐고, 기존 compression은 비슷한 memory budget에서 최대 74.22% accuracy에 그쳤다.",
+      "first_published": "2026-09-25",
+      "id": "arxiv:2609.31395",
+      "limitations": "평가는 agentic long-trace workload와 특정 serving implementation에 의존한다. action token의 중요도가 명확한 tool-use agent에는 직접적이지만, 자유형 대화나 action boundary가 흐린 workflow에서는 action-critical entry를 정의하는 방식이 달라질 수 있다.",
+      "method": "ActKV는 action generation에 기여하는 KV entry를 보존하는 action-oriented eviction, 모델의 confidence로 cache budget을 조정하는 adaptive allocation, paged memory와 맞는 compression primitive 및 kernel을 결합한다. 목표는 text 품질 일반 지표가 아니라 긴 interaction trace에서 다음 action 품질과 throughput을 함께 유지하는 것이다.",
+      "practical_value": "agent serving 비용을 줄일 때 context를 단순히 최근성이나 attention 점수로 잘라내면 action 품질이 먼저 손상될 수 있다. tool-use agent를 대규모로 운영하는 팀은 action-aware cache policy와 dynamic budget allocation을 별도 serving primitive로 검토할 필요가 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.31395",
+        "https://arxiv.org/pdf/2609.31395"
+      ],
+      "tags": [
+        "agent",
+        "inference",
+        "performance",
+        "tool-use"
+      ],
+      "title": "ActKV: Efficient LLM Agents through Action-Guided KV Cache Management",
+      "topics": [
+        "agentic inference",
+        "KV cache compression",
+        "action-guided eviction",
+        "serving throughput"
+      ],
+      "url": "https://arxiv.org/abs/2609.31395"
+    },
+    {
+      "abstract_summary": "이 논문은 여러 agent가 공유 memory에 claim을 쓰고 읽을 때, 같은 근거가 복사 또는 의역되어 독립 증거처럼 보이는 문제를 다룬다. false claim이 한 번 admission되면 이후 agent가 그것을 검색하고 다시 주장하면서 shared store 전체를 오염시킬 수 있다.",
+      "evidence": "full_text",
+      "findings": "8개 admission policy와 4개 agent family 평가에서 source type을 gate로 쓰면 false adoption이 0.06~0.09로 낮아졌지만, 다른 answering policy는 0.22~0.47을 보였다. uncontested false belief가 memory에 들어가면 consumer는 모든 family에서 probe의 0.97~0.99 비율로 그 false belief를 단정했다.",
+      "first_published": "2026-09-25",
+      "id": "arxiv:2609.30813",
+      "limitations": "비 oracle policy는 verbatim copy, paraphrase, authoritative로 선언된 paraphrase를 일관되게 걸러내지 못했다. 이 결과는 source lineage 접근이 없는 admission policy의 한계를 보인 것이며, 실제 조직의 human review나 external provenance system을 모두 포함하지는 않는다.",
+      "method": "저자들은 Correlated Promotion Benchmark(CPB)를 제안한다. CPB-Static은 공개 annotation source로 frozen split을 만들고, CPB-Live는 multi-agent team이 shared store에 남긴 write와 retrieval을 기록한 뒤 source lineage를 추적하며, 별도 consumer가 store만 보고 답하도록 한다.",
+      "practical_value": "shared memory를 쓰는 multi-agent system은 majority vote나 confidence만으로 claim을 승격해서는 안 된다. write path에 source lineage, declared source type, correlated evidence collapse, review queue를 넣어 memory poisoning을 줄여야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.30813",
+        "https://arxiv.org/pdf/2609.30813"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory",
+        "multi-agent",
+        "security"
+      ],
+      "title": "A Benchmark and Diagnostic Study of Epistemic Admission in Shared Agent Memory",
+      "topics": [
+        "shared agent memory",
+        "claim admission",
+        "source lineage",
+        "multi-agent teams"
+      ],
+      "url": "https://arxiv.org/abs/2609.30813"
+    },
+    {
+      "abstract_summary": "이 논문은 text memory와 context compression이 과거 interaction 재사용을 돕지만, continuous memory의 크기를 바꾸면 frozen LLM의 입력 자체가 달라져 capacity allocation과 readout이 얽힌다는 문제를 다룬다. HasMem은 원래 token embedding을 검증 가능한 hard origin으로 두고, 필요할 때만 폭을 조정하는 방식으로 접근한다.",
+      "evidence": "full_text",
+      "findings": "MSC development split에서 만든 535개 reconstruction probe에서 main configuration은 hard reference framed memory position의 93.6%만 쓰면서 lexical F1 95.3, 즉 +4.4%p를 달성했다. LongMemEval-S 500문항에서는 local lexical F1이 hard reference 3.4에서 8.9로 올랐고, answer NLL은 12.257에서 5.274로 낮아졌다.",
+      "first_published": "2026-09-25",
+      "id": "arxiv:2609.30797",
+      "limitations": "F1과 NLL 개선이 항상 exact match 개선으로 이어지지는 않았다. 논문도 LongMemEval-S에서 F1 gain과 함께 EM 하락이 나타난다고 보고하므로, compressed continuous memory의 유용성은 retrieval 목적과 scoring metric에 따라 다르게 해석해야 한다.",
+      "method": "HasMem은 frozen hard-prompt embedding으로 memory entry의 초기 상태를 만들고, controller가 entry width를 조정하면 Writer가 resized entry를 다시 encode한다. Reader와 Global module은 readout adaptation과 cross-turn state를 담당하며, Qwen2.5-7B 기반 reconstruction 및 LongMemEval-S 질문으로 평가된다.",
+      "practical_value": "장기 memory를 token text로만 저장하거나 무조건 요약하는 대신, 원래 token embedding을 보존하면서 entry width를 조정하는 선택지가 있다. 다만 production agent에서는 interpretability, persistence format, model upgrade 간 호환성을 별도로 설계해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.30797",
+        "https://arxiv.org/pdf/2609.30797"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "performance"
+      ],
+      "title": "HasMem: Hard-Origin Adaptively Softened Memory for Long-Term LLM Agents",
+      "topics": [
+        "continuous memory",
+        "context compression",
+        "long-term agents",
+        "memory resizing"
+      ],
+      "url": "https://arxiv.org/abs/2609.30797"
+    },
+    {
+      "abstract_summary": "이 논문은 LLM 개선을 accuracy 하나로만 보지 않고, prompt를 만들고 call을 route하고 output을 parse하는 Python harness 자체를 accuracy, behavioral safety, token cost의 다목적 설계 대상으로 본다. 정확하지만 unsafe하거나 token을 과도하게 쓰는 harness는 좋은 harness가 아니라는 문제의식이다.",
+      "evidence": "full_text",
+      "findings": "17개 domain 평가에서 MoMHa는 synthetic track joint mean 0.482를 기록해 10개 baseline의 0.198~0.422를 앞섰고, real-world track에서도 0.461로 가장 강한 baseline인 DSPy 0.377을 넘었다. U-SafeBench composite은 0.781로 가장 높았고, two-phase 대안보다 example당 token을 95개 덜 사용했다.",
+      "first_published": "2026-09-25",
+      "id": "arxiv:2609.30967",
+      "limitations": "평가는 agentic proposer가 harness code를 직접 고치는 설정이며, filesystem access와 scoring artifact 품질에 영향을 받는다. 또한 joint reward의 weight 선택이 도메인별로 달라질 수 있어 단일 수치가 모든 조직의 risk appetite을 대표하지 않는다.",
+      "method": "META-HARNESS는 Claude Code를 agentic proposer로 사용해 기존 harness source, execution trace, scoring artifact를 읽고 per-domain harness를 수정한다. 핵심 variant인 MoMHa는 accuracy를 먼저 올리고 나중에 token을 줄이는 two-phase 방식이 아니라, joint reward로 세 objective를 한 단계에서 함께 최적화한다.",
+      "practical_value": "LLM application을 운영할 때 prompt accuracy만 추적하면 safety와 cost regression을 놓친다. harness CI에 accuracy, refusal/safety behavior, token budget을 동시에 넣고 Pareto frontier를 관리하는 방식이 더 현실적이다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.30967",
+        "https://arxiv.org/pdf/2609.30967"
+      ],
+      "tags": [
+        "evaluation",
+        "harness",
+        "performance",
+        "security"
+      ],
+      "title": "MoMHa: Multi-Objective Optimization of LLM Harnesses over Accuracy, Safety, and Tokens",
+      "topics": [
+        "harness optimization",
+        "multi-objective search",
+        "safety",
+        "token cost"
+      ],
+      "url": "https://arxiv.org/abs/2609.30967"
+    },
+    {
+      "abstract_summary": "이 논문은 coding agent가 문제를 풀더라도 반복 검색, 유사 script 생성, 수정 없는 test 재실행처럼 비용을 낭비하는 행동을 누적한다는 점을 분석한다. 기존 연구가 성공률과 비용 절감 기법을 보더라도, 실행 중 반복적으로 나타나는 행동 패턴 자체는 충분히 분해하지 않았다는 문제의식이다.",
+      "evidence": "full_text",
+      "findings": "subsumed retrieval, similar script generation, test re-execution 세 행동은 task의 79.00~98.00%에 나타났고 전체 비용의 6.86~22.75%를 차지했다. structure-aware retrieval은 구성에 따라 비용을 최대 28.14% 늘릴 수 있었고, high-level agent skill은 성공률과 trajectory length를 유지하면서 비용을 최대 41.73% 줄였다고 보고됐다.",
+      "first_published": "2026-09-25",
+      "id": "arxiv:2609.30725",
+      "limitations": "결과는 SWE-bench Verified와 두 coding-agent 계열의 trajectory에 기반한다. 다른 IDE agent, repository 규모, tool pricing, cache pricing에서는 세 행동의 비용 비중이 달라질 수 있으며, skill intervention도 task distribution에 맞춰 조정해야 한다.",
+      "method": "저자들은 Claude Code와 Mini-SWE-Agent의 SWE-bench Verified trajectory 1,200개를 네 가지 구성에서 분석했다. 각 flagged action의 input, output, cache token을 가격으로 환산해 비용을 계산하고, structure-aware retrieval과 trace-agnostic skill intervention이 비용 행동을 어떻게 바꾸는지 비교했다.",
+      "practical_value": "coding agent 비용 최적화는 모델을 더 싼 것으로 바꾸는 문제만이 아니다. 중복 retrieval, 유사 script, patch 없는 재테스트를 telemetry로 감지하고, cost-aware skill이나 execution policy로 루프를 끊어야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.30725",
+        "https://arxiv.org/pdf/2609.30725"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "evaluation",
+        "performance"
+      ],
+      "title": "Analyzing and Mitigating Cost-Inefficient Behaviors in Coding Agents",
+      "topics": [
+        "coding agents",
+        "token cost",
+        "retrieval inefficiency",
+        "agent skills"
+      ],
+      "url": "https://arxiv.org/abs/2609.30725"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "major framework라 생태계 영향은 크지만 오늘의 급상승 이유가 특정 릴리스나 보안 이슈로 확인된 것은 아니므로 변화 해석은 repository trend 관측으로 제한해야 한다.",
+      "novelty": "first_introduction",
+      "rank": 7,
+      "repository": "vercel/next.js",
+      "sources": [
+        "https://github.com/vercel/next.js"
+      ],
+      "summary": "React framework, App Router, server rendering, full-stack web platform",
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "performance"
+      ],
+      "url": "https://github.com/vercel/next.js",
+      "use_case": "React 기반 웹 제품에서 routing, rendering, server functions, deployment convention을 하나의 framework contract로 묶어야 할 때 기준점으로 볼 수 있다.",
+      "why_now": "weekly Trending 7위, 496 stars this week, Top10에는 전일도 있었지만 아직 미소개"
+    },
+    {
+      "caution": "Top10 진입 자체가 특정 API 변경을 의미하지는 않는다. 운영자는 릴리스 노트와 CUDA/ROCm/Intel GPU build matrix를 별도로 확인해야 한다.",
+      "novelty": "first_introduction",
+      "rank": 10,
+      "repository": "pytorch/pytorch",
+      "sources": [
+        "https://github.com/pytorch/pytorch",
+        "https://raw.githubusercontent.com/pytorch/pytorch/main/README.md"
+      ],
+      "summary": "GPU-accelerated tensor library, dynamic neural networks, Python-first ML stack",
+      "tags": [
+        "developer-tools",
+        "fine-tuning",
+        "llm",
+        "open-source",
+        "performance"
+      ],
+      "url": "https://github.com/pytorch/pytorch",
+      "use_case": "모델 학습과 추론 실험, custom kernel, 연구 코드 재현에서 사실상 표준에 가까운 tensor/autograd 기반을 제공한다.",
+      "why_now": "weekly Trending 10위, 320 stars this week, Top10에는 전일도 있었지만 아직 미소개"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 ActKV입니다. agentic LLM은 observation, reasoning, action을 여러 차례 반복하면서 KV cache가 길어지는데, ActKV는 모든 token을 같은 중요도로 압축하지 않고 다음 행동을 결정하는 데 필요한 entry를 우선 보존합니다.",
+    "논문은 long-trace task에서 ActKV가 FullKV 정확도의 평균 98.53%를 유지하면서 peak KV cache memory를 25.98%만 사용했고, token throughput과 task throughput은 각각 3.97배, 3.58배 높였다고 보고했습니다. 이는 agent serving 비용을 줄일 때 단순 context pruning보다 action 품질을 직접 기준으로 삼아야 한다는 신호입니다.",
+    "같은 호의 논문들은 shared memory admission, continuous memory resizing, harness multi-objective search, coding-agent 비용 낭비처럼 agent 운영의 주변 시스템을 정면으로 다룹니다. GitHub Top10은 대부분 최근 소개된 agent tooling이 유지됐고, CNCF 범위에서는 OpenTelemetry Collector 0.162.0의 breaking change와 exporter queue 개선이 운영 영향이 큽니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "papers",
+        "text": "CPB는 shared agent memory에서 false claim이 들어가면 consumer가 0.97~0.99 비율로 단정한다고 보고합니다.",
+        "url": "https://arxiv.org/abs/2609.30813"
+      },
+      {
+        "section": "papers",
+        "text": "coding-agent 비용 낭비 세 패턴은 SWE-bench Verified task의 79~98%에서 나타났습니다.",
+        "url": "https://arxiv.org/abs/2609.30725"
+      },
+      {
+        "section": "cncf",
+        "text": "OpenTelemetry Collector 0.162.0은 queue_batch rename 등 breaking change와 exporter queue 개선을 포함합니다.",
+        "url": "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.162.0"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 ActKV입니다. agentic LLM serving에서 action generation에 중요한 KV entry를 우선 보존해 cache memory와 throughput 문제를 함께 다룹니다.",
+      "long-trace task에서 FullKV 정확도의 평균 98.53%를 유지하면서 peak KV cache memory는 25.98%만 사용했고, task throughput은 3.58배로 보고됐습니다."
+    ]
+  }
+}
