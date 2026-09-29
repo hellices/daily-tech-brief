@@ -1,0 +1,571 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "alpha release는 production upgrade 대상이 아니지만, 다음 minor cycle의 API와 feature gate 변화를 조기에 확인해야 하는 플랫폼 팀은 changelog 기반 사전 검토가 필요하다.",
+      "published": "2026-09-29",
+      "sources": [
+        "https://github.com/kubernetes/kubernetes/releases/tag/v1.38.0-alpha.1",
+        "https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.38.md"
+      ],
+      "summary": "Kubernetes 1.38.0-alpha.1이 공개됐고 상세 변경은 1.38 changelog와 kubernetes-announce를 통해 제공된다.",
+      "tags": [
+        "kubernetes",
+        "release"
+      ],
+      "title": "Kubernetes v1.38.0-alpha.1",
+      "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.38.0-alpha.1"
+    },
+    {
+      "category": "release",
+      "impact": "Rook/Ceph 운영자는 OSD upgrade reconcile, object store logging, finalizer patching, deleted node cleanup 변경이 cluster reconcile과 보안 로그 노출에 주는 영향을 검증해야 한다.",
+      "published": "2026-09-29",
+      "sources": [
+        "https://github.com/rook/rook/releases/tag/v1.20.8"
+      ],
+      "summary": "Rook 1.20.8은 Ceph operator 중심의 patch release로, OSD prepare pod host network, HTTPRoute backend default parameter, context-aware retry, lockbox secret redaction, credential log redaction 등을 포함한다.",
+      "tags": [
+        "kubernetes",
+        "release",
+        "security",
+        "storage"
+      ],
+      "title": "Rook v1.20.8",
+      "url": "https://github.com/rook/rook/releases/tag/v1.20.8"
+    },
+    {
+      "category": "release",
+      "impact": "v1.21.0을 도입한 정책 엔진은 Rego comprehension을 사용하는 policy bundle을 재검증하고, compiler panic 회피를 위해 patch 적용을 우선 검토해야 한다.",
+      "published": "2026-09-29",
+      "sources": [
+        "https://github.com/open-policy-agent/opa/releases/tag/v1.21.1"
+      ],
+      "summary": "OPA 1.21.1은 v1.21.0에서 도입된 compiler regression을 수정한다. object/set literal 안의 comprehension에서 some in 또는 every를 사용할 때 unsafe var error나 compiler panic이 발생하던 문제를 고쳤다.",
+      "tags": [
+        "cloud-native",
+        "release",
+        "security"
+      ],
+      "title": "Open Policy Agent v1.21.1",
+      "url": "https://github.com/open-policy-agent/opa/releases/tag/v1.21.1"
+    },
+    {
+      "category": "release",
+      "impact": "TechDocs와 Markdown extension 설정을 쓰는 developer portal은 문서 빌드 실패나 line별 설정 해석 차이를 줄이기 위해 patch 적용 여부를 확인해야 한다.",
+      "published": "2026-09-29",
+      "sources": [
+        "https://github.com/backstage/backstage/releases/tag/v1.55.3"
+      ],
+      "summary": "Backstage 1.55.3은 documented MkDocs Markdown extension configuration에서 TechDocs generation 문제를 수정한 patch release다.",
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": "Backstage v1.55.3",
+      "url": "https://github.com/backstage/backstage/releases/tag/v1.55.3"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 CNCF 및 클라우드 네이티브 주요 프로젝트 릴리스를 확인했고, alpha/patch라도 운영자가 확인할 변경이 있는 항목을 정리했습니다.",
+      "sources": [
+        "https://github.com/kubernetes/kubernetes/releases",
+        "https://github.com/rook/rook/releases",
+        "https://github.com/open-policy-agent/opa/releases",
+        "https://github.com/backstage/backstage/releases",
+        "https://github.com/open-telemetry/opentelemetry-collector/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, 모델 릴리스, 보안, 개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 신규 Top10 항목 2개를 상세 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 agentic RL compaction, self-evolving agent safety, community security, token forecasting, continuous context management 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22evaluation%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22inference%22%20AND%20all:%22agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL%20OR%20cat:cs.OS)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-09-30",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://openai.com/index/introducing-gpt-6-1-sol/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price",
+      "url": "https://openai.com/index/introducing-gpt-6-1-sol/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://openai.com/index/introducing-dots/"
+      ],
+      "tags": [
+        "agent",
+        "tool-use"
+      ],
+      "title": "Dots: Always-on agents",
+      "url": "https://openai.com/index/introducing-dots/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://jorgegarciaherrero.com/wp-content/interactivos/20260916-Prompt-like-a-butterfly-sting-like-a-tracker-(clean).pdf"
+      ],
+      "tags": [
+        "agent",
+        "security"
+      ],
+      "title": "A Privacy Analysis of Web and Mobile Conversational AI Agents",
+      "url": "https://jorgegarciaherrero.com/wp-content/interactivos/20260916-Prompt-like-a-butterfly-sting-like-a-tracker-(clean).pdf"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/lostmsu/TurboGPT"
+      ],
+      "tags": [
+        "developer-tools",
+        "llm",
+        "open-source",
+        "performance"
+      ],
+      "title": "Show HN: TurboGPT: train 22KiB transformer in 13s",
+      "url": "https://github.com/lostmsu/TurboGPT"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34505"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "llm"
+      ],
+      "title": "OpenAI DevDay 2026 주요 발표 총정리",
+      "url": "https://news.hada.io/topic?id=34505"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34498"
+      ],
+      "tags": [
+        "mcp",
+        "multimodal",
+        "retrieval"
+      ],
+      "title": "Blyck Video Understanding - Claude와 Codex가 영상을 시각 근거와 함께 분석·검색하게 해주는 MCP",
+      "url": "https://news.hada.io/topic?id=34498"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wt8odk/nine_npm_packages_shipping_worm_that_spread_by/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "nine npm packages shipping worm that spread by itself over SSH",
+      "url": "https://www.reddit.com/r/programming/comments/1wt8odk/nine_npm_packages_shipping_worm_that_spread_by/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wtnwfs/zerogrowth_stack_real_gains_how_stack_allocation/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "Zero-Growth Stack, Real Gains: How Stack Allocation Can Save 10% CPU in Go",
+      "url": "https://www.reddit.com/r/programming/comments/1wtnwfs/zerogrowth_stack_real_gains_how_stack_allocation/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wt6ns4/i_wrote_a_free_opensource_book_on_making_ml/"
+      ],
+      "tags": [
+        "developer-tools",
+        "llm",
+        "performance"
+      ],
+      "title": "I wrote a free, open-source book on making ML models actually fast, from silicon to agents",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wt6ns4/i_wrote_a_free_opensource_book_on_making_ml/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wt1gbk/cowindow_and_massalloc_attention_collective/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "CoWindow and MassAlloc Attention: collective causal coverage and distribution-adaptive compute",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wt1gbk/cowindow_and_massalloc_attention_collective/"
+    }
+  ],
+  "generated_at": "2026-09-30T08:25:00+09:00",
+  "github_featured": [
+    "debpalash/VoiceStudio",
+    "rohitg00/ai-engineering-from-scratch"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-09-29T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 2606
+      },
+      {
+        "rank": 2,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 7364
+      },
+      {
+        "rank": 3,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 11089
+      },
+      {
+        "rank": 4,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 4805
+      },
+      {
+        "rank": 5,
+        "repository": "davila7/claude-code-templates",
+        "weekly_stars": 1154
+      },
+      {
+        "rank": 6,
+        "repository": "Tencent/WeKnora",
+        "weekly_stars": 2705
+      },
+      {
+        "rank": 7,
+        "repository": "vercel/next.js",
+        "weekly_stars": 496
+      },
+      {
+        "rank": 8,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6227
+      },
+      {
+        "rank": 9,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 1105
+      },
+      {
+        "rank": 10,
+        "repository": "pytorch/pytorch",
+        "weekly_stars": 320
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-09-30T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 10518
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 2381
+      },
+      {
+        "rank": 3,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 15537
+      },
+      {
+        "rank": 4,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 7972
+      },
+      {
+        "rank": 5,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 5004
+      },
+      {
+        "rank": 6,
+        "repository": "vercel/next.js",
+        "weekly_stars": 544
+      },
+      {
+        "rank": 7,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 1227
+      },
+      {
+        "rank": 8,
+        "repository": "davila7/claude-code-templates",
+        "weekly_stars": 1200
+      },
+      {
+        "rank": 9,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6151
+      },
+      {
+        "rank": 10,
+        "repository": "pytorch/pytorch",
+        "weekly_stars": 340
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "KV-streams: Recurrent KV Cache for Efficient Agentic RL Compaction",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2609.35750"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 agentic LLM의 horizon을 늘릴 때 GPU memory 안에 길어진 trace를 계속 담아야 하는 문제가 병목이 된다고 설명한다. 기존 context compaction은 memory를 일정하게 유지하지만, retained context를 반복 prefill하기 때문에 RL post-training throughput을 크게 떨어뜨린다.",
+      "evidence": "full_text",
+      "findings": "TextWorld, ALFWorld, SWE-bench Verified에서 세 가지 compaction 전략에 KV-streams를 적용했을 때 training wall-clock speedup은 2.6~5배로 보고됐다. 저자들은 성능 저하 증거를 보지 못했고, streamed KV cache가 recurrent state처럼 context 밖으로 사라진 정보도 일부 운반할 수 있음을 controlled setting에서 보였다.",
+      "first_published": "2026-09-28",
+      "id": "arxiv:2609.35750",
+      "limitations": "평가는 agentic RL post-training과 특정 compaction strategy 조합에 초점을 둔다. KV cache를 장기 state처럼 쓰는 방식은 해석 가능성과 오류 축적 문제가 남아 있으며, 모든 serving stack이 같은 cache streaming primitive를 제공하는 것도 아니다.",
+      "method": "KV-streams는 compaction 후 남긴 token의 KV cache를 버리지 않고 다음 구간으로 stream한다. inference engine에서는 retained KV를 이어 쓰고, trainer에서는 custom attention mask로 같은 eviction pattern을 재현해 retained token을 다시 처리하지 않는다.",
+      "practical_value": "긴 agent rollout을 학습시키는 팀은 context summary 품질만 보지 말고 repeated prefill cost를 측정해야 한다. KV-streaming 방식은 compaction을 성능 최적화가 아니라 training system primitive로 끌어올릴 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.35750",
+        "https://arxiv.org/pdf/2609.35750"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "inference",
+        "memory",
+        "performance"
+      ],
+      "title": "KV-streams for Efficient Compaction in Agentic Reinforcement Learning",
+      "topics": [
+        "agentic reinforcement learning",
+        "context compaction",
+        "KV cache streaming",
+        "long-horizon agents"
+      ],
+      "url": "https://arxiv.org/abs/2609.35750"
+    },
+    {
+      "abstract_summary": "이 논문은 self-evolving agent가 controller file, memory protocol, reusable skill을 스스로 바꾸면서 배포 후 성능을 높일 수 있지만, 같은 지속 상태가 downstream safety failure를 남길 수 있다는 문제를 다룬다. 위험은 외부 공격만이 아니라 agent가 성공 경험을 일반화하는 과정 내부에서도 생긴다.",
+      "evidence": "full_text",
+      "findings": "평가에서 self-evolving agent는 대부분 surface와 model에서 task completion rate를 높였지만, paired non-evolving baseline에는 없는 safety failure를 만들었다. 전체 safety test의 43.9%에서 evolved agent failure가 관찰됐고, paired baseline은 0/720 failure로 보고됐다.",
+      "first_published": "2026-09-28",
+      "id": "arxiv:2609.35596",
+      "limitations": "저자들은 stress-testing pipeline이 흥미로운 failure를 찾도록 설계됐으며, 모든 실제 self-evolving deployment의 평균 사고율을 의미하지는 않는다고 설명한다. judge 기반 attribution도 human annotation 검증이 있지만 완전한 causal proof는 아니다.",
+      "method": "SEABench는 controller, memory, tool/skill evolution surface를 분리하고, evolving agent와 paired non-evolving baseline을 비교한다. downstream safety test에서 실패가 나타나면 attribution judge로 그 실패가 upstream self-evolution update에 기인했는지 평가한다.",
+      "practical_value": "self-improving agent를 배포하려면 성능 향상 update와 safety regression을 같은 loop에서 추적해야 한다. memory, controller, skill update마다 provenance, rollback, downstream safety suite를 붙이지 않으면 유용한 적응이 장기 오작동으로 바뀔 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.35596",
+        "https://arxiv.org/pdf/2609.35596"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory",
+        "security"
+      ],
+      "title": "SEABench: Benchmarking Endogenous Misalignment In Self-Evolving Agents",
+      "topics": [
+        "self-evolving agents",
+        "endogenous misalignment",
+        "memory poisoning",
+        "safety benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2609.35596"
+    },
+    {
+      "abstract_summary": "이 논문은 LLM agent가 여러 사용자, community, memory, file, tool이 섞인 지속 환경에서 일할 때 권한 경계가 고정되어 있지 않다는 문제를 다룬다. 기존 agent security 평가는 prompt injection이나 단일 사용자 secret leakage를 보지만, community membership과 role 변화가 privacy boundary를 바꾸는 상황은 충분히 보지 못했다.",
+      "evidence": "full_text",
+      "findings": "여러 harness와 model 구성에서 agent는 benign task를 자주 완료했지만 privacy와 authorization boundary를 자주 위반했다. 논문은 static 성능이나 backbone capability만으로 dynamic boundary behavior를 예측할 수 없고, memory, file, tool, composed workflow가 보호 정보를 authorized scope 밖으로 운반할 수 있음을 보였다.",
+      "first_published": "2026-09-28",
+      "id": "arxiv:2609.34790",
+      "limitations": "모든 이름과 secret은 synthetic이며, 평가 환경은 canonical scenario와 deterministic verifier에 기반한다. 따라서 실제 조직의 access-control backend나 human approval process를 완전히 대체하는 benchmark는 아니다.",
+      "method": "CoSec은 208개 canonical scenario로 구성된 executable benchmark다. Static112는 고정 community boundary를, Dyn96은 merge, split, role 변화 같은 dynamic event 이후의 authorization state를 다루며, native agent session, memory, file, tool, workspace artifact를 trace로 검증한다.",
+      "practical_value": "persistent agent를 협업 공간에 넣을 때는 현재 task 성공과 authorization compliance를 분리해서 측정해야 한다. community state change 이후 memory와 workspace artifact가 여전히 기술적으로 접근 가능하더라도, 사용 가능한 정보인지 별도 policy check가 필요하다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.34790",
+        "https://arxiv.org/pdf/2609.34790"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "multi-agent",
+        "security"
+      ],
+      "title": "CoSec: Benchmarking Agent Security in Communities",
+      "topics": [
+        "agent security",
+        "community boundaries",
+        "authorization",
+        "persistent memory"
+      ],
+      "url": "https://arxiv.org/abs/2609.34790"
+    },
+    {
+      "abstract_summary": "이 논문은 같은 task를 실행해도 LLM agent의 token consumption이 실행 경로와 tool feedback에 따라 한 자릿수 이상 달라질 수 있다는 문제를 다룬다. context가 자라면서 이전 segment가 이후 call마다 다시 읽히기 때문에, 총비용은 시작 전에 한 번 예측해서 끝낼 수 없다.",
+      "evidence": "full_text",
+      "findings": "SWE-bench Verified에서 평균 누적 prediction time은 run당 32.8ms였다. 4개 task suite와 6개 agent model의 96개 조합에서 TokenCast는 가장 강한 comparator 대비 mean absolute error를 평균 14.5% 줄였고, offline budget-control replay에서는 matched trace completion에서 fixed-budget policy보다 평균 21.3% 적은 token을 사용했다.",
+      "first_published": "2026-09-28",
+      "id": "arxiv:2609.35760",
+      "limitations": "budget-control 결과는 offline replay이므로 실제 agent가 예산 경고에 반응해 경로를 바꾸는 online setting과 다를 수 있다. 또한 token pricing, cache discount, tool latency가 섞인 실제 비용 함수는 deployment마다 다르다.",
+      "method": "TokenCast는 execution segment마다 자체 소비량과 이후 context growth에 미치는 영향을 담는 composable cost representation을 학습한다. 실행 중 새 evidence가 들어오면 forecast를 갱신하지만, 추가 LLM call은 요구하지 않는다.",
+      "practical_value": "agent 비용 관리는 실행 전 예상치 하나보다 중간 forecast가 중요하다. TokenCast식 segment representation은 budget alarm, early stop, model downgrade, human approval을 trigger하는 runtime control plane에 연결할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.35760",
+        "https://arxiv.org/pdf/2609.35760"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "performance"
+      ],
+      "title": "TokenCast: Forecasting Token Consumption During LLM Agent Execution",
+      "topics": [
+        "token forecasting",
+        "budget control",
+        "agent execution",
+        "cost prediction"
+      ],
+      "url": "https://arxiv.org/abs/2609.35760"
+    },
+    {
+      "abstract_summary": "이 논문은 긴 interaction history를 일정 threshold마다 요약하는 accumulate-compact 방식 대신, agent가 매 turn마다 환경 action과 함께 다음 prompt에 남길 memory를 갱신하는 Continuous Context Management(CCM)를 제안한다. 목표는 active prompt와 KV cache memory를 계속 작게 유지하는 것이다.",
+      "evidence": "full_text",
+      "findings": "Terminal-Bench 2.0에서 CCM은 peak prompt size를 full-history prompting의 9,472~17,560 tokens에서 3,243~4,280 tokens로 줄였다. mean cumulative input도 Claude Sonnet 4.6에서 83.1%, Opus에서 81.5% 감소했지만, 대부분 모델에서는 success가 하락했고 Kimi K3는 성능을 보존했다. WebShop에서는 distillation을 추가하면 GRPO-only CCM보다 task success가 개선됐다.",
+      "first_published": "2026-09-28",
+      "id": "arxiv:2609.35540",
+      "limitations": "CCM은 token 사용량을 줄이지만 모든 모델에서 성공률이나 비용이 함께 좋아지지는 않았다. prefix caching 가격 정책 때문에 full-history prompting이 더 많은 token을 써도 비용상 불리하지 않을 수 있고, compact memory가 필요한 사실을 보존해도 action policy가 그것을 쓰지 못할 수 있다.",
+      "method": "CCM agent는 original task, retained memory, 최신 observation만 보고 다음 memory와 action을 낸다. 저자들은 API model에서 token usage와 success tradeoff를 측정하고, open-weight model에는 GRPO와 privileged full-history distillation을 결합해 compact context에서도 action 품질을 개선한다.",
+      "practical_value": "agent context 절감은 요약 품질만이 아니라 action supervision 문제다. 로컬 GPU나 제한된 context budget에서 agent를 운영한다면 매 turn memory update와 full-history teacher signal을 함께 고려해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.35540",
+        "https://arxiv.org/pdf/2609.35540"
+      ],
+      "tags": [
+        "agent",
+        "context-engineering",
+        "memory",
+        "performance"
+      ],
+      "title": "Continuous Context Management",
+      "topics": [
+        "context management",
+        "compact memory",
+        "agent RL",
+        "prompt budget"
+      ],
+      "url": "https://arxiv.org/abs/2609.35540"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "voice cloning과 dubbing은 동의, 저작권, 사칭 방지 정책이 핵심이다. AGPL-3.0 라이선스와 모델별 사용 조건도 별도 검토해야 한다.",
+      "novelty": "new_entry",
+      "rank": 4,
+      "repository": "debpalash/VoiceStudio",
+      "sources": [
+        "https://github.com/debpalash/VoiceStudio",
+        "https://raw.githubusercontent.com/debpalash/VoiceStudio/main/README.md"
+      ],
+      "summary": "Fully local voice cloning, voice design, dubbing, dictation, transcription, audiobook creation",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "multimodal",
+        "open-source"
+      ],
+      "url": "https://github.com/debpalash/VoiceStudio",
+      "use_case": "로컬 음성 생성과 전사 workflow를 agent나 desktop app에 붙일 때, local model catalog, optional remote worker, MCP/API integration 패턴을 참고할 수 있다.",
+      "why_now": "weekly Trending 4위, 7972 stars this week, 이전 Top10 부재"
+    },
+    {
+      "caution": "교육 자료의 폭은 넓지만 production readiness를 보장하는 것은 아니다. 각 lesson의 코드와 번역 품질은 별도로 검증해야 한다.",
+      "novelty": "new_entry",
+      "rank": 5,
+      "repository": "rohitg00/ai-engineering-from-scratch",
+      "sources": [
+        "https://github.com/rohitg00/ai-engineering-from-scratch",
+        "https://raw.githubusercontent.com/rohitg00/ai-engineering-from-scratch/main/README.md"
+      ],
+      "summary": "523 lessons, 20 phases, reusable AI engineering artifacts, multilingual learning path",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "mcp",
+        "open-source"
+      ],
+      "url": "https://github.com/rohitg00/ai-engineering-from-scratch",
+      "use_case": "AI engineering 교육 과정을 prompt, skill, agent, MCP server 같은 산출물 중심으로 구성하려는 팀의 onboarding curriculum 참고 자료가 된다.",
+      "why_now": "weekly Trending 5위, 5004 stars this week, 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 KV-streams입니다. agentic RL에서 긴 rollout을 학습하려면 context compaction이 필요하지만, 기존 방식은 retained context를 반복 prefill해 학습 throughput을 떨어뜨립니다. KV-streams는 retained token을 다시 계산하지 않고 KV cache를 stream으로 이어 붙여 이 병목을 줄입니다.",
+    "논문은 TextWorld, ALFWorld, SWE-bench Verified에서 세 가지 compaction 전략에 KV-streams를 붙였고, training wall-clock을 2.6~5배 단축하면서 성능 저하 증거를 보이지 않았다고 보고했습니다. 더 중요한 점은 streamed KV cache가 recurrent state처럼 과거 정보를 운반할 수 있어, 긴 agent trace를 단순 요약이 아니라 stateful inference 문제로 다루게 만든다는 것입니다.",
+    "같은 호의 논문들은 self-evolving agent safety, community-scoped privacy, token budget forecasting, continuous context management를 함께 다룹니다. GitHub에서는 VoiceStudio와 AI Engineering from Scratch가 신규 Top10으로 들어왔고, CNCF 쪽은 Kubernetes 1.38 alpha, Rook 1.20.8, OPA 1.21.1, Backstage 1.55.3가 최근 3일 범위에 들어왔습니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "VoiceStudio는 로컬 voice cloning, dubbing, transcription을 API와 MCP 연동까지 묶은 신규 Top10 프로젝트입니다.",
+        "url": "https://github.com/debpalash/VoiceStudio"
+      },
+      {
+        "section": "papers",
+        "text": "SEABench는 self-evolving agent가 성능 향상과 함께 downstream safety failure를 만들 수 있음을 분리 평가합니다.",
+        "url": "https://arxiv.org/abs/2609.35596"
+      },
+      {
+        "section": "cncf",
+        "text": "OPA 1.21.1은 v1.21.0의 Rego comprehension compiler regression을 수정합니다.",
+        "url": "https://github.com/open-policy-agent/opa/releases/tag/v1.21.1"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 KV-streams입니다. agentic RL에서 context compaction 이후 retained token을 반복 prefill하지 않고 KV cache를 stream으로 이어 학습 병목을 줄입니다.",
+      "TextWorld, ALFWorld, SWE-bench Verified에서 세 가지 compaction 전략에 적용했을 때 training wall-clock이 2.6~5배 빨라졌고, 성능 저하 증거는 보고되지 않았습니다."
+    ]
+  }
+}
