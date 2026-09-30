@@ -1,0 +1,545 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "alpha release는 production upgrade 대상이 아니지만, 다음 minor cycle의 API와 feature gate 변화를 조기에 확인해야 하는 플랫폼 팀은 changelog 기반 사전 검토가 필요하다.",
+      "published": "2026-09-29",
+      "sources": [
+        "https://github.com/kubernetes/kubernetes/releases/tag/v1.38.0-alpha.1",
+        "https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.38.md"
+      ],
+      "summary": "Kubernetes 1.38.0-alpha.1이 공개됐고 상세 변경은 1.38 changelog와 kubernetes-announce를 통해 제공된다.",
+      "tags": [
+        "kubernetes",
+        "release"
+      ],
+      "title": "Kubernetes v1.38.0-alpha.1",
+      "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.38.0-alpha.1"
+    },
+    {
+      "category": "release",
+      "impact": "Rook/Ceph 운영자는 OSD upgrade reconcile, object store logging, finalizer patching, deleted node cleanup 변경이 cluster reconcile과 보안 로그 노출에 주는 영향을 검증해야 한다.",
+      "published": "2026-09-29",
+      "sources": [
+        "https://github.com/rook/rook/releases/tag/v1.20.8"
+      ],
+      "summary": "Rook 1.20.8은 Ceph operator 중심의 patch release로, OSD prepare pod host network, HTTPRoute backend default parameter, context-aware retry, lockbox secret redaction, credential log redaction 등을 포함한다.",
+      "tags": [
+        "kubernetes",
+        "release",
+        "security",
+        "storage"
+      ],
+      "title": "Rook v1.20.8",
+      "url": "https://github.com/rook/rook/releases/tag/v1.20.8"
+    },
+    {
+      "category": "release",
+      "impact": "v1.21.0을 도입한 정책 엔진은 Rego comprehension을 사용하는 policy bundle을 재검증하고, compiler panic 회피를 위해 patch 적용을 우선 검토해야 한다.",
+      "published": "2026-09-29",
+      "sources": [
+        "https://github.com/open-policy-agent/opa/releases/tag/v1.21.1"
+      ],
+      "summary": "OPA 1.21.1은 v1.21.0에서 도입된 compiler regression을 수정한다. object/set literal 안의 comprehension에서 some in 또는 every를 사용할 때 unsafe var error나 compiler panic이 발생하던 문제를 고쳤다.",
+      "tags": [
+        "cloud-native",
+        "release",
+        "security"
+      ],
+      "title": "Open Policy Agent v1.21.1",
+      "url": "https://github.com/open-policy-agent/opa/releases/tag/v1.21.1"
+    },
+    {
+      "category": "release",
+      "impact": "TechDocs와 Markdown extension 설정을 쓰는 developer portal은 문서 빌드 실패나 line별 설정 해석 차이를 줄이기 위해 patch 적용 여부를 확인해야 한다.",
+      "published": "2026-09-29",
+      "sources": [
+        "https://github.com/backstage/backstage/releases/tag/v1.55.3"
+      ],
+      "summary": "Backstage 1.55.3은 documented MkDocs Markdown extension configuration에서 TechDocs generation 문제를 수정한 patch release다.",
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": "Backstage v1.55.3",
+      "url": "https://github.com/backstage/backstage/releases/tag/v1.55.3"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 CNCF 및 클라우드 네이티브 주요 프로젝트 릴리스를 확인했고, 운영 영향이 있는 release/regression fix 중심으로 정리했습니다.",
+      "sources": [
+        "https://github.com/kubernetes/kubernetes/releases",
+        "https://github.com/rook/rook/releases",
+        "https://github.com/open-policy-agent/opa/releases",
+        "https://github.com/backstage/backstage/releases",
+        "https://github.com/open-telemetry/opentelemetry-collector/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI 모델·agent·MCP·성능·보안과 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 신규 Top10 항목 1개를 상세 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 agent execution control, context compression, observation budgeting, tool authorization, auditable memory 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22memory%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22security%22%20AND%20all:%22agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CR)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-01",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"
+      ],
+      "tags": [
+        "llm",
+        "multimodal"
+      ],
+      "title": "Gemini 4 Argon",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/magnitudedev/magnitude"
+      ],
+      "tags": [
+        "agent",
+        "inference",
+        "open-source",
+        "performance"
+      ],
+      "title": "Launch HN: Magnitude - Self-optimizing inference engine for agents",
+      "url": "https://github.com/magnitudedev/magnitude"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://earendil.com/posts/you-said-no-mcp/"
+      ],
+      "tags": [
+        "mcp",
+        "security",
+        "tool-use"
+      ],
+      "title": "You said no MCP",
+      "url": "https://earendil.com/posts/you-said-no-mcp/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://blog.faav.net/how-i-couldve-accessed-17-trillion-microsoft-records"
+      ],
+      "tags": [
+        "security",
+        "storage"
+      ],
+      "title": "I could've accessed 17T Microsoft records",
+      "url": "https://blog.faav.net/how-i-couldve-accessed-17-trillion-microsoft-records"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34570"
+      ],
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": "Firebase SDK로 오늘 아침부터 모든 iOS 앱이 충돌하고 있음",
+      "url": "https://news.hada.io/topic?id=34570"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34558"
+      ],
+      "tags": [
+        "security",
+        "storage"
+      ],
+      "title": "Microsoft 레코드 17조 건에 접근할 수 있었다",
+      "url": "https://news.hada.io/topic?id=34558"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34563"
+      ],
+      "tags": [
+        "llm",
+        "multimodal"
+      ],
+      "title": "Gemini 4 Argon",
+      "url": "https://news.hada.io/topic?id=34563"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wuf5lf/openzl_v02_decompression_2x_faster_than_zstandard/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "OpenZL v0.2 - decompression 2x faster than Zstandard",
+      "url": "https://www.reddit.com/r/programming/comments/1wuf5lf/openzl_v02_decompression_2x_faster_than_zstandard/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wtv3vb/everyone_should_know_simd/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "Everyone Should Know SIMD",
+      "url": "https://www.reddit.com/r/programming/comments/1wtv3vb/everyone_should_know_simd/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wtygav/lessthinkqwen34b_the_same_model_with_far_less/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "LessThink-Qwen3-4B: the same model, with far less thinking",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wtygav/lessthinkqwen34b_the_same_model_with_far_less/"
+    }
+  ],
+  "generated_at": "2026-10-01T08:25:00+09:00",
+  "github_featured": [
+    "pbakaus/impeccable"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-09-30T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 10518
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 2381
+      },
+      {
+        "rank": 3,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 15537
+      },
+      {
+        "rank": 4,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 7972
+      },
+      {
+        "rank": 5,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 5004
+      },
+      {
+        "rank": 6,
+        "repository": "vercel/next.js",
+        "weekly_stars": 544
+      },
+      {
+        "rank": 7,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 1227
+      },
+      {
+        "rank": 8,
+        "repository": "davila7/claude-code-templates",
+        "weekly_stars": 1200
+      },
+      {
+        "rank": 9,
+        "repository": "stablyai/orca",
+        "weekly_stars": 6151
+      },
+      {
+        "rank": 10,
+        "repository": "pytorch/pytorch",
+        "weekly_stars": 340
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-01T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 12941
+      },
+      {
+        "rank": 2,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 17365
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 2114
+      },
+      {
+        "rank": 4,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 12722
+      },
+      {
+        "rank": 5,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 5830
+      },
+      {
+        "rank": 6,
+        "repository": "vercel/next.js",
+        "weekly_stars": 582
+      },
+      {
+        "rank": 7,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 1327
+      },
+      {
+        "rank": 8,
+        "repository": "davila7/claude-code-templates",
+        "weekly_stars": 1218
+      },
+      {
+        "rank": 9,
+        "repository": "pytorch/pytorch",
+        "weekly_stars": 399
+      },
+      {
+        "rank": 10,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 2644
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Agentic Meta-Reasoning: Persistent Memory로 실행 제어를 명시화하기",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2609.38147"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 agent가 긴 문제를 풀 때 각 단계의 실행 제어가 독립적인 문제가 된다는 점에서 출발한다. 어떤 partial work를 이어갈지, 새 worker를 띄울지, 멈출지의 선택이 전체 성능과 비용을 좌우하므로, 저자들은 이 control decision을 명시적인 reasoning process로 만든다.",
+      "evidence": "full_text",
+      "findings": "ProgramBench에서 GPT-5.5 기반 meta-reasoning은 71.5% test-pass rate를 기록해 Codex 58.0%와 direct control 63.7%를 앞섰다. Opus 4.8 기반에서도 67.2%로 Claude Code 65.5%를 넘었고, 다른 reasoning/proof benchmark에서는 direct control 대비 평균 3.6~4.2점 개선을 보였다.",
+      "first_published": "2026-09-29",
+      "id": "arxiv:2609.38147",
+      "limitations": "작은 budget에서는 controller overhead가 손해가 될 수 있다고 저자들은 명시한다. 또한 같은 call allowance가 token cost나 latency 동일성을 의미하지 않으므로, 실제 운영에서는 controller call과 worker call의 비용 구조를 따로 측정해야 한다.",
+      "method": "Agentic meta-reasoning harness는 worker가 task-level computation을 수행하고, controller가 artifact memory에서 현재까지 확립된 결과를 읽어 다음 option을 제안·평가·dispatch한다. controller는 전체 history를 prompt에 다시 넣지 않고 compact account와 persistent memory reference를 사용한다.",
+      "practical_value": "장기 agent workflow는 더 많은 worker를 병렬로 돌리는 것만으로는 부족하다. artifact memory, stop/select policy, budget-aware evaluation을 분리하면 실패한 방향을 계속 밀거나 이미 맞는 답을 버리는 비용을 줄일 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.38147",
+        "https://arxiv.org/pdf/2609.38147"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "memory",
+        "reasoning"
+      ],
+      "title": "Thinking Before Thinking: Scaling Agentic Inference Through Meta-Reasoning",
+      "topics": [
+        "agentic meta-reasoning",
+        "persistent memory",
+        "execution control",
+        "long-horizon agents"
+      ],
+      "url": "https://arxiv.org/abs/2609.38147"
+    },
+    {
+      "abstract_summary": "이 논문은 agent context compression을 과거 token의 중복 제거 문제가 아니라, 미래 decision을 바꾸는 interaction span을 보존하는 문제로 재정의한다. 긴 trajectory는 cost를 키울 뿐 아니라 relevant evidence를 희석해 decision quality를 떨어뜨릴 수 있다.",
+      "evidence": "full_text",
+      "findings": "OfficeBench, AppWorld, 8-QA, WebVoyager, τ2-Bench 등 agent benchmark에서 FOCUS는 peak context를 최대 48%, dependency를 73% 줄이면서 uncompressed execution 대비 task success를 최대 8.9%p 높였다고 보고했다. 추가 planning overhead는 input-token 감소로 상쇄되어 total token usage가 최대 31% 줄었다.",
+      "first_published": "2026-09-29",
+      "id": "arxiv:2609.37590",
+      "limitations": "FOCUS는 span-level causal decision preservation을 추정하므로, span 경계가 불명확하거나 environment observation이 매우 noisy한 workflow에서는 압축 단위 설계가 결과에 영향을 준다. 또한 training-free이지만 test-time planning call overhead가 존재한다.",
+      "method": "FOCUS는 reasoning-action-observation tuple을 span 단위로 보고, 현재 goal과 trajectory에서 각 span이 미래 decision distribution에 주는 causal value를 test time에 추정한다. offline data collection, fine-tuning, compressor training 없이 closed-API frontier model에 modular compression layer로 붙는다.",
+      "practical_value": "agent context를 줄일 때 단순 요약이나 최근성 pruning보다 decision-relevant span을 보존해야 한다. 운영 환경에서는 context budget, tool-call history, future action sensitivity를 함께 기록해야 compression regression을 잡을 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.37590",
+        "https://arxiv.org/pdf/2609.37590"
+      ],
+      "tags": [
+        "agent",
+        "context-engineering",
+        "evaluation",
+        "performance"
+      ],
+      "title": "FOCUS: Training-Free Decision-Preserving Context Compression for LLM Agents",
+      "topics": [
+        "context compression",
+        "decision preservation",
+        "agent trajectory",
+        "test-time compression"
+      ],
+      "url": "https://arxiv.org/abs/2609.37590"
+    },
+    {
+      "abstract_summary": "이 논문은 agent가 미래 조건에 묶인 intention을 기억하더라도, 그 조건이 지금 충족됐는지는 외부 상태를 확인해야 한다는 문제를 다룬다. portal login, web access, multi-step tool use, paid call처럼 관측에는 비용이 있으므로 모든 stored intention을 같은 빈도로 확인할 수 없다.",
+      "evidence": "full_text",
+      "findings": "두 benchmark와 세 backbone에서 BudgetPM-Static은 adapted Mem0와 PMA workflow보다 높은 end-to-end quality를 보였다. PM-Bench에서는 unconstrained quality의 99.9~100%를 유지하면서 observation 수를 42~54% 줄였고, severe scarcity에서는 BudgetPM-Sequential이 자연 monitoring schedule보다 Set F1을 1.92~2.58점 높이며 같은 Set F1과 on-time recall을 16~33% 적은 observation으로 달성했다.",
+      "first_published": "2026-09-29",
+      "id": "arxiv:2609.37125",
+      "limitations": "BudgetPM은 observation cost가 known이고 intention/check 후보가 구조화된 설정에서 평가된다. 실제 환경에서는 tool failure, rate limit, credential expiry, observation freshness가 cost model을 흔들 수 있다.",
+      "method": "BudgetPM은 stored intention이 요구하는 external observation을 shared episode budget 아래 배분하는 문제로 정식화한다. Static variant는 current decision을 개선하는 check인지 Logistic scorer로 판단하고, Sequential variant는 full-episode hindsight schedule을 distill해 현재와 미래 관측 기회를 나눈다.",
+      "practical_value": "prospective memory agent는 기억한 일을 잊지 않는 것만큼 언제 확인할지 결정해야 한다. 운영자는 intention별 urgency와 observation cost를 분리하고, budget scarcity가 심할 때는 future-aware scheduling을 사용해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.37125",
+        "https://arxiv.org/pdf/2609.37125"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "performance",
+        "tool-use"
+      ],
+      "title": "When Should Agents Check External State? Budgeting Observations for Stored Intentions",
+      "topics": [
+        "prospective memory",
+        "external observation budgeting",
+        "stored intentions",
+        "agent monitoring"
+      ],
+      "url": "https://arxiv.org/abs/2609.37125"
+    },
+    {
+      "abstract_summary": "이 논문은 tool-using agent의 indirect prompt injection을 단순 tool selection 문제가 아니라 tool argument provenance와 authorization 문제로 본다. 특히 공격자가 의도된 tool 호출은 유지한 채 URL, recipient, amount 같은 인자를 바꾸는 within-tool hijacking은 기존 tool filter가 놓치기 쉽다.",
+      "evidence": "full_text",
+      "findings": "AgentDojo with Qwen3-max에서 ToolFence는 overall attack success rate를 No Defense의 21.20%에서 0.20%로 낮췄고, clean utility drop은 3.80%p, runtime overhead는 1.63배였다. CaMeL의 12.95배 overhead보다 낮았고, capability reuse와 caching으로 judge invocation을 43% 줄였다고 보고했다.",
+      "first_published": "2026-09-29",
+      "id": "arxiv:2609.37196",
+      "limitations": "ToolFence는 typed blueprint와 authority-sensitive argument 정의가 필요하다. tool schema가 느슨하거나 권한 의미가 domain-specific인 workflow에서는 blueprint 작성과 judge grant policy가 별도 engineering burden이 된다.",
+      "method": "ToolFence는 실행 전에 typed authorization blueprint를 만들고, deterministic monitor가 tool call의 capability와 authority-sensitive argument provenance를 검사한다. blueprint가 부족할 때만 judge에게 concrete call 판정이 아니라 새 capability grant를 요청하고, grant는 cache로 재사용된다.",
+      "practical_value": "agent 보안은 어떤 tool을 호출했는지만 보지 말고, 그 tool의 어떤 인자가 신뢰된 사용자 의도에서 왔는지까지 추적해야 한다. deterministic fast path와 capability-level grant를 결합하면 보안과 latency 사이의 tradeoff를 줄일 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.37196",
+        "https://arxiv.org/pdf/2609.37196"
+      ],
+      "tags": [
+        "agent",
+        "security",
+        "tool-use"
+      ],
+      "title": "ToolFence: Fine-Grained Authorization for Secure Tool-Using LLM Agents",
+      "topics": [
+        "tool authorization",
+        "indirect prompt injection",
+        "within-tool hijacking",
+        "AgentDojo"
+      ],
+      "url": "https://arxiv.org/abs/2609.37196"
+    },
+    {
+      "abstract_summary": "이 논문은 long-term memory system을 단일 점수로만 보고하지 않고, retrieval candidate, reranking, packet compilation, reader, judge variance를 분해해 감사 가능한 chain으로 측정한다. 목표는 LLM reader가 바뀌어도 retrieval과 scaffold 단계의 근거를 추적할 수 있게 하는 것이다.",
+      "evidence": "full_text",
+      "findings": "answerable 470문항 중 gold session은 468문항에서 candidate pool에 들어갔고, gold-complete packet은 462문항에서 생성됐다. Claude Opus reader의 두 pass는 GPT-4o judge 기준 479/500과 475/500을 기록했고, second judge는 각 pass에서 493/500 row, 즉 98.6% 일치했다. 다만 official judge도 byte-identical answer를 재채점할 때 3 verdict를 뒤집었다.",
+      "first_published": "2026-09-29",
+      "id": "arxiv:2609.38021",
+      "limitations": "저자들은 72개 knowledge-update row에서 official text와 다른 scoring prompt를 사용했고, 전체 method가 같은 500문항에서 개발됐으며 held-out evaluation이나 independent human adjudication이 없었다고 명시한다. 따라서 superiority나 equivalence claim으로 해석하면 안 된다.",
+      "method": "시스템은 hybrid candidate retrieval, cross-encoder reranking, coverage-first packet compilation, deterministic reasoning scaffold를 사용하고, LLM은 final reader로만 둔다. LongMemEval-S 500문항에서 candidate pool과 gold-complete packet 비율, judge 재채점 변동, negative control을 함께 기록한다.",
+      "practical_value": "memory benchmark는 headline accuracy보다 retrieval coverage, packet completeness, judge variance, negative control을 같이 공개해야 한다. 기업용 memory system도 reader answer만 저장하지 말고 retrieval chain audit log를 남겨야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.38021",
+        "https://arxiv.org/pdf/2609.38021"
+      ],
+      "tags": [
+        "evaluation",
+        "memory",
+        "retrieval"
+      ],
+      "title": "Auditable Long-Term Memory: A Deterministic Retrieval Chain Measured at 479/475 of 500 on LongMemEval-S",
+      "topics": [
+        "long-term memory",
+        "auditable retrieval",
+        "LongMemEval-S",
+        "deterministic scaffolds"
+      ],
+      "url": "https://arxiv.org/abs/2609.38021"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "detector rule은 반복되는 AI design tell을 줄이는 데 유용하지만, 브랜드 전략이나 사용자 조사까지 대체하지는 않는다. skill 기반 workflow를 도입할 때 PRODUCT.md와 DESIGN.md에 민감 정보가 들어가지 않도록 분리해야 한다.",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "pbakaus/impeccable",
+      "sources": [
+        "https://github.com/pbakaus/impeccable",
+        "https://raw.githubusercontent.com/pbakaus/impeccable/main/README.md"
+      ],
+      "summary": "AI frontend design skill, 24 commands, browser iteration, 61 deterministic detector rules",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "evaluation",
+        "open-source"
+      ],
+      "url": "https://github.com/pbakaus/impeccable",
+      "use_case": "AI coding agent가 생성한 UI를 product truth, design system, deterministic detector, browser iteration으로 다듬는 frontend QA workflow 참고점이 된다.",
+      "why_now": "weekly Trending 10위, 2644 stars this week, 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 Agentic Meta-Reasoning입니다. 논문은 agent가 긴 문제를 풀수록 실제 어려움이 답을 생성하는 것뿐 아니라 어떤 작업을 이어갈지, 새로 시작할지, 언제 멈출지 같은 실행 제어가 된다고 본다. controller는 worker의 결과를 artifact memory에 저장하고, compact state만 들고 다음 작업 가치를 평가합니다.",
+    "ProgramBench에서 이 방식은 GPT-5.5 기준 71.5% test-pass rate를 기록해 Codex 58.0%와 direct control 63.7%를 앞섰고, Opus 4.8 기준으로도 67.2%로 Claude Code 65.5%를 넘었다고 보고했습니다. 다른 abstract reasoning, long-horizon reasoning, proof generation benchmark에서도 direct control 대비 평균 3.6~4.2점 개선이 관찰됐습니다.",
+    "같은 호에서는 FOCUS와 BudgetPM이 context와 external observation 예산을 다루고, ToolFence는 tool-using agent 권한 경계를 세분화합니다. GitHub Top10 신규 항목은 AI frontend design skill인 Impeccable이며, CNCF 쪽은 최근 릴리스가 전일과 같은 Kubernetes, Rook, OPA, Backstage 계열로 이어졌습니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "Impeccable은 AI coding agent가 만든 frontend를 24 commands와 61 detector rules로 다듬는 design skill입니다.",
+        "url": "https://github.com/pbakaus/impeccable"
+      },
+      {
+        "section": "papers",
+        "text": "ToolFence는 AgentDojo with Qwen3-max에서 ASR을 21.20%에서 0.20%로 낮췄다고 보고합니다.",
+        "url": "https://arxiv.org/abs/2609.37196"
+      },
+      {
+        "section": "papers",
+        "text": "FOCUS는 training 없이 agent context peak를 최대 48% 줄이고 task success를 최대 8.9%p 높였습니다.",
+        "url": "https://arxiv.org/abs/2609.37590"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 Agentic Meta-Reasoning입니다. controller가 worker 결과를 persistent memory에 저장하고, compact state로 다음 작업의 가치를 평가합니다.",
+      "ProgramBench에서 GPT-5.5 기준 71.5% test-pass rate를 기록해 Codex 58.0%와 direct control 63.7%를 앞섰습니다."
+    ]
+  }
+}
