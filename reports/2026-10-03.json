@@ -1,0 +1,514 @@
+{
+  "cncf": [
+    {
+      "category": "security",
+      "impact": "Envoy TLS termination을 운영하는 팀은 사용 중인 minor line별 patch를 확인해야 한다. v1.38.5 note에 따르면 BoringSSL FIPS build는 이 patch를 받지 않으므로 별도 risk assessment가 필요하다.",
+      "published": "2026-10-01",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.39.2",
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.38.5"
+      ],
+      "summary": "Envoy는 여러 supported line에 BoringSSL CVE-2026-35189 패치를 포함한 릴리스를 냈다. 문제는 nameRelativeToCRLIssuer CRL Distribution Point가 포함된 certificate parsing 중 excessive memory allocation으로, TLS handshake에서 remote denial of service로 악용될 수 있다.",
+      "tags": [
+        "networking",
+        "release",
+        "security"
+      ],
+      "title": "Envoy v1.39.2 / v1.38.5 / v1.37.7 / v1.36.11",
+      "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.39.2"
+    },
+    {
+      "category": "release",
+      "impact": "Flux 운영자는 HelmRelease drift, source-controller cache full, SOPS substituted secret 노출 가능성이 있던 환경에서 patch 효과를 확인해야 한다. upgrade는 Flux 2.7+ 절차를 따라야 한다.",
+      "published": "2026-10-01",
+      "sources": [
+        "https://github.com/fluxcd/flux2/releases/tag/v2.9.6"
+      ],
+      "summary": "Flux 2.9.6은 helm-controller가 server-side apply 사용 시 chart CRD를 매 upgrade마다 재적용하던 문제, Ready=Unknown 상태 drift recovery, Azure Blob ETag normalization, Helm repository index cache eviction, SOPS error redaction 확대를 포함한다.",
+      "tags": [
+        "gitops",
+        "kubernetes",
+        "release",
+        "security"
+      ],
+      "title": "Flux v2.9.6",
+      "url": "https://github.com/fluxcd/flux2/releases/tag/v2.9.6"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 확인한 주요 CNCF/클라우드 네이티브 프로젝트 중 신규로 운영 영향이 큰 릴리스는 Envoy 보안 패치와 Flux 2.9.6이었습니다.",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/fluxcd/flux2/releases",
+        "https://github.com/kubernetes/kubernetes/releases",
+        "https://github.com/open-telemetry/opentelemetry-collector/releases"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, inference, 보안, 개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 신규 Top10 항목 1개를 상세 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "arXiv API가 429로 제한되어 전일 후보 목록과 직접 PDF 접근을 병행했고, 최근 6개월 내 최초 공개·지난 7일 소개 이력 제외 조건을 만족하는 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.40195",
+        "https://arxiv.org/abs/2609.40303",
+        "https://arxiv.org/abs/2609.39957",
+        "https://arxiv.org/abs/2609.39678",
+        "https://arxiv.org/abs/2609.39065"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-03",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://blog.cloudflare.com/clef-decision-models/"
+      ],
+      "tags": [
+        "fine-tuning",
+        "llm",
+        "open-source"
+      ],
+      "title": "Clef: Open-source decision models, and new RL fine-tuning platform",
+      "url": "https://blog.cloudflare.com/clef-decision-models/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://ziglang.org/download/0.17.0/release-notes.html"
+      ],
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": "Zig v0.17.0",
+      "url": "https://ziglang.org/download/0.17.0/release-notes.html"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://blog.sshh.io/p/the-harness-is-the-company"
+      ],
+      "tags": [
+        "agent",
+        "harness"
+      ],
+      "title": "The Harness Is the Company",
+      "url": "https://blog.sshh.io/p/the-harness-is-the-company"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://dwarfstar.sh/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "open-source"
+      ],
+      "title": "From the creator of Redis; run LLM locally with ds4",
+      "url": "https://dwarfstar.sh/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34682"
+      ],
+      "tags": [
+        "agent",
+        "multimodal",
+        "open-source"
+      ],
+      "title": "Audionaut - AI 에이전트로 편집할 수 있는 오픈소스 멀티트랙 오디오 편집기",
+      "url": "https://news.hada.io/topic?id=34682"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34681"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools"
+      ],
+      "title": "ChatGPT Sites - 대화로 웹사이트와 앱을 만들고 게시하기",
+      "url": "https://news.hada.io/topic?id=34681"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34667"
+      ],
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": "Rust 1.99.0 발표",
+      "url": "https://news.hada.io/topic?id=34667"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wvncok/postquantum_cryptography_resource_hub/"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "Post-Quantum Cryptography Resource Hub",
+      "url": "https://www.reddit.com/r/programming/comments/1wvncok/postquantum_cryptography_resource_hub/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wvg7yc/arxiv_now_limits_submitters_to_up_to_two/"
+      ],
+      "tags": [
+        "governance",
+        "llm"
+      ],
+      "title": "arXiv now limits submitters to up to two submissions per calendar month",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wvg7yc/arxiv_now_limits_submitters_to_up_to_two/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wvs12j/adding_memory_to_search_instead_of_sampling_in/"
+      ],
+      "tags": [
+        "memory",
+        "reasoning"
+      ],
+      "title": "Adding memory to search instead of sampling in reward maximization tasks",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wvs12j/adding_memory_to_search_instead_of_sampling_in/"
+    }
+  ],
+  "generated_at": "2026-10-03T08:26:00+09:00",
+  "github_featured": [
+    "flutter/flutter"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-02T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 13855
+      },
+      {
+        "rank": 2,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 18389
+      },
+      {
+        "rank": 3,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 15186
+      },
+      {
+        "rank": 4,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 6485
+      },
+      {
+        "rank": 5,
+        "repository": "anthropics/financial-services",
+        "weekly_stars": 1637
+      },
+      {
+        "rank": 6,
+        "repository": "vercel/next.js",
+        "weekly_stars": 595
+      },
+      {
+        "rank": 7,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 2775
+      },
+      {
+        "rank": 8,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 1371
+      },
+      {
+        "rank": 9,
+        "repository": "alirezarezvani/claude-skills",
+        "weekly_stars": 711
+      },
+      {
+        "rank": 10,
+        "repository": "davila7/claude-code-templates",
+        "weekly_stars": 914
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-03T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 14335
+      },
+      {
+        "rank": 2,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 17403
+      },
+      {
+        "rank": 3,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 16114
+      },
+      {
+        "rank": 4,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 6469
+      },
+      {
+        "rank": 5,
+        "repository": "flutter/flutter",
+        "weekly_stars": 147
+      },
+      {
+        "rank": 6,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 2704
+      },
+      {
+        "rank": 7,
+        "repository": "vercel/next.js",
+        "weekly_stars": 624
+      },
+      {
+        "rank": 8,
+        "repository": "alirezarezvani/claude-skills",
+        "weekly_stars": 743
+      },
+      {
+        "rank": 9,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 2667
+      },
+      {
+        "rank": 10,
+        "repository": "TencentCloud/Octop",
+        "weekly_stars": 1360
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "MemLife: Long-Term Egocentric Video Memory를 Entity-Grounded Episode로 압축하기",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2609.40195"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 개인 AI assistant가 일상 영상을 장기간 기록할 때 raw video를 매번 다시 처리하는 방식이 계산적으로 불가능하고, 단순 text memory도 핵심 증거를 빠뜨리거나 검색 경쟁에서 관련 episode를 찾지 못할 수 있다는 문제를 다룬다.",
+      "evidence": "full_text",
+      "findings": "MemLife는 training-free 최강 baseline보다 네 개 long-horizon benchmark에서 4.6~12.0% 개선됐다. MemOpt는 MemLife를 다시 2.7~5.0% 높였고, 저자들은 MemOpt+MemLife가 prior strongest baseline보다 4.0~17.0% 높으면서 memory size를 최대 31배 줄였다고 보고했다.",
+      "first_published": "2026-09-30",
+      "id": "arxiv:2609.40195",
+      "limitations": "평가는 egocentric video QA와 textual memory 변환에 초점을 둔다. memory writer가 hallucination을 만들 수 있다는 문제가 남아 있고, 실제 wearable assistant에서는 privacy, consent, storage retention policy가 모델 성능만큼 중요하다.",
+      "method": "MemLife는 video stream을 entity-grounded, first-person text episode로 변환해 offline episodic memory를 만들고, query 시점에는 time-indexed agentic reader가 SearchMemory와 FetchMemory를 사용해 관련 episode를 시간 순서로 읽는다. MemOpt는 FIRM reward로 memory writer를 강화학습해 faithful, informative, retrievable memory를 쓰도록 최적화한다.",
+      "practical_value": "장기 multimodal memory는 모든 frame을 저장하고 검색하는 문제가 아니라, 나중에 물어볼 질문을 버틸 episode representation을 설계하는 문제다. 개인 assistant나 field-worker 기록 시스템은 memory writing 품질을 별도 학습·평가 대상으로 봐야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.40195",
+        "https://arxiv.org/pdf/2609.40195"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "multimodal",
+        "retrieval"
+      ],
+      "title": "MemLife: Curating and Reasoning over Long-Term Egocentric Video Memories",
+      "topics": [
+        "egocentric video memory",
+        "multimodal memory",
+        "agentic retrieval",
+        "memory writer optimization"
+      ],
+      "url": "https://arxiv.org/abs/2609.40195"
+    },
+    {
+      "abstract_summary": "이 논문은 autonomous ML engineering agent가 점점 복잡한 multi-agent orchestrator, retrieval subagent, memory hierarchy 위에 올라가지만, 최신 frontier coding agent에게 같은 시간과 backbone을 주면 그런 harness machinery가 실제로 이득인지 묻는다.",
+      "evidence": "full_text",
+      "findings": "논문은 같은 조건에서 open-source state-of-the-art MLE harness들이 단일 minimal-harness coding agent session보다 우위를 보이지 못했다고 결론낸다. 저자들은 backbone이 성능의 주된 driver이며, 여러 hand-crafted harness layer가 현재 MLE benchmark에서는 중복될 수 있다고 해석한다.",
+      "first_published": "2026-09-30",
+      "id": "arxiv:2609.40303",
+      "limitations": "MLE benchmark는 평가가 비싸고 noisy하며, 24시간 평가와 fixed task split에 강하게 의존한다. 따라서 이 결과가 모든 long-horizon agent domain에서 harness가 불필요하다는 뜻은 아니며, benchmark saturation과 frontier model의 coding fluency가 결론에 영향을 준다.",
+      "method": "저자들은 MLE-bench와 관련 benchmark에서 minimal-harness coding agent baseline인 Malena를 구성하고, search policy, instruction, orchestration, backbone 효과를 large-scale ablation으로 비교한다. 핵심 비교는 같은 frontier LLM backbone과 time budget 아래에서 harness layer가 성능을 더하는지 보는 것이다.",
+      "practical_value": "agent platform 팀은 복잡한 orchestration을 추가하기 전, 강한 coding agent와 최소 tool set으로 같은 budget에서 baseline을 세워야 한다. harness 투자는 model upgrade, task distribution, evaluation noise를 통제한 뒤에만 정당화된다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.40303",
+        "https://arxiv.org/pdf/2609.40303"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "evaluation",
+        "harness"
+      ],
+      "title": "How Much of a Harness Does a Strong Agent Need for Autonomous ML Engineering?",
+      "topics": [
+        "autonomous ML engineering",
+        "harness ablation",
+        "MLE-bench",
+        "coding agents"
+      ],
+      "url": "https://arxiv.org/abs/2609.40303"
+    },
+    {
+      "abstract_summary": "이 논문은 coding agent의 잘못된 action 하나가 repository state를 바꾸고 이후 decision을 계속 오도할 수 있다는 문제에서 출발한다. 기존 방식은 실패 뒤 recovery를 시도하거나 모든 imperfect action을 막으려 하지만, 실제 필요한 것은 eventual task completion을 높이는 intervention만 고르는 것이다.",
+      "evidence": "full_text",
+      "findings": "SWE-bench Verified Mini와 Ask or Assume에서 HiSentinel은 sentinel scale과 coding-agent family 전반에 걸쳐 task completion을 개선했고, 각각 최대 14%와 10% gains를 보고했다. Qwen3-Coder에서는 SWE-bench Verified Mini resolution이 30%에서 44%, Ask or Assume이 23%에서 33%로 올랐다.",
+      "first_published": "2026-09-30",
+      "id": "arxiv:2609.39957",
+      "limitations": "Sentinel monitoring은 추가 token cost를 만든다. 논문도 cache reuse가 제한될 때 처리 token 감소가 제한적이고, token-identical routing call에서도 일부 routing flip과 effective-intervention flip이 생긴다고 보고한다.",
+      "method": "HiSentinel은 기록된 실행 결과를 보는 privileged teacher가 intervention judgment를 만들고, 이를 pre-action context와 proposed action만 보는 causal student에 distill한다. SWE-Intervene 데이터셋은 action을 allow, redirect, human-assistance pause로 annotate하고 intervention feedback도 포함한다.",
+      "practical_value": "coding agent 안전장치는 실행 후 diagnosis만으로는 늦다. command 실행 전 lightweight sentinel이 proposed action의 장기 결과를 평가하고, 필요한 경우 human assistance로 멈추는 workflow가 필요하다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.39957",
+        "https://arxiv.org/pdf/2609.39957"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "harness",
+        "security"
+      ],
+      "title": "Learning When and How to Intervene: A Hindsight-Distilled Sentinel for Coding Agents",
+      "topics": [
+        "coding-agent sentinel",
+        "pre-execution intervention",
+        "SWE-Intervene",
+        "hindsight distillation"
+      ],
+      "url": "https://arxiv.org/abs/2609.39957"
+    },
+    {
+      "abstract_summary": "이 논문은 AGENTS.md나 Cursor rules 같은 repository instruction이 coding agent에게 project convention을 알려주지만, 동시에 credential access나 data transfer를 요구하는 indirect prompt injection 통로가 될 수 있다는 문제를 다룬다. 기능 테스트가 통과해도 과도한 권한 요청은 드러나지 않을 수 있다.",
+      "evidence": "full_text",
+      "findings": "공유 refactoring task에서 Aletheia는 AIShellJack attack input 314개를 모두 실행·탐지했고, benign template 5개에는 alarm을 내지 않았다. 수동 검증된 benign GHAgentFiles rule 80개에서는 false positive 3개, 즉 3.75%를 보고했다.",
+      "first_published": "2026-09-30",
+      "id": "arxiv:2609.39678",
+      "limitations": "Aletheia의 witness는 task-relative dispensability를 보일 뿐 global malicious intent를 증명하지 않는다. unsupported permission interpretation, translation failure, provider refusal 같은 unresolved outcome도 존재해 실제 CI 적용에는 permission schema coverage가 중요하다.",
+      "method": "Aletheia는 rule이 요구하는 authority를 typed permission language로 번역하고, sandbox configuration을 합성한다. 같은 rule과 task를 full permission과 permission 하나씩 제거한 restriction에서 실행해, 테스트가 계속 통과하면 그 permission이 해당 task에 dispensable하다는 witness로 해석한다.",
+      "practical_value": "coding-agent rule을 허용할 때는 문구만 검사하지 말고, 그 rule이 없어도 task가 통과하는 권한을 실제 sandbox에서 제거해 봐야 한다. least privilege를 executable test로 바꾸면 prompt injection wording에 의존하지 않는 방어가 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.39678",
+        "https://arxiv.org/pdf/2609.39678"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "Aletheia: Permission-Minimality Testing for Coding-Agent Rules",
+      "topics": [
+        "permission minimality",
+        "coding-agent rules",
+        "prompt injection",
+        "sandbox testing"
+      ],
+      "url": "https://arxiv.org/abs/2609.39678"
+    },
+    {
+      "abstract_summary": "이 논문은 installable skill이 instruction, code, resource를 묶어 agent에게 지속적으로 호출되는 capability를 제공하지만, agent framework가 skill content를 충분히 검증하지 않은 채 security-sensitive operation에 연결할 수 있다는 trust-chain 문제를 다룬다.",
+      "evidence": "full_text",
+      "findings": "11개 open-source agent, 그중 8개는 GitHub stars 10,000개 이상인 대상에서 TrustProbe는 taint-style vulnerability 104개를 찾았다. ClawHub 같은 public hub의 real-world skill corpus에서는 2,963회 skill-agent trial 중 743회, 즉 25.1%가 취약 path를 실행했고, minimal payload edit로 15개 vulnerability가 complete attack으로 weaponize됐다.",
+      "first_published": "2026-09-30",
+      "id": "arxiv:2609.39065",
+      "limitations": "TrustProbe는 source-to-sink path와 observable harm을 찾는 데 초점을 둔다. 모든 skill ecosystem의 정책 위반률을 대표하는 통계는 아니며, agent별 approval control과 skill delivery architecture가 결과에 큰 영향을 준다.",
+      "method": "TrustProbe는 agent source code에서 skill-controlled input이 file write, command execution, network request 같은 sink로 흘러가는 source-to-sink path를 찾고, canary가 삽입된 realistic SKILL.md seed를 feedback-guided scheduling과 mutation으로 진화시킨다. runtime oracle은 attacker-controlled flow와 observable harm을 따로 검증한다.",
+      "practical_value": "skill marketplace를 운영하는 팀은 skill을 단순 prompt 확장으로 취급하면 안 된다. skill content가 어떤 sink까지 도달하는지 taint analysis와 runtime canary 검증을 통해 확인하고, 설치·자동호출·승인 경계를 분리해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2609.39065",
+        "https://arxiv.org/pdf/2609.39065"
+      ],
+      "tags": [
+        "agent",
+        "security",
+        "tool-use"
+      ],
+      "title": "Can Agents Trust Their Skills? Uncovering Unsafe Chains of Trust in Skill-Based LLM Agents",
+      "topics": [
+        "skill-based agents",
+        "unsafe chain of trust",
+        "taint-style vulnerabilities",
+        "TrustProbe"
+      ],
+      "url": "https://arxiv.org/abs/2609.39065"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "Top10 진입 자체가 특정 릴리스나 breaking change를 의미하지는 않는다. Flutter tool은 설치·업그레이드 시 Google 서버에서 Dart SDK 등을 내려받을 수 있으므로 폐쇄망·규제 환경에서는 배포 절차를 별도로 확인해야 한다.",
+      "novelty": "new_entry",
+      "rank": 5,
+      "repository": "flutter/flutter",
+      "sources": [
+        "https://github.com/flutter/flutter",
+        "https://raw.githubusercontent.com/flutter/flutter/master/README.md"
+      ],
+      "summary": "Cross-platform UI SDK, Dart toolchain, mobile·web·desktop apps from one codebase",
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "performance"
+      ],
+      "url": "https://github.com/flutter/flutter",
+      "use_case": "모바일, 웹, 데스크톱을 하나의 코드베이스로 개발해야 하는 제품 팀이 UI toolkit, rendering, widget catalog, platform embedding 전략을 검토할 때 기준점이 된다.",
+      "why_now": "weekly Trending 5위, 147 stars this week, 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 MemLife입니다. 논문은 스마트 글래스나 GoPro 같은 egocentric video가 수백 시간으로 쌓일 때 매 query마다 raw clip을 다시 처리하는 방식이 계산적으로 불가능해진다는 문제에서 출발합니다. MemLife는 비디오를 entity-grounded, first-person text episode로 바꾸고 time-indexed agentic reader로 검색합니다.",
+    "MemLife는 training-free baseline 대비 네 개 long-horizon benchmark에서 4.6~12.0% 개선을 보였고, memory writer를 강화학습으로 최적화하는 MemOpt는 MemLife를 다시 2.7~5.0% 높였다고 보고했습니다. 저자들은 memory size를 최대 31배 줄이면서도 이전 최고 baseline 대비 4.0~17.0% 개선을 보였다고 설명합니다.",
+    "같은 호에서는 MLE agent harness의 단순화, pre-execution coding-agent sentinel, permission-minimality testing, skill trust-chain 취약점이 이어집니다. GitHub Top10 신규 항목은 Flutter이며, CNCF 쪽은 Envoy의 BoringSSL CVE 패치와 Flux 2.9.6 patch release가 새로 확인됐습니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "Flutter가 weekly Trending 5위로 신규 진입했습니다. cross-platform UI SDK와 Dart 기반 toolchain이 핵심입니다.",
+        "url": "https://github.com/flutter/flutter"
+      },
+      {
+        "section": "papers",
+        "text": "TrustProbe는 11개 open-source agent에서 skill content가 sink로 흐르는 104개 taint-style vulnerability를 찾았습니다.",
+        "url": "https://arxiv.org/abs/2609.39065"
+      },
+      {
+        "section": "cncf",
+        "text": "Envoy 여러 line에 BoringSSL CVE-2026-35189 TLS DoS 패치가 공개됐습니다.",
+        "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.39.2"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 MemLife입니다. 장기 egocentric video를 entity-grounded text episode로 압축하고, time-indexed agentic reader로 개인 memory QA를 수행합니다.",
+      "MemLife는 training-free baseline 대비 4.6~12.0% 개선됐고, MemOpt는 MemLife를 다시 2.7~5.0% 높였습니다."
+    ]
+  }
+}
