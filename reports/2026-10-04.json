@@ -1,0 +1,561 @@
+{
+  "cncf": [
+    {
+      "category": "security",
+      "impact": "Prometheus 3.13.x 운영자는 gRPC/HTTP2 메모리 소진 이슈와 UI dependency patch를 우선 확인해야 한다. Agent mode rollback이나 native histogram federation을 쓰는 환경도 regression test가 필요하다.",
+      "published": "2026-10-02",
+      "sources": [
+        "https://github.com/prometheus/prometheus/releases/tag/v3.13.4"
+      ],
+      "summary": "Prometheus 3.13.4는 google.golang.org/grpc를 v1.83.1로 올려 HTTP/2 DATA frame fragmentation memory exhaustion(GO-2026-6348)을 수정하고, UI의 취약 npm dependency를 갱신했다. Agent rollback 호환성, federation native histogram corruption, protobuf float histogram scrape bug도 고쳤다.",
+      "tags": [
+        "observability",
+        "release",
+        "security"
+      ],
+      "title": "Prometheus v3.13.4",
+      "url": "https://github.com/prometheus/prometheus/releases/tag/v3.13.4"
+    },
+    {
+      "category": "release",
+      "impact": "pre-release이므로 production upgrade 대상은 아니지만, LB IPAM IP sharing, Hubble metrics, BGP/native routing, conntrack GC 관련 변경을 미리 검토해야 하는 네트워킹 팀에는 중요하다.",
+      "published": "2026-10-02",
+      "sources": [
+        "https://github.com/cilium/cilium/releases/tag/v1.21.0-pre.3"
+      ],
+      "summary": "Cilium 1.21.0-pre.3은 LB IPAM의 externalTrafficPolicy=Local 서비스 간 IP sharing annotation, metrics port name Helm values, Hubble HTTP metrics path label 준비, deprecated mutual authentication 제거, node reboot 중 BGP route 광고와 BPF attach timing 문제 수정 등을 포함한다.",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "release"
+      ],
+      "title": "Cilium v1.21.0-pre.3",
+      "url": "https://github.com/cilium/cilium/releases/tag/v1.21.0-pre.3"
+    },
+    {
+      "category": "release",
+      "impact": "CRI-O를 node runtime으로 쓰는 cluster는 Kubernetes minor line에 맞는 patch와 SBOM/signature artifact를 확인해 node image promotion 절차에 반영해야 한다.",
+      "published": "2026-10-02",
+      "sources": [
+        "https://github.com/cri-o/cri-o/releases/tag/v1.37.2",
+        "https://github.com/cri-o/cri-o/releases/tag/v1.36.7"
+      ],
+      "summary": "CRI-O는 여러 Kubernetes support line에 걸쳐 patch release를 공개했고, release bundle에는 SHA-256 checksum, cosign signature bundle, SPDX bill of materials가 포함된다.",
+      "tags": [
+        "containers",
+        "kubernetes",
+        "release"
+      ],
+      "title": "CRI-O v1.37.2 / v1.36.7 / v1.35.10 / v1.34.15",
+      "url": "https://github.com/cri-o/cri-o/releases/tag/v1.37.2"
+    },
+    {
+      "category": "security",
+      "impact": "Envoy TLS termination을 운영하는 팀은 사용 중인 minor line별 patch를 확인해야 한다. v1.38.5 note에 따르면 BoringSSL FIPS build는 이 patch를 받지 않으므로 별도 risk assessment가 필요하다.",
+      "published": "2026-10-01",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.39.2",
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.38.5"
+      ],
+      "summary": "Envoy는 여러 supported line에 BoringSSL CVE-2026-35189 패치를 포함한 릴리스를 냈다. 문제는 nameRelativeToCRLIssuer CRL Distribution Point가 포함된 certificate parsing 중 excessive memory allocation으로, TLS handshake에서 remote denial of service로 악용될 수 있다.",
+      "tags": [
+        "networking",
+        "release",
+        "security"
+      ],
+      "title": "Envoy v1.39.2 / v1.38.5 / v1.37.7 / v1.36.11",
+      "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.39.2"
+    },
+    {
+      "category": "release",
+      "impact": "Flux 운영자는 HelmRelease drift, source-controller cache full, SOPS substituted secret 노출 가능성이 있던 환경에서 patch 효과를 확인해야 한다. upgrade는 Flux 2.7+ 절차를 따라야 한다.",
+      "published": "2026-10-01",
+      "sources": [
+        "https://github.com/fluxcd/flux2/releases/tag/v2.9.6"
+      ],
+      "summary": "Flux 2.9.6은 helm-controller가 server-side apply 사용 시 chart CRD를 매 upgrade마다 재적용하던 문제, Ready=Unknown 상태 drift recovery, Azure Blob ETag normalization, Helm repository index cache eviction, SOPS error redaction 확대를 포함한다.",
+      "tags": [
+        "gitops",
+        "kubernetes",
+        "release",
+        "security"
+      ],
+      "title": "Flux v2.9.6",
+      "url": "https://github.com/fluxcd/flux2/releases/tag/v2.9.6"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 CNCF 및 클라우드 네이티브 주요 프로젝트 릴리스를 확인했고, 보안·네트워킹·GitOps·runtime·observability 영향이 있는 항목을 정리했습니다.",
+      "sources": [
+        "https://github.com/prometheus/prometheus/releases",
+        "https://github.com/cilium/cilium/releases",
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/fluxcd/flux2/releases",
+        "https://github.com/cri-o/cri-o/releases",
+        "https://github.com/projectcalico/calico/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, 모델, 보안, 개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 신규 Top10 항목 1개를 상세 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 visual harness, coding-agent compaction, tool authorization, skill-chain attack, agent evaluation 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22memory%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22security%22%20AND%20all:%22agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CR)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-04",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://claude.dev/blog/getting-the-most-out-of-opus-5-5/"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "llm"
+      ],
+      "title": "Getting the most out of Opus 5.5 in Claude and Claude Code",
+      "url": "https://claude.dev/blog/getting-the-most-out-of-opus-5-5/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://pipod.dev/"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "harness"
+      ],
+      "title": "Pi pod - Run your pi coding agent in sandboxes on your own server",
+      "url": "https://pipod.dev/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://liao.gg/blog/agents-dont-need-memory"
+      ],
+      "tags": [
+        "agent",
+        "context-engineering",
+        "memory"
+      ],
+      "title": "Agents don't need memory, they need documentation",
+      "url": "https://liao.gg/blog/agents-dont-need-memory"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/"
+      ],
+      "tags": [
+        "llm",
+        "open-source"
+      ],
+      "title": "Kolibri: A Sovereign Open-Weight Model",
+      "url": "https://aleph-alpha.com/en/blog/kolibri-has-landed-a-sovereign-open-weight-model/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34682"
+      ],
+      "tags": [
+        "agent",
+        "multimodal",
+        "open-source"
+      ],
+      "title": "Audionaut - AI 에이전트로 편집할 수 있는 오픈소스 멀티트랙 오디오 편집기",
+      "url": "https://news.hada.io/topic?id=34682"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34681"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools"
+      ],
+      "title": "ChatGPT Sites - 대화로 웹사이트와 앱을 만들고 게시하기",
+      "url": "https://news.hada.io/topic?id=34681"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34683"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "LLM 시대의 보안 - Greg Kroah-Hartman",
+      "url": "https://news.hada.io/topic?id=34683"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wvncok/postquantum_cryptography_resource_hub/"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "Post-Quantum Cryptography Resource Hub",
+      "url": "https://www.reddit.com/r/programming/comments/1wvncok/postquantum_cryptography_resource_hub/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wvs12j/adding_memory_to_search_instead_of_sampling_in/"
+      ],
+      "tags": [
+        "memory",
+        "reasoning"
+      ],
+      "title": "Adding memory to search instead of sampling in reward maximization tasks",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wvs12j/adding_memory_to_search_instead_of_sampling/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wvg7yc/arxiv_now_limits_submitters_to_up_to_two/"
+      ],
+      "tags": [
+        "governance",
+        "llm"
+      ],
+      "title": "arXiv now limits submitters to up to two submissions per calendar month",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wvg7yc/arxiv_now_limits_submitters_to_up_to_two/"
+    }
+  ],
+  "generated_at": "2026-10-04T08:25:00+09:00",
+  "github_featured": [
+    "Effect-TS/effect"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-03T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 14335
+      },
+      {
+        "rank": 2,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 17403
+      },
+      {
+        "rank": 3,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 16114
+      },
+      {
+        "rank": 4,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 6469
+      },
+      {
+        "rank": 5,
+        "repository": "flutter/flutter",
+        "weekly_stars": 147
+      },
+      {
+        "rank": 6,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 2704
+      },
+      {
+        "rank": 7,
+        "repository": "vercel/next.js",
+        "weekly_stars": 624
+      },
+      {
+        "rank": 8,
+        "repository": "alirezarezvani/claude-skills",
+        "weekly_stars": 743
+      },
+      {
+        "rank": 9,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 2667
+      },
+      {
+        "rank": 10,
+        "repository": "TencentCloud/Octop",
+        "weekly_stars": 1360
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-04T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 12825
+      },
+      {
+        "rank": 2,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 16183
+      },
+      {
+        "rank": 3,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 16475
+      },
+      {
+        "rank": 4,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 3124
+      },
+      {
+        "rank": 5,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 5600
+      },
+      {
+        "rank": 6,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 2661
+      },
+      {
+        "rank": 7,
+        "repository": "vercel/next.js",
+        "weekly_stars": 658
+      },
+      {
+        "rank": 8,
+        "repository": "Effect-TS/effect",
+        "weekly_stars": 466
+      },
+      {
+        "rank": 9,
+        "repository": "alirezarezvani/claude-skills",
+        "weekly_stars": 832
+      },
+      {
+        "rank": 10,
+        "repository": "flutter/flutter",
+        "weekly_stars": 228
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "VISTA: Lossless Visual Memory로 Multimodal Agent Harness 확장하기",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.02200"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 multimodal model이 visual reasoning 능력을 갖고 있어도 interactive environment에서 관측 history를 충분히 다루지 못하면 장기 task를 풀기 어렵다는 문제를 다룬다. VISTA는 model이 현재 화면뿐 아니라 과거 visual observation을 원본 형태로 다시 볼 수 있는 harness가 필요하다고 주장한다.",
+      "evidence": "full_text",
+      "findings": "ARC-AGI-3에서 VISTA는 Claude Opus 5.0의 Relative Human Action Efficiency를 40.68에서 100.00으로 끌어올렸고, 공개 25개 game을 모두 완료하면서 first-time human보다 action을 57.4% 적게 썼다. Ablation에서는 lossless memory와 inspection을 추가한 단계가 RHAE를 70.05에서 94.10으로 크게 높였다.",
+      "first_published": "2026-10-01",
+      "id": "arxiv:2610.02200",
+      "limitations": "VISTA는 많은 visual frame을 보존하므로 token과 storage 예산이 중요하다. 논문도 16x scale은 추가 이득 없이 token cost만 늘 수 있고, 100K context는 성능을 거의 유지하면서 token을 줄일 수 있다고 분석한다.",
+      "method": "VISTA는 visual observation, lossless visual memory, visual inspection tool을 결합한다. environment가 반환한 모든 frame을 turn과 frame number로 저장하고, model은 reasoning 중 필요한 frame이나 region을 확대해 비교하며, GUIDE.md와 WORKING.md 같은 notes로 game model을 갱신한다.",
+      "practical_value": "multimodal agent 평가에서는 model 자체보다 observation memory와 inspection interface가 성능을 좌우할 수 있다. GUI, game, robotics agent harness는 단순 screenshot stream 대신 frame-level memory와 region inspection primitive를 설계해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.02200",
+        "https://arxiv.org/pdf/2610.02200"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "memory",
+        "multimodal"
+      ],
+      "title": "VISTA: A Visual Harness for Reasoning in an Interactive World",
+      "topics": [
+        "visual harness",
+        "lossless visual memory",
+        "multimodal agents",
+        "ARC-AGI-3"
+      ],
+      "url": "https://arxiv.org/abs/2610.02200"
+    },
+    {
+      "abstract_summary": "이 논문은 coding agent가 긴 repository task를 수행할 때 context window가 넘치기 전에 언제 compact할지 스스로 배워야 한다는 문제를 다룬다. 고정 threshold나 수동 summary는 compaction trigger, working state, post-compaction continuation을 동시에 최적화하지 못한다.",
+      "evidence": "full_text",
+      "findings": "AutoCompact는 SWE-bench Verified에서 pass rate 39.6%, SWE-PolyBench Verified에서 24.5%를 달성해 base model보다 각각 9.2%p와 5.0%p 높았다. AutoCompact-SFT 대비 outcome-based RL은 두 benchmark에서 각각 7.4%p와 2.8%p 추가 개선을 만들었다.",
+      "first_published": "2026-10-01",
+      "id": "arxiv:2610.02163",
+      "limitations": "학습에는 GPT-5.5-Codex judge를 통한 online correction과 malformed request filtering이 필요하며, evaluation은 특정 terminal-based harness와 pricing assumption에 의존한다. compaction policy가 다른 repository distribution에도 같은 효과를 내는지는 추가 검증이 필요하다.",
+      "method": "AutoCompact는 online correction으로 수집한 trajectory에서 compaction trigger, working-state construction, compaction 이후 action을 학습하고, 최종 task success만을 reward로 쓰는 outcome-based RL로 policy를 더 개선한다. 평가에는 SWE-bench Verified와 SWE-PolyBench Verified가 쓰였다.",
+      "practical_value": "장기 coding task에서 context overflow를 피하는 것은 단순 요약 기능이 아니라 agent policy의 일부다. compaction trigger와 이후 행동까지 end-to-end로 평가해야 비용과 성공률을 동시에 개선할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.02163",
+        "https://arxiv.org/pdf/2610.02163"
+      ],
+      "tags": [
+        "coding-agent",
+        "context-engineering",
+        "evaluation",
+        "performance"
+      ],
+      "title": "AutoCompact: Learning When to Compact Context in Long-Horizon Coding Agents",
+      "topics": [
+        "coding-agent context compaction",
+        "SWE-bench Verified",
+        "outcome-based RL",
+        "long-horizon coding"
+      ],
+      "url": "https://arxiv.org/abs/2610.02163"
+    },
+    {
+      "abstract_summary": "이 논문은 poisoned tool metadata, retrieved pages, memory, reusable skills가 모두 agent의 tool call에 영향을 줄 수 있으므로, 단순 content 검사나 output aggregation만으로는 authorization이 부족하다는 문제를 다룬다. 핵심은 capability와 argument provenance를 runtime에서 추적하는 것이다.",
+      "evidence": "full_text",
+      "findings": "8개 executable agent-security benchmark와 3개 target-model family에서 PACE는 79개 eligible attack column 중 62개에서 단독 최저 attack success rate를 기록했고 14개에서는 tie였다. full-benchmark native utility drop은 최대 2.92점으로 보고됐다.",
+      "first_published": "2026-10-01",
+      "id": "arxiv:2610.01349",
+      "limitations": "PACE는 benchmark별 policy와 schema가 freeze된 뒤 평가됐다. 실제 production tool ecosystem에서는 schema drift, plugin update, capability grant 변경이 잦아 policy epoch 관리와 provenance coverage가 운영 부담이 될 수 있다.",
+      "method": "PACE는 trusted request channel에서 capability를 결정하고, tool arguments, memory records, artifacts, output fields에 origin을 붙인다. runtime verifier는 attacker-controlled context가 권한 있는 effect로 이어지는지 provenance graph와 policy epoch을 기준으로 확인한다.",
+      "practical_value": "tool-using agent 보안은 prompt injection detector보다 capability provenance enforcement에 가까워져야 한다. 특히 memory와 skill이 tool argument를 만들 수 있는 환경에서는 origin-labeled dataflow와 fail-closed policy가 필요하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.01349",
+        "https://arxiv.org/pdf/2610.01349"
+      ],
+      "tags": [
+        "agent",
+        "security",
+        "tool-use"
+      ],
+      "title": "PACE: Provenance-Aware Capability Enforcement for Tool-Using LLM Agents",
+      "topics": [
+        "tool authorization",
+        "provenance-aware enforcement",
+        "agent security",
+        "prompt injection"
+      ],
+      "url": "https://arxiv.org/abs/2610.01349"
+    },
+    {
+      "abstract_summary": "이 논문은 agent가 사용자 요청을 처리하면서 여러 skill을 순차적으로 호출할 때, 앞선 skill이 만든 기록이 뒤의 skill decision을 정당화하는 신뢰 경로가 될 수 있다는 문제를 다룬다. 공격자는 각 skill이 따로 보면 자연스럽게 보이도록 구성하면서, handoff record에 사용자 승인처럼 보이는 false claim을 남긴다.",
+      "evidence": "full_text",
+      "findings": "SkillsBench의 네 targeted-action family와 여섯 model에서 skill chain은 690회 중 512회, 즉 74.2%에서 attacker-selected action을 유도했다. GPT-5.4에서는 full chain success가 84.3%였고, 같은 workflow를 single skill로 합치면 17.4%에 그쳤다. 방어 prompt는 84.3%를 59.1%로 낮췄지만 benign native-skill verifier pass rate도 86.7%에서 56.3%로 떨어뜨렸다.",
+      "first_published": "2026-10-01",
+      "id": "arxiv:2610.01564",
+      "limitations": "평가는 SkillsBench와 attacker가 skill package를 통제하는 threat model에 기반한다. 방어 prompt의 utility 손실이 크므로, 단순히 agent에게 기록을 다시 확인하라고 지시하는 방식은 충분하지 않다.",
+      "method": "APEX는 user task와 attacker-selected action을 받아 adversarial skill chain을 구성하고, execution feedback으로 attack success와 original-task performance를 함께 최적화한다. 공격은 upstream skill이 genuine task progress와 attacker-supplied claim을 persistent record에 쓰게 하고 downstream skill이 그 기록을 사용하게 만든다.",
+      "practical_value": "skill marketplace는 개별 skill 검사만으로는 부족하다. skill 사이의 persistent record handoff와 authority promotion을 추적하고, downstream skill이 upstream 기록을 권한 근거로 쓰는지 별도 검증해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.01564",
+        "https://arxiv.org/pdf/2610.01564"
+      ],
+      "tags": [
+        "agent",
+        "security",
+        "tool-use"
+      ],
+      "title": "Chaining Skills to Hijack LLM Agents",
+      "topics": [
+        "skill-chain attack",
+        "agent skills",
+        "authority promotion",
+        "SkillsBench"
+      ],
+      "url": "https://arxiv.org/abs/2610.01564"
+    },
+    {
+      "abstract_summary": "이 논문은 agent evaluation이 success rate 하나를 넘어 cost, consistency, robustness를 보려 하지만, agent를 하나의 고정 모델처럼 취급하는 문제가 있다고 지적한다. 실제 agent는 backbone, budget, tool description, memory, compression 등 구성 선택의 system이다.",
+      "evidence": "full_text",
+      "findings": "진짜 시도들 사이의 score variance 중 약 54%는 같은 configuration을 반복 실행한 run-to-run noise에서 왔다. Information level은 가장 큰 효과를 보였고, 성능뿐 아니라 cost와 runtime을 낮추고 calibration error도 줄였다. 논문은 agent 평가가 single success metric과 single run으로는 불충분하다고 결론낸다.",
+      "first_published": "2026-10-01",
+      "id": "arxiv:2610.01618",
+      "limitations": "benchmark는 네 scientific task와 FP8-quantized model 등 resource limitation이 있는 설정에 기반한다. 전문 model 사용이 필요한 AI4S task라 일반 web agent나 coding agent에 그대로 일반화되지는 않는다.",
+      "method": "저자들은 astrophysics와 genomics의 네 scientific task로 AI-for-Science benchmark를 만들고, agent가 specialist model을 찾아 실행해 원 논문 평가를 재현하도록 했다. backbone, budget, information level 등 구성 축을 바꿔 18,000개 이상 trajectory를 분석한다.",
+      "practical_value": "agent benchmark를 설계할 때 model name만 기록하면 부족하다. 정보 제공 수준, budget, tool protocol, repetition count, cost, calibration을 함께 공개해야 system-level 비교가 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.01618",
+        "https://arxiv.org/pdf/2610.01618"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "performance"
+      ],
+      "title": "Agents Are Systems, Not Models: Rethinking Agentic Evaluation",
+      "topics": [
+        "agent evaluation",
+        "AI4S benchmark",
+        "configuration variance",
+        "cost calibration"
+      ],
+      "url": "https://arxiv.org/abs/2610.01618"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "Effect 4.x는 LTS지만 TypeScript 5.9 이상과 strict type-checking을 전제로 한다. 기존 Promise/async 코드나 framework convention과 섞을 때 learning curve와 runtime integration 비용을 고려해야 한다.",
+      "novelty": "new_entry",
+      "rank": 8,
+      "repository": "Effect-TS/effect",
+      "sources": [
+        "https://github.com/Effect-TS/effect",
+        "https://raw.githubusercontent.com/Effect-TS/effect/main/README.md"
+      ],
+      "summary": "Type-safe TypeScript runtime library, typed errors, dependency injection, structured concurrency, schema validation",
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "performance"
+      ],
+      "url": "https://github.com/Effect-TS/effect",
+      "use_case": "TypeScript backend와 full-stack application에서 error handling, dependency injection, scheduling, tracing, schema validation을 하나의 typed effect system으로 묶으려는 팀의 foundation library로 검토할 수 있다.",
+      "why_now": "weekly Trending 8위, 466 stars this week, 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 VISTA입니다. 논문은 multimodal model이 강한 reasoning 능력을 갖고 있어도 interactive visual environment에서는 관측과 과거 상태를 다루는 harness가 성능을 가른다고 보고, 모든 frame을 원본 형태로 보존하는 lossless visual memory와 model-directed inspection을 제안합니다.",
+    "ARC-AGI-3에서 VISTA는 Claude Opus 5.0의 Relative Human Action Efficiency를 40.68에서 100.00으로 끌어올렸고, 공개 25개 game을 모두 완료하면서 first-time human보다 action을 57.4% 적게 사용했다고 보고했습니다. 같은 harness는 다른 visual game·puzzle benchmark에서도 같은 underlying model의 minimal harness baseline을 크게 앞섰습니다.",
+    "같은 호에서는 AutoCompact, PACE, APEX, Agent-as-System evaluation이 context compaction, tool authorization, skill-chain attack, evaluation design을 다룹니다. GitHub Top10 신규 항목은 Effect TypeScript library이며, CNCF에서는 Prometheus 보안 패치, Cilium pre-release, CRI-O patch line, Calico 3.33.0 등이 확인됐습니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "Effect가 weekly Trending 8위로 신규 진입했습니다. TypeScript용 typed errors, DI, structured concurrency 기반 library입니다.",
+        "url": "https://github.com/Effect-TS/effect"
+      },
+      {
+        "section": "papers",
+        "text": "PACE는 8개 agent-security benchmark에서 79개 eligible attack column 중 62개 최저 ASR을 기록했습니다.",
+        "url": "https://arxiv.org/abs/2610.01349"
+      },
+      {
+        "section": "cncf",
+        "text": "Prometheus 3.13.4는 gRPC HTTP/2 memory exhaustion 보안 패치와 UI dependency 갱신을 포함합니다.",
+        "url": "https://github.com/prometheus/prometheus/releases/tag/v3.13.4"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 VISTA입니다. lossless visual memory와 inspection tool을 붙인 visual harness가 multimodal model의 long-horizon visual reasoning을 크게 끌어올립니다.",
+      "ARC-AGI-3에서 Claude Opus 5.0의 RHAE는 40.68에서 100.00으로 상승했고, 공개 25개 game을 first-time human보다 57.4% 적은 action으로 완료했습니다."
+    ]
+  }
+}
