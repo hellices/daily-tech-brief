@@ -1,0 +1,549 @@
+{
+  "cncf": [
+    {
+      "category": "security",
+      "impact": "Prometheus 3.13.x 운영자는 gRPC/HTTP2 메모리 소진 이슈와 UI dependency patch를 우선 확인해야 한다. Agent mode rollback이나 native histogram federation을 쓰는 환경도 regression test가 필요하다.",
+      "published": "2026-10-02",
+      "sources": [
+        "https://github.com/prometheus/prometheus/releases/tag/v3.13.4"
+      ],
+      "summary": "Prometheus 3.13.4는 google.golang.org/grpc를 v1.83.1로 올려 HTTP/2 DATA frame fragmentation memory exhaustion(GO-2026-6348)을 수정하고, UI의 취약 npm dependency를 갱신했다. Agent rollback 호환성, federation native histogram corruption, protobuf float histogram scrape bug도 고쳤다.",
+      "tags": [
+        "observability",
+        "release",
+        "security"
+      ],
+      "title": "Prometheus v3.13.4",
+      "url": "https://github.com/prometheus/prometheus/releases/tag/v3.13.4"
+    },
+    {
+      "category": "release",
+      "impact": "pre-release이므로 production upgrade 대상은 아니지만, LB IPAM IP sharing, Hubble metrics, BGP/native routing, conntrack GC 관련 변경을 미리 검토해야 하는 네트워킹 팀에는 중요하다.",
+      "published": "2026-10-02",
+      "sources": [
+        "https://github.com/cilium/cilium/releases/tag/v1.21.0-pre.3"
+      ],
+      "summary": "Cilium 1.21.0-pre.3은 LB IPAM의 externalTrafficPolicy=Local 서비스 간 IP sharing annotation, metrics port name Helm values, Hubble HTTP metrics path label 준비, deprecated mutual authentication 제거, node reboot 중 BGP route 광고와 BPF attach timing 문제 수정 등을 포함한다.",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "release"
+      ],
+      "title": "Cilium v1.21.0-pre.3",
+      "url": "https://github.com/cilium/cilium/releases/tag/v1.21.0-pre.3"
+    },
+    {
+      "category": "release",
+      "impact": "CRI-O를 node runtime으로 쓰는 cluster는 Kubernetes minor line에 맞는 patch와 SBOM/signature artifact를 확인해 node image promotion 절차에 반영해야 한다.",
+      "published": "2026-10-02",
+      "sources": [
+        "https://github.com/cri-o/cri-o/releases/tag/v1.37.2",
+        "https://github.com/cri-o/cri-o/releases/tag/v1.36.7"
+      ],
+      "summary": "CRI-O는 여러 Kubernetes support line에 걸쳐 patch release를 공개했고, release bundle에는 SHA-256 checksum, cosign signature bundle, SPDX bill of materials가 포함된다.",
+      "tags": [
+        "containers",
+        "kubernetes",
+        "release"
+      ],
+      "title": "CRI-O v1.37.2 / v1.36.7 / v1.35.10 / v1.34.15",
+      "url": "https://github.com/cri-o/cri-o/releases/tag/v1.37.2"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 확인한 주요 CNCF/클라우드 네이티브 프로젝트 중 2026-10-02에 공개된 Prometheus, Cilium, CRI-O 릴리스를 정리했습니다. 2026-10-01 릴리스는 검증했지만 이번 3일 창 밖이라 제외했습니다.",
+      "sources": [
+        "https://github.com/prometheus/prometheus/releases",
+        "https://github.com/cilium/cilium/releases",
+        "https://github.com/cri-o/cri-o/releases",
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/fluxcd/flux2/releases"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, inference, 보안, 개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 신규 Top10 항목 2개를 상세 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 source learning, organizational memory, web-agent evaluation, explicit belief state, coding-agent review 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22memory%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22coding%20agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.SE)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-05",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/Niko1221/Strata"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "Run Qwen 3.8 Flash Next on consumer hardware at 100T/s",
+      "url": "https://github.com/Niko1221/Strata"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://pipod.dev/"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "harness"
+      ],
+      "title": "Show HN: Pi pod - Run your pi coding agent in sandboxes on your own server",
+      "url": "https://pipod.dev/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://liao.gg/blog/agents-dont-need-memory"
+      ],
+      "tags": [
+        "agent",
+        "context-engineering",
+        "memory"
+      ],
+      "title": "Agents don't need memory, they need documentation",
+      "url": "https://liao.gg/blog/agents-dont-need-memory"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/net4people/bbs/issues/672"
+      ],
+      "tags": [
+        "networking",
+        "security"
+      ],
+      "title": "Xray-core concealed a certificate verification bypass vulnerability",
+      "url": "https://github.com/net4people/bbs/issues/672"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34783"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "developer-tools"
+      ],
+      "title": "Offrun - 모든 코딩 에이전트를 하나의 작업 공간에서 관리",
+      "url": "https://news.hada.io/topic?id=34783"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34785"
+      ],
+      "tags": [
+        "developer-tools"
+      ],
+      "title": "GitHub의 새 대시보드가 이제 기본 화면으로 적용됨",
+      "url": "https://news.hada.io/topic?id=34785"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34774"
+      ],
+      "tags": [
+        "multimodal",
+        "retrieval"
+      ],
+      "title": "Show HN: macOS의 모든 사진과 동영상의 모든 프레임을 위한 AI 검색",
+      "url": "https://news.hada.io/topic?id=34774"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wxm5p3/interactive_demonstration_of_prefix_injection/"
+      ],
+      "tags": [
+        "llm",
+        "security"
+      ],
+      "title": "Interactive Demonstration of Prefix Injection attacks on LLMs for jailbreaking",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wxm5p3/interactive_demonstration_of_prefix_injection/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wxa2bs/nonobench_an_open_benchmark_of_49_llms_on/"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "reasoning"
+      ],
+      "title": "Nonobench: an open benchmark of 49 LLMs on nonogram puzzles",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wxa2bs/nonobench_an_open_benchmark_of_49_llms_on/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wxr63h/your_xiaomi_phone_may_be_sending_you_phishing/"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "Your Xiaomi phone may be sending you phishing notifications",
+      "url": "https://www.reddit.com/r/programming/comments/1wxr63h/your_xiaomi_phone_may_be_sending_you_phishing/"
+    }
+  ],
+  "generated_at": "2026-10-05T08:25:00+09:00",
+  "github_featured": [
+    "Panniantong/Agent-Reach",
+    "pingdotgg/t3code"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-04T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 12825
+      },
+      {
+        "rank": 2,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 16183
+      },
+      {
+        "rank": 3,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 16475
+      },
+      {
+        "rank": 4,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 3124
+      },
+      {
+        "rank": 5,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 5600
+      },
+      {
+        "rank": 6,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 2661
+      },
+      {
+        "rank": 7,
+        "repository": "vercel/next.js",
+        "weekly_stars": 658
+      },
+      {
+        "rank": 8,
+        "repository": "Effect-TS/effect",
+        "weekly_stars": 466
+      },
+      {
+        "rank": 9,
+        "repository": "alirezarezvani/claude-skills",
+        "weekly_stars": 832
+      },
+      {
+        "rank": 10,
+        "repository": "flutter/flutter",
+        "weekly_stars": 228
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-05T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 10722
+      },
+      {
+        "rank": 2,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 14507
+      },
+      {
+        "rank": 3,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 3311
+      },
+      {
+        "rank": 4,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 16775
+      },
+      {
+        "rank": 5,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3011
+      },
+      {
+        "rank": 6,
+        "repository": "Effect-TS/effect",
+        "weekly_stars": 466
+      },
+      {
+        "rank": 7,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 5059
+      },
+      {
+        "rank": 8,
+        "repository": "Panniantong/Agent-Reach",
+        "weekly_stars": 3952
+      },
+      {
+        "rank": 9,
+        "repository": "alirezarezvani/claude-skills",
+        "weekly_stars": 948
+      },
+      {
+        "rank": 10,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 975
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "SourceLearn: RAG를 넘어 Source-Specific Competence 학습하기",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.02150"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 LLM agent가 문서 모음, 코드 저장소, API 문서처럼 동일한 authoritative source를 반복해서 쓰면서도, 매번 query-time access와 retrieval만 반복한다는 문제에서 출발한다. 저자들은 source content를 더 잘 찾는 것과 source 자체를 이해하는 능력을 축적하는 것은 다른 문제라고 구분한다.",
+      "evidence": "full_text",
+      "findings": "다섯 benchmark와 세 LLM backend에서 SourceLearn은 15개 설정 중 13개에서 최고 성능을 냈다. Hybrid RAG 대비 최대 22.6점 개선을 보였고, static source representation 및 experience-based memory baseline보다 전반적으로 높은 성능을 보고했다.",
+      "first_published": "2026-10-01",
+      "id": "arxiv:2610.02150",
+      "limitations": "source가 식별 가능하고 지속적으로 접근 가능한 authoritative body라는 가정이 필요하다. 또한 source model update가 항상 source-grounded라 해도, source 자체가 오래되었거나 domain convention이 바뀌면 별도 freshness 관리가 필요하다.",
+      "method": "SourceLearn은 source-specific competence를 persistent source model로 표현한다. Self-Directed Source Learning은 아직 불완전한 이해를 찾아 source를 다시 공부하고, Task-Guided Source Learning은 downstream 실패와 반복되는 요구를 사용해 source 지식의 표현 gap을 고친다. 중요한 점은 persistent update가 경험 자체가 아니라 authoritative source에서 재구성된다는 것이다.",
+      "practical_value": "RAG 기반 agent를 운영할 때 같은 source를 반복 사용하는 domain에서는 query-time retrieval만 개선하기보다 source-specific model을 장기적으로 축적해야 한다. API 문서, codebase, compliance manual처럼 반복 task가 많은 source에 특히 적합하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.02150",
+        "https://arxiv.org/pdf/2610.02150"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "rag",
+        "retrieval"
+      ],
+      "title": "From Knowledge Access to Source Learning: Developing Source-Specific Competence",
+      "topics": [
+        "source learning",
+        "persistent source model",
+        "RAG",
+        "agent memory"
+      ],
+      "url": "https://arxiv.org/abs/2610.02150"
+    },
+    {
+      "abstract_summary": "이 논문은 조직의 결정이 여러 사람이 쓴 문서에 시간 순서로 쌓이고, 최신 문서가 이전 문서를 직접 수정하지 않는다는 점에 주목한다. write-time distillation으로 fact나 graph edge만 저장하면, 어떤 결정이 특정 시점에 유효했는지와 그 근거를 잃을 수 있다.",
+      "evidence": "full_text",
+      "findings": "OrgMemBench에서 Mem++는 가장 강한 memory-system baseline을 두 answering model 기준 8.0~13.1점 앞섰다. gpt-4.1-mini와 함께 사용할 때는 RAG보다 2.6점 높은 best overall score를 냈고, LoCoMo에서는 평균 LLM-judge score가 가장 높았으며 LongMemEval-S에서는 entity-graph variant 다음 2위를 기록했다.",
+      "first_published": "2026-10-01",
+      "id": "arxiv:2610.02002",
+      "limitations": "Mem++는 일부 benchmark에서 비교 system보다 더 많은 source context를 볼 수 있다는 점을 저자들이 명시한다. 또한 전체 문서 보존은 privacy와 retention 비용을 키울 수 있어 조직 환경에서는 접근 제어와 삭제 정책이 필요하다.",
+      "method": "Mem++는 write time에 생성 모델을 호출하지 않고 문서 전체를 날짜와 작성자 tag와 함께 저장한다. read time에는 질문이 묻는 시점 이하의 문서만 검색하고, lexical ranking과 semantic ranking을 fusion해 answering model이 여러 version을 직접 비교하게 한다.",
+      "practical_value": "조직 memory에서는 오래된 결정을 덮어쓰는 업데이트보다 versioned record 보존이 중요하다. 의사결정 이력, 정책 변경, 승인 근거를 다루는 agent는 비파괴 저장과 time-aware retrieval을 기본값으로 삼아야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.02002",
+        "https://arxiv.org/pdf/2610.02002"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "retrieval"
+      ],
+      "title": "Mem++: Non-Destructive Memory for Long-Term Organizational LLM Agents",
+      "topics": [
+        "organizational memory",
+        "non-destructive storage",
+        "temporal questions",
+        "OrgMemBench"
+      ],
+      "url": "https://arxiv.org/abs/2610.02002"
+    },
+    {
+      "abstract_summary": "이 논문은 web agent 평가가 최종 outcome만 보는 rule-based 또는 LLM evaluator에 의존해 실제 task completion과 trajectory 품질을 놓칠 수 있다는 문제를 다룬다. 특히 실패 trajectory가 어디서 어긋났는지, 부분 진행이 있었는지에 대한 human-grounded audit이 부족하다는 점을 지적한다.",
+      "evidence": "full_text",
+      "findings": "GPT-5.5 네 조건에서 human review는 자동 evaluator가 놓친 success를 5.45~8.49%p 회복했다. 25-step budget에서 Guide Text는 MASM corrected success를 34.55%에서 38.18%로 올렸고, Qwen3.5 9B에서는 MASM이 evaluator score를 13.90%에서 18.80%로 높였다.",
+      "first_published": "2026-10-01",
+      "id": "arxiv:2610.01491",
+      "limitations": "연구는 평가와 audit에 초점을 두며, GPT trajectory를 다른 모델 학습이나 distillation에 사용하지 않는다. Human correction은 evaluator false negative를 고치는 것이며, incomplete answer나 agent memory만으로 주장한 성공은 correction하지 않는다.",
+      "method": "저자들은 WebArena-Lite 165개 task 전체를 GPT-5.5와 untrained Qwen3.5 9B 기반 여섯 조건에서 audit했다. 자동 evaluator score를 유지하되 false negative를 human review로 보정하고, 첫 consequential error와 trajectory progress를 기록했다. MASM은 명시적 execution state를, Guide Text는 절차적 guidance를 제공한다.",
+      "practical_value": "web agent benchmark는 최종 점수만 공개하면 부족하다. 첫 결정적 오류, 반복 loop, 미완성 탐색, form workflow 실패를 함께 기록해야 harness 개선과 실제 제품 품질을 연결할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.01491",
+        "https://arxiv.org/pdf/2610.01491"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness"
+      ],
+      "title": "Auditing Web Agent Evaluation on WebArena-Lite: Human Review of Outcomes and Trajectories",
+      "topics": [
+        "web-agent evaluation",
+        "human audit",
+        "WebArena-Lite",
+        "trajectory analysis"
+      ],
+      "url": "https://arxiv.org/abs/2610.01491"
+    },
+    {
+      "abstract_summary": "이 논문은 interaction history를 memory로 정리하는 것만으로는 agent가 현재 world state와 남은 task requirement를 일관되게 이해한다는 보장이 없다고 본다. 저자들은 memory가 아니라 explicit belief state를 decision context로 유지해야 한다고 주장한다.",
+      "evidence": "full_text",
+      "findings": "ALFWorld, LOCA-Bench, RCA-100, ClinDiag 네 benchmark와 세 backbone에서 PoS는 모든 설정의 overall performance가 가장 높았다. 같은 backbone의 strongest baseline 대비 relative gain은 ALFWorld 22.68%, LOCA-Bench 7.53%, RCA-100 joint accuracy 37.89%, ClinDiag 11.31%까지 보고됐다. RCA-100에서 Raw Trajectory 대비 joint accuracy는 24.27%에서 38.83%로 올랐고 Task Agent token consumption은 20.9% 줄었다.",
+      "first_published": "2026-10-01",
+      "id": "arxiv:2610.01415",
+      "limitations": "belief update와 consistency validation은 추가 LLM component에 의존한다. 잘못된 belief가 확신 있게 유지될 경우 recovery가 늦어질 수 있고, benchmark마다 trapping pattern이 다르게 나타나므로 domain별 tuning이 필요하다.",
+      "method": "PoS는 entity, state, relation, unresolved gap으로 구성된 belief를 만들고, 각 step마다 consistency validation과 progress monitoring을 수행한다. progress가 없는 Belief Trapping을 감지하면 trapping pattern과 unresolved requirement type에 맞춰 recovery strategy를 적용한다.",
+      "practical_value": "장기 agent는 기억을 많이 하는 것보다 현재 상태와 미해결 요구를 명시적으로 추적해야 한다. workflow agent, diagnosis agent, embodied agent에는 belief health와 progress gap을 monitoring signal로 넣을 필요가 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.01415",
+        "https://arxiv.org/pdf/2610.01415"
+      ],
+      "tags": [
+        "agent",
+        "context-engineering",
+        "memory",
+        "reasoning"
+      ],
+      "title": "Beyond Memory: Harnessing Long-Horizon Agents with Explicit Belief States",
+      "topics": [
+        "explicit belief state",
+        "long-horizon agents",
+        "belief trapping",
+        "context management"
+      ],
+      "url": "https://arxiv.org/abs/2610.01415"
+    },
+    {
+      "abstract_summary": "이 논문은 coding agent가 그럴듯한 patch와 confident summary를 내지만 실제 요구된 behavior를 빠뜨리는 경우, reviewer 크기보다 결정적 evidence가 있는지가 더 중요하다는 문제를 다룬다. 긴 trace와 요약은 놓친 요구를 감추기 쉽다.",
+      "evidence": "full_text",
+      "findings": "official execution evidence format을 고정한 뒤, 여섯 reviewer 중 다섯은 122 held-out trace에서 defect catch와 over-rejection을 모두 개선했고, 둘은 모든 trace를 정확히 분류했다. deployment-like cascade에서는 GPT-5.4 trace 121개와 Gemini trace 59개에서 coverage 0.89/0.86, risk 0.33/0.26, catch 0.76/0.80을 기록했다.",
+      "first_published": "2026-10-01",
+      "id": "arxiv:2610.01023",
+      "limitations": "official tests는 실제 deployment에서 사용할 수 없으므로 upper-bound diagnostic일 뿐이다. generated test cascade는 coverage가 높지만 over-rejection도 0.66/0.67로 컸고, false rejection은 unresolved case가 reviewer까지 올라갈 때 많이 발생했다.",
+      "method": "저자들은 세 agent의 execution-labeled trace 411개와 controlled case 101개를 사용해 reviewer가 patch solve 여부를 판단하는 조건을 비교했다. official execution evidence를 upper-bound diagnostic으로 제공하고, deployment setting에서는 static error와 generated tests를 결합한 frozen cascade를 평가했다.",
+      "practical_value": "coding-agent audit에서 reviewer 모델 크기만 키우기보다 patch를 ground할 수 있는 실행 증거를 만들어야 한다. CI는 reviewer prompt보다 failing-before-passing test, static error, execution trace provenance를 우선 수집해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.01023",
+        "https://arxiv.org/pdf/2610.01023"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "Groundability, Not Scale Alone: When Weak Reviewers Can Audit Strong Coding Agents",
+      "topics": [
+        "coding-agent review",
+        "groundable evidence",
+        "patch audit",
+        "weak reviewers"
+      ],
+      "url": "https://arxiv.org/abs/2610.01023"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "여러 플랫폼 접근을 agent에게 위임하므로 로그인, rate limit, scraping policy, 저작권, API 약관 준수가 핵심이다. 특히 우회성 access나 비공개 계정 데이터 수집으로 해석될 수 있는 사용은 피해야 한다.",
+      "novelty": "new_entry",
+      "rank": 8,
+      "repository": "Panniantong/Agent-Reach",
+      "sources": [
+        "https://github.com/Panniantong/Agent-Reach",
+        "https://raw.githubusercontent.com/Panniantong/Agent-Reach/main/README.md"
+      ],
+      "summary": "Agent internet access installer, social/search/video/RSS/GitHub connectors, one-command setup",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "retrieval",
+        "tool-use"
+      ],
+      "url": "https://github.com/Panniantong/Agent-Reach",
+      "use_case": "AI agent에게 Twitter, Reddit, YouTube, GitHub, RSS, web page 읽기 같은 public internet capability를 빠르게 붙이고 싶을 때 connector selection과 installation workflow 참고점이 된다.",
+      "why_now": "weekly Trending 8위, 3952 stars this week, 이전 Top10 부재"
+    },
+    {
+      "caution": "로컬 machine의 agent session을 원격 제어하므로 provider authentication, local server exposure, background service 권한, audit log를 배포 전에 확인해야 한다.",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "pingdotgg/t3code",
+      "sources": [
+        "https://github.com/pingdotgg/t3code",
+        "https://raw.githubusercontent.com/pingdotgg/t3code/main/README.md"
+      ],
+      "summary": "Agent harness control surface, mobile/web/desktop remote control, Claude Code·Codex·Cursor support",
+      "tags": [
+        "agent",
+        "coding-agent",
+        "developer-tools",
+        "harness"
+      ],
+      "url": "https://github.com/pingdotgg/t3code",
+      "use_case": "여러 coding agent CLI를 한 workstation에서 실행하고, 모바일·웹·desktop UI로 세션을 제어하려는 팀의 agent operations control plane으로 참고할 수 있다.",
+      "why_now": "weekly Trending 10위, 975 stars this week, 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 SourceLearn입니다. 논문은 agent가 같은 문서 집합, code repository, API 문서를 반복해서 쓰면서도 매번 retrieval만 다시 수행하는 한계를 지적하고, source 자체에 대한 reusable competence를 축적하는 source learning 문제를 제안합니다.",
+    "SourceLearn은 Self-Directed Source Learning과 Task-Guided Source Learning을 결합해 persistent source model을 갱신하되, 업데이트는 authoritative source에서 다시 구성합니다. 다섯 benchmark와 세 LLM backend 평가에서 15개 설정 중 13개에서 최고 성능을 냈고, Hybrid RAG 대비 최대 22.6점 개선을 보고했습니다.",
+    "같은 호에서는 Mem++의 비파괴 조직 memory, WebArena-Lite human audit, PoS의 explicit belief state, weak reviewer의 groundability가 agent memory와 평가의 다른 축을 보여줍니다. GitHub Top10 신규 항목은 Agent-Reach와 T3 Code이며, CNCF 쪽은 Prometheus, Cilium, CRI-O의 10월 2일 릴리스가 운영 영향이 있습니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "Agent-Reach는 agent에 YouTube, Reddit, GitHub, RSS 등 public internet connector를 설치하는 신규 Top10 프로젝트입니다.",
+        "url": "https://github.com/Panniantong/Agent-Reach"
+      },
+      {
+        "section": "papers",
+        "text": "PoS는 explicit belief state로 네 benchmark와 세 backbone 모두에서 가장 높은 overall performance를 기록했습니다.",
+        "url": "https://arxiv.org/abs/2610.01415"
+      },
+      {
+        "section": "cncf",
+        "text": "Prometheus 3.13.4는 gRPC HTTP/2 memory exhaustion 보안 패치와 UI dependency 갱신을 포함합니다.",
+        "url": "https://github.com/prometheus/prometheus/releases/tag/v3.13.4"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 SourceLearn입니다. 반복적으로 쓰는 source를 매번 RAG로만 접근하지 않고, source-specific competence를 persistent source model로 축적합니다.",
+      "다섯 benchmark와 세 LLM backend에서 15개 설정 중 13개 최고 성능을 냈고, Hybrid RAG 대비 최대 22.6점 개선을 보고했습니다."
+    ]
+  }
+}
