@@ -1,0 +1,480 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "Kubernetes/CNCF 주요 프로젝트 릴리스 피드를 확인했지만 2026-10-03부터 2026-10-06 08:00 KST까지 새로 소개할 만한 주요 변경은 확인하지 못했습니다. 2026-10-02 릴리스들은 3일 창 밖이라 제외했습니다.",
+      "sources": [
+        "https://github.com/prometheus/prometheus/releases",
+        "https://github.com/cilium/cilium/releases",
+        "https://github.com/cri-o/cri-o/releases",
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/fluxcd/flux2/releases"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, inference, 보안, 개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 신규 Top10 항목 1개를 상세 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 critic-free RFT, relational memory, mathematical research memory, token-efficient graph memory, resource authorization 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22memory%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22security%22%20AND%20all:%22agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CR)",
+        "https://export.arxiv.org/api/query?search_query=all:%22inference%22%20AND%20all:%22agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL%20OR%20cat:cs.OS)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-06",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://reflection.ai/blog/introducing-beam"
+      ],
+      "tags": [
+        "llm",
+        "open-source"
+      ],
+      "title": "Beam: Reflection's 501B open-weight model",
+      "url": "https://reflection.ai/blog/introducing-beam"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://www.vals.ai/blogs/room-temperature-magnetic-semiconductors"
+      ],
+      "tags": [
+        "agent",
+        "evaluation"
+      ],
+      "title": "Opus 5.5 agents discover two room-temperature magnetic semiconductor candidates",
+      "url": "https://www.vals.ai/blogs/room-temperature-magnetic-semiconductors"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://developers.cloudflare.com/changelog/post/2026-10-02-introducing-web-search-api/"
+      ],
+      "tags": [
+        "developer-tools",
+        "retrieval"
+      ],
+      "title": "Web Search API",
+      "url": "https://developers.cloudflare.com/changelog/post/2026-10-02-introducing-web-search-api/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34835"
+      ],
+      "tags": [
+        "agent",
+        "security"
+      ],
+      "title": "Wikimedia 프로젝트에서 OpenAI의 통제 이탈 에이전트 활동 발견",
+      "url": "https://news.hada.io/topic?id=34835"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34831"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "security"
+      ],
+      "title": "Show GN: Agent Guard - Claude Code·Codex의 비밀정보 노출을 줄이는 로컬 보안 도구",
+      "url": "https://news.hada.io/topic?id=34831"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34839"
+      ],
+      "tags": [
+        "llm",
+        "open-source"
+      ],
+      "title": "Beam - Reflection의 5,010억 매개변수 오픈 웨이트 모델",
+      "url": "https://news.hada.io/topic?id=34839"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34832"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance",
+        "release"
+      ],
+      "title": "Mold 링커 3.0.0 출시, Rust로 재작성",
+      "url": "https://news.hada.io/topic?id=34832"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wxm5p3/interactive_demonstration_of_prefix_injection/"
+      ],
+      "tags": [
+        "llm",
+        "security"
+      ],
+      "title": "Interactive Demonstration of Prefix Injection attacks on LLMs for jailbreaking",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wxm5p3/interactive_demonstration_of_prefix_injection/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wyfruw/a_chunking_lib_in_rust_that_is_20x_faster_p/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance",
+        "retrieval"
+      ],
+      "title": "A chunking lib in Rust that is around 20x faster",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wyfruw/a_chunking_lib_in_rust_that_is_20x_faster_p/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wydryt/achieving_memory_safety/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Achieving memory safety",
+      "url": "https://www.reddit.com/r/programming/comments/1wydryt/achieving_memory_safety/"
+    }
+  ],
+  "generated_at": "2026-10-06T08:27:00+09:00",
+  "github_featured": [
+    "Gaurav-Gosain/tuios"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-05T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 10722
+      },
+      {
+        "rank": 2,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 14507
+      },
+      {
+        "rank": 3,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 3311
+      },
+      {
+        "rank": 4,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 16775
+      },
+      {
+        "rank": 5,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3011
+      },
+      {
+        "rank": 6,
+        "repository": "Effect-TS/effect",
+        "weekly_stars": 466
+      },
+      {
+        "rank": 7,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 5059
+      },
+      {
+        "rank": 8,
+        "repository": "Panniantong/Agent-Reach",
+        "weekly_stars": 3952
+      },
+      {
+        "rank": 9,
+        "repository": "alirezarezvani/claude-skills",
+        "weekly_stars": 948
+      },
+      {
+        "rank": 10,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 975
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-06T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 4242
+      },
+      {
+        "rank": 2,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 8732
+      },
+      {
+        "rank": 3,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 10623
+      },
+      {
+        "rank": 4,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3096
+      },
+      {
+        "rank": 5,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 14689
+      },
+      {
+        "rank": 6,
+        "repository": "Panniantong/Agent-Reach",
+        "weekly_stars": 4789
+      },
+      {
+        "rank": 7,
+        "repository": "Effect-TS/effect",
+        "weekly_stars": 702
+      },
+      {
+        "rank": 8,
+        "repository": "Gaurav-Gosain/tuios",
+        "weekly_stars": 708
+      },
+      {
+        "rank": 9,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 1304
+      },
+      {
+        "rank": 10,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 4904
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Follow the Winners: Stateful Agent RFT를 위한 Critic-Free Policy Improvement",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.03361"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 agentic LLM을 RFT로 학습할 때 GRPO식 group rollout이나 PPO식 value model이 stateful environment에서는 비용과 제약을 만든다는 문제에서 출발한다. live service, security sandbox, 긴 trajectory처럼 같은 초기 상태를 반복하기 어려운 상황에서는 repeated rollout baseline이 현실적이지 않다.",
+      "evidence": "full_text",
+      "findings": "FTW는 Sokoban과 Search-R1 baseline에서 GRPO 및 PPO와 맞먹는 결과를 보고했다. value model, group rollout, environment duplication 없이 variance reduction을 sample order statistic에서 얻으며, 비용을 GPU memory나 repeated rollout throughput에서 CPU replay memory로 옮기는 viable trade-off를 제시했다.",
+      "first_published": "2026-10-02",
+      "id": "arxiv:2610.03361",
+      "limitations": "논문은 FTW가 GRPO/PPO를 압도했다고 주장하기보다 유사한 성능과 다른 비용 구조를 보였다고 해석한다. replay buffer sample 품질과 ordinal filtering이 noisy long trajectory에서 편향을 만들 수 있으며, stateful production service에서의 online safety는 별도 문제다.",
+      "method": "Follow the Winners(FTW)는 cross-entropy method를 critic-free policy learning으로 바꾼다. replay buffer sample을 ordinal filter로 골라 더 나은 trajectory 분포에 policy를 projection하고, control-as-inference 관점에서 GRPO와 DPO를 같은 틀의 다른 modeling choice로 해석한다.",
+      "practical_value": "agent RFT를 live-like sandbox에서 운영하는 팀은 같은 prompt를 반복 rollout하는 가정부터 점검해야 한다. FTW식 replay-buffer 기반 critic-free update는 환경 복제 비용이 높을 때 고려할 수 있는 학습 primitive다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.03361",
+        "https://arxiv.org/pdf/2610.03361"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "fine-tuning",
+        "performance"
+      ],
+      "title": "Follow the Winners: Conservative Policy Improvement with the Cross-Entropy Method for Critic-Free RFT",
+      "topics": [
+        "critic-free RFT",
+        "agentic RL",
+        "cross-entropy method",
+        "stateful environments"
+      ],
+      "url": "https://arxiv.org/abs/2610.03361"
+    },
+    {
+      "abstract_summary": "이 논문은 장기 agent memory가 사용자 사실과 선호만 기억하는 것을 넘어, 특정 agent가 특정 사용자와 어떻게 함께 일해야 하는지라는 관계적 기억을 포함해야 한다고 주장한다. 기존 benchmark는 최종 QA만 보는 경우가 많아 Capture, Update, Recall 중 어디서 실패했는지 구분하기 어렵다.",
+      "evidence": "full_text",
+      "findings": "16개 open-weight와 4개 proprietary model에서 Gold-Memory QA는 78.7~96.3%로 강했지만, Full-Pipeline QA는 open-weight 평균 47.7%, proprietary 평균 57.4%로 크게 떨어졌다. URAM을 함께 넣는 구성은 20개 LLM 모두에서 general experience memory보다 좋았다고 보고됐다.",
+      "first_published": "2026-10-02",
+      "id": "arxiv:2610.03020",
+      "limitations": "DyadMem은 benchmark 자체와 annotation framework가 핵심 기여이므로 특정 memory method의 production 성능을 직접 보장하지 않는다. 또한 relational memory는 privacy와 personalization boundary를 민감하게 다룰 수 있어 사용자 동의와 삭제 가능성이 필요하다.",
+      "method": "DyadMem은 User-conditioned Relational Agent Memory(URAM)를 정의하고, 같은 multi-session trajectory에서 user-side memory와 URAM을 함께 annotation한다. 데이터는 3,065 episodes, 50,961 sessions, 61,210 QA instances로 구성되며 Capture, Update, Recall, Gold-Memory QA, Full-Pipeline QA를 나눠 평가한다.",
+      "practical_value": "개인 assistant나 업무 agent는 사용자의 사실만이 아니라 이 사용자와 일하는 방식도 기억해야 한다. memory system 평가는 최종 답변뿐 아니라 capture/update/recall stage별로 분해해야 개선 지점을 찾을 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.03020",
+        "https://arxiv.org/pdf/2610.03020"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory"
+      ],
+      "title": "DyadMem: A Long-Term Memory Benchmark of How Agents Work with Users",
+      "topics": [
+        "user-conditioned relational memory",
+        "long-term memory benchmark",
+        "full-pipeline evaluation",
+        "agent-user dyads"
+      ],
+      "url": "https://arxiv.org/abs/2610.03020"
+    },
+    {
+      "abstract_summary": "이 논문은 frontier mathematical research problem을 여러 agent가 장시간 병렬 탐색할 때 intermediate proof result가 폭발적으로 쌓이고, 실패한 구성·반례·lemma·plan을 어떻게 조직하고 재사용할지 어려워진다는 문제를 다룬다.",
+      "evidence": "full_text",
+      "findings": "저자들은 First Proof Second Batch 10개 문제 전체에서 closure를 보고했고, Jamison caterpillar conjecture와 Erdős Problems 289, 348, 488에 대해서도 human intervention 없이 solution을 만들었다고 주장한다. 네 가지 component study로 graph memory의 역할도 분석했다.",
+      "first_published": "2026-10-02",
+      "id": "arxiv:2610.02945",
+      "limitations": "수학 연구 결과는 검증 기준과 외부 독립 검토가 특히 중요하다. 논문 주장의 강도는 높지만, open problem 해결 claim은 formal proof artifact와 community review를 거쳐야 하므로 이번 요약에서는 시스템 설계와 자체 보고 결과로만 해석해야 한다.",
+      "method": "Ansatz는 Continual Graph Memory를 중심으로 fact, plan, counterexample, dependency edge를 하나의 graph에 저장한다. dependency-aware retrieval이 국소 context를 공급하고, evidence-sensitive curator가 research frontier를 갱신하며, scoped recall은 이전 statement와 negative finding을 무비판적 재사용이 아니라 local re-proving용으로 노출한다.",
+      "practical_value": "대규모 research agent 운영에서는 결과만 저장하는 memory가 아니라 실패, 반례, 의존 관계, scope를 구분하는 graph가 필요하다. 특히 negative finding을 안전하게 재사용하려면 provenance와 re-proof 절차가 필수다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.02945",
+        "https://arxiv.org/pdf/2610.02945"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "reasoning"
+      ],
+      "title": "Continual Graph Memory for Mathematical Research Agents",
+      "topics": [
+        "mathematical research agents",
+        "continual graph memory",
+        "proof search",
+        "cross-problem recall"
+      ],
+      "url": "https://arxiv.org/abs/2610.02945"
+    },
+    {
+      "abstract_summary": "이 논문은 test-time continual learning에서 경험을 계속 context에 append하면 token cost가 커지고 context window 한계와 성능 저하가 생긴다는 문제를 다룬다. 저자들은 memory update를 model context optimization procedure로 해석하고, 저장된 memory 전체와 query-time context를 분리해야 한다고 주장한다.",
+      "evidence": "full_text",
+      "findings": "두 financial reasoning task인 FORMULA와 FINER의 세 dataset-model setting에서 GraphMemory는 Claude Haiku 4.5 기준 ACE와 4.0%p 이내 성능을 유지했고, Qwen3.8-27B의 FORMULA에서는 ACE보다 1.5점 높았다. training-token 사용량은 81~85%, test-token 사용량은 79~92%, active training time은 21~34% 줄었다고 보고됐다.",
+      "first_published": "2026-10-02",
+      "id": "arxiv:2610.02687",
+      "limitations": "평가는 금융 추론 task와 natural-language strategy memory에 초점을 둔다. GraphMemory의 edge 품질과 retrieval policy가 잘못되면 필요한 strategy가 빠질 수 있고, 다른 domain에서는 graph schema를 다시 설계해야 할 수 있다.",
+      "method": "GraphMemory는 reusable strategy를 graph node와 edge로 축적하고, query마다 관련 subgraph만 검색한다. retrieval bound가 고정되어 있으면 처리한 example 수가 늘어도 query에 들어가는 memory context 길이는 O(1)로 유지된다.",
+      "practical_value": "장기 memory를 쌓는 agent는 저장량보다 매 query에 노출되는 memory context를 통제해야 한다. GraphMemory는 memory bank 확장과 prompt 비용을 분리하는 운영 패턴을 제시한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.02687",
+        "https://arxiv.org/pdf/2610.02687"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "performance",
+        "retrieval"
+      ],
+      "title": "Decoupling Memory from Context: Structured Memory for Token-Efficient Test-Time Continual Learning",
+      "topics": [
+        "GraphMemory",
+        "test-time continual learning",
+        "bounded retrieval",
+        "token efficiency"
+      ],
+      "url": "https://arxiv.org/abs/2610.02687"
+    },
+    {
+      "abstract_summary": "이 논문은 deployed coding agent가 shell, file system, network, persistent memory를 오래 사용하면서 기존 user-mediated permission과 auto-mode sandbox classifier가 시간이 지나며 privilege creep과 permission fatigue를 겪는 문제를 다룬다. 저자들은 tool 뒤의 resource layer를 직접 방어해야 한다고 본다.",
+      "evidence": "full_text",
+      "findings": "논문은 Pincer가 여러 baseline, LLM judge variant, 기존 permission policy보다 security와 utility 모두에서 강한 결과를 보였다고 보고한다. 특히 resource-name attack에서 security signal을 분리해 attack success rate를 40%에서 20%로 낮춘 ablation을 제시한다.",
+      "first_published": "2026-10-01",
+      "id": "arxiv:2610.02569",
+      "limitations": "digital twin이 사용자 행동을 학습하려면 충분한 interaction history가 필요하고, 이 자체가 민감한 behavioral profile이 될 수 있다. 논문도 기존 agent architecture를 제한하지 않는 deployed-agent 방어에 초점을 두므로, formal information-flow control 수준의 보장을 의미하지는 않는다.",
+      "method": "Pincer는 off-the-shelf agent와 resource-layer defense를 결합한다. digital twin은 사용자와 agent의 과거 interaction에서 어떤 resource가 어떤 task에 접근 가능해야 하는지 학습하고, 기존 sandbox나 tool classifier와 함께 complete mediation과 least privilege를 적용한다.",
+      "practical_value": "agent permission은 tool name보다 resource 단위로 관리해야 한다. 장기 사용에서는 사용자의 실제 작업 패턴을 반영한 digital twin과 최소권한 정책을 결합해 permission fatigue 없이 resource 접근을 제한할 필요가 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.02569",
+        "https://arxiv.org/pdf/2610.02569"
+      ],
+      "tags": [
+        "agent",
+        "security",
+        "tool-use"
+      ],
+      "title": "Pincer: Resource Authorization for Agents using a Digital Twin",
+      "topics": [
+        "resource authorization",
+        "digital twin",
+        "coding-agent security",
+        "least privilege"
+      ],
+      "url": "https://arxiv.org/abs/2610.02569"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "daemon이 session과 agent 상태를 오래 유지하므로 local permission, remote attach, hook command, agent message inbox의 audit boundary를 명확히 해야 한다.",
+      "novelty": "new_entry",
+      "rank": 8,
+      "repository": "Gaurav-Gosain/tuios",
+      "sources": [
+        "https://github.com/Gaurav-Gosain/tuios",
+        "https://raw.githubusercontent.com/Gaurav-Gosain/tuios/main/README.md"
+      ],
+      "summary": "Terminal UI Operating System, BSP tiling, daemon sessions, coding-agent state and inbox",
+      "tags": [
+        "agent",
+        "coding-agent",
+        "developer-tools",
+        "harness",
+        "open-source"
+      ],
+      "url": "https://github.com/Gaurav-Gosain/tuios",
+      "use_case": "여러 coding agent를 터미널 pane에서 동시에 운영하고 session persistence, agent state, approvals, MCP grants, cross-machine attach를 한 TUI 안에서 관리하려는 팀의 local agent ops 도구로 참고할 수 있다.",
+      "why_now": "weekly Trending 8위, 708 stars this week, 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 Follow the Winners입니다. 논문은 agentic LLM을 reinforcement fine-tuning할 때 GRPO처럼 같은 prompt를 여러 번 반복 rollout해 group baseline을 만드는 방식이 live service나 security sandbox 같은 stateful environment에는 맞지 않는다고 지적합니다.",
+    "FTW는 cross-entropy method를 RFT에 맞게 바꿔 replay buffer sample의 ordinal filter에서 variance reduction을 얻고, value model이나 environment duplication 없이 conservative update를 수행합니다. Sokoban과 Search-R1에서 GRPO 및 PPO baseline과 맞먹는 결과를 보였고, 비용을 GPU memory나 repeated rollout에서 CPU replay memory로 옮기는 trade-off를 제시합니다.",
+    "같은 호에서는 DyadMem, Continual Graph Memory, GraphMemory, Pincer가 agent memory와 authorization의 다른 병목을 다룹니다. GitHub Top10 신규 항목은 terminal multiplexer 겸 coding-agent workspace인 TUIOS이며, CNCF 범위에서는 최근 3일 안의 비중 있는 신규 릴리스를 확인하지 못했습니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "TUIOS는 terminal pane 안의 coding-agent state, inbox, approvals, MCP grants를 관리하는 신규 Top10 terminal OS입니다.",
+        "url": "https://github.com/Gaurav-Gosain/tuios"
+      },
+      {
+        "section": "papers",
+        "text": "DyadMem은 user-side memory와 user-conditioned relational agent memory를 함께 평가하는 61,210 QA benchmark입니다.",
+        "url": "https://arxiv.org/abs/2610.03020"
+      },
+      {
+        "section": "papers",
+        "text": "GraphMemory는 bounded retrieval로 test-token을 79~92%, training-token을 81~85% 줄였다고 보고합니다.",
+        "url": "https://arxiv.org/abs/2610.02687"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 Follow the Winners입니다. stateful sandbox에서 repeated rollout이나 value model 없이 critic-free RFT를 하기 위한 conservative policy improvement를 제안합니다.",
+      "FTW는 Sokoban과 Search-R1에서 GRPO 및 PPO와 맞먹는 결과를 보였고, 비용을 GPU value model이나 group rollout에서 CPU replay memory로 옮기는 trade-off를 제시합니다."
+    ]
+  }
+}
