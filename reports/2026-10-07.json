@@ -1,0 +1,605 @@
+{
+  "cncf": [
+    {
+      "category": "security",
+      "impact": "Envoy에서 oauth2 또는 api_key_auth filter를 쓰는 edge proxy 운영자는 minor line별 patch를 확인해야 한다. CONNECT traffic과 query-key 기반 인증을 함께 쓰는 구성은 우선 회귀 테스트가 필요하다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3",
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.38.6"
+      ],
+      "summary": "Envoy는 여러 supported line에 oauth2 filter와 api_key_auth filter crash fix를 포함한 보안 릴리스를 냈다. path header가 없는 CONNECT request에서 oauth2는 400을 반환하도록 수정됐고, hide_credentials와 query key source 조합의 api_key_auth crash도 고쳤다.",
+      "tags": [
+        "networking",
+        "release",
+        "security"
+      ],
+      "title": "Envoy v1.39.3 / v1.38.6 / v1.37.8 / v1.36.12",
+      "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3"
+    },
+    {
+      "category": "release",
+      "impact": "Argo CD 운영자는 사용 중인 release line의 coordinated security fixes와 CMP cleanup patch를 확인하고, 서명된 image와 SLSA provenance 검증 절차를 유지해야 한다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/argoproj/argo-cd/releases/tag/v3.5.4",
+        "https://github.com/argoproj/argo-cd/releases/tag/v3.6.0-rc2"
+      ],
+      "summary": "Argo CD는 stable patch line과 3.6 release candidate를 동시에 공개했다. 3.5.4에는 login attempt username logging, CMP tgz stream temporary directory cleanup, coordinated security fixes, UI manifest viewer fix 등이 포함된다.",
+      "tags": [
+        "gitops",
+        "kubernetes",
+        "release",
+        "security"
+      ],
+      "title": "Argo CD v3.5.4 / v3.4.10 / v3.3.15 and v3.6.0-rc2",
+      "url": "https://github.com/argoproj/argo-cd/releases/tag/v3.5.4"
+    },
+    {
+      "category": "release",
+      "impact": "Rook/Ceph 운영자는 Helm chart tag reference와 kernel 5.11 이상 msgrv2 요구사항, NFS pool manifest를 upgrade 전에 검토해야 한다. 자동 OSD replacement는 host-based cluster 중심으로 검증이 필요하다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/rook/rook/releases/tag/v1.21.0"
+      ],
+      "summary": "Rook 1.21.0은 Helm OCI chart tag의 v prefix 제거, Ceph msgrv2 기본 요구, NFS .nfs pool 자동 생성 중단 같은 breaking change를 포함한다. Ceph v21 지원 준비, RBD QoS, OSD replacement workflow도 추가됐다.",
+      "tags": [
+        "kubernetes",
+        "release",
+        "storage"
+      ],
+      "title": "Rook v1.21.0",
+      "url": "https://github.com/rook/rook/releases/tag/v1.21.0"
+    },
+    {
+      "category": "release",
+      "impact": "Jaeger 운영자는 Elasticsearch index options와 remote storage config, structured filter behavior를 upgrade 전 확인해야 한다. query extension이나 span search hook을 쓰는 경우 API 호환성 점검이 필요하다.",
+      "published": "2026-10-06",
+      "sources": [
+        "https://github.com/jaegertracing/jaeger/releases/tag/v2.22.0"
+      ],
+      "summary": "Jaeger 2.22.0은 Elasticsearch backend와 query path에 breaking change와 feature promotion을 포함한다. numeric attribute indexing configuration, native trace summaries stable, structured filters beta, span search query interceptor hook 등이 들어갔다.",
+      "tags": [
+        "observability",
+        "release",
+        "storage"
+      ],
+      "title": "Jaeger v2.22.0",
+      "url": "https://github.com/jaegertracing/jaeger/releases/tag/v2.22.0"
+    },
+    {
+      "category": "release",
+      "impact": "edge channel 사용자는 dependency update가 proxy와 dashboard build에 미치는 영향을 확인해야 한다. stable channel 운영자는 차기 stable에 들어갈 dependency 변화를 미리 점검할 수 있다.",
+      "published": "2026-10-06",
+      "sources": [
+        "https://github.com/linkerd/linkerd2/releases/tag/edge-26.10.1"
+      ],
+      "summary": "Linkerd edge-26.10.1은 rustls, Helm, Prometheus common, tokio-metrics 등 다수 dependency bump와 chart/workflow path 문서 수정을 포함한 edge release다.",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "release"
+      ],
+      "title": "Linkerd edge-26.10.1",
+      "url": "https://github.com/linkerd/linkerd2/releases/tag/edge-26.10.1"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 CNCF 및 클라우드 네이티브 주요 프로젝트 릴리스를 확인했고, 보안·GitOps·스토리지·관측성 영향이 있는 항목을 정리했습니다.",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/argoproj/argo-cd/releases",
+        "https://github.com/rook/rook/releases",
+        "https://github.com/jaegertracing/jaeger/releases",
+        "https://github.com/linkerd/linkerd2/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, inference, 보안, 개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 신규 Top10 중 agent 운영·보안·RAG와 직접 관련된 3개 항목을 상세 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 agent serving, robot video memory, runtime memory orchestration, tool stopping decision, abstention harness 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22memory%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22inference%22%20AND%20all:%22agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL%20OR%20cat:cs.OS)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-07",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://openai.com/index/sharing-ai-progress-in-mathematics/"
+      ],
+      "tags": [
+        "agent",
+        "reasoning"
+      ],
+      "title": "Sharing AI Progress in Mathematics",
+      "url": "https://openai.com/index/sharing-ai-progress-in-mathematics/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://mistral.ai/news/mistral-large-4/"
+      ],
+      "tags": [
+        "llm",
+        "multimodal"
+      ],
+      "title": "Mistral Large 4",
+      "url": "https://mistral.ai/news/mistral-large-4/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://developers.openai.com/api/docs/guides/decisions"
+      ],
+      "tags": [
+        "developer-tools",
+        "inference"
+      ],
+      "title": "Decisions API is in public beta",
+      "url": "https://developers.openai.com/api/docs/guides/decisions"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/FeSens/openTPU"
+      ],
+      "tags": [
+        "open-source",
+        "performance"
+      ],
+      "title": "OpenTPU - An open-source AI accelerator, developed by AI",
+      "url": "https://github.com/FeSens/openTPU"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34907"
+      ],
+      "tags": [
+        "multimodal",
+        "retrieval"
+      ],
+      "title": "EmbeddingGemma 2 - 개방형 경량 멀티모달 임베딩 모델",
+      "url": "https://news.hada.io/topic?id=34907"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34893"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools"
+      ],
+      "title": "Show GN: agent-gc - AI 코딩 에이전트가 남긴 worktree 쓰레기를 치워주는 TUI",
+      "url": "https://news.hada.io/topic?id=34893"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34890"
+      ],
+      "tags": [
+        "llm",
+        "multimodal",
+        "open-source"
+      ],
+      "title": "Mistral Large 4 발표 - 코딩·보안·시각 이해를 강화한 1조 파라미터 오픈웨이트 모델",
+      "url": "https://news.hada.io/topic?id=34890"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wz64oa/stackoverflow_developer_survey_results_2026/"
+      ],
+      "tags": [
+        "developer-tools"
+      ],
+      "title": "StackOverflow Developer Survey Results 2026",
+      "url": "https://www.reddit.com/r/programming/comments/1wz64oa/stackoverflow_developer_survey_results_2026/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wxm5p3/interactive_demonstration_of_prefix_injection/"
+      ],
+      "tags": [
+        "llm",
+        "security"
+      ],
+      "title": "Interactive Demonstration of Prefix Injection attacks on LLMs for jailbreaking",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wxm5p3/interactive_demonstration_of_prefix_injection/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wyfruw/a_chunking_lib_in_rust_that_is_20x_faster_p/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance",
+        "retrieval"
+      ],
+      "title": "A chunking lib in Rust that is around 20x faster",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wyfruw/a_chunking_lib_in_rust_that_is_20x_faster_p/"
+    }
+  ],
+  "generated_at": "2026-10-07T08:33:00+09:00",
+  "github_featured": [
+    "mvschwarz/openrig",
+    "NVIDIA/OpenShell",
+    "VectifyAI/PageIndex"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-06T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 4242
+      },
+      {
+        "rank": 2,
+        "repository": "paperclipai/paperclip",
+        "weekly_stars": 8732
+      },
+      {
+        "rank": 3,
+        "repository": "vectorize-io/hindsight",
+        "weekly_stars": 10623
+      },
+      {
+        "rank": 4,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3096
+      },
+      {
+        "rank": 5,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 14689
+      },
+      {
+        "rank": 6,
+        "repository": "Panniantong/Agent-Reach",
+        "weekly_stars": 4789
+      },
+      {
+        "rank": 7,
+        "repository": "Effect-TS/effect",
+        "weekly_stars": 702
+      },
+      {
+        "rank": 8,
+        "repository": "Gaurav-Gosain/tuios",
+        "weekly_stars": 708
+      },
+      {
+        "rank": 9,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 1304
+      },
+      {
+        "rank": 10,
+        "repository": "rohitg00/ai-engineering-from-scratch",
+        "weekly_stars": 4904
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-07T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 3776
+      },
+      {
+        "rank": 2,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3342
+      },
+      {
+        "rank": 3,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1042
+      },
+      {
+        "rank": 4,
+        "repository": "NVIDIA/OpenShell",
+        "weekly_stars": 5915
+      },
+      {
+        "rank": 5,
+        "repository": "VectifyAI/PageIndex",
+        "weekly_stars": 2860
+      },
+      {
+        "rank": 6,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 1759
+      },
+      {
+        "rank": 7,
+        "repository": "pablostanley/yoinks",
+        "weekly_stars": 2741
+      },
+      {
+        "rank": 8,
+        "repository": "HunxByts/GhostTrack",
+        "weekly_stars": 1985
+      },
+      {
+        "rank": 9,
+        "repository": "DuarteSantos8/openGym",
+        "weekly_stars": 2702
+      },
+      {
+        "rank": 10,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 2657
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "HEAR Protocol: Agent Harness와 Inference Engine의 양방향 Coordination",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.06597"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 agent serving 효율이 단일 LLM call 속도만으로 결정되지 않는다는 문제에서 출발한다. Harness는 workflow dependency, context lifecycle, execution objective를 알고 있고 inference engine은 request queue, KV-cache state, resource pressure를 알지만 기존 interface는 이 두 관점을 체계적으로 연결하지 못한다.",
+      "evidence": "full_text",
+      "findings": "SCBench의 memory-constrained concurrent serving에서 HEAR는 batch speedup 1.61배를 달성하고 median time-to-first-token을 2.23배 줄였다. BrowseComp-Plus와 DeepResearchBench에서는 workload-specific configuration으로 각각 1.23배와 2.45배 end-to-end speedup을 얻었고, task-quality degradation은 관찰되지 않았다고 보고됐다.",
+      "first_published": "2026-10-05",
+      "id": "arxiv:2610.06597",
+      "limitations": "HEAR는 protocol semantics와 optimization policy를 분리하지만, 실제 deployment에서는 harness와 serving engine 양쪽 구현이 필요하다. 또한 benchmark별 LangGraph workflow와 hardware setting에서 측정된 결과라 다른 engine·model mix에서는 policy를 다시 조정해야 한다.",
+      "method": "HEAR는 bidirectional Harness-Engine pAiRing protocol이다. Harness는 workflow intent와 execution requirement를 engine에 전달하고, engine은 runtime state, capability, outcome을 돌려준다. 논문은 online cache-aware coordination과 role별 workload-aware execution-mode selection으로 HEAR를 구체화했다.",
+      "practical_value": "agent platform에서 serving 최적화는 engine 내부 batching만으로는 부족하다. Harness가 future reuse intent, role, dependency를 engine에 알려 주고, engine은 live cache state와 resource pressure를 되돌려주는 control plane을 설계해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.06597",
+        "https://arxiv.org/pdf/2610.06597"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "inference",
+        "performance"
+      ],
+      "title": "Can Agent Harnesses and Inference Engines Hear Each Other? The HEAR Protocol for Agentic LLM Serving",
+      "topics": [
+        "agentic serving",
+        "harness-engine protocol",
+        "KV cache coordination",
+        "workflow-aware inference"
+      ],
+      "url": "https://arxiv.org/abs/2610.06597"
+    },
+    {
+      "abstract_summary": "이 논문은 LLM agent가 frozen vision-language-action policy를 조율하면서 text memory로 recipe와 failure rule을 축적하더라도, successful execution이 실제로 어떻게 보이는지는 text로 기록하기 어렵다는 문제를 다룬다. Demonstration video는 그 정보를 담지만 너무 길고 resolution·contact detail 손실 문제가 있다.",
+      "evidence": "full_text",
+      "findings": "LIBERO-PRO에서 RV-ICL은 HarnessVLA success를 92.6%에서 96.5%로 올렸고, LIBERO-Plus에서는 86.7%에서 95.8%로 높였다. 긴 horizon인 LIBERO-10에서는 keyframe이나 full video보다 RV-ICL이 더 좋았고, L10-T 90.0%, L10-S 84.0%를 기록했다.",
+      "first_published": "2026-10-05",
+      "id": "arxiv:2610.06843",
+      "limitations": "평가는 LIBERO 계열 robot benchmark와 human demonstration video가 있는 setting에 기반한다. 실제 로봇에서는 camera viewpoint, demonstration 품질, embodiment mismatch가 video memory 효과에 영향을 줄 수 있다.",
+      "method": "RV-ICL은 demonstration을 keyframe만 고정적으로 넣거나 전체 비디오를 반복 읽는 대신, recursive clip retrieval과 video in-context learning을 agent memory에 결합한다. Agent는 text memory와 demonstration video를 함께 사용해 task phase를 이해하고 필요한 clip을 참조한다.",
+      "practical_value": "robot agent memory는 실패 rule만 남기기보다 성공 행동의 시공간 패턴을 보여주는 video evidence를 보존해야 한다. 다만 전체 비디오를 context에 넣기보다 recursive retrieval과 clip-level memory로 비용을 제어하는 설계가 필요하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.06843",
+        "https://arxiv.org/pdf/2610.06843"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "multimodal",
+        "robotics"
+      ],
+      "title": "Recursive Video In-Context Learning for Agentic Robot",
+      "topics": [
+        "robot agents",
+        "video in-context learning",
+        "VLA policies",
+        "recursive memory"
+      ],
+      "url": "https://arxiv.org/abs/2610.06843"
+    },
+    {
+      "abstract_summary": "이 논문은 대부분의 agent memory가 query가 오기 전에 일괄적으로 만들어져 나중에 필요한 세부 정보를 잃거나 불필요한 preprocessing cost를 쓴다는 문제를 다룬다. 특히 multimodal history에서는 어떤 evidence를 언제, 어떤 모델로 다시 큐레이션할지 비용과 latency trade-off가 크다.",
+      "evidence": "full_text",
+      "findings": "다섯 multimodal agent-memory benchmark에서 MemPilot은 optimization preference별로 favorable performance-cost-latency trade-off를 보였고, preference sweep에서 기존 trade-off-aware baseline보다 더 넓은 frontier를 만들었다고 보고됐다. 분석에서는 모델 선택과 visual evidence 사용이 preference에 따라 달라졌다.",
+      "first_published": "2026-10-05",
+      "id": "arxiv:2610.06830",
+      "limitations": "정량 결과가 frontier 중심으로 보고되어 단일 평균 성능만으로 해석하기 어렵다. 또한 multi-step policy는 heterogeneous LLM/VLM 호출 인프라가 필요하므로 작은 배포에서는 orchestration overhead가 커질 수 있다.",
+      "method": "MemPilot은 query-agnostic memory bank와 raw multimodal history를 함께 두고, multi-step policy가 memory retrieval, query-specific curation delegation, evidence amount, model selection, visual access를 선택한다. 학습은 objective-wise advantage decoupling과 prefix-based marginal utility estimation으로 performance, cost, latency objective를 분리해 다룬다.",
+      "practical_value": "multimodal agent memory는 모든 query에 같은 memory pipeline을 쓰기보다, query difficulty와 latency budget에 따라 raw history curation을 동적으로 위임해야 한다. 운영자는 quality, cost, latency preference를 explicit policy로 관리해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.06830",
+        "https://arxiv.org/pdf/2610.06830"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "multimodal",
+        "performance"
+      ],
+      "title": "MemPilot: Orchestrating On-Demand Multimodal Memory Curation for LLM Agents",
+      "topics": [
+        "multimodal memory",
+        "runtime curation",
+        "multi-objective RL",
+        "cost-latency tradeoff"
+      ],
+      "url": "https://arxiv.org/abs/2610.06830"
+    },
+    {
+      "abstract_summary": "이 논문은 retrieval source가 계속 쓸모없는 결과를 주는데도 tool-using agent가 스스로 그 결과를 useless라고 판단하면서도 계속 검색하는 문제를 다룬다. 저자들은 agent의 result judgment와 stopping action을 분리해 측정한다.",
+      "evidence": "full_text",
+      "findings": "judgment를 기록한 agent들은 failing source result를 97~100% 비율로 useless라고 불렀지만, 다섯 번 연속 useless 판단 뒤에도 다섯 agent는 질문의 최대 7%에서만 answer했다. 강제 integration step은 모든 model에서 failing-source success를 높였고, 300개 fresh question replication에서도 같은 dissociation과 rule effect가 확인됐다.",
+      "first_published": "2026-10-05",
+      "id": "arxiv:2610.06191",
+      "limitations": "강제 rule은 특정 failure pattern에 맞춘 harness intervention이다. Source가 회복할 수 있는 상황에서는 너무 이른 stop이 recall을 줄일 수 있으므로, evidence 기반 stopping과 source recovery model을 함께 설계해야 한다.",
+      "method": "통제된 source failure environment에서 일곱 agent를 평가하고, agent가 각 result를 유용한지 판단하는지와 실제로 언제 stop하고 answer하는지를 기록한다. 핵심 intervention은 다섯 번 연속 useless result라고 판단하면 answer하도록 harness가 integration step을 강제하는 것이다.",
+      "practical_value": "agent에게 비용이나 stopping rule을 prompt로 알려주는 것만으로는 충분하지 않다. Retrieval harness는 agent가 이미 내린 evidence judgment를 action policy로 연결하는 deterministic integration point를 제공해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.06191",
+        "https://arxiv.org/pdf/2610.06191"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "retrieval",
+        "tool-use"
+      ],
+      "title": "Judged Useless, Queried Anyway: Tool-Using Agents Rarely Turn Their Own Evidence Judgments into Stopping Decisions",
+      "topics": [
+        "tool-use stopping",
+        "retrieval failure",
+        "agent judgment-action gap",
+        "evidence integration"
+      ],
+      "url": "https://arxiv.org/abs/2610.06191"
+    },
+    {
+      "abstract_summary": "이 논문은 tool-use agent가 복잡한 환경에서 valid solution이 없을 때 이를 인식하고 abstain해야 하지만, 고정 task set에 맞춰 model이나 harness를 최적화하면 unseen failure mode에 일반화하기 어렵다는 문제에서 출발한다.",
+      "evidence": "full_text",
+      "findings": "held-out evaluation에서 HERA가 진화시킨 harness는 abstention accuracy를 61.7%에서 83.3%로 높였고, feasible-task completion도 68.3%에서 76.7%로 개선했다. 같은 best harness는 19개 다른 LLM에 이전되어 평균 abstention accuracy를 15.3%p 높였고, 작은 모델이 더 강한 모델 성능을 약 85% 낮은 비용으로 맞추게 했다고 보고됐다.",
+      "first_published": "2026-10-05",
+      "id": "arxiv:2610.06563",
+      "limitations": "Infeasible task는 controlled mutation으로 생성되므로 실제 world의 ill-posed request나 partial feasibility를 모두 대표하지는 않는다. 또한 abstention policy가 보수적으로 변하면 user-perceived helpfulness와 trade-off가 생길 수 있다.",
+      "method": "HERA는 feasible task를 controlled environment mutation으로 infeasible pair로 바꾸는 pipeline과, 이전 실패가 다음 harness adaptation 및 environment/task generation을 이끄는 co-evolution procedure로 구성된다. Harness와 environment를 함께 진화시켜 abstention weakness를 드러내고 보완한다.",
+      "practical_value": "agent reliability 평가는 해결 가능한 task 성공률뿐 아니라 해결 불가능한 task에서 멈추는 능력을 포함해야 한다. Harness와 evaluation environment를 함께 진화시키면 hidden failure mode에 대한 abstention robustness를 높일 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.06563",
+        "https://arxiv.org/pdf/2610.06563"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness"
+      ],
+      "title": "HERA: Harness-Environment Co-Evolution for Reliable Agentic Abstention",
+      "topics": [
+        "agentic abstention",
+        "harness-environment co-evolution",
+        "infeasible tasks",
+        "HERA-Bench"
+      ],
+      "url": "https://arxiv.org/abs/2610.06563"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "setup이 provider hook과 workspace trust setting을 바꿀 수 있다. agent team이 실행하는 command allowance, tmux session persistence, provider account 권한을 사전에 검토해야 한다.",
+      "novelty": "new_entry",
+      "rank": 1,
+      "repository": "mvschwarz/openrig",
+      "sources": [
+        "https://github.com/mvschwarz/openrig",
+        "https://raw.githubusercontent.com/mvschwarz/openrig/main/README.md"
+      ],
+      "summary": "Agent team rig, YAML-defined roles, Claude Code plus Codex coordination, persistent context",
+      "tags": [
+        "agent",
+        "coding-agent",
+        "developer-tools",
+        "harness",
+        "open-source"
+      ],
+      "url": "https://github.com/mvschwarz/openrig",
+      "use_case": "여러 coding agent를 역할과 shared context가 있는 장기 팀으로 운영하려는 개발 조직이 agent orchestration, review lane, decision handoff 구조를 실험할 수 있다.",
+      "why_now": "weekly Trending 1위, 3776 stars this week, 이전 Top10 부재"
+    },
+    {
+      "caution": "kernel-level enforcement와 formal policy review를 쓰더라도 policy authoring 품질이 중요하다. Kubernetes 배포 시 CNI NetworkPolicy enforcement와 credential endpoint binding을 별도 검증해야 한다.",
+      "novelty": "new_entry",
+      "rank": 4,
+      "repository": "NVIDIA/OpenShell",
+      "sources": [
+        "https://github.com/NVIDIA/OpenShell",
+        "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/README.md"
+      ],
+      "summary": "Safe private runtime for autonomous agent fleets, kernel enforcement, policy advisor and prover",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source",
+        "security"
+      ],
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "use_case": "agent가 file, API, package install, credential을 써야 하지만 unrestricted access는 허용할 수 없는 조직에서 sandbox, gateway, policy verification reference로 볼 수 있다.",
+      "why_now": "weekly Trending 4위, 5915 stars this week, 이전 Top10 부재"
+    },
+    {
+      "caution": "vector DB를 쓰지 않는다고 retrieval 검증이 자동 해결되지는 않는다. LLM이 tree를 탐색하는 과정의 latency, cost, reproducibility와 local/cloud mode의 데이터 경계를 확인해야 한다.",
+      "novelty": "new_entry",
+      "rank": 5,
+      "repository": "VectifyAI/PageIndex",
+      "sources": [
+        "https://github.com/VectifyAI/PageIndex",
+        "https://raw.githubusercontent.com/VectifyAI/PageIndex/main/README.md"
+      ],
+      "summary": "Vectorless reasoning-based RAG, hierarchical tree index, no chunking, local SDK mode",
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "rag",
+        "retrieval"
+      ],
+      "url": "https://github.com/VectifyAI/PageIndex",
+      "use_case": "긴 전문 문서에서 semantic similarity보다 section relevance와 traceable retrieval이 중요한 RAG workflow에 tree-index 기반 reasoning retrieval을 적용해 볼 수 있다.",
+      "why_now": "weekly Trending 5위, 2860 stars this week, 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 HEAR Protocol입니다. 논문은 agent harness가 workflow dependency와 context lifecycle을 알고, inference engine은 queue, KV-cache, GPU pressure를 아는데도 두 계층이 충분히 대화하지 못해 agent serving 효율이 떨어진다고 진단합니다.",
+    "HEAR는 harness가 workflow intent와 실행 요구를 전달하고 engine이 runtime state, capability, outcome을 돌려주는 bidirectional protocol입니다. SCBench에서 batch speedup 1.61배와 median time-to-first-token 2.23배 개선을 보였고, BrowseComp-Plus와 DeepResearchBench에서는 각각 1.23배, 2.45배 end-to-end speedup을 quality degradation 없이 보고했습니다.",
+    "GitHub Trending은 OpenRig, OpenShell, PageIndex처럼 agent 운영·보안·검색 하네스가 새로 Top10에 들어왔습니다. 논문 쪽에서는 robot video memory, runtime memory curation, tool stopping decision, abstention harness evolution이 이어졌고, CNCF에서는 Envoy, Argo CD, Rook, Jaeger, Linkerd 릴리스가 확인됐습니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "OpenRig는 Claude Code와 Codex를 persistent team으로 묶는 신규 Top1 agent rig입니다.",
+        "url": "https://github.com/mvschwarz/openrig"
+      },
+      {
+        "section": "papers",
+        "text": "tool-using agent는 결과를 97~100% useless라고 판단해도 그 판단을 stopping action으로 거의 옮기지 못했습니다.",
+        "url": "https://arxiv.org/abs/2610.06191"
+      },
+      {
+        "section": "cncf",
+        "text": "Envoy 여러 line에 oauth2와 api_key_auth crash를 막는 보안 패치가 공개됐습니다.",
+        "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 HEAR Protocol입니다. Agent harness와 inference engine이 workflow intent, KV-cache state, resource pressure를 주고받게 해 agent serving을 최적화합니다.",
+      "SCBench에서 batch speedup 1.61배와 median TTFT 2.23배 개선을 보였고, BrowseComp-Plus와 DeepResearchBench는 각각 1.23배, 2.45배 빨라졌습니다."
+    ]
+  }
+}
