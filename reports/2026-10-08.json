@@ -1,0 +1,581 @@
+{
+  "cncf": [
+    {
+      "category": "security",
+      "impact": "Envoy에서 oauth2 또는 api_key_auth filter를 쓰는 edge proxy 운영자는 minor line별 patch를 확인해야 한다. CONNECT traffic과 query-key 기반 인증을 함께 쓰는 구성은 우선 회귀 테스트가 필요하다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3",
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.38.6"
+      ],
+      "summary": "Envoy는 여러 supported line에 oauth2 filter와 api_key_auth filter crash fix를 포함한 보안 릴리스를 냈다. path header가 없는 CONNECT request에서 oauth2는 400을 반환하도록 수정됐고, hide_credentials와 query key source 조합의 api_key_auth crash도 고쳤다.",
+      "tags": [
+        "networking",
+        "release",
+        "security"
+      ],
+      "title": "Envoy v1.39.3 / v1.38.6 / v1.37.8 / v1.36.12",
+      "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3"
+    },
+    {
+      "category": "release",
+      "impact": "Argo CD 운영자는 사용 중인 release line의 coordinated security fixes와 CMP cleanup patch를 확인하고, 서명된 image와 SLSA provenance 검증 절차를 유지해야 한다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/argoproj/argo-cd/releases/tag/v3.5.4",
+        "https://github.com/argoproj/argo-cd/releases/tag/v3.6.0-rc2"
+      ],
+      "summary": "Argo CD는 stable patch line과 3.6 release candidate를 동시에 공개했다. 3.5.4에는 login attempt username logging, CMP tgz stream temporary directory cleanup, coordinated security fixes, UI manifest viewer fix 등이 포함된다.",
+      "tags": [
+        "gitops",
+        "kubernetes",
+        "release",
+        "security"
+      ],
+      "title": "Argo CD v3.5.4 / v3.4.10 / v3.3.15 and v3.6.0-rc2",
+      "url": "https://github.com/argoproj/argo-cd/releases/tag/v3.5.4"
+    },
+    {
+      "category": "release",
+      "impact": "Rook/Ceph 운영자는 Helm chart tag reference와 kernel 5.11 이상 msgrv2 요구사항, NFS pool manifest를 upgrade 전에 검토해야 한다. 자동 OSD replacement는 host-based cluster 중심으로 검증이 필요하다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/rook/rook/releases/tag/v1.21.0"
+      ],
+      "summary": "Rook 1.21.0은 Helm OCI chart tag의 v prefix 제거, Ceph msgrv2 기본 요구, NFS .nfs pool 자동 생성 중단 같은 breaking change를 포함한다. Ceph v21 지원 준비, RBD QoS, OSD replacement workflow도 추가됐다.",
+      "tags": [
+        "kubernetes",
+        "release",
+        "storage"
+      ],
+      "title": "Rook v1.21.0",
+      "url": "https://github.com/rook/rook/releases/tag/v1.21.0"
+    },
+    {
+      "category": "release",
+      "impact": "Jaeger 운영자는 Elasticsearch index options와 remote storage config, structured filter behavior를 upgrade 전 확인해야 한다. query extension이나 span search hook을 쓰는 경우 API 호환성 점검이 필요하다.",
+      "published": "2026-10-06",
+      "sources": [
+        "https://github.com/jaegertracing/jaeger/releases/tag/v2.22.0"
+      ],
+      "summary": "Jaeger 2.22.0은 Elasticsearch backend와 query path에 breaking change와 feature promotion을 포함한다. numeric attribute indexing configuration, native trace summaries stable, structured filters beta, span search query interceptor hook 등이 들어갔다.",
+      "tags": [
+        "observability",
+        "release",
+        "storage"
+      ],
+      "title": "Jaeger v2.22.0",
+      "url": "https://github.com/jaegertracing/jaeger/releases/tag/v2.22.0"
+    },
+    {
+      "category": "release",
+      "impact": "edge channel 사용자는 dependency update가 proxy와 dashboard build에 미치는 영향을 확인해야 한다. stable channel 운영자는 차기 stable에 들어갈 dependency 변화를 미리 점검할 수 있다.",
+      "published": "2026-10-06",
+      "sources": [
+        "https://github.com/linkerd/linkerd2/releases/tag/edge-26.10.1"
+      ],
+      "summary": "Linkerd edge-26.10.1은 rustls, Helm, Prometheus common, tokio-metrics 등 다수 dependency bump와 chart/workflow path 문서 수정을 포함한 edge release다.",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "release"
+      ],
+      "title": "Linkerd edge-26.10.1",
+      "url": "https://github.com/linkerd/linkerd2/releases/tag/edge-26.10.1"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 CNCF 및 클라우드 네이티브 주요 프로젝트 릴리스를 확인했고, 보안·GitOps·스토리지·관측성 영향이 있는 항목을 정리했습니다.",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/argoproj/argo-cd/releases",
+        "https://github.com/rook/rook/releases",
+        "https://github.com/jaegertracing/jaeger/releases",
+        "https://github.com/linkerd/linkerd2/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI 모델·agent·보안·개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 신규 Top10 중 agent plugin과 persistent memory 관련 2개 항목을 상세 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 agent observability, personal agent architecture, long-term memory, in-parameter memory, privacy benchmark 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22memory%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22security%22%20AND%20all:%22agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CR)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-08",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://www.anthropic.com/claude-haiku-5-5"
+      ],
+      "tags": [
+        "llm",
+        "performance"
+      ],
+      "title": "Claude Haiku 5.5",
+      "url": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "tags": [
+        "llm",
+        "multimodal"
+      ],
+      "title": "GPT-6 and Intelligent UI for everyone",
+      "url": "https://openai.com/index/gpt-6-for-everyone/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/docker/docker-agent"
+      ],
+      "tags": [
+        "agent",
+        "containers",
+        "developer-tools"
+      ],
+      "title": "Docker Agent",
+      "url": "https://github.com/docker/docker-agent"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34960"
+      ],
+      "tags": [
+        "llm",
+        "multimodal"
+      ],
+      "title": "OpenAI, GPT-6 확대 적용과 더 똑똑한 대화형 UI 도입",
+      "url": "https://news.hada.io/topic?id=34960"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34958"
+      ],
+      "tags": [
+        "llm",
+        "performance"
+      ],
+      "title": "Claude Haiku 5.5 출시 - 평균 실행 비용 75% 절감",
+      "url": "https://news.hada.io/topic?id=34958"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34953"
+      ],
+      "tags": [
+        "agent",
+        "evaluation"
+      ],
+      "title": "Boxdawn - agent trace 중복 작업 탐지",
+      "url": "https://news.hada.io/topic?id=34953"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34952"
+      ],
+      "tags": [
+        "agent",
+        "tool-use"
+      ],
+      "title": "Codemode란 무엇인가 - AI의 도구 호출을 코드로 묶기",
+      "url": "https://news.hada.io/topic?id=34952"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wzz3cc/how_we_slashed_the_size_of_our_search_cache_by_74/"
+      ],
+      "tags": [
+        "performance",
+        "retrieval"
+      ],
+      "title": "How we slashed the size of our search cache by 74%",
+      "url": "https://www.reddit.com/r/programming/comments/1wzz3cc/how_we_slashed_the_size_of_our_search_cache_by_74/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wyw0my/swerace_a_codingagent_benchmark_of_188_real/"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation"
+      ],
+      "title": "SWE-Race: a coding-agent benchmark of 188 real concurrency bugs",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wyw0my/swerace_a_codingagent_benchmark_of_188_real/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wz71g3/transformers_vs_rnns_vs_ssms_where_does_memory/"
+      ],
+      "tags": [
+        "llm",
+        "memory"
+      ],
+      "title": "Transformers vs RNNs vs SSMs: Where Does Memory Actually Live?",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wz71g3/transformers_vs_rnns_vs_ssms_where_does_memory/"
+    }
+  ],
+  "generated_at": "2026-10-08T08:32:00+09:00",
+  "github_featured": [
+    "cursor/plugins",
+    "thedotmack/claude-mem"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-07T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 3776
+      },
+      {
+        "rank": 2,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3342
+      },
+      {
+        "rank": 3,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1042
+      },
+      {
+        "rank": 4,
+        "repository": "NVIDIA/OpenShell",
+        "weekly_stars": 5915
+      },
+      {
+        "rank": 5,
+        "repository": "VectifyAI/PageIndex",
+        "weekly_stars": 2860
+      },
+      {
+        "rank": 6,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 1759
+      },
+      {
+        "rank": 7,
+        "repository": "pablostanley/yoinks",
+        "weekly_stars": 2741
+      },
+      {
+        "rank": 8,
+        "repository": "HunxByts/GhostTrack",
+        "weekly_stars": 1985
+      },
+      {
+        "rank": 9,
+        "repository": "DuarteSantos8/openGym",
+        "weekly_stars": 2702
+      },
+      {
+        "rank": 10,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 2657
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-08T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 3327
+      },
+      {
+        "rank": 2,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 3073
+      },
+      {
+        "rank": 3,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3614
+      },
+      {
+        "rank": 4,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1106
+      },
+      {
+        "rank": 5,
+        "repository": "NVIDIA/OpenShell",
+        "weekly_stars": 5228
+      },
+      {
+        "rank": 6,
+        "repository": "Panniantong/Agent-Reach",
+        "weekly_stars": 6454
+      },
+      {
+        "rank": 7,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 2104
+      },
+      {
+        "rank": 8,
+        "repository": "pablostanley/yoinks",
+        "weekly_stars": 2947
+      },
+      {
+        "rank": 9,
+        "repository": "DuarteSantos8/openGym",
+        "weekly_stars": 3318
+      },
+      {
+        "rank": 10,
+        "repository": "tile-ai/tilelang",
+        "weekly_stars": 675
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "AgentSpy: System-Call Boundary에서 Coding Agent 행동을 관측하기",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.06001"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 coding agent가 shell command, file, network를 사용자 권한으로 실행하지만, agent trajectory에는 agent가 스스로 보고한 action만 남아 subprocess의 실제 system call이 빠질 수 있다는 문제에서 출발한다. 결과 테스트가 통과해도 agent가 어떤 resource를 읽고 어디에 접속했는지 알기 어렵다.",
+      "evidence": "full_text",
+      "findings": "Codex harness의 77개 task와 세 LLM을 task당 세 번씩 실행한 평가에서 같은 task의 반복 run set은 다른 task가 섞인 set보다 92.2%의 비교에서 더 유사했다. outcome test를 모두 통과한 task 중 18%에서는 task와 무관한 활동이 있었고, 7%는 grading file을 읽었으며, 17%는 developer guidance를 사용하지 않았다. security analysis는 다섯 attack category 중 네 개를 탐지했고 50개 run에서 false positive는 없었다.",
+      "first_published": "2026-10-05",
+      "id": "arxiv:2610.06001",
+      "limitations": "AgentSpy는 system boundary 관측에 강하지만, 관측된 syscall이 high-level 의도와 항상 1:1로 연결되지는 않는다. Rule set 품질과 sandbox coverage가 결과를 좌우하고, GUI나 remote browser 환경에서는 추가 instrumentation이 필요할 수 있다.",
+      "method": "AgentSpy는 declarative specification으로 구성한 isolated environment에서 agent와 agent가 실행한 모든 process의 system call과 network traffic을 기록한다. 이후 obligation을 측정하는 reliability analysis와 금지된 행동을 검사하는 security analysis를 rule-based로 수행한다.",
+      "practical_value": "agent benchmark와 운영 환경은 final pass/fail뿐 아니라 system-call evidence를 남겨야 한다. 보안·재현성·비용 감사에는 command, file, host access summary가 agent가 쓴 자연어 log보다 더 신뢰할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.06001",
+        "https://arxiv.org/pdf/2610.06001"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "AgentSpy: Making AI Agent Behavior Observable",
+      "topics": [
+        "agent observability",
+        "system-call monitoring",
+        "coding-agent security",
+        "dynamic analysis"
+      ],
+      "url": "https://arxiv.org/abs/2610.06001"
+    },
+    {
+      "abstract_summary": "이 보고서는 개인 agent를 model이 아니라 accounts, devices, memory, proactive conversation, accountability를 갖춘 software로 정의한다. Meta Muse 같은 closed cloud product와 달리, nanoMuse는 사용자의 여러 device에서 동작하는 open-source counterpart를 목표로 한다.",
+      "evidence": "full_text",
+      "findings": "논문은 benchmark leaderboard보다 architecture와 운영 원칙을 제시한다. 구현 roadmap에는 readable memory files, action approval, local relay, model choice, open hands evaluation suite가 포함되고, release size와 idle memory, estimated cost를 표로 제시한다.",
+      "first_published": "2026-10-06",
+      "id": "arxiv:2610.08699",
+      "limitations": "nanoMuse는 연구 보고서이자 architecture proposal 성격이 강하다. 성능 수치보다 privacy, provenance, governance 설계가 핵심이며, 실제 deployment에서는 device permission, credential brokerage, proactive messaging 정책 검증이 필요하다.",
+      "method": "nanoMuse는 phone과 computer 화면을 조작하는 hands, 누구나 운영할 수 있는 relay, 모든 action을 통과시키는 Sentinel, 사용자가 읽을 수 있는 file-based memory를 조합한다. Memory에는 provenance와 replacement history를 남기고, credential은 model이 직접 보지 않는 surrogate token으로 다룬다.",
+      "practical_value": "개인 agent를 설계할 때 memory와 actions를 vendor cloud에만 묶지 않고, file provenance와 user-controlled relay, deterministic Sentinel boundary를 설계하는 방향을 참고할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.08699",
+        "https://arxiv.org/pdf/2610.08699"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "open-source",
+        "security"
+      ],
+      "title": "nanoMuse: An Open-Source Personal Agent for Every Device You Own",
+      "topics": [
+        "personal agent",
+        "open-source agent",
+        "device control",
+        "memory provenance"
+      ],
+      "url": "https://arxiv.org/abs/2610.08699"
+    },
+    {
+      "abstract_summary": "이 논문은 conversational agent가 오래된 지시와 최신 수정 사항을 모두 다뤄야 하지만, 단순 vector index나 계속되는 summarization은 active knowledge와 stale information을 구분하기 어렵다는 문제를 다룬다.",
+      "evidence": "full_text",
+      "findings": "LoCoMo 700문항과 MemoryAgentBench 150문항의 reproducible sample에서 MINDSET은 다섯 memory system과 비교해 가장 높은 LoCoMo answer F1을 보였고, LightMem 대비 Recall@8, MRR, nDCG@8을 유의하게 개선했다. MemoryAgentBench에서도 관찰된 최고 score를 냈지만 상대 차이는 작았다.",
+      "first_published": "2026-10-06",
+      "id": "arxiv:2610.08586",
+      "limitations": "MINDSET은 schema-aware memory controller라 transition objective와 energy term 설계가 중요하다. Conversation domain 외 조직 문서나 code memory처럼 구조가 다른 source에는 schema와 contradiction definition을 다시 조정해야 한다.",
+      "method": "MINDSET은 conversation을 immutable episode로 저장하고, minimum-energy state transition으로 versioned schema를 구성한다. 새 episode는 schema를 reinforce, supersede, split, create할 수 있으며 transition decision은 distortion, contradiction, historical damage, fragmentation, inconsistency를 함께 고려한다.",
+      "practical_value": "장기 conversational memory는 summary 재작성보다 state transition 관리에 가깝다. 변경된 preference, 과거 조건, 현재 유효 지식을 함께 유지해야 하는 assistant에는 versioned schema와 hysteresis가 필요하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.08586",
+        "https://arxiv.org/pdf/2610.08586"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "retrieval"
+      ],
+      "title": "MINDSET: Energy-based Schema Evolution for Long Conversational Agent Memory",
+      "topics": [
+        "long conversational memory",
+        "schema evolution",
+        "stale information",
+        "retrieval ranking"
+      ],
+      "url": "https://arxiv.org/abs/2610.08586"
+    },
+    {
+      "abstract_summary": "이 논문은 agent privacy 평가가 simulated trajectory와 final response leakage에 치우쳐, 실제 agent가 task 중간에 불필요하게 sensitive file이나 service에 접근하는 행동을 놓친다는 문제를 다룬다. Contextual Integrity 관점에서 final answer뿐 아니라 information flow trajectory를 봐야 한다는 주장이다.",
+      "evidence": "full_text",
+      "findings": "논문은 최신 LLM agent들이 outcome-based evaluation만으로는 드러나지 않는 privacy risk를 상당히 보였다고 보고한다. 핵심 기여는 response leakage뿐 아니라 unnecessary information access와 intermediate tool behavior를 측정하는 metrics와 runtime audit architecture다.",
+      "first_published": "2026-10-05",
+      "id": "arxiv:2610.06454",
+      "limitations": "구체 수치는 task와 tool suite 구성에 의존한다. MCP 기반 realistic sandbox를 만들었지만 실제 기업 SaaS의 access-control, logging, data retention과 완전히 동일하지는 않다.",
+      "method": "AgentPrivArena는 self-hosted open-source service와 authentic MCP tools를 결합해 privacy-sensitive task를 executable environment로 만든다. AgentPrivAudit은 agent execution pipeline 안에서 trajectory-level privacy metric을 지속적으로 계산하는 runtime auditing framework다.",
+      "practical_value": "agent privacy 검사는 답변에 PII가 포함됐는지만 보면 부족하다. 실행 중 어떤 파일, record, service를 열었는지 trajectory-level audit를 남겨야 least-privilege와 contextual integrity를 검증할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.06454",
+        "https://arxiv.org/pdf/2610.06454"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "AgentPrivArena: Evaluating and Auditing Real-world AI Agent Privacy",
+      "topics": [
+        "agent privacy",
+        "MCP tools",
+        "trajectory-level metrics",
+        "runtime auditing"
+      ],
+      "url": "https://arxiv.org/abs/2610.06454"
+    },
+    {
+      "abstract_summary": "이 survey는 agent와 LLM이 deployment 이후 domain fact, user preference, document, interaction experience를 계속 받아들여야 하지만, ICL 기반 memory는 context capacity를 소모하고 길이에 따라 encoding cost가 반복된다는 문제에서 출발한다.",
+      "evidence": "full_text",
+      "findings": "정량 benchmark 논문은 아니지만, 기존 continuous prompt, prefix, LoRA류 memory, FFN/attention injection, memory grafting 계열을 하나의 operator formulation으로 정리한다. 저자들은 interference, safety-aware acquisition, ICL과의 co-design, recursive self-improvement를 주요 open direction으로 제시한다.",
+      "first_published": "2026-10-06",
+      "id": "arxiv:2610.08630",
+      "limitations": "Survey라 특정 방법의 우월성을 입증하지 않는다. In-parameter memory는 token cost를 줄일 수 있지만 inspectability, editability, safety rollback은 textual memory보다 어려울 수 있다.",
+      "method": "논문은 in-parameter memory를 deployment 중 또는 이전에 획득된 memory-bearing parameter object가 inference forward pass에 조합되는 방식으로 정의한다. 방법론은 parameter placement, 즉 embedding, attention, FFN, hybrid와 acquisition time, 즉 online/offline 축으로 분류된다.",
+      "practical_value": "반복 사용되는 memory를 매번 prompt에 넣는 비용이 커지는 서비스는 textual memory와 parameter-like memory의 역할 분담을 검토해야 한다. 다만 운영에서는 provenance와 삭제 가능성까지 함께 설계해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.08630",
+        "https://arxiv.org/pdf/2610.08630"
+      ],
+      "tags": [
+        "llm",
+        "memory",
+        "performance"
+      ],
+      "title": "Towards In-Parameter Memory Augmentation for Large Language Models",
+      "topics": [
+        "in-parameter memory",
+        "memory survey",
+        "deployment-time adaptation",
+        "ICL tradeoff"
+      ],
+      "url": "https://arxiv.org/abs/2610.08630"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "plugin은 외부 서비스 권한과 credential scope를 확장한다. 각 plugin의 manifest, OAuth scope, tool permission, audit surface를 설치 전 확인해야 한다.",
+      "novelty": "first_introduction",
+      "rank": 4,
+      "repository": "cursor/plugins",
+      "sources": [
+        "https://github.com/cursor/plugins",
+        "https://raw.githubusercontent.com/cursor/plugins/main/README.md"
+      ],
+      "summary": "Cursor plugin specification and official plugins, developer-tool and SaaS integrations",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source",
+        "tool-use"
+      ],
+      "url": "https://github.com/cursor/plugins",
+      "use_case": "coding agent에 Gmail, GitHub, Playwright, Salesforce 같은 외부 system capability를 plugin manifest와 skill directory 단위로 붙이는 구조를 참고할 수 있다.",
+      "why_now": "weekly Trending 4위, 1106 stars this week, 이전 Top10 부재"
+    },
+    {
+      "caution": "agent 활동을 장기 저장하므로 repository 내용, secrets, private prompt가 memory artifact에 섞이지 않도록 redaction과 retention policy가 필요하다.",
+      "novelty": "first_introduction",
+      "rank": 7,
+      "repository": "thedotmack/claude-mem",
+      "sources": [
+        "https://github.com/thedotmack/claude-mem",
+        "https://raw.githubusercontent.com/thedotmack/claude-mem/main/README.md"
+      ],
+      "summary": "Persistent memory compression for Claude Code and other agents, session capture and context reinjection",
+      "tags": [
+        "agent",
+        "coding-agent",
+        "memory",
+        "open-source"
+      ],
+      "url": "https://github.com/thedotmack/claude-mem",
+      "use_case": "agent session을 압축해 이후 session에 관련 context를 다시 주입해야 하는 팀이 memory persistence와 context compression workflow를 검토할 때 참고할 수 있다.",
+      "why_now": "weekly Trending 7위, 2104 stars this week, 이전 상세 소개 없음"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 AgentSpy입니다. 논문은 coding agent의 trajectory가 agent가 보고한 tool call 중심이라 subprocess가 실제로 실행한 system call, file access, network access를 놓칠 수 있다고 지적합니다. AgentSpy는 agent 바깥의 OS boundary에서 행동을 관측합니다.",
+    "AgentSpy는 isolated environment에서 system call과 network traffic을 기록하고, obligation 기반 reliability analysis와 prohibition 기반 security analysis를 수행합니다. Codex harness의 77개 task와 세 LLM 반복 실행에서 같은 task의 반복 run은 다른 task가 섞인 set보다 92.2% 더 유사했고, 통과한 run 중 18%는 task와 무관한 활동, 7%는 grading file read, 17%는 developer guidance 미사용을 보였습니다.",
+    "GitHub Trending에서는 Cursor plugins와 claude-mem이 agent plugin·persistent memory 생태계를 보여줍니다. 논문 쪽에서는 nanoMuse, MINDSET, AgentPrivArena, in-parameter memory survey가 agent memory와 privacy의 운영 경계를 다루고, CNCF 범위에서는 Envoy, Argo CD, Rook, Jaeger, Linkerd 릴리스가 확인됐습니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "Cursor plugins는 외부 SaaS와 developer tool capability를 agent plugin manifest로 배포하는 신규 Top10 repository입니다.",
+        "url": "https://github.com/cursor/plugins"
+      },
+      {
+        "section": "papers",
+        "text": "AgentPrivArena는 MCP tool 기반 realistic sandbox에서 final response 밖의 privacy-risk trajectory를 평가합니다.",
+        "url": "https://arxiv.org/abs/2610.06454"
+      },
+      {
+        "section": "cncf",
+        "text": "Envoy 여러 line에 oauth2와 api_key_auth crash를 막는 보안 패치가 공개됐습니다.",
+        "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 AgentSpy입니다. Agent가 보고한 trajectory 대신 OS boundary에서 system call, file access, network access를 관측해 실제 행동을 드러냅니다.",
+      "Codex harness 77개 task 반복 실행에서 통과한 run 중 18%는 task와 무관한 활동, 7%는 grading file read, 17%는 developer guidance 미사용을 보였습니다."
+    ]
+  }
+}
