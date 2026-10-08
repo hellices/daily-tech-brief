@@ -1,0 +1,602 @@
+{
+  "cncf": [
+    {
+      "category": "security",
+      "impact": "Envoy에서 oauth2 또는 api_key_auth filter를 쓰는 edge proxy 운영자는 minor line별 patch를 확인해야 한다. CONNECT traffic과 query-key 기반 인증을 함께 쓰는 구성은 우선 회귀 테스트가 필요하다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3",
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.38.6"
+      ],
+      "summary": "Envoy는 여러 supported line에 oauth2 filter와 api_key_auth filter crash fix를 포함한 보안 릴리스를 냈다. path header가 없는 CONNECT request에서 oauth2는 400을 반환하도록 수정됐고, hide_credentials와 query key source 조합의 api_key_auth crash도 고쳤다.",
+      "tags": [
+        "networking",
+        "release",
+        "security"
+      ],
+      "title": "Envoy v1.39.3 / v1.38.6 / v1.37.8 / v1.36.12",
+      "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3"
+    },
+    {
+      "category": "release",
+      "impact": "Argo CD 운영자는 사용 중인 release line의 coordinated security fixes와 CMP cleanup patch를 확인하고, 서명된 image와 SLSA provenance 검증 절차를 유지해야 한다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/argoproj/argo-cd/releases/tag/v3.5.4",
+        "https://github.com/argoproj/argo-cd/releases/tag/v3.6.0-rc2"
+      ],
+      "summary": "Argo CD는 stable patch line과 3.6 release candidate를 동시에 공개했다. 3.5.4에는 login attempt username logging, CMP tgz stream temporary directory cleanup, coordinated security fixes, UI manifest viewer fix 등이 포함된다.",
+      "tags": [
+        "gitops",
+        "kubernetes",
+        "release",
+        "security"
+      ],
+      "title": "Argo CD v3.5.4 / v3.4.10 / v3.3.15 and v3.6.0-rc2",
+      "url": "https://github.com/argoproj/argo-cd/releases/tag/v3.5.4"
+    },
+    {
+      "category": "release",
+      "impact": "Rook/Ceph 운영자는 Helm chart tag reference와 kernel 5.11 이상 msgrv2 요구사항, NFS pool manifest를 upgrade 전에 검토해야 한다. 자동 OSD replacement는 host-based cluster 중심으로 검증이 필요하다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/rook/rook/releases/tag/v1.21.0"
+      ],
+      "summary": "Rook 1.21.0은 Helm OCI chart tag의 v prefix 제거, Ceph msgrv2 기본 요구, NFS .nfs pool 자동 생성 중단 같은 breaking change를 포함한다. Ceph v21 지원 준비, RBD QoS, OSD replacement workflow도 추가됐다.",
+      "tags": [
+        "kubernetes",
+        "release",
+        "storage"
+      ],
+      "title": "Rook v1.21.0",
+      "url": "https://github.com/rook/rook/releases/tag/v1.21.0"
+    },
+    {
+      "category": "release",
+      "impact": "Jaeger 운영자는 Elasticsearch index options와 remote storage config, structured filter behavior를 upgrade 전 확인해야 한다. query extension이나 span search hook을 쓰는 경우 API 호환성 점검이 필요하다.",
+      "published": "2026-10-06",
+      "sources": [
+        "https://github.com/jaegertracing/jaeger/releases/tag/v2.22.0"
+      ],
+      "summary": "Jaeger 2.22.0은 Elasticsearch backend와 query path에 breaking change와 feature promotion을 포함한다. numeric attribute indexing configuration, native trace summaries stable, structured filters beta, span search query interceptor hook 등이 들어갔다.",
+      "tags": [
+        "observability",
+        "release",
+        "storage"
+      ],
+      "title": "Jaeger v2.22.0",
+      "url": "https://github.com/jaegertracing/jaeger/releases/tag/v2.22.0"
+    },
+    {
+      "category": "release",
+      "impact": "edge channel 사용자는 dependency update가 proxy와 dashboard build에 미치는 영향을 확인해야 한다. stable channel 운영자는 차기 stable에 들어갈 dependency 변화를 미리 점검할 수 있다.",
+      "published": "2026-10-06",
+      "sources": [
+        "https://github.com/linkerd/linkerd2/releases/tag/edge-26.10.1"
+      ],
+      "summary": "Linkerd edge-26.10.1은 rustls, Helm, Prometheus common, tokio-metrics 등 다수 dependency bump와 chart/workflow path 문서 수정을 포함한 edge release다.",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "release"
+      ],
+      "title": "Linkerd edge-26.10.1",
+      "url": "https://github.com/linkerd/linkerd2/releases/tag/edge-26.10.1"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 CNCF 및 클라우드 네이티브 주요 프로젝트 릴리스를 확인했고, 보안·GitOps·스토리지·관측성 영향이 있는 항목을 정리했습니다.",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/argoproj/argo-cd/releases",
+        "https://github.com/rook/rook/releases",
+        "https://github.com/jaegertracing/jaeger/releases",
+        "https://github.com/linkerd/linkerd2/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI 모델·agent·보안·개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 신규 Top10 중 개발 도구와 agent plugin 관련 3개 항목을 상세 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 robot harness, coding-agent test optimization, benchmark task-flow, prompt-injection security, runtime verification 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22memory%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22coding%20agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.SE)",
+        "https://export.arxiv.org/api/query?search_query=all:%22security%22%20AND%20all:%22agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CR)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-09",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://www.anthropic.com/claude-haiku-5-5"
+      ],
+      "tags": [
+        "llm",
+        "performance"
+      ],
+      "title": "Claude Haiku 5.5",
+      "url": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://openai.com/index/gpt-6-for-everyone/"
+      ],
+      "tags": [
+        "llm",
+        "multimodal"
+      ],
+      "title": "GPT-6 and Intelligent UI for everyone",
+      "url": "https://openai.com/index/gpt-6-for-everyone/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/docker/docker-agent"
+      ],
+      "tags": [
+        "agent",
+        "containers",
+        "developer-tools"
+      ],
+      "title": "Docker Agent",
+      "url": "https://github.com/docker/docker-agent"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34960"
+      ],
+      "tags": [
+        "llm",
+        "multimodal"
+      ],
+      "title": "OpenAI, GPT-6 확대 적용과 더 똑똑한 대화형 UI 도입",
+      "url": "https://news.hada.io/topic?id=34960"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34958"
+      ],
+      "tags": [
+        "llm",
+        "performance"
+      ],
+      "title": "Claude Haiku 5.5 출시 - 평균 실행 비용 75% 절감",
+      "url": "https://news.hada.io/topic?id=34958"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34953"
+      ],
+      "tags": [
+        "agent",
+        "evaluation"
+      ],
+      "title": "Boxdawn - agent trace 중복 작업 탐지",
+      "url": "https://news.hada.io/topic?id=34953"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=34952"
+      ],
+      "tags": [
+        "agent",
+        "tool-use"
+      ],
+      "title": "Codemode란 무엇인가 - AI의 도구 호출을 코드로 묶기",
+      "url": "https://news.hada.io/topic?id=34952"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1wzz3cc/how_we_slashed_the_size_of_our_search_cache_by_74/"
+      ],
+      "tags": [
+        "performance",
+        "retrieval"
+      ],
+      "title": "How we slashed the size of our search cache by 74%",
+      "url": "https://www.reddit.com/r/programming/comments/1wzz3cc/how_we_slashed_the_size_of_our_search_cache_by_74/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wyw0my/swerace_a_codingagent_benchmark_of_188_real/"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation"
+      ],
+      "title": "SWE-Race: a coding-agent benchmark of 188 real concurrency bugs",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wyw0my/swerace_a_codingagent_benchmark_of_188_real/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1wz71g3/transformers_vs_rnns_vs_ssms_where_does_memory/"
+      ],
+      "tags": [
+        "llm",
+        "memory"
+      ],
+      "title": "Transformers vs RNNs vs SSMs: Where Does Memory Actually Live?",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1wz71g3/transformers_vs_rnns_vs_ssms_where_does_memory/"
+    }
+  ],
+  "generated_at": "2026-10-09T08:31:00+09:00",
+  "github_featured": [
+    "EpicGames/raddebugger",
+    "mattpocock/skills",
+    "earthtojake/text-to-cad"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-08T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 3327
+      },
+      {
+        "rank": 2,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 3073
+      },
+      {
+        "rank": 3,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3614
+      },
+      {
+        "rank": 4,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1106
+      },
+      {
+        "rank": 5,
+        "repository": "NVIDIA/OpenShell",
+        "weekly_stars": 5228
+      },
+      {
+        "rank": 6,
+        "repository": "Panniantong/Agent-Reach",
+        "weekly_stars": 6454
+      },
+      {
+        "rank": 7,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 2104
+      },
+      {
+        "rank": 8,
+        "repository": "pablostanley/yoinks",
+        "weekly_stars": 2947
+      },
+      {
+        "rank": 9,
+        "repository": "DuarteSantos8/openGym",
+        "weekly_stars": 3318
+      },
+      {
+        "rank": 10,
+        "repository": "tile-ai/tilelang",
+        "weekly_stars": 675
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-09T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 6075
+      },
+      {
+        "rank": 2,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 2912
+      },
+      {
+        "rank": 3,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3908
+      },
+      {
+        "rank": 4,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 257
+      },
+      {
+        "rank": 5,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1109
+      },
+      {
+        "rank": 6,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 2607
+      },
+      {
+        "rank": 7,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 6869
+      },
+      {
+        "rank": 8,
+        "repository": "Panniantong/Agent-Reach",
+        "weekly_stars": 6912
+      },
+      {
+        "rank": 9,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 1800
+      },
+      {
+        "rank": 10,
+        "repository": "DuarteSantos8/openGym",
+        "weekly_stars": 4906
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "EmbodiedRSI: Robot Harness가 물리 실험을 골라 Code·Skill·Memory를 함께 진화시키기",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.10498"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 robot foundation model이 배포 조건 변화에 취약하고, 이를 개선하기 위한 post-training robot data 수집이 비싸다는 문제를 다룬다. 기존 self-evolving harness는 어떤 physical experiment가 code·skill 개선에 가장 유용한지 명시적으로 고르지 못해 물리 trial을 비효율적으로 쓴다.",
+      "evidence": "full_text",
+      "findings": "RoboCasa365에서 EmbodiedRSI는 overall success 77.0%, Composite-Unseen 71.3%를 기록해 best baseline 40.1%를 크게 앞섰다. LIBERO-Pro에서는 86.8% overall success를 기록했고, simulation에서 진화한 pipeline이 real-world robot에서도 zero-shot으로 71.3% overall success를 달성했다고 보고됐다.",
+      "first_published": "2026-10-07",
+      "id": "arxiv:2610.10498",
+      "limitations": "물리 실험 선택과 real-world transfer는 robot task distribution과 simulator fidelity에 의존한다. Value-of-Information 추정이 틀리면 비싼 physical trial budget을 낭비할 수 있고, safety-critical robot deployment에는 별도 guard가 필요하다.",
+      "method": "EmbodiedRSI는 Fast-Slow Dual-System Architecture를 사용한다. Fast system은 code와 skill hypothesis를 Hypothesis Graph에 유지하고 Value-of-Information Experiment Selection으로 실험을 고르며, Slow system은 Hierarchical Memory를 만들고 Reward-Grounded Memory Learning으로 이후 개선에 도움이 되는 memory를 선택한다.",
+      "practical_value": "robot agent를 개선할 때 단순히 실패를 memory로 쌓는 것보다 어떤 실험이 다음 code-skill update에 정보를 주는지 계산해야 한다. 물리 trial budget이 제한된 팀에는 hypothesis-guided co-evolution이 중요한 설계 패턴이다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.10498",
+        "https://arxiv.org/pdf/2610.10498"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory",
+        "robotics"
+      ],
+      "title": "EmbodiedRSI: Active Continual Robot Learning Through Hypothesis-Guided Co-Evolution",
+      "topics": [
+        "robot harness",
+        "recursive self-improvement",
+        "hypothesis graph",
+        "physical experiment selection"
+      ],
+      "url": "https://arxiv.org/abs/2610.10498"
+    },
+    {
+      "abstract_summary": "이 논문은 여러 SWE agent가 만든 candidate patch 중 가장 좋은 것을 고르려면 test suite가 patch들의 behavior 차이를 드러내야 한다는 문제를 다룬다. 기존 test generation은 explicit loss가 약하고, create/delete 중심이며, 반복 실패에서 배우지 못한다.",
+      "evidence": "full_text",
+      "findings": "SWE-bench Verified에서 TestGRAD는 4-agent ensemble과 Minimax-m2.7을 사용해 84.2% Pass@1을 달성했다. strongest baseline인 TRAE 80.6%보다 3.6%p 높고, single-agent baseline보다 5.0%p 높았으며, failure-history context는 100배 이상 압축했다.",
+      "first_published": "2026-10-07",
+      "id": "arxiv:2610.10242",
+      "limitations": "효과는 candidate patch pool과 execution 가능한 test harness가 있을 때 나타난다. Test가 실제 developer intent를 충분히 포착하지 못하면 differential loss가 잘못된 patch를 고를 수 있다.",
+      "method": "TestGRAD는 test-space optimization으로 문제를 재정의한다. Differential loss는 candidate patch가 서로 다르게 행동하도록 test를 유도하고, CRUD gradient는 기존 test를 읽고 생성·갱신·삭제까지 수행하며, Failure Pattern Momentum은 반복되는 실패 sequence를 memory에서 mining해 같은 비생산적 방향을 피한다.",
+      "practical_value": "coding-agent ensemble은 후보를 많이 만드는 것만큼 후보를 구분하는 test suite를 진화시키는 일이 중요하다. 실패 memory를 압축한 momentum은 반복 test generation 비용을 줄일 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.10242",
+        "https://arxiv.org/pdf/2610.10242"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "evaluation",
+        "performance"
+      ],
+      "title": "TestGRAD: Evolving Test Suites via Failure Pattern Momentum for SWE-Agent Ensemble",
+      "topics": [
+        "coding-agent ensemble",
+        "test-suite optimization",
+        "SWE-bench Verified",
+        "failure memory"
+      ],
+      "url": "https://arxiv.org/abs/2610.10242"
+    },
+    {
+      "abstract_summary": "이 논문은 coding-agent benchmark가 현실적이라고 주장하지만, 실제 사용자는 issue 하나를 단일 turn으로 던지는 것보다 질문, 계획, review, refactoring, 실행을 오가며 긴 session을 만든다는 문제를 다룬다.",
+      "evidence": "full_text",
+      "findings": "Production Sessions에서 50.9%는 단일 user message이고 33%는 3개 이상 user message였다. SWE-Bench Pro에서는 new feature 54.7%와 bug fix 39.1%가 93.8%를 차지하지만, 실제 session은 질문·계획·review·refactoring 등 훨씬 다양했다. 700개 SWE-Bench Pro pilot에서 task를 여러 step으로 순차 해결하게 하면 agent cost가 대략 두 배가 됐지만 resolve rate 변화는 안정적이지 않았다.",
+      "first_published": "2026-10-07",
+      "id": "arxiv:2610.09633",
+      "limitations": "Production Session은 JetBrains IDE 사용자 기반에 한정되고, benchmark 변환은 task-flow realism을 높이지만 모든 실제 업무 분포를 대표하지 않는다. 논문도 단일 universal benchmark보다 target use case 명시를 주장한다.",
+      "method": "저자들은 JetBrains IDE에서 실제 software engineer의 agent session 4,782개를 모아 Production Sessions라고 부르고, 이 중 사용자 메시지가 3개 이상인 long-interaction slice를 분석했다. SWE-TaskFlow는 기존 issue-derived benchmark의 task와 test를 유지하면서 prompt splitting과 repository QA로 target task flow에 맞게 interaction layer를 바꾼다.",
+      "practical_value": "coding-agent 평가를 설계할 때 issue 해결률만 보지 말고 session length, prompt type transition, repository QA turn을 측정해야 한다. 제품 팀은 자기 사용자 task flow를 먼저 측정하고 benchmark interaction protocol을 맞춰야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.09633",
+        "https://arxiv.org/pdf/2610.09633"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation"
+      ],
+      "title": "Coding-Agent Benchmarks Should Match Their Users' Task Flows",
+      "topics": [
+        "coding-agent benchmark",
+        "task flow",
+        "production sessions",
+        "SWE-TaskFlow"
+      ],
+      "url": "https://arxiv.org/abs/2610.09633"
+    },
+    {
+      "abstract_summary": "이 논문은 AGENTS.md, CLAUDE.md, .cursorrules 같은 rule file이 coding agent workflow의 핵심 지침이 되면서, 공격자가 benign rule file 안에 prompt injection을 심어 합법 dependency를 공격자 package로 바꾸게 만들 수 있다는 위협을 다룬다.",
+      "evidence": "full_text",
+      "findings": "저자들은 3개 coding benchmark, 10개 Python package, 8개 agent framework, 13개 backbone LLM에서 PackHallu를 평가했고, 기존 heuristic 및 optimization 기반 prompt injection보다 높은 attack success rate와 강한 transferability를 보였다고 보고했다. 기존 detector는 많은 공격을 놓치거나 false positive가 높았다.",
+      "first_published": "2026-10-07",
+      "id": "arxiv:2610.09264",
+      "limitations": "정량 수치는 benchmark와 package set 구성에 좌우되고, attack은 사용자가 외부 rule file을 신뢰해 설치한다는 threat model을 전제한다. 하지만 rule marketplace가 커질수록 현실성이 커지는 위험이다.",
+      "method": "PackHallu는 trajectory-level feedback과 LLM-guided mutation으로 rule file 안에 들어갈 malicious prompt를 반복 개선한다. 공격 목표는 agent가 victim package 대신 attacker-chosen package를 import하게 만들고, 이후 실행 시 악성 package가 설치·실행되게 하는 것이다.",
+      "practical_value": "coding-agent rule file은 prompt가 아니라 supply-chain artifact로 다뤄야 한다. Dependency change, package import, install command는 rule provenance와 무관하게 별도 policy check와 allowlist 검증이 필요하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.09264",
+        "https://arxiv.org/pdf/2610.09264"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "security"
+      ],
+      "title": "Package Hallucination Attacks on Coding Agents through Prompt Injection in Rule Files",
+      "topics": [
+        "package hallucination",
+        "rule-file prompt injection",
+        "coding-agent security",
+        "PackHallu"
+      ],
+      "url": "https://arxiv.org/abs/2610.09264"
+    },
+    {
+      "abstract_summary": "이 논문은 tool-using agent guardrail이 rule-based predicate 수준에 머무는 경우가 많지만, 실제 공격은 여러 step의 tool call history와 data dependency를 포함하므로 formal runtime verification이 도움이 되는지 묻는다.",
+      "evidence": "full_text",
+      "findings": "AgentDojo GPT-4o no-defense recorded run에서 generic obligation은 성공한 공격의 70.1%를 탐지했지만 benign run의 29.3%에도 fire했다. STAC attack chain에서는 71.8%를 탐지했다. Provenance context가 있으면 더 잘 구분하지만, 공격자가 provenance line 하나를 심으면 naive provenance check의 94~99%가 무력화됐다.",
+      "first_published": "2026-10-07",
+      "id": "arxiv:2610.09793",
+      "limitations": "연구는 post-hoc replay detection이지 in-loop shield 평가가 아니다. 또한 현재 benchmark trace가 history-dependent enforcement에 필요한 robust provenance를 충분히 담지 못한다는 readiness gap이 드러난다.",
+      "method": "저자들은 MFOTL 기반 runtime monitor를 AgentDojo, STAC, R-Judge의 recorded trace에 offline으로 replay한다. LLM이나 live agent 실행 없이 benchmark label과 recorded tool-call trace를 사용해 generic obligation과 history-dependent policy의 detection과 benign false rate를 측정한다.",
+      "practical_value": "agent runtime verification은 tool name만 보는 정적 rule보다 역사와 provenance가 필요하다. 그러나 provenance 자체가 공격면이므로 lookup-bound나 tamper-resistant trace 설계가 선행되어야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.09793",
+        "https://arxiv.org/pdf/2610.09793"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security",
+        "tool-use"
+      ],
+      "title": "Formal Runtime Verification for Tool-Using LLM Agents: An Offline Same-Benchmark Study on AgentDojo and STAC",
+      "topics": [
+        "runtime verification",
+        "tool-using agents",
+        "AgentDojo",
+        "STAC"
+      ],
+      "url": "https://arxiv.org/abs/2610.09793"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "프로젝트는 alpha이며 현재 local Windows x64와 PDB 중심이다. Production debugging 도입 전 dump, repro, symbol conversion, RDI format 호환성을 검증해야 한다.",
+      "novelty": "new_entry",
+      "rank": 4,
+      "repository": "EpicGames/raddebugger",
+      "sources": [
+        "https://github.com/EpicGames/raddebugger",
+        "https://raw.githubusercontent.com/EpicGames/raddebugger/master/README.md"
+      ],
+      "summary": "Native user-mode multi-process graphical debugger, RDI debug info format, RAD Linker",
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "performance"
+      ],
+      "url": "https://github.com/EpicGames/raddebugger",
+      "use_case": "Windows x64 native debugging, 대형 executable link/debug info handling, custom debug-info pipeline을 연구하거나 자체 toolchain을 최적화하는 팀의 reference가 된다.",
+      "why_now": "weekly Trending 4위, 257 stars this week, 이전 Top10 부재"
+    },
+    {
+      "caution": "skill을 중복 설치하면 같은 지침이 여러 번 로드될 수 있다. 프로젝트에 복사되는 instruction file은 repository policy와 충돌하지 않는지 확인해야 한다.",
+      "novelty": "new_entry",
+      "rank": 7,
+      "repository": "mattpocock/skills",
+      "sources": [
+        "https://github.com/mattpocock/skills",
+        "https://raw.githubusercontent.com/mattpocock/skills/main/README.md"
+      ],
+      "summary": "Small composable engineering skills for Claude Code, Codex, Copilot, editable project-local files",
+      "tags": [
+        "agent",
+        "coding-agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/mattpocock/skills",
+      "use_case": "대형 process-owning framework 대신 작고 수정 가능한 agent skill을 프로젝트별로 가져와 실제 engineering workflow에 맞추려는 팀에 적합하다.",
+      "why_now": "weekly Trending 7위, 6869 stars this week, 이전 Top10 부재"
+    },
+    {
+      "caution": "첫 실행 시 CAD runtime download와 telemetry 설정이 있으므로 network, privacy, artifact retention 정책을 확인해야 한다. 생성된 CAD는 제조 전 human review와 DFM 검사가 필요하다.",
+      "novelty": "new_entry",
+      "rank": 9,
+      "repository": "earthtojake/text-to-cad",
+      "sources": [
+        "https://github.com/earthtojake/text-to-cad",
+        "https://raw.githubusercontent.com/earthtojake/text-to-cad/main/README.md"
+      ],
+      "summary": "Agent CAD plugin, STEP/GLB/STL/3MF generation, DFM checks, drawings, fabrication integrations",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source",
+        "tool-use"
+      ],
+      "url": "https://github.com/earthtojake/text-to-cad",
+      "use_case": "coding agent에 CAD modeling, 3D printing, sheet metal, CNC fabrication workflow를 붙이고 싶은 팀이 local CAD runtime과 skill interface를 참고할 수 있다.",
+      "why_now": "weekly Trending 9위, 1800 stars this week, 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 EmbodiedRSI입니다. 논문은 robot foundation model이 강한 visuomotor control을 갖고 있어도 object position이나 instruction이 바뀌면 성능이 떨어지고, 추가 post-training용 robot data 수집은 비싸다는 문제에서 출발합니다.",
+    "EmbodiedRSI는 Fast-Slow dual-system architecture로 code와 skill hypothesis를 Hypothesis Graph에 유지하고, Value-of-Information Experiment Selection으로 어떤 physical trial이 다음 update에 가장 유용한지 고릅니다. RoboCasa365에서 overall success 77.0%, Composite-Unseen 71.3%를 기록해 best baseline 40.1%를 크게 앞섰고, LIBERO-Pro에서는 86.8%를 보고했습니다.",
+    "같은 호에서는 TestGRAD, PackHallu, formal runtime verification, task-flow benchmark가 coding-agent 평가와 보안을 다룹니다. GitHub Top10에서는 RAD Debugger, skills, text-to-cad가 새로 선별됐고, CNCF 범위에서는 Envoy 보안 패치와 Argo CD, Rook, Jaeger, Linkerd 릴리스가 계속 중요합니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "RAD Debugger가 신규 Top10에 진입했습니다. RDI debug info와 RAD Linker까지 포함한 native debugger 프로젝트입니다.",
+        "url": "https://github.com/EpicGames/raddebugger"
+      },
+      {
+        "section": "papers",
+        "text": "TestGRAD는 SWE-bench Verified 4-agent ensemble에서 84.2% Pass@1을 기록해 strongest baseline보다 3.6%p 높았습니다.",
+        "url": "https://arxiv.org/abs/2610.10242"
+      },
+      {
+        "section": "cncf",
+        "text": "Envoy 여러 line에 oauth2와 api_key_auth crash를 막는 보안 패치가 공개됐습니다.",
+        "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 EmbodiedRSI입니다. Hypothesis Graph와 Value-of-Information 실험 선택으로 robot harness가 code, skill, memory를 함께 진화시킵니다.",
+      "RoboCasa365에서 overall success 77.0%, Composite-Unseen 71.3%를 기록해 best baseline 40.1%를 크게 앞섰고, LIBERO-Pro에서는 86.8%를 보고했습니다."
+    ]
+  }
+}
