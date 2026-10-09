@@ -1,0 +1,557 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "alpha release는 production upgrade 대상은 아니지만, 1.38 cycle feature gate와 API 변화를 추적하는 platform team은 조기 검토가 필요하다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/kubernetes/kubernetes/releases/tag/v1.38.0-alpha.2",
+        "https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.38.md"
+      ],
+      "summary": "Kubernetes 1.38.0-alpha.2가 공개됐다. 상세 변경은 Kubernetes 1.38 changelog와 kubernetes-announce를 통해 제공된다.",
+      "tags": [
+        "kubernetes",
+        "release"
+      ],
+      "title": "Kubernetes v1.38.0-alpha.2",
+      "url": "https://github.com/kubernetes/kubernetes/releases/tag/v1.38.0-alpha.2"
+    },
+    {
+      "category": "security",
+      "impact": "Envoy에서 oauth2 또는 api_key_auth filter를 쓰는 edge proxy 운영자는 minor line별 patch를 확인해야 한다. CONNECT traffic과 query-key 기반 인증을 함께 쓰는 구성은 우선 회귀 테스트가 필요하다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3",
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.38.6"
+      ],
+      "summary": "Envoy는 여러 supported line에 oauth2 filter와 api_key_auth filter crash fix를 포함한 보안 릴리스를 냈다. path header가 없는 CONNECT request에서 oauth2는 400을 반환하도록 수정됐고, hide_credentials와 query key source 조합의 api_key_auth crash도 고쳤다.",
+      "tags": [
+        "networking",
+        "release",
+        "security"
+      ],
+      "title": "Envoy v1.39.3 / v1.38.6 / v1.37.8 / v1.36.12",
+      "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3"
+    },
+    {
+      "category": "release",
+      "impact": "Argo CD 운영자는 사용 중인 release line의 coordinated security fixes와 CMP cleanup patch를 확인하고, 서명된 image와 SLSA provenance 검증 절차를 유지해야 한다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/argoproj/argo-cd/releases/tag/v3.5.4",
+        "https://github.com/argoproj/argo-cd/releases/tag/v3.6.0-rc2"
+      ],
+      "summary": "Argo CD는 stable patch line과 3.6 release candidate를 동시에 공개했다. 3.5.4에는 login attempt username logging, CMP tgz stream temporary directory cleanup, coordinated security fixes, UI manifest viewer fix 등이 포함된다.",
+      "tags": [
+        "gitops",
+        "kubernetes",
+        "release",
+        "security"
+      ],
+      "title": "Argo CD v3.5.4 / v3.4.10 / v3.3.15 and v3.6.0-rc2",
+      "url": "https://github.com/argoproj/argo-cd/releases/tag/v3.5.4"
+    },
+    {
+      "category": "release",
+      "impact": "Rook/Ceph 운영자는 Helm chart tag reference와 kernel 5.11 이상 msgrv2 요구사항, NFS pool manifest를 upgrade 전에 검토해야 한다. 자동 OSD replacement는 host-based cluster 중심으로 검증이 필요하다.",
+      "published": "2026-10-07",
+      "sources": [
+        "https://github.com/rook/rook/releases/tag/v1.21.0"
+      ],
+      "summary": "Rook 1.21.0은 Helm OCI chart tag의 v prefix 제거, Ceph msgrv2 기본 요구, NFS .nfs pool 자동 생성 중단 같은 breaking change를 포함한다. Ceph v21 지원 준비, RBD QoS, OSD replacement workflow도 추가됐다.",
+      "tags": [
+        "kubernetes",
+        "release",
+        "storage"
+      ],
+      "title": "Rook v1.21.0",
+      "url": "https://github.com/rook/rook/releases/tag/v1.21.0"
+    },
+    {
+      "category": "release",
+      "impact": "gRPC를 core dependency로 쓰는 platform은 pre-release로 ABI/API와 language binding regression을 사전 확인할 수 있지만 production pinning은 stable release를 기다리는 편이 안전하다.",
+      "published": "2026-10-10",
+      "sources": [
+        "https://github.com/grpc/grpc/releases/tag/v1.85.0-pre1"
+      ],
+      "summary": "gRPC 1.85.0-pre1 pre-release가 공개됐다. 정식 릴리스 전 호환성 확인용으로 볼 수 있는 preview line이다.",
+      "tags": [
+        "networking",
+        "release"
+      ],
+      "title": "gRPC v1.85.0-pre1",
+      "url": "https://github.com/grpc/grpc/releases/tag/v1.85.0-pre1"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 CNCF 및 클라우드 네이티브 주요 프로젝트 릴리스를 확인했고, 보안·GitOps·스토리지·관측성·API lifecycle 영향이 있는 항목을 정리했습니다.",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/argoproj/argo-cd/releases",
+        "https://github.com/rook/rook/releases",
+        "https://github.com/jaegertracing/jaeger/releases",
+        "https://github.com/grpc/grpc/releases",
+        "https://github.com/kubernetes/kubernetes/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, inference, 보안, 개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 신규 Top10 중 개발 도구와 agent skill 관련 2개 항목을 상세 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 typed guardrail attack, multi-agent world model, runtime monitoring, skill conflict, goal-conditioned memory 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22memory%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22security%22%20AND%20all:%22agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CR)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-10",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35078"
+      ],
+      "tags": [
+        "governance",
+        "security"
+      ],
+      "title": "OpenAI, 연구 정보의 부적절한 취급으로 안전 연구원 3명 해고",
+      "url": "https://news.hada.io/topic?id=35078"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35071"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools"
+      ],
+      "title": "AI 에이전트가 화면에 큰 화살표, 상자, 텍스트를 그리게 하세요",
+      "url": "https://news.hada.io/topic?id=35071"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35063"
+      ],
+      "tags": [
+        "agent",
+        "tool-use"
+      ],
+      "title": "Jev를 GTM에 활용하기 - 고객 분류부터 워크플로 자동화까지",
+      "url": "https://news.hada.io/topic?id=35063"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://cactuscompute.com/blog/whistle"
+      ],
+      "tags": [
+        "inference",
+        "performance"
+      ],
+      "title": "Whistle: Speech to Text in 16.9 MB",
+      "url": "https://cactuscompute.com/blog/whistle"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://www.dgt.is/blog/2026-10-07-deepseek-freek-out/"
+      ],
+      "tags": [
+        "llm",
+        "performance"
+      ],
+      "title": "DeepSeek 4.1 Flash 논쟁",
+      "url": "https://www.dgt.is/blog/2026-10-07-deepseek-freek-out/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/ymcrcat/rgpu"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "Show HN: Rgpu - PyTorch tensors on a remote GPU",
+      "url": "https://github.com/ymcrcat/rgpu"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x1d8s7/microsoft_postquantum_authentication_why/"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "Post-quantum authentication: certificate ecosystems testing",
+      "url": "https://www.reddit.com/r/programming/comments/1x1d8s7/microsoft_postquantum_authentication_why/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x17shf/thinkingbox_solving_an_agent_task_once_vs_solving/"
+      ],
+      "tags": [
+        "agent",
+        "evaluation"
+      ],
+      "title": "ThinkingBox: 507 stateful workflows graded on terminal database state",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x17shf/thinkingbox_solving_an_agent_task_once_vs_solving/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x1tt7m/integrum_reflection_based_mcp_server_from_any/"
+      ],
+      "tags": [
+        "developer-tools",
+        "mcp"
+      ],
+      "title": "Integrum - Reflection based MCP server from any Python Module/Library",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x1tt7m/integrum_reflection_based_mcp_server_from_any/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x0xt5x/production_grade_retrieval_pipeline_that_admits_i/"
+      ],
+      "tags": [
+        "evaluation",
+        "retrieval"
+      ],
+      "title": "Production Grade Retrieval Pipeline That Admits I Don't Know",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x0xt5x/production_grade_retrieval_pipeline_that_admits_i/"
+    }
+  ],
+  "generated_at": "2026-10-10T08:34:00+09:00",
+  "github_featured": [
+    "boykopovar/AnyPS5"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-09T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 6075
+      },
+      {
+        "rank": 2,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 2912
+      },
+      {
+        "rank": 3,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3908
+      },
+      {
+        "rank": 4,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 257
+      },
+      {
+        "rank": 5,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1109
+      },
+      {
+        "rank": 6,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 2607
+      },
+      {
+        "rank": 7,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 6869
+      },
+      {
+        "rank": 8,
+        "repository": "Panniantong/Agent-Reach",
+        "weekly_stars": 6912
+      },
+      {
+        "rank": 9,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 1800
+      },
+      {
+        "rank": 10,
+        "repository": "DuarteSantos8/openGym",
+        "weekly_stars": 4906
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-10T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 10243
+      },
+      {
+        "rank": 2,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 2693
+      },
+      {
+        "rank": 3,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 7448
+      },
+      {
+        "rank": 4,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3996
+      },
+      {
+        "rank": 5,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1109
+      },
+      {
+        "rank": 6,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 448
+      },
+      {
+        "rank": 7,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 3153
+      },
+      {
+        "rank": 8,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 1898
+      },
+      {
+        "rank": 9,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 2317
+      },
+      {
+        "rank": 10,
+        "repository": "Panniantong/Agent-Reach",
+        "weekly_stars": 6987
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Option-Channel Attack: Typed Decision Guardrail의 Fail-Open 경로",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.12292"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 typed decision model이 free-text를 생성하지 않고 allow/block 같은 caller-defined option probability만 내기 때문에 agent guardrail로 쓰기 쉬워 보이지만, option label과 definition이 모두 model input이라는 점이 공격면이 된다고 지적한다.",
+      "evidence": "full_text",
+      "findings": "공개 screening dataset에서 allow/block accuracy는 36~72%로 chance 50%와 크게 다르지 않았다. Synthetic suite에서는 policy와 무관한 server log 6줄이 fail-open rate를 0%에서 63%로 높였고, permissive option 이름만 바꾸면 네 모델에서 fail-open rate가 93~100%로 올랐다. Policy field를 typed value로 parse하면 한 공격은 막지만, 그 경우 deterministic rule이 여섯 policy 모두에서 100% accuracy를 냈다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.12292",
+      "limitations": "평가는 typed decision model을 security-critical allow/block component로 사용할 때의 한계를 보인 것이다. 모든 classifier 사용을 부정하는 것은 아니며, reviewer triage처럼 최종 결정권이 아닌 보조 신호로 쓰는 경우와는 risk profile이 다르다.",
+      "method": "저자들은 prompt-injection, jailbreak, toxic-content screening dataset과 synthetic agent tool-call suite를 사용해 fail-open과 fail-closed를 분리 평가했다. 또한 policy와 무관한 server log text, option label 변경, confidence escalation, field parsing 같은 defense를 각각 실험했다.",
+      "practical_value": "Agent guardrail에서 typed decision model을 최종 enforcement gate로 두면 option label과 주변 text가 policy를 뒤집을 수 있다. 결정 가능한 policy field는 model이 아니라 deterministic parser와 rule로 처리하고, model output은 triage signal로 제한해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.12292",
+        "https://arxiv.org/pdf/2610.12292"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "One Word Opens the Gate: The Option-Channel Attack on Typed Decision Models as Agent Guardrails",
+      "topics": [
+        "typed decision models",
+        "agent guardrails",
+        "option-channel attack",
+        "fail-open errors"
+      ],
+      "url": "https://arxiv.org/abs/2610.12292"
+    },
+    {
+      "abstract_summary": "이 논문은 egocentric world model이 대개 단일 agent 시점에 초점을 맞추지만, 실제 embodied setting에서는 여러 agent가 같은 공간에서 상호작용한다는 문제를 다룬다. 각 agent의 first-person stream이 서로 다른 partial view를 보므로 shared world consistency와 interaction-induced state change를 함께 유지해야 한다.",
+      "evidence": "full_text",
+      "findings": "Real/synthetic benchmark에서 ME-World는 shared-world consistency, self/other-agent action control, identity preservation, video quality를 기존 multi-view, single-ego, general world model baseline보다 일관되게 개선했다. 논문은 Senv, Supdate, Sid 같은 shared-world consistency 평가 protocol도 함께 제시했다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.12299",
+      "limitations": "정량 표의 절대 수치는 benchmark와 synthetic identity reference에 의존한다. 실제 로봇/AR 환경에서는 calibration, occlusion, synchronization error가 memory alignment를 흔들 수 있다.",
+      "method": "ME-World는 여러 ego stream을 하나의 shared token sequence에서 joint denoising하고, 각 stream을 모든 agent의 target-view pose에 condition한다. 또한 shared environment memory를 stream-aligned geometric memory와 cross-stream anchor memory로 사용해 각 viewpoint에서 동일한 scene state를 보존한다.",
+      "practical_value": "멀티에이전트 embodied simulation은 각 agent view를 독립 생성하는 문제가 아니라 shared environment state를 함께 유지하는 문제다. AR/robotics world model에는 view-specific memory와 global anchor memory를 분리한 설계가 필요하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.12299",
+        "https://arxiv.org/pdf/2610.12299"
+      ],
+      "tags": [
+        "memory",
+        "multi-agent",
+        "multimodal",
+        "robotics"
+      ],
+      "title": "Multi-Agent Egocentric World Model with Fine-Grained Embodied Interaction",
+      "topics": [
+        "multi-agent world model",
+        "egocentric video",
+        "shared environment memory",
+        "embodied interaction"
+      ],
+      "url": "https://arxiv.org/abs/2610.12299"
+    },
+    {
+      "abstract_summary": "이 논문은 agent run을 사후 평가하면 이미 token과 tool cost를 지불한 뒤이고, LLM-as-a-judge를 online으로 붙이면 latency와 비용이 커진다는 문제를 다룬다. 특히 loop, out-of-order call, hallucinated step 같은 실패는 trajectory structure에서 나타난다.",
+      "evidence": "full_text",
+      "findings": "논문은 OnTrack이 failure로 향하는 run에서 소모될 compute의 약 18%를 절약할 수 있고, intervention이 들어간 run의 83%가 이후 실패할 run이었다고 보고했다. Single reference에 고정하면 AUROC가 16.9 point 떨어져, 여러 성공 reference와 structure-aware comparison이 중요했다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.12375",
+      "limitations": "Reference graph 품질과 dependency extraction 정확도가 핵심이다. 논문도 reduction이 exact global optimum이 아니라 implemented procedure와 solver output에 대한 것이라고 한정한다.",
+      "method": "OnTrack은 실행 중인 agent trajectory를 dependency graph로 보고, 성공 reference graph와 streaming structure-aware optimal transport로 prefix alignment를 계산한다. Tool schema와 built-in rule로 node cost를 만들고, unresolved exploration mass나 causal inversion 같은 structural signal로 alert/block decision을 낸다.",
+      "practical_value": "실시간 agent monitor는 각 step 점수보다 dependency structure를 봐야 한다. LLM judge 없이도 schema, graph alignment, unresolved mass를 이용해 loop와 잘못된 tool order를 빨리 잡을 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.12375",
+        "https://arxiv.org/pdf/2610.12375"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "observability",
+        "performance"
+      ],
+      "title": "OnTrack: Real-Time Monitoring and Intervention in LLM Agent Trajectories via Streaming Structure-Aware Optimal Transport",
+      "topics": [
+        "real-time monitoring",
+        "agent trajectories",
+        "optimal transport",
+        "cost control"
+      ],
+      "url": "https://arxiv.org/abs/2610.12375"
+    },
+    {
+      "abstract_summary": "이 논문은 long-running assistant가 모든 history를 보존할 수 없으므로 memory를 만들지만, 무엇을 남길지는 현재와 미래 goal 구조에 따라 달라진다는 문제를 다룬다. 저자들은 agent의 진행 중 작업을 nested intent로 구조화해 active context와 long-term abstraction을 분리한다.",
+      "evidence": "full_text",
+      "findings": "평가에서는 Hippocam이 memory, knowledge use, learning을 통합하면서 ALFWorld, SciBench, StreamBench 등 interactive/memory-intensive task에서 baseline보다 강한 누적 성능을 보였다고 보고했다. Table 1에서는 DeepSeek-V4.1-Flash backbone 기준 ALFWorld target-task success와 SciBench mean accuracy 개선이 제시됐다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.12124",
+      "limitations": "Intent boundary와 close condition 판단이 잘못되면 필요한 detail이 너무 일찍 추상화될 수 있다. 또한 1M-token context window 같은 긴 context backbone 설정이 결과에 영향을 줄 수 있다.",
+      "method": "Hippocam은 현재 intent 중심으로 active context를 유지하고, 완료된 intent는 후속 작업에 필요한 outcome과 state로 consolidation한다. Recursive prefix consolidation은 오래 쓰이지 않은 경험을 점점 추상화하고, 과거 경험이 다시 recall되어 쓰이면 새 경험과 함께 다시 consolidate되어 강화·보완·갱신된다.",
+      "practical_value": "Agent memory를 별도 database로만 보지 않고, 현재 intent stack과 경험의 use/disuse cycle로 관리하면 장기 작업의 distraction과 forgetting을 줄일 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.12124",
+        "https://arxiv.org/pdf/2610.12124"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "reasoning"
+      ],
+      "title": "Use and Disuse: Intent-Structured Experience Consolidation for Memory and Learning in LLM Agents",
+      "topics": [
+        "intent-structured memory",
+        "continual learning",
+        "experience consolidation",
+        "Hippocam"
+      ],
+      "url": "https://arxiv.org/abs/2610.12124"
+    },
+    {
+      "abstract_summary": "이 논문은 coding agent skill이 여러 source에서 설치되면서 비슷한 일을 하는 skill들이 함께 존재할 때, 모델이 name과 description만 보고 다른 skill을 먼저 열어 원래 skill의 핵심 기능을 잃을 수 있다는 문제를 다룬다. Task는 통과해도 skill이 보장해야 할 normative behavior는 사라질 수 있다.",
+      "evidence": "full_text",
+      "findings": "충돌 가능한 skill은 흔했으며, 설치된 skill 네 개 중 거의 하나는 같은 일을 하는 skill과 함께 설치돼 있었다. 비슷한 skill은 task completion을 낮추지 않으면서 run 다섯 개 중 하나를 원래 skill에서 빼앗았고, similar skill을 먼저 연 run은 installed skill이 단독으로 만족하던 exclusive core function의 1/3 이상을 잃었다. 최종 답변이 실제 사용된 skill을 밝힌 경우는 substituted run의 0.9%뿐이었다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.11647",
+      "limitations": "실험은 skill pair와 세 모델의 선택 행동에 기반한다. 다른 agent의 routing 정책이나 explicit skill priority mechanism이 있으면 conflict 양상이 달라질 수 있다.",
+      "method": "저자들은 20,947 repository snapshot에서 비슷한 skill candidate pair 822,109개를 mining하고, stratified sample 3,754개를 LLM judge로 확인했다. 그중 312개 confirmed pair를 세 모델에서 6,368 run, 169,294 tool call, 542 agent-hour로 실행했다.",
+      "practical_value": "Skill benchmark는 task pass/fail뿐 아니라 installed skill의 exclusive core function을 채점해야 한다. Platform은 첫 skill read 시점에서 conflict를 guard하고, 실제 어떤 skill이 실행됐는지 사용자에게 보여줘야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.11647",
+        "https://arxiv.org/pdf/2610.11647"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "tool-use"
+      ],
+      "title": "One Skill Too Many: How Co-Installed Skills Conflict in Coding Agents",
+      "topics": [
+        "skill conflicts",
+        "coding agents",
+        "agent skills",
+        "benchmark fidelity"
+      ],
+      "url": "https://arxiv.org/abs/2610.11647"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "프로젝트는 interoperability와 research 목적을 명시하며, proprietary binaries, firmware, keys를 포함하지 않는다. 사용자는 각 binary의 합법적 취득과 라이선스 조건을 직접 확인해야 한다.",
+      "novelty": "first_introduction",
+      "rank": 1,
+      "repository": "boykopovar/AnyPS5",
+      "sources": [
+        "https://github.com/boykopovar/AnyPS5",
+        "https://raw.githubusercontent.com/boykopovar/AnyPS5/main/README.md"
+      ],
+      "summary": "Automatic PS5 executable porting to Linux/Windows, relinker, PRX library implementations, shader recompiler",
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "performance"
+      ],
+      "url": "https://github.com/boykopovar/AnyPS5",
+      "use_case": "게임 보존·호환성 연구에서 executable relinking, system library shim, shader SPIR-V recompilation 구조를 참고할 수 있다.",
+      "why_now": "weekly Trending 1위, 10243 stars this week, 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 Option-Channel Attack입니다. typed decision model은 짧은 option label과 definition을 보고 allow/block 확률을 내기 때문에 agent guardrail로 쓰기 쉬워 보이지만, 논문은 option label 자체가 공격면이 될 수 있음을 보입니다.",
+    "공개 prompt-injection, jailbreak, toxic-content screening에서 allow/block accuracy는 36~72%였고, synthetic agent tool-call suite에서는 policy와 무관한 server log 6줄만으로 fail-open rate가 0%에서 63%로 올랐습니다. permissive option 이름만 바꿔도 네 모델에서 fail-open rate가 93~100%로 상승했습니다.",
+    "GitHub Trending은 PS5 executable porting 도구 AnyPS5와 real-engineering skill 모음이 강세입니다. 논문 쪽에서는 multi-agent world model, real-time trajectory monitoring, skill conflict, goal-conditioned memory가 이어졌고, CNCF 범위에서는 Envoy, Argo CD, Rook, Jaeger, gRPC, Kubernetes alpha 릴리스가 확인됐습니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "AnyPS5는 PS5 executable을 Linux/Windows native format으로 porting하는 신규 Top1 개발 도구입니다.",
+        "url": "https://github.com/boykopovar/AnyPS5"
+      },
+      {
+        "section": "papers",
+        "text": "co-installed skill conflict는 task completion을 낮추지 않으면서 installed skill의 exclusive core function을 잃게 만듭니다.",
+        "url": "https://arxiv.org/abs/2610.11647"
+      },
+      {
+        "section": "cncf",
+        "text": "Envoy 여러 line에 oauth2와 api_key_auth crash를 막는 보안 패치가 공개됐습니다.",
+        "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.39.3"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 Option-Channel Attack입니다. Typed decision model을 agent guardrail로 쓸 때 option label 자체가 fail-open 공격면이 될 수 있음을 보입니다.",
+      "Server log 6줄로 fail-open rate가 0%에서 63%로, permissive option 이름만 바꾸면 93~100%로 상승했습니다. 결정 가능한 policy는 deterministic rule로 처리해야 합니다."
+    ]
+  }
+}
