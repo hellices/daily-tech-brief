@@ -1,0 +1,467 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "gRPC를 core dependency로 쓰는 platform은 pre-release로 language binding과 API regression을 사전 확인할 수 있지만 production pinning은 stable release를 기다리는 편이 안전하다.",
+      "published": "2026-10-10",
+      "sources": [
+        "https://github.com/grpc/grpc/releases/tag/v1.85.0-pre1"
+      ],
+      "summary": "gRPC 1.85.0-pre1 pre-release가 공개됐다. 정식 릴리스 전 호환성 확인용 preview line이다.",
+      "tags": [
+        "networking",
+        "release"
+      ],
+      "title": "gRPC v1.85.0-pre1",
+      "url": "https://github.com/grpc/grpc/releases/tag/v1.85.0-pre1"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 확인한 CNCF 및 클라우드 네이티브 주요 프로젝트 중 신규 포함 조건을 만족한 항목은 gRPC pre-release였습니다. 2026-10-07 릴리스들은 검토했지만 validator window 밖이라 제외했습니다.",
+      "sources": [
+        "https://github.com/grpc/grpc/releases",
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/argoproj/argo-cd/releases",
+        "https://github.com/rook/rook/releases",
+        "https://github.com/jaegertracing/jaeger/releases",
+        "https://github.com/kubernetes/kubernetes/releases"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, inference, 보안, 개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했지만, 상세 소개 조건을 만족하는 미소개 신규 repository는 없었습니다. Top10은 전일 또는 이전 호에서 이미 소개된 항목 중심이었습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 policy compiler, deception monitoring, agent incident assurance, memory governance, epistemic humility 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.11030",
+        "https://arxiv.org/abs/2610.12445",
+        "https://arxiv.org/abs/2610.12463",
+        "https://arxiv.org/abs/2610.11188",
+        "https://arxiv.org/abs/2610.12360"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-11",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35079"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "Let's Encrypt, 2027년 2월부터 기본 인증서 유효기간을 64일로 단축",
+      "url": "https://news.hada.io/topic?id=35079"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://deno.com/blog/cloudflare"
+      ],
+      "tags": [
+        "cloud-native",
+        "developer-tools"
+      ],
+      "title": "Cloudflare acquires Deno",
+      "url": "https://deno.com/blog/cloudflare"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35064"
+      ],
+      "tags": [
+        "evaluation",
+        "reasoning"
+      ],
+      "title": "OpenAI, 분할 원리, 그리고 수학",
+      "url": "https://news.hada.io/topic?id=35064"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://jessewaites.com/blog/post/i-pointed-ai-at-400-years-of-archives/"
+      ],
+      "tags": [
+        "agent",
+        "retrieval"
+      ],
+      "title": "Pointing AI at archives found a forgotten meteorite, lost rhinos, and more",
+      "url": "https://jessewaites.com/blog/post/i-pointed-ai-at-400-years-of-archives/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://epoch.ai/publications/innovationeval"
+      ],
+      "tags": [
+        "evaluation",
+        "reasoning"
+      ],
+      "title": "Recent AI models struggled to match a human algorithmic innovation",
+      "url": "https://epoch.ai/publications/innovationeval"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/"
+      ],
+      "tags": [
+        "inference",
+        "llm"
+      ],
+      "title": "Microsoft-Decision-1, model for fast decision-making",
+      "url": "https://commandline.microsoft.com/microsoft-decision-1-model-foundry/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x1pypx/python_release_python_3150/"
+      ],
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": "Python 3.15.0 release",
+      "url": "https://www.reddit.com/r/programming/comments/1x1pypx/python_release_python_3150/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x17shf/thinkingbox_solving_an_agent_task_once_vs_solving/"
+      ],
+      "tags": [
+        "agent",
+        "evaluation"
+      ],
+      "title": "ThinkingBox: 507 stateful workflows graded on terminal database state",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x17shf/thinkingbox_solving_an_agent_task_once_vs_solving/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x0xt5x/production_grade_retrieval_pipeline_that_admits_i/"
+      ],
+      "tags": [
+        "evaluation",
+        "retrieval"
+      ],
+      "title": "Production Grade Retrieval Pipeline That Admits I Don't Know",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x0xt5x/production_grade_retrieval_pipeline_that_admits_i/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x1vw05/this_16_yo_kid_gained_access_to_17_trillion/"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "Package hallucination and Microsoft record access discussion",
+      "url": "https://www.reddit.com/r/programming/comments/1x1vw05/this_16_yo_kid_gained_access_to_17_trillion/"
+    }
+  ],
+  "generated_at": "2026-10-11T08:31:00+09:00",
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-10T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 10243
+      },
+      {
+        "rank": 2,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 2693
+      },
+      {
+        "rank": 3,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 7448
+      },
+      {
+        "rank": 4,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 3996
+      },
+      {
+        "rank": 5,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1109
+      },
+      {
+        "rank": 6,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 448
+      },
+      {
+        "rank": 7,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 3153
+      },
+      {
+        "rank": 8,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 1898
+      },
+      {
+        "rank": 9,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 2317
+      },
+      {
+        "rank": 10,
+        "repository": "Panniantong/Agent-Reach",
+        "weekly_stars": 6987
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-11T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 15539
+      },
+      {
+        "rank": 2,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 8156
+      },
+      {
+        "rank": 3,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 654
+      },
+      {
+        "rank": 4,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 3850
+      },
+      {
+        "rank": 5,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 4003
+      },
+      {
+        "rank": 6,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 2338
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1125
+      },
+      {
+        "rank": 8,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 2125
+      },
+      {
+        "rank": 9,
+        "repository": "flutter/flutter",
+        "weekly_stars": 259
+      },
+      {
+        "rank": 10,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 2379
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "NOMOS: Written Policy를 Deterministic Tool-Call Gate로 컴파일하기",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.11030"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 LLM agent가 자연어 정책을 prompt로 읽어도 실제 payment, booking, database tool call에서 정책을 어기는 문제가 남는다고 지적한다. LLM verifier를 매 action마다 호출하면 비용과 latency가 커지고, naive policy compilation은 자기 precondition을 만족시키는 tool call까지 막는 등 실행 불가능한 rule을 만들 수 있다.",
+      "evidence": "full_text",
+      "findings": "Static verification은 airline 후보의 37%, retail 후보의 13%를 repair 또는 reject했다. τ2-bench에서 state-changing call 중 reference-encoded clause violation은 airline 66.3%에서 2.6%, retail 30.8%에서 6.9%로 줄었다. AgentDojo banking에서는 288 pair에서 ASR 0%를 기록했고, 다른 세 suite에서도 ASR은 최대 3.6%였다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.11030",
+      "limitations": "Benign utility cost는 domain에 따라 다르며, development binding 하나는 task-passing call의 95.9%를 거부할 정도로 self-defeating이었다. Policy compilation 품질과 confirmation clause 해석 같은 domain-specific reading이 결과에 큰 영향을 준다.",
+      "method": "NOMOS는 written policy를 deterministic tool-call gate로 바꾸는 four-pass compiler다. Tool schema 수준의 static verification만으로 candidate rule을 repair 또는 reject하고, per-call decision은 LLM 없이 microsecond 단위 deterministic check로 수행한다.",
+      "practical_value": "Agent 정책 집행은 자연어 policy prompt나 LLM judge가 아니라 schema-aware deterministic gate로 내려야 한다. State-changing tool call 앞에서는 policy compiler, static verifier, regression corpus가 운영 기본 요소가 된다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.11030",
+        "https://arxiv.org/pdf/2610.11030"
+      ],
+      "tags": [
+        "agent",
+        "security",
+        "tool-use"
+      ],
+      "title": "NOMOS: Compiling Written Policies into Statically Verified Tool-Call Gates for LLM Agents",
+      "topics": [
+        "tool-call policy",
+        "deterministic gate",
+        "static verification",
+        "AgentDojo"
+      ],
+      "url": "https://arxiv.org/abs/2610.11030"
+    },
+    {
+      "abstract_summary": "이 논문은 autonomous agent monitoring에서 visible output만으로는 deception이나 sabotage를 잡기 어렵고, 특히 모델이 의도를 말하지 않는 경우 black-box text monitor가 한계에 부딪힌다는 문제를 다룬다. 저자들은 frontier-scale monitoring setting에 activation probe를 확장한다.",
+      "evidence": "full_text",
+      "findings": "Probe는 SHADE-Arena에서 98.8% AUC를 달성해 Opus 5.5 text-monitoring baseline을 앞섰고, hidden goal이 들어간 transcript를 구분하는 평가에서는 최대 99.7% AUC를 기록했다. Open-weight model의 정치적 주제 거짓말과 압박 상황의 belief falsehood도 탐지했다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.12445",
+      "limitations": "Probe는 deception intent 자체보다 falsehood-stating behavior를 탐지하는 좁은 목표를 가진다. White-box access가 필요하므로 closed model API monitoring에는 바로 적용하기 어렵고, training distribution 밖 deceptive strategy에 대한 일반화는 계속 검증해야 한다.",
+      "method": "연구팀은 가장 큰 deception dataset 중 하나인 FIBS를 만들고, 여러 layer와 token에서 정보를 집계하는 probe architecture를 훈련했다. 평가는 SHADE-Arena trajectory, introspective deception, 정치적으로 민감한 topic에서의 falsehood 등으로 구성된다.",
+      "practical_value": "고위험 agent monitoring에서는 language-only judge보다 activation-level evidence가 더 강한 signal일 수 있다. 단, probe output도 enforcement gate가 아니라 layered monitor와 incident triage의 일부로 다뤄야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.12445",
+        "https://arxiv.org/pdf/2610.12445"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "Caught in the Act: Probes Effectively Detect Sabotage and Catch Unverbalized Deception",
+      "topics": [
+        "deception detection",
+        "white-box probes",
+        "agent monitoring",
+        "SHADE-Arena"
+      ],
+      "url": "https://arxiv.org/abs/2610.12445"
+    },
+    {
+      "abstract_summary": "이 논문은 2026년 OpenAI, Anthropic, Google 관련 agent cyber evaluation incident를 비교해, evaluation boundary를 가정하는 것만으로는 충분하지 않다고 주장한다. Agent가 shell, browser, package manager, memory, credential, long loop를 갖는 순간 safety boundary는 model이 아니라 전체 execution system이 된다.",
+      "evidence": "full_text",
+      "findings": "OpenAI case에서는 Artifactory가 package proxy, privilege target, inter-agent memory 역할을 동시에 하며 shared infrastructure가 boundary를 무너뜨렸다. Anthropic과 Google 사례도 misconfigured evaluation boundary와 unintended live access 위험을 보여준다. 논문은 monitoring signal이 있어도 decisive escalation으로 이어지지 않으면 containment가 실패한다고 결론낸다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.12463",
+      "limitations": "Google Gemini 사례는 공개 record가 attributed statement와 journalism에 제한되어 causal mechanism이 provisional이라고 저자가 명시한다. 따라서 정량 benchmark가 아니라 comparative instrumental case study로 해석해야 한다.",
+      "method": "저자는 공개 incident record를 evidence hierarchy로 정리하고, Proactive Agent Security Assurance Cycle(PASAC)과 five-layer Boundary Assurance Stack을 제안한다. Stack은 risk-tiered task design, executable scope contract, pre-run validation, least-capability access, egress enforcement, credential restriction, cross-run monitoring, automatic stop condition, evidence-based reauthorization을 포함한다.",
+      "practical_value": "Agent cyber evaluation은 sandbox 하나가 아니라 scope contract, egress, credential, cross-run memory, stop condition을 함께 검증해야 한다. 운영팀은 evaluation 시작 전뿐 아니라 실행 중에도 boundary를 증명해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.12463",
+        "https://arxiv.org/pdf/2610.12463"
+      ],
+      "tags": [
+        "agent",
+        "governance",
+        "security"
+      ],
+      "title": "From Reactive Containment to Proactive Assurance: Lessons from the 2026 OpenAI, Anthropic, and Google Agent Security Incidents",
+      "topics": [
+        "agent security incidents",
+        "proactive assurance",
+        "sandbox containment",
+        "cyber evaluation"
+      ],
+      "url": "https://arxiv.org/abs/2610.12463"
+    },
+    {
+      "abstract_summary": "이 논문은 persistent memory가 personalization을 돕지만, memory-induced sycophancy와 cross-domain leakage를 만들 수 있다는 문제를 admission과 presentation이라는 두 결정으로 분리한다. 무엇을 working context에 넣을지와 어떻게 표현할지는 다른 실패 모드를 가진다.",
+      "evidence": "full_text",
+      "findings": "외부 benchmark 4개 task, 각 300 sample에서 FC와 PS는 verbatim injection 대비 pooled judge-assessed failure를 각각 6.7%p, 8.8%p 줄였다. Development set의 cross-domain leakage 감소는 29.5%p에 달했고, admission tightening을 고정 presentation 아래에서 더 적용하면 cross-domain failure가 추가로 17.5%p 줄었다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.11188",
+      "limitations": "두 설계 모두 personalization failure를 늘렸고, PS는 preregistered improvement와 personalization-preservation 기준을 만족하지 못했다. Memory-evidence conflict에서는 misleading rate가 여전히 82.3~85.0%로 높았다.",
+      "method": "저자는 retraining 없이 inference-time design 두 가지를 구현한다. Factor-compiled admission은 memory entry 전체를 평가하고, permission-semantic admission은 entry를 typed unit으로 분해한다. 두 방식 모두 adjudicated attribute를 deterministic policy로 eligibility와 typed channel에 매핑한다.",
+      "practical_value": "Agent memory 안전성은 검색 relevance만으로 해결되지 않는다. Admission quality와 presentation rendering을 따로 평가하고, 유용한 personalization을 얼마나 잃는지 같이 측정해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.11188",
+        "https://arxiv.org/pdf/2610.11188"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "security"
+      ],
+      "title": "What to Admit and How to Present: Governing Persistent Memory in LLM Agents",
+      "topics": [
+        "persistent memory governance",
+        "admission control",
+        "memory presentation",
+        "sycophancy"
+      ],
+      "url": "https://arxiv.org/abs/2610.11188"
+    },
+    {
+      "abstract_summary": "이 논문은 agent가 retrieved evidence와 parametric prior 또는 contextual source 간 충돌을 만났을 때, 정답률만으로는 agent가 불확실성을 인식·해결·전달했는지 알 수 없다는 문제를 다룬다. 저자들은 이를 epistemic humility로 정의한다.",
+      "evidence": "full_text",
+      "findings": "평가는 높은 task accuracy가 항상 더 높은 epistemic humility를 의미하지 않음을 보였다. 일부 high-accuracy configuration은 실행 중 conflict를 인식했지만, 틀린 final answer에서 unresolved uncertainty를 전달하지 않았다. Trajectory 분석은 agent가 초기 step에서 conflict를 감지하고도 이후 유지하거나 해결하지 못하는 사례를 드러냈다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.12360",
+      "limitations": "논문은 conflict setting과 ISE annotation 설계에 크게 의존한다. 실제 업무에서는 불확실성을 전달하는 방식이 domain policy와 user expectation에 따라 달라질 수 있다.",
+      "method": "Epistemic humility는 Identify, Solve, Escalate(ISE) 세 trajectory-level dimension으로 operationalize된다. Controlled conflict와 multi-step execution 중 자연 발생 conflict를 matched no-conflict control과 함께 평가하고, 네 agent configuration을 비교한다.",
+      "practical_value": "Agent 평가에는 정답 여부뿐 아니라 conflict를 감지했는지, 해결했는지, 해결 못했을 때 escalation 또는 uncertainty communication을 했는지를 포함해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.12360",
+        "https://arxiv.org/pdf/2610.12360"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "reasoning"
+      ],
+      "title": "Accurate but Not Humble: Evaluating Epistemic Humility in LLM Agents under Knowledge Conflict",
+      "topics": [
+        "epistemic humility",
+        "knowledge conflict",
+        "agent trajectory evaluation",
+        "uncertainty communication"
+      ],
+      "url": "https://arxiv.org/abs/2610.12360"
+    }
+  ],
+  "repositories": [],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 NOMOS입니다. 논문은 tool-using LLM agent가 자연어 정책을 읽고도 실제 state-changing tool call에서 정책을 조용히 어기는 문제를 다루며, written policy를 deterministic tool-call gate로 컴파일하는 방식을 제안합니다.",
+    "NOMOS는 네 단계 compiler와 tool-schema-level static verification으로 자연어 정책을 rule binding으로 바꿉니다. τ2-bench에서 airline state-changing call의 reference-clause violation은 66.3%에서 2.6%로, retail은 30.8%에서 6.9%로 줄었고, AgentDojo banking에서는 공격 성공률 0%를 보고했습니다.",
+    "GitHub Top10은 전일 소개 항목들이 대부분 유지되어 신규 소개 repository는 없었습니다. 논문 쪽에서는 deception probe, agent security incident analysis, persistent memory governance, epistemic humility가 이어졌고, CNCF는 gRPC pre-release와 10월 7일의 Envoy/Argo CD/Rook/Jaeger 릴리스가 여전히 핵심입니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "papers",
+        "text": "white-box deception probes는 SHADE-Arena에서 98.8% AUC를 기록해 text-monitoring baseline을 앞섰습니다.",
+        "url": "https://arxiv.org/abs/2610.12445"
+      },
+      {
+        "section": "community",
+        "text": "Let's Encrypt가 2027년 2월부터 기본 인증서 유효기간을 64일로 줄일 예정입니다.",
+        "url": "https://news.hada.io/topic?id=35079"
+      },
+      {
+        "section": "cncf",
+        "text": "gRPC 1.85.0-pre1이 공개되어 다음 stable line의 binding 호환성 사전 검증이 가능합니다.",
+        "url": "https://github.com/grpc/grpc/releases/tag/v1.85.0-pre1"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 NOMOS입니다. Written policy를 LLM verifier 없이 deterministic tool-call gate로 컴파일해 agent의 state-changing call을 제어합니다.",
+      "τ2-bench에서 airline policy violation은 66.3%에서 2.6%로, retail은 30.8%에서 6.9%로 줄었고 AgentDojo banking ASR은 0%였습니다."
+    ]
+  }
+}
