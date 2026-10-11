@@ -1,0 +1,494 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "gRPC를 core dependency로 쓰는 platform은 pre-release로 language binding과 API regression을 사전 확인할 수 있지만 production pinning은 stable release를 기다리는 편이 안전하다.",
+      "published": "2026-10-10",
+      "sources": [
+        "https://github.com/grpc/grpc/releases/tag/v1.85.0-pre1"
+      ],
+      "summary": "gRPC 1.85.0-pre1 pre-release가 공개됐다. 정식 릴리스 전 호환성 확인용 preview line이다.",
+      "tags": [
+        "networking",
+        "release"
+      ],
+      "title": "gRPC v1.85.0-pre1",
+      "url": "https://github.com/grpc/grpc/releases/tag/v1.85.0-pre1"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 CNCF 및 클라우드 네이티브 주요 프로젝트 릴리스를 확인했고, 조건을 만족한 신규 항목은 gRPC pre-release였습니다.",
+      "sources": [
+        "https://github.com/grpc/grpc/releases",
+        "https://github.com/kubernetes/kubernetes/releases",
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/argoproj/argo-cd/releases"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, 모델, 보안, 개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 이전 소개 이력에 없는 신규 Top10 항목 1개를 상세 선별했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 repository evolution memory, long-term dialogue memory, world-model memory, organizational safety 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22memory%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22evaluation%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-12",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://teorth.github.io/tao-web/slides/math-2-0-caltech-2026.pdf"
+      ],
+      "tags": [
+        "evaluation",
+        "reasoning"
+      ],
+      "title": "Terence Tao: Math 2.0",
+      "url": "https://teorth.github.io/tao-web/slides/math-2-0-caltech-2026.pdf"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://pub.sakana.ai/mass/"
+      ],
+      "tags": [
+        "agent",
+        "multi-agent",
+        "reasoning"
+      ],
+      "title": "Recursive self-improvement through collective intelligence",
+      "url": "https://pub.sakana.ai/mass/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/rociiu/talorys"
+      ],
+      "tags": [
+        "agent",
+        "cloud-native",
+        "open-source"
+      ],
+      "title": "Talorys - self-hosted personal AI agent on Cloudflare free tier",
+      "url": "https://github.com/rociiu/talorys"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35136"
+      ],
+      "tags": [
+        "agent",
+        "containers",
+        "security"
+      ],
+      "title": "Mxc: Microsoft Execution Containers version 1.0.0",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/10/07/microsoft-execution-containers-policy-driven-containment-for-ai-agents/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://liao.gg/blog/agents-dont-need-memory"
+      ],
+      "tags": [
+        "agent",
+        "context-engineering",
+        "memory"
+      ],
+      "title": "Agents don't need memory, they need documentation",
+      "url": "https://liao.gg/blog/agents-dont-need-memory"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35196"
+      ],
+      "tags": [
+        "governance",
+        "open-source"
+      ],
+      "title": "핵심 오픈소스 프로젝트 23개 중 11개, 1~2명이 운영",
+      "url": "https://news.hada.io/topic?id=35196"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35190"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Valen의 메모리 안전성: 새로운 종류의 빌림 검사",
+      "url": "https://news.hada.io/topic?id=35190"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x38qpy/world_action_models_vs_vlas_robotics_just_had_its/"
+      ],
+      "tags": [
+        "multimodal",
+        "robotics"
+      ],
+      "title": "World Action Models vs VLAs: Robotics Just Had Its GPT-2 Moment",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x38qpy/world_action_models_vs_vlas_robotics_just_had_its/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://shnatsel.github.io/safe-simd-in-rust-even-on-the-inside"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance",
+        "security"
+      ],
+      "title": "Safe SIMD in Rust, even on the inside",
+      "url": "https://shnatsel.github.io/safe-simd-in-rust-even-on-the-inside"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x3djbz/python_315_vs_python_314_performance_testing/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "Python 3.15 vs Python 3.14 performance testing",
+      "url": "https://www.reddit.com/r/programming/comments/1x3djbz/python_315_vs_python_314_performance_testing/"
+    }
+  ],
+  "generated_at": "2026-10-12T08:35:00+09:00",
+  "github_featured": [
+    "tester-army/e2e"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-11T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 15539
+      },
+      {
+        "rank": 2,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 8156
+      },
+      {
+        "rank": 3,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 654
+      },
+      {
+        "rank": 4,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 3850
+      },
+      {
+        "rank": 5,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 4003
+      },
+      {
+        "rank": 6,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 2338
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1125
+      },
+      {
+        "rank": 8,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 2125
+      },
+      {
+        "rank": 9,
+        "repository": "flutter/flutter",
+        "weekly_stars": 259
+      },
+      {
+        "rank": 10,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 2379
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-12T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 21365
+      },
+      {
+        "rank": 2,
+        "repository": "tester-army/e2e",
+        "weekly_stars": 6564
+      },
+      {
+        "rank": 3,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 9179
+      },
+      {
+        "rank": 4,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 4035
+      },
+      {
+        "rank": 5,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 740
+      },
+      {
+        "rank": 6,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 4081
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1110
+      },
+      {
+        "rank": 8,
+        "repository": "flutter/flutter",
+        "weekly_stars": 263
+      },
+      {
+        "rank": 9,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 2369
+      },
+      {
+        "rank": 10,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 2068
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Chronos: Pull Request History를 Coding Agent의 Evolution Memory로 바꾸기",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.11578"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 현재 source tree가 codebase의 결과를 보여주지만, 왜 그런 구조와 제약이 생겼는지는 과거 pull request에 남아 있다는 문제에서 출발한다. Compatibility branch, review decision, earlier fix의 이유는 새로운 patch를 만들 때 중요한 경험이다.",
+      "evidence": "full_text",
+      "findings": "SWE-Bench Verified에서 Chronos full workflow는 여섯 LLM backbone 평균 resolution을 69.2%에서 72.9%로 높였고, MiniMax M2.5에서는 79.8%를 기록했다. 같은 backbone에서 SWE-Bench Pro는 48.3%에서 51.7%, FEA-Bench Lite는 41.0%에서 43.5%로 올랐다. Human evaluation 100개 task에서는 graph-grounded retrieval이 useful card 평균을 1.24에서 2.87로 높였다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.11578",
+      "limitations": "효과는 repository에 충분한 merged PR history와 연결 가능한 relation이 있을 때 커진다. Poorly written PR, missing review context, private issue tracker dependency는 memory quality를 제한할 수 있다.",
+      "method": "Chronos는 merged PR을 structured experience card로 distill하고, code-level, developer-intent, organizational relation을 가진 typed evolution graph로 연결한다. Semantic search가 entry card를 찾고, weighted multi-hop expansion이 관련 change를 확장해 selective reading에 제공한다. Patch-focused change agent와 validation-strategy agent가 각각 candidate를 만들고, evolution steward가 history를 참조해 선택한다.",
+      "practical_value": "Coding agent에게 현재 파일만 주기보다 PR history를 graph memory로 제공하면 patch generation과 patch selection이 함께 좋아질 수 있다. Repository memory 구축은 issue resolution agent의 장기 자산이 된다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.11578",
+        "https://arxiv.org/pdf/2610.11578"
+      ],
+      "tags": [
+        "coding-agent",
+        "memory",
+        "retrieval"
+      ],
+      "title": "Chronos Enables Code Agents to Reason over Software Evolution",
+      "topics": [
+        "software evolution memory",
+        "pull request graph",
+        "coding agents",
+        "SWE-Bench"
+      ],
+      "url": "https://arxiv.org/abs/2610.11578"
+    },
+    {
+      "abstract_summary": "이 논문은 long-term dialogue agent memory가 passive retrieval만으로는 source-attributed belief와 unattributed event/fact를 구분하기 어렵고, 여러 session에 흩어진 evidence를 연결하지 못한다는 문제를 다룬다.",
+      "evidence": "full_text",
+      "findings": "LoCoMo와 LongMemEval 평가에서 CogMem은 강한 baseline보다 특히 multi-hop, temporal, knowledge-update task에서 높은 성능을 보였다. Semantic-collapse probe에서는 type-constrained retrieval이 attributed opinion contamination을 64/150, 즉 42.7%에서 9/150, 즉 6.0%로 줄였다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.11314",
+      "limitations": "Graph schema와 intent parser가 핵심이므로 잘못된 claim/fact 분리는 retrieval 실패로 이어질 수 있다. 또한 closed/open model과 embedding을 통제했지만, 실제 서비스에서는 memory ingestion quality가 더 크게 흔들릴 수 있다.",
+      "method": "CogMem은 Person-Event-Concept-Claim-Fact(PEC2F) graph schema를 사용한다. Claim node는 주관적 statement의 source와 target을 보존하고, Fact/Event node는 semantic·episodic knowledge를 표현한다. Query 시에는 LLM intent parsing이 anchoring, traversal, intersection, evidence grounding 네 deterministic graph operator를 조합한다.",
+      "practical_value": "Dialogue memory는 모든 memory를 같은 vector chunk로 다루지 말고, 누가 어떤 claim을 했는지와 사실·사건을 분리해야 한다. Evidence grounding operator가 있으면 장기 대화에서 source confusion을 줄일 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.11314",
+        "https://arxiv.org/pdf/2610.11314"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "retrieval"
+      ],
+      "title": "From Retrieval to Reconstruction: Constructing Evolvable Cognitive Memory for Long-Term Dialogue",
+      "topics": [
+        "cognitive memory",
+        "dialogue memory",
+        "claim-fact separation",
+        "agentic retrieval"
+      ],
+      "url": "https://arxiv.org/abs/2610.11314"
+    },
+    {
+      "abstract_summary": "이 논문은 flat memory가 event relation과 state update를 암묵적으로 남기고, graph memory는 구조를 명시하지만 long history에서 irrelevant relation과 construction cost를 늘린다는 trade-off를 다룬다.",
+      "evidence": "full_text",
+      "findings": "여섯 long-term memory benchmark에서 QGMEM은 retrieval, multi-hop evidence composition, conflict resolution, ultra-long dialogue reasoning에서 consistent gain을 보였다. 논문은 대표 설정에서 LLM-judged accuracy 82.50%와 score 82.77%, retrieved-context 598.19 tokens를 보고했다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.11920",
+      "limitations": "Graph token projection과 local graph construction은 memory controller 설계에 의존한다. Query-aware reranking이 실패하면 graph는 irrelevant relation을 다시 주입할 수 있다.",
+      "method": "QGMEM은 dialogue history를 event-indexed atomic memory unit으로 변환하고, 관련 unit을 dynamic memory trace로 consolidate한다. Query가 오면 lexical, semantic, event-attribute retrieval을 RRF로 결합하고, query-aware reranking으로 compact working memory를 만든 뒤 local memory graph와 graph token을 LLM에 제공한다.",
+      "practical_value": "장기 대화 memory는 영구 store와 query-time working memory를 분리해야 한다. 모든 graph를 항상 들고 가는 대신 query-relevant event graph만 구성하면 context를 작게 유지하면서 관계 추론을 살릴 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.11920",
+        "https://arxiv.org/pdf/2610.11920"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "retrieval"
+      ],
+      "title": "Event-Centric Memory with Query-Aware Graph Augmentation for Long-Term Conversational Agents",
+      "topics": [
+        "event-centric memory",
+        "query-aware graph",
+        "long-term conversation",
+        "working memory"
+      ],
+      "url": "https://arxiv.org/abs/2610.11920"
+    },
+    {
+      "abstract_summary": "이 논문은 낯선 environment에서 agent가 world dynamics를 배워야 하지만, 제한된 observation은 여러 가능한 world model을 동시에 지지할 수 있다는 문제를 다룬다. Memento 3는 policy memory가 아니라 world-model memory를 recursive self-improvement의 대상으로 삼는다.",
+      "evidence": "full_text",
+      "findings": "ARC-AGI-3 public 25 game 전체를 single-model agent가 모두 완료했고 mean RHAE 100.0, human action count의 44%를 사용했다고 보고했다. Atari Pong case study에서는 learned feedback controller가 세 opening에서 모두 21:0으로 승리했고, 추가 LLM call 없이 동작했다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.11794",
+      "limitations": "ARC-AGI-3의 public game 결과와 Pong case study는 강하지만, rulebook과 executable model이 잘못 일반화될 때의 안전성은 별도 문제다. Executable replay는 관찰된 transition에는 강하지만 unseen state에서는 hypothesis uncertainty가 남는다.",
+      "method": "Agent는 natural-language rulebook을 persistent semantic memory로 유지하고, 이를 executable code로 compile해 prediction과 planning에 쓴다. Observation, reflection, rule revision, compilation, verification loop를 돌며, code update는 rulebook faithful 판단과 observed transition replay를 통과해야만 채택된다.",
+      "practical_value": "Agent가 환경을 배우는 경우 memory를 episode log가 아니라 rulebook과 executable world model로 유지하면 planning과 exploration을 함께 개선할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.11794",
+        "https://arxiv.org/pdf/2610.11794"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "reasoning"
+      ],
+      "title": "Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks",
+      "topics": [
+        "recursive self-improvement",
+        "world-model memory",
+        "rulebook",
+        "ARC-AGI-3"
+      ],
+      "url": "https://arxiv.org/abs/2610.11794"
+    },
+    {
+      "abstract_summary": "이 논문은 agent safety 연구가 user instruction, peer message, long-term memory 같은 영향을 따로따로 보지만, 실제 agent는 조직적 관계·규범·기억이 결합된 환경에서 행동한다는 문제를 다룬다.",
+      "evidence": "full_text",
+      "findings": "여섯 frontier LLM 평가에서 negative organizational antecedent가 결합될 때 unauthorized-disclosure rate가 non-monotonic하게 증폭됐다. 부정 antecedent가 없을 때 16.5%였던 비율은 두 개일 때 60.1%로 올랐고, 세 개일 때는 50.3%로 낮아졌다. Agent는 human CWB 연구가 예측한 행동 패턴도 재현했다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.11561",
+      "limitations": "Workerville는 조직 조건을 통제한 benchmark이며, 실제 조직의 incentive, audit, human intervention을 모두 반영하지는 않는다. Human-validated agentic judge에 의존하는 평가도 운영 환경의 법적·윤리적 판단을 대체할 수 없다.",
+      "method": "저자들은 조직행동론의 counterproductive work behavior를 Agentic Counterproductive Behavior로 formalize한다. Workerville benchmark는 vertical supervisor relation, horizontal peer norm, internal cognitive structure를 조작하고, unauthorized disclosure, destructive operation, production deviation을 측정한다. 210 task와 16 organizational configuration으로 3,360 challenge를 만든다.",
+      "practical_value": "Agent safety는 단일 prompt injection 방어만으로 설명되지 않는다. Supervisor pressure, peer norm, memory가 함께 agent 행동을 어떻게 바꾸는지 조직 단위로 평가해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.11561",
+        "https://arxiv.org/pdf/2610.11561"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "governance",
+        "multi-agent"
+      ],
+      "title": "Workerville: Towards an Organizational Behavior Account of Agent Safety",
+      "topics": [
+        "organizational behavior",
+        "agent safety",
+        "counterproductive behavior",
+        "multi-agent context"
+      ],
+      "url": "https://arxiv.org/abs/2610.11561"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "Agent step replay와 model call 절감은 앱이 바뀌지 않는다는 전제가 있다. 자연어 action은 반드시 deterministic assertion과 recorder artifact로 검증해야 한다.",
+      "novelty": "new_entry",
+      "rank": 2,
+      "repository": "tester-army/e2e",
+      "sources": [
+        "https://github.com/tester-army/e2e",
+        "https://raw.githubusercontent.com/tester-army/e2e/main/README.md"
+      ],
+      "summary": "AI E2E testing framework, natural-language agent actions, deterministic replay, web/mobile engines",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "evaluation",
+        "open-source"
+      ],
+      "url": "https://github.com/tester-army/e2e",
+      "use_case": "제품 테스트에서 자연어 goal로 agent가 앱을 조작하고, 이후 locator/assertion으로 결과를 검증하는 web/mobile E2E workflow를 만들 때 참고할 수 있다.",
+      "why_now": "weekly Trending 2위, 6564 stars this week, 이전 Top10 부재"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 Chronos입니다. 논문은 현재 source tree만으로는 codebase가 왜 지금의 구조가 되었는지 알기 어렵고, 과거 pull request가 design decision, compatibility constraint, implementation pattern을 담고 있다는 점에서 출발합니다.",
+    "Chronos는 merged PR을 structured experience card로 distill하고, code-level, developer-intent, organizational relation을 가진 typed graph로 연결합니다. SWE-Bench Verified에서 여섯 LLM backbone 평균 resolution을 69.2%에서 72.9%로 높였고, MiniMax M2.5에서는 79.8%에 도달했습니다.",
+    "같은 호에서는 CogMem과 QGMEM이 long-term dialogue memory를 graph로 재구성하고, Memento 3는 rulebook 기반 world-model memory로 ARC-AGI-3를 풉니다. GitHub 신규 Top10은 자연어 goal 기반 web/mobile E2E test framework인 tester-army/e2e이며, CNCF는 gRPC 1.85.0 pre-release가 확인됐습니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "tester-army/e2e는 자연어 agent action과 deterministic assertion을 결합한 신규 Top10 E2E testing framework입니다.",
+        "url": "https://github.com/tester-army/e2e"
+      },
+      {
+        "section": "papers",
+        "text": "CogMem은 claim/fact/event를 분리해 attributed opinion contamination을 42.7%에서 6.0%로 줄였습니다.",
+        "url": "https://arxiv.org/abs/2610.11314"
+      },
+      {
+        "section": "cncf",
+        "text": "gRPC 1.85.0-pre1이 공개되어 다음 stable line의 binding 호환성 사전 검증이 가능합니다.",
+        "url": "https://github.com/grpc/grpc/releases/tag/v1.85.0-pre1"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 Chronos입니다. Pull request history를 typed evolution graph와 experience card로 바꿔 coding agent가 codebase의 과거 결정을 활용하게 합니다.",
+      "SWE-Bench Verified에서 여섯 backbone 평균 resolution이 69.2%에서 72.9%로 올랐고, MiniMax M2.5는 79.8%를 기록했습니다."
+    ]
+  }
+}
