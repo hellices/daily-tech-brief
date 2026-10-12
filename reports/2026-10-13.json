@@ -1,0 +1,472 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "gRPC를 core dependency로 쓰는 platform은 pre-release로 language binding과 API regression을 사전 확인할 수 있지만 production pinning은 stable release를 기다리는 편이 안전하다.",
+      "published": "2026-10-10",
+      "sources": [
+        "https://github.com/grpc/grpc/releases/tag/v1.85.0-pre1"
+      ],
+      "summary": "gRPC 1.85.0-pre1 pre-release가 공개됐다. 정식 릴리스 전 호환성 확인용 preview line이다.",
+      "tags": [
+        "networking",
+        "release"
+      ],
+      "title": "gRPC v1.85.0-pre1",
+      "url": "https://github.com/grpc/grpc/releases/tag/v1.85.0-pre1"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 주요 CNCF 및 클라우드 네이티브 프로젝트 릴리스 피드를 확인했지만 새로 소개할 만한 주요 변경은 확인하지 못했습니다.",
+      "sources": [
+        "https://github.com/grpc/grpc/releases",
+        "https://github.com/kubernetes/kubernetes/releases",
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/argoproj/argo-cd/releases"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, 보안, 모델, 개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했지만 상세 소개 조건을 만족하는 미소개 신규 repository는 없었습니다. Top10은 이전 호에서 이미 소개된 항목 중심이었습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 embodied self-improvement, tool retrieval reliability, tool-boundary fuzzing, test-suite generation, coding-agent verifier 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=all:%22agent%22%20AND%20all:%22memory%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CL)",
+        "https://export.arxiv.org/api/query?search_query=all:%22coding%20agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.SE)",
+        "https://export.arxiv.org/api/query?search_query=all:%22security%22%20AND%20all:%22agent%22%20AND%20(cat:cs.AI%20OR%20cat:cs.CR)"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-13",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://deno.com/blog/cloudflare"
+      ],
+      "tags": [
+        "cloud-native",
+        "developer-tools"
+      ],
+      "title": "Cloudflare acquires Deno",
+      "url": "https://deno.com/blog/cloudflare"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35136"
+      ],
+      "tags": [
+        "agent",
+        "containers",
+        "security"
+      ],
+      "title": "Mxc: Microsoft Execution Containers version 1.0.0",
+      "url": "https://blogs.windows.com/windowsdeveloper/2026/10/07/microsoft-execution-containers-policy-driven-containment-for-ai-agents/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://arstechnica.com/ai/2026/10/ai-coding-agents-generate-more-code-but-not-more-software"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation"
+      ],
+      "title": "AI coding agents generate more code, but not more software",
+      "url": "https://arstechnica.com/ai/2026/10/ai-coding-agents-generate-more-code-but-not-more-software"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://github.com/rociiu/talorys"
+      ],
+      "tags": [
+        "agent",
+        "cloud-native",
+        "open-source"
+      ],
+      "title": "Talorys - self-hosted personal AI agent on Cloudflare free tier",
+      "url": "https://github.com/rociiu/talorys"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35190"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Valen의 메모리 안전성: 새로운 종류의 빌림 검사",
+      "url": "https://news.hada.io/topic?id=35190"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35196"
+      ],
+      "tags": [
+        "governance",
+        "open-source"
+      ],
+      "title": "핵심 오픈소스 프로젝트 23개 중 11개, 1~2명이 운영",
+      "url": "https://news.hada.io/topic?id=35196"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x38qpy/world_action_models_vs_vlas_robotics_just_had_its/"
+      ],
+      "tags": [
+        "multimodal",
+        "robotics"
+      ],
+      "title": "World Action Models vs VLAs: Robotics Just Had Its GPT-2 Moment",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x38qpy/world_action_models_vs_vlas_robotics_just_had_its/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://shnatsel.github.io/safe-simd-in-rust-even-on-the-inside"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance",
+        "security"
+      ],
+      "title": "Safe SIMD in Rust, even on the inside",
+      "url": "https://shnatsel.github.io/safe-simd-in-rust-even-on-the-inside"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x3djbz/python_315_vs_python_314_performance_testing/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "Python 3.15 vs Python 3.14 performance testing",
+      "url": "https://www.reddit.com/r/programming/comments/1x3djbz/python_315_vs_python_314_performance_testing/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://pub.sakana.ai/mass/"
+      ],
+      "tags": [
+        "agent",
+        "multi-agent",
+        "reasoning"
+      ],
+      "title": "Recursive self-improvement through collective intelligence",
+      "url": "https://pub.sakana.ai/mass/"
+    }
+  ],
+  "generated_at": "2026-10-13T08:34:00+09:00",
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-12T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 21365
+      },
+      {
+        "rank": 2,
+        "repository": "tester-army/e2e",
+        "weekly_stars": 6564
+      },
+      {
+        "rank": 3,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 9179
+      },
+      {
+        "rank": 4,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 4035
+      },
+      {
+        "rank": 5,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 740
+      },
+      {
+        "rank": 6,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 4081
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1110
+      },
+      {
+        "rank": 8,
+        "repository": "flutter/flutter",
+        "weekly_stars": 263
+      },
+      {
+        "rank": 9,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 2369
+      },
+      {
+        "rank": 10,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 2068
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-13T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 25151
+      },
+      {
+        "rank": 2,
+        "repository": "tester-army/e2e",
+        "weekly_stars": 6440
+      },
+      {
+        "rank": 3,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 10330
+      },
+      {
+        "rank": 4,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 4223
+      },
+      {
+        "rank": 5,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 3803
+      },
+      {
+        "rank": 6,
+        "repository": "flutter/flutter",
+        "weekly_stars": 680
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1140
+      },
+      {
+        "rank": 8,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 2508
+      },
+      {
+        "rank": 9,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 2028
+      },
+      {
+        "rank": 10,
+        "repository": "morluto/rea",
+        "weekly_stars": 126976
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "MC-EvoBench: Minecraft Agent의 경험 기반 Self-Improvement 감사하기",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.13829"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 embodied recursive self-improvement에서 agent가 한 world에서 성공했다고 해서 reset된 다른 world에서도 reusable capability를 얻었다고 볼 수 없다는 문제를 다룬다. 남은 inventory, 바뀐 world state, source exposure 차이가 성능 향상처럼 보일 수 있기 때문이다.",
+      "evidence": "full_text",
+      "findings": "Benchmark는 19개 registered evolution chain, 12개 primary chain, 7개 calibration/probe chain, 80개 task, 111개 state, 369개 typed edge를 포함한다. 실험은 controller와 planner-backed variant 사이의 direct-capability gap은 일관되지만, related experience가 tool probe를 안정적으로 개선하지 못했고 wood-species gain도 한 seed에 의존했다고 보고했다.",
+      "first_published": "2026-10-09",
+      "id": "arxiv:2610.13829",
+      "limitations": "논문은 성능 향상을 입증하는 benchmark보다, 향상이 실제 transfer인지 감사하는 benchmark에 가깝다. 따라서 related experience가 효과가 없다는 결론은 실험한 agent와 Minecraft chain 구성 안에서 해석해야 한다.",
+      "method": "MC-EvoBench는 Minecraft task를 task-state graph로 표현하고, source와 target role을 matched하게 둔 뒤 reset된 target world에서 no-prior, related, unrelated, shuffled source 조건을 비교한다. 평가에는 task success rate, weighted graph progress, verified milestone progress를 사용하고 stage-level verifier와 provenance record를 남긴다.",
+      "practical_value": "Embodied agent의 self-improvement를 주장하려면 memory file 존재나 final success만 보지 말고, reset된 target 환경에서 관련 경험과 무관 경험을 비교해야 한다. 물리 상태와 agent artifact를 분리하는 평가 설계가 중요하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.13829",
+        "https://arxiv.org/pdf/2610.13829"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory",
+        "robotics"
+      ],
+      "title": "MC-EvoBench: Auditing Experience-Driven Self-Improvement in Minecraft Agents",
+      "topics": [
+        "Minecraft agents",
+        "embodied RSI",
+        "experience transfer",
+        "task-state graph"
+      ],
+      "url": "https://arxiv.org/abs/2610.13829"
+    },
+    {
+      "abstract_summary": "이 논문은 agent tool retrieval이 semantic relevance만 최적화하면 runtime tool outage나 failure를 반영하지 못한다는 문제를 다룬다. 실제 agent는 검색된 tool이 실행 가능해야 하므로 retrieval은 availability와 execution feedback을 함께 봐야 한다.",
+      "evidence": "full_text",
+      "findings": "EcoAgent-Real에서 RATED는 ToolLLM API retriever 대비 MRR을 52.2% 상대 개선했다. 30% failure injection의 severe outage scenario에서는 fault selection rate를 86.2%에서 2.9%로 낮췄고, encode-only inference 대비 latency overhead는 1ms 미만으로 보고됐다.",
+      "first_published": "2026-10-09",
+      "id": "arxiv:2610.13889",
+      "limitations": "RATED는 execution feedback을 관측할 수 있는 반복 환경에서 강하다. Cold-start tool이나 failure signal이 sparse한 환경에서는 static reliability prior와 feedback 품질이 한계를 만든다.",
+      "method": "RATED는 frozen dual-encoder와 contrastive fine-tuning으로 semantic matching을 수행하고, lightweight contextual bandit으로 real-time execution feedback을 반영해 candidate를 re-rank한다. 저자들은 5,172개 real-world tool과 210,000개 이상 query-tool pair를 가진 EcoAgent benchmark도 제안한다.",
+      "practical_value": "Agent tool catalog가 커질수록 retrieval ranker는 관련성뿐 아니라 최근 실패율, timeout, reliability prior를 반영해야 한다. Tool outage가 잦은 운영 환경에서는 contextual bandit 기반 re-ranking이 직접적인 안정성 개선으로 이어질 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.13889",
+        "https://arxiv.org/pdf/2610.13889"
+      ],
+      "tags": [
+        "agent",
+        "performance",
+        "retrieval",
+        "tool-use"
+      ],
+      "title": "RATED: Reliability-Aware AI Agent Tool Retrieval via Execution Dynamics",
+      "topics": [
+        "tool retrieval",
+        "execution reliability",
+        "contextual bandit",
+        "EcoAgent"
+      ],
+      "url": "https://arxiv.org/abs/2610.13889"
+    },
+    {
+      "abstract_summary": "이 논문은 LLM agent의 orchestrator가 model output을 structured tool invocation으로 해석할 때, tool이 LLM-generated argument를 지나치게 신뢰하는 문제가 생긴다고 본다. Tool metadata와 schema가 있어도 semantic security constraint가 tool 내부에서 강제되지 않으면 공격면이 남는다.",
+      "evidence": "full_text",
+      "findings": "273개 MCP server의 3,405개 tool을 평가해 118개 server에 걸친 343개 tool에서 CWE weakness class에 해당하는 verified bug를 찾았다. 논문은 real-world tool이 documented input semantics를 자주 강제하지 않아 LLM-generated argument를 trusted로 취급하면 위험하다고 결론낸다.",
+      "first_published": "2026-10-09",
+      "id": "arxiv:2610.13651",
+      "limitations": "Fuzzing oracle은 metadata quality와 sanitizer corpus coverage에 의존한다. 모든 semantic policy를 자동 추출할 수 없으며, 일부 business logic violation은 domain expert specification이 필요하다.",
+      "method": "ToFu는 tool metadata와 CWE-guided sanitizer corpus에서 semantic security check를 자동 유도하고, tool별 fuzzing harness와 semantic oracle을 생성한다. Repeat-After-Me attack처럼 orchestrator가 인식하는 tool-call format을 악용하는 공격도 다룬다.",
+      "practical_value": "MCP/tool ecosystem은 tool schema만으로 보안이 끝나지 않는다. Agent가 호출할 tool은 LLM output을 untrusted input으로 보고 semantic sanitizer와 fuzzing harness를 갖춰야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.13651",
+        "https://arxiv.org/pdf/2610.13651"
+      ],
+      "tags": [
+        "agent",
+        "mcp",
+        "security",
+        "tool-use"
+      ],
+      "title": "ToFu: Exploiting and Fuzzing the LLM-Orchestrator-Tool Trust Boundary",
+      "topics": [
+        "MCP security",
+        "tool fuzzing",
+        "semantic oracles",
+        "LLM-tool boundary"
+      ],
+      "url": "https://arxiv.org/abs/2610.13651"
+    },
+    {
+      "abstract_summary": "이 논문은 coding agent가 application을 구현하는 능력은 빠르게 발전했지만, 자연어 specification만 보고 강한 test suite를 처음부터 만드는 능력은 충분히 평가되지 않았다는 문제를 다룬다. 새 소프트웨어에는 reference implementation이나 기존 test suite가 없기 때문이다.",
+      "evidence": "full_text",
+      "findings": "Frontier coding agent가 만든 test suite는 대부분 유효해 reference implementation에서 88%의 test가 통과했지만, mutation score는 60% 미만이었다. Best agent도 mutant의 55.5%만 kill했고 네 agent는 40% 미만이었다. 같은 specification에서 생성한 implementation은 reference test의 최대 93%를 통과했다.",
+      "first_published": "2026-10-09",
+      "id": "arxiv:2610.13065",
+      "limitations": "Mutation score는 test strength의 proxy이며, 모든 real-world requirement를 완벽히 대표하지는 않는다. 그래도 requirement별 mutant refinement를 통해 test coverage gap을 상당히 직접적으로 드러낸다.",
+      "method": "TestSuiteBench는 165개 open-source application에 대해 상세 specification, reference implementation, reference test suite, 평균 74개 mutant를 제공한다. 각 mutant는 specification의 단일 requirement에서 만들어지고, 독립 behavior를 잘 분리하도록 refine된다.",
+      "practical_value": "Autonomous coding workflow는 code generation보다 verification generation이 더 약할 수 있다. Agent가 만든 test suite는 pass 여부가 아니라 mutation score와 requirement coverage로 검증해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.13065",
+        "https://arxiv.org/pdf/2610.13065"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "evaluation"
+      ],
+      "title": "TestSuiteBench: Coding Agents Struggle to Generate Strong Test Suites from Specifications",
+      "topics": [
+        "test-suite generation",
+        "coding agents",
+        "mutation score",
+        "specification testing"
+      ],
+      "url": "https://arxiv.org/abs/2610.13065"
+    },
+    {
+      "abstract_summary": "이 논문은 coding agent가 end-to-end software task를 수행할 때 성공 기준을 정의하는 oracle이 없는 경우가 많고, trajectory가 수백 turn과 긴 tool interaction을 포함해 일반 LLM reviewer가 판단하기 어렵다는 문제를 다룬다.",
+      "evidence": "full_text",
+      "findings": "Held-out test set에서 base Qwen3-30B-A3B reasoning model의 classification accuracy는 57%였고, SFT 뒤 66%, RL 뒤 78%로 상승했다. Positive recall은 67%에서 85%까지 오르면서 negative recall을 크게 희생하지 않았다고 보고됐다.",
+      "first_published": "2026-10-09",
+      "id": "arxiv:2610.13356",
+      "limitations": "현재 평가는 성공/실패 trajectory 구분 능력에 초점을 둔다. 논문도 향후 calibration, cross-benchmark transfer, qualitative rationale 등 더 넓은 평가가 필요하다고 명시한다.",
+      "method": "SWE-Critix는 task와 execution trajectory를 입력받아 completion label과 자연어 analysis를 함께 생성하는 generalist verifier를 post-train한다. Pipeline은 CodeForge-Preview trajectory에서 supervised fine-tuning과 reinforcement learning을 결합해 30B model series를 훈련한다.",
+      "practical_value": "Coding-agent 운영에서 최종 test 결과만 없거나 불완전할 때는 trajectory verifier가 필요하다. Verifier는 scalar reward만 내는 critic보다 natural-language analysis를 함께 제공해야 human review와 연결된다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.13356",
+        "https://arxiv.org/pdf/2610.13356"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "reasoning"
+      ],
+      "title": "SWE-Critix: Post-Training Generalist Verifiers for Assessing Coding-Agent Trajectories",
+      "topics": [
+        "coding-agent verifier",
+        "trajectory evaluation",
+        "post-training",
+        "CodeForge-Preview"
+      ],
+      "url": "https://arxiv.org/abs/2610.13356"
+    }
+  ],
+  "repositories": [],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 MC-EvoBench입니다. 논문은 embodied recursive self-improvement에서 성공한 최종 action이나 저장된 memory만으로는 reusable capability가 생겼는지 알 수 없다고 지적합니다. 특히 Minecraft 같은 persistent world에서는 남은 tool, 바뀐 위치, 변경된 world state가 성능 향상처럼 보일 수 있습니다.",
+    "MC-EvoBench는 19개 registered evolution chain, 80 task, 111 state, 369 typed edge를 가진 task-state graph와 stage-level verifier를 사용합니다. Related experience, unrelated experience, shuffled source, no-prior 조건을 reset된 target world에서 비교한 결과, controller/planner variant 간 direct-capability gap은 일관되지만 related experience의 stable transfer는 확인되지 않았습니다.",
+    "같은 호에서는 RATED가 tool retrieval에 runtime reliability를 넣고, ToFu가 MCP tool semantics를 fuzzing하며, TestSuiteBench와 SWE-Critix가 coding-agent 검증의 취약한 지점을 드러냅니다. GitHub Top10은 대부분 기존 소개 항목이라 repository 상세는 비웠고, CNCF도 이번 3일 창에서 신규 주요 항목은 없었습니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "papers",
+        "text": "RATED는 EcoAgent-Real에서 ToolLLM API retriever 대비 MRR을 52.2% 상대 개선하고 outage 시 fault selection을 86.2%에서 2.9%로 낮췄습니다.",
+        "url": "https://arxiv.org/abs/2610.13889"
+      },
+      {
+        "section": "papers",
+        "text": "TestSuiteBench는 frontier coding agent test suite가 유효해도 mutation score는 60% 미만임을 보였습니다.",
+        "url": "https://arxiv.org/abs/2610.13065"
+      },
+      {
+        "section": "cncf",
+        "text": "gRPC 1.85.0-pre1이 공개되어 다음 stable line의 binding 호환성 사전 검증이 가능합니다.",
+        "url": "https://github.com/grpc/grpc/releases/tag/v1.85.0-pre1"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 MC-EvoBench입니다. Minecraft agent의 경험 기반 self-improvement가 실제 transferable capability인지 world reset과 matched controls로 감사합니다.",
+      "Benchmark는 19 evolution chains, 80 tasks, 111 states, 369 typed edges를 포함하며, related experience의 stable transfer는 확인되지 않았습니다."
+    ]
+  }
+}
