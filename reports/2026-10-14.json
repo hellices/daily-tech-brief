@@ -1,0 +1,520 @@
+{
+  "cncf": [
+    {
+      "category": "security",
+      "impact": "Kubernetes node runtime으로 containerd를 쓰는 팀은 minor line별 patch를 확인해야 한다. Container log path, image reference validation, seccomp socket domain 정책 변경은 runtime compatibility와 security regression을 함께 점검해야 한다.",
+      "published": "2026-10-14",
+      "sources": [
+        "https://github.com/containerd/containerd/releases/tag/v2.4.2",
+        "https://github.com/containerd/containerd/releases/tag/v2.3.7"
+      ],
+      "summary": "containerd는 여러 supported line에 CVE-2026-95839, GHSA-8647-2jxj-p2rc, GHSA-hc94-p972-ch66 등 보안 패치를 포함한 release를 공개했다. CRI log file symlink hardening, image reference '..' path rejection, default seccomp socket domain allowlist, image pull memory usage fix도 포함된다.",
+      "tags": [
+        "containers",
+        "kubernetes",
+        "release",
+        "security"
+      ],
+      "title": "containerd v2.4.2 / v2.3.7 / v2.2.10 / v2.0.14",
+      "url": "https://github.com/containerd/containerd/releases/tag/v2.4.2"
+    },
+    {
+      "category": "release",
+      "impact": "Envoy downstream build와 extension을 가진 팀은 MODULE.bazel migration, Envoy custom Bazel registry, header_forwarding 설정, Rust SDK interior mutability 전환을 upgrade 전에 검토해야 한다.",
+      "published": "2026-10-14",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.40.0"
+      ],
+      "summary": "Envoy 1.40.0은 bzlmod 전환, LLVM/Clang 22 기본화, Wasm runtime flag 변경, AWS-LC 선택 제거, MCP router header forwarding 기본값 변경, Rust dynamic module hook signature 변경 등 breaking change를 포함한다.",
+      "tags": [
+        "networking",
+        "release"
+      ],
+      "title": "Envoy v1.40.0",
+      "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.40.0"
+    },
+    {
+      "category": "security",
+      "impact": "OPA를 API gateway나 policy engine으로 쓰는 환경은 encoded slash 처리가 policy와 API path에서 일관되는지 regression test해야 한다. Go/x_net advisory 반영을 위해 patch 적용을 검토할 필요가 있다.",
+      "published": "2026-10-12",
+      "sources": [
+        "https://github.com/open-policy-agent/opa/releases/tag/v1.21.2"
+      ],
+      "summary": "OPA 1.21.2는 Go 1.27.2와 golang.org/x/net v0.60.0으로 binary artifact를 빌드해 Go standard library와 x/net 보안 advisory를 반영했다. Basic authorization policy와 Data API 입력의 encoded slash 처리 mismatch도 수정했다.",
+      "tags": [
+        "cloud-native",
+        "release",
+        "security"
+      ],
+      "title": "OPA v1.21.2",
+      "url": "https://github.com/open-policy-agent/opa/releases/tag/v1.21.2"
+    },
+    {
+      "category": "release",
+      "impact": "KubeVirt 운영자는 beta line은 test cluster에서만 검토하고, Istio >=1.27 요구와 VMExport service/network change를 확인해야 한다. 1.9.x 운영자는 guest crash handling과 hotplug 관련 patch를 검토할 수 있다.",
+      "published": "2026-10-13",
+      "sources": [
+        "https://github.com/kubevirt/kubevirt/releases/tag/v1.10.0-beta.0",
+        "https://github.com/kubevirt/kubevirt/releases/tag/v1.9.1"
+      ],
+      "summary": "KubeVirt 1.10.0-beta.0은 1.9.1 이후 1345 changes를 포함한 beta release다. Istio sidecar termination 처리 변경, VMExport PVC reference bug fix, virt-template update, legacy guest PCI hole annotation 변경 등이 포함된다. 1.9.1 patch도 Windows guest crash/panic, filesystem volume blockresize spam, non-hotpluggable PCI root port 등의 fix를 포함한다.",
+      "tags": [
+        "kubernetes",
+        "release"
+      ],
+      "title": "KubeVirt v1.10.0-beta.0 / v1.9.1",
+      "url": "https://github.com/kubevirt/kubevirt/releases/tag/v1.10.0-beta.0"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 CNCF 및 클라우드 네이티브 주요 프로젝트 릴리스를 확인했고, 보안·네트워킹·정책 엔진 관련 항목을 정리했습니다.",
+      "sources": [
+        "https://github.com/containerd/containerd/releases",
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/open-policy-agent/opa/releases",
+        "https://github.com/backstage/backstage/releases",
+        "https://github.com/kubevirt/kubevirt/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, AI agent, 보안, 모델, 개발 도구와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했지만 상세 소개 조건을 만족하는 미소개 신규 repository는 없었습니다. Top10은 이전 호에서 이미 소개된 항목 중심이었습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 agent memory repair, temporal memory, world-model belief, residual memory, memory routing 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.13267",
+        "https://arxiv.org/abs/2610.12874",
+        "https://arxiv.org/abs/2610.12789",
+        "https://arxiv.org/abs/2610.11287",
+        "https://arxiv.org/abs/2610.11573"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-14",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35309"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools"
+      ],
+      "title": "Anthropic, Git을 Scion으로 교체",
+      "url": "https://news.hada.io/topic?id=35309"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35256"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "security"
+      ],
+      "title": "Codex CLI, 기본 설정으로 self-updating background daemon 설치",
+      "url": "https://news.hada.io/topic?id=35256"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35257"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation"
+      ],
+      "title": "AI coding agents generate more code, but not more software",
+      "url": "https://arstechnica.com/ai/2026/10/ai-coding-agents-generate-more-code-but-not-more-software"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35296"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools"
+      ],
+      "title": "Show GN: AI 에이전트용 HWP/HWPX 편집·생성 CLI/스킬/템플릿 패키지",
+      "url": "https://news.hada.io/topic?id=35296"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35306"
+      ],
+      "tags": [
+        "llm",
+        "multimodal"
+      ],
+      "title": "Google Gemini 4 Argon 정식 출시",
+      "url": "https://news.hada.io/topic?id=35306"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35294"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Rust borrow checker unsoundness bugs",
+      "url": "https://github.com/rust-lang/rust/issues/164250"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35295"
+      ],
+      "tags": [
+        "performance",
+        "reasoning"
+      ],
+      "title": "OpenAI가 주장하는 더 빠른 푸리에 변환의 수학",
+      "url": "https://news.hada.io/topic?id=35295"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x17shf/thinkingbox_solving_an_agent_task_once_vs_solving/"
+      ],
+      "tags": [
+        "agent",
+        "evaluation"
+      ],
+      "title": "Agent benchmark: ThinkingBox stateful workflows",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x17shf/thinkingbox_solving_an_agent_task_once_vs_solving/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x4eiym/optimizing_our_e2e_pipeline/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "Optimizing our E2E pipeline",
+      "url": "https://www.reddit.com/r/programming/comments/1x4eiym/optimizing_our_e2e_pipeline/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x4ye07/ai_peer_review_tool_for_cvpr_iclr_icml_and/"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "AI peer review tool for major ML conferences",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x4ye07/ai_peer_review_tool_for_cvpr_iclr_icml_and/"
+    }
+  ],
+  "generated_at": "2026-10-14T08:33:00+09:00",
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-13T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 25151
+      },
+      {
+        "rank": 2,
+        "repository": "tester-army/e2e",
+        "weekly_stars": 6440
+      },
+      {
+        "rank": 3,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 10330
+      },
+      {
+        "rank": 4,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 4223
+      },
+      {
+        "rank": 5,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 3803
+      },
+      {
+        "rank": 6,
+        "repository": "flutter/flutter",
+        "weekly_stars": 680
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1140
+      },
+      {
+        "rank": 8,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 2508
+      },
+      {
+        "rank": 9,
+        "repository": "mvschwarz/openrig",
+        "weekly_stars": 2028
+      },
+      {
+        "rank": 10,
+        "repository": "morluto/rea",
+        "weekly_stars": 126976
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-14T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 27263
+      },
+      {
+        "rank": 2,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 11139
+      },
+      {
+        "rank": 3,
+        "repository": "tester-army/e2e",
+        "weekly_stars": 5582
+      },
+      {
+        "rank": 4,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 845
+      },
+      {
+        "rank": 5,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 4482
+      },
+      {
+        "rank": 6,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 3762
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1144
+      },
+      {
+        "rank": 8,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 2441
+      },
+      {
+        "rank": 9,
+        "repository": "flutter/flutter",
+        "weekly_stars": 806
+      },
+      {
+        "rank": 10,
+        "repository": "cathrynlavery/diagram-design",
+        "weekly_stars": 9237
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "DREAM: Poisoned Agent Memory를 선택적으로 잊게 하는 Intrinsic Repair",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.13267"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 memory-augmented LLM agent가 악성 memory를 한 번 저장하면 이후 검색과 강화 loop를 통해 계속 오염될 수 있다는 문제를 다룬다. 기존 방어는 online auditing이나 dual-memory isolation에 의존해 계산량이 크고, 정상 memory continuity를 깨뜨릴 수 있다.",
+      "evidence": "full_text",
+      "findings": "다양한 attacker와 real-world task에서 DREAM은 backdoor poisoning ASR을 95% 이상 줄였다. EHRAgent eICU에서는 benign accuracy도 undefended 대비 최대 25% 개선했고, ReAct-StrategyQA에서는 GPT-5.4-mini 기준 ASR을 near-zero로 낮추며 benign accuracy를 35% 높였다. A-MemGuard 대비 runtime은 최대 2.13배 빠르고 token consumption은 37.7% 줄었다.",
+      "first_published": "2026-10-09",
+      "id": "arxiv:2610.13267",
+      "limitations": "DREAM은 악성 memory가 memory activation pattern에서 구조적 이상을 보인다는 전제에 기대며, adaptive attacker가 benign-like activation을 유도하면 추가 검증이 필요하다. Memory를 약화시키는 과정이 rare but valid memory를 손상시킬 가능성도 있다.",
+      "method": "DREAM은 Dynamic Reactivation for Engram Attenuation in Memory의 약자다. Perturbation으로 memory를 약하게 재활성화해 구조적 취약성을 드러내고, multi-dimensional activation pattern으로 anomaly를 진단한 뒤, harmful memory는 선택적으로 suppress하고 benign memory는 강화한다.",
+      "practical_value": "Agent memory 보안은 외부 auditor만 붙이는 문제가 아니라 memory lifecycle 내부에서 repair와 forgetting을 설계하는 문제다. 오염된 memory를 완전히 격리하기보다 selective attenuation과 benign reinforcement를 결합할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.13267",
+        "https://arxiv.org/pdf/2610.13267"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "security"
+      ],
+      "title": "Forgetting is Not Always Bad: A Neuro-Inspired Memory Repair Mechanism for Poisoned LLM Agents",
+      "topics": [
+        "memory poisoning",
+        "selective forgetting",
+        "DREAM",
+        "agent robustness"
+      ],
+      "url": "https://arxiv.org/abs/2610.13267"
+    },
+    {
+      "abstract_summary": "이 논문은 multi-party conversation에서 decision과 state가 여러 participant와 stage를 거치며 반복적으로 바뀌기 때문에, time을 단순 metadata로만 쓰는 memory system은 evidence progression을 충분히 복원하지 못한다는 문제를 다룬다.",
+      "evidence": "full_text",
+      "findings": "GroupMemBench에서 T-MEM은 GPT-5.5 기준 63.09%, DeepSeek-V4-Flash 기준 62.68% accuracy를 기록했다. EverMemBench에서도 79.46%와 77.63%를 기록했고, strongest baseline보다 6.50~8.59%p 높은 결과를 냈다.",
+      "first_published": "2026-10-09",
+      "id": "arxiv:2610.12874",
+      "limitations": "Temporal locality가 강한 conversation에서는 유리하지만, 증거가 긴 시간에 희박하게 흩어지는 task에서는 forest construction이 더 어려워질 수 있다. 또한 8192 token budget 안에서 어떤 span을 압축할지의 heuristic이 중요하다.",
+      "method": "T-MEM은 Temporal Evidence Discovery로 query 관련 message가 시간적으로 밀집된 구간을 찾고, Temporal Memory Structuring으로 state transition과 support relation을 forest로 구성한다. Evidence Forest Linearization은 이 구조를 answer generation에 맞게 직렬화한다.",
+      "practical_value": "장기 group memory는 최근성이나 global similarity만으로는 부족하다. 상태 변화가 있는 협업 기록에서는 query-conditioned temporal forest를 구성해 증거의 순서와 전환을 보존해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.12874",
+        "https://arxiv.org/pdf/2610.12874"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "retrieval"
+      ],
+      "title": "Temporal Evidence Forests for Long-Horizon Multi-Party Conversational Memory",
+      "topics": [
+        "temporal memory",
+        "multi-party conversation",
+        "evidence forest",
+        "T-MEM"
+      ],
+      "url": "https://arxiv.org/abs/2610.12874"
+    },
+    {
+      "abstract_summary": "이 논문은 self-evolving LLM agent가 경험, reflection, skill을 쌓더라도 환경 dynamics에 대한 믿음이 틀리면 여러 task에서 오류가 전파될 수 있다는 문제를 다룬다. 저자들은 행동 policy뿐 아니라 환경 belief도 deployment 중 진화해야 한다고 본다.",
+      "evidence": "full_text",
+      "findings": "논문은 world-model belief evolution을 policy memory와 분리한 self-evolution 축으로 제시하고, evidence-linked rule이 여러 task에 걸쳐 prediction과 planning을 개선한다고 보고한다. 핵심 결과는 hypothesis scope와 counterexample tracking이 incorrect belief propagation을 줄인다는 점이다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.12789",
+      "limitations": "Falsifiable hypothesis를 만들고 검증할 수 있는 environment feedback이 필요하다. Ambiguous observation이나 expensive experiment에서는 validation이 늦어질 수 있고, rule scope를 잘못 넓히면 오히려 오류가 전파될 수 있다.",
+      "method": "EvoBelief는 environment knowledge를 falsifiable hypothesis로 표현한다. 예상 밖 outcome과 decision-relevant unknown이 새 hypothesis를 만들고, 이후 observation과 controlled experiment가 independent validation을 제공한 뒤에야 rule이 supported scope 안에서 prediction과 plan에 쓰인다. Counterexample은 rule을 좁히거나 폐기한다.",
+      "practical_value": "장기 agent는 성공 경험만 저장하지 말고 환경 dynamics에 대한 가설, 증거, counterexample, 적용 scope를 따로 관리해야 한다. Self-improvement memory에는 falsification path가 있어야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.12789",
+        "https://arxiv.org/pdf/2610.12789"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "reasoning"
+      ],
+      "title": "EvoBelief: Falsifiable World Models for Self-Improving LLM Agents",
+      "topics": [
+        "world-model memory",
+        "falsifiable hypotheses",
+        "self-evolving agents",
+        "belief revision"
+      ],
+      "url": "https://arxiv.org/abs/2610.12789"
+    },
+    {
+      "abstract_summary": "이 논문은 long-horizon agent가 finite context window 안에서 계속 작업하려면 history를 compact해야 하지만, text summary만으로는 이후 모든 decision을 충분히 지원하지 못한다는 문제를 다룬다. 저자들은 summary 뒤에 learned soft memory token을 붙이는 residual memory를 제안한다.",
+      "evidence": "full_text",
+      "findings": "SummHay에서 REMORY는 insight coverage를 거의 유지하면서 source attribution을 개선했고, input position의 5.2%만 사용해 full-context joint score에 접근했다. Qwen3.8-27B와 GLM-5.3-Flash 장기 agent benchmark에서도 residual memory가 일관된 gain을 보였고 repeated tool output과 tool error를 줄였다고 보고됐다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.11287",
+      "limitations": "Soft memory token은 사람이 직접 읽고 감사하기 어렵다. Summary와 달리 token memory가 어떤 정보를 보존했는지 해석하기 어렵고, model upgrade나 tokenizer 변화에 취약할 수 있다.",
+      "method": "REMORY network는 history와 generated summary를 입력으로 받아 frozen LLM이 full history로 만들 continuation을 근사하도록 bounded soft memory token sequence를 생성한다. Summary는 사람이 읽을 수 있는 checkpoint로 남고, learned token은 subsequent decision을 보조한다.",
+      "practical_value": "Agent context compaction에서는 readable summary와 learned residual memory를 분리할 수 있다. 감사 가능한 요약만으로 부족한 decision-critical detail은 bounded soft token으로 보강하는 hybrid 설계가 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.11287",
+        "https://arxiv.org/pdf/2610.11287"
+      ],
+      "tags": [
+        "agent",
+        "context-engineering",
+        "memory",
+        "performance"
+      ],
+      "title": "REMORY: Learning Residual Memory for Context Compaction",
+      "topics": [
+        "context compaction",
+        "soft memory tokens",
+        "residual memory",
+        "long-horizon agents"
+      ],
+      "url": "https://arxiv.org/abs/2610.11287"
+    },
+    {
+      "abstract_summary": "이 논문은 retrieval-based memory system이 모든 memory를 같은 방식으로 처리해, episodic, personal semantic, general semantic memory의 차이를 놓친다는 문제를 다룬다. 같은 similarity retrieval strategy로 모든 memory-query pair를 처리하면 alignment upper bound에 걸릴 수 있다는 주장이다.",
+      "evidence": "full_text",
+      "findings": "세 dataset의 실험에서 MemoType은 기존 방법을 일관되게 앞섰고, Recall@11에서 최대 16.18% 개선을 달성했다. 이론적으로도 multi-class corpus에서 단일 retrieval strategy는 query-document alignment 기대값에 upper bound가 있어 systematic degradation을 겪는다고 분석했다.",
+      "first_published": "2026-10-08",
+      "id": "arxiv:2610.11573",
+      "limitations": "Router가 memory type을 잘못 분류하면 tailored retrieval이 오히려 손해가 될 수 있다. 또한 TriMEM의 taxonomy가 다른 domain의 memory type을 모두 포괄하지는 않을 수 있다.",
+      "method": "저자들은 fine-grained memory type annotation을 가진 TriMEM 6,000 sample dataset을 만들고, MemoType framework를 제안한다. MemoType은 learned router로 memory type과 query type을 인식하고, type별 retrieval strategy를 다르게 적용한다.",
+      "practical_value": "Agent memory retrieval은 memory bank 하나와 top-k similarity만으로 끝나지 않는다. Memory type과 query type을 routing signal로 사용하면 개인화·사실·episode retrieval을 다르게 최적화할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.11573",
+        "https://arxiv.org/pdf/2610.11573"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "retrieval"
+      ],
+      "title": "Memory Type Varies: Empowering LLM Agents for Long-Term Memory with Diverse Strategies",
+      "topics": [
+        "memory type routing",
+        "TriMEM",
+        "MemoType",
+        "long-term memory retrieval"
+      ],
+      "url": "https://arxiv.org/abs/2610.11573"
+    }
+  ],
+  "repositories": [],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 DREAM입니다. 논문은 agent memory poisoning 방어가 외부 auditor나 dual-memory isolation에 의존하면 계산 비용과 memory continuity 문제가 커진다고 보고, agent memory 안에서 악성 기억을 선택적으로 약화시키는 방식을 제안합니다.",
+    "DREAM은 weak reactivation이 기억을 불안정하게 만들고 reinforcement가 없으면 약화된다는 신경과학적 아이디어에서 출발합니다. Backdoor poisoning ASR을 95% 이상 줄이고, A-MemGuard 대비 최대 2.13배 빠르며 token consumption을 37.7% 줄였다고 보고했습니다.",
+    "같은 호에서는 temporal evidence forest, goal-conditioned memory summarization, residual memory token, memory type routing이 장기 memory 설계의 여러 축을 보여줍니다. GitHub Top10은 대부분 기존 소개 항목이고, CNCF 쪽은 containerd 2.4.2 보안 패치와 Envoy 1.40.0, OPA 1.21.2가 눈에 띕니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "papers",
+        "text": "T-MEM은 temporal evidence forest로 GroupMemBench와 EverMemBench에서 strongest baseline보다 6.50~8.59%p 높았습니다.",
+        "url": "https://arxiv.org/abs/2610.12874"
+      },
+      {
+        "section": "community",
+        "text": "Codex CLI가 기본 설정으로 self-updating background daemon을 설치한다는 이슈가 커뮤니티에서 논의됐습니다.",
+        "url": "https://news.hada.io/topic?id=35256"
+      },
+      {
+        "section": "cncf",
+        "text": "containerd 여러 line에 CVE-2026-95839 등 보안 패치와 CRI/image/seccomp hardening이 공개됐습니다.",
+        "url": "https://github.com/containerd/containerd/releases/tag/v2.4.2"
+      }
+    ],
+    "spotlight": [
+      "Technical Spotlight는 DREAM입니다. Memory poisoning을 외부 auditor가 아니라 agent memory 내부의 reactivation, anomaly diagnosis, selective repair로 줄이는 접근입니다.",
+      "Backdoor poisoning ASR을 95% 이상 낮추고 A-MemGuard 대비 최대 2.13배 빠르며 token consumption을 37.7% 줄였다고 보고했습니다."
+    ]
+  }
+}
