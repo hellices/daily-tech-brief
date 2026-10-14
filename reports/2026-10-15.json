@@ -1,0 +1,641 @@
+{
+  "cncf": [
+    {
+      "category": "security",
+      "impact": "Kubernetes node runtime으로 containerd를 쓰는 환경은 사용 중인 minor line별 patch를 적용하고, image pull, log path, seccomp, registry reference 검증이 workload와 충돌하지 않는지 확인해야 한다.",
+      "published": "2026-10-13",
+      "sources": [
+        "https://github.com/containerd/containerd/releases/tag/v2.4.2",
+        "https://github.com/containerd/containerd/releases/tag/v2.3.7"
+      ],
+      "summary": "containerd는 supported 2.4, 2.3, 2.2, 2.0 line에 보안 패치를 포함한 patch release를 공개했다. v2.4.2 계열 release note는 CVE-2026-95839, GHSA-8647-2jxj-p2rc, GHSA-hc94-p972-ch66 등과 CRI log file symlink hardening, image reference validation, seccomp socket domain 관련 변경을 포함한다.",
+      "tags": [
+        "containers",
+        "kubernetes",
+        "release",
+        "security"
+      ],
+      "title": "containerd v2.4.2 / v2.3.7 / v2.2.10 / v2.0.14",
+      "url": "https://github.com/containerd/containerd/releases/tag/v2.4.2"
+    },
+    {
+      "category": "release",
+      "impact": "Envoy extension, downstream Bazel build, Wasm, Rust dynamic module을 가진 팀은 1.40 migration과 patch line 보안 업데이트를 분리해 검토해야 한다.",
+      "published": "2026-10-13",
+      "sources": [
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.40.0",
+        "https://github.com/envoyproxy/envoy/releases/tag/v1.38.7"
+      ],
+      "summary": "Envoy 1.40.0은 bzlmod 전환, LLVM/Clang 22 기본화, AWS-LC 선택 제거, Wasm runtime flag 변경, MCP router header forwarding 기본값 변경, Rust dynamic module hook signature 변경을 포함한다. 동시에 1.39.4, 1.38.7, 1.37.9, 1.36.13 patch line도 공개되어 Wasmtime CVE-2026-54786 대응과 여러 bug fix를 포함한다.",
+      "tags": [
+        "networking",
+        "release",
+        "security"
+      ],
+      "title": "Envoy v1.40.0 및 v1.39/1.38/1.37/1.36 patch line",
+      "url": "https://github.com/envoyproxy/envoy/releases/tag/v1.40.0"
+    },
+    {
+      "category": "security",
+      "impact": "OPA를 gateway, admission control, policy engine으로 쓰는 환경은 binary patch를 적용하고 encoded slash가 policy path matching과 API 입력 처리에서 의도대로 동작하는지 regression test해야 한다.",
+      "published": "2026-10-12",
+      "sources": [
+        "https://github.com/open-policy-agent/opa/releases/tag/v1.21.2"
+      ],
+      "summary": "OPA 1.21.2는 Go 1.27.2와 golang.org/x/net v0.60.0으로 binary artifact를 빌드해 Go standard library와 x/net security advisory를 반영했다. Basic authorization policy와 Data API 입력의 encoded slash 처리 mismatch 수정도 포함한다.",
+      "tags": [
+        "cloud-native",
+        "release",
+        "security"
+      ],
+      "title": "OPA v1.21.2",
+      "url": "https://github.com/open-policy-agent/opa/releases/tag/v1.21.2"
+    },
+    {
+      "category": "release",
+      "impact": "Collector distribution을 자체 builder로 만드는 팀은 resource detection detector 설정과 generated distribution 구성을 확인하고, custom component 빌드 파이프라인에서 새 config field가 충돌하지 않는지 검토해야 한다.",
+      "published": "2026-10-14",
+      "sources": [
+        "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.163.0"
+      ],
+      "summary": "OpenTelemetry Collector v0.163.0은 builder config에 dist.resource.detection.detectors를 추가하는 등 end-user enhancement를 포함한 release다. release note는 collector release artifact와 end-user changelog를 함께 제공한다.",
+      "tags": [
+        "cloud-native",
+        "observability",
+        "release"
+      ],
+      "title": "OpenTelemetry Collector v0.163.0",
+      "url": "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.163.0"
+    },
+    {
+      "category": "release",
+      "impact": "Rook/Ceph cluster 운영자는 secure msgr2, topology label validation, object notification, OSD upgrade 흐름이 현재 cluster 설정과 맞는지 staging에서 확인해야 한다.",
+      "published": "2026-10-14",
+      "sources": [
+        "https://github.com/rook/rook/releases/tag/v1.20.9",
+        "https://github.com/rook/rook/releases/tag/v1.19.12"
+      ],
+      "summary": "Rook v1.20.9와 v1.19.12는 Ceph operator 중심의 patch release다. v1.20.9는 mon connection의 secure msgr2 mode 강제, purely numeric topology value reject 등을 포함하고, v1.19.12는 object lifecycle notification event와 OSD upgrade wait 관련 fix를 포함한다.",
+      "tags": [
+        "kubernetes",
+        "release",
+        "security",
+        "storage"
+      ],
+      "title": "Rook v1.20.9 / v1.19.12",
+      "url": "https://github.com/rook/rook/releases/tag/v1.20.9"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일 범위에서 CNCF 및 클라우드 네이티브 주요 프로젝트 릴리스를 확인했고, 런타임 보안, 네트워킹, 정책 엔진, 관측성, 스토리지 운영 영향을 중심으로 정리했습니다.",
+      "sources": [
+        "https://github.com/containerd/containerd/releases",
+        "https://github.com/envoyproxy/envoy/releases",
+        "https://github.com/open-policy-agent/opa/releases",
+        "https://github.com/open-telemetry/opentelemetry-collector/releases",
+        "https://github.com/rook/rook/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, 긱뉴스 공식 RSS, Reddit r/programming 및 r/MachineLearning RSS를 확인했고, agent security, developer tooling, performance, data infrastructure와 직접 관련된 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub weekly Trending Top 10을 관측했고, 기존 소개 이력에 없는 신규·미소개 repository 3개를 선별했습니다. 이미 소개된 AnyPS5, skills, HyperFrames, raddebugger, e2e, claude-mem, text-to-cad는 상세 소개에서 제외했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 agent reasoning, robotics, harness, memory grounding 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.18861",
+        "https://arxiv.org/abs/2610.18874",
+        "https://arxiv.org/abs/2610.18792",
+        "https://arxiv.org/abs/2610.18813",
+        "https://arxiv.org/abs/2610.18684"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-15",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://anoma.ly/notes/opencode-2-0/"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "OpenCode 2.0",
+      "url": "https://anoma.ly/notes/opencode-2-0/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://typesafe.ai/blog/jev-1-14"
+      ],
+      "tags": [
+        "developer-tools",
+        "reasoning"
+      ],
+      "title": "Jev 1.14.0과 dreamer용 실험 기능 공개",
+      "url": "https://typesafe.ai/blog/jev-1-14"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://scotthelme.co.uk/passkeys-are-not-a-trap/"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "Passkeys are not a trap",
+      "url": "https://scotthelme.co.uk/passkeys-are-not-a-trap/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://www.csoonline.com/article/4234854/ai-agents-arent-going-rogue-frontier-labs-are-skipping-security-basics.html"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "AI hacking reports: containment and monitoring failures",
+      "url": "https://www.csoonline.com/article/4234854/ai-agents-arent-going-rogue-frontier-labs-are-skipping-security-basics.html"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://go.dev/blog/http-connection-reuse"
+      ],
+      "tags": [
+        "developer-tools",
+        "networking",
+        "performance"
+      ],
+      "title": "Go 1.27의 HTTP/1 connection reuse 개선",
+      "url": "https://go.dev/blog/http-connection-reuse"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35369",
+        "https://sunshowers.io/posts/anthropic-mononoke/"
+      ],
+      "tags": [
+        "developer-tools",
+        "distributed-systems"
+      ],
+      "title": "Anthropic Scion과 Meta Mononoke의 설계 영향",
+      "url": "https://sunshowers.io/posts/anthropic-mononoke/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35359"
+      ],
+      "tags": [
+        "performance",
+        "retrieval",
+        "storage"
+      ],
+      "title": "Pg_vectorsearch: pgvector IVFFlat/HNSW보다 빠른 index",
+      "url": "https://news.hada.io/topic?id=35359"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x63fdq/how_netflix_simplified_batch_compute_with_kueue/"
+      ],
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "performance"
+      ],
+      "title": "Netflix batch compute를 Kueue로 단순화",
+      "url": "https://www.reddit.com/r/programming/comments/1x63fdq/how_netflix_simplified_batch_compute_with_kueue/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x5w7hh/blackbox_hashdos_attacking_hash_tables_without/"
+      ],
+      "tags": [
+        "performance",
+        "security"
+      ],
+      "title": "Black-Box HashDoS: hash function을 몰라도 hash table 공격",
+      "url": "https://www.reddit.com/r/programming/comments/1x5w7hh/blackbox_hashdos_attacking_hash_tables_without/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x5uh6j/where_do_you_go_for_help_when_youre_stuck_now/"
+      ],
+      "tags": [
+        "developer-tools",
+        "llm"
+      ],
+      "title": "개발자 64%, 단순 질문에 Stack Overflow 방문 감소",
+      "url": "https://www.reddit.com/r/programming/comments/1x5uh6j/where_do_you_go_for_help_when_youre_stuck_now/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x5zd2m/remember_alphaxiv_their_new_research_agents_are/"
+      ],
+      "tags": [
+        "agent",
+        "governance",
+        "security"
+      ],
+      "title": "alphaXiv research agents privacy 논란",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x5zd2m/remember_alphaxiv_their_new_research_agents_are/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x5u2wz/mapping_the_posttransformer_architecture/"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "reasoning"
+      ],
+      "title": "Post-Transformer architecture landscape in 2026",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x5u2wz/mapping_the_posttransformer_architecture/"
+    }
+  ],
+  "generated_at": "2026-10-15T08:33:00+09:00",
+  "github_featured": [
+    "morluto/rea",
+    "cathrynlavery/diagram-design",
+    "twostraws/SwiftUI-Agent-Skill"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-14T08:03:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 27263
+      },
+      {
+        "rank": 2,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 11139
+      },
+      {
+        "rank": 3,
+        "repository": "tester-army/e2e",
+        "weekly_stars": 5582
+      },
+      {
+        "rank": 4,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 845
+      },
+      {
+        "rank": 5,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 4482
+      },
+      {
+        "rank": 6,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 3762
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1144
+      },
+      {
+        "rank": 8,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 2441
+      },
+      {
+        "rank": 9,
+        "repository": "flutter/flutter",
+        "weekly_stars": 806
+      },
+      {
+        "rank": 10,
+        "repository": "cathrynlavery/diagram-design",
+        "weekly_stars": 9237
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-15T08:12:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 183758
+      },
+      {
+        "rank": 2,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 28663
+      },
+      {
+        "rank": 3,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 11955
+      },
+      {
+        "rank": 4,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 4732
+      },
+      {
+        "rank": 5,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 857
+      },
+      {
+        "rank": 6,
+        "repository": "tester-army/e2e",
+        "weekly_stars": 4426
+      },
+      {
+        "rank": 7,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 3587
+      },
+      {
+        "rank": 8,
+        "repository": "cathrynlavery/diagram-design",
+        "weekly_stars": 9867
+      },
+      {
+        "rank": 9,
+        "repository": "twostraws/SwiftUI-Agent-Skill",
+        "weekly_stars": 911
+      },
+      {
+        "rank": 10,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 2173
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Hybrid Reasoning Agents와 실행 효율 중심 에이전트 설계",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.18861"
+  },
+  "papers": [
+    {
+      "abstract_summary": "현대 LLM agent는 외부 환경과 도구를 다루기 위해 텍스트를 생성해야 하지만, 모든 추론을 토큰으로 펼치면 비용과 지연이 커진다. 이 논문은 latent reasoning의 효율성과 text-based agent의 도구 사용 능력을 하나의 생성 흐름으로 연결하는 HybridAgent를 제안한다.",
+      "evidence": "full_text",
+      "findings": "HybridAgent는 3개 모델 규모와 11개 벤치마크에서 기존 frontier LLM agent 및 text/latent reasoning framework와 비교되었다. 논문은 평균 10.4% 성능 향상, 35.5%~54.7% 토큰 절감, 1.8배~2.6배 빠른 추론, 2.7배~3.7배 비용 절감을 보고한다.",
+      "first_published": "2026-10-13",
+      "id": "arxiv:2610.18861",
+      "limitations": "결과는 논문이 구성한 benchmark suite와 post-training 절차에 의존하며, latent reasoning의 inspectability가 실제 운영 감사나 안전 검증을 충분히 대체한다는 근거까지 제시하지는 않는다. 도구 호출 환경과 모델 규모가 달라질 때의 재현성도 별도 검증이 필요하다.",
+      "method": "저자들은 text mode와 latent mode 사이를 전환하는 HybridLink를 두고, continuous working memory가 여러 턴의 hybrid context를 손실 없이 보존하도록 설계했다. 이후 HybridSFT로 tool-integrated hybrid generation을 안정화하고, HybridRL로 모델이 latent space에서 생각할 시점과 텍스트로 행동할 시점을 학습하게 했다.",
+      "practical_value": "Agent runtime을 설계하는 팀에게는 모든 사고 과정을 텍스트 토큰으로 유지하는 방식이 반드시 최적은 아니라는 기준점을 제공한다. 다만 latent path를 도입하면 관측성, 디버깅, 정책 감사 체계를 함께 설계해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.18861",
+        "https://arxiv.org/pdf/2610.18861"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "performance",
+        "reasoning",
+        "tool-use"
+      ],
+      "title": "Hybrid Reasoning Agents",
+      "topics": [
+        "hybrid reasoning",
+        "latent reasoning",
+        "agentic tool use",
+        "working memory"
+      ],
+      "url": "https://arxiv.org/abs/2610.18861"
+    },
+    {
+      "abstract_summary": "Agentic robotics는 LLM planner가 perception, motion, VLA tool을 조합해 새로운 작업에 적응하게 만들지만, primitive마다 전체 이력을 다시 추론하면서 호출 수와 토큰 비용이 급격히 늘어난다. ChunkAct는 반복되는 primitive sequence를 action chunk로 묶어 이 비용 문제를 줄이려는 접근이다.",
+      "evidence": "full_text",
+      "findings": "논문은 LIBERO-Pro에서 기존 state of the art보다 task success를 5.0 percentage point 높였다고 보고한다. 동시에 LLM call은 2.9배, input token은 4.4배, output token은 2.3배 줄었다고 제시한다.",
+      "first_published": "2026-10-13",
+      "id": "arxiv:2610.18874",
+      "limitations": "Chunking은 반복 루틴이 안정적으로 성립하는 구간에서 효과가 크지만, 매 단계의 세밀한 반응성이 중요한 환경에서는 chunk 내부 실패 감지와 재계획 지점이 성능을 좌우한다. 실제 로봇과 다양한 hardware primitive에서의 일반화 범위는 추가 검증 대상이다.",
+      "method": "온라인 실행에서는 planner가 한 번의 호출로 chained primitive chunk를 시작하고, 실패가 생길 때만 typed error를 돌려 재계획하게 한다. 오프라인 단계에서는 memory에 담긴 절차를 generalizable action chunk로 컴파일해 test time에는 memory-free로 실행되도록 만든다.",
+      "practical_value": "로봇 agent나 장기 도구 실행 agent를 운영하는 팀은 매 primitive마다 LLM을 부르는 구조를 action chunk와 typed failure protocol로 대체할 수 있는지 검토할 수 있다. 비용 절감과 성공률 향상이 함께 보고된 점이 운영 설계 관점에서 중요하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.18874",
+        "https://arxiv.org/pdf/2610.18874"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "performance",
+        "robotics",
+        "tool-use"
+      ],
+      "title": "ChunkAct: Action Chunking for Agentic Robotics",
+      "topics": [
+        "agentic robotics",
+        "action chunking",
+        "memory compilation",
+        "token efficiency"
+      ],
+      "url": "https://arxiv.org/abs/2610.18874"
+    },
+    {
+      "abstract_summary": "로봇 agent가 control code를 작성하고 실행 결과를 읽어 skills와 memory를 보존하면 성능이 올라갈 수 있지만, 성공률 상승이 실제 학습 때문인지 반복 시도, 개발 시간, 쉬운 test seed 때문인지 구분하기 어렵다. SEAR는 이 문제를 평가하는 framework와 benchmark를 제안한다.",
+      "evidence": "full_text",
+      "findings": "논문은 GPT-5.6-sol이 library 없이 46.9%, 자기 library로 42.4%, 다른 run에서 가져온 library로 60.6%를 기록한 사례를 제시하며, 모든 memory가 유익하지는 않음을 보인다. skill library 효과는 기본 성공률이 30%~80%인 중간 난이도에서 가장 크고, 특정 조건에서는 Gemini-3.6-flash가 LIBERO-RIG fault setting에서 46.6 point 상승했다고 보고한다.",
+      "first_published": "2026-10-13",
+      "id": "arxiv:2610.18792",
+      "limitations": "평가가 control program 작성과 성공 predicate가 있는 task family에 집중되어 있어, 자연어 지시만으로 장기 작업을 수행하는 일반 agent로 직접 일반화하기는 어렵다. 또한 real robot episode는 느리고 장비 의존성이 커서 대규모 반복 검증 비용이 크다.",
+      "method": "SEAR는 330개 simulated task, 두 physics engine, 다섯 physical task, 두팔 robot rig, dexterous hand 조건을 포함한다. benchmark는 retained experience와 단순 재시도 효과를 분리하기 위해 development time을 맞춘 비교, skill library import, frozen policy test, held-out TEST seed를 함께 사용한다.",
+      "practical_value": "Self-evolving agent를 도입하려는 팀에게 SEAR는 '성공률이 올랐다'는 주장만으로는 부족하며, 재시도 효과와 보존된 skill의 실제 전이를 분리해야 한다는 실험 설계 기준을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.18792",
+        "https://arxiv.org/pdf/2610.18792"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness",
+        "memory",
+        "robotics"
+      ],
+      "title": "SEAR: Self-Evolving Agentic Robotics",
+      "topics": [
+        "self-evolving agents",
+        "robotics benchmark",
+        "skill library",
+        "evaluation controls"
+      ],
+      "url": "https://arxiv.org/abs/2610.18792"
+    },
+    {
+      "abstract_summary": "Agent를 개선하는 방법은 모델 weight를 바꾸는 것만이 아니다. 이 논문은 prompt, memory, workflow, executable component를 포함한 harness가 실행 피드백으로 수정되고, 승인된 revision이 다음 실행에 지속되는 과정을 self-evolving agent harness로 정식화한다.",
+      "evidence": "full_text",
+      "findings": "논문은 prior work 사례를 통해 harness revision이 prompt 편집을 넘어 memory policy, skill library, tool dispatch, plugin composition까지 확장될 수 있음을 정리한다. 예시로 SpreadsheetBench에서 HarnessOpt+skill이 GPT-5.4-nano 기준 77.58%를 기록해 GPT-5.5+SkillOpt의 76.20%를 넘는 사례를 제시하되, 같은 비용 조건의 우월성을 입증한 것은 아니라고 구분한다.",
+      "first_published": "2026-10-13",
+      "id": "arxiv:2610.18813",
+      "limitations": "이 논문은 새로운 단일 benchmark 결과보다 framework, theory, taxonomy 성격이 강하다. 따라서 실제 제품에 적용하려면 validation data 독립성, rollback, 권한 경계, dependency drift 같은 운영 통제를 별도로 구현해야 한다.",
+      "method": "저자들은 update target, proposal mechanism, admission mechanism을 분리하고, interpreted state 수정과 tool/code/runtime control logic 변경을 구분한다. 또한 evolutionary optimization과 continual PAC-learning 관점에서 generalization bound, historical regression budget에 조건부인 retention bound, fresh validation data를 쓰는 admission rule을 논의한다.",
+      "practical_value": "고정 모델 위에서 agent runtime을 계속 개선하는 조직에는 변경 가능한 surface를 명시하고, 어떤 revision을 저장소에 편입할지 fresh evaluation으로 통제해야 한다는 설계 언어를 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.18813",
+        "https://arxiv.org/pdf/2610.18813"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness",
+        "memory",
+        "tool-use"
+      ],
+      "title": "Self-evolving Agent Harness",
+      "topics": [
+        "agent harness",
+        "self-evolution",
+        "validation",
+        "runtime revision"
+      ],
+      "url": "https://arxiv.org/abs/2610.18813"
+    },
+    {
+      "abstract_summary": "개인 agent memory는 사용자의 선호와 사실을 오래 보존하는 데 초점을 맞춰 왔지만, 기억된 제안이 사용자와 agent 사이에서 실제로 합의된 지시인지까지 보장하지는 않는다. 이 논문은 accepted, unacknowledged, revised, scoped arrangement를 구분하는 Grounding Awareness를 제안한다.",
+      "evidence": "full_text",
+      "findings": "논문은 여러 agent와 memory system에서 strong memory performance가 Grounding Awareness를 보장하지 않는다고 보고한다. 오히려 더 강한 모델이 unacknowledged proposal을 실행하는 비율을 높일 수 있고, persistent memory가 승인되지 않은 제안을 이후 세션에서 행동으로 연결할 수 있음을 보인다.",
+      "first_published": "2026-10-13",
+      "id": "arxiv:2610.18684",
+      "limitations": "benchmark는 통제된 scenario와 synthetic interaction 차이를 이용하므로, 실제 개인 비서 제품의 UI, confirmation pattern, policy layer가 있는 환경에서는 결과가 달라질 수 있다. Grounding Layer도 consequential action의 정의와 scope tracking 품질에 의존한다.",
+      "method": "저자들은 LoCoMo 기반 persona에서 160개 scenario와 800개 test instance를 구성해 acceptance sensitivity와 contextual selectivity를 평가한다. memory writing, retrieval, action selection 단계에서 grounding status가 사라지는 지점을 분석하고, 별도 학습 없이 grounding status를 추적하고 consequential action 전에 확인하는 Grounding Layer를 추가한다.",
+      "practical_value": "개인화 agent를 만드는 팀에게 이 연구는 memory retrieval 정확도만 높이는 것이 충분하지 않다는 경고다. 장기 메모리에는 사용자의 말뿐 아니라 합의 상태, 적용 범위, 승인 여부를 함께 저장하고 행동 직전에 확인해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.18684",
+        "https://arxiv.org/pdf/2610.18684"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory",
+        "security"
+      ],
+      "title": "Knowing the User Is Not Knowing What We Established: Grounding Awareness in Personal Agents",
+      "topics": [
+        "personal agents",
+        "memory grounding",
+        "authorization",
+        "benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2610.18684"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "공식 저장소와 npm package 출처 확인, native 분석 엔진 설치·권한·분석 대상의 법적 허용 범위 검토 필요",
+      "novelty": "new_entry",
+      "rank": 1,
+      "repository": "morluto/rea",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/morluto/rea"
+      ],
+      "summary": "Reverse engineering용 MCP·agent toolchain",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "mcp",
+        "security"
+      ],
+      "url": "https://github.com/morluto/rea",
+      "use_case": "Agent가 binary, Electron, JavaScript, .NET, 웹앱을 조사하고 근거와 한계를 함께 제시하는 로컬 분석 workflow",
+      "why_now": "weekly Trending 1위 급등"
+    },
+    {
+      "caution": "조직 브랜드 자산과 privacy 정책을 skill onboarding 전에 확인하고, 외부 marketplace 자동 업데이트 정책을 검토해야 함",
+      "novelty": "first_introduction",
+      "rank": 8,
+      "repository": "cathrynlavery/diagram-design",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/cathrynlavery/diagram-design"
+      ],
+      "summary": "브랜드 맞춤 HTML+SVG diagram agent skill",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/cathrynlavery/diagram-design",
+      "use_case": "Architecture, sequence, quadrant 등 45개 diagram type을 agent가 선택해 self-contained HTML/SVG 산출물로 생성",
+      "why_now": "Top10 잔류와 설치형 agent skill 확산"
+    },
+    {
+      "caution": "iOS 26+와 Swift 6.4+ 전제를 확인하고, project별 coding convention과 충돌하는 rule은 부분 적용 필요",
+      "novelty": "new_entry",
+      "rank": 9,
+      "repository": "twostraws/SwiftUI-Agent-Skill",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/twostraws/SwiftUI-Agent-Skill"
+      ],
+      "summary": "SwiftUI coding agent용 platform skill",
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/twostraws/SwiftUI-Agent-Skill",
+      "use_case": "SwiftUI navigation, layout, animation, state, accessibility, deprecated API, performance 오류를 coding assistant가 점검하도록 지식 패키지화",
+      "why_now": "Swift·Apple ecosystem용 agent skill의 Top10 진입"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 Hybrid Reasoning Agents입니다. 이 논문은 에이전트가 외부 도구와 상호작용할 때는 텍스트가 필요하지만, 모든 중간 추론을 토큰으로 펼치면 비용과 지연이 커진다는 문제에서 출발합니다. HybridAgent는 텍스트 모드와 latent reasoning 모드를 한 생성 흐름 안에서 전환하고, continuous working memory로 여러 턴의 hybrid context를 유지해 도구 사용 가능성과 내부 추론 효율을 함께 다룹니다.",
+    "저자들은 HybridLink, HybridSFT, HybridRL을 결합해 모델이 언제 latent space에서 생각하고 언제 텍스트로 행동해야 하는지를 학습시켰습니다. 3개 모델 규모와 수학, 과학, 의학, 검색, agentic reasoning을 포함한 11개 벤치마크에서 기존 text-based agent 및 latent reasoning 계열과 비교했고, 평균 10.4% 성능 향상과 35.5%~54.7% 토큰 절감, 1.8배~2.6배 빠른 추론, 2.7배~3.7배 비용 절감을 보고했습니다.",
+    "같은 흐름은 오늘 선정한 다른 논문에도 이어집니다. ChunkAct는 로봇 에이전트의 반복 primitive 호출을 action chunk로 묶어 비용을 줄이고, SEAR와 Self-evolving Agent Harness는 에이전트가 코드, 메모리, 스킬을 고쳐가며 나아질 때 무엇을 실제 개선으로 볼지 평가 조건을 분리합니다. Grounding Awareness 논문은 개인 에이전트가 기억한 제안을 사용자의 승인된 지시로 오해하지 않도록, 장기 메모리보다 상호 합의 상태를 따로 추적해야 한다고 지적합니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "REA가 weekly Trending 1위에 진입했습니다. MCP 기반 reverse engineering workflow를 agent와 연결합니다.",
+        "url": "https://github.com/morluto/rea"
+      },
+      {
+        "section": "papers",
+        "text": "ChunkAct는 로봇 agent의 반복 primitive 호출을 action chunk로 묶어 LIBERO-Pro 성공률과 비용을 함께 개선했습니다.",
+        "url": "https://arxiv.org/abs/2610.18874"
+      },
+      {
+        "section": "cncf",
+        "text": "containerd가 여러 supported line에 보안 patch를 공개했습니다. Kubernetes node runtime 점검이 필요합니다.",
+        "url": "https://github.com/containerd/containerd/releases/tag/v2.4.2"
+      }
+    ],
+    "spotlight": [
+      "Hybrid Reasoning Agents는 에이전트가 모든 중간 사고를 텍스트 토큰으로 펼치지 않고, latent reasoning과 text tool use를 전환해 11개 벤치마크에서 평균 10.4% 성능 향상과 큰 토큰·비용 절감을 보고했습니다."
+    ]
+  }
+}
