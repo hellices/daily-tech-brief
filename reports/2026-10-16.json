@@ -1,0 +1,635 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "Cilium을 CNI와 network policy에 쓰는 cluster는 현재 minor line에 맞는 patch를 검토하고, endpoint restore와 cloud metadata access path가 node 환경과 맞는지 확인해야 한다.",
+      "published": "2026-10-15",
+      "sources": [
+        "https://github.com/cilium/cilium/releases/tag/v1.20.3",
+        "https://github.com/cilium/cilium/releases/tag/v1.19.9",
+        "https://github.com/cilium/cilium/releases/tag/v1.18.15"
+      ],
+      "summary": "Cilium은 1.20, 1.19, 1.18 supported line에 patch release를 공개했다. 1.20.3은 Alibaba Cloud IMDSv2 token-based metadata access 지원을 포함하고, 1.19.9와 1.18.15는 endpoint restore cleanup, endpoint ID 재사용 시 GC iteration의 잘못된 deletion 등 bug fix를 포함한다.",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "release"
+      ],
+      "title": "Cilium v1.20.3 / v1.19.9 / v1.18.15",
+      "url": "https://github.com/cilium/cilium/releases/tag/v1.20.3"
+    },
+    {
+      "category": "release",
+      "impact": "Helm 4를 시험 중인 팀과 Helm 3 production 사용 팀은 사용 중인 major line을 혼동하지 않도록 packaging, CI image, plugin compatibility를 분리해 업데이트해야 한다.",
+      "published": "2026-10-15",
+      "sources": [
+        "https://github.com/helm/helm/releases/tag/v4.3.1",
+        "https://github.com/helm/helm/releases/tag/v3.22.1"
+      ],
+      "summary": "Helm은 v4.3.1과 v3.22.1 patch release를 같은 날 공개했다. 두 release note 모두 patch release로 upgrade를 권장하며, v4와 v3 line을 함께 유지하는 운영자가 각각의 client/runtime line을 확인할 수 있게 했다.",
+      "tags": [
+        "developer-tools",
+        "kubernetes",
+        "release"
+      ],
+      "title": "Helm v4.3.1 / v3.22.1",
+      "url": "https://github.com/helm/helm/releases/tag/v4.3.1"
+    },
+    {
+      "category": "release",
+      "impact": "GitOps platform 운영자는 production upgrade보다 먼저 test cluster에서 rc3를 검증하고, server-side apply manifest와 existing controller/plugin 구성이 충돌하지 않는지 확인해야 한다.",
+      "published": "2026-10-15",
+      "sources": [
+        "https://github.com/argoproj/argo-cd/releases/tag/v3.6.0-rc3"
+      ],
+      "summary": "Argo CD는 v3.6.0-rc3 release candidate를 공개했다. release note는 non-HA와 HA install manifest 경로를 제공하며, 3.6 line 검증을 위한 staging 설치 경로를 명시한다.",
+      "tags": [
+        "gitops",
+        "kubernetes",
+        "release"
+      ],
+      "title": "Argo CD v3.6.0-rc3",
+      "url": "https://github.com/argoproj/argo-cd/releases/tag/v3.6.0-rc3"
+    },
+    {
+      "category": "release",
+      "impact": "Collector distribution을 자체 builder로 만드는 팀은 resource detection detector 설정과 generated distribution 구성을 확인하고, custom component 빌드 파이프라인에서 새 config field가 충돌하지 않는지 점검해야 한다.",
+      "published": "2026-10-14",
+      "sources": [
+        "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.163.0"
+      ],
+      "summary": "OpenTelemetry Collector v0.163.0은 builder config에 dist.resource.detection.detectors를 추가하는 등 end-user enhancement를 포함한 release다. release note는 collector binary와 image artifact 위치, end-user changelog를 함께 안내한다.",
+      "tags": [
+        "cloud-native",
+        "observability",
+        "release"
+      ],
+      "title": "OpenTelemetry Collector v0.163.0",
+      "url": "https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.163.0"
+    },
+    {
+      "category": "release",
+      "impact": "Rook/Ceph cluster 운영자는 secure msgr2, topology label validation, object notification, OSD upgrade 흐름이 현재 cluster 설정과 맞는지 staging에서 확인해야 한다.",
+      "published": "2026-10-14",
+      "sources": [
+        "https://github.com/rook/rook/releases/tag/v1.20.9",
+        "https://github.com/rook/rook/releases/tag/v1.19.12"
+      ],
+      "summary": "Rook v1.20.9와 v1.19.12는 Ceph operator patch release다. v1.20.9는 mon connection의 secure msgr2 mode 강제와 purely numeric topology value reject를 포함하고, v1.19.12는 object lifecycle notification event와 OSD upgrade wait 관련 fix를 포함한다.",
+      "tags": [
+        "kubernetes",
+        "release",
+        "security",
+        "storage"
+      ],
+      "title": "Rook v1.20.9 / v1.19.12",
+      "url": "https://github.com/rook/rook/releases/tag/v1.20.9"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-13부터 2026-10-16까지의 CNCF 및 클라우드 네이티브 주요 프로젝트 release를 확인했고, Cilium, Helm, Argo CD, OpenTelemetry Collector, Rook의 운영 영향이 있는 항목을 정리했습니다.",
+      "sources": [
+        "https://github.com/cilium/cilium/releases",
+        "https://github.com/helm/helm/releases",
+        "https://github.com/argoproj/argo-cd/releases",
+        "https://github.com/open-telemetry/opentelemetry-collector/releases",
+        "https://github.com/rook/rook/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "최근 24~72시간 범위에서 HN RSS, 긱뉴스 공식 RSS, Reddit r/programming, r/MachineLearning, r/LocalLLaMA 공식 Atom feed를 확인했고, AI 모델·agent 보안·개발 도구·분산 시스템 관련 공개 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-16 08시대에 GitHub weekly Trending Top 10을 관측했고, 기존 소개 이력에 없는 Ghidra, billion-context, openGym을 선별했습니다. 이미 소개된 REA, AnyPS5, skills, HyperFrames, diagram-design, text-to-cad, SwiftUI-Agent-Skill은 상세 소개에서 제외했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 tool-agent robustness, mechanical verification, harness engineering, persistent memory, agentic retrieval 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.20576",
+        "https://arxiv.org/abs/2610.20573",
+        "https://arxiv.org/abs/2610.20344",
+        "https://arxiv.org/abs/2610.20022",
+        "https://arxiv.org/abs/2610.20293"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-16",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50107379",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1x6r9pz/introducing_muse_spark_open_the_most_capable_us/",
+        "https://news.hada.io/topic?id=35431"
+      ],
+      "tags": [
+        "llm",
+        "multimodal",
+        "open-source"
+      ],
+      "title": "Meta Muse Spark Open 공개",
+      "url": "https://research.meta.ai/blog/muse-spark-open"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50105647",
+        "https://news.hada.io/topic?id=35429"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "Goodfire: Neural networks are clean",
+      "url": "https://already-clean.goodfire.com/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50105648",
+        "https://news.hada.io/topic?id=35433"
+      ],
+      "tags": [
+        "inference",
+        "multimodal"
+      ],
+      "title": "Krea 3: editing at scale image model",
+      "url": "https://www.krea.ai/krea-3"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50101813",
+        "https://news.hada.io/topic?id=35432",
+        "https://news.hada.io/topic?id=35427"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "AdFection: targeted ads to zero-click spyware pipeline",
+      "url": "https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50106023",
+        "https://news.hada.io/topic?id=35437"
+      ],
+      "tags": [
+        "agent",
+        "reasoning"
+      ],
+      "title": "Jev meets the Trolley Problem",
+      "url": "https://zachlandes.com/trolley-problem/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x6fqck/how_stripe_uses_graph_search_and_state_machines/"
+      ],
+      "tags": [
+        "developer-tools",
+        "distributed-systems",
+        "storage"
+      ],
+      "title": "How Stripe uses graph search and state machines to auto-remediate a global database fleet",
+      "url": "https://www.reddit.com/r/programming/comments/1x6fqck/how_stripe_uses_graph_search_and_state_machines/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x6uhya/bipm_announces_the_end_of_leap_seconds/"
+      ],
+      "tags": [
+        "distributed-systems"
+      ],
+      "title": "BIPM announces the end of leap seconds",
+      "url": "https://www.reddit.com/r/programming/comments/1x6uhya/bipm_announces_the_end_of_leap_seconds/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x6tmjo/spring_boot_connection_pools_20_vs_2_idle/"
+      ],
+      "tags": [
+        "performance",
+        "storage"
+      ],
+      "title": "Spring Boot connection pools: 20 vs 2 idle PostgreSQL connections",
+      "url": "https://www.reddit.com/r/programming/comments/1x6tmjo/spring_boot_connection_pools_20_vs_2_idle/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1x6nl8m/nvidianvidianemotron35supervl120ba12b_model/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "multimodal"
+      ],
+      "title": "NVIDIA Nemotron 3.5 model family releases",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x6nl8m/nvidianvidianemotron35supervl120ba12b_model/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1x6w658/ternary_bonsai_2_2b_4b_and_9b_just_released_on/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "Ternary Bonsai 2 browser-local model release",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x6w658/ternary_bonsai_2_2b_4b_and_9b_just_released_on/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x5zd2m/remember_alphaxiv_their_new_research_agents_are/"
+      ],
+      "tags": [
+        "agent",
+        "governance",
+        "security"
+      ],
+      "title": "alphaXiv research agents privacy 논란",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x5zd2m/remember_alphaxiv_their_new_research_agents_are/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x64lbk/tracing_where_llm_slop_style_comes_from_in_the/"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "Tracing where LLM slop style comes from",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x64lbk/tracing_where_llm_slop_style_comes_from_in_the/"
+    }
+  ],
+  "generated_at": "2026-10-16T08:06:24+09:00",
+  "github_featured": [
+    "ranxianglei/billion-context",
+    "NationalSecurityAgency/ghidra",
+    "DuarteSantos8/openGym"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-15T08:12:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 183758
+      },
+      {
+        "rank": 2,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 28663
+      },
+      {
+        "rank": 3,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 11955
+      },
+      {
+        "rank": 4,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 4732
+      },
+      {
+        "rank": 5,
+        "repository": "EpicGames/raddebugger",
+        "weekly_stars": 857
+      },
+      {
+        "rank": 6,
+        "repository": "tester-army/e2e",
+        "weekly_stars": 4426
+      },
+      {
+        "rank": 7,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 3587
+      },
+      {
+        "rank": 8,
+        "repository": "cathrynlavery/diagram-design",
+        "weekly_stars": 9867
+      },
+      {
+        "rank": 9,
+        "repository": "twostraws/SwiftUI-Agent-Skill",
+        "weekly_stars": 911
+      },
+      {
+        "rank": 10,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 2173
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-16T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 214837
+      },
+      {
+        "rank": 2,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 28240
+      },
+      {
+        "rank": 3,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 12292
+      },
+      {
+        "rank": 4,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5123
+      },
+      {
+        "rank": 5,
+        "repository": "cathrynlavery/diagram-design",
+        "weekly_stars": 10706
+      },
+      {
+        "rank": 6,
+        "repository": "NationalSecurityAgency/ghidra",
+        "weekly_stars": 5613
+      },
+      {
+        "rank": 7,
+        "repository": "ranxianglei/billion-context",
+        "weekly_stars": 628
+      },
+      {
+        "rank": 8,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 1994
+      },
+      {
+        "rank": 9,
+        "repository": "twostraws/SwiftUI-Agent-Skill",
+        "weekly_stars": 930
+      },
+      {
+        "rank": 10,
+        "repository": "DuarteSantos8/openGym",
+        "weekly_stars": 5132
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "CIPR: Cross-Interface Policy Regularization for Tool Agents",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.20576"
+  },
+  "papers": [
+    {
+      "abstract_summary": "도구형 LLM agent는 학습 때 본 tool name과 schema에 강하게 묶일 수 있다. 이 논문은 action 이름 변경, notation 변경, 유사 도구 추가처럼 의미는 같지만 interface만 달라지는 변화가 agent 성능을 떨어뜨리는 문제를 분석하고, 이를 줄이기 위한 Cross-Interface Policy Regularization(CIPR)을 제안한다.",
+      "evidence": "full_text",
+      "findings": "BFCL 기반 agentic function calling 평가에서 held-out interface perturbation은 post-trained agent 정확도를 거의 25% 낮췄다. CIPR은 unchanged interface accuracy를 유지하면서 그 손실 중 10.5%를 회복했고, multi-interface training보다 세 가지 held-out perturbation group에서 더 robust했다. WebShop 평가에서는 action 이름 변경이 AgentLM7B reward를 78.9에서 5.5로 낮췄지만, self-distillation 후 synonym 이름 조건에서 76.0을 기록했다.",
+      "first_published": "2026-10-14",
+      "id": "arxiv:2610.20576",
+      "limitations": "평가는 저자들이 정의한 perturbation 유형과 benchmark에 맞춰져 있으므로, 실제 API ecosystem의 복잡한 schema evolution, permission boundary, tool documentation 품질을 모두 대표하지는 않는다. 또한 consistency objective가 도구 오용이나 unsafe action을 직접 막는 보안 장치는 아니다.",
+      "method": "CIPR은 action 이름을 정보량 낮은 identifier로 치환하고, 같은 training sample을 두 interface 아래에서 제시한다. 두 interface에서 equivalent action을 구조적으로 맞춘 뒤, action distribution 사이의 KL divergence를 줄여 policy가 표면적 interface보다 underlying task에 일관되게 반응하도록 학습한다. 저자들은 supervised post-training과 RL post-training 양쪽에서 이 objective를 평가했다.",
+      "practical_value": "도구 호출 agent를 운영하는 팀은 tool contract가 바뀌어도 policy가 의미 기반으로 동작하는지 별도 robustness test를 만들어야 한다. CIPR은 interface randomization만 늘리는 것보다 action-level consistency를 직접 정규화하는 실용적인 학습 기준을 제시한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.20576",
+        "https://arxiv.org/pdf/2610.20576"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "performance",
+        "tool-use"
+      ],
+      "title": "One Task, Many Interfaces: Simple Cross-Interface Consistency Training Improves LLM Agent Robustness",
+      "topics": [
+        "tool agents",
+        "interface robustness",
+        "policy regularization",
+        "function calling"
+      ],
+      "url": "https://arxiv.org/abs/2610.20576"
+    },
+    {
+      "abstract_summary": "Agentic coding assistant가 수학 문장을 Lean theorem으로 바꿀 때, theorem이 kernel에서 증명 가능하더라도 원문과 의미가 맞지 않을 수 있다. 이 논문은 LLM judge만으로 faithfulness를 판단하는 방식의 한계를 지적하고, numerical check와 vacuity check를 결합한 검증 절차를 제안한다.",
+      "evidence": "full_text",
+      "findings": "세 개의 labeled dataset에서 이 방법은 비교된 방법 중 accepted-error rate가 가장 낮았다. 표에 따르면 단순 LLM judge나 모든 statement를 correct로 간주하는 baseline은 incorrect statement를 더 많이 통과시켰고, mechanical check를 결합한 방법은 LLM judge가 놓치는 오류를 찾아냈다. expert review는 기존 dataset 자체의 translation 및 source defect도 드러냈다.",
+      "first_published": "2026-10-14",
+      "id": "arxiv:2610.20573",
+      "limitations": "Numerical check는 특수함수와 domain 조건을 Python 평가로 옮길 수 있는 경우에 강하고, 모든 수학 statement에 일반화되는 완전한 의미 검증은 아니다. Human gating도 남아 있어 완전 자동 formal library construction이라기보다 expert review 비용을 줄이는 pipeline에 가깝다.",
+      "method": "저자들은 Extract-Verify-Proof pipeline을 구성해 NIST Digital Library of Mathematical Functions 일부를 Formalized Library of Mathematical Functions(FLMF)로 구축했다. 검증 단계에서는 LLM 기반 semantic review에 더해 mpmathx 기반 numerical evaluation과 hypothesis가 공허하게 참이 되는지 확인하는 vacuity check를 사용한다. 각 항목은 gate를 통과하거나 실패 이유가 기록되어야 한다.",
+      "practical_value": "Agent가 생성한 formal artifact를 신뢰하려면 'LLM이 맞다고 판단했다'보다 checkable feedback이 필요하다. 이 연구는 autoformalization, code proof, symbolic computation에서 LLM judge와 deterministic verification을 결합하는 현실적인 운영 패턴을 보여준다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.20573",
+        "https://arxiv.org/pdf/2610.20573"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "Beyond LLM Judge: Mechanical Verification for Agentic Autoformalization",
+      "topics": [
+        "autoformalization",
+        "mechanical verification",
+        "Lean",
+        "LLM judge"
+      ],
+      "url": "https://arxiv.org/abs/2610.20573"
+    },
+    {
+      "abstract_summary": "Coding agent 성능은 모델 자체뿐 아니라 prompt, tools, memory, control logic으로 구성된 harness에 크게 의존한다. 기존 benchmark는 고정 harness 아래의 task success를 주로 측정했지만, Doc2Harness는 모델이 harness를 직접 설계하고 구현하는 능력을 별도의 장기 engineering 문제로 평가한다.",
+      "evidence": "full_text",
+      "findings": "논문은 328개 test case에서 19개 frontier model을 평가했고, 각 model마다 세 개 independent build를 실행했다. GPT-6 Astra가 53.05%로 가장 높은 pass rate를 기록했고, 가장 낮은 모델은 27.44%에 머물러 약 26 point 차이가 났다. category별 rank는 최대 16위까지 바뀌어 단일 SWE 점수로 harness engineering 능력을 대체하기 어렵다는 점을 보였다.",
+      "first_published": "2026-10-14",
+      "id": "arxiv:2610.20344",
+      "limitations": "Doc2Harness는 deterministic benchmark를 지향하지만, candidate harness가 특정 test scenario와 container 환경에 맞춰지는 위험이 남아 있다. 또한 실제 조직의 agent platform에서는 보안 정책, plugin lifecycle, 사용자별 환경 차이가 더 커서 pass rate가 그대로 운영 성능을 뜻하지 않는다.",
+      "method": "Stage 1에서 build model은 fixed builder harness 안에서 interface-only contract skeleton과 development document를 받고, isolated container 안에 candidate harness를 만든다. Stage 2에서는 frozen candidate harness를 test case별 container에서 실행해 한 세션 전체가 요구 기능을 만족하는지 측정한다. positive controls는 기능이 실제로 실행되지 않았는데 pass하는 vacuous pass를 막기 위해 추가되었다.",
+      "practical_value": "Agent platform을 만드는 팀은 모델 선택뿐 아니라 harness를 누가 어떻게 설계할 수 있는지 평가해야 한다. Doc2Harness는 self-improving agent와 agent runtime 자동화 논의를 실제 build artifact와 test session으로 끌어내리는 기준점을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.20344",
+        "https://arxiv.org/pdf/2610.20344"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "evaluation",
+        "harness"
+      ],
+      "title": "Doc2Harness: Benchmarking LLMs on Long-Horizon Harness Engineering of Coding Agents",
+      "topics": [
+        "agent harness",
+        "coding agents",
+        "benchmark",
+        "long-horizon engineering"
+      ],
+      "url": "https://arxiv.org/abs/2610.20344"
+    },
+    {
+      "abstract_summary": "Persistent assistant는 사용자가 누구인지에 대한 personal memory와 어떻게 행동해야 하는지에 대한 procedural memory를 함께 유지해야 한다. 이 논문은 두 기억을 별도로 잘 저장하는 것만으로는 충분하지 않고, 사용자 조건에 따라 어떤 절차가 언제 적용되는지까지 함께 보존해야 한다고 주장한다.",
+      "evidence": "full_text",
+      "findings": "실험에서 dual-store baseline은 single-type dependency task보다 interdependent dependency task에서 completion이 84.6%에서 77.9%로 떨어졌다. relation-related failure의 비율은 early session 59.8%에서 late session 72.9%로 증가해, 시간이 지날수록 기억 간 관계 유지가 더 어려워짐을 보였다. PRAXIS MEM은 overall Session Success Rate 40.78%를 기록해 Claude Code native memory의 20.60%보다 높았다.",
+      "first_published": "2026-10-14",
+      "id": "arxiv:2610.20022",
+      "limitations": "Benchmark가 harness 기반 personal assistance trajectory를 합성·검증해 구성한 것이므로 실제 사용자의 불완전한 피드백, privacy 제약, UI confirmation pattern을 모두 반영하지는 않는다. privileged joint-state supervision을 사용하는 학습 조건도 일반 제품 환경에서 항상 얻기 어렵다.",
+      "method": "저자들은 daily-life와 work trajectory를 포함한 harness 기반 benchmark PRAXIS MEMBENCH를 만들었다. 각 persona trajectory는 session별로 누적되며, 후속 task는 personal memory, procedural memory, 그리고 둘 사이의 association에 의존한다. 제안 방법 PRAXIS MEM은 canonical joint-state supervision, location-aware GRPO, dynamic residual-routed OPSD로 memory content와 organization을 memory manager에 내재화한다.",
+      "practical_value": "개인화 agent memory 설계에서는 '사용자 선호'와 '절차 skill'을 독립 store로 나누는 것만으로 부족하다. 절차가 어떤 사용자 상태와 연결되어 있는지, 그 연결이 시간이 지나며 어떻게 바뀌는지를 명시적으로 관리해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.20022",
+        "https://arxiv.org/pdf/2610.20022"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness",
+        "memory"
+      ],
+      "title": "Memorizing Who, Knowing How: Benchmarking Personal and Procedural Memory for Persistent Assistants",
+      "topics": [
+        "persistent assistants",
+        "personal memory",
+        "procedural memory",
+        "harness benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2610.20022"
+    },
+    {
+      "abstract_summary": "LLM 기반 retrieval system은 한 번의 입력에서 여러 query rewrite나 retrieval action을 동시에 만들지만, downstream system은 그 action set 전체에 대한 하나의 보상만 제공하는 경우가 많다. CASI는 이 set-level reward를 action별 학습 신호로 나누기 위한 counterfactual credit assignment 방법이다.",
+      "evidence": "full_text",
+      "findings": "5-action sponsored-search 설정에서 1,200 request의 exhaustive auction replay는 action 간 coalition dependence가 크다는 것을 보였다. Training-time evaluator에서 CASI는 replay-defined Shapley reference와 가장 높은 median cosine similarity를 기록했지만, sensitivity backend에서는 Singleton을 넘지 못했다. 다섯 번의 independent training run에서 CASI-trained policy는 held-out auction-replay set value를 높였고, 10% traffic의 7일 production A/B test에서 primary advertiser-value metric이 3.51% 상승했다.",
+      "first_published": "2026-10-14",
+      "id": "arxiv:2610.20293",
+      "limitations": "CASI는 replay 가능한 snapshot과 subset evaluation이 가능한 system에서 가장 잘 맞는다. 추가 coalition evaluation은 비용을 만들고, sensitivity backend에서 Singleton을 넘지 못한 결과처럼 evaluator가 바뀌면 credit 품질이 달라질 수 있다. 광고 검색의 business metric 상승도 모든 retrieval domain에 바로 일반화되지는 않는다.",
+      "method": "CASI는 generate와 retrieve를 한 번 수행한 뒤 replay 가능한 snapshot component를 고정하고, 같은 조건에서 alternative subset을 평가한다. 이렇게 만든 marginal value를 Shapley aggregation으로 action-level credit으로 바꾸고, bounded zero-sum advantage shaping을 통해 policy optimization에 반영한다. 논문은 singleton, leave-one-out, full-set endpoint만으로는 m≥4에서 Shapley allocation을 일반적으로 결정할 수 없다고 분석한다.",
+      "practical_value": "Agentic retrieval을 RL로 최적화하는 팀은 여러 retrieval action에 하나의 reward를 broadcast하는 방식이 충분한지 점검해야 한다. CASI는 query set 내부의 중복, 경쟁, 보완 관계를 학습 신호로 바꾸는 실험 가능한 방법을 제시한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.20293",
+        "https://arxiv.org/pdf/2610.20293"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "performance",
+        "retrieval"
+      ],
+      "title": "CASI: Credit Assignment via Set Intervention for Agentic Retrieval",
+      "topics": [
+        "agentic retrieval",
+        "credit assignment",
+        "Shapley attribution",
+        "reinforcement learning"
+      ],
+      "url": "https://arxiv.org/abs/2610.20293"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "Security advisory 확인 · JDK 25·Gradle·native build dependency 필요",
+      "novelty": "new_entry",
+      "rank": 6,
+      "repository": "NationalSecurityAgency/ghidra",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/NationalSecurityAgency/ghidra"
+      ],
+      "summary": "Software Reverse Engineering framework",
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "security"
+      ],
+      "url": "https://github.com/NationalSecurityAgency/ghidra",
+      "use_case": "악성코드, firmware, compiled binary를 disassembly, decompilation, graphing, scripting으로 분석하고 자동화 script와 extension을 붙일 수 있다.",
+      "why_now": "weekly Trending 6위 · 5,613 stars this week"
+    },
+    {
+      "caution": "Model API proxy 경로 신뢰성 · cache TTL·model switch·요약 품질 검증 필요",
+      "novelty": "new_entry",
+      "rank": 7,
+      "repository": "ranxianglei/billion-context",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/ranxianglei/billion-context"
+      ],
+      "summary": "Coding agent context-compression proxy",
+      "tags": [
+        "coding-agent",
+        "context-engineering",
+        "memory",
+        "performance"
+      ],
+      "url": "https://github.com/ranxianglei/billion-context",
+      "use_case": "Claude Code, Codex, Gemini CLI 등 agent의 model API 앞에 proxy를 두고 대화 구간을 incremental summary로 접어 긴 coding session을 유지한다.",
+      "why_now": "weekly Trending 7위 · 628 stars this week · 5× token reduction claim"
+    },
+    {
+      "caution": "AGPL-3.0 license · 개인 건강 데이터 self-hosting backup·보안 운영 책임",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "DuarteSantos8/openGym",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/DuarteSantos8/openGym"
+      ],
+      "summary": "Self-hosted workout tracker PWA",
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/DuarteSantos8/openGym",
+      "use_case": "Docker Compose로 자체 호스팅해 workout plan, guided workout, set log, body-weight 기록을 passkey login과 offline PWA 형태로 관리한다.",
+      "why_now": "weekly Trending 10위 · 5,132 stars this week"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 Cross-Interface Policy Regularization(CIPR)입니다. 이 논문은 도구형 LLM agent가 특정 tool name, action schema, notation에 맞춰 post-training되면, 의미가 같은 interface 변화에도 정확도가 크게 흔들린다는 문제를 다룹니다. 실제 배포에서는 API 이름, argument schema, 비용·지연 속성, 유사 도구 구성이 계속 바뀌기 때문에, agent의 역량을 한 interface 표면에 묶어두는 학습은 운영 robustness를 약하게 만듭니다.",
+    "저자들은 같은 training sample을 두 interface로 보여주고, equivalent action을 구조적으로 맞춘 뒤 action distribution 사이의 KL divergence를 줄이는 self-supervised objective를 제안했습니다. BFCL 기반 agentic function calling 평가에서 standard post-training agent는 held-out interface perturbation에서 정확도가 거의 25% 떨어졌고, CIPR은 원래 interface 정확도를 유지하면서 그 손실 중 10.5%를 회복했습니다. WebShop에서도 action 이름이 바뀌면 released model reward가 78.9에서 5.5로 무너졌지만, self-distillation 후에는 synonym 이름 조건에서 76.0을 기록했습니다.",
+    "이 결과는 agent 안정성을 모델 지능만의 문제가 아니라 interface contract와 policy regularization의 문제로 보게 합니다. 오늘의 다른 논문도 비슷한 방향을 보입니다. Doc2Harness는 agent harness 자체를 장기 engineering 대상으로 평가하고, PRAXIS MEMBENCH는 개인 기억과 절차 기억을 분리 저장하는 방식의 한계를 드러내며, CASI는 여러 retrieval action이 하나의 보상만 받을 때 credit을 어떻게 나눌지 다룹니다. 다만 CIPR의 수치는 저자들이 설계한 perturbation과 benchmark 조건에서 나온 결과이므로, 실제 production tool ecosystem에서는 도구 문서 품질, permission model, runtime audit과 함께 검증해야 합니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "billion-context가 Top10에 진입했습니다. Coding agent 장기 세션용 context-compression proxy입니다.",
+        "url": "https://github.com/ranxianglei/billion-context"
+      },
+      {
+        "section": "papers",
+        "text": "Doc2Harness는 agent harness engineering 자체를 328개 test case로 평가하는 benchmark를 제안합니다.",
+        "url": "https://arxiv.org/abs/2610.20344"
+      },
+      {
+        "section": "cncf",
+        "text": "Cilium 1.20/1.19/1.18 patch line이 공개됐습니다. Endpoint restore와 cloud metadata path 점검이 필요합니다.",
+        "url": "https://github.com/cilium/cilium/releases/tag/v1.20.3"
+      }
+    ],
+    "spotlight": [
+      "CIPR는 tool name과 schema가 바뀌면 흔들리는 LLM agent를 같은 task의 여러 interface에 일관되게 반응하도록 regularize합니다. BFCL 기반 평가에서 held-out interface perturbation으로 생긴 손실 중 10.5%를 회복했지만, 실제 운영에서는 permission·audit·문서 품질 검증과 함께 봐야 합니다."
+    ]
+  }
+}
