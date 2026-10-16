@@ -1,0 +1,571 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "Istio service mesh 운영자는 control plane과 data plane의 minor line을 확인한 뒤, 각 line의 release note와 proxy compatibility를 staging에서 검증해야 한다.",
+      "published": "2026-10-16",
+      "sources": [
+        "https://github.com/istio/istio/releases/tag/1.31.2",
+        "https://github.com/istio/istio/releases/tag/1.30.6",
+        "https://github.com/istio/istio/releases/tag/1.29.9"
+      ],
+      "summary": "Istio는 1.31.2, 1.30.6, 1.29.9 patch release를 공개했다. GitHub release는 각 line의 artifact와 release note로 연결되며, supported minor line별 patch consumption을 분리해 확인할 수 있게 한다.",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "release"
+      ],
+      "title": "Istio 1.31.2 / 1.30.6 / 1.29.9",
+      "url": "https://github.com/istio/istio/releases/tag/1.31.2"
+    },
+    {
+      "category": "release",
+      "impact": "GPU와 device allocation을 Kubernetes에서 실험하는 팀은 Headlamp UI가 DRA resource를 어떻게 노출하는지 확인하고, Helm chart update를 test cluster에서 검증할 수 있다.",
+      "published": "2026-10-15",
+      "sources": [
+        "https://github.com/kubernetes-sigs/headlamp/releases/tag/v0.46.0",
+        "https://github.com/kubernetes-sigs/headlamp/releases/tag/headlamp-helm-0.46.0"
+      ],
+      "summary": "Headlamp 0.46.0은 Kubernetes Dynamic Resource Allocation alpha support를 추가해 device class, GPU claim, claim template을 UI에서 볼 수 있게 했다. headlamp-helm-0.46.0도 2026-10-16에 공개되어 Helm 설치 경로를 함께 갱신했다.",
+      "tags": [
+        "developer-tools",
+        "kubernetes",
+        "release"
+      ],
+      "title": "Headlamp v0.46.0 / headlamp-helm-0.46.0",
+      "url": "https://github.com/kubernetes-sigs/headlamp/releases/tag/v0.46.0"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-14부터 2026-10-17까지 CNCF 및 Kubernetes ecosystem release를 확인했고, 전일 이미 다룬 Cilium, Helm, Argo CD, OpenTelemetry, Rook 변경은 반복하지 않고 새로 확인된 Istio patch line과 Headlamp 0.46.0을 정리했습니다.",
+      "sources": [
+        "https://github.com/istio/istio/releases",
+        "https://github.com/kubernetes-sigs/headlamp/releases",
+        "https://github.com/cilium/cilium/releases",
+        "https://github.com/helm/helm/releases",
+        "https://github.com/argoproj/argo-cd/releases"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "최근 24~72시간 범위에서 HN RSS, 긱뉴스 공식 RSS, Reddit r/programming, r/MachineLearning, r/LocalLLaMA, r/kubernetes 공식 Atom feed를 확인했고, AI agent, 보안, 개발 도구, 데이터·클러스터 운영 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-17 08시대 GitHub weekly Trending Top 10을 관측했고, 기존 소개 이력에 없는 ArtCraft와 claude-plugins-official 2개를 선별했습니다. 나머지 Top10 중 REA, AnyPS5, diagram-design, HyperFrames, skills, Ghidra, context-mode, billion-context는 이미 소개 이력에 있어 상세 소개에서 제외했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 computer-use agent, MCP security, agent memory evaluation, speculative tool-use, DeepSearch retrieval 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22234",
+        "https://arxiv.org/abs/2610.22301",
+        "https://arxiv.org/abs/2610.22209",
+        "https://arxiv.org/abs/2610.21463",
+        "https://arxiv.org/abs/2610.21512"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-17",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50122800",
+        "https://news.hada.io/topic?id=35489"
+      ],
+      "tags": [
+        "llm",
+        "reasoning",
+        "security"
+      ],
+      "title": "Claude reveals ECDSA curve origins",
+      "url": "https://www.anthropic.com/research/ecdsa-curve-origins"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50122951",
+        "https://news.hada.io/topic?id=35495"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "evaluation"
+      ],
+      "title": "How the Claude Code team does code review",
+      "url": "https://claude.dev/blog/solving-code-review-at-anthropic/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35488"
+      ],
+      "tags": [
+        "developer-tools",
+        "evaluation",
+        "storage"
+      ],
+      "title": "Postgres 19 출시 지연: AI review가 사람이 고칠 수 있는 양보다 많은 bug 발견",
+      "url": "https://news.hada.io/topic?id=35488"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35491"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "Big Fish: OpenBSD의 37년 된 kernel bug 악용",
+      "url": "https://news.hada.io/topic?id=35491"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50122431",
+        "https://news.hada.io/topic?id=35496"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "llama.cpp on a jailbroken PS5",
+      "url": "https://github.com/cobanov/PS5LM"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50123580"
+      ],
+      "tags": [
+        "inference",
+        "multimodal"
+      ],
+      "title": "FLUX 3 Image Klein",
+      "url": "https://bfl.ai/blog/flux-3-image-klein"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1x7g3zq/china_proposes_export_controls_on_23_ai/"
+      ],
+      "tags": [
+        "agent",
+        "governance",
+        "llm"
+      ],
+      "title": "China proposes export controls on AI technologies including large models and agents",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x7g3zq/china_proposes_export_controls_on_23_ai/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1x7polk/research_2788_tokenss_on_a_single_rtx_5090_with_a/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "Diffusion LLM on RTX 5090: 2,788 tokens/s ORL research post",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x7polk/research_2788_tokenss_on_a_single_rtx_5090_with_a/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1x7cc2z/tencenthymemory30ba3b_hugging_face/"
+      ],
+      "tags": [
+        "llm",
+        "memory"
+      ],
+      "title": "tencent Hy-Memory-30B-A3B 공개",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x7cc2z/tencenthymemory30ba3b_hugging_face/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x71ti7/learned_index_lab_replacing_btrees_with_streaming/"
+      ],
+      "tags": [
+        "performance",
+        "storage"
+      ],
+      "title": "Learned Index Lab: B-Tree를 streaming linear model로 대체",
+      "url": "https://www.reddit.com/r/programming/comments/1x71ti7/learned_index_lab_replacing_btrees_with_streaming/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1x710ui/what_should_a_readonly_debugging_bot_be_able_to/"
+      ],
+      "tags": [
+        "kubernetes",
+        "observability",
+        "security"
+      ],
+      "title": "Read-only debugging bot이 Kubernetes cluster에서 봐야 할 것",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1x710ui/what_should_a_readonly_debugging_bot_be_able_to/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1x71o4o/kubernetessigsheadlamp_0460_released/"
+      ],
+      "tags": [
+        "developer-tools",
+        "kubernetes",
+        "release"
+      ],
+      "title": "kubernetes-sigs/headlamp 0.46.0 released",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1x71o4o/kubernetessigsheadlamp_0460_released/"
+    }
+  ],
+  "generated_at": "2026-10-17T08:07:04+09:00",
+  "github_featured": [
+    "storytold/artcraft",
+    "anthropics/claude-plugins-official"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-16T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 214837
+      },
+      {
+        "rank": 2,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 28240
+      },
+      {
+        "rank": 3,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 12292
+      },
+      {
+        "rank": 4,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5123
+      },
+      {
+        "rank": 5,
+        "repository": "cathrynlavery/diagram-design",
+        "weekly_stars": 10706
+      },
+      {
+        "rank": 6,
+        "repository": "NationalSecurityAgency/ghidra",
+        "weekly_stars": 5613
+      },
+      {
+        "rank": 7,
+        "repository": "ranxianglei/billion-context",
+        "weekly_stars": 628
+      },
+      {
+        "rank": 8,
+        "repository": "earthtojake/text-to-cad",
+        "weekly_stars": 1994
+      },
+      {
+        "rank": 9,
+        "repository": "twostraws/SwiftUI-Agent-Skill",
+        "weekly_stars": 930
+      },
+      {
+        "rank": 10,
+        "repository": "DuarteSantos8/openGym",
+        "weekly_stars": 5132
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-17T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 239477
+      },
+      {
+        "rank": 2,
+        "repository": "storytold/artcraft",
+        "weekly_stars": 22319
+      },
+      {
+        "rank": 3,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 25174
+      },
+      {
+        "rank": 4,
+        "repository": "cathrynlavery/diagram-design",
+        "weekly_stars": 10237
+      },
+      {
+        "rank": 5,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5318
+      },
+      {
+        "rank": 6,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 12147
+      },
+      {
+        "rank": 7,
+        "repository": "NationalSecurityAgency/ghidra",
+        "weekly_stars": 6614
+      },
+      {
+        "rank": 8,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 4038
+      },
+      {
+        "rank": 9,
+        "repository": "ranxianglei/billion-context",
+        "weekly_stars": 659
+      },
+      {
+        "rank": 10,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 2217
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "OS-Helix: Native GUI/Code Hybrid Computer-Use Policy",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.22234"
+  },
+  "papers": [
+    {
+      "abstract_summary": "실제 desktop automation은 GUI 화면 이해와 code execution이 모두 필요하지만, 기존 GUI agent에 shell이나 code tool을 붙이는 것만으로는 coordination이 생기지 않는다. OS-Helix는 GUI action과 code execution을 하나의 action space로 묶고, 어느 방식으로 state를 바꿀지 모델 내부에서 학습하는 native hybrid computer-use agent를 제안한다.",
+      "evidence": "full_text",
+      "findings": "OSWorld-Verified에서 OS-Helix-27B와 OS-Helix-35B-A3B는 matched Qwen3.5 hybrid baseline보다 각각 35.0%, 33.7% 상대 개선을 보였다. OS-Helix-27B-RL은 추가로 42.9% 개선되어 66.44% success에 도달했고, WindowsAgentArena에서도 cross-platform transfer를 보였다고 보고한다. 저자들은 ablation으로 GUI/code coordination, verifiable supervision, step-balanced optimization이 각각 기여한다는 근거를 제시했다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.22234",
+      "limitations": "평가는 저자들이 구축한 Ubuntu 중심 환경과 evaluator pipeline에 의존한다. 실제 enterprise desktop에서는 권한 정책, 민감 파일 접근, GUI 변화, 실패 복구, 사용자 confirmation이 더 복잡하며, unified action space가 security boundary를 자동으로 보장하지는 않는다.",
+      "method": "저자들은 application-artifact composition으로 desktop application과 실제 file artifact를 조합해 executable Ubuntu state를 만들었다. instruction 생성과 evaluator 생성을 분리해 최종 상태가 GUI, code, hybrid 중 어떤 방식으로 도달했든 검증되도록 했고, filtered hybrid data로 SFT를 수행한 뒤 live desktop environment에서 online RL을 적용했다. RL에는 긴 code action이 raw token 수 때문에 optimization을 지배하지 않도록 action step 단위로 중요도를 모으는 Step-balanced GSPO를 사용했다.",
+      "practical_value": "Computer-use agent를 설계하는 팀은 tool을 나열하는 것보다 modality routing을 학습하고 검증 가능한 task state를 만드는 것이 중요하다는 기준을 얻을 수 있다. GUI 자동화와 code execution을 함께 쓰는 제품은 OS-Helix처럼 evaluator와 action granularity까지 함께 설계해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22234",
+        "https://arxiv.org/pdf/2610.22234"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "multimodal",
+        "performance",
+        "tool-use"
+      ],
+      "title": "OS-Helix: Unifying GUI Interaction and Code Execution in Native Computer-Using Agents",
+      "topics": [
+        "computer-use agents",
+        "GUI/code coordination",
+        "reinforcement learning",
+        "desktop automation"
+      ],
+      "url": "https://arxiv.org/abs/2610.22234"
+    },
+    {
+      "abstract_summary": "MCP server는 tool name, description, argument schema로 기능을 선언하지만, local deployment에서 tool call 승인은 종종 server process의 넓은 filesystem permission으로 이어진다. 이 논문은 declared contract 밖의 host file을 attacker-steered argument로 읽게 만드는 filesystem capability laundering을 정의하고 대규모로 측정한다.",
+      "evidence": "full_text",
+      "findings": "21,097개 MCP server와 9개 registry를 조사한 결과, triage된 4,806개 server 중 787개(16.4%)가 non-filesystem functional classification임에도 filesystem capability를 보였다. Dynamic three-case validation은 tested sandbox policy 아래 150개 vulnerable instance를 확인했고, coordinated disclosure는 Anthropic Git MCP Server의 두 CVE를 포함해 13개 security advisory로 이어졌다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.22301",
+      "limitations": "동적 검증은 저자들이 선택한 sandbox policy, fixture, tool invocation path에 의존한다. 모든 MCP ecosystem 배포 방식과 client approval UI를 포괄하지는 않으며, 정적 추론으로 least-privilege boundary를 정하는 과정에도 false positive와 false negative 가능성이 있다.",
+      "method": "저자들은 MCP-FSD를 설계해 여러 registry의 MCP server를 cataloging하고, per-tool least-privilege boundary를 추론한 뒤, 그 boundary 밖에 credential fixture를 심어 exploitability와 sandbox containment를 동적 실행으로 확인했다. 분석은 server-category screening, per-tool contract analysis, bypass 가능한 path-validation check의 세 층으로 구성되며, static filter와 paired dynamic execution을 연결한다.",
+      "practical_value": "MCP server를 도입하는 조직은 tool description만 신뢰하지 말고 실제 process permission과 argument-controlled filesystem effect를 검사해야 한다. 승인 UI는 tool call 단위가 아니라 server capability와 path boundary를 함께 보여주도록 설계할 필요가 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22301",
+        "https://arxiv.org/pdf/2610.22301"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "mcp",
+        "security",
+        "tool-use"
+      ],
+      "title": "My Credentials, Please: Detecting Filesystem Capability Laundering in MCP Servers at Scale",
+      "topics": [
+        "MCP security",
+        "filesystem sandboxing",
+        "tool-use security",
+        "dynamic validation"
+      ],
+      "url": "https://arxiv.org/abs/2610.22301"
+    },
+    {
+      "abstract_summary": "Agent memory benchmark는 흔히 downstream question answering accuracy로 memory 품질을 평가한다. 이 논문은 그 방식이 memory correctness, retrieval quality, generation ability를 뒤섞어 잘못된 성공과 실패를 만들 수 있다고 지적하고, memory store 자체를 단계별로 검사하는 intrinsic evaluation을 제안한다.",
+      "evidence": "full_text",
+      "findings": "대표 memory system에 FEB-30을 적용했을 때 intrinsic evaluation과 extrinsic QA evaluation은 평균 16 percentage point 차이를 보였고, trajectory의 44%가 의미 있는 divergence threshold를 넘었다. Diagnostic decomposition에서는 create, update, reinforce, supersede 같은 memory operation classification이 20%만 정확했으며, 이 실패는 downstream QA만 보면 보이지 않았다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.22209",
+      "limitations": "FEB-30은 30개 trajectory로 구성된 진단형 benchmark이므로 실제 장기 사용자 history의 규모와 noise를 모두 대표하지는 않는다. 또한 memory store를 직접 검사하려면 시스템 내부 representation을 어느 정도 표준화하거나 adapter를 만들어야 한다.",
+      "method": "저자들은 known fact trajectory에서 document를 생성하는 paradigm inversion 방식으로 FEB-30을 만들었다. 30개 fact-evolution trajectory는 6개 diagnostic category와 3개 difficulty level을 포함하며, 문서, 이메일, 대화 등 multi-author artifact를 통해 사실이 어떻게 생성, 갱신, 강화, 대체되는지 deterministic ground truth를 제공한다. 평가자는 각 ingestion step 뒤의 memory store를 직접 ground truth와 비교한다.",
+      "practical_value": "Agent memory를 운영하는 팀은 답변이 맞았는지만 볼 것이 아니라 memory write/update/delete 상태를 component test처럼 검사해야 한다. 이 접근은 retrieval 실패와 memory 저장 실패를 분리해 debugging 비용을 줄이는 데 유용하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22209",
+        "https://arxiv.org/pdf/2610.22209"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory"
+      ],
+      "title": "Beyond Downstream QA: Rethinking How We Evaluate Agent Memory",
+      "topics": [
+        "agent memory",
+        "intrinsic evaluation",
+        "fact evolution",
+        "benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2610.22209"
+    },
+    {
+      "abstract_summary": "도구형 agent는 긴 tool-call trajectory를 만들며, 현재 방식은 강한 모델이 모든 step을 token-by-token으로 생성하는 경우가 많다. SpecAgent는 약한 모델이 read-only tool call을 실제 관측에 근거해 draft하고, 강한 모델은 각 step을 직접 쓰는 대신 여러 step을 한 번에 검토하는 reviewer가 되도록 바꾼다.",
+      "evidence": "full_text",
+      "findings": "τ2-Bench에서 SpecAgent는 strong-only success rate와 1 point 이내에 머물면서 memory traffic과 wall time을 대략 절반으로 줄였다. AutomationBench와 VitaBench에서는 weak-strong quality gap의 44~75%를 회복했고, MCP-Atlas edge-cloud deployment에서는 세 cloud strong model에서 gap의 53~75%를 닫으면서 strong model 생성 token을 최대 절반 이하로 낮췄다. 저자들은 saving이 FLOPs 감소보다 decoding memory traffic 감소에서 온다고 분석한다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.21463",
+      "limitations": "SpecAgent는 read-only action과 write action을 명확히 구분하고, draft를 semantic verification할 수 있는 환경에서 가장 잘 작동한다. Acceptance rate가 낮아지거나 tool latency가 지배적인 task에서는 비용 이점이 줄어들 수 있으며, strong model review가 안전성 보증을 의미하지는 않는다.",
+      "method": "약한 모델은 환경을 바꾸지 않는 read-only call을 실행하면서 segment를 작성하고, 처음으로 상태를 바꿀 action은 보류한다. 강한 모델은 history와 draft segment를 single prefill pass로 읽고, semantically valid한 longest prefix를 commit하며 첫 rejected step만 repair한다. 이 구조는 strong model의 autoregressive decoding을 짧은 verdict와 occasional repair로 제한한다.",
+      "practical_value": "긴 tool trajectory를 처리하는 agent service는 강한 모델이 모든 step을 생성해야 한다는 가정을 재검토할 수 있다. 약한 모델의 grounded draft와 강한 모델의 segment-level verification을 분리하면 latency와 memory bandwidth 병목을 줄이는 설계가 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.21463",
+        "https://arxiv.org/pdf/2610.21463"
+      ],
+      "tags": [
+        "agent",
+        "inference",
+        "mcp",
+        "performance",
+        "tool-use"
+      ],
+      "title": "Trajectory-Level Speculation with Semantic Verification for Tool-Using Agents",
+      "topics": [
+        "tool-using agents",
+        "speculative execution",
+        "semantic verification",
+        "latency"
+      ],
+      "url": "https://arxiv.org/abs/2610.21463"
+    },
+    {
+      "abstract_summary": "DeepSearch agent는 reasoning과 web search를 반복해 복잡한 질문을 풀지만, 중간 query가 reasoning intent와 어긋나거나, 너무 넓거나, 중복되면 evidence coverage가 낮아지고 retrieval noise가 누적된다. QREF는 reasoning policy를 다시 학습하지 않고 query refinement와 evidence filtering을 붙이는 plug-and-play 개선이다.",
+      "evidence": "full_text",
+      "findings": "네 개의 challenging benchmark와 두 backbone agent에서 QREF는 WebSailor 평균 relative Pass@1을 33.55%, TongyiDeepResearch를 11.04% 개선했다. 원래 DeepSearch backbone과 비교해 RL-trained refiner는 discriminative retrieval anchor가 없는 query batch 비율을 95% 줄였고, SFT refiner보다 filter-based ineffective query ratio도 낮췄다. 저자들의 분석에서는 1,992개 query batch 중 47.04%가 하나 이상의 failure pattern을 포함했다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.21512",
+      "limitations": "QREF는 web search 환경과 filtering evaluator가 제공하는 signal에 의존한다. Query refinement가 더 좋아져도 검색 engine coverage나 페이지 접근 제한, source credibility 문제를 자동으로 해결하지는 않으며, benchmark별 search policy 차이도 결과에 영향을 줄 수 있다.",
+      "method": "Query Refiner는 현재 reasoning intent에 맞춰 search query를 다시 쓰고, 한 batch 안에서 서로 보완적인 coverage를 갖도록 조정한다. Evidence Filter는 현재 search batch와 reasoning objective 모두에 관련된 evidence만 남겨 distracting result를 줄인다. Refiner는 SFT로 초기화한 뒤 real-world web search environment interaction에서 얻은 reward로 RL 최적화했다.",
+      "practical_value": "Research agent를 만드는 팀은 최종 답변 정확도만이 아니라 중간 query batch의 intent alignment와 evidence quality를 측정해야 한다. QREF는 reasoning policy를 그대로 두고 retrieval interface를 개선하는 점진적 도입 경로를 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.21512",
+        "https://arxiv.org/pdf/2610.21512"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "performance",
+        "rag",
+        "retrieval"
+      ],
+      "title": "QREF: Improving DeepSearch Agents by Aligning Search with Reasoning via Query Refinement and Evidence Filtering",
+      "topics": [
+        "DeepSearch agents",
+        "query refinement",
+        "evidence filtering",
+        "retrieval"
+      ],
+      "url": "https://arxiv.org/abs/2610.21512"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "Media model provider 의존성 · asset licensing·출력물 provenance 검토 필요",
+      "novelty": "new_entry",
+      "rank": 2,
+      "repository": "storytold/artcraft",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/storytold/artcraft"
+      ],
+      "summary": "Interactive AI image·video creation IDE",
+      "tags": [
+        "developer-tools",
+        "multimodal",
+        "open-source"
+      ],
+      "url": "https://github.com/storytold/artcraft",
+      "use_case": "작가는 2D canvas, 3D scene blocking, character posing, image-to-video, model catalog를 조합해 prompt 탐색을 반복 가능한 시각 제작 workflow로 바꿀 수 있다.",
+      "why_now": "weekly Trending 2위 · 22,319 stars this week"
+    },
+    {
+      "caution": "Plugin trust boundary · MCP server·file access 포함 여부 설치 전 검토 필요",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "anthropics/claude-plugins-official",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/anthropics/claude-plugins-official"
+      ],
+      "summary": "Claude Code plugin marketplace directory",
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "mcp",
+        "security"
+      ],
+      "url": "https://github.com/anthropics/claude-plugins-official",
+      "use_case": "Claude Code 사용자는 공식 directory에서 internal plugin과 검수된 third-party plugin을 설치하고, command, agent, skill, MCP server 구성을 표준 구조로 배포할 수 있다.",
+      "why_now": "weekly Trending 10위 · 2,217 stars this week"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 OS-Helix입니다. 이 논문은 실제 desktop automation이 화면을 보고 클릭하는 GUI 작업만으로도, 파일과 스크립트를 다루는 code execution만으로도 충분하지 않다는 문제에서 출발합니다. 저자들은 단순히 GUI agent에 code tool을 붙이면 성능이 오히려 낮아질 수 있다고 보고, GUI와 code 사이의 routing을 prompt-level orchestration이 아니라 모델 내부 정책으로 학습해야 한다고 주장합니다.",
+    "OS-Helix는 GUI action과 code execution을 하나의 action space로 묶은 multimodal computer-using agent입니다. 학습 데이터는 desktop application과 실제 file artifact를 조합해 검증 가능한 Ubuntu state를 만들고, instruction 생성과 evaluator 생성을 분리해 solution modality와 무관하게 최종 상태를 확인하도록 구성했습니다. OSWorld-Verified에서 OS-Helix-27B와 OS-Helix-35B-A3B는 matched Qwen3.5 hybrid baseline보다 각각 35.0%, 33.7% 상대 개선을 보였고, OS-Helix-27B-RL은 42.9% 추가 개선으로 66.44% success에 도달했다고 보고합니다.",
+    "이 결과는 computer-use agent의 핵심 병목이 tool 목록의 유무가 아니라, 어떤 modality로 state를 바꿀지 학습된 정책과 검증 가능한 환경 데이터에 있음을 보여줍니다. 오늘 함께 본 SpecAgent는 강한 모델이 모든 step을 직접 생성하지 않고 약한 모델의 grounded draft를 검증하도록 바꿔 latency와 memory traffic을 줄이고, MCP-FSD는 MCP server의 filesystem capability laundering을 대규모로 측정합니다. 다만 OS-Helix의 수치는 저자들이 구성한 hybrid desktop task와 evaluator 조건에 기반하므로, 실제 업무 환경의 권한, 보안, 실패 복구 정책까지 자동으로 해결한다는 뜻은 아닙니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "papers",
+        "text": "MCP-FSD는 21,097개 MCP server를 조사해 filesystem capability laundering 위험을 측정했습니다.",
+        "url": "https://arxiv.org/abs/2610.22301"
+      },
+      {
+        "section": "github",
+        "text": "Claude Code 공식 plugin directory가 Top10에 진입했습니다. Plugin trust boundary 확인이 핵심입니다.",
+        "url": "https://github.com/anthropics/claude-plugins-official"
+      },
+      {
+        "section": "cncf",
+        "text": "Headlamp 0.46.0이 Kubernetes DRA alpha resource를 UI에서 노출하기 시작했습니다.",
+        "url": "https://github.com/kubernetes-sigs/headlamp/releases/tag/v0.46.0"
+      }
+    ],
+    "spotlight": [
+      "OS-Helix는 GUI click과 code execution을 별도 tool 조합이 아니라 하나의 학습된 computer-use policy로 통합합니다. OSWorld-Verified에서 matched Qwen3.5 hybrid baseline 대비 33.7~35.0% 상대 개선을 보고했지만, 실제 업무 환경에서는 권한·보안·복구 정책을 별도로 검증해야 합니다."
+    ]
+  }
+}
