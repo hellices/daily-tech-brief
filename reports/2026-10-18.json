@@ -1,0 +1,490 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-15부터 2026-10-18까지 주요 CNCF/Kubernetes ecosystem release를 재확인했지만, 전일 이미 다룬 Istio, Headlamp, Cilium, Helm, Argo CD 외에 새로 소개할 만한 중요한 변경은 확인하지 못했습니다.",
+      "sources": [
+        "https://github.com/istio/istio/releases",
+        "https://github.com/kubernetes-sigs/headlamp/releases",
+        "https://github.com/cilium/cilium/releases",
+        "https://github.com/helm/helm/releases",
+        "https://github.com/argoproj/argo-cd/releases"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "최근 24~72시간 범위에서 HN RSS, 긱뉴스 공식 RSS, Reddit r/programming, r/MachineLearning, r/LocalLLaMA, r/kubernetes 공식 Atom feed를 확인했고, AI 모델, agent 보안, supply chain, Kubernetes 운영 관련 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-18 08시대 GitHub weekly Trending Top 10을 관측했습니다. Top10의 모든 repository가 이미 소개 이력에 있어 신규 상세 소개는 없으며, snapshot만 보존했습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "arXiv API 일부 query가 429/503/timeout을 반환해 전날 저장된 최근 feed와 직접 PDF 접근을 함께 사용했습니다. 최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 computer-use escalation, agent guard security, memory, search agent 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22280",
+        "https://arxiv.org/abs/2610.22244",
+        "https://arxiv.org/abs/2610.22243",
+        "https://arxiv.org/abs/2610.21900",
+        "https://arxiv.org/abs/2610.22331"
+      ],
+      "status": "partial"
+    }
+  },
+  "date": "2026-10-18",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50129045",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1x8bb6b/deepseek_v41_flash_1017_now_leads_openweight/",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1x84po4/deepseekaideepseekv41flash1017_hugging_face/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "open-source"
+      ],
+      "title": "DeepSeek V4.1 Flash 1017 공개",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1x8gtvs/opencode_breached_rotate_keys_to_be_safe/"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "security"
+      ],
+      "title": "Opencode breach: key rotation 권고",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x8gtvs/opencode_breached_rotate_keys_to_be_safe/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x8eqt6/pythons_binary_wheels_and_supply_chain_attacks/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Python binary wheels and supply chain attacks",
+      "url": "https://www.reddit.com/r/programming/comments/1x8eqt6/pythons_binary_wheels_and_supply_chain_attacks/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35547"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "OpenAI, AI agent의 일탈 사례 4건 추가 공개",
+      "url": "https://news.hada.io/topic?id=35547"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50133231",
+        "https://github.com/openai/codex/issues/25921"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools"
+      ],
+      "title": "Codex Desktop continuously generates Crashpad pending dumps",
+      "url": "https://github.com/openai/codex/issues/25921"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50132193",
+        "https://news.hada.io/topic?id=35549"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "Pele: Mermaid diagrams as themeable SVG",
+      "url": "https://pele.run/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50127586",
+        "https://news.hada.io/topic?id=35552"
+      ],
+      "tags": [
+        "open-source",
+        "security"
+      ],
+      "title": "Source code of the Estonian online voting system",
+      "url": "https://github.com/valimised/ivxv"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50134617"
+      ],
+      "tags": [
+        "deprecation",
+        "developer-tools"
+      ],
+      "title": "Chrome and Edge are removing XSLT",
+      "url": "https://doctor-seo.net/en/blog/news/chrome-edge-removing-xslt/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1x84y1q/psa_since_135_the_kubelet_refuses_to_start_on/"
+      ],
+      "tags": [
+        "containers",
+        "deprecation",
+        "kubernetes"
+      ],
+      "title": "Kubelet 1.35 cgroup v1 node startup refusal 점검",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1x84y1q/psa_since_135_the_kubelet_refuses_to_start_on/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1x8557w/beyond_kubernetes_at_modal_how_to_scale_1_million/"
+      ],
+      "tags": [
+        "distributed-systems",
+        "kubernetes",
+        "performance"
+      ],
+      "title": "Beyond Kubernetes at Modal: 1M concurrent sandboxes",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1x8557w/beyond_kubernetes_at_modal_how_to_scale_1_million/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x71ti7/learned_index_lab_replacing_btrees_with_streaming/"
+      ],
+      "tags": [
+        "performance",
+        "storage"
+      ],
+      "title": "Learned Index Lab: B-Tree를 streaming linear model로 대체",
+      "url": "https://www.reddit.com/r/programming/comments/1x71ti7/learned_index_lab_replacing_btrees_with_streaming/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x8c2sq/epochgo_localfirst_multiagent_automl_engine_using/"
+      ],
+      "tags": [
+        "developer-tools",
+        "multi-agent",
+        "open-source"
+      ],
+      "title": "EpochGo: local-first multi-agent AutoML engine",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x8c2sq/epochgo_localfirst_multiagent_automl_engine_using/"
+    }
+  ],
+  "generated_at": "2026-10-18T08:09:42+09:00",
+  "github_featured": [],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-17T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 239477
+      },
+      {
+        "rank": 2,
+        "repository": "storytold/artcraft",
+        "weekly_stars": 22319
+      },
+      {
+        "rank": 3,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 25174
+      },
+      {
+        "rank": 4,
+        "repository": "cathrynlavery/diagram-design",
+        "weekly_stars": 10237
+      },
+      {
+        "rank": 5,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5318
+      },
+      {
+        "rank": 6,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 12147
+      },
+      {
+        "rank": 7,
+        "repository": "NationalSecurityAgency/ghidra",
+        "weekly_stars": 6614
+      },
+      {
+        "rank": 8,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 4038
+      },
+      {
+        "rank": 9,
+        "repository": "ranxianglei/billion-context",
+        "weekly_stars": 659
+      },
+      {
+        "rank": 10,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 2217
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-18T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 248962
+      },
+      {
+        "rank": 2,
+        "repository": "storytold/artcraft",
+        "weekly_stars": 20267
+      },
+      {
+        "rank": 3,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 20518
+      },
+      {
+        "rank": 4,
+        "repository": "cathrynlavery/diagram-design",
+        "weekly_stars": 9024
+      },
+      {
+        "rank": 5,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 2328
+      },
+      {
+        "rank": 6,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5601
+      },
+      {
+        "rank": 7,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 4207
+      },
+      {
+        "rank": 8,
+        "repository": "NationalSecurityAgency/ghidra",
+        "weekly_stars": 7510
+      },
+      {
+        "rank": 9,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 11937
+      },
+      {
+        "rank": 10,
+        "repository": "ranxianglei/billion-context",
+        "weekly_stars": 779
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "LEASH: Weak-to-Strong Escalation for Computer-Use Agents",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.22280"
+  },
+  "papers": [
+    {
+      "abstract_summary": "Computer-use agent는 긴 작업에서 frontier model을 계속 호출하면 비용이 커지고, 작은 모델만 쓰면 실패가 늘어난다. LEASH는 약한 agent가 기본으로 행동하다가 latent uncertainty가 높아질 때만 강한 agent로 넘기고, 넘긴 뒤에도 shadow observer로 강한 black-box agent를 감시하는 training-free framework다.",
+      "evidence": "full_text",
+      "findings": "OSWorld에서 네 가지 model backbone을 평가한 결과, LEASH는 standalone weak agent보다 일관되게 개선되었고 같은 escalation rate의 random escalation보다 6.55~11.94 point 높았다. Qwen3.5-35B-A3B 구성에서는 73.66% task success와 $0.4117/task를 기록해 always-on Claude Opus 5의 72.90%를 맞추면서 inference cost를 19.2% 줄였다고 보고한다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.22280",
+      "limitations": "결과는 OSWorld와 저자들이 선택한 weak/strong model 조합에 기반한다. Hidden-state uncertainty가 모든 도메인에서 실패 위험을 잘 나타낸다는 보장은 없고, strong agent로 escalation된 뒤의 권한·안전 검토는 별도 정책이 필요하다.",
+      "method": "LEASH는 약한 모델의 hidden state를 과거 성공·실패 trajectory의 hidden state와 비교해 실패 쪽에 가까운 상태를 높은 불확실성으로 본다. 이 신호를 초기 task routing, runtime step escalation, post-handoff oversight에 함께 사용하며, action generation 중 이미 계산된 activation을 재사용하므로 추가 forward pass나 별도 monitor training이 필요하지 않다.",
+      "practical_value": "Computer-use agent 운영자는 strong model을 항상 쓰거나 단순 budget router를 두는 대신, step-level uncertainty와 post-handoff oversight를 비용 제어의 핵심 신호로 삼을 수 있다. 특히 긴 GUI·tool task에서 cost와 success를 함께 조정하는 설계 기준을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22280",
+        "https://arxiv.org/pdf/2610.22280"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "inference",
+        "performance"
+      ],
+      "title": "LEASH: Uncertainty-Aware Weak-to-Strong Escalation and Oversight for Computer-Use Agents",
+      "topics": [
+        "computer-use agents",
+        "weak-to-strong escalation",
+        "uncertainty",
+        "oversight"
+      ],
+      "url": "https://arxiv.org/abs/2610.22280"
+    },
+    {
+      "abstract_summary": "Step-level guard는 agent가 tool call을 실행하기 전 안전 여부를 판단하지만, user request는 여러 언어로 쓰이고 guard prompt와 benchmark는 대체로 영어에 맞춰져 있다. 이 논문은 요청 언어만 바꾸어도 guard verdict가 달라지는지 측정해 언어 자체가 agent guard의 security surface가 될 수 있음을 보인다.",
+      "evidence": "full_text",
+      "findings": "대부분의 open, small, purpose-built guard는 translation 조건에서 자체 noise floor를 넘는 verdict flip을 보였다. 13B 미만 9개 guard에서는 placebo-adjusted flip rate가 프랑스어 +1.5 pp에서 암하라어 +4.4 pp로 증가했고, purpose-built guard가 특히 민감했다. Frontier guard는 대체로 1 point 안팎에서 움직였고, Gemini 3.8 Flash는 원문과 번역 요청에서 동일 verdict를 냈다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.22244",
+      "limitations": "Benchmark는 user instruction 번역만 바꾸고 나머지 trajectory는 영어로 유지한 통제 실험이므로, 실제 다국어 agent 환경의 완전한 대화 흐름을 대표하지는 않는다. 또한 일부 flip은 history에 영어 reasoning이 남아 request와 channel inconsistency가 생긴 데서 비롯될 수 있다.",
+      "method": "저자들은 TS-Bench AgentDojo-Traj의 1,220개 labelled step에서 user instruction만 독일어, 프랑스어, 터키어, 스와힐리어, 암하라어로 번역해 LanguageGuardBench를 만들었다. Tool call, observation, label은 byte-identical하게 유지했으며, 영어 paraphrase와 whitespace placebo를 control로 두고 19개 guard를 반복 실행해 guard 자체 noise를 측정했다.",
+      "practical_value": "다국어 사용자를 대상으로 agent guard를 배포하는 팀은 영어 benchmark 점수만으로 안전성을 주장하기 어렵다. Guard 평가에는 low-resource language, paraphrase, placebo control, channel consistency 검사가 포함되어야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22244",
+        "https://arxiv.org/pdf/2610.22244"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security",
+        "tool-use"
+      ],
+      "title": "Language Is a Security Surface for Agent Guards",
+      "topics": [
+        "agent guards",
+        "multilingual safety",
+        "tool-call security",
+        "benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2610.22244"
+    },
+    {
+      "abstract_summary": "Agent-safety guard benchmark는 민감한 tool action을 제대로 막는지 평가해야 하지만, benchmark record 안의 표식이나 길이 같은 cue가 label을 예측하게 만들 수 있다. 이 논문은 이런 shortcut이 label predictability뿐 아니라 실제 guard decision과 measured accuracy도 바꿀 수 있는지 audit한다.",
+      "evidence": "full_text",
+      "findings": "LinuxArena에서는 평균 shell command 길이가 trajectory label을 강하게 예측했다. AgentDojo-Traj에서는 exact-tool lookup F1이 mixed-domain fold의 .901에서 domain holdout의 .495로 떨어졌고, AgentHarm-Traj에서는 TS-Guard F1이 row weighting .902에서 equal interaction weighting .719로 낮아졌다. Marker rewrite는 blocking을 8.33 point 낮추고 opaque tool alias는 11.46 point 높였으며, unsafe call은 모두 계속 blocked되었다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.22243",
+      "limitations": "Paired intervention은 64-step cohort와 특정 guard/model 조건에서 수행된 탐색적 실험이다. 결과가 모든 guard에 재현된 것은 아니며, Haiku-sized effect가 Luna나 deterministic Q8 TS-Guard에서는 재현되지 않았다.",
+      "method": "저자들은 세 단계 shortcut-auditing framework를 제안해 LinuxArena trajectory와 TS-Bench-derived step dataset을 분석했다. Label predictability, observational guard association, paired decision sensitivity를 구분하고, frozen 64-step AgentDojo-Traj cohort에서 Haiku call을 반복·교차 실행해 safe-row marker와 opaque tool alias 변경의 영향을 측정했다.",
+      "practical_value": "Agent guard benchmark를 만들거나 구매하는 팀은 단순 overall accuracy보다 domain holdout, evaluation-unit weighting, placebo-controlled paired intervention을 확인해야 한다. 그렇지 않으면 guard가 실제 위험이 아니라 benchmark artifact에 반응하는지 알기 어렵다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22243",
+        "https://arxiv.org/pdf/2610.22243"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "Shortcut Sensitivity in Agent-Safety Evaluations",
+      "topics": [
+        "agent safety",
+        "benchmark shortcuts",
+        "guard evaluation",
+        "tool-call monitoring"
+      ],
+      "url": "https://arxiv.org/abs/2610.22243"
+    },
+    {
+      "abstract_summary": "장기 agent memory에서는 새 사실이 이전 값을 대체하더라도, 이전 값이 과거 질문에는 여전히 필요할 수 있다. TEM은 사실을 source-linked versioned record로 저장하고, 질문에 맞는 version을 source order와 historical label과 함께 generator에 전달하는 training-free temporal state tracking memory다.",
+      "evidence": "full_text",
+      "findings": "네 개 open-weight model에서 key-entity hit rate는 전체 75.71~97.62%, historical-residence subset 96.67~100.00%에 도달했다. 같은 source-ordered fact에 historical label을 추가하면 전체 hit rate가 17.14~55.95 point 올랐고, evidence는 답변당 94~118 token으로 session-aware RAG보다 48.75~56.73% 적었다. LoCoMo hybrid memory 평가에서도 TEM은 session-aware RAG보다 7.92, 10.58 point 높은 보수적 차이를 보였다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.21900",
+      "limitations": "TEM은 fact extraction과 version grouping이 제대로 이루어진다는 전제에 크게 의존한다. Evaluation은 persona/session 기반 질문과 fixed evidence budget으로 구성되어 있어, 실제 개인 agent의 noisy dialogue, 모호한 시간 표현, privacy-driven deletion 요구를 모두 포함하지는 않는다.",
+      "method": "TEM은 같은 사실의 successive value를 version group으로 묶고 provenance를 보존한다. Retrieval 단계에서는 관련 version을 선택한 뒤 source order대로 배열하고 historical record를 명시적으로 표시하며, structured fact에 없는 detail은 event memory와 original dialogue turn에서 보완한다. 저자들은 60 persona, 600 session, 420 question의 state-update benchmark와 LoCoMo 기반 1,540 question 평가를 사용했다.",
+      "practical_value": "Personal assistant나 enterprise memory system은 최신 값만 유지하면 과거 질의에 실패할 수 있다. TEM은 값의 version, source, historical status를 evidence에 명시하는 간단한 설계가 memory 품질과 context 비용을 함께 개선할 수 있음을 보여준다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.21900",
+        "https://arxiv.org/pdf/2610.21900"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "performance",
+        "rag",
+        "retrieval"
+      ],
+      "title": "TEM: Temporal State Tracking Memory for Large Language Model Agents",
+      "topics": [
+        "agent memory",
+        "temporal state tracking",
+        "RAG",
+        "long-term memory"
+      ],
+      "url": "https://arxiv.org/abs/2610.21900"
+    },
+    {
+      "abstract_summary": "Deep search agent는 긴 multi-turn search에서 어떤 검색과 evidence inspection이 실제 답변에 기여했는지 credit을 나누기 어렵다. KnowGPO는 surface observation이나 model-internal signal 대신, agent가 task-relevant knowledge condition을 얼마나 만족했는지로 trajectory를 그룹화하고 process reward를 만든다.",
+      "evidence": "full_text",
+      "findings": "KnowGPO는 outcome-only GRPO와 process-supervision baseline인 GiGPO, IGPO보다 세 deep search benchmark에서 3.8~4.2 point 높았다. 논문은 8B agent가 일부 32B open-source system과 맞먹거나 앞섰다고 보고하며, BrowseComp-ZH에서는 같은 규모 WebExplorer-8B보다 6.8 point 높고 Xbench-2505에서는 8B MiroThinker-v1.0보다 12.6 point 높았다고 제시한다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.22331",
+      "limitations": "Knowledge condition 분해와 trajectory state labeling이 정확해야 reward가 의미를 갖는다. 이 과정이 reference answer와 successful trajectory에 의존하므로, training data construction 비용과 answer ambiguity가 큰 domain에서는 적용 난도가 높아질 수 있다.",
+      "method": "각 query에 대해 정답을 도출하는 데 필요한 정보를 atomic knowledge condition으로 분해하고, trajectory의 각 step 상태를 충족된 condition subset으로 표현한다. 같은 knowledge state를 공유하는 trajectory를 within-group comparison에 넣고, 연속 step 사이의 incremental knowledge gain을 environment-grounded process reward로 사용한다. 학습은 Xbench, BrowseComp-ZH, GAIA에서 공식 protocol에 맞춰 평가되었다.",
+      "practical_value": "Search agent를 RL로 개선하려는 팀은 terminal reward만 공유하는 방식보다, 중간에 획득한 지식 상태를 명시해야 credit assignment가 안정될 수 있다. KnowGPO는 retrieval-heavy agent에서 process reward를 설계하는 구체적 방법을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22331",
+        "https://arxiv.org/pdf/2610.22331"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "rag",
+        "reasoning",
+        "retrieval"
+      ],
+      "title": "KnowGPO: Knowledge-Grouped Policy Optimization for Search Agents",
+      "topics": [
+        "deep search agents",
+        "policy optimization",
+        "knowledge state",
+        "retrieval"
+      ],
+      "url": "https://arxiv.org/abs/2610.22331"
+    }
+  ],
+  "repositories": [],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 LEASH입니다. Computer-use agent는 긴 작업을 수행할수록 frontier model을 매 step마다 호출하는 비용이 커지고, 작은 open-weight model만 쓰면 실패가 늘어난다는 딜레마가 있습니다. LEASH는 약한 agent가 기본으로 행동하되, 불확실성이 높아질 때만 강한 agent로 넘기는 weak-to-strong escalation을 훈련 없이 설계합니다.",
+    "핵심은 별도 monitor를 매번 호출하지 않고 약한 모델의 hidden state를 이용해 불확실성을 측정하는 것입니다. LEASH는 초기 task routing, step-level escalation, strong black-box agent로 넘긴 뒤의 shadow oversight까지 같은 latent uncertainty signal을 사용합니다. OSWorld 실험에서 LEASH는 같은 escalation rate의 random escalation보다 6.55~11.94 point 높았고, Qwen3.5-35B-A3B 구성에서는 73.66% task success와 $0.4117/task를 기록해 always-on Claude Opus 5의 72.90%를 맞추면서 inference cost를 19.2% 줄였다고 보고했습니다.",
+    "이 결과는 agent 비용 최적화를 단순 model routing이 아니라 step마다 관측되는 실패 위험과 oversight 문제로 보게 합니다. 오늘 함께 본 LanguageGuardBench와 Shortcut Sensitivity 논문은 agent guard 평가가 언어와 benchmark shortcut에 민감하다는 점을 보여주고, TEM과 KnowGPO는 memory와 search agent에서 중간 상태를 어떻게 표현하고 평가할지 다룹니다. 다만 LEASH의 수치는 OSWorld와 특정 weak/strong model 조합에서 나온 결과이므로, 실제 업무 자동화에서는 escalation 기준, strong-agent 권한, user confirmation, audit log를 함께 설계해야 합니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "papers",
+        "text": "LanguageGuardBench는 agent guard verdict가 요청 언어만 바뀌어도 흔들릴 수 있음을 보여줍니다.",
+        "url": "https://arxiv.org/abs/2610.22244"
+      },
+      {
+        "section": "community",
+        "text": "Opencode breach와 key rotation 권고가 LocalLLaMA에서 공유됐습니다.",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x8gtvs/opencode_breached_rotate_keys_to_be_safe/"
+      },
+      {
+        "section": "community",
+        "text": "Kubernetes 1.35의 cgroup v1 kubelet startup refusal 점검 글이 공유됐습니다.",
+        "url": "https://www.reddit.com/r/kubernetes/comments/1x84y1q/psa_since_135_the_kubelet_refuses_to_start_on/"
+      }
+    ],
+    "spotlight": [
+      "LEASH는 약한 computer-use agent가 기본으로 행동하고, latent uncertainty가 높아질 때만 강한 모델로 escalation하는 training-free framework입니다. OSWorld에서 random escalation보다 6.55~11.94 point 높고, Qwen3.5-35B-A3B 구성은 always-on Claude Opus 5 수준의 success를 19.2% 낮은 비용으로 맞췄지만 실제 권한·감사 정책은 별도 설계가 필요합니다."
+    ]
+  }
+}
