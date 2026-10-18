@@ -1,0 +1,512 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-16부터 2026-10-19까지 주요 CNCF/Kubernetes ecosystem release를 재확인했지만, 전일 이미 다룬 Istio와 Headlamp 외 새로 소개할 만한 중요한 변경은 확인하지 못했습니다.",
+      "sources": [
+        "https://github.com/istio/istio/releases",
+        "https://github.com/kubernetes-sigs/headlamp/releases",
+        "https://github.com/cilium/cilium/releases",
+        "https://github.com/helm/helm/releases",
+        "https://github.com/argoproj/argo-cd/releases"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "최근 24~72시간 범위에서 HN RSS, 긱뉴스 공식 RSS, Reddit r/programming, r/MachineLearning, r/LocalLLaMA, r/kubernetes 공식 Atom feed를 확인했고, AI agent, 모델, 보안, developer tooling, Kubernetes 운영 링크를 선별했습니다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-19 08시대 GitHub weekly Trending Top 10을 관측했고, 기존 소개 이력에 없는 MadsLorentzen/ai-job-search 1개를 선별했습니다. 나머지 Top10은 이전 호에서 이미 소개된 항목이었습니다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 내 최초 공개되고 지난 7일 소개 이력과 겹치지 않는 long-context workspace, delivery benchmark, agent memory forgetting, swarm orchestration, scaffolding 논문 5편의 PDF 본문을 확인했습니다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22273",
+        "https://arxiv.org/abs/2610.22350",
+        "https://arxiv.org/abs/2610.21405",
+        "https://arxiv.org/abs/2610.22322",
+        "https://arxiv.org/abs/2610.22289"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-19",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50145337",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1x9fc1x/hybrid_reasoning_agents/"
+      ],
+      "tags": [
+        "agent",
+        "performance",
+        "reasoning"
+      ],
+      "title": "Hybrid Reasoning Agents: latent reasoning과 text tool use",
+      "url": "https://arxiv.org/abs/2610.18861"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1x9gfnb/google_open_sources_harness2_for_self_improving/"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "open-source"
+      ],
+      "title": "Google Harness2 for self-improving AI agents 공개",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x9gfnb/google_open_sources_harness2_for_self_improving/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50138531",
+        "https://api-docs.deepseek.com/guides/search/"
+      ],
+      "tags": [
+        "developer-tools",
+        "llm",
+        "retrieval"
+      ],
+      "title": "DeepSeek search and fetch API",
+      "url": "https://api-docs.deepseek.com/guides/search/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50145715",
+        "https://github.com/finereli/whatsapp-mcp"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "mcp"
+      ],
+      "title": "Show HN: WhatsApp MCP on Cloudflare",
+      "url": "https://github.com/finereli/whatsapp-mcp"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50122058",
+        "https://quentinkaiser.be/security/2026/10/16/one-parser-two-bugs/"
+      ],
+      "tags": [
+        "networking",
+        "security"
+      ],
+      "title": "Broadcom WiFi parser bugs across eCos and Linux routers",
+      "url": "https://quentinkaiser.be/security/2026/10/16/one-parser-two-bugs/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35590"
+      ],
+      "tags": [
+        "agent",
+        "governance"
+      ],
+      "title": "웹사이트들이 AI 에이전트에 문을 닫고 있음",
+      "url": "https://news.hada.io/topic?id=35590"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=35595"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "JDK 28: value object preview와 AOT code compilation",
+      "url": "https://news.hada.io/topic?id=35595"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x8eqt6/pythons_binary_wheels_and_supply_chain_attacks/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Python binary wheels and supply chain attacks",
+      "url": "https://www.reddit.com/r/programming/comments/1x8eqt6/pythons_binary_wheels_and_supply_chain_attacks/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1x9akv3/durable_workflows_without_replay_freezing_the_vm/"
+      ],
+      "tags": [
+        "developer-tools",
+        "distributed-systems"
+      ],
+      "title": "Durable workflows without replay: VM freeze approach",
+      "url": "https://www.reddit.com/r/programming/comments/1x9akv3/durable_workflows_without_replay_freezing_the_vm/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1x975ea/proof_before_reuse_showing_agents_only_what_later/"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "security"
+      ],
+      "title": "Proof Before Reuse: poisoned skill을 procedural memory에서 차단",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1x975ea/proof_before_reuse_showing_agents_only_what_later/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1x8xjpd/ai_agents_are_having_their_kubernetes_moment/"
+      ],
+      "tags": [
+        "agent",
+        "cloud-native",
+        "kubernetes"
+      ],
+      "title": "AI Agents Are Having Their Kubernetes Moment",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1x8xjpd/ai_agents_are_having_their_kubernetes_moment/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1x8s0th/psa_eks_charges_6_once_a_cluster_falls_out_of/"
+      ],
+      "tags": [
+        "cloud-native",
+        "developer-tools",
+        "kubernetes"
+      ],
+      "title": "EKS/AKS/GKE/OpenShift support date and cost checker",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1x8s0th/psa_eks_charges_6_once_a_cluster_falls_out_of/"
+    }
+  ],
+  "generated_at": "2026-10-19T08:06:48+09:00",
+  "github_featured": [
+    "MadsLorentzen/ai-job-search"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-18T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 248962
+      },
+      {
+        "rank": 2,
+        "repository": "storytold/artcraft",
+        "weekly_stars": 20267
+      },
+      {
+        "rank": 3,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 20518
+      },
+      {
+        "rank": 4,
+        "repository": "cathrynlavery/diagram-design",
+        "weekly_stars": 9024
+      },
+      {
+        "rank": 5,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 2328
+      },
+      {
+        "rank": 6,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5601
+      },
+      {
+        "rank": 7,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 4207
+      },
+      {
+        "rank": 8,
+        "repository": "NationalSecurityAgency/ghidra",
+        "weekly_stars": 7510
+      },
+      {
+        "rank": 9,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 11937
+      },
+      {
+        "rank": 10,
+        "repository": "ranxianglei/billion-context",
+        "weekly_stars": 779
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-19T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 239923
+      },
+      {
+        "rank": 2,
+        "repository": "storytold/artcraft",
+        "weekly_stars": 18479
+      },
+      {
+        "rank": 3,
+        "repository": "boykopovar/AnyPS5",
+        "weekly_stars": 16250
+      },
+      {
+        "rank": 4,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 3581
+      },
+      {
+        "rank": 5,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 4438
+      },
+      {
+        "rank": 6,
+        "repository": "cathrynlavery/diagram-design",
+        "weekly_stars": 8382
+      },
+      {
+        "rank": 7,
+        "repository": "NationalSecurityAgency/ghidra",
+        "weekly_stars": 7608
+      },
+      {
+        "rank": 8,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5639
+      },
+      {
+        "rank": 9,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1536
+      },
+      {
+        "rank": 10,
+        "repository": "MadsLorentzen/ai-job-search",
+        "weekly_stars": 4200
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Librarian Agents: Anticipatory Workspace Construction for Long-Context Reasoning",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.22273"
+  },
+  "papers": [
+    {
+      "abstract_summary": "긴 문서 corpus를 다루는 agent는 질문이 올 때마다 검색과 재구성을 반복하며 비용을 쓴다. Librarian Agents는 builder agent가 미래 질문을 예상해 문서를 synthetic file, directory, reference link로 재조직한 workspace를 만들고, downstream answering agent가 그 workspace를 탐색해 답하는 구조를 제안한다.",
+      "evidence": "full_text",
+      "findings": "BrowseComp-Plus에서 Librarian Agents는 가장 강한 retrieval 및 precomputation baseline보다 평균 33 percentage point 높은 accuracy를 보였다. 학습하지 않은 BRIGHT domain으로 zero-shot transfer했을 때도 baseline 대비 평균 31 point 향상을 보고했다. 논문은 agentic harness가 기존 file system 탐색에는 능하지만 미래 사용을 위한 reusable workspace 구축에는 훈련되지 않았다는 비대칭을 실험으로 다룬다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.22273",
+      "limitations": "Workspace를 먼저 만드는 비용은 반복 질의가 충분할 때 상쇄된다. 또한 builder가 잘못된 synthetic file이나 reference structure를 만들면 answering agent가 일관되게 잘못된 경로를 따를 수 있으므로, workspace provenance와 update policy를 별도로 검증해야 한다.",
+      "method": "저자들은 workspace construction을 Markov decision process로 정의하고, builder policy를 reinforcement learning으로 훈련해 downstream answering accuracy를 직접 높이도록 했다. Builder는 raw document를 hierarchical filesystem으로 바꾸며, frozen answering agent는 질의마다 그 작업 공간을 사용한다. 이 설계는 query-time retrieval을 줄이고 upfront construction cost를 여러 future query에 amortize하려는 접근이다.",
+      "practical_value": "Enterprise knowledge base나 large codebase assistant는 매 query마다 새로 검색하는 대신, agent가 재사용 가능한 작업 공간을 미리 구성하게 할 수 있다. 검색 정확도뿐 아니라 workspace 품질, 갱신 주기, provenance를 운영 지표로 삼아야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22273",
+        "https://arxiv.org/pdf/2610.22273"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "performance",
+        "rag",
+        "retrieval"
+      ],
+      "title": "Librarian Agents: Training LLMs to Curate Long-Context Workspaces that Anticipate Future Queries",
+      "topics": [
+        "long-context reasoning",
+        "agent workspace",
+        "retrieval",
+        "reinforcement learning"
+      ],
+      "url": "https://arxiv.org/abs/2610.22273"
+    },
+    {
+      "abstract_summary": "기존 agent benchmark는 issue나 specification처럼 문제가 이미 정의된 상황을 주로 평가한다. FDE-Gym은 고객 전달 현장에서 sponsor의 요청이 실제 문제를 완전히 설명하지 못하고, agent가 stakeholder와 시스템을 탐색해 고객 지표를 개선해야 하는 마지막 단계를 benchmark로 만든다.",
+      "evidence": "full_text",
+      "findings": "Instruction이 점점 덜 구체적인 L0~L3 조건에서 모델을 평가하자, 핵심 규칙과 제약이 빠진 조건에서 점수가 0.39~0.62로 크게 떨어졌다. 모델은 stakeholder로부터 핵심 사실의 72~85%를 얻었지만 delivered system은 reference improvement의 0.60~0.70에 머물렀고, contact cost는 final score를 추가로 0.14~0.22 낮췄다. 일부 system은 do-nothing baseline보다 낮은 결과를 냈다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.22350",
+      "limitations": "FDE-Gym은 real-world delivery를 simulation으로 옮긴 benchmark이므로 실제 고객 조직의 정치, 법무, 데이터 접근권, 장기 운영 책임을 모두 포함하지는 않는다. Scoring anchor와 scripted stakeholder 설계가 결과 해석에 큰 영향을 준다.",
+      "method": "저자들은 18개 sector의 20개 실제 delivery project를 변형해 95개 end-to-end task를 만들었다. Simulated customer environment에는 scripted stakeholder와 수정 가능한 customer system이 포함되며, agent가 stakeholder에게 질문하고 시스템을 고쳐 결과를 낸다. 점수는 do-nothing baseline 0과 reference solution 1 사이에서 고객의 business metric 개선분을 기준으로 하고 stakeholder contact cost를 차감한다.",
+      "practical_value": "Agent 평가를 task completion에서 business outcome 개선으로 넓히려는 팀에게 유용하다. 특히 요구사항을 문자 그대로 수행하는 agent와 실제 고객 문제를 찾아 개선하는 agent를 구분하는 평가 설계를 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22350",
+        "https://arxiv.org/pdf/2610.22350"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness"
+      ],
+      "title": "FDE-Gym: The Last Mile of AI Delivery",
+      "topics": [
+        "AI delivery",
+        "agent benchmark",
+        "customer systems",
+        "business metric"
+      ],
+      "url": "https://arxiv.org/abs/2610.22350"
+    },
+    {
+      "abstract_summary": "장기 memory를 쓰는 agent는 정보를 잘 기억하는 것만큼, 사용자가 삭제를 요청한 민감 정보를 실제로 잊는 능력도 필요하다. MemCut은 장기 대화 속 456개 hand-designed secret과 evidence trail을 사용해 삭제 후에도 memory object가 비밀을 회복할 수 있는지 평가한다.",
+      "evidence": "full_text",
+      "findings": "Disclosure removal은 native recovery를 크게 낮췄지만 residual recovery는 훨씬 덜 줄였다. LLM-guided deletion으로 retrieval candidate 20개 중 추가 10 turn을 지워도 39~76% residual recovery가 남았다. 144개 fact, 세 system, 두 model subset sweep에서는 고정 budget에서 pool을 넓히는 것이 원래 candidate를 모두 지우는 것보다 residual recovery를 더 줄였고, candidate coverage가 deletion baseline의 bottleneck임을 보였다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.21405",
+      "limitations": "MemCut은 reference deletion baseline과 annotated evidence trail을 중심으로 비교하므로, 실제 제품의 encrypted storage, user-level retention policy, legal deletion workflow를 모두 대체하지는 않는다. Residual recovery는 surviving object를 직접 주는 보수적 upper-bound 성격이 있다.",
+      "method": "Benchmark는 secret을 직접 말한 disclosure뿐 아니라 간접 evidence에서도 secret이 복원될 수 있는 경로를 annotation한다. Native recovery는 시스템의 retriever를 통해 reader가 secret을 맞히는지 측정하고, residual recovery는 삭제 뒤 surviving memory object를 직접 주었을 때 reader가 secret을 회복하는지 본다. 저자들은 다섯 memory design과 네 LLM에서 세 reference deletion baseline을 비교했다.",
+      "practical_value": "Agent memory system은 삭제 요청을 처리할 때 원문 disclosure만 지우면 충분하지 않다. 간접 evidence와 derived memory object까지 추적하고, native retrieval 실패와 residual leakage를 별도로 측정해야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.21405",
+        "https://arxiv.org/pdf/2610.21405"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory",
+        "security"
+      ],
+      "title": "MemCut: Every Secret Leaves a Trail in the Long-Term Memory of LLM Agents",
+      "topics": [
+        "agent memory",
+        "forgetting",
+        "privacy",
+        "long-term memory"
+      ],
+      "url": "https://arxiv.org/abs/2610.21405"
+    },
+    {
+      "abstract_summary": "Multi-agent swarm의 성능은 개별 agent 능력뿐 아니라 누가 언제 참여하는지에 달려 있다. 이 논문은 고정 orchestration 구조에서 agent를 훈련하는 대신, action policy와 참여 pattern을 함께 학습하는 market-based post-training(MPT)을 제안한다.",
+      "evidence": "full_text",
+      "findings": "결과는 MPT가 monolithic post-training보다 나은 성능을 보였고, 학습된 self-orchestration이 같은 post-trained action policy를 사용하는 다른 coordination strategy보다 좋았다고 보고한다. Ablation은 action과 bidding 양쪽의 학습이 모두 도움이 되며, learned bid가 더 효과적인 action-training signal을 제공한다는 점을 보였다. 더 큰 population에서도 성능이 개선되고 agent dropout에서 손실이 줄어 scaling과 robustness 이점도 관찰되었다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.22322",
+      "limitations": "논문은 다양한 task family를 다루지만, market-style bid가 모든 협업 환경의 communication cost와 strategic behavior를 대표하지는 않는다. 실제 운영에서는 agent 간 bid가 조작되거나 비효율적으로 경쟁하는 상황을 별도 통제해야 한다.",
+      "method": "MPT에서 agent는 자신이 참여할 의사를 bid로 표현하고, bid가 어떤 agent가 행동할지와 collective outcome에서 local training credit을 어떻게 받을지를 결정한다. 중앙 coordinator 없이 action과 bidding behavior를 함께 학습해 개별 능력과 참여 구조가 같이 적응하도록 한다. 평가는 embodied crafting, robot navigation, deep research에서 수행되었다.",
+      "practical_value": "여러 agent를 병렬로 붙이는 것만으로는 swarm 품질이 보장되지 않는다. 참여 여부와 credit assignment를 학습 대상으로 삼으면, 중앙 planner 없이도 task와 population 변화에 적응하는 orchestration을 설계할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22322",
+        "https://arxiv.org/pdf/2610.22322"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "multi-agent",
+        "reasoning"
+      ],
+      "title": "Learning Self-Orchestration in Decentralized Agent Swarms",
+      "topics": [
+        "multi-agent swarms",
+        "self-orchestration",
+        "market-based post-training",
+        "decentralized agents"
+      ],
+      "url": "https://arxiv.org/abs/2610.22322"
+    },
+    {
+      "abstract_summary": "강한 모델은 스스로 절차를 만들 수 있지만, agent 성능에서 developer-supplied scaffolding의 이점은 여전히 남아 있다. 이 논문은 Codex 기반 environment-agnostic agent를 여러 환경에 같은 code, prompt, tool로 배포하고, 작은 guidance와 control 변화가 얼마나 영향을 주는지 평가한다.",
+      "evidence": "full_text",
+      "findings": "해당 instruction 변경은 ARC-AGI-3와 AGI Maze의 mean score를 높였지만 Terminal-Bench에서는 작고 방향이 섞인 변화만 보였다. AGI Maze RHAE70은 tutorial 유무와 effort 조건에 따라 0.37~4.95 point 개선되었고, scripted reset controller는 specialized agent와의 관찰된 gap 중 약 34~60%를 회복했다. 동시에 score gain은 더 높은 token-based cost를 동반했다.",
+      "first_published": "2026-10-15",
+      "id": "arxiv:2610.22289",
+      "limitations": "실험은 한 Codex 기반 agent와 선택된 benchmark에 집중되어 있고, 개선이 정보·절차를 더 잘 쓴 결과인지 추가 inference allocation 때문인지를 분리하지 못한다. Environment-agnostic이라는 표현도 모든 환경에서 성공한다는 의미가 아니라 implementation이 고정되었다는 뜻이다.",
+      "method": "저자들은 ARC-AGI-3, AGI Maze, Terminal-Bench에서 거의 같은 두 prompt variant를 비교했다. 한 variant는 agent가 어려움이나 모호함을 보고하고 automatic continuation을 위해 control을 돌려주도록 장려한다. 이후 ARC-AGI-3-specific reference와의 차이를 분석하기 위해 reset decision을 이미 agent에게 주어진 convention을 따르는 scripted controller로 이전했다.",
+      "practical_value": "Coding agent 제품에서는 모델 교체보다 작은 harness instruction과 control handoff가 성능에 큰 영향을 줄 수 있다. 범용 agent를 평가할 때는 여러 환경에서의 gain, regression, token cost를 함께 봐야 한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.22289",
+        "https://arxiv.org/pdf/2610.22289"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "harness",
+        "performance"
+      ],
+      "title": "Improving Environment-Agnostic Coding Agents: The Role of Scaffolding",
+      "topics": [
+        "coding agents",
+        "scaffolding",
+        "cross-environment evaluation",
+        "agent harness"
+      ],
+      "url": "https://arxiv.org/abs/2610.22289"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "Public fork privacy risk · 개인 profile·salary·employment history tracked file 주의",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "MadsLorentzen/ai-job-search",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/MadsLorentzen/ai-job-search"
+      ],
+      "summary": "Claude Code 기반 job application workflow",
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/MadsLorentzen/ai-job-search",
+      "use_case": "사용자는 profile을 채운 뒤 job portal scrape, fit scoring, tailored CV, cover letter, reviewer-agent critique까지 한 저장소 안의 agent workflow로 실행할 수 있다.",
+      "why_now": "weekly Trending 10위 · 4,200 stars this week"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘의 Technical Spotlight는 Librarian Agents입니다. 이 논문은 긴 문서 모음에서 질문이 들어올 때마다 RAG가 같은 관계를 다시 찾고, 고정된 knowledge graph는 미래 질문의 중간 산출물을 충분히 준비하지 못한다는 문제에서 출발합니다. 저자들은 agent가 즉시 답을 찾는 데 그치지 않고, 나중에 들어올 다양한 질문을 예상해 파일 시스템 형태의 작업 공간을 미리 구성하도록 학습시킵니다.",
+    "프레임워크는 builder agent가 원문 문서를 synthetic file, directory, reference link로 재조직하고, frozen answering agent가 이 workspace를 탐색해 답하도록 나눕니다. Workspace construction은 Markov decision process로 정의되고, downstream answering accuracy를 직접 보상으로 삼아 reinforcement learning으로 최적화됩니다. BrowseComp-Plus에서 가장 강한 retrieval·precomputation baseline보다 평균 33 percentage point 높았고, 학습하지 않은 BRIGHT domain에서도 평균 31 point 향상을 보였다고 보고했습니다.",
+    "이 접근은 agent memory와 retrieval을 '질문 후 검색'이 아니라 '미래 질의를 위한 환경 정리' 문제로 바꿉니다. 오늘 함께 본 FDE-Gym은 고객 전달 업무에서 문제 자체를 찾아내는 능력을 평가하고, MemCut은 장기 memory가 삭제 요청 뒤에도 비밀의 흔적을 남기는지 측정합니다. 다만 Librarian Agents의 이점은 반복 질의로 upfront construction cost를 상쇄할 수 있을 때 커지며, 잘못 구성된 workspace가 후속 답변을 체계적으로 편향시킬 위험도 함께 평가해야 합니다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "AI Job Search가 Top10에 진입했습니다. Claude Code 기반 지원서 자동화 workflow입니다.",
+        "url": "https://github.com/MadsLorentzen/ai-job-search"
+      },
+      {
+        "section": "papers",
+        "text": "MemCut은 장기 agent memory가 삭제 요청 뒤에도 secret trail을 남기는지 평가합니다.",
+        "url": "https://arxiv.org/abs/2610.21405"
+      },
+      {
+        "section": "community",
+        "text": "Google Harness2 self-improving agent 공개가 LocalLLaMA에서 공유됐습니다.",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1x9gfnb/google_open_sources_harness2_for_self_improving/"
+      }
+    ],
+    "spotlight": [
+      "Librarian Agents는 문서 corpus를 질문이 들어온 뒤 검색하는 대신, builder agent가 미래 질의를 예상해 filesystem workspace로 미리 재구성하도록 학습합니다. BrowseComp-Plus에서 strongest retrieval/precomputation baseline보다 33 point 높았지만, workspace provenance와 update policy를 함께 검증해야 합니다."
+    ]
+  }
+}
