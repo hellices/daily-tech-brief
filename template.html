@@ -13,6 +13,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="공개 자료로 읽는 개발·AI·클라우드 동향">
   <title>@@TITLE@@ · Daily Tech Brief</title>
+  <link rel="icon" type="image/svg+xml" href="@@BASE@@favicon.svg">
+  <link rel="icon" href="@@BASE@@favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" sizes="180x180" href="@@BASE@@apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Noto+Sans+KR:wght@400;500;600;700&amp;display=swap">
@@ -170,12 +173,19 @@ html[data-theme="dark"] {
     .site-brand {
       display: inline-flex;
       align-items: center;
+      gap: 0.5rem;
       min-height: 2.75rem;
       color: var(--cp-text);
       font-size: 1.125rem;
       font-weight: 700;
       letter-spacing: -0.035em;
       text-decoration: none;
+    }
+
+    .site-brand-mark {
+      width: 1.5rem;
+      height: 1.5rem;
+      flex: 0 0 auto;
     }
 
     .site-description {
@@ -1445,7 +1455,19 @@ html[data-theme="dark"] {
         </summary>
         <div class="navigation-panel">@@NAVIGATION@@</div>
       </details>
-      <a class="site-brand" href="@@BASE@@index.html" aria-label="Daily Tech Brief 홈">Daily Tech Brief</a>
+      <a class="site-brand" href="@@BASE@@index.html" aria-label="Daily Tech Brief 홈">
+        <svg class="site-brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="2" y="2" width="60" height="60" rx="14" fill="#b11f4b"/>
+          <rect x="3.5" y="3.5" width="57" height="57" rx="12.5" fill="none" stroke="#d84a74" stroke-width="1.2"/>
+          <rect x="12" y="12" width="28" height="6" rx="3" fill="#fd8ea1"/>
+          <circle cx="49" cy="15" r="3.5" fill="#fcfbf8"/>
+          <rect x="12" y="23" width="40" height="2" rx="1" fill="#d84a74"/>
+          <path d="M14.5 31.5 L24.5 40.5 L14.5 49.5" fill="none" stroke="#fcfbf8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="32" y="32" width="20" height="6" rx="3" fill="#fcfbf8"/>
+          <rect x="32" y="44" width="14" height="6" rx="3" fill="#fd8ea1"/>
+        </svg>
+        <span>Daily Tech Brief</span>
+      </a>
       <nav class="header-links" aria-label="주요 링크">
         <a href="@@BASE@@index.html#date-archive">아카이브</a>
         <a href="@@BASE@@index.html#archive-search" data-header-search-link>보고서 찾기</a>

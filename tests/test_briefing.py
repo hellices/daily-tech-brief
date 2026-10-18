@@ -850,6 +850,27 @@ class BriefingTests(unittest.TestCase):
         self.assertEqual(template.count("@@NAVIGATION@@"), 1)
         self.assertIn('<aside class="docs-outline">', template)
 
+    def test_favicon_and_brand_logo_are_validated_and_emitted_in_site_build(self):
+        b = self.api()
+        template = (MODULE_PATH.parent / "template.html").read_text(encoding="utf-8")
+        self.assertIn('<link rel="icon" type="image/svg+xml" href="@@BASE@@favicon.svg">', template)
+        self.assertIn('<link rel="icon" href="@@BASE@@favicon.ico" sizes="any">', template)
+        self.assertIn('<link rel="apple-touch-icon" sizes="180x180" href="@@BASE@@apple-touch-icon.png">', template)
+        self.assertIn('class="site-brand-mark"', template)
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "template.html").write_text(template, encoding="utf-8")
+            issue = example_issue()
+            b.stage_issue(root, issue)
+            b.promote_issue(root, issue["date"], b.issue_digest(issue))
+            b.build_site(root)
+            self.assertTrue((root / "site/favicon.svg").exists())
+            self.assertTrue((root / "site/favicon.ico").exists())
+            self.assertTrue((root / "site/apple-touch-icon.png").exists())
+            self.assertIn('href="./favicon.svg"', (root / "site/index.html").read_text(encoding="utf-8"))
+            self.assertIn('href="../../favicon.svg"',
+                          (root / "site/daily/2026-09-16/index.html").read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()

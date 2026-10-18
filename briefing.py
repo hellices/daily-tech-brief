@@ -1057,6 +1057,12 @@ def build_site(root, output=None):
     for issue in issues:
         write_page(output / "daily" / issue["date"] / "index.html",
                    issue_title(issue), "../../", render_issue(issue), issue)
+    for asset in ("favicon.svg", "favicon.ico", "apple-touch-icon.png"):
+        source = (root / asset) if (root / asset).exists() else (ROOT / asset)
+        if asset == "favicon.svg":
+            (output / asset).write_text(validated_svg(source), encoding="utf-8")
+        elif source.exists():
+            (output / asset).write_bytes(source.read_bytes())
     (output / ".nojekyll").touch()
     return len(issues)
 
