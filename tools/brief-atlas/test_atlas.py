@@ -175,8 +175,14 @@ class AtlasTests(unittest.TestCase):
             document("a", "2026-10-17", ["self-improvement"]),
             document("b", "2026-10-18", ["recursive self-improvement"])
         ])
+        phrases = {n["key"]: n for n in g["nodes"] if n["kind"] == "phrase"}
+        self.assertEqual(set(phrases), {"self improvement", "recursive self improvement"})
+        for key, index in (("self improvement", 0), ("recursive self improvement", 1)):
+            self.assertEqual(phrases[key]["unique_count"], 1)
+            self.assertEqual(phrases[key]["documents"], [index])
+            self.assertIn(phrases[key]["id"], g["items"][index]["nodes"])
+        self.assertEqual(g["items"][1]["id"], "2026-10-18:papers:b")
         self.assertEqual(g["links"], [])
-        self.assertEqual(next(n for n in g["nodes"] if n["key"] == "self improvement")["unique_count"], 1)
 
 
 if __name__ == "__main__":

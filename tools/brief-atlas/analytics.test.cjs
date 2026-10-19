@@ -52,10 +52,17 @@ test('edge evidence is an exact same-entry intersection',()=>{
   const r=A.query(data,opts);assert.deepEqual(A.evidence(data,r,['p','q']).map(i=>i.id),['a2']);
 });
 test('evidence deduplicates only after matching the selected node',()=>{
-  const r=A.query(data,opts);assert.equal(A.evidence(data,r,['p']).length,2);
+  const r=A.query(data,opts);
+  assert.equal(A.evidence(data,r,['p']).length,2);
+  assert.deepEqual(A.evidence(data,r,['q']).map(i=>i.id),['a2']);
 });
 test('precomputed whole-archive period counts are reused',()=>{
-  const r=A.query(data,opts);assert.deepEqual(A.series(data,r,'p','week').map(b=>b.count),[1,2]);
+  const r=A.query(data,opts);
+  const guarded={...data,items:new Proxy(data.items,{
+    get(){assert.fail('Whole-archive series must not read source items');}
+  })};
+  assert.deepEqual(A.series(guarded,r,'p','week').map(b=>b.count),[1,2]);
+  assert.deepEqual(A.series(guarded,r,'p','month').map(b=>b.count),[2]);
 });
 test('filtered series recomputes selection without changing the stored graph',()=>{
   const before=JSON.stringify(data);const r=A.query(data,{...opts,section:'papers'});
@@ -90,9 +97,10 @@ test('clipped historical buckets recalculate expected days and collection failur
 test('filtered coverage uses only the selected section',()=>{
   const d=structuredClone(data);
   d.reports[1].coverage.community='unavailable';
-  d.periods.week[1].partial_slots=1;
+  d.reports[2].coverage.papers='partial';
+  d.periods.week[1].partial_slots=2;
   const r=A.query(d,{...opts,section:'papers'});
-  assert.equal(A.series(d,r,'p','week')[1].partial_slots,0);
+  assert.equal(A.series(d,r,'p','week')[1].partial_slots,1);
 });
 test('kind changes replace focus from a different node type',()=>{
   const r=A.query(data,{...opts,kind:'project'});

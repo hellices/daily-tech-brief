@@ -53,6 +53,15 @@ class MinimalUITests(unittest.TestCase):
         for name in re.findall(r"\$\('([^']+)'\)", javascript):
             self.assertIn(name, ids, "Orphaned DOM reference: " + name)
 
+    def test_dom_guard_rejects_missing_targets_with_either_quote_style(self):
+        for reference in ("$('missing-target')", ' $("missing-target") ',
+                          "$(\n 'missing-target' \t)", '$(\t"missing-target"\n)'):
+            with self.subTest(reference=reference), patch.object(
+                Path, "read_text", side_effect=['<div id="existing"></div>', reference]
+            ):
+                with self.assertRaisesRegex(AssertionError, "Orphaned DOM reference: missing-target"):
+                    self.test_all_direct_dom_references_have_targets()
+
 
 if __name__ == "__main__":
     unittest.main()

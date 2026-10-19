@@ -2,6 +2,7 @@ import copy
 import hashlib
 import json
 from pathlib import Path
+import re
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -66,6 +67,45 @@ class BuildTests(unittest.TestCase):
 
     def test_no_manually_selected_research_catalog_is_required(self):
         self.assertFalse((Path(__file__).parent / "concepts.json").exists())
+
+    def test_template_tokens_in_report_text_are_preserved_without_replacement(self):
+        tokens = "@@DATA@@ @@STYLE@@ @@ANALYTICS@@ @@UI@@ @@D3@@ @@VIEWS@@ @@RENDERER@@ @@STATIC@@"
+        text = tokens + " </script><script>alert('fixture')</script>"
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            reports, issue = self.fixture(root)
+            issue["papers"][0]["abstract_summary"] = text
+            (reports / "2026-10-18.json").write_text(json.dumps(issue))
+            source = build.load_reports(reports, root / "tags.json", revision="fixture")
+            build.build(source, root / "out")
+            page = (root / "out" / "index.html").read_text(encoding="utf-8")
+            embedded = re.search(r'<script id="snapshot" type="application/json">(.*?)</script>', page, re.S)
+            self.assertIsNotNone(embedded)
+            data = json.loads(embedded.group(1))
+            self.assertEqual(data["details"][0]["summary"], text)
+            self.assertEqual(data["details"][0]["body"], text)
+            self.assertNotIn("</script>", embedded.group(1))
+            evidence = json.loads((root / "out" / "evidence.json").read_text(encoding="utf-8"))
+            self.assertEqual(evidence, data["details"])
+
+    def test_original_template_rejects_missing_and_duplicate_tokens(self):
+        read_text = Path.read_text
+        template = (build.ROOT / "template.html").read_text(encoding="utf-8")
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            reports, _ = self.fixture(root)
+            source = build.load_reports(reports, root / "tags.json", revision="fixture")
+            for token in re.findall(r"@@[A-Z]+@@", template):
+                for replacement in ("", token * 2):
+                    def read(path, *args, **kwargs):
+                        if path == build.ROOT / "template.html":
+                            return template.replace(token, replacement)
+                        return read_text(path, *args, **kwargs)
+
+                    with self.subTest(token=token, replacement=replacement), patch.object(Path, "read_text", read):
+                        with self.assertRaisesRegex(ValueError, "Missing or duplicate template token: " + token):
+                            build.build(source, root / "out")
+                        self.assertFalse((root / "out").exists())
 
     def test_uses_existing_item_anchors_and_relative_site_links(self):
         with tempfile.TemporaryDirectory() as temporary:
