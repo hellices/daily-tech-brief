@@ -75,8 +75,8 @@ strings in report text remain literal data rather than additional template slots
   At least one `ok` or `partial` coverage slot is required for an observed value.
 - Evidence is deduplicated after matching the selected nodes. Each source keeps
   its latest matching occurrence, and the results are ordered newest first.
-- When keyboard selection replaces a focused control, focus moves to the updated
-  source panel. Matrix column buttons expose node names to screen readers.
+- When a keyboard action replaces or hides its focused control, focus moves to the
+  related source panel or node search. Matrix column buttons expose node names to screen readers.
   Chart counts and empty-state markers maintain at least 4.5:1 foreground contrast.
 - Raw names can be ambiguous, phrases can be missed, and different URLs for
   the same event can remain separate. Counts describe this archive, not the
@@ -109,3 +109,6 @@ verify that higher-specificity, inline, and custom-property contrast regressions
 are rejected. They also check matrix row indices, connections over cluster fills,
 and pagination reset when selecting another connection. CI installs the pinned
 headless browser and its system dependencies.
+The browser suite also checks initialized interface text and label attributes
+(including runtime-concatenated strings), keyboard focus after controls disappear,
+and pagination immediately before/after edge selection.

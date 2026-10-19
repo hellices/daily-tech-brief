@@ -190,41 +190,119 @@ test('unselected edges meet non-text contrast over the chart and rendered cluste
   }
 });
 
-test('selecting a new edge resets evidence pagination while preserving its pair', async t => {
+async function populatedFixture(t, nodeCount = 2) {
   const page = await fixture(t);
-  await page.evaluate(() => {
+  await page.evaluate(nodeCount => {
+    const nodeIds = ['a', 'b', ...Array.from({length: nodeCount - 2}, (_, i) => 'node-' + i)];
     const dates = ['2026-10-18', '2026-10-19'];
     const items = Array.from({length: 16}, (_, i) => ({
       id: 'item-' + i, identity: 'source-' + i, date: dates[i < 8 ? 0 : 1], section: 'community',
-      title: 'Source ' + i, tags: [], nodes: ['a', 'b'], matches: {}, href: '#item-' + i, url: 'https://example.org/' + i
+      title: 'Source ' + i, tags: [], nodes: nodeIds, matches: {}, href: '#item-' + i, url: 'https://example.org/' + i
     }));
     const bucket = (from, to, count, reports, days) => ({
-      from, to, node_counts: {a: count, b: count}, item_count: count, report_count: reports, expected_days: days, partial_slots: 0
+      from, to, node_counts: Object.fromEntries(nodeIds.map(id => [id, count])), item_count: count, report_count: reports, expected_days: days, partial_slots: 0
     });
     const data = {
       meta: {from: dates[0], to: dates[1]}, tags: [],
       reports: dates.map(date => ({date, coverage: {github: 'ok', papers: 'ok', community: 'ok', cncf: 'ok'}})),
       items, details: items.map(() => ({body: '', summary: '', topics: []})),
-      nodes: ['a', 'b'].map(id => ({id, kind: 'phrase', label: id, documents: items.map((_, i) => i)})),
-      links: [{source: 'a', target: 'b', documents: items.map((_, i) => i)}],
+      nodes: nodeIds.map(id => ({id, kind: 'phrase', label: id, documents: items.map((_, i) => i)})),
+      links: nodeIds.flatMap((source, i) => nodeIds.slice(i + 1).map(target => ({
+        source, target, documents: items.map((_, index) => index)
+      }))),
       periods: {
         week: [bucket('2026-10-12', dates[0], 8, 1, 7), bucket(dates[1], dates[1], 8, 1, 1)],
         month: [bucket('2026-10-01', dates[1], 16, 2, 19)]
       }
     };
     document.getElementById('snapshot').textContent = JSON.stringify(data);
-  });
+  }, nodeCount);
   for (const file of ['analytics.js', 'ui.js']) {
     await page.addScriptTag({content: fs.readFileSync(path.join(__dirname, file), 'utf8')});
   }
+  return page;
+}
+
+async function assertNeutralCopy(page) {
+  const texts = await page.evaluate(() => [
+    document.body.innerText,
+    ...[...document.querySelectorAll('svg text, svg title, svg desc')].map(element => element.textContent),
+    ...[...document.querySelectorAll('[aria-label], [title], [placeholder], [alt]')]
+      .flatMap(element => ['aria-label', 'title', 'placeholder', 'alt'].map(name => element.getAttribute(name) || ''))
+  ]);
+  const forbidden = ['MODEL CALLS', 'STATIC GRAPH', 'MATERIALIZED', '반복 포착', '다음 질문',
+    '해 보세요', '해보세요', '같은 입력', '준비할지', '자동 추출된', '포착'];
+  for (const text of texts) {
+    const normalized = text.normalize('NFKC').replace(/\s+/gu, ' ').trim();
+    for (const phrase of forbidden) assert.ok(!normalized.includes(phrase), 'Disallowed interface copy: ' + phrase);
+  }
+}
+
+test('initialized UI and user-facing labels remain free of generated guidance', async t => {
+  const page = await populatedFixture(t);
+  for (const layout of ['network', 'tree', 'matrix', 'cluster']) {
+    await page.locator(`[data-layout="${layout}"]`).click();
+    await assertNeutralCopy(page);
+  }
+});
+
+test('copy guard rejects runtime-concatenated text and label attributes', async t => {
+  const page = await populatedFixture(t);
+  for (const target of ['text', 'aria-label', 'title', 'placeholder']) {
+    await page.evaluate(target => {
+      const element = document.createElement(target === 'text' ? 'p' : 'input');
+      element.id = 'copy-regression';
+      const label = '다음 ' + '질문';
+      if (target === 'text') element.textContent = label;
+      else element.setAttribute(target, label);
+      document.querySelector('main').append(element);
+    }, target);
+    await assert.rejects(assertNeutralCopy(page), /Disallowed interface copy: 다음 질문/);
+    await page.locator('#copy-regression').evaluate(element => element.remove());
+  }
+});
+
+test('selecting a new edge resets evidence pagination while preserving its pair', async t => {
+  const page = await populatedFixture(t);
   await page.locator('#inventory').click();
+  await page.locator('[data-layout="matrix"]').click();
+  assert.equal(await page.locator('.evidence').count(), 5);
   await page.locator('#more-evidence').click();
   assert.equal(await page.locator('.evidence').count(), 15);
-  await page.locator('[data-layout="matrix"]').click();
   await page.locator('.matrix-cell').first().click();
   assert.equal(await page.locator('#detail-title').innerText(), 'a × b');
   assert.equal(await page.locator('#evidence-count').innerText(), '16건');
   assert.equal(await page.locator('.evidence').count(), 5);
+});
+
+test('keyboard clearing a pair moves focus to a visible source panel', async t => {
+  const page = await populatedFixture(t);
+  for (const width of [1360, 390]) {
+    await page.setViewportSize({width, height: 1000});
+    await page.locator('[data-layout="matrix"]').click();
+    for (const key of ['Enter', 'Space']) {
+      await page.locator('.matrix-cell').first().click();
+      await page.locator('#clear-pair').focus();
+      await page.locator('#clear-pair').press(key);
+      assert.ok(await page.locator('#clear-pair').isHidden());
+      assert.equal(await page.evaluate(() => document.activeElement.id), 'detail-panel');
+      assert.ok(await page.locator('#detail-panel').isVisible());
+    }
+  }
+});
+
+test('keyboard pagination retains focus when its last-page button disappears', async t => {
+  const page = await populatedFixture(t, 30);
+  await page.locator('#inventory').click();
+  await page.locator('#more-evidence').focus();
+  await page.locator('#more-evidence').press('Enter');
+  await page.locator('#more-evidence').press('Space');
+  assert.ok(await page.locator('#more-evidence').isHidden());
+  assert.equal(await page.evaluate(() => document.activeElement.id), 'detail-panel');
+  await page.locator('#more-nodes').focus();
+  await page.locator('#more-nodes').press('Enter');
+  assert.ok(await page.locator('#more-nodes').isHidden());
+  assert.equal(await page.evaluate(() => document.activeElement.id), 'node-search');
 });
 
 test('contrast guard rejects a more-specific stylesheet override', async t => {

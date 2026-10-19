@@ -1,13 +1,27 @@
 import copy
 import importlib.util
+from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
 import tempfile
 import unittest
+from unittest.mock import patch
 
 
 MODULE_PATH = Path(__file__).resolve().parents[1] / "briefing.py"
+
+
+class NavigationLinks(HTMLParser):
+    def __init__(self, html):
+        super().__init__()
+        self.links = []
+        self.feed(html)
+
+    def handle_starttag(self, tag, attrs):
+        attributes = dict(attrs)
+        if tag == "a" and attributes.get("href"):
+            self.links.append(attributes)
 
 
 def example_issue():
@@ -795,14 +809,30 @@ class BriefingTests(unittest.TestCase):
         b = self.api()
         issue = example_issue()
         nav = b.render_navigation([issue], issue, "../../")
-        self.assertIn("../../index.html#archive-search", nav)
-        self.assertIn("../../index.html#search-tags", nav)
-        self.assertIn("../../index.html#date-archive", nav)
-        self.assertIn("../../insights/index.html", nav)
-        self.assertIn("./insights/index.html", b.render_navigation([], None, "./"))
-        self.assertIn("../../daily/2026-09-16/index.html", nav)
-        self.assertIn('aria-current="page"', nav)
+        links = {link["href"]: link for link in NavigationLinks(nav).links}
+        for href in ("../../index.html#archive-search", "../../index.html#search-tags",
+                     "../../index.html#date-archive", "../../insights/index.html",
+                     "../../daily/2026-09-16/index.html"):
+            self.assertIn(href, links)
+        home = NavigationLinks(b.render_navigation([], None, "./")).links
+        self.assertIn("./insights/index.html", [link["href"] for link in home])
+        self.assertEqual(links["../../daily/2026-09-16/index.html"].get("aria-current"), "page")
         self.assertIn("2026-09-16", nav)
+
+    def test_document_navigation_guard_rejects_non_link_destinations(self):
+        b = self.api()
+        render = b.render_navigation
+        rewrites = (
+            lambda html: html.replace('href=', 'data-href='),
+            lambda html: html.replace('<a ', '<span ').replace('</a>', '</span>'),
+            lambda html: '<!-- ' + html + ' -->',
+        )
+        for rewrite in rewrites:
+            with self.subTest(rewrite=rewrite), patch.object(
+                b, "render_navigation", side_effect=lambda *args: rewrite(render(*args))
+            ), patch.object(self, "api", return_value=b):
+                with self.assertRaises(AssertionError):
+                    self.test_document_navigation_links_to_search_tags_archive_and_actual_dates()
 
     def test_unselected_spotlight_svg_is_omitted_without_changing_report_data(self):
         b = self.api()

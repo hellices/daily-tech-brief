@@ -41,6 +41,7 @@ test('seven-day window and section filter are precise',()=>{
 test('first observation never uses future documents',()=>{
   const r=A.query(data,{...opts,asOf:'2026-10-05'});
   assert.equal(r.rows.length,1);assert.equal(r.rows[0].last,'2026-10-05');
+  assert.equal(r.rows[0].first,'2026-10-05');
   assert.equal(r.rows[0].count,1);assert.equal(r.rows[0].occurrences,1);
 });
 test('node kinds remain separate unless a user explicitly enables cross-kind links',()=>{

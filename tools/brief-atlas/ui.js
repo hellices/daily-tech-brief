@@ -16,6 +16,11 @@
     minimum: 1, cross: false, nodeQuery: '', limitNodes: 24, q: '', limit: 5, layout: 'network', explicitFocus: false };
   let view;
   function clearSelection() { state.pair = ''; state.q = ''; state.limit = 5; $('evidence-search').value = ''; }
+  function restoreKeyboardFocus(event, control, target = 'detail-panel') {
+    if ((event.type === 'keydown' || event.detail === 0) && (!control.isConnected || control.hidden)) {
+      $(target).focus({ preventScroll: true });
+    }
+  }
   function sectionCards() {
     const total = Object.values(view.sectionTotals).reduce((sum, n) => sum + n, 0);
     $('section-cards').innerHTML = [['', '전체'], ...Object.entries(SECTIONS)].map(([id, label]) => `<button type="button" data-section="${id}" class="${state.section === id ? 'active' : ''}" aria-pressed="${state.section === id}">${label}<span>${id ? view.sectionTotals[id] : total}</span></button>`).join('');
@@ -117,7 +122,7 @@
       clearSelection(); render();
     } else if (button.dataset.unit) { state.unit = button.dataset.unit; heatmap(); document.querySelectorAll('[data-unit]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.unit === state.unit))); }
     else { state.section = state.section === button.dataset.section ? '' : button.dataset.section; state.explicitFocus = false; clearSelection(); render(); }
-    if ((event.type === 'keydown' || event.detail === 0) && !button.isConnected) $('detail-panel').focus({ preventScroll: true });
+    restoreKeyboardFocus(event, button);
     if ((button.dataset.node || button.dataset.edgeSource) && matchMedia('(max-width:800px)').matches) $('detail-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   globalThis.addEventListener('error', e => { $('fatal').hidden = false; $('fatal').textContent = '그래프 조회 오류: ' + e.message + ' · 페이지를 다시 열어 주세요.'; });
@@ -132,9 +137,15 @@
   $('cross-kind').addEventListener('change', e => { state.cross = e.target.checked; clearSelection(); graph(); detail(); });
   $('evidence-search').addEventListener('input', e => { state.q = e.target.value; state.limit = 5; renderEvidence(); });
   $('node-search').addEventListener('input', e => { state.nodeQuery = e.target.value; state.limitNodes = 24; nodeList(); });
-  $('more-evidence').addEventListener('click', () => { state.limit += 10; renderEvidence(); });
-  $('more-nodes').addEventListener('click', () => { state.limitNodes += 24; nodeList(); });
-  $('clear-pair').addEventListener('click', () => { clearSelection(); graph(); detail(); });
+  $('more-evidence').addEventListener('click', event => {
+    state.limit += 10; renderEvidence(); restoreKeyboardFocus(event, event.currentTarget);
+  });
+  $('more-nodes').addEventListener('click', event => {
+    state.limitNodes += 24; nodeList(); restoreKeyboardFocus(event, event.currentTarget, 'node-search');
+  });
+  $('clear-pair').addEventListener('click', event => {
+    clearSelection(); graph(); detail(); restoreKeyboardFocus(event, event.currentTarget);
+  });
   $('inventory').addEventListener('click', () => { state.inventory = true; state.focus = ''; state.explicitFocus = false; clearSelection(); render(); });
   $('reset').addEventListener('click', () => {
     Object.assign(state, { asOf: D.meta.to, span: 'all', kind: 'phrase', section: '', tag: '', custom: null, focus: '', pair: '', inventory: false, nodeQuery: '', limitNodes: 24, minimum: 1, cross: false, unit: 'week', layout: 'network', explicitFocus: false });
