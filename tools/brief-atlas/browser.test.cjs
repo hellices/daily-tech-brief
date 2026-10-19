@@ -190,23 +190,24 @@ test('unselected edges meet non-text contrast over the chart and rendered cluste
   }
 });
 
-async function populatedFixture(t, nodeCount = 2) {
+async function populatedFixture(t, nodeCount = 2, includeProject = false) {
   const page = await fixture(t);
-  await page.evaluate(nodeCount => {
+  await page.evaluate(({nodeCount, includeProject}) => {
     const nodeIds = ['a', 'b', ...Array.from({length: nodeCount - 2}, (_, i) => 'node-' + i)];
+    if (includeProject) nodeIds.push('project-demo');
     const dates = ['2026-10-18', '2026-10-19'];
     const items = Array.from({length: 16}, (_, i) => ({
       id: 'item-' + i, identity: 'source-' + i, date: dates[i < 8 ? 0 : 1], section: 'community',
-      title: 'Source ' + i, tags: [], nodes: nodeIds, matches: {}, href: '#item-' + i, url: 'https://example.org/' + i
+      title: 'Source ' + i, tags: ['alpha'], nodes: nodeIds, matches: {}, href: '#item-' + i, url: 'https://example.org/' + i
     }));
     const bucket = (from, to, count, reports, days) => ({
       from, to, node_counts: Object.fromEntries(nodeIds.map(id => [id, count])), item_count: count, report_count: reports, expected_days: days, partial_slots: 0
     });
     const data = {
-      meta: {from: dates[0], to: dates[1]}, tags: [],
+      meta: {from: dates[0], to: dates[1]}, tags: [{id: 'alpha', label: 'Alpha'}],
       reports: dates.map(date => ({date, coverage: {github: 'ok', papers: 'ok', community: 'ok', cncf: 'ok'}})),
       items, details: items.map(() => ({body: '', summary: '', topics: []})),
-      nodes: nodeIds.map(id => ({id, kind: 'phrase', label: id, documents: items.map((_, i) => i)})),
+      nodes: nodeIds.map(id => ({id, kind: id === 'project-demo' ? 'project' : 'phrase', label: id, documents: items.map((_, i) => i)})),
       links: nodeIds.flatMap((source, i) => nodeIds.slice(i + 1).map(target => ({
         source, target, documents: items.map((_, index) => index)
       }))),
@@ -216,7 +217,7 @@ async function populatedFixture(t, nodeCount = 2) {
       }
     };
     document.getElementById('snapshot').textContent = JSON.stringify(data);
-  }, nodeCount);
+  }, {nodeCount, includeProject});
   for (const file of ['analytics.js', 'ui.js']) {
     await page.addScriptTag({content: fs.readFileSync(path.join(__dirname, file), 'utf8')});
   }
@@ -273,6 +274,24 @@ test('selecting a new edge resets evidence pagination while preserving its pair'
   assert.equal(await page.locator('#detail-title').innerText(), 'a × b');
   assert.equal(await page.locator('#evidence-count').innerText(), '16건');
   assert.equal(await page.locator('.evidence').count(), 5);
+});
+
+test('tag and node-type filters preserve the heatmap-selected date interval', async t => {
+  const page = await populatedFixture(t, 2, true);
+  for (const [control, value] of [['tag', 'alpha'], ['kind', 'project']]) {
+    await page.locator('#reset').click();
+    await page.locator('#heatmap [data-cell="a"][data-from="2026-10-12"]').click();
+    assert.equal(await page.locator('#evidence-count').innerText(), '8건');
+    await page.locator('#' + control).selectOption(value);
+    assert.equal(await page.locator('#span').inputValue(), 'custom');
+    assert.equal(await page.locator('#period-label').innerText(), '2026-10-12 — 2026-10-18');
+    assert.equal(await page.locator('#evidence-count').innerText(), '8건');
+    assert.ok(await page.locator('.evidence-meta').evaluateAll(elements => elements.every(e => e.textContent.startsWith('2026-10-18'))));
+    if (control === 'kind') assert.equal(await page.locator('#detail-kind').innerText(), '프로젝트');
+  }
+  await page.locator('#span').selectOption('all');
+  assert.equal(await page.locator('#period-label').innerText(), '2026-10-18 — 2026-10-19');
+  assert.equal(await page.locator('#evidence-count').innerText(), '16건');
 });
 
 test('keyboard clearing a pair moves focus to a visible source panel', async t => {

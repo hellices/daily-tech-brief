@@ -71,6 +71,8 @@ strings in report text remain literal data rather than additional template slots
 - Explicit selections remain visible even with no observations in the chosen
   interval. Matrix and tree limits reserve space for the selected node and its
   selected counterpart. Changing a filter automatically selects within the current type.
+  Tag and node-type filters preserve a heatmap-selected interval; only changing
+  a date control or resetting the filters clears that interval.
 - A period with only unavailable collection is shown as unobserved, not zero.
   At least one `ok` or `partial` coverage slot is required for an observed value.
 - Evidence is deduplicated after matching the selected nodes. Each source keeps

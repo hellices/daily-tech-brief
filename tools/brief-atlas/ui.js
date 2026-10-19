@@ -131,7 +131,11 @@
   document.addEventListener('click', act);
   document.addEventListener('keydown', e => { if (e.target.matches('g[role=button]') && ['Enter', ' '].includes(e.key)) { e.preventDefault(); act(e); } });
   for (const [id, key] of [['kind', 'kind'], ['span', 'span'], ['as-of', 'asOf'], ['tag', 'tag']]) {
-    $(id).addEventListener('change', e => { state[key] = e.target.value; state.custom = null; state.inventory = false; state.explicitFocus = false; clearSelection(); render(); });
+    $(id).addEventListener('change', e => {
+      state[key] = e.target.value;
+      if (key === 'span' || key === 'asOf') state.custom = null;
+      state.inventory = false; state.explicitFocus = false; clearSelection(); render();
+    });
   }
   $('minimum').addEventListener('change', e => { state.minimum = Number(e.target.value); clearSelection(); graph(); detail(); });
   $('cross-kind').addEventListener('change', e => { state.cross = e.target.checked; clearSelection(); graph(); detail(); });
