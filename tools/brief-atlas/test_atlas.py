@@ -70,7 +70,8 @@ class AtlasTests(unittest.TestCase):
         paths = ("login/oauth", "sponsors/example", "settings/billing", "marketplace/actions",
                  "notifications/threads", "sessions/verified-device", "features/actions",
                  "topics/machine-learning", "orgs/example", "users/example",
-                 "advisories/GHSA-abcd-1234-abcd", "stars/example", "discussions/example")
+                 "advisories/GHSA-abcd-1234-abcd", "stars/example", "discussions/example",
+                 "resources/articles")
         for route in paths:
             with self.subTest(route=route):
                 graph = self.graph([document("a", "2026-10-18", url="https://github.com/" + route)])

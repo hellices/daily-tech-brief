@@ -14,7 +14,7 @@ COMMON_WORDS = frozenset(("A AN THE AND OR FOR WITH ON IN OF TO FROM HOW WHY WHA
 GITHUB_SITE_ROUTES = frozenset((
     "about account advisories apps codespaces collections contact copilot customer-stories dashboard "
     "discussions enterprise events explore features issues join login logout marketplace new notifications "
-    "organizations orgs pricing pulls readme search security sessions settings signup site "
+    "organizations orgs pricing pulls readme resources search security sessions settings signup site "
     "solutions sponsors stars topics trending users"
 ).split())
 GITHUB_REPOSITORY_PATH = re.compile(
