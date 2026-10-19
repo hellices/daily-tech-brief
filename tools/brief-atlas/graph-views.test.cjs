@@ -1,7 +1,13 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
+const vm = require('node:vm');
 const V = fs.existsSync(__dirname + '/graph-views.js') ? require('./graph-views.js') : {};
+async function loadRenderer(){
+  const d3=await import('d3'),context={GraphViews:V,d3};
+  vm.runInNewContext(fs.readFileSync(__dirname+'/graph-renderer.js','utf8'),context);
+  return {d3,Renderer:context.AtlasGraphRenderer};
+}
 const fixture = () => ({
   nodes: ['a','b','c','d','e','f'].map((id,i)=>({id,label:id,kind:'phrase',count:2,documents:[i]})),
   edges: [
@@ -90,9 +96,7 @@ test('explicit empty focus stays visible without fabricated links',()=>{
   assert.deepEqual(model.edges,[]);
 });
 test('matrix count labels meet 4.5:1 contrast across the gradient',async()=>{
-  const d3=await import('d3'),vm=require('node:vm');
-  const context={GraphViews:V,d3};
-  vm.runInNewContext(fs.readFileSync(__dirname+'/graph-renderer.js','utf8'),context);
+  const {d3,Renderer}=await loadRenderer();
   const luminance=value=>{
     const c=d3.color(value).rgb();
     const linear=[c.r,c.g,c.b].map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;});
@@ -104,12 +108,33 @@ test('matrix count labels meet 4.5:1 contrast across the gradient',async()=>{
       edges:[{source:'a',target:'b',count:100},{source:'a',target:'c',count}]
     };
     const element={innerHTML:'',replaceChildren(){}};
-    new context.AtlasGraphRenderer(element).render(model,{mode:'matrix'});
+    new Renderer(element).render(model,{mode:'matrix'});
     const cells=[...element.innerHTML.matchAll(/class="matrix-cell[^"]*"[^>]*style="background:([^;]+);color:([^"]+)"/g)];
     assert.equal(cells.length,4);
     for(const [,background,foreground] of cells){
       const a=luminance(background),b=luminance(foreground);
       assert.ok((Math.max(a,b)+.05)/(Math.min(a,b)+.05)>=4.5,`${foreground} on ${background}`);
     }
+  }
+});
+test('matrix column buttons identify every node with escaped labels',async()=>{
+  const {Renderer}=await loadRenderer(),model=fixture();
+  model.nodes[0].label='Alpha & "Beta" <Gamma>';
+  const expected=new Map(model.nodes.map(n=>[n.id,n.label]));
+  expected.set('a','Alpha &amp; &quot;Beta&quot; &lt;Gamma&gt;');
+  for(const compact of [false,true]){
+    const element={innerHTML:'',replaceChildren(){}};
+    new Renderer(element).render(model,{mode:'matrix',compact});
+    const header=element.innerHTML.match(/<thead>([\s\S]*?)<\/thead>/);
+    assert.ok(header);
+    const buttons=[...header[1].matchAll(/<button\b([^>]*)>/g)];
+    assert.equal(buttons.length,model.nodes.length);
+    const labels=new Map(buttons.map(([,attributes])=>{
+      const id=attributes.match(/\bdata-node="([^"]*)"/),label=attributes.match(/\baria-label="([^"]*)"/);
+      assert.ok(id,'Matrix column is missing its node ID');
+      assert.ok(label,'Matrix column is missing its accessible name: '+id[1]);
+      return [id[1],label[1]];
+    }));
+    assert.deepEqual(labels,expected);
   }
 });

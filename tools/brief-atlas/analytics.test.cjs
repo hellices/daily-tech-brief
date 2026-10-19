@@ -53,7 +53,10 @@ test('edge evidence is an exact same-entry intersection',()=>{
 });
 test('evidence deduplicates only after matching the selected node',()=>{
   const r=A.query(data,opts);
-  assert.equal(A.evidence(data,r,['p']).length,2);
+  const evidence=A.evidence(data,r,['p']);
+  assert.deepEqual(evidence.map(i=>i.id),['b','a2']);
+  assert.deepEqual(new Set(evidence.map(i=>i.identity)),new Set(['a','b']));
+  assert.equal(new Set(evidence.map(i=>i.identity)).size,evidence.length);
   assert.deepEqual(A.evidence(data,r,['q']).map(i=>i.id),['a2']);
 });
 test('precomputed whole-archive period counts are reused',()=>{

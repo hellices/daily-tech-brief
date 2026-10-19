@@ -70,7 +70,7 @@ class BuildTests(unittest.TestCase):
 
     def test_template_tokens_in_report_text_are_preserved_without_replacement(self):
         tokens = "@@DATA@@ @@STYLE@@ @@ANALYTICS@@ @@UI@@ @@D3@@ @@VIEWS@@ @@RENDERER@@ @@STATIC@@"
-        text = tokens + " </script><script>alert('fixture')</script>"
+        text = tokens + " </script> </ScRiPt> </SCRIPT \t> <script>fixture</script>"
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             reports, issue = self.fixture(root)
@@ -79,12 +79,12 @@ class BuildTests(unittest.TestCase):
             source = build.load_reports(reports, root / "tags.json", revision="fixture")
             build.build(source, root / "out")
             page = (root / "out" / "index.html").read_text(encoding="utf-8")
-            embedded = re.search(r'<script id="snapshot" type="application/json">(.*?)</script>', page, re.S)
+            embedded = re.search(r'<script id="snapshot" type="application/json">(.*?)</script\s*>', page, re.S | re.I)
             self.assertIsNotNone(embedded)
+            self.assertNotIn("<", embedded.group(1))
             data = json.loads(embedded.group(1))
             self.assertEqual(data["details"][0]["summary"], text)
             self.assertEqual(data["details"][0]["body"], text)
-            self.assertNotIn("</script>", embedded.group(1))
             evidence = json.loads((root / "out" / "evidence.json").read_text(encoding="utf-8"))
             self.assertEqual(evidence, data["details"])
 

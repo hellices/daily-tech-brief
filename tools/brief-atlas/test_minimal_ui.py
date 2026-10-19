@@ -62,6 +62,29 @@ class MinimalUITests(unittest.TestCase):
                 with self.assertRaisesRegex(AssertionError, "Orphaned DOM reference: missing-target"):
                     self.test_all_direct_dom_references_have_targets()
 
+    def test_empty_chart_cell_palette_meets_text_contrast(self):
+        css = (ROOT / "style.css").read_text()
+        rules = {}
+        for selectors, body in re.findall(r"([^{}]+)\{([^{}]*)\}", css):
+            declarations = {name: value.strip() for name, value in re.findall(r"([\w-]+)\s*:\s*([^;{}]+)", body)}
+            for selector in selectors.split(","):
+                rules.setdefault(selector.strip(), {}).update(declarations)
+
+        def luminance(value):
+            value = re.sub(r"var\((--[\w-]+)\)", lambda match: rules[":root"][match.group(1)], value)
+            self.assertRegex(value, r"^#[0-9a-fA-F]{6}$")
+            channels = [int(value[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+            linear = [v / 12.92 if v <= 0.04045 else ((v + 0.055) / 1.055) ** 2.4 for v in channels]
+            return sum(v * weight for v, weight in zip(linear, (0.2126, 0.7152, 0.0722)))
+
+        for selector in (".zero-cell", ".self-cell", "#heatmap .no-data"):
+            with self.subTest(selector=selector):
+                self.assertIn(selector, rules)
+                foreground = luminance(rules[selector]["color"])
+                background = luminance(rules[selector]["background"])
+                contrast = (max(foreground, background) + 0.05) / (min(foreground, background) + 0.05)
+                self.assertGreaterEqual(contrast, 4.5)
+
 
 if __name__ == "__main__":
     unittest.main()

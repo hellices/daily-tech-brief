@@ -1,9 +1,10 @@
-import copy
 import importlib.util
 import json
+import os
+import subprocess
+import sys
 import unittest
 from pathlib import Path
-from unittest.mock import patch
 
 PATH = Path(__file__).with_name("atlas.py")
 ATLAS = None
@@ -118,13 +119,38 @@ class AtlasTests(unittest.TestCase):
         self.assertEqual(g["periods"]["week"][1]["report_count"], 0)
         self.assertEqual(g["periods"]["week"][1]["item_count"], 0)
 
-    def test_output_is_byte_reproducible_with_network_disabled(self):
+    def test_output_is_byte_reproducible_across_hash_seeds_with_network_disabled(self):
         self.assertIsNotNone(ATLAS, "Missing deterministic graph builder")
-        s = source([document("a", "2026-10-18", ["new adaptive planning"])])
-        with patch("socket.socket", side_effect=AssertionError("Network call during build")):
-            one = json.dumps(ATLAS.build_graph(s), ensure_ascii=False, sort_keys=True)
-            two = json.dumps(ATLAS.build_graph(copy.deepcopy(s)), ensure_ascii=False, sort_keys=True)
-        self.assertEqual(one, two)
+        data = source([
+            document("a", "2026-10-17", ["new adaptive planning", "bounded retrieval"], title="QUARTZ"),
+            document("b", "2026-10-18", ["bounded retrieval", "procedural memory"], title="ORBIT",
+                     section="github", url="https://github.com/example/planner"),
+            document("a", "2026-10-19", ["new adaptive planning"], title="QUARTZ")
+        ])
+        program = (
+            "import json, sys\n"
+            "from unittest.mock import patch\n"
+            "from atlas import build_graph\n"
+            "source = json.loads(sys.stdin.buffer.read())\n"
+            "with patch('socket.socket', side_effect=AssertionError('Network call during build')):\n"
+            "    graph = build_graph(source)\n"
+            "sys.stdout.buffer.write(json.dumps(graph, ensure_ascii=False, sort_keys=True).encode('utf-8'))\n"
+        )
+        outputs = []
+        for seed in ("1", "7", "123"):
+            with self.subTest(seed=seed):
+                result = subprocess.run(
+                    [sys.executable, "-c", program], cwd=PATH.parent,
+                    env={**os.environ, "PYTHONHASHSEED": seed},
+                    input=json.dumps(data, ensure_ascii=False).encode("utf-8"),
+                    capture_output=True, timeout=15, check=False
+                )
+                self.assertEqual(result.returncode, 0, result.stderr.decode("utf-8", errors="replace"))
+                outputs.append(result.stdout)
+                self.assertEqual(outputs[0], result.stdout)
+        graph = json.loads(outputs[0])
+        self.assertGreater(len(graph["nodes"]), 1)
+        self.assertTrue(graph["links"])
 
     def test_appending_a_report_updates_graph_without_changing_existing_ids(self):
         old = [document("a", "2026-10-17", ["procedural memory"])]
