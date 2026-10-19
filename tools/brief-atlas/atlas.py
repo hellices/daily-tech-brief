@@ -11,6 +11,23 @@ from urllib.parse import urlsplit
 SECTIONS = ("github", "papers", "community", "cncf")
 COMMON_WORDS = frozenset(("A AN THE AND OR FOR WITH ON IN OF TO FROM HOW WHY WHAT WHEN IS ARE NOT NEW VS "
                           "AI ML API APIS CLI SDK HTTP HTTPS URL JSON HTML HN GN CD CI CPU GPU").split())
+GITHUB_SITE_ROUTES = frozenset((
+    "about account advisories apps codespaces collections contact copilot customer-stories dashboard "
+    "discussions enterprise events explore features issues join login logout marketplace new notifications "
+    "organizations orgs pricing pulls readme search security sessions settings signup site "
+    "solutions sponsors stars topics trending users"
+).split())
+GITHUB_REPOSITORY_PATH = re.compile(
+    r"/([A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?)/([A-Za-z0-9_.-]{1,100})(?:/(.*))?"
+)
+GITHUB_REPOSITORY_RESOURCE = re.compile(
+    r"(?:releases(?:/(?:latest|tag/.+))?"
+    r"|issues(?:/[0-9]+)?|pull/[0-9]+(?:/(?:files|commits|checks))?"
+    r"|discussions(?:/[0-9]+)?|blob/[^/]+/.+|tree/[^/]+(?:/.+)?"
+    r"|commit/[a-fA-F0-9]{7,40}|commits(?:/.+)?|compare/.+"
+    r"|actions(?:/runs/[0-9]+)?|security/advisories(?:/GHSA-[a-zA-Z0-9-]+)?"
+    r"|wiki(?:/.+)?|branches|tags)"
+)
 
 
 def normalize(value):
@@ -19,6 +36,21 @@ def normalize(value):
 
 def node_id(kind, key):
     return kind + "-" + hashlib.sha256((kind + ":" + key).encode("utf-8")).hexdigest()[:16]
+
+
+def github_repository(value):
+    url = urlsplit(value)
+    if url.scheme != "https" or url.netloc.lower() not in ("github.com", "www.github.com"):
+        return None
+    match = GITHUB_REPOSITORY_PATH.fullmatch(url.path)
+    if not match:
+        return None
+    owner, repository, resource = match.groups()
+    if owner.lower() in GITHUB_SITE_ROUTES or "--" in owner or repository in (".", ".."):
+        return None
+    if resource and not GITHUB_REPOSITORY_RESOURCE.fullmatch(resource.rstrip("/")):
+        return None
+    return owner + "/" + repository
 
 
 def next_period(start, unit):
@@ -95,13 +127,9 @@ def build_graph(source):
                     hit = {"field": field, "text": text}
                     if hit not in matches[identifier]:
                         matches[identifier].append(hit)
-        url = urlsplit(item["url"])
-        if url.hostname in ("github.com", "www.github.com"):
-            parts = url.path.strip("/").split("/")
-            if len(parts) >= 2 and re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", "/".join(parts[:2])):
-                project = "/".join(parts[:2])
-                if parts[0].lower() not in ("orgs", "users", "topics", "collections", "features", "settings"):
-                    matches[register("project", project)].append({"field": "url", "text": item["url"]})
+        project = github_repository(item["url"])
+        if project:
+            matches[register("project", project)].append({"field": "url", "text": item["url"]})
         for token in re.findall(r"\b[A-Za-z][A-Za-z0-9]*(?:[._/-][A-Za-z0-9]+)*\b", item["title"]):
             if "/" in token or not 2 <= len(token) <= 45 or normalize(token) in broad or token.upper() in COMMON_WORDS:
                 continue

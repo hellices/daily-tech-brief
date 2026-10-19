@@ -52,6 +52,12 @@ strings in report text remain literal data rather than additional template slots
   hyphens are normalized; the longest overlapping phrase in a field wins.
 - GitHub source URLs supply repository nodes. Title token patterns supply
   names/acronyms. Repository keys normalize case but preserve `.`, `_`, and `-`.
+  Repository candidates require HTTPS, a GitHub host, a valid owner/repository
+  path, and either the repository root or a supported repository resource
+  (releases, issues, pull requests, discussions, code, commits, comparisons,
+  actions, security advisories, wiki, branches, or tags). Known GitHub site-level
+  routes are rejected centrally. Unknown routes remain in the source inventory
+  without a project node; this offline recognizer does not verify existence.
   Common noise tokens and existing broad taxonomy aliases are
   excluded from phrase/name discovery. Editorial tags remain context filters.
 - Links mean **co-occurrence in the same briefing entry**, not dependency or
@@ -81,10 +87,11 @@ screenshots, browser caches, and dependency directories must not be committed.
 ## Tests
 
 ```sh
+node tools/brief-atlas/node_modules/playwright/cli.js install chromium --only-shell
 python3 -m unittest discover -s tests -q
 node --test tests/*.test.cjs
 python3 -m unittest discover -s tools/brief-atlas -p 'test_*.py' -q
-node --test tools/brief-atlas/analytics.test.cjs tools/brief-atlas/graph-views.test.cjs
+node --test tools/brief-atlas/*.test.cjs
 ```
 
 Tests cover automatic new-term discovery, deletion/republication handling,
@@ -93,4 +100,7 @@ separate Python processes with different hash seeds, date filtering,
 co-occurrence intersections, precomputed series reuse without item reads,
 section-specific collection failures, literal template tokens and mixed-case
 script-end tags, DOM reference quote styles, matrix column names, empty-state
-contrast, tree/matrix projections, and deterministic layouts.
+contrast, tree/matrix projections, and deterministic layouts. Browser tests use
+the real stylesheet and renderer, check computed colors on desktop/mobile, and
+verify that higher-specificity, inline, and custom-property contrast regressions
+are rejected. CI installs the pinned headless browser and its system dependencies.

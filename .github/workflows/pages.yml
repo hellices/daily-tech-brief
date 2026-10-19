@@ -28,6 +28,8 @@ jobs:
           cache-dependency-path: tools/brief-atlas/package-lock.json
       - name: Install pinned graph renderer
         run: npm ci --prefix tools/brief-atlas --ignore-scripts --no-audit --no-fund
+      - name: Install browser for visual regression tests
+        run: node tools/brief-atlas/node_modules/playwright/cli.js install --with-deps chromium --only-shell
       - name: Validate briefing behavior
         run: python3 -m unittest discover -s tests -q
       - name: Validate archive filters
@@ -35,7 +37,7 @@ jobs:
       - name: Validate static graph pipeline
         run: |
           python3 -m unittest discover -s tools/brief-atlas -p 'test_*.py' -q
-          node --test tools/brief-atlas/analytics.test.cjs tools/brief-atlas/graph-views.test.cjs
+          node --test tools/brief-atlas/*.test.cjs
       - name: Build approved reports only
         run: python3 briefing.py build
       - name: Build graph exploration from approved reports

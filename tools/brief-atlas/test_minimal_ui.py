@@ -19,7 +19,39 @@ class SectionMarkers(HTMLParser):
         self.markers.update((attributes.get("class") or "").split())
 
 
+class PageText(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.parts = []
+        self.excluded = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ("script", "style"):
+            self.excluded = tag
+        elif tag in ("p", "div", "section", "li", "br"):
+            self.parts.append(" ")
+
+    def handle_endtag(self, tag):
+        if tag == self.excluded:
+            self.excluded = None
+        if tag in ("p", "div", "section", "li"):
+            self.parts.append(" ")
+
+    def handle_data(self, data):
+        if self.excluded is None:
+            self.parts.append(data)
+
+
 class MinimalUITests(unittest.TestCase):
+    def test_copy_guard_checks_rendered_markup_and_decoded_entities(self):
+        for template in ("<p>다음 <span>질문</span></p>", "<p>다음&#32;질문</p>",
+                         "<p>다음&nbsp;질문</p>", "<p>다음\n\t질문</p>"):
+            with self.subTest(template=template), patch.object(
+                Path, "read_text", side_effect=[template, ""]
+            ):
+                with self.assertRaises(AssertionError):
+                    self.test_no_generated_guidance_in_page_copy()
+
     def test_section_guard_checks_every_class_token_and_quote_style(self):
         for html in ('<section class="panel hero">', "<div class='panel hero compact'>",
                      '<section class="panel' + chr(9) + 'hero">', "<aside id='observations'>"):
@@ -35,10 +67,14 @@ class MinimalUITests(unittest.TestCase):
             self.assertNotIn(name, parser.markers)
 
     def test_no_generated_guidance_in_page_copy(self):
-        content = (ROOT / "template.html").read_text() + (ROOT / "ui.js").read_text()
+        parser = PageText()
+        parser.feed((ROOT / "template.html").read_text())
+        template_text = " ".join("".join(parser.parts).split())
+        javascript = (ROOT / "ui.js").read_text()
         for phrase in ("MODEL CALLS", "STATIC GRAPH", "MATERIALIZED", "반복 포착", "다음 질문",
                        "해 보세요", "해보세요", "같은 입력", "준비할지", "자동 추출된", "포착</b>"):
-            self.assertNotIn(phrase, content)
+            self.assertNotIn(phrase, template_text)
+            self.assertNotIn(phrase, javascript)
 
     def test_existing_visual_exploration_controls_remain(self):
         template = (ROOT / "template.html").read_text()
@@ -61,30 +97,6 @@ class MinimalUITests(unittest.TestCase):
             ):
                 with self.assertRaisesRegex(AssertionError, "Orphaned DOM reference: missing-target"):
                     self.test_all_direct_dom_references_have_targets()
-
-    def test_empty_chart_cell_palette_meets_text_contrast(self):
-        css = (ROOT / "style.css").read_text()
-        rules = {}
-        for selectors, body in re.findall(r"([^{}]+)\{([^{}]*)\}", css):
-            declarations = {name: value.strip() for name, value in re.findall(r"([\w-]+)\s*:\s*([^;{}]+)", body)}
-            for selector in selectors.split(","):
-                rules.setdefault(selector.strip(), {}).update(declarations)
-
-        def luminance(value):
-            value = re.sub(r"var\((--[\w-]+)\)", lambda match: rules[":root"][match.group(1)], value)
-            self.assertRegex(value, r"^#[0-9a-fA-F]{6}$")
-            channels = [int(value[i:i + 2], 16) / 255 for i in (1, 3, 5)]
-            linear = [v / 12.92 if v <= 0.04045 else ((v + 0.055) / 1.055) ** 2.4 for v in channels]
-            return sum(v * weight for v, weight in zip(linear, (0.2126, 0.7152, 0.0722)))
-
-        for selector in (".zero-cell", ".self-cell", "#heatmap .no-data"):
-            with self.subTest(selector=selector):
-                self.assertIn(selector, rules)
-                foreground = luminance(rules[selector]["color"])
-                background = luminance(rules[selector]["background"])
-                contrast = (max(foreground, background) + 0.05) / (min(foreground, background) + 0.05)
-                self.assertGreaterEqual(contrast, 4.5)
-
 
 if __name__ == "__main__":
     unittest.main()

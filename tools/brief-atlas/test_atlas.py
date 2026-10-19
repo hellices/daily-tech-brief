@@ -4,14 +4,27 @@ import os
 import subprocess
 import sys
 import unittest
+import tempfile
 from pathlib import Path
+from unittest.mock import patch
 
 PATH = Path(__file__).with_name("atlas.py")
 ATLAS = None
 if PATH.exists():
     spec = importlib.util.spec_from_file_location("atlas", PATH)
     ATLAS = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(ATLAS)
+    with patch("socket.socket", side_effect=AssertionError("Network call during import")):
+        spec.loader.exec_module(ATLAS)
+
+OFFLINE_PROGRAM = (
+    "import json, sys\n"
+    "from unittest.mock import patch\n"
+    "source = json.loads(sys.stdin.buffer.read())\n"
+    "with patch('socket.socket', side_effect=AssertionError('Network call during build')):\n"
+    "    from atlas import build_graph\n"
+    "    graph = build_graph(source)\n"
+    "sys.stdout.buffer.write(json.dumps(graph, ensure_ascii=False, sort_keys=True).encode('utf-8'))\n"
+)
 
 
 def document(key, day, topics=None, title="A study", section="papers", url="https://example.org/a"):
@@ -52,6 +65,41 @@ class AtlasTests(unittest.TestCase):
         self.assertTrue(any(n["kind"] == "phrase" for n in g["nodes"]))
         self.assertTrue(any(n["kind"] == "name" and n["label"] == "LEASH" for n in g["nodes"]))
         self.assertTrue(any(n["kind"] == "project" and n["key"] == "vendor/projectx" for n in g["nodes"]))
+
+    def test_non_repository_github_routes_do_not_create_projects(self):
+        paths = ("login/oauth", "sponsors/example", "settings/billing", "marketplace/actions",
+                 "notifications/threads", "sessions/verified-device", "features/actions",
+                 "topics/machine-learning", "orgs/example", "users/example",
+                 "advisories/GHSA-abcd-1234-abcd", "stars/example", "discussions/example")
+        for route in paths:
+            with self.subTest(route=route):
+                graph = self.graph([document("a", "2026-10-18", url="https://github.com/" + route)])
+                self.assertFalse(any(n["kind"] == "project" for n in graph["nodes"]))
+                self.assertEqual(len(graph["items"]), 1)
+
+    def test_supported_repository_routes_and_punctuation_are_preserved(self):
+        for tail in ("", "/", "/releases", "/releases/latest", "/releases/tag/v1.0",
+                     "/issues/42", "/pull/3", "/blob/main/src/a.py", "/tree/main",
+                     "/commit/abcdef1", "/discussions/6", "/actions/runs/123"):
+            with self.subTest(tail=tail):
+                graph = self.graph([document("a", "2026-10-18", url="https://github.com/actions/my_repo.test" + tail)])
+                projects = [n for n in graph["nodes"] if n["kind"] == "project"]
+                self.assertEqual([n["key"] for n in projects], ["actions/my_repo.test"])
+
+    def test_unsupported_or_malformed_repository_urls_are_not_guessed(self):
+        urls = ("https://github.com/example/repo/unknown-route",
+                "https://github.com/example/repo/issues/not-a-number",
+                "https://github.com/example/repo/blob",
+                "https://github.com/example/repo/commit/not-a-sha",
+                "https://github.com//example/repo",
+                "https://github.com/example/..",
+                "https://github.com/exa_mple/repo",
+                "https://github.com.evil.example/example/repo",
+                "https://user:password@github.com/example/repo")
+        for url in urls:
+            with self.subTest(url=url):
+                graph = self.graph([document("a", "2026-10-18", url=url)])
+                self.assertFalse(any(n["kind"] == "project" for n in graph["nodes"]))
 
     def test_literal_phrases_can_connect_papers_to_other_sections(self):
         g = self.graph([
@@ -127,20 +175,11 @@ class AtlasTests(unittest.TestCase):
                      section="github", url="https://github.com/example/planner"),
             document("a", "2026-10-19", ["new adaptive planning"], title="QUARTZ")
         ])
-        program = (
-            "import json, sys\n"
-            "from unittest.mock import patch\n"
-            "from atlas import build_graph\n"
-            "source = json.loads(sys.stdin.buffer.read())\n"
-            "with patch('socket.socket', side_effect=AssertionError('Network call during build')):\n"
-            "    graph = build_graph(source)\n"
-            "sys.stdout.buffer.write(json.dumps(graph, ensure_ascii=False, sort_keys=True).encode('utf-8'))\n"
-        )
         outputs = []
         for seed in ("1", "7", "123"):
             with self.subTest(seed=seed):
                 result = subprocess.run(
-                    [sys.executable, "-c", program], cwd=PATH.parent,
+                    [sys.executable, "-c", OFFLINE_PROGRAM], cwd=PATH.parent,
                     env={**os.environ, "PYTHONHASHSEED": seed},
                     input=json.dumps(data, ensure_ascii=False).encode("utf-8"),
                     capture_output=True, timeout=15, check=False
@@ -151,6 +190,21 @@ class AtlasTests(unittest.TestCase):
         graph = json.loads(outputs[0])
         self.assertGreater(len(graph["nodes"]), 1)
         self.assertTrue(graph["links"])
+
+    def test_offline_guard_blocks_import_side_effects_and_copied_socket_aliases(self):
+        modules = (
+            "from socket import socket\nsocket()\ndef build_graph(source): return {}\n",
+            "from socket import socket\ndef build_graph(source):\n    socket()\n    return {}\n",
+        )
+        for module in modules:
+            with self.subTest(module=module), tempfile.TemporaryDirectory() as temporary:
+                Path(temporary, "atlas.py").write_text(module)
+                result = subprocess.run(
+                    [sys.executable, "-c", OFFLINE_PROGRAM], cwd=temporary,
+                    input=b"{}", capture_output=True, timeout=15, check=False
+                )
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn(b"Network call during build", result.stderr)
 
     def test_appending_a_report_updates_graph_without_changing_existing_ids(self):
         old = [document("a", "2026-10-17", ["procedural memory"])]
