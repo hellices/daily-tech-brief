@@ -64,8 +64,11 @@ strings in report text remain literal data rather than additional template slots
 - Explicit selections remain visible even with no observations in the chosen
   interval. Matrix limits reserve space for the selected node and its selected
   counterpart. Changing a filter automatically selects within the current type.
+- Evidence is deduplicated after matching the selected nodes. Each source keeps
+  its latest matching occurrence, and the results are ordered newest first.
 - When keyboard selection replaces a focused control, focus moves to the updated
-  source panel. Chart count labels maintain at least 4.5:1 foreground contrast.
+  source panel. Matrix column buttons expose node names to screen readers.
+  Chart counts and empty-state markers maintain at least 4.5:1 foreground contrast.
 - Raw names can be ambiguous, phrases can be missed, and different URLs for
   the same event can remain separate. Counts describe this archive, not the
   wider technology market. All entries remain accessible in the source inventory,
@@ -85,7 +88,9 @@ node --test tools/brief-atlas/analytics.test.cjs tools/brief-atlas/graph-views.t
 ```
 
 Tests cover automatic new-term discovery, deletion/republication handling,
-provenance, relative source links, offline/reproducible builds, date filtering,
+provenance, relative source links, offline builds and byte reproducibility across
+separate Python processes with different hash seeds, date filtering,
 co-occurrence intersections, precomputed series reuse without item reads,
-section-specific collection failures, literal template tokens, DOM reference
-quote styles, tree/matrix projections, and deterministic layouts.
+section-specific collection failures, literal template tokens and mixed-case
+script-end tags, DOM reference quote styles, matrix column names, empty-state
+contrast, tree/matrix projections, and deterministic layouts.
