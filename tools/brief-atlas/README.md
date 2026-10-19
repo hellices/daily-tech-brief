@@ -42,6 +42,8 @@ remove stale counts and orphaned nodes rather than accumulating duplicate state.
 The same inputs, source revision, and renderer version produce identical files.
 Existing URL normalization and item-anchor helpers from
 [briefing.py](../../briefing.py) are reused.
+Template slots are validated before a single substitution pass, so token-like
+strings in report text remain literal data rather than additional template slots.
 
 ## Extraction and presentation
 
@@ -62,6 +64,8 @@ Existing URL normalization and item-anchor helpers from
 - Explicit selections remain visible even with no observations in the chosen
   interval. Matrix limits reserve space for the selected node and its selected
   counterpart. Changing a filter automatically selects within the current type.
+- When keyboard selection replaces a focused control, focus moves to the updated
+  source panel. Chart count labels maintain at least 4.5:1 foreground contrast.
 - Raw names can be ambiguous, phrases can be missed, and different URLs for
   the same event can remain separate. Counts describe this archive, not the
   wider technology market. All entries remain accessible in the source inventory,
@@ -82,4 +86,6 @@ node --test tools/brief-atlas/analytics.test.cjs tools/brief-atlas/graph-views.t
 
 Tests cover automatic new-term discovery, deletion/republication handling,
 provenance, relative source links, offline/reproducible builds, date filtering,
-co-occurrence intersections, tree/matrix projections, and deterministic layouts.
+co-occurrence intersections, precomputed series reuse without item reads,
+section-specific collection failures, literal template tokens, DOM reference
+quote styles, tree/matrix projections, and deterministic layouts.

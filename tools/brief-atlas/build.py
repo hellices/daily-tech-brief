@@ -12,6 +12,7 @@ from html import escape
 import json
 import os
 from pathlib import Path
+import re
 import sys
 
 ROOT = Path(__file__).resolve().parent
@@ -115,10 +116,11 @@ def build(source=None, output=None):
         "@@RENDERER@@": (ROOT / "graph-renderer.js").read_text(encoding="utf-8"),
         "@@STATIC@@": static_overview(graph),
     }
-    for token, value in replacements.items():
+    for token in replacements:
         if page.count(token) != 1:
             raise ValueError("Missing or duplicate template token: " + token)
-        page = page.replace(token, value)
+    page = re.sub("|".join(re.escape(token) for token in replacements),
+                  lambda match: replacements[match.group(0)], page)
     output.mkdir(parents=True, exist_ok=True)
     (output / "index.html").write_text(page, encoding="utf-8")
     for filename, content in (("graph.json", graph), ("evidence.json", details)):

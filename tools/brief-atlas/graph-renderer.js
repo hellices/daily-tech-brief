@@ -25,7 +25,7 @@
         const m=V.matrix(model,compact?8:12,{focus,pair}),max=Math.max(1,...m.values.flat().filter(x=>x!==null));
         this.element.innerHTML=`<div class="adjacency-scroll"><table class="adjacency" aria-label="공동 등장 인접 행렬"><thead><tr><th></th>${m.nodes.map((n,i)=>`<th scope="col"><button data-node="${n.id}" title="${escape(n.label)}"><span>${i+1}</span></button></th>`).join('')}</tr></thead><tbody>${m.nodes.map((n,i)=>`<tr><th scope="row"><button data-node="${n.id}" title="${escape(n.label)}"><span class="matrix-index" style="color:${palette[m.groups.get(n.id)%palette.length]}">${i+1}</span>${escape(n.label)}</button></th>${m.values[i].map((value,j)=>{
           const active=(n.id===focus&&m.nodes[j].id===pair)||(n.id===pair&&m.nodes[j].id===focus);
-          return `<td>${value===null?'<span class="self-cell">—</span>':value===0?'<span class="zero-cell">·</span>':`<button class="matrix-cell${active?' selected':''}" data-edge-source="${n.id}" data-edge-target="${m.nodes[j].id}" style="background:${d3.interpolateRgb('#edf4f8','#387caa')(value/max)};color:${value/max>.55?'white':'#35546c'}" aria-label="${escape(n.label)} × ${escape(m.nodes[j].label)}, ${value}건">${value}</button>`}</td>`;
+          return `<td>${value===null?'<span class="self-cell">—</span>':value===0?'<span class="zero-cell">·</span>':`<button class="matrix-cell${active?' selected':''}" data-edge-source="${n.id}" data-edge-target="${m.nodes[j].id}" style="background:${d3.interpolateRgb('#edf4f8','#387caa')(value/max)};color:#000" aria-label="${escape(n.label)} × ${escape(m.nodes[j].label)}, ${value}건">${value}</button>`}</td>`;
         }).join('')}</tr>`).join('')}</tbody></table></div>`;
         this.mode=mode;this.transform=null;return m.nodes.length;
       }
@@ -74,7 +74,7 @@
       }else{
         nodeGroups.filter(n=>n.id===focus).append('circle').attr('r',n=>n.r+6).attr('fill','none').attr('stroke',color).attr('stroke-opacity',.3).attr('stroke-width',2);
         nodeGroups.append('circle').attr('r',n=>n.r).attr('fill',color).attr('stroke','white').attr('stroke-width',2);
-        nodeGroups.append('text').attr('text-anchor','middle').attr('y',4).attr('fill','white').attr('font-size',11).attr('font-weight',600).text(n=>n.count);
+        nodeGroups.append('text').attr('text-anchor','middle').attr('y',4).attr('fill','#000').attr('font-size',11).attr('font-weight',600).text(n=>n.count);
         nodeGroups.each(function(n){
           wrap(n.label,compact?18:23).forEach((text,i)=>d3.select(this).append('text').attr('class','node-label').attr('text-anchor','middle')
             .attr('y',n.r+17+i*14).attr('font-size',compact?13:11.5).attr('font-weight',n.id===focus?650:500)

@@ -42,7 +42,7 @@
         const strength = b.count / max;
         const shades = ['#f3f5f7', '#e4ebf4', '#c3d0e2', '#8299b8', '#45648d'];
         const level = Math.ceil(strength * 4);
-        const color = `background:${shades[level]};color:${level === 4 ? '#fff' : '#23394f'}`;
+        const color = `background:${shades[level]};color:${level === 4 ? '#fff' : '#000'}`;
         return `<td><button type="button" data-cell="${node.id}" data-from="${b.from}" data-to="${b.to}" class="${b.available ? '' : 'no-data'}" style="${b.available ? color : ''}" aria-label="${esc(node.label)} ${b.from}부터 ${b.to}, ${b.available ? b.count + '건' : '관측 없음'}">${b.available ? b.count : '—'}</button></td>`;
       }).join('')}</tr>`).join('')}</tbody>`;
     if (!rows.length) $('heatmap').innerHTML = '<tbody><tr><td>기록 없음</td></tr></tbody>';
@@ -116,6 +116,7 @@
       clearSelection(); render();
     } else if (button.dataset.unit) { state.unit = button.dataset.unit; heatmap(); document.querySelectorAll('[data-unit]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.unit === state.unit))); }
     else { state.section = state.section === button.dataset.section ? '' : button.dataset.section; state.explicitFocus = false; clearSelection(); render(); }
+    if ((event.type === 'keydown' || event.detail === 0) && !button.isConnected) $('detail-panel').focus({ preventScroll: true });
     if ((button.dataset.node || button.dataset.edgeSource) && matchMedia('(max-width:800px)').matches) $('detail-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   globalThis.addEventListener('error', e => { $('fatal').hidden = false; $('fatal').textContent = '그래프 조회 오류: ' + e.message + ' · 페이지를 다시 열어 주세요.'; });

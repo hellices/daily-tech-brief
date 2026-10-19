@@ -50,7 +50,7 @@ class MinimalUITests(unittest.TestCase):
         template = (ROOT / "template.html").read_text()
         javascript = (ROOT / "ui.js").read_text()
         ids = set(re.findall(r'id="([^"]+)"', template))
-        for name in re.findall(r"\$\('([^']+)'\)", javascript):
+        for _, name in re.findall(r"""\$\(\s*(['"])([^'"]+)\1\s*\)""", javascript):
             self.assertIn(name, ids, "Orphaned DOM reference: " + name)
 
     def test_dom_guard_rejects_missing_targets_with_either_quote_style(self):

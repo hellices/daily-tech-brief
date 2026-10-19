@@ -89,3 +89,27 @@ test('explicit empty focus stays visible without fabricated links',()=>{
   assert.ok(model.nodes.some(n=>n.id==='a'&&n.count===0));
   assert.deepEqual(model.edges,[]);
 });
+test('matrix count labels meet 4.5:1 contrast across the gradient',async()=>{
+  const d3=await import('d3'),vm=require('node:vm');
+  const context={GraphViews:V,d3};
+  vm.runInNewContext(fs.readFileSync(__dirname+'/graph-renderer.js','utf8'),context);
+  const luminance=value=>{
+    const c=d3.color(value).rgb();
+    const linear=[c.r,c.g,c.b].map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;});
+    return linear[0]*.2126+linear[1]*.7152+linear[2]*.0722;
+  };
+  for(let count=1;count<=100;count++){
+    const model={
+      nodes:['a','b','c'].map(id=>({id,label:id,kind:'phrase',count:100})),
+      edges:[{source:'a',target:'b',count:100},{source:'a',target:'c',count}]
+    };
+    const element={innerHTML:'',replaceChildren(){}};
+    new context.AtlasGraphRenderer(element).render(model,{mode:'matrix'});
+    const cells=[...element.innerHTML.matchAll(/class="matrix-cell[^"]*"[^>]*style="background:([^;]+);color:([^"]+)"/g)];
+    assert.equal(cells.length,4);
+    for(const [,background,foreground] of cells){
+      const a=luminance(background),b=luminance(foreground);
+      assert.ok((Math.max(a,b)+.05)/(Math.min(a,b)+.05)>=4.5,`${foreground} on ${background}`);
+    }
+  }
+});
