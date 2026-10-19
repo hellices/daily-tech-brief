@@ -78,6 +78,8 @@ strings in report text remain literal data rather than additional template slots
 - When a keyboard action replaces or hides its focused control, focus moves to the
   related source panel or node search. Matrix column buttons expose node names to screen readers.
   Chart counts and empty-state markers maintain at least 4.5:1 foreground contrast.
+- Fit-to-screen uses the current graph bounds, including labels and dragged nodes,
+  rather than resetting only the zoom transform.
 - Raw names can be ambiguous, phrases can be missed, and different URLs for
   the same event can remain separate. Counts describe this archive, not the
   wider technology market. All entries remain accessible in the source inventory,

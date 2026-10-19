@@ -12,14 +12,23 @@
     return lines.slice(0,2).map((line,i)=>line.slice(0,size)+(line.length>size||(i===1&&lines.length>2)?'…':''));
   };
   class Renderer{
-    constructor(element){this.element=element;this.mode='';this.transform=null;}
+    constructor(element){this.element=element;this.mode='';this.transform=null;this.viewport=null;}
     zoomBy(value){if(this.svg&&this.zoom)this.svg.call(this.zoom.scaleBy,value);}
-    reset(){if(this.svg&&this.zoom)this.svg.call(this.zoom.transform,d3.zoomIdentity);}
+    reset(){
+      if(!this.svg||!this.zoom||!this.viewport)return;
+      const bounds=this.viewport.node().getBBox(),frame=this.svg.node().viewBox.baseVal;
+      if(!bounds.width&&!bounds.height)return;
+      const scale=Math.min(4,(frame.width-56)/Math.max(1,bounds.width),(frame.height-56)/Math.max(1,bounds.height));
+      const x=frame.x+frame.width/2-scale*(bounds.x+bounds.width/2);
+      const y=frame.y+frame.height/2-scale*(bounds.y+bounds.height/2);
+      this.zoom.scaleExtent([Math.min(.4,scale/2),4]);
+      this.svg.call(this.zoom.transform,root.d3.zoomIdentity.translate(x,y).scale(scale));
+    }
     render(model,{mode='network',focus='',pair='',compact=false}={}){
       const V=root.GraphViews,d3=root.d3;
       const width=compact?620:900,height=compact?590:570;
       this.element.replaceChildren();
-      this.svg=null;this.zoom=null;
+      this.svg=null;this.zoom=null;this.viewport=null;
       if(!model.nodes.length){this.element.innerHTML='<p class="empty">연결 없음</p>';return 0;}
       if(mode==='matrix'){
         const m=V.matrix(model,compact?8:12,{focus,pair}),max=Math.max(1,...m.values.flat().filter(x=>x!==null));
@@ -34,9 +43,13 @@
       svg.append('title').attr('id','graph-view-title').text({network:'공동 등장 네트워크',tree:'공동 등장 탐색 트리',cluster:'공동 등장 클러스터'}[mode]);
       svg.append('desc').attr('id','graph-view-desc').text('항목에서 함께 등장한 노드와 연결. 노드 또는 연결을 선택하면 소식을 표시합니다.');
       const viewport=svg.append('g').attr('class','graph-viewport');
+      this.viewport=viewport;
       const zoom=d3.zoom().scaleExtent([.4,4]).on('zoom',e=>{viewport.attr('transform',e.transform);this.transform=e.transform;});
       svg.call(zoom).on('dblclick.zoom',null);
-      if(this.mode===mode&&this.transform)svg.call(zoom.transform,this.transform);
+      if(this.mode===mode&&this.transform){
+        zoom.scaleExtent([Math.min(.4,this.transform.k/2),4]);
+        svg.call(zoom.transform,this.transform);
+      }
       else this.transform=d3.zoomIdentity;
       this.svg=svg;this.zoom=zoom;this.mode=mode;
       let layout;

@@ -305,6 +305,54 @@ test('keyboard pagination retains focus when its last-page button disappears', a
   assert.equal(await page.evaluate(() => document.activeElement.id), 'node-search');
 });
 
+test('fit view recenters dragged graph bounds including labels on desktop and mobile', async t => {
+  const page = await fixture(t);
+  for (const width of [1360, 390]) {
+    await page.setViewportSize({width, height: 1000});
+    for (const mode of ['network', 'tree', 'cluster']) {
+      await page.evaluate(({mode, compact}) => {
+        const nodes = Array.from({length: 6}, (_, i) => ({
+          id: 'fit-' + i, label: 'Readable graph node ' + i, kind: 'phrase', count: 1
+        }));
+        const edges = nodes.slice(1).map((node, i) => ({source: nodes[i].id, target: node.id, count: 1}));
+        globalThis.fitTestRenderer = new AtlasGraphRenderer(document.getElementById('graph'));
+        fitTestRenderer.render({nodes, edges}, {mode, focus: 'fit-0', compact});
+        fitTestRenderer.zoomBy(.5);
+      }, {mode, compact: width < 500});
+      const node = page.locator('#graph .graph-node[data-node="fit-0"]');
+      for (let i = 0; i < 3; i++) {
+        await page.evaluate(() => {
+          const renderer = fitTestRenderer;
+          const point = renderer.svg.select('[data-node="fit-0"]').datum();
+          const box = renderer.svg.node().viewBox.baseVal;
+          const scale = d3.zoomTransform(renderer.svg.node()).k;
+          renderer.svg.call(renderer.zoom.transform,
+            d3.zoomIdentity.translate(box.width / 2 - point.x * scale, box.height / 2 - point.y * scale).scale(scale));
+        });
+        const shape = node.locator(mode === 'tree' ? 'rect' : 'circle').last();
+        const from = await shape.boundingBox(), svg = await page.locator('#graph svg').boundingBox();
+        await page.mouse.move(from.x + from.width / 2, from.y + from.height / 2);
+        await page.mouse.down();
+        await page.mouse.move(svg.x + svg.width - 12, svg.y + svg.height - 15, {steps: 6});
+        await page.mouse.up();
+      }
+      assert.ok(await page.evaluate(() => {
+        const svg = fitTestRenderer.svg.node();
+        const box = svg.querySelector('.graph-viewport').getBBox();
+        return box.x + box.width > svg.viewBox.baseVal.width;
+      }), 'Fixture must drag content beyond the original viewBox');
+      await page.evaluate(() => fitTestRenderer.reset());
+      const fitted = await page.evaluate(() => {
+        const svg = fitTestRenderer.svg.node(), outer = svg.getBoundingClientRect();
+        const inner = svg.querySelector('.graph-viewport').getBoundingClientRect();
+        return inner.left >= outer.left - 1 && inner.top >= outer.top - 1 &&
+          inner.right <= outer.right + 1 && inner.bottom <= outer.bottom + 1;
+      });
+      assert.ok(fitted, `${mode} must fit its dragged content and labels at ${width}px`);
+    }
+  }
+});
+
 test('contrast guard rejects a more-specific stylesheet override', async t => {
   const page = await fixture(t);
   await page.addStyleTag({content: '#graph .adjacency .zero-cell { color: #ffffff; }'});
