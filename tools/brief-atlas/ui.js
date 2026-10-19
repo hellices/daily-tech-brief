@@ -13,7 +13,7 @@
   const initial = new URLSearchParams(location.hash.slice(1)).get('node');
   const state = { asOf: D.meta.to, span: 'all', kind: nodes.get(initial)?.kind || 'phrase', section: '', tag: '',
     custom: null, unit: 'week', focus: nodes.has(initial) ? initial : '', pair: '', inventory: false,
-    minimum: 1, cross: false, nodeQuery: '', limitNodes: 24, q: '', limit: 5, layout: 'network' };
+    minimum: 1, cross: false, nodeQuery: '', limitNodes: 24, q: '', limit: 5, layout: 'network', explicitFocus: false };
   let view;
   function clearSelection() { state.pair = ''; state.q = ''; state.limit = 5; $('evidence-search').value = ''; }
   function sectionCards() {
@@ -22,7 +22,8 @@
   }
   function graph() {
     const model = globalThis.GraphViews.project(D, view, state.focus, {
-      limit: compactGraph.matches ? 14 : 24, minimum: state.minimum, cross: state.cross
+      limit: compactGraph.matches ? 14 : 24, minimum: state.minimum, cross: state.cross,
+      pair: state.pair, keepFocus: state.explicitFocus
     });
     const shown = renderer.render(model, { mode: state.layout, focus: state.focus, pair: state.pair, compact: compactGraph.matches });
     $('view-count').textContent = `${shown} / ${model.total}`;
@@ -31,7 +32,7 @@
   }
   function heatmap() {
     const visible = view.rows.slice(0, 6);
-    const selected = view.allRows.find(n => n.id === state.focus && n.count);
+    const selected = view.allRows.find(n => n.id === state.focus && n.kind === state.kind);
     if (selected && !visible.some(n => n.id === selected.id)) visible.push(selected);
     const rows = visible.map(n => ({ node: n, periods: A.series(D, view, n.id, state.unit) }));
     const buckets = rows[0]?.periods || [];
@@ -83,9 +84,10 @@
   }
   function render() {
     view = A.query(D, state);
-    if (!state.inventory && !view.allRows.some(n => n.id === state.focus && n.count)) {
-      state.focus = (view.rows.find(n => A.neighbors(D, view, n.id, false, 1).length >= 2) || view.rows[0])?.id || '';
-      state.pair = '';
+    if (!state.inventory) {
+      const focus = A.selectFocus(D, view, state.focus, { explicit: state.explicitFocus });
+      if (focus !== state.focus) state.pair = '';
+      state.focus = focus;
     }
     $('kind').value = state.kind; $('span').value = state.custom ? 'custom' : state.span;
     $('period-label').textContent = `${view.range.from} — ${view.range.to}`;
@@ -97,7 +99,7 @@
   function choose(id) {
     const node = nodes.get(id);
     if (!node) throw new Error('Unknown graph node: ' + id);
-    state.focus = id; state.kind = node.kind; state.inventory = false; clearSelection(); render();
+    state.focus = id; state.kind = node.kind; state.inventory = false; state.explicitFocus = true; clearSelection(); render();
   }
   function act(event) {
     const button = event.target.closest('[data-node],[data-edge-source],[data-layout],[data-cell],[data-unit],[data-section]');
@@ -105,14 +107,15 @@
     if (button.dataset.node) choose(button.dataset.node);
     else if (button.dataset.edgeSource) {
       state.focus = button.dataset.edgeSource; state.pair = button.dataset.edgeTarget;
-      state.inventory = false; state.q = ''; $('evidence-search').value = ''; graph(); detail();
+      state.kind = nodes.get(state.focus).kind; state.explicitFocus = true;
+      state.inventory = false; state.q = ''; $('evidence-search').value = ''; render();
     }
     else if (button.dataset.layout) { state.layout = button.dataset.layout; graph(); }
     else if (button.dataset.cell) {
-      state.focus = button.dataset.cell; state.inventory = false; state.custom = { from: button.dataset.from, to: button.dataset.to };
+      state.focus = button.dataset.cell; state.inventory = false; state.explicitFocus = true; state.custom = { from: button.dataset.from, to: button.dataset.to };
       clearSelection(); render();
     } else if (button.dataset.unit) { state.unit = button.dataset.unit; heatmap(); document.querySelectorAll('[data-unit]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.unit === state.unit))); }
-    else { state.section = state.section === button.dataset.section ? '' : button.dataset.section; clearSelection(); render(); }
+    else { state.section = state.section === button.dataset.section ? '' : button.dataset.section; state.explicitFocus = false; clearSelection(); render(); }
     if ((button.dataset.node || button.dataset.edgeSource) && matchMedia('(max-width:800px)').matches) $('detail-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   globalThis.addEventListener('error', e => { $('fatal').hidden = false; $('fatal').textContent = '그래프 조회 오류: ' + e.message + ' · 페이지를 다시 열어 주세요.'; });
@@ -121,7 +124,7 @@
   document.addEventListener('click', act);
   document.addEventListener('keydown', e => { if (e.target.matches('g[role=button]') && ['Enter', ' '].includes(e.key)) { e.preventDefault(); act(e); } });
   for (const [id, key] of [['kind', 'kind'], ['span', 'span'], ['as-of', 'asOf'], ['tag', 'tag']]) {
-    $(id).addEventListener('change', e => { state[key] = e.target.value; state.custom = null; state.inventory = false; clearSelection(); render(); });
+    $(id).addEventListener('change', e => { state[key] = e.target.value; state.custom = null; state.inventory = false; state.explicitFocus = false; clearSelection(); render(); });
   }
   $('minimum').addEventListener('change', e => { state.minimum = Number(e.target.value); clearSelection(); graph(); detail(); });
   $('cross-kind').addEventListener('change', e => { state.cross = e.target.checked; clearSelection(); graph(); detail(); });
@@ -130,9 +133,9 @@
   $('more-evidence').addEventListener('click', () => { state.limit += 10; renderEvidence(); });
   $('more-nodes').addEventListener('click', () => { state.limitNodes += 24; nodeList(); });
   $('clear-pair').addEventListener('click', () => { clearSelection(); graph(); detail(); });
-  $('inventory').addEventListener('click', () => { state.inventory = true; state.focus = ''; clearSelection(); render(); });
+  $('inventory').addEventListener('click', () => { state.inventory = true; state.focus = ''; state.explicitFocus = false; clearSelection(); render(); });
   $('reset').addEventListener('click', () => {
-    Object.assign(state, { asOf: D.meta.to, span: 'all', kind: 'phrase', section: '', tag: '', custom: null, focus: '', pair: '', inventory: false, nodeQuery: '', limitNodes: 24, minimum: 1, cross: false, unit: 'week', layout: 'network' });
+    Object.assign(state, { asOf: D.meta.to, span: 'all', kind: 'phrase', section: '', tag: '', custom: null, focus: '', pair: '', inventory: false, nodeQuery: '', limitNodes: 24, minimum: 1, cross: false, unit: 'week', layout: 'network', explicitFocus: false });
     $('as-of').value = state.asOf; $('tag').value = ''; $('node-search').value = ''; $('minimum').value = '1'; $('cross-kind').checked = false; clearSelection(); render();
   });
   $('zoom-in').addEventListener('click', () => renderer.zoomBy(1.3));

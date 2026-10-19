@@ -134,9 +134,27 @@ class AtlasTests(unittest.TestCase):
         self.assertTrue(any(n["key"] == "quartz state routing" for n in after["nodes"]))
 
     def test_deleting_a_report_removes_orphaned_nodes_and_edges(self):
-        old = [document("a", "2026-10-17", ["procedural memory"]), document("b", "2026-10-18", ["quartz state routing"])]
+        old = [document("a", "2026-10-17", ["procedural memory"]),
+               document("b", "2026-10-18", ["quartz state routing", "bounded retrieval"])]
+        before = self.graph(old)
+        self.assertEqual(len(before["links"]), 1)
+        deleted = {n["id"] for n in before["nodes"] if n["key"] != "procedural memory"}
         rebuilt = self.graph(old[:1])
         self.assertFalse(any(n["key"] == "quartz state routing" for n in rebuilt["nodes"]))
+        self.assertEqual(rebuilt["links"], [])
+        self.assertFalse(any(n["id"] in deleted for n in rebuilt["nodes"]))
+
+    def test_project_keys_preserve_punctuation_but_merge_case_variants(self):
+        graph = self.graph([
+            document("a", "2026-10-17", url="https://github.com/Owner/My-Repo"),
+            document("b", "2026-10-18", url="https://github.com/owner/my_repo"),
+            document("c", "2026-10-18", url="https://github.com/owner/my-repo")
+        ])
+        projects = {n["key"]: n for n in graph["nodes"] if n["kind"] == "project"}
+        self.assertEqual(set(projects), {"owner/my-repo", "owner/my_repo"})
+        self.assertNotEqual(projects["owner/my-repo"]["id"], projects["owner/my_repo"]["id"])
+        self.assertEqual(projects["owner/my-repo"]["unique_count"], 2)
+        self.assertEqual(projects["owner/my_repo"]["unique_count"], 1)
 
     def test_all_sections_and_unextracted_entries_remain_in_inventory(self):
         g = self.graph([document("a", "2026-10-18", section=s) for s in ("papers", "github", "community", "cncf")])

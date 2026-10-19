@@ -45,9 +45,13 @@ class BuildTests(unittest.TestCase):
             reports, issue = self.fixture(root)
             source = build.load_reports(reports, root / "tags.json", revision="fixture")
             build.build(source, root / "out")
-            first = (root / "out" / "graph.json").read_bytes()
+            first = {str(p.relative_to(root / "out")): p.read_bytes()
+                     for p in (root / "out").rglob("*") if p.is_file()}
+            self.assertEqual(set(first), {"graph.json", "evidence.json", "index.html", "overview.html", "D3-LICENSE.txt"})
             build.build(source, root / "out")
-            self.assertEqual(first, (root / "out" / "graph.json").read_bytes())
+            second = {str(p.relative_to(root / "out")): p.read_bytes()
+                      for p in (root / "out").rglob("*") if p.is_file()}
+            self.assertEqual(first, second)
             next_issue = copy.deepcopy(issue)
             next_issue["date"] = "2026-10-19"
             next_issue["papers"][0]["id"] = "arxiv:2610.12346"
@@ -58,7 +62,7 @@ class BuildTests(unittest.TestCase):
             graph = json.loads((root / "out" / "graph.json").read_text())
             self.assertEqual(graph["meta"]["report_count"], 2)
             self.assertTrue(any(n["key"] == "opal memory scheduling" for n in graph["nodes"]))
-            self.assertNotEqual(hashlib.sha256(first).hexdigest(), hashlib.sha256((root / "out" / "graph.json").read_bytes()).hexdigest())
+            self.assertNotEqual(hashlib.sha256(first["graph.json"]).hexdigest(), hashlib.sha256((root / "out" / "graph.json").read_bytes()).hexdigest())
 
     def test_no_manually_selected_research_catalog_is_required(self):
         self.assertFalse((Path(__file__).parent / "concepts.json").exists())

@@ -58,3 +58,34 @@ test('force and clustered layouts are deterministic, bounded, and preserve input
     assert.equal(JSON.stringify(model),before);
   }
 });
+test('community grouping accepts opaque IDs containing delimiters',()=>{
+  const model={nodes:[{id:'a|b'},{id:'c'}],edges:[{source:'a|b',target:'c',count:2}]};
+  const groups=V.communities(model);
+  assert.equal(groups.get('a|b'),groups.get('c'));
+});
+test('matrix reserves selected nodes beyond both desktop and mobile limits',()=>{
+  const nodes=Array.from({length:16},(_,i)=>({id:'n'+String(i).padStart(2,'0'),count:20-i}));
+  const edges=nodes.slice(0,14).flatMap((n,i)=>nodes.slice(i+1,14).map(other=>({source:n.id,target:other.id,count:3})));
+  const model={nodes,edges:[...edges,{source:'n14',target:'n15',count:1}]};
+  for(const limit of [8,12]){
+    const m=V.matrix(model,limit,{focus:'n15',pair:'n14'});
+    assert.equal(m.nodes.length,limit);
+    assert.ok(m.nodes.some(n=>n.id==='n15'));
+    assert.ok(m.nodes.some(n=>n.id==='n14'));
+    const a=m.nodes.findIndex(n=>n.id==='n15'),b=m.nodes.findIndex(n=>n.id==='n14');
+    assert.equal(m.values[a][b],1);
+  }
+});
+test('projection preserves the selected pair before matrix truncation',()=>{
+  const m=fixture(),data={items:[{identity:'one'}],links:m.edges};
+  const view={allRows:m.nodes,options:{kind:'phrase'},indices:new Set([0])};
+  const model=V.project(data,view,'a',{limit:2,pair:'f'});
+  assert.deepEqual(new Set(model.nodes.map(n=>n.id)),new Set(['a','f']));
+});
+test('explicit empty focus stays visible without fabricated links',()=>{
+  const m=fixture();m.nodes[0].count=0;
+  const data={items:[],links:[]},view={allRows:m.nodes,options:{kind:'phrase'},indices:new Set()};
+  const model=V.project(data,view,'a',{limit:2,keepFocus:true});
+  assert.ok(model.nodes.some(n=>n.id==='a'&&n.count===0));
+  assert.deepEqual(model.edges,[]);
+});

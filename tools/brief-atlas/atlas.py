@@ -64,7 +64,7 @@ def build_graph(source):
     vocabulary = {}
 
     def register(kind, label):
-        key = normalize(label)
+        key = label.casefold() if kind == "project" else normalize(label)
         identifier = node_id(kind, key)
         if identifier not in vocabulary:
             vocabulary[identifier] = {"id": identifier, "kind": kind, "key": key, "labels": set()}

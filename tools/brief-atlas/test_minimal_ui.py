@@ -1,15 +1,38 @@
 from pathlib import Path
+from html.parser import HTMLParser
 import re
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).parent
 
 
+class SectionMarkers(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.markers = set()
+
+    def handle_starttag(self, tag, attrs):
+        attributes = dict(attrs)
+        if attributes.get("id"):
+            self.markers.add(attributes["id"])
+        self.markers.update((attributes.get("class") or "").split())
+
+
 class MinimalUITests(unittest.TestCase):
+    def test_section_guard_checks_every_class_token_and_quote_style(self):
+        for html in ('<section class="panel hero">', "<div class='panel hero compact'>",
+                     '<section class="panel' + chr(9) + 'hero">', "<aside id='observations'>"):
+            with self.subTest(html=html), patch.object(Path, "read_text", return_value=html):
+                with self.assertRaises(AssertionError):
+                    self.test_no_editorial_or_pipeline_sections()
+
     def test_no_editorial_or_pipeline_sections(self):
         template = (ROOT / "template.html").read_text()
+        parser = SectionMarkers()
+        parser.feed(template)
         for name in ("hero", "observations", "pipeline-strip", "methodology", "build-artifacts", "detail-story"):
-            self.assertNotRegex(template, r'(?:id|class)="' + name + r'(?:[" ])')
+            self.assertNotIn(name, parser.markers)
 
     def test_no_generated_guidance_in_page_copy(self):
         content = (ROOT / "template.html").read_text() + (ROOT / "ui.js").read_text()

@@ -1,7 +1,7 @@
 (function(root){
   'use strict';
-  function project(data,view,focus,{limit=24,minimum=1,cross=false}={}){
-    const available=view.allRows.filter(n=>n.count>0&&(cross||n.kind===view.options.kind));
+  function project(data,view,focus,{limit=24,minimum=1,cross=false,pair='',keepFocus=false}={}){
+    const available=view.allRows.filter(n=>(n.count>0||(keepFocus&&n.id===focus))&&(cross||n.kind===view.options.kind));
     const byId=new Map(available.map(n=>[n.id,n]));
     const edges=data.links.filter(e=>byId.has(e.source)&&byId.has(e.target)).map(e=>{
       const documents=e.documents.filter(i=>view.indices.has(i));
@@ -12,7 +12,7 @@
       adjacent.get(e.source).push({id:e.target,count:e.count});
       adjacent.get(e.target).push({id:e.source,count:e.count});
     }
-    const selected=new Set(),queue=byId.has(focus)?[focus]:[];
+    const selected=new Set(),queue=[...new Set([focus,pair].filter(id=>byId.has(id)))];
     const ranked=[...available].sort((a,b)=>b.count-a.count||a.id.localeCompare(b.id));
     while(selected.size<Math.min(limit,available.length)){
       if(!queue.length)queue.push(ranked.find(n=>!selected.has(n.id)).id);
@@ -35,16 +35,17 @@
         const volumes=new Map(),between=new Map();
         for(const id of ids)volumes.set(group.get(id),(volumes.get(group.get(id))||0)+degree.get(id));
         for(const e of model.edges){
-          const a=group.get(e.source),b=group.get(e.target);
+          const [a,b]=[group.get(e.source),group.get(e.target)].sort();
           if(a===b)continue;
-          const key=[a,b].sort().join('|');
-          between.set(key,(between.get(key)||0)+e.count);
+          if(!between.has(a))between.set(a,new Map());
+          between.get(a).set(b,(between.get(a).get(b)||0)+e.count);
         }
         let best=null,gain=1e-10;
-        for(const [key,weight] of [...between].sort()){
-          const [a,b]=key.split('|');
-          const delta=weight/m-volumes.get(a)*volumes.get(b)/(2*m*m);
-          if(delta>gain){gain=delta;best=[a,b];}
+        for(const a of [...between.keys()].sort()){
+          for(const b of [...between.get(a).keys()].sort()){
+            const delta=between.get(a).get(b)/m-volumes.get(a)*volumes.get(b)/(2*m*m);
+            if(delta>gain){gain=delta;best=[a,b];}
+          }
         }
         if(!best)break;
         for(const id of ids)if(group.get(id)===best[1])group.set(id,best[0]);
@@ -72,9 +73,12 @@
     }
     return {nodes,edges};
   }
-  function matrix(model,limit=12){
+  function matrix(model,limit=12,{focus='',pair=''}={}){
     const groups=communities(model);
-    const nodes=[...model.nodes].sort((a,b)=>groups.get(a.id)-groups.get(b.id)||b.count-a.count||a.id.localeCompare(b.id)).slice(0,limit);
+    const ranked=[...model.nodes].sort((a,b)=>groups.get(a.id)-groups.get(b.id)||b.count-a.count||a.id.localeCompare(b.id));
+    const selected=new Set([focus,pair].filter(id=>ranked.some(n=>n.id===id)).slice(0,limit));
+    for(const node of ranked)if(selected.size<limit)selected.add(node.id);
+    const nodes=ranked.filter(n=>selected.has(n.id));
     const index=new Map(nodes.map((n,i)=>[n.id,i]));
     const values=nodes.map((_,i)=>nodes.map((__,j)=>i===j?null:0));
     for(const e of model.edges){

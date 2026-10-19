@@ -49,7 +49,8 @@ Existing URL normalization and item-anchor helpers from
   titles and topics connect entries across sections. Case, whitespace, and
   hyphens are normalized; the longest overlapping phrase in a field wins.
 - GitHub source URLs supply repository nodes. Title token patterns supply
-  names/acronyms. Common noise tokens and existing broad taxonomy aliases are
+  names/acronyms. Repository keys normalize case but preserve `.`, `_`, and `-`.
+  Common noise tokens and existing broad taxonomy aliases are
   excluded from phrase/name discovery. Editorial tags remain context filters.
 - Links mean **co-occurrence in the same briefing entry**, not dependency or
   causation. The tree is a bounded traversal of those links, not an impact model.
@@ -58,6 +59,9 @@ Existing URL normalization and item-anchor helpers from
 - The renderer shows a bounded neighborhood (24 nodes on desktop, 14 on
   mobile), with separate limits for trees and matrices. Counts beside the
   controls indicate displayed versus eligible nodes.
+- Explicit selections remain visible even with no observations in the chosen
+  interval. Matrix limits reserve space for the selected node and its selected
+  counterpart. Changing a filter automatically selects within the current type.
 - Raw names can be ambiguous, phrases can be missed, and different URLs for
   the same event can remain separate. Counts describe this archive, not the
   wider technology market. All entries remain accessible in the source inventory,

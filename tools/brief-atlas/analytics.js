@@ -66,6 +66,11 @@
     }).filter(edge => edge.count >= minimum && (crossKinds || edge.node.kind === center.kind))
       .sort((a, b) => b.count - a.count || a.node.label.localeCompare(b.node.label));
   }
+  function selectFocus(data, view, requested, { explicit = false } = {}) {
+    const retained = view.allRows.find(n => n.id === requested && n.kind === view.options.kind);
+    if (retained && (explicit || view.rows.some(n => n.id === requested))) return requested;
+    return (view.rows.find(n => neighbors(data, view, n.id, false, 1).length >= 2) || view.rows[0])?.id || '';
+  }
   function series(data, view, focus, unit) {
     if (!['week', 'month'].includes(unit)) throw new Error('Unknown period unit');
     const { asOf, section, tag } = view.options;
@@ -77,11 +82,14 @@
       const indices = [...view.history].filter(i => data.items[i].date >= b.from && data.items[i].date <= to);
       const nodeIndices = new Set(node?.documents || []);
       const reports = data.reports.filter(r => r.date >= b.from && r.date <= to);
+      const statuses = reports.flatMap(r => section ? [r.coverage[section]] : Object.values(r.coverage));
       return { ...b, to, item_count: unique(data, indices), report_count: reports.length,
+        expected_days: Math.round((+date(to) - +date(b.from)) / 86400000) + 1,
+        partial_slots: statuses.filter(status => status !== 'ok').length,
         count: unique(data, indices.filter(i => nodeIndices.has(i))), available: reports.length > 0 };
     });
   }
-  const api = { query, evidence, neighbors, series };
+  const api = { query, evidence, neighbors, selectFocus, series };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.BriefAtlas = api;
 })(globalThis);
