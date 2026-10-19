@@ -3,13 +3,14 @@ name: Deploy approved briefings
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: pages
+  group: pages-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -23,16 +24,27 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: "22"
+          cache: npm
+          cache-dependency-path: tools/brief-atlas/package-lock.json
+      - name: Install pinned graph renderer
+        run: npm ci --prefix tools/brief-atlas --ignore-scripts --no-audit --no-fund
       - name: Validate briefing behavior
         run: python3 -m unittest discover -s tests -q
       - name: Validate archive filters
         run: node --test tests/*.test.cjs
+      - name: Validate static graph pipeline
+        run: |
+          python3 -m unittest discover -s tools/brief-atlas -p 'test_*.py' -q
+          node --test tools/brief-atlas/analytics.test.cjs tools/brief-atlas/graph-views.test.cjs
       - name: Build approved reports only
         run: python3 briefing.py build
+      - name: Build graph exploration from approved reports
+        run: python3 tools/brief-atlas/build.py --reports reports --taxonomy tags.json --output site/insights --revision "$GITHUB_SHA"
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
         with:
           path: site
   deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
     permissions:

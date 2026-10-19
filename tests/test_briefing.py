@@ -798,6 +798,8 @@ class BriefingTests(unittest.TestCase):
         self.assertIn("../../index.html#archive-search", nav)
         self.assertIn("../../index.html#search-tags", nav)
         self.assertIn("../../index.html#date-archive", nav)
+        self.assertIn("../../insights/index.html", nav)
+        self.assertIn("./insights/index.html", b.render_navigation([], None, "./"))
         self.assertIn("../../daily/2026-09-16/index.html", nav)
         self.assertIn('aria-current="page"', nav)
         self.assertIn("2026-09-16", nav)
