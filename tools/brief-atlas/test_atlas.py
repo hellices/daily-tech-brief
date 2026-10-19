@@ -71,7 +71,7 @@ class AtlasTests(unittest.TestCase):
                  "notifications/threads", "sessions/verified-device", "features/actions",
                  "topics/machine-learning", "orgs/example", "users/example",
                  "advisories/GHSA-abcd-1234-abcd", "stars/example", "discussions/example",
-                 "resources/articles")
+                 "resources/articles", "github-copilot/signup")
         for route in paths:
             with self.subTest(route=route):
                 graph = self.graph([document("a", "2026-10-18", url="https://github.com/" + route)])
@@ -94,6 +94,20 @@ class AtlasTests(unittest.TestCase):
         projects = {n["key"]: n for n in graph["nodes"] if n["kind"] == "project"}
         self.assertEqual(set(projects), {"acme/widget", "acme/widget.git-tools"})
         self.assertEqual(projects["acme/widget"]["unique_count"], 3)
+
+    def test_clone_suffix_does_not_reduce_the_canonical_repository_name_limit(self):
+        for length in (96, 97, 100, 101):
+            name = "r" * length
+            urls = ("https://github.com/example/" + name, "https://github.com/example/" + name + ".git")
+            with self.subTest(length=length):
+                graph = self.graph([document(str(i), "2026-10-18", url=url) for i, url in enumerate(urls)])
+                projects = [n for n in graph["nodes"] if n["kind"] == "project"]
+                if length <= 100:
+                    self.assertEqual(len(projects), 1)
+                    self.assertEqual(projects[0]["key"], "example/" + name)
+                    self.assertEqual(projects[0]["unique_count"], 2)
+                else:
+                    self.assertEqual(projects, [])
 
     def test_unsupported_or_malformed_repository_urls_are_not_guessed(self):
         urls = ("https://github.com/example/repo/unknown-route",

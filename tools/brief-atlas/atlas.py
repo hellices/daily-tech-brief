@@ -13,12 +13,12 @@ COMMON_WORDS = frozenset(("A AN THE AND OR FOR WITH ON IN OF TO FROM HOW WHY WHA
                           "AI ML API APIS CLI SDK HTTP HTTPS URL JSON HTML HN GN CD CI CPU GPU").split())
 GITHUB_SITE_ROUTES = frozenset((
     "about account advisories apps codespaces collections contact copilot customer-stories dashboard "
-    "discussions enterprise events explore features issues join login logout marketplace new notifications "
+    "discussions enterprise events explore features github-copilot issues join login logout marketplace new notifications "
     "organizations orgs pricing pulls readme resources search security sessions settings signup site "
     "solutions sponsors stars topics trending users"
 ).split())
 GITHUB_REPOSITORY_PATH = re.compile(
-    r"/([A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?)/([A-Za-z0-9_.-]{1,100})(?:/(.*))?"
+    r"/([A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?)/([A-Za-z0-9_.-]{1,104})(?:/(.*))?"
 )
 GITHUB_REPOSITORY_RESOURCE = re.compile(
     r"(?:releases(?:/(?:latest|tag/.+))?"
@@ -49,7 +49,7 @@ def github_repository(value):
     if repository.lower().endswith(".git"):
         repository = repository[:-4]
     if (owner.lower() in GITHUB_SITE_ROUTES or "--" in owner
-            or repository in ("", ".", "..") or repository.lower().endswith(".git")):
+            or repository in ("", ".", "..") or len(repository) > 100 or repository.lower().endswith(".git")):
         return None
     if resource and not GITHUB_REPOSITORY_RESOURCE.fullmatch(resource.rstrip("/")):
         return None
