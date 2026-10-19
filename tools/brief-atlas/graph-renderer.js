@@ -23,7 +23,7 @@
       if(!model.nodes.length){this.element.innerHTML='<p class="empty">연결 없음</p>';return 0;}
       if(mode==='matrix'){
         const m=V.matrix(model,compact?8:12,{focus,pair}),max=Math.max(1,...m.values.flat().filter(x=>x!==null));
-        this.element.innerHTML=`<div class="adjacency-scroll"><table class="adjacency" aria-label="공동 등장 인접 행렬"><thead><tr><th></th>${m.nodes.map((n,i)=>`<th scope="col"><button data-node="${n.id}" title="${escape(n.label)}" aria-label="${escape(n.label)}"><span>${i+1}</span></button></th>`).join('')}</tr></thead><tbody>${m.nodes.map((n,i)=>`<tr><th scope="row"><button data-node="${n.id}" title="${escape(n.label)}"><span class="matrix-index" style="color:${palette[m.groups.get(n.id)%palette.length]}">${i+1}</span>${escape(n.label)}</button></th>${m.values[i].map((value,j)=>{
+        this.element.innerHTML=`<div class="adjacency-scroll"><table class="adjacency" aria-label="공동 등장 인접 행렬"><thead><tr><th></th>${m.nodes.map((n,i)=>`<th scope="col"><button data-node="${n.id}" title="${escape(n.label)}" aria-label="${escape(n.label)}"><span>${i+1}</span></button></th>`).join('')}</tr></thead><tbody>${m.nodes.map((n,i)=>`<tr><th scope="row"><button data-node="${n.id}" title="${escape(n.label)}"><span class="matrix-index" style="color:${d3.color(palette[m.groups.get(n.id)%palette.length]).darker(.8).formatHex()}">${i+1}</span>${escape(n.label)}</button></th>${m.values[i].map((value,j)=>{
           const active=(n.id===focus&&m.nodes[j].id===pair)||(n.id===pair&&m.nodes[j].id===focus);
           return `<td>${value===null?'<span class="self-cell">—</span>':value===0?'<span class="zero-cell">·</span>':`<button class="matrix-cell${active?' selected':''}" data-edge-source="${n.id}" data-edge-target="${m.nodes[j].id}" style="background:${d3.interpolateRgb('#edf4f8','#387caa')(value/max)};color:#000" aria-label="${escape(n.label)} × ${escape(m.nodes[j].label)}, ${value}건">${value}</button>`}</td>`;
         }).join('')}</tr>`).join('')}</tbody></table></div>`;
@@ -58,7 +58,7 @@
         .attr('aria-label',e=>`${edgeNode(e.source).label} × ${edgeNode(e.target).label}, ${e.count}건`);
       edgeGroups.append('path').attr('class','edge-hit').attr('stroke','transparent').attr('stroke-width',15).attr('fill','none');
       edgeGroups.append('path').attr('class','edge-stroke').attr('fill','none')
-        .attr('stroke',e=>[edgeNode(e.source).id,edgeNode(e.target).id].includes(focus)&&[edgeNode(e.source).id,edgeNode(e.target).id].includes(pair)?'#355f83':'#bbc8d2')
+        .attr('stroke',e=>[edgeNode(e.source).id,edgeNode(e.target).id].includes(focus)&&[edgeNode(e.source).id,edgeNode(e.target).id].includes(pair)?'#355f83':'#52697b')
         .attr('stroke-width',e=>Math.min(3,.8+Math.sqrt(e.count)*.55));
       const nodeGroups=viewport.append('g').selectAll('g').data(layout.nodes).join('g')
         .attr('class','graph-node').attr('data-node',n=>n.id).attr('role','button').attr('tabindex',0)

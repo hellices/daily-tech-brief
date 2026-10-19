@@ -46,7 +46,10 @@ def github_repository(value):
     if not match:
         return None
     owner, repository, resource = match.groups()
-    if owner.lower() in GITHUB_SITE_ROUTES or "--" in owner or repository in (".", ".."):
+    if repository.lower().endswith(".git"):
+        repository = repository[:-4]
+    if (owner.lower() in GITHUB_SITE_ROUTES or "--" in owner
+            or repository in ("", ".", "..") or repository.lower().endswith(".git")):
         return None
     if resource and not GITHUB_REPOSITORY_RESOURCE.fullmatch(resource.rstrip("/")):
         return None

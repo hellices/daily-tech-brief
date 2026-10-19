@@ -87,6 +87,14 @@ class AtlasTests(unittest.TestCase):
                 projects = [n for n in graph["nodes"] if n["kind"] == "project"]
                 self.assertEqual([n["key"] for n in projects], ["actions/my_repo.test"])
 
+    def test_https_clone_aliases_share_one_project_without_changing_other_punctuation(self):
+        urls = ("https://github.com/acme/widget", "https://github.com/ACME/widget.git",
+                "https://github.com/acme/widget.GIT/", "https://github.com/acme/widget.git-tools")
+        graph = self.graph([document(str(i), "2026-10-18", url=url) for i, url in enumerate(urls)])
+        projects = {n["key"]: n for n in graph["nodes"] if n["kind"] == "project"}
+        self.assertEqual(set(projects), {"acme/widget", "acme/widget.git-tools"})
+        self.assertEqual(projects["acme/widget"]["unique_count"], 3)
+
     def test_unsupported_or_malformed_repository_urls_are_not_guessed(self):
         urls = ("https://github.com/example/repo/unknown-route",
                 "https://github.com/example/repo/issues/not-a-number",
@@ -94,6 +102,8 @@ class AtlasTests(unittest.TestCase):
                 "https://github.com/example/repo/commit/not-a-sha",
                 "https://github.com//example/repo",
                 "https://github.com/example/..",
+                "https://github.com/example/.git",
+                "https://github.com/example/repo.git.git",
                 "https://github.com/exa_mple/repo",
                 "https://github.com.evil.example/example/repo",
                 "https://user:password@github.com/example/repo")
@@ -208,11 +218,14 @@ class AtlasTests(unittest.TestCase):
                 self.assertIn(b"Network call during build", result.stderr)
 
     def test_appending_a_report_updates_graph_without_changing_existing_ids(self):
-        old = [document("a", "2026-10-17", ["procedural memory"])]
+        old = [document("a", "2026-10-17", ["procedural memory", "bounded retrieval"])]
         before = self.graph(old)
-        after = self.graph(old + [document("b", "2026-10-18", ["quartz state routing"])])
-        self.assertEqual(before["nodes"][0]["id"], next(n["id"] for n in after["nodes"] if n["key"] == "procedural memory"))
-        self.assertTrue(any(n["key"] == "quartz state routing" for n in after["nodes"]))
+        after = self.graph(old + [document("b", "2026-10-18", ["adaptive planning", "quartz state routing"])])
+        identifiers = {(n["kind"], n["key"]): n["id"] for n in after["nodes"]}
+        for node in before["nodes"]:
+            self.assertEqual(node["id"], identifiers[node["kind"], node["key"]])
+        self.assertIn(("phrase", "adaptive planning"), identifiers)
+        self.assertIn(("phrase", "quartz state routing"), identifiers)
 
     def test_deleting_a_report_removes_orphaned_nodes_and_edges(self):
         old = [document("a", "2026-10-17", ["procedural memory"]),

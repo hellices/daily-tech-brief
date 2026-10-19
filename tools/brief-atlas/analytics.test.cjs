@@ -46,7 +46,7 @@ test('first observation never uses future documents',()=>{
 test('node kinds remain separate unless a user explicitly enables cross-kind links',()=>{
   const r=A.query(data,opts);
   assert.deepEqual(A.neighbors(data,r,'p',false,1).map(e=>e.node.id),['q']);
-  assert.equal(A.neighbors(data,r,'p',true,1).length,2);
+  assert.deepEqual(A.neighbors(data,r,'p',true,1).map(e=>e.node.id),['q','repo']);
 });
 test('edge evidence is an exact same-entry intersection',()=>{
   const r=A.query(data,opts);assert.deepEqual(A.evidence(data,r,['p','q']).map(i=>i.id),['a2']);
@@ -74,6 +74,7 @@ test('filtered series recomputes selection without changing the stored graph',()
 test('historical cell selection updates all query surfaces consistently',()=>{
   const r=A.query(data,{...opts,custom:{from:'2026-10-05',to:'2026-10-11'}});
   assert.equal(r.total,1);assert.equal(A.neighbors(data,r,'p',true,1).length,0);
+  assert.deepEqual(A.evidence(data,r,['p']).map(item=>item.id),['a1']);
 });
 test('invalid dates, unknown filters and reversed ranges raise errors',()=>{
   assert.throws(()=>A.query(data,{...opts,asOf:'2026-02-30'}),/date/i);
@@ -94,6 +95,8 @@ test('clipped historical buckets recalculate expected days and collection failur
   assert.equal(bucket.report_count,3);
   assert.equal(bucket.expected_days,3);
   assert.equal(bucket.partial_slots,0);
+  assert.equal(bucket.count,1);
+  assert.equal(bucket.item_count,1);
   d.reports.find(x=>x.date==='2026-10-13').coverage.papers='partial';
   assert.equal(A.series(d,A.query(d,{...opts,asOf:'2026-10-14'}),'p','week')[1].partial_slots,1);
 });
@@ -101,9 +104,11 @@ test('filtered coverage uses only the selected section',()=>{
   const d=structuredClone(data);
   d.reports[1].coverage.community='unavailable';
   d.reports[2].coverage.papers='partial';
-  d.periods.week[1].partial_slots=2;
+  d.reports[2].coverage.community='unavailable';
+  d.periods.week[1].partial_slots=3;
   const r=A.query(d,{...opts,section:'papers'});
   assert.equal(A.series(d,r,'p','week')[1].partial_slots,1);
+  assert.equal(A.series(d,A.query(d,{...opts,section:'community'}),'p','week')[1].partial_slots,2);
 });
 test('unavailable collection is not an observed zero in filtered or cached series',()=>{
   const d=structuredClone(data);

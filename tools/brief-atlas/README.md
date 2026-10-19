@@ -52,6 +52,7 @@ strings in report text remain literal data rather than additional template slots
   hyphens are normalized; the longest overlapping phrase in a field wins.
 - GitHub source URLs supply repository nodes. Title token patterns supply
   names/acronyms. Repository keys normalize case but preserve `.`, `_`, and `-`.
+  A single HTTPS clone suffix `.git` is removed so clone and web URLs share a node.
   Repository candidates require HTTPS, a GitHub host, a valid owner/repository
   path, and either the repository root or a supported repository resource
   (releases, issues, pull requests, discussions, code, commits, comparisons,
@@ -101,8 +102,10 @@ provenance, relative source links, offline builds and byte reproducibility acros
 separate Python processes with different hash seeds, date filtering,
 co-occurrence intersections, precomputed series reuse without item reads,
 section-specific collection failures, literal template tokens and mixed-case
-script-end tags, DOM reference quote styles, matrix column names, empty-state
+script-end tags, syntax-parsed literal DOM references, matrix column names, empty-state
 contrast, tree/matrix projections, and deterministic layouts. Browser tests use
 the real stylesheet and renderer, check computed colors on desktop/mobile, and
 verify that higher-specificity, inline, and custom-property contrast regressions
-are rejected. CI installs the pinned headless browser and its system dependencies.
+are rejected. They also check matrix row indices, connections over cluster fills,
+and pagination reset when selecting another connection. CI installs the pinned
+headless browser and its system dependencies.

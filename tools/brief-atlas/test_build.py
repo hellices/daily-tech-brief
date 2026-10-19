@@ -6,7 +6,9 @@ import re
 import tempfile
 import unittest
 from unittest.mock import patch
-import build
+with patch("socket.socket", side_effect=AssertionError("Network call during build import")):
+    import build
+    import briefing
 
 
 class BuildTests(unittest.TestCase):
@@ -132,8 +134,9 @@ class BuildTests(unittest.TestCase):
             issue["papers"][0]["id"] = "https://arxiv.org/abs/2610.12345v2"
             (reports / "2026-10-18.json").write_text(json.dumps(issue))
             source = build.load_reports(reports, root / "tags.json")
-            self.assertTrue(source["items"][0]["href"].startswith("../daily/2026-10-18/index.html#item-papers-"))
-            self.assertEqual(source["items"][0]["identity"], source["items"][0]["href"].split("#")[1])
+            expected = briefing.item_anchor("papers", issue["papers"][0])
+            self.assertEqual(source["items"][0]["href"], "../daily/2026-10-18/index.html#" + expected)
+            self.assertEqual(source["items"][0]["identity"], expected)
 
 
 if __name__ == "__main__":

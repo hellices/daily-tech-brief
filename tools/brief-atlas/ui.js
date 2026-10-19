@@ -106,9 +106,10 @@
     if (!button) return;
     if (button.dataset.node) choose(button.dataset.node);
     else if (button.dataset.edgeSource) {
+      clearSelection();
       state.focus = button.dataset.edgeSource; state.pair = button.dataset.edgeTarget;
       state.kind = nodes.get(state.focus).kind; state.explicitFocus = true;
-      state.inventory = false; state.q = ''; $('evidence-search').value = ''; render();
+      state.inventory = false; render();
     }
     else if (button.dataset.layout) { state.layout = button.dataset.layout; graph(); }
     else if (button.dataset.cell) {
