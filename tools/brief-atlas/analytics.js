@@ -77,16 +77,17 @@
     const precomputed = !section && !tag && asOf === data.meta.to;
     const node = data.nodes.find(n => n.id === focus);
     return data.periods[unit].filter(b => b.from <= asOf).map(b => {
-      if (precomputed) return { ...b, count: b.node_counts[focus] || 0, available: b.report_count > 0 };
       const to = b.to < asOf ? b.to : asOf;
-      const indices = [...view.history].filter(i => data.items[i].date >= b.from && data.items[i].date <= to);
-      const nodeIndices = new Set(node?.documents || []);
       const reports = data.reports.filter(r => r.date >= b.from && r.date <= to);
       const statuses = reports.flatMap(r => section ? [r.coverage[section]] : Object.values(r.coverage));
+      const available = statuses.some(status => status === 'ok' || status === 'partial');
+      if (precomputed) return { ...b, count: b.node_counts[focus] || 0, available };
+      const indices = [...view.history].filter(i => data.items[i].date >= b.from && data.items[i].date <= to);
+      const nodeIndices = new Set(node?.documents || []);
       return { ...b, to, item_count: unique(data, indices), report_count: reports.length,
         expected_days: Math.round((+date(to) - +date(b.from)) / 86400000) + 1,
         partial_slots: statuses.filter(status => status !== 'ok').length,
-        count: unique(data, indices.filter(i => nodeIndices.has(i))), available: reports.length > 0 };
+        count: unique(data, indices.filter(i => nodeIndices.has(i))), available };
     });
   }
   const api = { query, evidence, neighbors, selectFocus, series };

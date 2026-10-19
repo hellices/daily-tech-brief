@@ -68,8 +68,10 @@ strings in report text remain literal data rather than additional template slots
   mobile), with separate limits for trees and matrices. Counts beside the
   controls indicate displayed versus eligible nodes.
 - Explicit selections remain visible even with no observations in the chosen
-  interval. Matrix limits reserve space for the selected node and its selected
-  counterpart. Changing a filter automatically selects within the current type.
+  interval. Matrix and tree limits reserve space for the selected node and its
+  selected counterpart. Changing a filter automatically selects within the current type.
+- A period with only unavailable collection is shown as unobserved, not zero.
+  At least one `ok` or `partial` coverage slot is required for an observed value.
 - Evidence is deduplicated after matching the selected nodes. Each source keeps
   its latest matching occurrence, and the results are ordered newest first.
 - When keyboard selection replaces a focused control, focus moves to the updated

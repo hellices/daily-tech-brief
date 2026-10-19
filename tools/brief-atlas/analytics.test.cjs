@@ -105,6 +105,22 @@ test('filtered coverage uses only the selected section',()=>{
   const r=A.query(d,{...opts,section:'papers'});
   assert.equal(A.series(d,r,'p','week')[1].partial_slots,1);
 });
+test('unavailable collection is not an observed zero in filtered or cached series',()=>{
+  const d=structuredClone(data);
+  d.items=[d.items[0]];
+  d.nodes=[{...d.nodes[0],documents:[0]}];
+  d.links=[];
+  d.periods.week[1].node_counts={};d.periods.week[1].item_count=0;
+  for(const report of d.reports.slice(1))report.coverage={papers:'unavailable',community:'unavailable'};
+  for(const section of ['', 'papers']){
+    const bucket=A.series(d,A.query(d,{...opts,section}),'p','week')[1];
+    assert.equal(bucket.count,0);
+    assert.equal(bucket.available,false);
+  }
+  d.reports[1].coverage.papers='partial';
+  assert.equal(A.series(d,A.query(d,{...opts,section:'papers'}),'p','week')[1].available,true);
+  assert.equal(A.series(d,A.query(d,opts),'p','week')[1].available,true);
+});
 test('kind changes replace focus from a different node type',()=>{
   const r=A.query(data,{...opts,kind:'project'});
   assert.equal(A.selectFocus(data,r,'p'),'repo');

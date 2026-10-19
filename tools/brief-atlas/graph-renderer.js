@@ -41,7 +41,7 @@
       this.svg=svg;this.zoom=zoom;this.mode=mode;
       let layout;
       if(mode==='tree'){
-        const tree=V.tree(model,focus,3,compact?3:5,compact?11:17);
+        const tree=V.tree(model,focus,3,compact?3:5,compact?11:17,{pair});
         const deepest=Math.max(0,...tree.nodes.map(n=>n.depth));
         layout={nodes:tree.nodes.map(n=>{
           const level=tree.nodes.filter(x=>x.depth===n.depth),i=level.findIndex(x=>x.id===n.id);

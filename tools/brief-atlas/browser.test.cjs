@@ -88,3 +88,25 @@ test('contrast guard resolves inherited custom-property changes', async t => {
   await page.evaluate(() => document.documentElement.style.setProperty('--muted', '#ffffff'));
   await assert.rejects(assertReadable(page, '#heatmap .no-data'), /contrast .*below 4\.5/);
 });
+
+test('tree renderer keeps the selected connection after rerooting on desktop and mobile', async t => {
+  const page = await fixture(t);
+  for (const compact of [false, true]) {
+    await page.setViewportSize({width: compact ? 390 : 1360, height: 1000});
+    const pair = await page.evaluate(compact => {
+      const children = Array.from({length: compact ? 3 : 5}, (_, i) => 'child-' + i);
+      const model = {
+        nodes: ['root', 'parent', ...children].map(id => ({id, label: id, kind: 'phrase', count: 1})),
+        edges: [{source: 'root', target: 'parent', count: 10},
+          ...children.map(id => ({source: 'parent', target: id, count: 1}))]
+      };
+      const pair = children.at(-1);
+      new AtlasGraphRenderer(document.getElementById('graph')).render(model, {
+        mode: 'tree', focus: 'parent', pair, compact
+      });
+      return pair;
+    }, compact);
+    assert.equal(await page.locator(`#graph [data-node="${pair}"]`).count(), 1);
+    assert.equal(await page.locator(`#graph [data-edge-source="parent"][data-edge-target="${pair}"]`).count(), 1);
+  }
+});

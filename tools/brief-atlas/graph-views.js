@@ -54,7 +54,7 @@
     const groups=[...new Set(group.values())].sort((a,b)=>ids.filter(id=>group.get(id)===b).length-ids.filter(id=>group.get(id)===a).length||a.localeCompare(b));
     return new Map(ids.map(id=>[id,groups.indexOf(group.get(id))]));
   }
-  function tree(model,focus,maxDepth=3,breadth=5,limit=18){
+  function tree(model,focus,maxDepth=3,breadth=5,limit=18,{pair=''}={}){
     if(!model.nodes.length)return {nodes:[],edges:[]};
     const byId=new Map(model.nodes.map(n=>[n.id,n]));
     const start=byId.has(focus)?focus:model.nodes[0].id;
@@ -62,7 +62,10 @@
     for(let i=0;i<nodes.length&&nodes.length<limit;i++){
       const parent=nodes[i];
       if(parent.depth>=maxDepth)continue;
-      const connected=model.edges.filter(e=>e.source===parent.id||e.target===parent.id).sort((a,b)=>b.count-a.count||a.source.localeCompare(b.source)||a.target.localeCompare(b.target));
+      const other=e=>e.source===parent.id?e.target:e.source;
+      const connected=model.edges.filter(e=>e.source===parent.id||e.target===parent.id).sort((a,b)=>
+        (parent.id===start?Number(other(b)===pair)-Number(other(a)===pair):0)||
+        b.count-a.count||a.source.localeCompare(b.source)||a.target.localeCompare(b.target));
       for(const e of connected){
         const id=e.source===parent.id?e.target:e.source,depth=parent.depth+1;
         if(seen.has(id)||(levels.get(depth)||0)>=breadth||nodes.length>=limit)continue;

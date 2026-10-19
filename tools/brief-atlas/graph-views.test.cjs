@@ -46,6 +46,19 @@ test('tree uses actual connections once per node without pretending cycles are d
   assert.equal(tree.edges.length,tree.nodes.length-1);
   assert.ok(tree.edges.every(e=>m.edges.some(x=>(x.source===e.source&&x.target===e.target)||(x.target===e.source&&x.source===e.target))));
 });
+test('rerooted trees keep the selected edge before desktop and mobile breadth limits',()=>{
+  for(const breadth of [3,5]){
+    const children=Array.from({length:breadth},(_,i)=>'child-'+i);
+    const nodes=['root','parent',...children].map(id=>({id,label:id,count:1,kind:'phrase'}));
+    const model={nodes,edges:[{source:'root',target:'parent',count:10},
+      ...children.map(id=>({source:'parent',target:id,count:1}))]};
+    const pair=children.at(-1);
+    assert.ok(V.tree(model,'root',3,breadth,18).nodes.some(n=>n.id===pair));
+    const selected=V.tree(model,'parent',3,breadth,18,{pair});
+    assert.ok(selected.nodes.some(n=>n.id===pair));
+    assert.ok(selected.edges.some(e=>e.source==='parent'&&e.target===pair));
+  }
+});
 test('adjacency matrix is symmetric and distinguishes self-cells from zero edges',()=>{
   const matrix=V.matrix(fixture(),6);
   const index=id=>matrix.nodes.findIndex(n=>n.id===id);
