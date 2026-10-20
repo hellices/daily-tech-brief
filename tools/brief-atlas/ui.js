@@ -13,7 +13,7 @@
   const initial = new URLSearchParams(location.hash.slice(1)).get('node');
   const state = { asOf: D.meta.to, span: '7', kind: nodes.get(initial)?.kind || 'phrase', section: '', tag: '',
     custom: null, unit: 'week', focus: nodes.has(initial) ? initial : '', pair: '', inventory: false,
-    minimum: 1, cross: false, nodeQuery: '', limitNodes: 24, q: '', limit: 5, layout: 'network', explicitFocus: Boolean(initial), ordering: 'rising' };
+    nodeQuery: '', limitNodes: 24, q: '', limit: 5, explicitFocus: Boolean(initial), ordering: 'rising' };
   let view, trend;
   function clearSelection() { state.pair = ''; state.q = ''; state.limit = 5; $('evidence-search').value = ''; }
   function restoreKeyboardFocus(event, control, target = 'detail-panel') {
@@ -26,14 +26,19 @@
     $('section-cards').innerHTML = [['', '전체'], ...Object.entries(SECTIONS)].map(([id, label]) => `<button type="button" data-section="${id}" class="${state.section === id ? 'active' : ''}" aria-pressed="${state.section === id}">${label}<span>${id ? view.sectionTotals[id] : total}</span></button>`).join('');
   }
   function graph() {
-    const model = !state.focus && !state.inventory ? {nodes: [], edges: [], total: 0} : globalThis.GraphViews.project(D, view, state.focus, {
-      limit: compactGraph.matches ? 14 : 24, minimum: state.minimum, cross: state.cross,
+    const model = !state.focus || state.inventory ? {nodes: [], edges: [], total: 0} : globalThis.GraphViews.project(D, view, state.focus, {
+      limit: compactGraph.matches ? 14 : 24, minimum: 2,
       pair: state.pair, keepFocus: state.explicitFocus
     });
-    const shown = renderer.render(model, { mode: state.layout, focus: state.focus, pair: state.pair, compact: compactGraph.matches });
+    const mode = globalThis.GraphViews.relationshipMode(model);
+    const panel = $('relation-panel');
+    panel.dataset.view = mode;
+    panel.hidden = mode === 'sources';
+    const shown = renderer.render(mode === 'sources' ? {nodes: [], edges: []} : model, {
+      mode: mode === 'sources' ? 'network' : mode, focus: state.focus, pair: state.pair, compact: compactGraph.matches
+    });
     $('view-count').textContent = `${shown} / ${model.total}`;
-    document.querySelectorAll('[data-layout]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.layout === state.layout)));
-    for (const id of ['zoom-in', 'zoom-out', 'fit-view']) $(id).disabled = state.layout === 'matrix';
+    for (const id of ['zoom-in', 'zoom-out', 'fit-view']) $(id).hidden = mode !== 'network';
   }
   function heatmap() {
     const visible = view.rows.slice(0, 10);
@@ -121,7 +126,7 @@
     state.focus = id; state.kind = node.kind; state.inventory = false; state.explicitFocus = true; clearSelection(); render();
   }
   function act(event) {
-    const button = event.target.closest('[data-node],[data-edge-source],[data-layout],[data-cell],[data-unit],[data-section]');
+    const button = event.target.closest('[data-node],[data-edge-source],[data-cell],[data-unit],[data-section]');
     if (!button) return;
     if (button.dataset.node) choose(button.dataset.node);
     else if (button.dataset.edgeSource) {
@@ -130,7 +135,6 @@
       state.kind = nodes.get(state.focus).kind; state.explicitFocus = true;
       state.inventory = false; render();
     }
-    else if (button.dataset.layout) { state.layout = button.dataset.layout; graph(); }
     else if (button.dataset.cell) {
       state.focus = button.dataset.cell; state.inventory = false; state.explicitFocus = true; state.custom = { from: button.dataset.from, to: button.dataset.to };
       clearSelection(); render();
@@ -157,8 +161,6 @@
     if (state.ordering === 'rising' && state.span === 'all') state.span = '7';
     state.explicitFocus = false; state.inventory = false; clearSelection(); render();
   });
-  $('minimum').addEventListener('change', e => { state.minimum = Number(e.target.value); clearSelection(); graph(); detail(); });
-  $('cross-kind').addEventListener('change', e => { state.cross = e.target.checked; clearSelection(); graph(); detail(); });
   $('evidence-search').addEventListener('input', e => { state.q = e.target.value; state.limit = 5; renderEvidence(); });
   $('node-search').addEventListener('input', e => { state.nodeQuery = e.target.value; state.limitNodes = 24; nodeList(); });
   $('more-evidence').addEventListener('click', event => {
@@ -172,8 +174,8 @@
   });
   $('inventory').addEventListener('click', () => { state.inventory = true; state.focus = ''; state.explicitFocus = false; clearSelection(); render(); });
   $('reset').addEventListener('click', () => {
-    Object.assign(state, { asOf: D.meta.to, span: '7', kind: 'phrase', section: '', tag: '', custom: null, focus: '', pair: '', inventory: false, nodeQuery: '', limitNodes: 24, minimum: 1, cross: false, unit: 'week', layout: 'network', explicitFocus: false, ordering: 'rising' });
-    $('as-of').value = state.asOf; $('tag').value = ''; $('node-search').value = ''; $('minimum').value = '1'; $('cross-kind').checked = false; clearSelection(); render();
+    Object.assign(state, { asOf: D.meta.to, span: '7', kind: 'phrase', section: '', tag: '', custom: null, focus: '', pair: '', inventory: false, nodeQuery: '', limitNodes: 24, unit: 'week', explicitFocus: false, ordering: 'rising' });
+    $('as-of').value = state.asOf; $('tag').value = ''; $('node-search').value = ''; clearSelection(); render();
   });
   $('zoom-in').addEventListener('click', () => renderer.zoomBy(1.3));
   $('zoom-out').addEventListener('click', () => renderer.zoomBy(1 / 1.3));

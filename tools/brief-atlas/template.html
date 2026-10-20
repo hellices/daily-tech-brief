@@ -39,18 +39,9 @@
           </div>
           <div class="heatmap-scroll"><table id="heatmap" aria-label="기간별 등장 횟수와 비중 변화"></table></div>
         </section>
-        <section class="graph-panel" aria-label="관계">
+        <section id="relation-panel" class="graph-panel" aria-labelledby="relation-heading" hidden>
           <div class="panel-head">
-            <div class="view-tabs" role="group" aria-label="그래프 보기">
-              <button type="button" data-layout="network" aria-pressed="true">네트워크</button>
-              <button type="button" data-layout="tree" aria-pressed="false">트리</button>
-              <button type="button" data-layout="matrix" aria-pressed="false">행렬</button>
-              <button type="button" data-layout="cluster" aria-pressed="false">클러스터</button>
-            </div>
-            <div class="graph-options">
-              <label>공동 등장 <select id="minimum"><option value="1">1건 이상</option><option value="2">2건 이상</option><option value="3">3건 이상</option></select></label>
-              <label><input type="checkbox" id="cross-kind"> 다른 유형</label>
-            </div>
+            <h2 id="relation-heading" title="서로 다른 글 2건 이상에서 함께 등장한 주제">함께 등장</h2>
           </div>
           <div class="graph-frame">
             <div id="graph" class="graph" aria-label="공동 등장 관계도"></div>

@@ -36,6 +36,7 @@ async function fixture(t) {
     await page.addScriptTag({content: fs.readFileSync(path.join(__dirname, file), 'utf8')});
   }
   await page.evaluate(() => {
+    document.getElementById('relation-panel').hidden = false;
     const model = {
       nodes: ['a', 'b', 'c'].map(id => ({id, label: id, kind: 'phrase', count: 1})),
       edges: [{source: 'a', target: 'b', count: 1}]
@@ -194,11 +195,10 @@ function assertDomTargets(source, targets) {
   for (const id of literalDomIds(source)) assert.ok(targets.has(id), 'Orphaned DOM reference: ' + id);
 }
 
-test('layout controls expose a named accessible group', async t => {
+test('relationship section is named without interchangeable layout controls', async t => {
   const page = await fixture(t);
-  const group = page.getByRole('group', {name: '그래프 보기', exact: true});
-  assert.equal(await group.count(), 1);
-  assert.equal(await group.getByRole('button').count(), 4);
+  assert.equal(await page.getByRole('region', {name: '함께 등장', exact: true}).count(), 1);
+  assert.equal(await page.locator('[data-layout]').count(), 0);
 });
 
 test('literal UI DOM calls resolve against the actual template', async t => {
@@ -301,15 +301,19 @@ test('edge contrast guard rejects opacity overrides on paths and ancestors', asy
   }
 });
 
-async function populatedFixture(t, nodeCount = 2, includeProject = false, baselineNodes = null) {
+async function populatedFixture(t, nodeCount = 2, includeProject = false, baselineNodes = null, pattern = 'all') {
   const page = await fixture(t);
-  await page.evaluate(({nodeCount, includeProject, baselineNodes}) => {
+  await page.evaluate(({nodeCount, includeProject, baselineNodes, pattern}) => {
     const nodeIds = ['a', 'b', ...Array.from({length: nodeCount - 2}, (_, i) => 'node-' + i)];
     if (includeProject) nodeIds.push('project-demo');
     const dates = ['2026-10-18', '2026-10-19'];
     const items = Array.from({length: 16}, (_, i) => ({
       id: 'item-' + i, identity: 'source-' + i, date: dates[i < 8 ? 0 : 1], section: 'community',
-      title: 'Source ' + i, tags: ['alpha'], nodes: nodeIds, matches: {}, href: '#item-' + i, url: 'https://example.org/' + i
+      title: 'Source ' + i, tags: ['alpha'],
+      nodes: pattern === 'single' && i > 0 ? [nodeIds[i % nodeIds.length]]
+        : pattern === 'chain' ? nodeIds.slice(i % (nodeIds.length - 1), i % (nodeIds.length - 1) + 2)
+        : nodeIds,
+      matches: {}, href: '#item-' + i, url: 'https://example.org/' + i
     }));
     if (baselineNodes) {
       for (let i = 0; i < 3; i++) items.push({
@@ -320,7 +324,9 @@ async function populatedFixture(t, nodeCount = 2, includeProject = false, baseli
     }
     const reportDates = baselineNodes ? Array.from({length: 14}, (_, i) => new Date(Date.UTC(2026, 9, 6 + i)).toISOString().slice(0, 10)) : dates;
     const bucket = (from, to, count, reports, days) => ({
-      from, to, node_counts: Object.fromEntries(nodeIds.map(id => [id, count])), item_count: count, report_count: reports, expected_days: days, partial_slots: 0
+      from, to, node_counts: Object.fromEntries(nodeIds.map(id => [id,
+        new Set(items.filter(item => item.date >= from && item.date <= to && item.nodes.includes(id)).map(item => item.identity)).size
+      ])), item_count: count, report_count: reports, expected_days: days, partial_slots: 0
     });
     const data = {
       meta: {from: reportDates[0], to: dates[1]}, tags: [{id: 'alpha', label: 'Alpha'}],
@@ -336,7 +342,7 @@ async function populatedFixture(t, nodeCount = 2, includeProject = false, baseli
       }
     };
     document.getElementById('snapshot').textContent = JSON.stringify(data);
-  }, {nodeCount, includeProject, baselineNodes});
+  }, {nodeCount, includeProject, baselineNodes, pattern});
   for (const file of ['analytics.js', 'ui.js']) {
     await page.addScriptTag({content: fs.readFileSync(path.join(__dirname, file), 'utf8')});
   }
@@ -364,6 +370,31 @@ test('page offers a contextual relation view rather than interchangeable layout 
   assert.equal(await page.locator('#evidence-count').innerText(),'16건');
 });
 
+test('single-source relations use only the timeline and source list', async t => {
+  const page = await populatedFixture(t, 2, false, null, 'single');
+  assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), 'sources');
+  assert.ok(await page.locator('#relation-panel').isHidden());
+  assert.equal(await page.locator('#graph svg, #graph table').count(), 0);
+  assert.ok(await page.locator('#heatmap').isVisible());
+  assert.ok(Number.parseInt(await page.locator('#evidence-count').innerText()) > 0);
+});
+
+test('repeated sparse and dense relationships select a single appropriate renderer', async t => {
+  for (const pattern of ['chain', 'all']) {
+    const page = await populatedFixture(t, 6, false, null, pattern);
+    const mode = pattern === 'chain' ? 'network' : 'matrix';
+    for (const width of [1360, 390]) {
+      await page.setViewportSize({width, height: 1000});
+      assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), mode);
+      assert.ok(await page.locator('#relation-panel').isVisible());
+      assert.equal(await page.locator('#graph svg').count(), mode === 'network' ? 1 : 0);
+      assert.equal(await page.locator('#graph .adjacency').count(), mode === 'matrix' ? 1 : 0);
+      assert.equal(await page.locator('#zoom-in').isVisible(), mode === 'network');
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    }
+  }
+});
+
 test('no rising observations does not fill the default graph with unrelated entries', async t => {
   const page = await populatedFixture(t, 2, false, ['a', 'b']);
   assert.equal(await page.locator('#graph .graph-node').count(), 0);
@@ -389,9 +420,8 @@ async function assertNeutralCopy(page) {
 }
 
 test('initialized UI and user-facing labels remain free of generated guidance', async t => {
-  const page = await populatedFixture(t);
-  for (const layout of ['network', 'tree', 'matrix', 'cluster']) {
-    await page.locator(`[data-layout="${layout}"]`).click();
+  for (const pattern of ['single', 'chain', 'all']) {
+    const page = await populatedFixture(t, 6, false, null, pattern);
     await assertNeutralCopy(page);
   }
 });
@@ -413,9 +443,8 @@ test('copy guard rejects runtime-concatenated text and label attributes', async 
 });
 
 test('selecting a new edge resets evidence pagination while preserving its pair', async t => {
-  const page = await populatedFixture(t);
-  await page.locator('#inventory').click();
-  await page.locator('[data-layout="matrix"]').click();
+  const page = await populatedFixture(t, 6);
+  assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), 'matrix');
   assert.equal(await page.locator('.evidence').count(), 5);
   await page.locator('#more-evidence').click();
   assert.equal(await page.locator('.evidence').count(), 15);
@@ -444,10 +473,10 @@ test('tag and node-type filters preserve the heatmap-selected date interval', as
 });
 
 test('keyboard clearing a pair moves focus to a visible source panel', async t => {
-  const page = await populatedFixture(t);
+  const page = await populatedFixture(t, 6);
   for (const width of [1360, 390]) {
     await page.setViewportSize({width, height: 1000});
-    await page.locator('[data-layout="matrix"]').click();
+    assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), 'matrix');
     for (const key of ['Enter', 'Space']) {
       await page.locator('.matrix-cell').first().click();
       await page.locator('#clear-pair').focus();

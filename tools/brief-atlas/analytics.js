@@ -107,8 +107,7 @@
     const allRows = current.allRows.filter(row => row.kind === current.options.kind).map(row => {
       const previousCount = prior.get(row.id).count;
       const share = current.total ? row.count / current.total : null, previousShare = previous.total ? previousCount / previous.total : null;
-      const days = new Set(evidence(data, current, [row.id]).map(item => item.date)).size;
-      return {...row, previousCount, share, previousShare, days,
+      return {...row, previousCount, share, previousShare,
         delta: comparable ? 100 * (share - previousShare) : null};
     });
     const rows = allRows.filter(row => row.count > 0).sort((a,b) =>
