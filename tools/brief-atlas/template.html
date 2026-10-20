@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>탐색 · Daily Tech Brief</title>
+  <style>@@STYLE@@</style>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로</a>
+  <header class="site-header">
+    <a class="brand" href="../index.html">Daily Tech Brief</a>
+    <nav aria-label="페이지"><a href="../index.html">브리핑</a><span aria-current="page">탐색</span></nav>
+  </header>
+  <main id="main">
+    <h1 class="sr-only">탐색</h1>
+    <div class="toolbar">
+      <label><span class="sr-only">대상</span><select id="kind"><option value="phrase">표현</option><option value="project">프로젝트</option><option value="name">이름·약어</option></select></label>
+      <label><span class="sr-only">기간</span><select id="span"><option value="all">전체 기간</option><option value="7">최근 7일</option><option value="30">최근 30일</option><option value="custom" disabled>선택 구간</option></select></label>
+      <label><span class="sr-only">기준일</span><select id="as-of"></select></label>
+      <label><span class="sr-only">영역</span><select id="tag"><option value="">전체 영역</option></select></label>
+      <button type="button" id="reset" class="text-button">초기화</button>
+    </div>
+    <nav id="section-cards" class="section-tabs" aria-label="섹션"></nav>
+    <div class="periodline"><span id="period-label"></span><span id="sample-label"></span></div>
+    <div id="fatal" class="error" role="alert" hidden></div>
+    <div class="workspace">
+      <div class="visuals">
+        <section class="graph-panel" aria-label="관계">
+          <div class="panel-head">
+            <div class="view-tabs" role="group" aria-label="그래프 보기">
+              <button type="button" data-layout="network" aria-pressed="true">네트워크</button>
+              <button type="button" data-layout="tree" aria-pressed="false">트리</button>
+              <button type="button" data-layout="matrix" aria-pressed="false">행렬</button>
+              <button type="button" data-layout="cluster" aria-pressed="false">클러스터</button>
+            </div>
+            <div class="graph-options">
+              <label>공동 등장 <select id="minimum"><option value="1">1건 이상</option><option value="2">2건 이상</option><option value="3">3건 이상</option></select></label>
+              <label><input type="checkbox" id="cross-kind"> 다른 유형</label>
+            </div>
+          </div>
+          <div class="graph-frame">
+            <div id="graph" class="graph" aria-label="공동 등장 관계도"></div>
+            <div class="graph-controls"><span id="view-count"></span><button id="zoom-out" aria-label="축소" title="축소">−</button><button id="zoom-in" aria-label="확대" title="확대">+</button><button id="fit-view" aria-label="화면 맞춤" title="화면 맞춤">↺</button></div>
+          </div>
+        </section>
+        <section class="matrix-panel" aria-label="등장 기록">
+          <div class="panel-head">
+            <h2>등장 기록 <span class="unit">건</span></h2>
+            <div class="segmented"><button type="button" data-unit="week" aria-pressed="true">주</button><button type="button" data-unit="month" aria-pressed="false">월</button></div>
+          </div>
+          <div class="heatmap-scroll"><table id="heatmap" aria-label="기간별 등장 횟수"></table></div>
+        </section>
+        <section class="node-panel" aria-label="노드 목록">
+          <div class="node-search"><input id="node-search" type="search" placeholder="노드 검색" aria-label="노드 검색"><span id="node-count"></span></div>
+          <div id="node-list" class="node-list"></div>
+          <button type="button" id="more-nodes" class="more-button" hidden>더 보기</button>
+        </section>
+      </div>
+      <aside id="detail-panel" class="detail-panel" tabindex="-1" aria-label="관련 소식">
+        <div class="detail-head"><span id="detail-kind"></span><button type="button" id="inventory" class="text-button">전체 소식</button></div>
+        <h2 id="detail-title"></h2>
+        <button type="button" id="clear-pair" class="text-button" hidden>연결 해제 ×</button>
+        <div class="source-search"><input id="evidence-search" type="search" placeholder="소식 검색" aria-label="소식 검색"><span id="evidence-count" aria-live="polite"></span></div>
+        <div id="evidence-list" class="evidence-list"></div>
+        <button type="button" id="more-evidence" class="more-button" hidden>더 보기</button>
+      </aside>
+    </div>
+    <noscript>@@STATIC@@</noscript>
+  </main>
+  <script id="snapshot" type="application/json">@@DATA@@</script>
+  <script>@@D3@@</script>
+  <script>@@ANALYTICS@@</script>
+  <script>@@VIEWS@@</script>
+  <script>@@RENDERER@@</script>
+  <script>@@UI@@</script>
+</body>
+</html>

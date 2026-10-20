@@ -837,6 +837,7 @@ def render_navigation(issues, current, base):
            '<a href="' + home + '#date-archive">보고서 아카이브</a>',
            '<a href="' + home + '#archive-search" data-search-link>보고서 찾기</a>',
            '<a href="' + home + '#search-tags">태그로 찾아보기</a>',
+           '<a href="' + base + 'insights/index.html">탐색</a>',
            '<p class="nav-label nav-group">분야별 보기</p>']
     for section, label in SECTION_LABELS.items():
         out.append('<a href="' + home + "#section=" + section + '">' + escape(label) + "</a>")

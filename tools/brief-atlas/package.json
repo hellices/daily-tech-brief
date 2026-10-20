@@ -1,0 +1,12 @@
+{
+  "name": "brief-atlas",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "d3": "7.9.0"
+  },
+  "devDependencies": {
+    "acorn": "8.15.0",
+    "playwright": "1.64.0"
+  }
+}
