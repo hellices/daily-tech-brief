@@ -115,7 +115,7 @@ class BuildTests(unittest.TestCase):
             root = Path(temporary)
             reports, _ = self.fixture(root)
             source = build.load_reports(reports, root / "tags.json", revision="fixture")
-            for token in re.findall(r"@@[A-Z]+@@", template):
+            for token in re.findall(r"@@[A-Z_]+@@", template):
                 for replacement in ("", token * 2):
                     def read(path, *args, **kwargs):
                         if path == build.ROOT / "template.html":

@@ -18,12 +18,16 @@ python3 tools/brief-atlas/build.py
 ```
 
 Open `site/insights/index.html` in a browser. Assets are embedded, so local files
-and GitHub Pages work without a runtime API or CDN. Navigation and source links
-are relative to the generated site.
+and GitHub Pages work without a runtime data API or chart CDN. The shared site
+font stylesheet uses Google Fonts with local fallbacks, just like the archive.
+Navigation and source links are relative to the generated site.
 
 The existing [Pages workflow](../../.github/workflows/pages.yml) validates the
 reports, builds the briefing site, builds the atlas, and uploads the combined
-`site/` artifact. The report navigation includes an **탐색** link.
+`site/` artifact. The shared header includes an always-visible **탐색** link.
+Both builders reuse [site-header.html](../../site-header.html),
+[site-theme.css](../../site-theme.css), and [site-theme.js](../../site-theme.js)
+for the logo, navigation, typography, light/dark theme and search.
 
 ## Outputs
 
@@ -47,6 +51,22 @@ strings in report text remain literal data rather than additional template slots
 
 ## Extraction and presentation
 
+- The default view compares the latest seven archive days with the preceding
+  seven, within the selected section, tag and node type. The first heatmap ranks
+  positive percentage-point changes in the share of unique source items, requiring
+  at least two unique items across two dates. Repeated publication of one item is
+  not sufficient. Raw prior/current counts are shown beside the change; these are
+  archive emphasis changes, not predictions or claims of technology novelty.
+- Comparisons require a nonempty denominator, at least 80% of report days and
+  no more than 20% unavailable coverage slots in both windows. Without a baseline,
+  counts remain browsable but changes show `—` and the comparison is marked
+  unavailable. `등장량` restores count-based exploration; search can find any
+  observed node, not only the rising subset.
+- A focused graph shows only reachable nodes (and an explicitly selected pair),
+  never unrelated components to fill spare space. The inventory can still show
+  multiple components. In the initial archive nearly all co-occurrence links
+  have only one source, so the timeline and linked source items are the primary
+  evidence; graph connectivity alone is not a reliable measure of importance.
 - Multiword `topics` entries supply phrase candidates. Literal matches in
   titles and topics connect entries across sections. Case, whitespace, and
   hyphens are normalized; the longest overlapping phrase in a field wins.

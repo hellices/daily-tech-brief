@@ -26,15 +26,20 @@
     }
     render(model,{mode='network',focus='',pair='',compact=false}={}){
       const V=root.GraphViews,d3=root.d3;
+      const style=root.getComputedStyle?root.getComputedStyle(this.element):null;
+      const token=(name,fallback)=>style?.getPropertyValue(name).trim()||fallback;
+      const surface=token('--graph-surface','#fdfefe'),label=token('--graph-label','#354a5e');
+      const edgeColor=token('--graph-edge','#52697b'),active=token('--cp-accent','#355f83');
+      const matrixLow=token('--graph-matrix-low','#edf4f8'),matrixHigh=token('--graph-matrix-high','#387caa');
       const width=compact?620:900,height=compact?590:570;
       this.element.replaceChildren();
       this.svg=null;this.zoom=null;this.viewport=null;
       if(!model.nodes.length){this.element.innerHTML='<p class="empty">연결 없음</p>';return 0;}
       if(mode==='matrix'){
         const m=V.matrix(model,compact?8:12,{focus,pair}),max=Math.max(1,...m.values.flat().filter(x=>x!==null));
-        this.element.innerHTML=`<div class="adjacency-scroll"><table class="adjacency" aria-label="공동 등장 인접 행렬"><thead><tr><th></th>${m.nodes.map((n,i)=>`<th scope="col"><button data-node="${n.id}" title="${escape(n.label)}" aria-label="${escape(n.label)}"><span>${i+1}</span></button></th>`).join('')}</tr></thead><tbody>${m.nodes.map((n,i)=>`<tr><th scope="row"><button data-node="${n.id}" title="${escape(n.label)}"><span class="matrix-index" style="color:${d3.color(palette[m.groups.get(n.id)%palette.length]).darker(.8).formatHex()}">${i+1}</span>${escape(n.label)}</button></th>${m.values[i].map((value,j)=>{
+        this.element.innerHTML=`<div class="adjacency-scroll"><table class="adjacency" aria-label="공동 등장 인접 행렬"><thead><tr><th></th>${m.nodes.map((n,i)=>`<th scope="col"><button data-node="${n.id}" title="${escape(n.label)}" aria-label="${escape(n.label)}"><span>${i+1}</span></button></th>`).join('')}</tr></thead><tbody>${m.nodes.map((n,i)=>`<tr><th scope="row"><button data-node="${n.id}" title="${escape(n.label)}"><span class="matrix-index" style="color:${token('--graph-matrix-index',d3.color(palette[m.groups.get(n.id)%palette.length]).darker(.8).formatHex())}">${i+1}</span>${escape(n.label)}</button></th>${m.values[i].map((value,j)=>{
           const active=(n.id===focus&&m.nodes[j].id===pair)||(n.id===pair&&m.nodes[j].id===focus);
-          return `<td>${value===null?'<span class="self-cell">—</span>':value===0?'<span class="zero-cell">·</span>':`<button class="matrix-cell${active?' selected':''}" data-edge-source="${n.id}" data-edge-target="${m.nodes[j].id}" style="background:${d3.interpolateRgb('#edf4f8','#387caa')(value/max)};color:#000" aria-label="${escape(n.label)} × ${escape(m.nodes[j].label)}, ${value}건">${value}</button>`}</td>`;
+          return `<td>${value===null?'<span class="self-cell">—</span>':value===0?'<span class="zero-cell">·</span>':`<button class="matrix-cell${active?' selected':''}" data-edge-source="${n.id}" data-edge-target="${m.nodes[j].id}" style="background:${d3.interpolateRgb(matrixLow,matrixHigh)(value/max)};color:#000" aria-label="${escape(n.label)} × ${escape(m.nodes[j].label)}, ${value}건">${value}</button>`}</td>`;
         }).join('')}</tr>`).join('')}</tbody></table></div>`;
         this.mode=mode;this.transform=null;return m.nodes.length;
       }
@@ -71,7 +76,7 @@
         .attr('aria-label',e=>`${edgeNode(e.source).label} × ${edgeNode(e.target).label}, ${e.count}건`);
       edgeGroups.append('path').attr('class','edge-hit').attr('stroke','transparent').attr('stroke-width',15).attr('fill','none');
       edgeGroups.append('path').attr('class','edge-stroke').attr('fill','none')
-        .attr('stroke',e=>[edgeNode(e.source).id,edgeNode(e.target).id].includes(focus)&&[edgeNode(e.source).id,edgeNode(e.target).id].includes(pair)?'#355f83':'#52697b')
+        .attr('stroke',e=>[edgeNode(e.source).id,edgeNode(e.target).id].includes(focus)&&[edgeNode(e.source).id,edgeNode(e.target).id].includes(pair)?active:edgeColor)
         .attr('stroke-width',e=>Math.min(3,.8+Math.sqrt(e.count)*.55));
       const nodeGroups=viewport.append('g').selectAll('g').data(layout.nodes).join('g')
         .attr('class','graph-node').attr('data-node',n=>n.id).attr('role','button').attr('tabindex',0)
@@ -79,19 +84,19 @@
       nodeGroups.append('title').text(n=>`${n.label} · ${n.count}건`);
       if(mode==='tree'){
         nodeGroups.append('rect').attr('x',compact?-72:-66).attr('y',-25).attr('width',compact?144:132).attr('height',50).attr('rx',7)
-          .attr('fill',n=>n.id===focus?'#eef5fa':'white').attr('stroke',color).attr('stroke-width',n=>n.id===focus?2:1.3);
+          .attr('fill',n=>n.id===focus?token('--graph-active','#eef5fa'):surface).attr('stroke',color).attr('stroke-width',n=>n.id===focus?2:1.3);
         nodeGroups.each(function(n){
           const labels=wrap(n.label,compact?20:22);
-          labels.forEach((text,i)=>d3.select(this).append('text').attr('text-anchor','middle').attr('y',(i-(labels.length-1)/2)*14+4).attr('font-size',compact?12:11).attr('fill','#314658').text(text));
+          labels.forEach((text,i)=>d3.select(this).append('text').attr('text-anchor','middle').attr('y',(i-(labels.length-1)/2)*14+4).attr('font-size',compact?12:11).attr('fill',label).text(text));
         });
       }else{
         nodeGroups.filter(n=>n.id===focus).append('circle').attr('r',n=>n.r+6).attr('fill','none').attr('stroke',color).attr('stroke-opacity',.3).attr('stroke-width',2);
-        nodeGroups.append('circle').attr('r',n=>n.r).attr('fill',color).attr('stroke','white').attr('stroke-width',2);
+        nodeGroups.append('circle').attr('r',n=>n.r).attr('fill',color).attr('stroke',surface).attr('stroke-width',2);
         nodeGroups.append('text').attr('text-anchor','middle').attr('y',4).attr('fill','#000').attr('font-size',11).attr('font-weight',600).text(n=>n.count);
         nodeGroups.each(function(n){
           wrap(n.label,compact?18:23).forEach((text,i)=>d3.select(this).append('text').attr('class','node-label').attr('text-anchor','middle')
             .attr('y',n.r+17+i*14).attr('font-size',compact?13:11.5).attr('font-weight',n.id===focus?650:500)
-            .attr('fill','#354a5e').attr('paint-order','stroke').attr('stroke','white').attr('stroke-width',3).attr('stroke-linejoin','round').text(text));
+            .attr('fill',label).attr('paint-order','stroke').attr('stroke',surface).attr('stroke-width',3).attr('stroke-linejoin','round').text(text));
         });
       }
       function draw(){

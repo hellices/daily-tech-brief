@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent
 REPO_ROOT = ROOT.parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from briefing import canonical_url, item_anchor
+from briefing import canonical_url, item_anchor, render_navigation, render_site_header
 from atlas import build_graph
 
 COLLECTIONS = {"github": "repositories", "papers": "papers", "community": "discussions", "cncf": "cncf"}
@@ -109,6 +109,10 @@ def build(source=None, output=None):
     replacements = {
         "@@DATA@@": encoded,
         "@@STYLE@@": (ROOT / "style.css").read_text(encoding="utf-8"),
+        "@@SITE_STYLE@@": (REPO_ROOT / "site-theme.css").read_text(encoding="utf-8"),
+        "@@SITE_THEME@@": (REPO_ROOT / "site-theme.js").read_text(encoding="utf-8"),
+        "@@SITE_HEADER@@": render_site_header("../", render_navigation([], None, "../"), "insights"),
+        "@@READER@@": (REPO_ROOT / "reader.js").read_text(encoding="utf-8"),
         "@@ANALYTICS@@": (ROOT / "analytics.js").read_text(encoding="utf-8"),
         "@@UI@@": (ROOT / "ui.js").read_text(encoding="utf-8"),
         "@@D3@@": (bundle / "dist" / "d3.min.js").read_text(encoding="utf-8"),

@@ -30,6 +30,18 @@ test('projection never fabricates links or mixes types without permission',()=>{
   assert.ok(!model.nodes.some(n=>n.id==='f'));
   assert.ok(model.edges.every(e=>m.edges.some(x=>x.source===e.source&&x.target===e.target)));
 });
+test('focused exploration never fills spare capacity with unrelated components',()=>{
+  const nodes=['a','b','c','d'].map(id=>({id,label:id,kind:'phrase',count:1}));
+  const data={items:[{identity:'one'}],links:[
+    {source:'a',target:'b',documents:[0]},{source:'c',target:'d',documents:[0]}
+  ]};
+  const view={allRows:nodes,options:{kind:'phrase'},indices:new Set([0])};
+  const focused=V.project(data,view,'a',{limit:24});
+  assert.deepEqual(focused.nodes.map(n=>n.id),['a','b']);
+  assert.deepEqual(focused.edges.map(e=>[e.source,e.target]),[['a','b']]);
+  const overview=V.project(data,view,'',{limit:24});
+  assert.equal(overview.nodes.length,4);
+});
 test('modularity groups densely linked communities rather than node types',()=>{
   const m=fixture(); const groups=V.communities(m);
   assert.equal(groups.get('a'),groups.get('b'));

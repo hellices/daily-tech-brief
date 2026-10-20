@@ -831,6 +831,17 @@ def render_outline(issue=None):
         for anchor, label, depth in entries) + "</ul></nav>"
 
 
+def render_site_header(base, navigation, active=""):
+    values = {
+        "@@BASE@@": escape(base, quote=True),
+        "@@NAVIGATION@@": navigation,
+        "@@ARCHIVE_CURRENT@@": ' aria-current="page"' if active == "archive" else "",
+        "@@INSIGHTS_CURRENT@@": ' aria-current="page"' if active == "insights" else "",
+    }
+    header = (ROOT / "site-header.html").read_text(encoding="utf-8")
+    return re.sub("|".join(re.escape(token) for token in values), lambda match: values[match.group(0)], header)
+
+
 def render_navigation(issues, current, base):
     home = base + "index.html"
     out = ['<nav class="docs-nav" aria-label="보고서 탐색"><p class="nav-label">Daily Tech Brief</p>',
@@ -1047,7 +1058,11 @@ def build_site(root, output=None):
 
     def write_page(path, title, base, body, issue=None):
         page = template.replace("@@TITLE@@", escape(title)).replace("@@BASE@@", base)
-        page = page.replace("@@NAVIGATION@@", render_navigation(issues, issue, base))
+        navigation = render_navigation(issues, issue, base)
+        page = page.replace("@@SITE_STYLE@@", (ROOT / "site-theme.css").read_text(encoding="utf-8"))
+        page = page.replace("@@SITE_THEME@@", (ROOT / "site-theme.js").read_text(encoding="utf-8"))
+        page = page.replace("@@SITE_HEADER@@", render_site_header(base, navigation, "archive" if issue is None else ""))
+        page = page.replace("@@NAVIGATION@@", navigation)
         page = page.replace("@@OUTLINE@@", render_outline(issue))
         page = page.replace("@@READER_SCRIPT@@", (ROOT / "reader.js").read_text(encoding="utf-8"))
         page = page.replace("@@CONTENT@@", body)
