@@ -171,6 +171,21 @@ test('single source repetitions and single-day spikes do not qualify as rising',
   d.items[3].identity='c2';d.items[3].date='2026-10-13';d.items[5].date='2026-10-13';
   assert.equal(A.recent(d,{...opts,span:'7'}).rising.length,0);
 });
+test('republication on another source date preserves rising eligibility and observation days',()=>{
+  const d=recentFixture();
+  d.items.pop();d.nodes[1].documents=[2,3];
+  const before=A.recent(d,{...opts,span:'7'});
+  assert.deepEqual(before.rising.map(row=>row.id),['q']);
+  d.items.push({id:'repeat',identity:'c1',date:'2026-10-15',section:'papers',tags:[],nodes:['q'],title:'Republished'});
+  d.nodes[1].documents.push(5);
+  const after=A.recent(d,{...opts,span:'7'});
+  assert.deepEqual(after.rising.map(row=>row.id),['q']);
+  for(const key of ['count','days','share','delta']){
+    assert.equal(after.rising[0][key],before.rising[0][key],key);
+  }
+  assert.equal(after.rising[0].days,2);
+  assert.equal(A.evidence(d,after.current,['q']).length,2);
+});
 test('recent comparison is withheld for sparse or unavailable baselines',()=>{
   const d=recentFixture();
   d.reports=d.reports.filter(r=>r.date>='2026-10-12');

@@ -25,6 +25,7 @@ class SiteChromeTests(unittest.TestCase):
             self.assertEqual(links["insights"]["href"], base + "insights/index.html")
             self.assertEqual(links["archive"]["href"], base + "index.html#date-archive")
             self.assertEqual(links["insights"].get("aria-current"), "page" if active == "insights" else None)
+            self.assertEqual(links["archive"].get("aria-current"), "page" if active == "archive" else None)
             self.assertIn('class="site-brand-mark"', header)
             self.assertIn('id="header-search"', header)
             self.assertNotIn("@@", header)

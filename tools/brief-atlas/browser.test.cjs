@@ -355,6 +355,14 @@ test('default discovery prioritizes repeated share gains rather than lifetime fr
   await page.locator('#ordering').selectOption('count');
   assert.equal(await page.locator('#node-list [data-node="a"]').count(), 1);
 });
+test('page offers a contextual relation view rather than interchangeable layout tabs', async t => {
+  const page=await populatedFixture(t);
+  assert.equal(await page.locator('[data-layout]').count(),0);
+  assert.equal(await page.locator('#relation-panel').getAttribute('data-view'),'network');
+  assert.ok(await page.locator('#relation-panel').isVisible());
+  assert.ok(await page.locator('#heatmap').isVisible());
+  assert.equal(await page.locator('#evidence-count').innerText(),'16건');
+});
 
 test('no rising observations does not fill the default graph with unrelated entries', async t => {
   const page = await populatedFixture(t, 2, false, ['a', 'b']);
