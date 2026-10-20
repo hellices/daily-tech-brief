@@ -90,7 +90,31 @@
         count: unique(data, indices.filter(i => nodeIndices.has(i))), available };
     });
   }
-  const api = { query, evidence, neighbors, selectFocus, series };
+  function recent(data, options) {
+    const current = query(data, options);
+    const days = Math.round((+date(current.range.to) - +date(current.range.from)) / 86400000) + 1;
+    const previous = query(data, {...options, custom: {
+      from: shift(current.range.from, -days), to: shift(current.range.from, -1)
+    }});
+    function coverage(view) {
+      const reports = data.reports.filter(r => r.date >= view.range.from && r.date <= view.range.to);
+      const statuses = reports.flatMap(r => options.section ? [r.coverage[options.section]] : Object.values(r.coverage));
+      return reports.length / days >= .8 && statuses.length > 0 &&
+        statuses.filter(status => status === 'unavailable').length / statuses.length <= .2;
+    }
+    const comparable = current.total > 0 && previous.total > 0 && coverage(current) && coverage(previous);
+    const prior = new Map(previous.allRows.map(row => [row.id, row]));
+    const allRows = current.allRows.filter(row => row.kind === current.options.kind).map(row => {
+      const previousCount = prior.get(row.id).count;
+      const share = current.total ? row.count / current.total : null, previousShare = previous.total ? previousCount / previous.total : null;
+      return {...row, previousCount, share, previousShare,
+        delta: comparable ? 100 * (share - previousShare) : null};
+    });
+    const rows = allRows.filter(row => row.count > 0).sort((a,b) =>
+      (b.delta ?? 0) - (a.delta ?? 0) || b.count-a.count || a.label.localeCompare(b.label));
+    return {current, previous, comparable, allRows, rows, rising: rows.filter(row => row.count >= 2 && row.days >= 2 && row.delta > 0)};
+  }
+  const api = { query, evidence, neighbors, selectFocus, series, recent };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.BriefAtlas = api;
 })(globalThis);

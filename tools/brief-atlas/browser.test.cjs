@@ -4,6 +4,14 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {chromium} = require('playwright');
 const {parse} = require('acorn');
+const siteRoot = path.resolve(__dirname, '../..');
+
+function headerMarkup(base, active) {
+  return fs.readFileSync(path.join(siteRoot, 'site-header.html'), 'utf8')
+    .replaceAll('@@BASE@@', base).replace('@@NAVIGATION@@', '')
+    .replace('@@ARCHIVE_CURRENT@@', active === 'archive' ? ' aria-current="page"' : '')
+    .replace('@@INSIGHTS_CURRENT@@', active === 'insights' ? ' aria-current="page"' : '');
+}
 
 let browser;
 before(async () => { browser = await chromium.launch({headless: true}); });
@@ -11,19 +19,24 @@ after(async () => { if (browser) await browser.close(); });
 
 async function fixture(t) {
   const page = await browser.newPage({viewport: {width: 1360, height: 1000}});
+  await page.emulateMedia({reducedMotion: 'reduce'});
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   t.after(async () => { await page.close(); assert.deepEqual(errors, [], 'Unexpected browser error'); });
   await page.route(/^https?:/, route => route.abort());
+  const header = headerMarkup('../', 'insights');
   const template = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8')
     .replace(/<script\b([^>]*)>[\s\S]*?<\/script>/gi,
       (script, attrs) => /\btype=["']application\/json["']/i.test(attrs) ? script : '')
+    .replace('@@SITE_STYLE@@', fs.readFileSync(path.join(siteRoot, 'site-theme.css'), 'utf8'))
+    .replace('@@SITE_HEADER@@', header)
     .replace('@@STYLE@@', fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8'));
   await page.setContent(template);
   for (const file of ['node_modules/d3/dist/d3.min.js', 'graph-views.js', 'graph-renderer.js']) {
     await page.addScriptTag({content: fs.readFileSync(path.join(__dirname, file), 'utf8')});
   }
   await page.evaluate(() => {
+    document.getElementById('relation-panel').hidden = false;
     const model = {
       nodes: ['a', 'b', 'c'].map(id => ({id, label: id, kind: 'phrase', count: 1})),
       edges: [{source: 'a', target: 'b', count: 1}]
@@ -33,6 +46,72 @@ async function fixture(t) {
   });
   return page;
 }
+
+test('archive and atlas share computed branding and visible entry points at every size', async t => {
+  const atlas = await fixture(t);
+  const archive = await browser.newPage();
+  await archive.emulateMedia({reducedMotion: 'reduce'});
+  t.after(() => archive.close());
+  await archive.route(/^https?:/, route => route.abort());
+  const original = fs.readFileSync(path.join(siteRoot, 'template.html'), 'utf8')
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace('@@SITE_STYLE@@', fs.readFileSync(path.join(siteRoot, 'site-theme.css'), 'utf8'))
+    .replace('@@SITE_HEADER@@', headerMarkup('./', 'archive'))
+    .replaceAll('@@BASE@@', './').replace('@@CONTENT@@', '<h1>Archive fixture</h1>');
+  await archive.setContent(original);
+  const styles = page => page.evaluate(() => {
+    const css = selector => getComputedStyle(document.querySelector(selector));
+    return {
+      background: css('body').backgroundColor, text: css('body').color, font: css('body').fontFamily,
+      header: css('.site-header').backgroundColor, brand: css('.site-brand').fontSize,
+      accent: css('[data-site-link="insights"]').color,
+      logo: document.querySelector('.site-brand-mark').outerHTML,
+      width: document.querySelector('.site-header-inner').getBoundingClientRect().width
+    };
+  });
+  for (const width of [390, 768, 1360]) {
+    for (const page of [atlas, archive]) await page.setViewportSize({width, height: 1000});
+    for (const theme of ['light', 'dark']) {
+      for (const page of [atlas, archive]) await page.evaluate(theme => document.documentElement.dataset.theme = theme, theme);
+      assert.deepEqual(await styles(atlas), await styles(archive));
+      for (const page of [atlas, archive]) {
+        const entry = page.locator('.header-links [data-site-link="insights"]');
+        assert.ok(await entry.isVisible());
+        assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+        assert.ok(await entry.evaluate(element => !element.closest('details')));
+      }
+      assert.equal(await atlas.locator('[data-site-link="insights"]').getAttribute('aria-current'), 'page');
+      assert.equal(await archive.locator('[data-site-link="archive"]').getAttribute('aria-current'), 'page');
+    }
+  }
+});
+
+test('explicit theme overrides system preference consistently', async t => {
+  const page = await fixture(t);
+  const themeScript = fs.readFileSync(path.join(siteRoot, 'site-theme.js'), 'utf8');
+  await page.emulateMedia({colorScheme: 'dark'});
+  await page.route('https://theme.test/**', route => route.fulfill({body: '<html><body></body></html>', contentType: 'text/html'}));
+  await page.goto('https://theme.test/?scoutTheme=light');
+  await page.addScriptTag({content: themeScript});
+  assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
+  await page.goto('https://theme.test/?scoutTheme=invalid');
+  await page.addScriptTag({content: themeScript});
+  assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
+});
+
+test('dark graph surfaces and matrix text retain readable contrast', async t => {
+  const page = await fixture(t);
+  await page.evaluate(() => {
+    document.documentElement.dataset.theme = 'dark';
+    const nodes = ['a', 'b', 'c'].map(id => ({id, label: id, kind: 'phrase', count: 1}));
+    new AtlasGraphRenderer(document.getElementById('graph')).render({
+      nodes, edges: [{source: 'a', target: 'b', count: 1}]
+    }, {mode: 'matrix', focus: 'a'});
+  });
+  for (const selector of ['.matrix-index', '.matrix-cell', '.zero-cell', '.self-cell', '#heatmap .no-data']) {
+    await assertReadable(page, selector);
+  }
+});
 
 function rgba(color) {
   const match = /^rgba?\(([\d.,\s]+)\)$/.exec(color);
@@ -116,11 +195,10 @@ function assertDomTargets(source, targets) {
   for (const id of literalDomIds(source)) assert.ok(targets.has(id), 'Orphaned DOM reference: ' + id);
 }
 
-test('layout controls expose a named accessible group', async t => {
+test('relationship section is named without interchangeable layout controls', async t => {
   const page = await fixture(t);
-  const group = page.getByRole('group', {name: '그래프 보기', exact: true});
-  assert.equal(await group.count(), 1);
-  assert.equal(await group.getByRole('button').count(), 4);
+  assert.equal(await page.getByRole('region', {name: '함께 등장', exact: true}).count(), 1);
+  assert.equal(await page.locator('[data-layout]').count(), 0);
 });
 
 test('literal UI DOM calls resolve against the actual template', async t => {
@@ -223,26 +301,40 @@ test('edge contrast guard rejects opacity overrides on paths and ancestors', asy
   }
 });
 
-async function populatedFixture(t, nodeCount = 2, includeProject = false) {
+async function populatedFixture(t, nodeCount = 2, includeProject = false, baselineNodes = null, pattern = 'all') {
   const page = await fixture(t);
-  await page.evaluate(({nodeCount, includeProject}) => {
+  await page.evaluate(({nodeCount, includeProject, baselineNodes, pattern}) => {
     const nodeIds = ['a', 'b', ...Array.from({length: nodeCount - 2}, (_, i) => 'node-' + i)];
     if (includeProject) nodeIds.push('project-demo');
     const dates = ['2026-10-18', '2026-10-19'];
     const items = Array.from({length: 16}, (_, i) => ({
       id: 'item-' + i, identity: 'source-' + i, date: dates[i < 8 ? 0 : 1], section: 'community',
-      title: 'Source ' + i, tags: ['alpha'], nodes: nodeIds, matches: {}, href: '#item-' + i, url: 'https://example.org/' + i
+      title: 'Source ' + i, tags: ['alpha'],
+      nodes: pattern === 'single' && i > 0 ? [nodeIds[i % nodeIds.length]]
+        : pattern === 'chain' ? nodeIds.slice(i % (nodeIds.length - 1), i % (nodeIds.length - 1) + 2)
+        : nodeIds,
+      matches: {}, href: '#item-' + i, url: 'https://example.org/' + i
     }));
+    if (baselineNodes) {
+      for (let i = 0; i < 3; i++) items.push({
+        id: 'prior-' + i, identity: 'prior-source-' + i, date: '2026-10-' + (7 + i).toString().padStart(2, '0'),
+        section: 'community', title: 'Prior source ' + i, tags: ['alpha'],
+        nodes: baselineNodes, matches: {}, href: '#prior-' + i, url: 'https://example.org/prior/' + i
+      });
+    }
+    const reportDates = baselineNodes ? Array.from({length: 14}, (_, i) => new Date(Date.UTC(2026, 9, 6 + i)).toISOString().slice(0, 10)) : dates;
     const bucket = (from, to, count, reports, days) => ({
-      from, to, node_counts: Object.fromEntries(nodeIds.map(id => [id, count])), item_count: count, report_count: reports, expected_days: days, partial_slots: 0
+      from, to, node_counts: Object.fromEntries(nodeIds.map(id => [id,
+        new Set(items.filter(item => item.date >= from && item.date <= to && item.nodes.includes(id)).map(item => item.identity)).size
+      ])), item_count: count, report_count: reports, expected_days: days, partial_slots: 0
     });
     const data = {
-      meta: {from: dates[0], to: dates[1]}, tags: [{id: 'alpha', label: 'Alpha'}],
-      reports: dates.map(date => ({date, coverage: {github: 'ok', papers: 'ok', community: 'ok', cncf: 'ok'}})),
+      meta: {from: reportDates[0], to: dates[1]}, tags: [{id: 'alpha', label: 'Alpha'}],
+      reports: reportDates.map(date => ({date, coverage: {github: 'ok', papers: 'ok', community: 'ok', cncf: 'ok'}})),
       items, details: items.map(() => ({body: '', summary: '', topics: []})),
-      nodes: nodeIds.map(id => ({id, kind: id === 'project-demo' ? 'project' : 'phrase', label: id, documents: items.map((_, i) => i)})),
+      nodes: nodeIds.map(id => ({id, kind: id === 'project-demo' ? 'project' : 'phrase', label: id, documents: items.flatMap((item, i) => item.nodes.includes(id) ? [i] : [])})),
       links: nodeIds.flatMap((source, i) => nodeIds.slice(i + 1).map(target => ({
-        source, target, documents: items.map((_, index) => index)
+        source, target, documents: items.flatMap((item, index) => item.nodes.includes(source) && item.nodes.includes(target) ? [index] : [])
       }))),
       periods: {
         week: [bucket('2026-10-12', dates[0], 8, 1, 7), bucket(dates[1], dates[1], 8, 1, 1)],
@@ -250,12 +342,67 @@ async function populatedFixture(t, nodeCount = 2, includeProject = false) {
       }
     };
     document.getElementById('snapshot').textContent = JSON.stringify(data);
-  }, {nodeCount, includeProject});
+  }, {nodeCount, includeProject, baselineNodes, pattern});
   for (const file of ['analytics.js', 'ui.js']) {
     await page.addScriptTag({content: fs.readFileSync(path.join(__dirname, file), 'utf8')});
   }
   return page;
 }
+
+test('default discovery prioritizes repeated share gains rather than lifetime frequency', async t => {
+  const page = await populatedFixture(t, 2, false, ['a']);
+  assert.equal(await page.locator('#span').inputValue(), '7');
+  assert.equal(await page.locator('#ordering').inputValue(), 'rising');
+  assert.equal(await page.locator('#detail-title').innerText(), 'b');
+  assert.equal(await page.locator('#node-list [data-node="a"]').count(), 0);
+  assert.equal(await page.locator('#node-list [data-node="b"]').count(), 1);
+  assert.equal(await page.locator('#heatmap .change-delta').first().innerText(), '+100.0');
+  assert.equal(await page.locator('#evidence-count').innerText(), '16건');
+  await page.locator('#ordering').selectOption('count');
+  assert.equal(await page.locator('#node-list [data-node="a"]').count(), 1);
+});
+test('page offers a contextual relation view rather than interchangeable layout tabs', async t => {
+  const page=await populatedFixture(t);
+  assert.equal(await page.locator('[data-layout]').count(),0);
+  assert.equal(await page.locator('#relation-panel').getAttribute('data-view'),'network');
+  assert.ok(await page.locator('#relation-panel').isVisible());
+  assert.ok(await page.locator('#heatmap').isVisible());
+  assert.equal(await page.locator('#evidence-count').innerText(),'16건');
+});
+
+test('single-source relations use only the timeline and source list', async t => {
+  const page = await populatedFixture(t, 2, false, null, 'single');
+  assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), 'sources');
+  assert.ok(await page.locator('#relation-panel').isHidden());
+  assert.equal(await page.locator('#graph svg, #graph table').count(), 0);
+  assert.ok(await page.locator('#heatmap').isVisible());
+  assert.ok(Number.parseInt(await page.locator('#evidence-count').innerText()) > 0);
+});
+
+test('repeated sparse and dense relationships select a single appropriate renderer', async t => {
+  for (const pattern of ['chain', 'all']) {
+    const page = await populatedFixture(t, 6, false, null, pattern);
+    const mode = pattern === 'chain' ? 'network' : 'matrix';
+    for (const width of [1360, 390]) {
+      await page.setViewportSize({width, height: 1000});
+      assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), mode);
+      assert.ok(await page.locator('#relation-panel').isVisible());
+      assert.equal(await page.locator('#graph svg').count(), mode === 'network' ? 1 : 0);
+      assert.equal(await page.locator('#graph .adjacency').count(), mode === 'matrix' ? 1 : 0);
+      assert.equal(await page.locator('#zoom-in').isVisible(), mode === 'network');
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    }
+  }
+});
+
+test('no rising observations does not fill the default graph with unrelated entries', async t => {
+  const page = await populatedFixture(t, 2, false, ['a', 'b']);
+  assert.equal(await page.locator('#graph .graph-node').count(), 0);
+  assert.equal(await page.locator('#evidence-count').innerText(), '0건');
+  assert.ok((await page.locator('#heatmap').innerText()).includes('반복 증가 항목 없음'));
+  await page.locator('#inventory').click();
+  assert.equal(await page.locator('#evidence-count').innerText(), '16건');
+});
 
 async function assertNeutralCopy(page) {
   const texts = await page.evaluate(() => [
@@ -273,9 +420,8 @@ async function assertNeutralCopy(page) {
 }
 
 test('initialized UI and user-facing labels remain free of generated guidance', async t => {
-  const page = await populatedFixture(t);
-  for (const layout of ['network', 'tree', 'matrix', 'cluster']) {
-    await page.locator(`[data-layout="${layout}"]`).click();
+  for (const pattern of ['single', 'chain', 'all']) {
+    const page = await populatedFixture(t, 6, false, null, pattern);
     await assertNeutralCopy(page);
   }
 });
@@ -297,9 +443,8 @@ test('copy guard rejects runtime-concatenated text and label attributes', async 
 });
 
 test('selecting a new edge resets evidence pagination while preserving its pair', async t => {
-  const page = await populatedFixture(t);
-  await page.locator('#inventory').click();
-  await page.locator('[data-layout="matrix"]').click();
+  const page = await populatedFixture(t, 6);
+  assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), 'matrix');
   assert.equal(await page.locator('.evidence').count(), 5);
   await page.locator('#more-evidence').click();
   assert.equal(await page.locator('.evidence').count(), 15);
@@ -328,10 +473,10 @@ test('tag and node-type filters preserve the heatmap-selected date interval', as
 });
 
 test('keyboard clearing a pair moves focus to a visible source panel', async t => {
-  const page = await populatedFixture(t);
+  const page = await populatedFixture(t, 6);
   for (const width of [1360, 390]) {
     await page.setViewportSize({width, height: 1000});
-    await page.locator('[data-layout="matrix"]').click();
+    assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), 'matrix');
     for (const key of ['Enter', 'Space']) {
       await page.locator('.matrix-cell').first().click();
       await page.locator('#clear-pair').focus();

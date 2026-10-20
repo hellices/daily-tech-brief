@@ -11,10 +11,10 @@
   const clip = (text, max) => text.length > max ? text.slice(0, max) + '…' : text;
   const short = day => day ? day.slice(5).replace('-', '.') : '—';
   const initial = new URLSearchParams(location.hash.slice(1)).get('node');
-  const state = { asOf: D.meta.to, span: 'all', kind: nodes.get(initial)?.kind || 'phrase', section: '', tag: '',
+  const state = { asOf: D.meta.to, span: '7', kind: nodes.get(initial)?.kind || 'phrase', section: '', tag: '',
     custom: null, unit: 'week', focus: nodes.has(initial) ? initial : '', pair: '', inventory: false,
-    minimum: 1, cross: false, nodeQuery: '', limitNodes: 24, q: '', limit: 5, layout: 'network', explicitFocus: false };
-  let view;
+    nodeQuery: '', limitNodes: 24, q: '', limit: 5, explicitFocus: Boolean(initial), ordering: 'rising' };
+  let view, trend;
   function clearSelection() { state.pair = ''; state.q = ''; state.limit = 5; $('evidence-search').value = ''; }
   function restoreKeyboardFocus(event, control, target = 'detail-panel') {
     if ((event.type === 'keydown' || event.detail === 0) && (!control.isConnected || control.hidden)) {
@@ -26,47 +26,64 @@
     $('section-cards').innerHTML = [['', '전체'], ...Object.entries(SECTIONS)].map(([id, label]) => `<button type="button" data-section="${id}" class="${state.section === id ? 'active' : ''}" aria-pressed="${state.section === id}">${label}<span>${id ? view.sectionTotals[id] : total}</span></button>`).join('');
   }
   function graph() {
-    const model = globalThis.GraphViews.project(D, view, state.focus, {
-      limit: compactGraph.matches ? 14 : 24, minimum: state.minimum, cross: state.cross,
+    const model = !state.focus || state.inventory ? {nodes: [], edges: [], total: 0} : globalThis.GraphViews.project(D, view, state.focus, {
+      limit: compactGraph.matches ? 14 : 24, minimum: 2,
       pair: state.pair, keepFocus: state.explicitFocus
     });
-    const shown = renderer.render(model, { mode: state.layout, focus: state.focus, pair: state.pair, compact: compactGraph.matches });
+    const mode = globalThis.GraphViews.relationshipMode(model);
+    const panel = $('relation-panel');
+    panel.dataset.view = mode;
+    panel.hidden = mode === 'sources';
+    const shown = renderer.render(mode === 'sources' ? {nodes: [], edges: []} : model, {
+      mode: mode === 'sources' ? 'network' : mode, focus: state.focus, pair: state.pair, compact: compactGraph.matches
+    });
     $('view-count').textContent = `${shown} / ${model.total}`;
-    document.querySelectorAll('[data-layout]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.layout === state.layout)));
-    for (const id of ['zoom-in', 'zoom-out', 'fit-view']) $(id).disabled = state.layout === 'matrix';
+    for (const id of ['zoom-in', 'zoom-out', 'fit-view']) $(id).hidden = mode !== 'network';
   }
   function heatmap() {
-    const visible = view.rows.slice(0, 6);
+    const visible = view.rows.slice(0, 10);
     const selected = view.allRows.find(n => n.id === state.focus && n.kind === state.kind);
     if (selected && !visible.some(n => n.id === selected.id)) visible.push(selected);
     const rows = visible.map(n => ({ node: n, periods: A.series(D, view, n.id, state.unit) }));
     const buckets = rows[0]?.periods || [];
     const max = Math.max(1, ...rows.flatMap(r => r.periods.map(b => b.count)));
-    $('heatmap').innerHTML = `<thead><tr><th></th>${buckets.map(b => `<th scope="col" title="${b.from} — ${b.to}${b.report_count < (b.expected_days || 1) || b.partial_slots ? ' · 부분 수집' : ''}">${short(b.from)}${b.report_count < (b.expected_days || 1) || b.partial_slots ? ' *' : ''}</th>`).join('')}</tr></thead>
-      <tbody>${rows.map(({ node, periods }) => `<tr><th scope="row"><button type="button" data-node="${node.id}" title="${esc(node.label)}" class="${node.id === state.focus ? 'selected-label' : ''}">${esc(clip(node.label, 31))}</button></th>${periods.map(b => {
+    const changes = new Map(trend.allRows.map(row => [row.id, row]));
+    function changeCells(node) {
+      const change = changes.get(node.id);
+      return `<td class="change-count">${change?.previousCount ?? 0}</td><td class="change-count">${node.count}</td><td class="change-delta" title="${change ? `${change.previousCount}/${trend.previous.total} → ${change.count}/${view.total}` : ''}">${change?.delta == null ? '—' : (change.delta > 0 ? '+' : '') + change.delta.toFixed(1)}</td>`;
+    }
+    $('heatmap').innerHTML = `<thead><tr><th></th><th scope="col" title="${trend.previous.range.from} — ${trend.previous.range.to}">이전</th><th scope="col" title="${view.range.from} — ${view.range.to}">현재</th><th scope="col" title="전체 고유 소식 대비 비중 차이 (%p)">%p</th>${buckets.map(b => `<th scope="col" title="${b.from} — ${b.to}${b.report_count < (b.expected_days || 1) || b.partial_slots ? ' · 부분 수집' : ''}">${short(b.from)}${b.report_count < (b.expected_days || 1) || b.partial_slots ? ' *' : ''}</th>`).join('')}</tr></thead>
+      <tbody>${rows.map(({ node, periods }) => `<tr><th scope="row"><button type="button" data-node="${node.id}" title="${esc(node.label)}" class="${node.id === state.focus ? 'selected-label' : ''}">${esc(clip(node.label, 31))}</button></th>${changeCells(node)}${periods.map(b => {
         const strength = b.count / max;
-        const shades = ['#f3f5f7', '#e4ebf4', '#c3d0e2', '#8299b8', '#45648d'];
+        const dark = document.documentElement.dataset.theme === 'dark';
+        const shades = dark ? ['#343231', '#5a3a43', '#86505f', '#c4778b', '#fd8ea1']
+          : ['#f5f2ef', '#f4e4e9', '#e8becb', '#ad4666', '#92203f'];
         const level = Math.ceil(strength * 4);
-        const color = `background:${shades[level]};color:${level === 4 ? '#fff' : '#000'}`;
+        const color = `background:${shades[level]};color:${dark ? (level >= 3 ? '#161616' : '#fff') : (level >= 3 ? '#fff' : '#242424')}`;
         return `<td><button type="button" data-cell="${node.id}" data-from="${b.from}" data-to="${b.to}" class="${b.available ? '' : 'no-data'}" style="${b.available ? color : ''}" aria-label="${esc(node.label)} ${b.from}부터 ${b.to}, ${b.available ? b.count + '건' : '관측 없음'}">${b.available ? b.count : '—'}</button></td>`;
       }).join('')}</tr>`).join('')}</tbody>`;
-    if (!rows.length) $('heatmap').innerHTML = '<tbody><tr><td>기록 없음</td></tr></tbody>';
+    if (!rows.length) $('heatmap').innerHTML = '<tbody><tr><td>반복 증가 항목 없음</td></tr></tbody>';
+    $('comparison-label').textContent = trend.comparable
+      ? `${short(trend.previous.range.from)}–${short(trend.previous.range.to)} → ${short(view.range.from)}–${short(view.range.to)}`
+      : '비교 자료 부족';
   }
   function nodeList() {
     const q = state.nodeQuery.normalize('NFKC').toLowerCase().trim();
-    const matches = view.rows.filter(n => n.label.normalize('NFKC').toLowerCase().includes(q));
+    const candidates = q ? trend.current.rows : view.rows;
+    const matches = candidates.filter(n => n.label.normalize('NFKC').toLowerCase().includes(q));
     $('node-count').textContent = `${matches.length}개`;
     $('node-list').innerHTML = matches.slice(0, state.limitNodes).map(n => `<button type="button" class="topic-chip${n.id === state.focus ? ' selected' : ''}" data-node="${n.id}">${esc(n.label)} <span>${n.count}</span></button>`).join('') || '<p class="empty">결과 없음</p>';
     $('more-nodes').hidden = matches.length <= state.limitNodes;
   }
   function selectedEvidence() {
+    if (!state.inventory && !state.focus) return [];
     return A.evidence(D, view, state.inventory ? [] : [state.focus, state.pair].filter(Boolean));
   }
   function detail() {
     const node = view.allRows.find(n => n.id === state.focus);
     const other = state.pair ? nodes.get(state.pair) : null;
     $('detail-kind').textContent = state.inventory || !node ? '소식' : KINDS[node.kind];
-    $('detail-title').textContent = state.inventory || !node ? '전체 소식' : node.label + (other ? ' × ' + other.label : '');
+    $('detail-title').textContent = state.inventory ? '전체 소식' : !node ? '선택된 항목 없음' : node.label + (other ? ' × ' + other.label : '');
     $('clear-pair').hidden = !state.pair;
     renderEvidence();
   }
@@ -88,13 +105,15 @@
     $('more-evidence').hidden = matches.length <= state.limit;
   }
   function render() {
-    view = A.query(D, state);
+    trend = A.recent(D, state);
+    view = {...trend.current, rows: state.ordering === 'rising' && trend.comparable ? trend.rising : trend.current.rows};
     if (!state.inventory) {
-      const focus = A.selectFocus(D, view, state.focus, { explicit: state.explicitFocus });
+      const focus = state.explicitFocus ? A.selectFocus(D, view, state.focus, {explicit: true}) : view.rows[0]?.id || '';
       if (focus !== state.focus) state.pair = '';
       state.focus = focus;
     }
     $('kind').value = state.kind; $('span').value = state.custom ? 'custom' : state.span;
+    $('ordering').value = state.ordering;
     $('period-label').textContent = `${view.range.from} — ${view.range.to}`;
     $('sample-label').textContent = `${view.total}건`;
     $('sample-label').title = `중복 제외 · 게재 기록 ${view.occurrences}건`;
@@ -107,7 +126,7 @@
     state.focus = id; state.kind = node.kind; state.inventory = false; state.explicitFocus = true; clearSelection(); render();
   }
   function act(event) {
-    const button = event.target.closest('[data-node],[data-edge-source],[data-layout],[data-cell],[data-unit],[data-section]');
+    const button = event.target.closest('[data-node],[data-edge-source],[data-cell],[data-unit],[data-section]');
     if (!button) return;
     if (button.dataset.node) choose(button.dataset.node);
     else if (button.dataset.edgeSource) {
@@ -116,7 +135,6 @@
       state.kind = nodes.get(state.focus).kind; state.explicitFocus = true;
       state.inventory = false; render();
     }
-    else if (button.dataset.layout) { state.layout = button.dataset.layout; graph(); }
     else if (button.dataset.cell) {
       state.focus = button.dataset.cell; state.inventory = false; state.explicitFocus = true; state.custom = { from: button.dataset.from, to: button.dataset.to };
       clearSelection(); render();
@@ -133,12 +151,16 @@
   for (const [id, key] of [['kind', 'kind'], ['span', 'span'], ['as-of', 'asOf'], ['tag', 'tag']]) {
     $(id).addEventListener('change', e => {
       state[key] = e.target.value;
+      if (key === 'span' && state.span === 'all') state.ordering = 'count';
       if (key === 'span' || key === 'asOf') state.custom = null;
       state.inventory = false; state.explicitFocus = false; clearSelection(); render();
     });
   }
-  $('minimum').addEventListener('change', e => { state.minimum = Number(e.target.value); clearSelection(); graph(); detail(); });
-  $('cross-kind').addEventListener('change', e => { state.cross = e.target.checked; clearSelection(); graph(); detail(); });
+  $('ordering').addEventListener('change', event => {
+    state.ordering = event.target.value;
+    if (state.ordering === 'rising' && state.span === 'all') state.span = '7';
+    state.explicitFocus = false; state.inventory = false; clearSelection(); render();
+  });
   $('evidence-search').addEventListener('input', e => { state.q = e.target.value; state.limit = 5; renderEvidence(); });
   $('node-search').addEventListener('input', e => { state.nodeQuery = e.target.value; state.limitNodes = 24; nodeList(); });
   $('more-evidence').addEventListener('click', event => {
@@ -152,8 +174,8 @@
   });
   $('inventory').addEventListener('click', () => { state.inventory = true; state.focus = ''; state.explicitFocus = false; clearSelection(); render(); });
   $('reset').addEventListener('click', () => {
-    Object.assign(state, { asOf: D.meta.to, span: 'all', kind: 'phrase', section: '', tag: '', custom: null, focus: '', pair: '', inventory: false, nodeQuery: '', limitNodes: 24, minimum: 1, cross: false, unit: 'week', layout: 'network', explicitFocus: false });
-    $('as-of').value = state.asOf; $('tag').value = ''; $('node-search').value = ''; $('minimum').value = '1'; $('cross-kind').checked = false; clearSelection(); render();
+    Object.assign(state, { asOf: D.meta.to, span: '7', kind: 'phrase', section: '', tag: '', custom: null, focus: '', pair: '', inventory: false, nodeQuery: '', limitNodes: 24, unit: 'week', explicitFocus: false, ordering: 'rising' });
+    $('as-of').value = state.asOf; $('tag').value = ''; $('node-search').value = ''; clearSelection(); render();
   });
   $('zoom-in').addEventListener('click', () => renderer.zoomBy(1.3));
   $('zoom-out').addEventListener('click', () => renderer.zoomBy(1 / 1.3));

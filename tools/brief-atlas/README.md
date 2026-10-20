@@ -18,12 +18,16 @@ python3 tools/brief-atlas/build.py
 ```
 
 Open `site/insights/index.html` in a browser. Assets are embedded, so local files
-and GitHub Pages work without a runtime API or CDN. Navigation and source links
-are relative to the generated site.
+and GitHub Pages work without a runtime data API or chart CDN. The shared site
+font stylesheet uses Google Fonts with local fallbacks, just like the archive.
+Navigation and source links are relative to the generated site.
 
 The existing [Pages workflow](../../.github/workflows/pages.yml) validates the
 reports, builds the briefing site, builds the atlas, and uploads the combined
-`site/` artifact. The report navigation includes an **탐색** link.
+`site/` artifact. The shared header includes an always-visible **탐색** link.
+Both builders reuse [site-header.html](../../site-header.html),
+[site-theme.css](../../site-theme.css), and [site-theme.js](../../site-theme.js)
+for the logo, navigation, typography, light/dark theme and search.
 
 ## Outputs
 
@@ -32,8 +36,8 @@ All outputs are generated under the ignored `site/insights/` directory:
 - `graph.json`: stable node IDs, typed nodes, source-item references,
   co-occurrence links, and weekly/monthly aggregates.
 - `evidence.json`: original summaries, topics, application notes, and limitations.
-- `index.html`: self-contained interactive network, tree, adjacency matrix,
-  cluster, timeline, and source views.
+- `index.html`: self-contained recent-change heatmap and source list, with
+  one context-selected relationship view when the evidence supports it.
 - `overview.html`: a script-free overview.
 - `D3-LICENSE.txt`: the bundled renderer's license.
 
@@ -47,6 +51,33 @@ strings in report text remain literal data rather than additional template slots
 
 ## Extraction and presentation
 
+- The default view compares the latest seven archive days with the preceding
+  seven, within the selected section, tag and node type. The first heatmap ranks
+  positive percentage-point changes in the share of unique source items, requiring
+  at least two unique items and two observation dates in the period. Observation
+  dates are counted before deduplicating the displayed evidence, so republishing
+  a source cannot remove an otherwise qualifying topic. Repeated publication of
+  one item alone is not sufficient. Raw prior/current counts are shown beside the change; these are
+  archive emphasis changes, not predictions or claims of technology novelty.
+- Comparisons require a nonempty denominator, at least 80% of report days and
+  no more than 20% unavailable coverage slots in both windows. Without a baseline,
+  counts remain browsable but changes show `—` and the comparison is marked
+  unavailable. `등장량` restores count-based exploration; search can find any
+  observed node, not only the rising subset.
+- Presentation follows the task rather than offering multiple layouts for the
+  same content: recent changes use the heatmap; selecting a topic opens its source
+  list. A relationship panel appears only when at least two distinct source
+  identities support a co-occurrence link in the selected interval.
+- Only the selected topic's connected neighborhood, within the selected node
+  type, is used. Sparse repeated relations use a network; at least six connected
+  nodes with edge density of 0.4 or greater use a matrix. The density is the number
+  of repeated undirected edges divided by the number of possible pairs. These
+  deterministic presentation thresholds are readability rules, not significance
+  or trend scores. No layout tabs or LLM-based selection are involved.
+- Single-source links, isolated topics and the full source inventory do not show a
+  relationship diagram. Their source items remain readable. Tree and cluster
+  algorithms remain internal renderer capabilities; the page does not force
+  hierarchy or semantic grouping onto co-occurrence data.
 - Multiword `topics` entries supply phrase candidates. Literal matches in
   titles and topics connect entries across sections. Case, whitespace, and
   hyphens are normalized; the longest overlapping phrase in a field wins.
@@ -63,14 +94,14 @@ strings in report text remain literal data rather than additional template slots
   excluded from phrase/name discovery. Editorial tags remain context filters.
 - Links mean **co-occurrence in the same briefing entry**, not dependency or
   causation. The tree is a bounded traversal of those links, not an impact model.
-- Cluster colors come from deterministic weighted modularity grouping of the
-  displayed subgraph. They are not semantic topic classifications.
-- The renderer shows a bounded neighborhood (24 nodes on desktop, 14 on
-  mobile), with separate limits for trees and matrices. Counts beside the
-  controls indicate displayed versus eligible nodes.
+- Matrix ordering uses deterministic weighted modularity grouping, not semantic
+  topic classifications. The renderer shows a bounded neighborhood (24 nodes on
+  desktop, 14 on mobile), and at most 12/8 matrix rows. Counts beside the controls
+  indicate displayed versus eligible nodes.
 - Explicit selections remain visible even with no observations in the chosen
-  interval. Matrix and tree limits reserve space for the selected node and its
-  selected counterpart. Changing a filter automatically selects within the current type.
+  interval. The source list stays empty for an explicit zero-count selection and
+  the relationship panel is hidden. Matrix limits reserve space for the selected
+  node and its counterpart. Changing a filter selects within the current type.
   Tag and node-type filters preserve a heatmap-selected interval; only changing
   a date control or resetting the filters clears that interval.
 - A period with only unavailable collection is shown as unobserved, not zero.

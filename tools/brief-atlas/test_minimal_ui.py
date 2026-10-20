@@ -83,7 +83,7 @@ class MinimalUITests(unittest.TestCase):
         parser = SectionMarkers()
         parser.feed(template)
         for name in ("graph", "heatmap", "kind", "span", "as-of", "tag", "node-search",
-                     "evidence-list", "evidence-search", "minimum", "cross-kind", "reset"):
+                     "evidence-list", "evidence-search", "relation-panel", "reset"):
             self.assertIn(name, parser.ids)
 
     def test_required_controls_are_not_satisfied_by_comments_text_or_classes(self):

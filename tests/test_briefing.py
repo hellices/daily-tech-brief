@@ -874,12 +874,14 @@ class BriefingTests(unittest.TestCase):
     def test_left_navigation_is_a_single_collapsed_header_hamburger(self):
         b = self.api()
         template = (MODULE_PATH.parent / "template.html").read_text(encoding="utf-8")
-        self.assertIn('<details id="report-menu" class="navigation-menu">', template)
-        self.assertNotIn('<details id="report-menu" class="navigation-menu" open', template)
-        self.assertIn('aria-label="보고서 탐색 메뉴"', template)
+        header = (MODULE_PATH.parent / "site-header.html").read_text(encoding="utf-8")
+        self.assertIn('<details id="report-menu" class="navigation-menu">', header)
+        self.assertNotIn('<details id="report-menu" class="navigation-menu" open', header)
+        self.assertIn('aria-label="보고서 탐색 메뉴"', header)
         self.assertNotIn('<aside class="docs-navigation">', template)
         self.assertNotIn('<details class="mobile-navigation">', template)
-        self.assertEqual(template.count("@@NAVIGATION@@"), 1)
+        self.assertEqual(header.count("@@NAVIGATION@@"), 1)
+        self.assertEqual(template.count("@@SITE_HEADER@@"), 1)
         self.assertIn('<aside class="docs-outline">', template)
 
     def test_favicon_and_brand_logo_are_validated_and_emitted_in_site_build(self):
@@ -888,7 +890,7 @@ class BriefingTests(unittest.TestCase):
         self.assertIn('<link rel="icon" type="image/svg+xml" href="@@BASE@@favicon.svg">', template)
         self.assertIn('<link rel="icon" href="@@BASE@@favicon.ico" sizes="any">', template)
         self.assertIn('<link rel="apple-touch-icon" sizes="180x180" href="@@BASE@@apple-touch-icon.png">', template)
-        self.assertIn('class="site-brand-mark"', template)
+        self.assertIn('class="site-brand-mark"', b.render_site_header("./", ""))
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             (root / "template.html").write_text(template, encoding="utf-8")

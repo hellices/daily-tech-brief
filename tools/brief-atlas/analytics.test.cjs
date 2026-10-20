@@ -138,3 +138,82 @@ test('explicit zero-count selections retain their node and empty evidence',()=>{
   assert.deepEqual(A.evidence(data,r,['q']),[]);
   assert.equal(A.selectFocus(data,r,'q'),'p');
 });
+function recentFixture(){
+  const d=structuredClone(data);
+  d.reports=Array.from({length:14},(_,i)=>({date:new Date(Date.UTC(2026,9,5+i)).toISOString().slice(0,10),
+    coverage:{papers:'ok',community:'ok'}}));
+  d.items=[
+    {id:'p1',identity:'p1',date:'2026-10-06',section:'papers',tags:[],nodes:['p'],title:'Old'},
+    {id:'p2',identity:'p2',date:'2026-10-07',section:'papers',tags:[],nodes:['p'],title:'Old'},
+    {id:'c1',identity:'c1',date:'2026-10-13',section:'papers',tags:[],nodes:['q'],title:'New'},
+    {id:'c2',identity:'c2',date:'2026-10-15',section:'papers',tags:[],nodes:['q'],title:'New'},
+    {id:'c3',identity:'c3',date:'2026-10-16',section:'papers',tags:[],nodes:['p'],title:'Other'},
+    {id:'repeat',identity:'c1',date:'2026-10-17',section:'papers',tags:[],nodes:['q'],title:'Repeat'}
+  ];
+  d.nodes=[{id:'p',kind:'phrase',label:'existing method',documents:[0,1,4]},
+    {id:'q',kind:'phrase',label:'specific new method',documents:[2,3,5]}];
+  d.links=[];
+  return d;
+}
+test('recent emphasis compares equal windows and ranks repeated share gains',()=>{
+  const d=recentFixture(),r=A.recent(d,{...opts,span:'7'});
+  assert.deepEqual(r.previous.range,{from:'2026-10-05',to:'2026-10-11'});
+  assert.equal(r.comparable,true);
+  assert.deepEqual(r.rising.map(x=>x.id),['q']);
+  assert.equal(r.rising[0].count,2);
+  assert.equal(r.rising[0].previousCount,0);
+  assert.ok(Math.abs(r.rising[0].delta-200/3)<1e-9);
+});
+test('single source repetitions and single-day spikes do not qualify as rising',()=>{
+  const d=recentFixture();
+  d.items[3].identity='c1';
+  assert.equal(A.recent(d,{...opts,span:'7'}).rising.length,0);
+  d.items[3].identity='c2';d.items[3].date='2026-10-13';d.items[5].date='2026-10-13';
+  assert.equal(A.recent(d,{...opts,span:'7'}).rising.length,0);
+});
+test('republication on another source date preserves rising eligibility and observation days',()=>{
+  const d=recentFixture();
+  d.items.pop();d.nodes[1].documents=[2,3];
+  const before=A.recent(d,{...opts,span:'7'});
+  assert.deepEqual(before.rising.map(row=>row.id),['q']);
+  d.items.push({id:'repeat',identity:'c1',date:'2026-10-15',section:'papers',tags:[],nodes:['q'],title:'Republished'});
+  d.nodes[1].documents.push(5);
+  const after=A.recent(d,{...opts,span:'7'});
+  assert.deepEqual(after.rising.map(row=>row.id),['q']);
+  for(const key of ['count','days','share','delta']){
+    assert.equal(after.rising[0][key],before.rising[0][key],key);
+  }
+  assert.equal(after.rising[0].days,2);
+  assert.equal(A.evidence(d,after.current,['q']).length,2);
+});
+test('recent comparison is withheld for sparse or unavailable baselines',()=>{
+  const d=recentFixture();
+  d.reports=d.reports.filter(r=>r.date>='2026-10-12');
+  const result=A.recent(d,{...opts,span:'7'});
+  assert.equal(result.comparable,false);
+  assert.deepEqual(result.rising,[]);
+  assert.ok(result.rows.every(r=>r.delta===null));
+});
+test('more publications alone cannot create a rising topic share',()=>{
+  const d=recentFixture();
+  d.items.push({id:'old-q',identity:'old-q',date:'2026-10-08',section:'papers',tags:[],nodes:['q'],title:'Prior'});
+  d.items.push({id:'old-q2',identity:'old-q2',date:'2026-10-09',section:'papers',tags:[],nodes:['q'],title:'Prior'});
+  for(const [i,node] of ['p','p','p','q','q'].entries()){
+    d.items.push({id:'new-'+i,identity:'new-'+i,date:'2026-10-18',section:'papers',tags:[],nodes:[node],title:'Current'});
+  }
+  for(const node of d.nodes)node.documents=d.items.flatMap((item,i)=>item.nodes.includes(node.id)?[i]:[]);
+  const r=A.recent(d,{...opts,span:'7'});
+  assert.equal(r.current.total,8);
+  assert.equal(r.previous.total,4);
+  assert.deepEqual(r.rising,[]);
+  assert.ok(r.rows.every(row=>row.delta===0));
+});
+test('zero-count selected topics retain their real previous-period count',()=>{
+  const d=recentFixture();
+  d.nodes[0].documents=[0,1];
+  d.items[4].nodes=[];
+  const row=A.recent(d,{...opts,span:'7'}).allRows.find(row=>row.id==='p');
+  assert.equal(row.count,0);
+  assert.equal(row.previousCount,2);
+  assert.equal(row.delta,-100);
+});

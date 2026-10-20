@@ -1,5 +1,12 @@
 (function(root){
   'use strict';
+  function relationshipMode(model){
+    const repeated=model.edges.filter(edge=>edge.count>=2);
+    if(!repeated.length)return 'sources';
+    const ids=new Set(repeated.flatMap(edge=>[edge.source,edge.target]));
+    const density=2*repeated.length/(ids.size*(ids.size-1));
+    return ids.size>=6&&density>=.4?'matrix':'network';
+  }
   function project(data,view,focus,{limit=24,minimum=1,cross=false,pair='',keepFocus=false}={}){
     const available=view.allRows.filter(n=>(n.count>0||(keepFocus&&n.id===focus))&&(cross||n.kind===view.options.kind));
     const byId=new Map(available.map(n=>[n.id,n]));
@@ -15,7 +22,10 @@
     const selected=new Set(),queue=[...new Set([focus,pair].filter(id=>byId.has(id)))];
     const ranked=[...available].sort((a,b)=>b.count-a.count||a.id.localeCompare(b.id));
     while(selected.size<Math.min(limit,available.length)){
-      if(!queue.length)queue.push(ranked.find(n=>!selected.has(n.id)).id);
+      if(!queue.length){
+        if(byId.has(focus))break;
+        queue.push(ranked.find(n=>!selected.has(n.id)).id);
+      }
       const id=queue.shift();
       if(selected.has(id))continue;
       selected.add(id);
@@ -121,7 +131,7 @@
     }
     return {nodes,edges,groups};
   }
-  const api={project,communities,tree,matrix,position};
+  const api={project,communities,tree,matrix,position,relationshipMode};
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
   else root.GraphViews=api;
 })(globalThis);
