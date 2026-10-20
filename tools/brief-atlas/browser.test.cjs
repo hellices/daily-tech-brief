@@ -153,6 +153,45 @@ test('matrix row indices meet text contrast for every community color', async t 
   }
 });
 
+async function assertEdgeContrast(page, mode) {
+  const samples = await page.evaluate(() => {
+    const background = getComputedStyle(document.getElementById('graph')).backgroundColor;
+    const regions = [...document.querySelectorAll('.cluster-regions ellipse')];
+    function effectiveOpacity(element) {
+      let opacity = 1;
+      for (let node = element; node; node = node.parentElement) {
+        const style = getComputedStyle(node);
+        if (style.display === 'none' || style.visibility === 'hidden') return 0;
+        opacity *= Number(style.opacity);
+      }
+      return opacity;
+    }
+    return [...document.querySelectorAll('.edge-stroke')].flatMap(path =>
+      [.2, .5, .8].map(fraction => {
+        const local = path.getPointAtLength(path.getTotalLength() * fraction);
+        const screen = new DOMPoint(local.x, local.y).matrixTransform(path.getScreenCTM());
+        const layers = regions.filter(region => {
+          const point = screen.matrixTransform(region.getScreenCTM().inverse());
+          return region.isPointInFill(point);
+        }).map(region => ({color: getComputedStyle(region).fill, opacity: Number(getComputedStyle(region).fillOpacity)}));
+        return {background, stroke: getComputedStyle(path).stroke,
+          opacity: Number(getComputedStyle(path).strokeOpacity) * effectiveOpacity(path), layers};
+      }));
+  });
+  assert.ok(samples.length);
+  if (mode === 'cluster') assert.ok(samples.some(sample => sample.layers.length > 0));
+  for (const sample of samples) {
+    let background = rgba(sample.background).slice(0, 3);
+    for (const layer of sample.layers) {
+      const color = rgba(layer.color); color[3] *= layer.opacity;
+      background = composite(color, background);
+    }
+    const stroke = rgba(sample.stroke); stroke[3] *= sample.opacity;
+    const ratio = contrast(composite(stroke, background), background);
+    assert.ok(ratio >= 3, `${mode} edge contrast ${ratio.toFixed(3)} is below 3`);
+  }
+}
+
 test('unselected edges meet non-text contrast over the chart and rendered cluster fills', async t => {
   const page = await fixture(t);
   for (const mode of ['network', 'tree', 'cluster']) {
@@ -161,31 +200,25 @@ test('unselected edges meet non-text contrast over the chart and rendered cluste
       const edges = Array.from({length: 8}, (_, i) => ({source: 'n' + 2 * i, target: 'n' + (2 * i + 1), count: 1}));
       new AtlasGraphRenderer(document.getElementById('graph')).render({nodes, edges}, {mode, focus: 'n0'});
     }, mode);
-    const samples = await page.evaluate(() => {
-      const background = getComputedStyle(document.getElementById('graph')).backgroundColor;
-      const regions = [...document.querySelectorAll('.cluster-regions ellipse')];
-      return [...document.querySelectorAll('.edge-stroke')].flatMap(path =>
-        [.2, .5, .8].map(fraction => {
-          const local = path.getPointAtLength(path.getTotalLength() * fraction);
-          const screen = new DOMPoint(local.x, local.y).matrixTransform(path.getScreenCTM());
-          const layers = regions.filter(region => {
-            const point = screen.matrixTransform(region.getScreenCTM().inverse());
-            return region.isPointInFill(point);
-          }).map(region => ({color: getComputedStyle(region).fill, opacity: Number(getComputedStyle(region).fillOpacity)}));
-          return {background, stroke: getComputedStyle(path).stroke, opacity: Number(getComputedStyle(path).strokeOpacity), layers};
-        }));
-    });
-    assert.ok(samples.length);
-    if (mode === 'cluster') assert.ok(samples.some(sample => sample.layers.length > 0));
-    for (const sample of samples) {
-      let background = rgba(sample.background).slice(0, 3);
-      for (const layer of sample.layers) {
-        const color = rgba(layer.color); color[3] *= layer.opacity;
-        background = composite(color, background);
-      }
-      const stroke = rgba(sample.stroke); stroke[3] *= sample.opacity;
-      const ratio = contrast(composite(stroke, background), background);
-      assert.ok(ratio >= 3, `${mode} edge contrast ${ratio.toFixed(3)} is below 3`);
+    await assertEdgeContrast(page, mode);
+  }
+});
+
+test('edge contrast guard rejects opacity overrides on paths and ancestors', async t => {
+  const page = await fixture(t);
+  await page.evaluate(() => {
+    const nodes = ['a', 'b'].map(id => ({id, label: id, kind: 'phrase', count: 1}));
+    new AtlasGraphRenderer(document.getElementById('graph')).render({
+      nodes, edges: [{source: 'a', target: 'b', count: 1}]
+    }, {mode: 'network', focus: 'a'});
+  });
+  await assertEdgeContrast(page, 'network');
+  for (const selector of ['.edge-stroke', '.graph-link', '.graph-viewport', '#graph']) {
+    for (const opacity of ['0', '0.05']) {
+      await page.locator(selector).first().evaluate((element, value) => { element.style.opacity = value; }, opacity);
+      await assert.rejects(assertEdgeContrast(page, 'network'), /edge contrast .* is below 3/);
+      await page.locator(selector).first().evaluate(element => element.style.removeProperty('opacity'));
+      await assertEdgeContrast(page, 'network');
     }
   }
 });

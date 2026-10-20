@@ -138,7 +138,10 @@ def build_graph(source):
                 continue
             if (re.search(r"[a-z][A-Z]", token) or re.search(r"[A-Za-z]\d", token)
                     or (token.isupper() and 2 <= len(token) <= 12)):
-                matches[register("name", token)].append({"field": "title", "text": token})
+                identifier = register("name", token)
+                hit = {"field": "title", "text": token}
+                if hit not in matches[identifier]:
+                    matches[identifier].append(hit)
         for identifier in matches:
             documents[identifier].append(index)
         items.append({key: item[key] for key in ("id", "identity", "date", "section", "title", "tags", "url", "href")})

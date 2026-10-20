@@ -147,12 +147,19 @@ class AtlasTests(unittest.TestCase):
 
     def test_case_and_hyphens_merge_only_lexical_variants(self):
         g = self.graph([
-            document("a", "2026-10-17", ["Context Compression", "context-compression"]),
-            document("b", "2026-10-18", ["context compaction"])
+            document("a", "2026-10-17", ["Context Compression", "Context Compression"]),
+            document("b", "2026-10-18", ["context-compression"]),
+            document("c", "2026-10-18", ["context compaction"])
         ])
         phrases = [n for n in g["nodes"] if n["kind"] == "phrase"]
         self.assertEqual(len(phrases), 2)
-        self.assertEqual(next(n for n in phrases if n["key"] == "context compression")["occurrences"], 1)
+        compression = next(n for n in phrases if n["key"] == "context compression")
+        self.assertEqual(compression["occurrences"], 2)
+        self.assertEqual(compression["unique_count"], 2)
+        self.assertEqual(compression["documents"], [0, 1])
+        for index, text in enumerate(("Context Compression", "context-compression")):
+            self.assertEqual(g["items"][index]["matches"][compression["id"]],
+                             [{"field": "topics", "text": text}])
 
     def test_edges_require_same_entry_and_keep_provenance(self):
         g = self.graph([
@@ -162,6 +169,23 @@ class AtlasTests(unittest.TestCase):
         self.assertEqual(len(g["links"]), 1)
         self.assertEqual(g["links"][0]["documents"], [0])
         self.assertEqual(g["links"][0]["type"], "co-mentioned")
+        expected = {n["id"] for n in g["nodes"] if n["key"] in ("memory admission", "bounded retrieval")}
+        self.assertEqual(len(expected), 2)
+        self.assertEqual({g["links"][0]["source"], g["links"][0]["target"]}, expected)
+
+    def test_repeated_name_tokens_store_each_distinct_evidence_once(self):
+        g = self.graph([
+            document("a", "2026-10-17", title="OpenAI vs OpenAI"),
+            document("b", "2026-10-18", title="OpenAI vs OPENAI vs OpenAI")
+        ])
+        node = next(n for n in g["nodes"] if n["key"] == "openai")
+        self.assertEqual(node["occurrences"], 2)
+        self.assertEqual(node["unique_count"], 2)
+        self.assertEqual(node["documents"], [0, 1])
+        self.assertEqual(g["items"][0]["matches"][node["id"]],
+                         [{"field": "title", "text": "OpenAI"}])
+        self.assertEqual(g["items"][1]["matches"][node["id"]],
+                         [{"field": "title", "text": "OpenAI"}, {"field": "title", "text": "OPENAI"}])
 
     def test_republished_entries_do_not_inflate_unique_document_count(self):
         g = self.graph([

@@ -77,6 +77,8 @@ strings in report text remain literal data rather than additional template slots
   At least one `ok` or `partial` coverage slot is required for an observed value.
 - Evidence is deduplicated after matching the selected nodes. Each source keeps
   its latest matching occurrence, and the results are ordered newest first.
+  Repeated identical title tokens store one provenance record per name and item;
+  distinct original spellings remain available as evidence.
 - When a keyboard action replaces or hides its focused control, focus moves to the
   related source panel or node search. Matrix column buttons expose node names to screen readers.
   Chart counts and empty-state markers maintain at least 4.5:1 foreground contrast.

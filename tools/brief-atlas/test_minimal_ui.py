@@ -13,7 +13,9 @@ class SectionMarkers(HTMLParser):
         self.ids = set()
 
     def handle_starttag(self, tag, attrs):
-        attributes = dict(attrs)
+        attributes = {}
+        for name, value in attrs:
+            attributes.setdefault(name, value)
         if attributes.get("id"):
             self.markers.add(attributes["id"])
             self.ids.add(attributes["id"])
@@ -91,6 +93,20 @@ class MinimalUITests(unittest.TestCase):
             with self.subTest(replacement=replacement), patch.object(Path, "read_text", return_value=template):
                 with self.assertRaises(AssertionError):
                     self.test_existing_visual_exploration_controls_remain()
+
+    def test_duplicate_attributes_follow_browser_first_value_semantics(self):
+        cases = (
+            ('<div id="other" id="graph">', {"other"}, {"other"}),
+            ('<section id="hero" id="other">', {"hero"}, {"hero"}),
+            ('<section class="hero panel" class="plain">', set(), {"hero", "panel"}),
+            ('<div id="graph" id="other" class="plain" class="hero">', {"graph"}, {"graph", "plain"}),
+        )
+        for html, ids, markers in cases:
+            with self.subTest(html=html):
+                parser = SectionMarkers()
+                parser.feed(html)
+                self.assertEqual(parser.ids, ids)
+                self.assertEqual(parser.markers, markers)
 
 if __name__ == "__main__":
     unittest.main()
