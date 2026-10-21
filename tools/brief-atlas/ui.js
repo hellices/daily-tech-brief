@@ -17,6 +17,12 @@
   };
   let view, trend;
 
+  function orderGroups(rows) {
+    return [...rows].sort((a,b)=>
+      familyOrder.indexOf(a.family)-familyOrder.indexOf(b.family) ||
+      (state.ordering === 'rising' && trend.comparable ? b.delta-a.delta : b.count-a.count) ||
+      b.count-a.count || a.label.localeCompare(b.label));
+  }
   function clearEvidence() {
     state.history = false; state.q = ''; state.limit = 6;
     $('evidence-search').value = '';
@@ -33,9 +39,10 @@
     ).join('');
   }
   function heatmap() {
-    const rows = familyOrder.flatMap(family => view.rows.filter(group => group.family === family).slice(0, 5));
+    let rows = familyOrder.flatMap(family => view.rows.filter(group => group.family === family).slice(0, 5));
     const selected = trend.allRows.find(group => group.id === state.focus);
     if (selected && !rows.some(group => group.id === selected.id)) rows.push(selected);
+    rows = orderGroups(rows);
     const series = new Map(rows.map(group => [group.id, A.series(D, view, group.id, state.unit).slice(-6)]));
     const periods = series.get(rows[0]?.id) || [];
     const maximum = Math.max(1, ...[...series.values()].flatMap(values => values.map(value => value.count)));
@@ -65,7 +72,7 @@
   }
   function groupList() {
     const query = state.search.normalize('NFKC').toLowerCase().trim();
-    const candidates = query ? trend.rows : view.rows;
+    const candidates = query && state.ordering === 'rising' ? orderGroups(trend.rows) : view.rows;
     const matches = candidates.filter(group => [group.label, ...group.terms].join(' ').normalize('NFKC').toLowerCase().includes(query));
     $('group-count').textContent = `${matches.length}개`;
     $('group-list').innerHTML = matches.slice(0, state.limitGroups).map(group =>
@@ -110,15 +117,12 @@
   }
   function render() {
     trend = A.recent(D,state);
-    const rows = [...(state.ordering === 'rising' && trend.comparable ? trend.rising : trend.rows)].sort((a,b)=>
-      familyOrder.indexOf(a.family)-familyOrder.indexOf(b.family) ||
-      (state.ordering === 'rising' && trend.comparable ? b.delta-a.delta : b.count-a.count) ||
-      b.count-a.count || a.label.localeCompare(b.label));
+    const rows = orderGroups(state.ordering === 'rising' && trend.comparable ? trend.rising : trend.rows);
     view = {...trend.current,rows};
     if (!state.inventory && (!state.explicit || !groups.has(state.focus))) state.focus = rows[0]?.id || '';
     $('span').value = state.span; $('ordering').value = state.ordering;
     $('period-label').textContent = `${view.range.from} — ${view.range.to}`;
-    $('data-through').textContent = `최신 수록 ${D.meta.to}`;
+    $('data-through').textContent = `최신 수록 ${D.meta.to}${D.meta.to < state.asOf ? ' · 이후 미수록' : ''}`;
     $('sample-label').textContent = `${view.total}개 글`;
     document.querySelectorAll('[data-unit]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.unit === state.unit)));
     sectionTabs();heatmap();groupList();detail();

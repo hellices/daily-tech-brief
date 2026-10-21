@@ -41,7 +41,8 @@ a plain underlined link, not a permanently pressed-looking button.
    similarity of at least 0.16 and reciprocal top-four-neighbor membership.
 5. Form disjoint groups from the strongest pairs. Every pair of articles in a
    group must pass the same criteria; a chain A—B—C cannot imply A—C.
-6. Derive labels from original shared title/keyword expressions. Store pair
+6. Select explanatory terms from shared title/keyword expressions before limiting
+   their number, so summary boilerplate cannot displace the naming evidence. Store pair
    scores, shared expressions/tags, original source indices and representatives.
    The score describes lexical resemblance, not semantic truth or confidence.
 
@@ -60,7 +61,8 @@ the screen. These are reading candidates, not a complete topic taxonomy.
 - The browser anchors `최근 3일 / 7일 / 30일` to **today in Asia/Seoul**, not the
   latest stored report. The real window and latest source date are shown.
 - The date anchor refreshes when the tab becomes visible or regains focus. A
-  stale archive does not silently shift the window backwards.
+  stale archive does not silently shift the window backwards. `이후 미수록`
+  explicitly marks the gap between the latest stored report and today.
 - Recent emphasis compares equal adjacent periods using unique source counts and
   normalized share differences. A rising group requires two distinct sources and
   two observed dates. Republication does not remove earlier observation dates.

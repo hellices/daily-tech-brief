@@ -30,9 +30,9 @@ async function shell(t){
   await page.setContent(template);
   return page;
 }
-async function populated(t,{groupCount=2,firstSize=4}={}){
+async function populated(t,{groupCount=2,firstSize=4,previousSize=1,family}={}){
   const page=await shell(t);
-  await page.evaluate(({groupCount,firstSize})=>{
+  await page.evaluate(({groupCount,firstSize,previousSize,family})=>{
     const items=[],groups=[],details=[];
     const add=(id,date,section,group)=>{
       const index=items.length;
@@ -43,10 +43,10 @@ async function populated(t,{groupCount=2,firstSize=4}={}){
     for(let i=0;i<20;i++)add('baseline-'+i,'2026-10-10','papers');
     for(let i=0;i<groupCount;i++){
       const group={id:'group-'+i,kind:'group',label:i===0?'procedural memory':'topic '+i,
-        family:i===0?'research':'development',
+        family:family||(i===0?'research':'development'),
         terms:i===0?['procedural memory','persistent assistants']:['topic '+i],
         documents:[],article_count:0,links:[]};
-      if(i===0)add('old-group','2026-10-10','papers',group);
+      if(i===0)for(let j=0;j<previousSize;j++)add('old-group-'+j,'2026-10-10','papers',group);
       for(let j=0;j<(i===0?firstSize:2);j++)add('g'+i+'-'+j,j%2?'2026-10-19':'2026-10-18',i===0?'papers':'community',group);
       group.article_count=group.documents.length;groups.push(group);
     }
@@ -64,7 +64,7 @@ async function populated(t,{groupCount=2,firstSize=4}={}){
       article_groups:{groups,periods:{week:[bucket('2026-10-05','2026-10-11'),bucket('2026-10-12','2026-10-18'),bucket('2026-10-19','2026-10-19')],
         month:[bucket('2026-10-01','2026-10-19')]}}};
     document.getElementById('snapshot').textContent=JSON.stringify(data);
-  },{groupCount,firstSize});
+  },{groupCount,firstSize,previousSize,family});
   for(const file of ['analytics.js','ui.js'])await page.addScriptTag({content:fs.readFileSync(path.join(__dirname,file),'utf8')});
   return page;
 }
@@ -111,9 +111,33 @@ test('stale archives do not shift the window backwards or invent observations',a
   await page.clock.setFixedTime(new Date('2026-10-30T03:00:00Z'));
   await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
   assert.equal(await page.locator('#period-label').innerText(),'2026-10-24 — 2026-10-30');
-  assert.equal(await page.locator('#data-through').innerText(),'최신 수록 2026-10-19');
+  assert.equal(await page.locator('#data-through').innerText(),'최신 수록 2026-10-19 · 이후 미수록');
   assert.equal(await page.locator('#evidence-count').innerText(),'0건');
   assert.equal(await page.locator('#comparison-label').innerText(),'비교 자료 부족');
+});
+test('a trailing collection gap is explicit even when recent groups remain visible',async t=>{
+  const page=await populated(t);
+  await page.clock.setFixedTime(new Date('2026-10-21T03:00:00Z'));
+  await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
+  assert.equal(await page.locator('#period-label').innerText(),'2026-10-15 — 2026-10-21');
+  assert.equal(await page.locator('#data-through').innerText(),'최신 수록 2026-10-19 · 이후 미수록');
+  assert.ok(await page.locator('#heatmap [data-group]').count()>0);
+});
+test('group search preserves count ordering within a family',async t=>{
+  const page=await populated(t,{firstSize:5,previousSize:20,family:'research'});
+  await page.locator('#ordering').selectOption('count');
+  const ids=()=>page.locator('#group-list [data-group]').evaluateAll(es=>es.map(e=>e.dataset.group));
+  assert.deepEqual(await ids(),['group-0','group-1']);
+  await page.locator('#group-search').fill('t');
+  assert.deepEqual(await ids(),['group-0','group-1']);
+});
+test('rising-mode search can still find a non-rising related group',async t=>{
+  const page=await populated(t,{firstSize:2,previousSize:20});
+  assert.equal(await page.locator('#group-list [data-group="group-0"]').count(),0);
+  await page.locator('#group-search').fill('procedural memory');
+  assert.equal(await page.locator('#group-list [data-group="group-0"]').count(),1);
+  await page.locator('#group-list [data-group="group-0"]').click();
+  assert.deepEqual(await page.locator('#heatmap .group-family th').allTextContents(),['논문 관련','개발·커뮤니티']);
 });
 test('inventory, text search and keyboard pagination preserve source access',async t=>{
   const page=await populated(t,{groupCount:30,firstSize:26});

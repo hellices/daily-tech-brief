@@ -121,6 +121,15 @@ class GroupingTests(unittest.TestCase):
         ])
         self.assertEqual(result["groups"], [])
 
+    def test_summary_phrases_cannot_displace_shared_title_words_from_labels(self):
+        summary = "Portable deployment templates enable consistent rollout strategies across distributed clusters"
+        group = build([
+            article("a", "Routing for Sandboxes", [], ["security"], summary),
+            article("b", "Routing with Sandboxes", [], ["security"], summary),
+        ])["groups"][0]
+        self.assertEqual(set(group["terms"]), {"routing", "sandboxes"})
+        self.assertEqual(set(group["links"][0]["shared_terms"]), {"routing", "sandboxes"})
+
     def test_misaligned_evidence_fails_explicitly(self):
         self.assertIsNotNone(G)
         with self.assertRaises(ValueError):

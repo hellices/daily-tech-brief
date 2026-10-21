@@ -120,7 +120,7 @@ def build_article_groups(items, details, tags):
         score = sum(weights.values())
         if score < MIN_SIMILARITY:
             continue
-        terms = distinct_terms(weights)
+        terms = distinct_terms({term: weight for term, weight in weights.items() if term in naming_common})
         pairs.append({"source": a, "target": b, "score": score, "shared_terms": terms})
         nearest[a].append((score, b))
         nearest[b].append((score, a))
@@ -144,9 +144,7 @@ def build_article_groups(items, details, tags):
                 "score": round(edge["score"], 6), "shared_terms": edge["shared_terms"],
                 "shared_tags": sorted(articles[a]["tags"] & articles[b]["tags"])
             })
-        naming_counts = Counter(term for article in member_articles for term in article["naming_terms"])
-        label_weights = {term: weight for term, weight in shared.items() if naming_counts[term] >= 2}
-        terms = distinct_terms(label_weights or shared)
+        terms = distinct_terms(shared)
         anchor = min(member_articles, key=lambda a: (
             min(items[i]["date"] for i in a["occurrences"]), a["identity"]
         ))["identity"]
