@@ -50,7 +50,7 @@ class BuildTests(unittest.TestCase):
             build.build(source, root / "out")
             first = {str(p.relative_to(root / "out")): p.read_bytes()
                      for p in (root / "out").rglob("*") if p.is_file()}
-            self.assertEqual(set(first), {"graph.json", "evidence.json", "index.html", "overview.html", "D3-LICENSE.txt"})
+            self.assertEqual(set(first), {"graph.json", "groups.json", "evidence.json", "index.html", "overview.html", "D3-LICENSE.txt"})
             build.build(source, root / "out")
             second = {str(p.relative_to(root / "out")): p.read_bytes()
                       for p in (root / "out").rglob("*") if p.is_file()}
@@ -66,7 +66,7 @@ class BuildTests(unittest.TestCase):
             self.assertEqual(graph["meta"]["report_count"], 2)
             self.assertTrue(any(n["key"] == "opal memory scheduling" for n in graph["nodes"]))
             self.assertNotEqual(hashlib.sha256(first["graph.json"]).hexdigest(), hashlib.sha256((root / "out" / "graph.json").read_bytes()).hexdigest())
-            for name in ("graph.json", "evidence.json", "index.html", "overview.html"):
+            for name in ("graph.json", "groups.json", "evidence.json", "index.html", "overview.html"):
                 self.assertNotEqual(first[name], (root / "out" / name).read_bytes(), name)
             evidence = json.loads((root / "out" / "evidence.json").read_text())
             self.assertEqual(len(evidence), 2)
@@ -79,8 +79,11 @@ class BuildTests(unittest.TestCase):
             self.assertEqual(snapshot["items"][-1]["date"], "2026-10-19")
             self.assertEqual(snapshot["nodes"], graph["nodes"])
             self.assertEqual(snapshot["details"], evidence)
+            groups = json.loads((root / "out" / "groups.json").read_text())
+            self.assertEqual(snapshot["article_groups"], groups)
+            self.assertEqual(groups["unique_articles"], 2)
             overview = (root / "out" / "overview.html").read_text()
-            self.assertIn("opal memory scheduling", overview)
+            self.assertIn("../daily/2026-10-19/index.html#", overview)
             self.assertIn("2개 보고서", overview)
             self.assertIn("2026-10-19", overview)
             self.assertEqual(first["D3-LICENSE.txt"], (root / "out" / "D3-LICENSE.txt").read_bytes())

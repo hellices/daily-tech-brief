@@ -82,14 +82,14 @@ class MinimalUITests(unittest.TestCase):
         template = (ROOT / "template.html").read_text()
         parser = SectionMarkers()
         parser.feed(template)
-        for name in ("graph", "heatmap", "kind", "span", "as-of", "tag", "node-search",
-                     "evidence-list", "evidence-search", "relation-panel", "reset"):
+        for name in ("heatmap", "span", "tag", "group-search", "group-list", "data-through",
+                     "evidence-list", "evidence-search", "group-history", "reset"):
             self.assertIn(name, parser.ids)
 
     def test_required_controls_are_not_satisfied_by_comments_text_or_classes(self):
         original = (ROOT / "template.html").read_text()
-        for replacement in ('data-id="graph"', ''):
-            template = original.replace('id="graph"', replacement) + '<!-- <div id="graph"></div> -->'
+        for replacement in ('data-id="heatmap"', ''):
+            template = original.replace('id="heatmap"', replacement) + '<!-- <table id="heatmap"></table> -->'
             with self.subTest(replacement=replacement), patch.object(Path, "read_text", return_value=template):
                 with self.assertRaises(AssertionError):
                     self.test_existing_visual_exploration_controls_remain()

@@ -1,7 +1,30 @@
 (function (root) {
   'use strict';
   const sections = ['github', 'papers', 'community', 'cncf'];
-  const kinds = ['phrase', 'project', 'name'];
+  const kinds = ['phrase', 'project', 'name', 'group'];
+  function kstDay(now = new Date()) {
+    if (!Number.isFinite(+now)) throw new Error('Invalid date');
+    const parts = new Intl.DateTimeFormat('en', {
+      timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).formatToParts(now);
+    const part = name => parts.find(value => value.type === name).value;
+    return `${part('year')}-${part('month')}-${part('day')}`;
+  }
+  function forGroups(data) {
+    if (!data.article_groups || !Array.isArray(data.article_groups.groups)) {
+      throw new Error('Missing article group data');
+    }
+    const membership = data.items.map(() => []);
+    for (const group of data.article_groups.groups) {
+      for (const index of group.documents) {
+        if (!membership[index]) throw new Error('Invalid group document index');
+        membership[index].push(group.id);
+      }
+    }
+    return {...data, nodes: data.article_groups.groups, links: [],
+      periods: data.article_groups.periods,
+      items: data.items.map((item, i) => ({...item, nodes: membership[i]}))};
+  }
   function date(value) {
     const result = new Date(value + 'T00:00:00Z');
     if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || !Number.isFinite(+result) || result.toISOString().slice(0, 10) !== value) throw new Error('Invalid date: ' + value);
@@ -24,7 +47,7 @@
     if (!kinds.includes(kind)) throw new Error('Unknown node kind');
     if (section && !sections.includes(section)) throw new Error('Unknown section');
     if (tag && !data.tags.some(t => t.id === tag)) throw new Error('Unknown tag');
-    if (!['all', '7', '30'].includes(span)) throw new Error('Unknown date span');
+    if (!['all', '3', '7', '30'].includes(span)) throw new Error('Unknown date span');
     const range = custom || { from: span === 'all' ? data.meta.from : shift(asOf, -Number(span) + 1), to: asOf };
     date(range.from); date(range.to);
     if (range.from > range.to || range.to > asOf) throw new Error('Invalid range');
@@ -114,7 +137,7 @@
       (b.delta ?? 0) - (a.delta ?? 0) || b.count-a.count || a.label.localeCompare(b.label));
     return {current, previous, comparable, allRows, rows, rising: rows.filter(row => row.count >= 2 && row.days >= 2 && row.delta > 0)};
   }
-  const api = { query, evidence, neighbors, selectFocus, series, recent };
+  const api = { query, evidence, neighbors, selectFocus, series, recent, kstDay, forGroups };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.BriefAtlas = api;
 })(globalThis);

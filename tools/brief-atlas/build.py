@@ -20,7 +20,8 @@ REPO_ROOT = ROOT.parent.parent
 sys.path.insert(0, str(REPO_ROOT))
 
 from briefing import canonical_url, item_anchor, render_navigation, render_site_header
-from atlas import build_graph
+from atlas import build_graph, period_rows
+from grouping import build_article_groups
 
 COLLECTIONS = {"github": "repositories", "papers": "papers", "community": "discussions", "cncf": "cncf"}
 
@@ -79,15 +80,15 @@ def static_overview(data):
     parts = [f'<h1>탐색</h1><p>{meta["from"]} — {meta["to"]} · '
              f'{meta["report_count"]}개 보고서 · {meta["occurrences"]}개 게재 항목 · '
              f'{len(data["nodes"])}개 노드 · {len(data["links"])}개 연결</p>']
-    for kind, label in (("phrase", "표현"), ("project", "프로젝트"), ("name", "이름·약어")):
-        parts.append("<h2>" + label + "</h2><ul>")
-        nodes = sorted((n for n in data["nodes"] if n["kind"] == kind), key=lambda n: (-n["unique_count"], n["label"]))
-        for node in nodes[:15]:
-            article = data["items"][node["documents"][-1]]
-            parts.append('<li><a href="./index.html#node=' + node["id"] + '">' + escape(node["label"]) +
-                         f'</a> · {node["unique_count"]}건 · ' +
-                         '<a href="' + escape(article["href"], quote=True) + '">브리핑</a></li>')
-        parts.append("</ul>")
+    parts.append("<h2>글 묶음</h2><ul>")
+    for group in sorted(data["article_groups"]["groups"], key=lambda g: (g["last"], g["id"]), reverse=True)[:20]:
+        parts.append('<li><a href="./index.html#group=' + group["id"] + '">' + escape(group["label"]) +
+                     f'</a> · {group["article_count"]}건</li>')
+    parts.append("</ul><h2>최근 소식</h2><ul>")
+    for item in sorted(data["items"], key=lambda item: (item["date"], item["id"]), reverse=True)[:20]:
+        parts.append('<li><a href="' + escape(item["href"], quote=True) + '">' +
+                     escape(item["title"]) + "</a> · " + item["date"] + "</li>")
+    parts.append("</ul>")
     return "".join(parts)
 
 
@@ -100,6 +101,14 @@ def build(source=None, output=None):
     details = [{key: item.get(key, [] if key == "topics" else "") for key in
                 ("summary", "body", "topics", "application", "limitations")}
                for item in sorted(source["items"], key=lambda i: (i["date"], i["id"]))]
+    groups = build_article_groups(graph["items"], details, graph["tags"])
+    membership = [[] for _ in graph["items"]]
+    for group in groups["groups"]:
+        for index in group["documents"]:
+            membership[index].append(group["id"])
+    grouped_items = [{**item, "nodes": membership[i]} for i, item in enumerate(graph["items"])]
+    groups["periods"] = {unit: period_rows(grouped_items, graph["reports"], unit) for unit in ("week", "month")}
+    graph["article_groups"] = groups
     data = {**graph, "details": details}
     page = (ROOT / "template.html").read_text(encoding="utf-8")
     encoded = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
@@ -115,9 +124,6 @@ def build(source=None, output=None):
         "@@READER@@": (REPO_ROOT / "reader.js").read_text(encoding="utf-8"),
         "@@ANALYTICS@@": (ROOT / "analytics.js").read_text(encoding="utf-8"),
         "@@UI@@": (ROOT / "ui.js").read_text(encoding="utf-8"),
-        "@@D3@@": (bundle / "dist" / "d3.min.js").read_text(encoding="utf-8"),
-        "@@VIEWS@@": (ROOT / "graph-views.js").read_text(encoding="utf-8"),
-        "@@RENDERER@@": (ROOT / "graph-renderer.js").read_text(encoding="utf-8"),
         "@@STATIC@@": static_overview(graph),
     }
     for token in replacements:
@@ -127,7 +133,7 @@ def build(source=None, output=None):
                   lambda match: replacements[match.group(0)], page)
     output.mkdir(parents=True, exist_ok=True)
     (output / "index.html").write_text(page, encoding="utf-8")
-    for filename, content in (("graph.json", graph), ("evidence.json", details)):
+    for filename, content in (("graph.json", graph), ("evidence.json", details), ("groups.json", groups)):
         (output / filename).write_text(json.dumps(content, ensure_ascii=False, sort_keys=True, separators=(",", ":")), encoding="utf-8")
     (output / "overview.html").write_text(
         '<!doctype html><html lang="ko"><meta charset="utf-8">'

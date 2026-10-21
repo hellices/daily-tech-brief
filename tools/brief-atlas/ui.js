@@ -1,90 +1,94 @@
 (function () {
   'use strict';
   const $ = id => document.getElementById(id);
-  const D = JSON.parse($('snapshot').textContent), A = globalThis.BriefAtlas;
-  const nodes = new Map(D.nodes.map(n => [n.id, n]));
-  const compactGraph = matchMedia('(max-width:500px)');
-  const KINDS = { phrase: '표현', project: '프로젝트', name: '이름·약어' };
-  const SECTIONS = { github: 'GitHub', papers: 'AI 논문', community: '커뮤니티', cncf: 'CNCF' };
-  const renderer = new globalThis.AtlasGraphRenderer($('graph'));
-  const esc = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const clip = (text, max) => text.length > max ? text.slice(0, max) + '…' : text;
-  const short = day => day ? day.slice(5).replace('-', '.') : '—';
-  const initial = new URLSearchParams(location.hash.slice(1)).get('node');
-  const state = { asOf: D.meta.to, span: '7', kind: nodes.get(initial)?.kind || 'phrase', section: '', tag: '',
-    custom: null, unit: 'week', focus: nodes.has(initial) ? initial : '', pair: '', inventory: false,
-    nodeQuery: '', limitNodes: 24, q: '', limit: 5, explicitFocus: Boolean(initial), ordering: 'rising' };
+  const A = globalThis.BriefAtlas;
+  const D = A.forGroups(JSON.parse($('snapshot').textContent));
+  const groups = new Map(D.nodes.map(group => [group.id, group]));
+  const SECTIONS = {github: 'GitHub', papers: 'AI 논문', community: '커뮤니티', cncf: 'CNCF'};
+  const FAMILIES = {research: '논문 관련', development: '개발·커뮤니티', platform: '클라우드 네이티브'};
+  const familyOrder = Object.keys(FAMILIES);
+  const esc = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const short = day => day.slice(5).replace('-', '.');
+  const initial = new URLSearchParams(location.hash.slice(1)).get('group');
+  const state = {
+    asOf: A.kstDay(), span: '7', kind: 'group', section: '', tag: '', unit: 'week',
+    focus: groups.has(initial) ? initial : '', explicit: groups.has(initial),
+    inventory: false, history: false, ordering: 'rising', search: '', q: '', limit: 6, limitGroups: 24
+  };
   let view, trend;
-  function clearSelection() { state.pair = ''; state.q = ''; state.limit = 5; $('evidence-search').value = ''; }
-  function restoreKeyboardFocus(event, control, target = 'detail-panel') {
+
+  function clearEvidence() {
+    state.history = false; state.q = ''; state.limit = 6;
+    $('evidence-search').value = '';
+  }
+  function recoverFocus(event, control, target = 'detail-panel') {
     if ((event.type === 'keydown' || event.detail === 0) && (!control.isConnected || control.hidden)) {
-      $(target).focus({ preventScroll: true });
+      $(target).focus({preventScroll: true});
     }
   }
-  function sectionCards() {
-    const total = Object.values(view.sectionTotals).reduce((sum, n) => sum + n, 0);
-    $('section-cards').innerHTML = [['', '전체'], ...Object.entries(SECTIONS)].map(([id, label]) => `<button type="button" data-section="${id}" class="${state.section === id ? 'active' : ''}" aria-pressed="${state.section === id}">${label}<span>${id ? view.sectionTotals[id] : total}</span></button>`).join('');
-  }
-  function graph() {
-    const model = !state.focus || state.inventory ? {nodes: [], edges: [], total: 0} : globalThis.GraphViews.project(D, view, state.focus, {
-      limit: compactGraph.matches ? 14 : 24, minimum: 2,
-      pair: state.pair, keepFocus: state.explicitFocus
-    });
-    const mode = globalThis.GraphViews.relationshipMode(model);
-    const panel = $('relation-panel');
-    panel.dataset.view = mode;
-    panel.hidden = mode === 'sources';
-    const shown = renderer.render(mode === 'sources' ? {nodes: [], edges: []} : model, {
-      mode: mode === 'sources' ? 'network' : mode, focus: state.focus, pair: state.pair, compact: compactGraph.matches
-    });
-    $('view-count').textContent = `${shown} / ${model.total}`;
-    for (const id of ['zoom-in', 'zoom-out', 'fit-view']) $(id).hidden = mode !== 'network';
+  function sectionTabs() {
+    const total = Object.values(view.sectionTotals).reduce((sum, value) => sum + value, 0);
+    $('section-tabs').innerHTML = [['', '전체'], ...Object.entries(SECTIONS)].map(([id, label]) =>
+      `<button type="button" data-section="${id}" class="${state.section === id ? 'active' : ''}" aria-pressed="${state.section === id}">${label}<span>${id ? view.sectionTotals[id] : total}</span></button>`
+    ).join('');
   }
   function heatmap() {
-    const visible = view.rows.slice(0, 10);
-    const selected = view.allRows.find(n => n.id === state.focus && n.kind === state.kind);
-    if (selected && !visible.some(n => n.id === selected.id)) visible.push(selected);
-    const rows = visible.map(n => ({ node: n, periods: A.series(D, view, n.id, state.unit) }));
-    const buckets = rows[0]?.periods || [];
-    const max = Math.max(1, ...rows.flatMap(r => r.periods.map(b => b.count)));
-    const changes = new Map(trend.allRows.map(row => [row.id, row]));
-    function changeCells(node) {
-      const change = changes.get(node.id);
-      return `<td class="change-count">${change?.previousCount ?? 0}</td><td class="change-count">${node.count}</td><td class="change-delta" title="${change ? `${change.previousCount}/${trend.previous.total} → ${change.count}/${view.total}` : ''}">${change?.delta == null ? '—' : (change.delta > 0 ? '+' : '') + change.delta.toFixed(1)}</td>`;
-    }
-    $('heatmap').innerHTML = `<thead><tr><th></th><th scope="col" title="${trend.previous.range.from} — ${trend.previous.range.to}">이전</th><th scope="col" title="${view.range.from} — ${view.range.to}">현재</th><th scope="col" title="전체 고유 소식 대비 비중 차이 (%p)">%p</th>${buckets.map(b => `<th scope="col" title="${b.from} — ${b.to}${b.report_count < (b.expected_days || 1) || b.partial_slots ? ' · 부분 수집' : ''}">${short(b.from)}${b.report_count < (b.expected_days || 1) || b.partial_slots ? ' *' : ''}</th>`).join('')}</tr></thead>
-      <tbody>${rows.map(({ node, periods }) => `<tr><th scope="row"><button type="button" data-node="${node.id}" title="${esc(node.label)}" class="${node.id === state.focus ? 'selected-label' : ''}">${esc(clip(node.label, 31))}</button></th>${changeCells(node)}${periods.map(b => {
-        const strength = b.count / max;
-        const dark = document.documentElement.dataset.theme === 'dark';
-        const shades = dark ? ['#343231', '#5a3a43', '#86505f', '#c4778b', '#fd8ea1']
-          : ['#f5f2ef', '#f4e4e9', '#e8becb', '#ad4666', '#92203f'];
-        const level = Math.ceil(strength * 4);
-        const color = `background:${shades[level]};color:${dark ? (level >= 3 ? '#161616' : '#fff') : (level >= 3 ? '#fff' : '#242424')}`;
-        return `<td><button type="button" data-cell="${node.id}" data-from="${b.from}" data-to="${b.to}" class="${b.available ? '' : 'no-data'}" style="${b.available ? color : ''}" aria-label="${esc(node.label)} ${b.from}부터 ${b.to}, ${b.available ? b.count + '건' : '관측 없음'}">${b.available ? b.count : '—'}</button></td>`;
-      }).join('')}</tr>`).join('')}</tbody>`;
-    if (!rows.length) $('heatmap').innerHTML = '<tbody><tr><td>반복 증가 항목 없음</td></tr></tbody>';
+    const rows = familyOrder.flatMap(family => view.rows.filter(group => group.family === family).slice(0, 5));
+    const selected = trend.allRows.find(group => group.id === state.focus);
+    if (selected && !rows.some(group => group.id === selected.id)) rows.push(selected);
+    const series = new Map(rows.map(group => [group.id, A.series(D, view, group.id, state.unit).slice(-6)]));
+    const periods = series.get(rows[0]?.id) || [];
+    const maximum = Math.max(1, ...[...series.values()].flatMap(values => values.map(value => value.count)));
+    const dark = document.documentElement.dataset.theme === 'dark';
+    const shades = dark ? ['#343231','#5a3a43','#86505f','#c4778b','#fd8ea1']
+      : ['#f5f2ef','#f4e4e9','#e8becb','#ad4666','#92203f'];
     $('comparison-label').textContent = trend.comparable
       ? `${short(trend.previous.range.from)}–${short(trend.previous.range.to)} → ${short(view.range.from)}–${short(view.range.to)}`
       : '비교 자료 부족';
+    let lastFamily = '';
+    $('heatmap').innerHTML = `<thead><tr><th></th><th scope="col">이전</th><th scope="col">최근</th><th scope="col" title="전체 고유 글 대비 비중 차이">%p</th>${periods.map(period =>
+      `<th scope="col" title="${period.from} — ${period.to}">${short(period.from)}${period.partial_slots || period.report_count < period.expected_days ? '*' : ''}</th>`
+    ).join('')}</tr></thead><tbody>${rows.map(group => {
+      const family = group.family;
+      const separator = family !== lastFamily ? `<tr class="group-family"><th colspan="${periods.length + 4}" scope="rowgroup">${FAMILIES[family]}</th></tr>` : '';
+      lastFamily = family;
+      return `${separator}<tr><th scope="row"><button type="button" data-group="${group.id}" class="${group.id === state.focus ? 'selected-label' : ''}">${esc(group.label)}</button><small>${group.sections.map(section => SECTIONS[section]).join(' · ')}</small></th>
+      <td class="change-count">${group.previousCount}</td><td class="change-count">${group.count}</td>
+      <td class="change-delta" title="${group.previousCount}/${trend.previous.total} → ${group.count}/${view.total}">${group.delta === null ? '—' : (group.delta > 0 ? '+' : '') + group.delta.toFixed(1)}</td>
+      ${series.get(group.id).map(period => {
+        const level = Math.ceil(4 * period.count / maximum);
+        const color = dark ? (level >= 3 ? '#161616' : '#fff') : (level >= 3 ? '#fff' : '#242424');
+        return `<td><button type="button" data-group="${group.id}" class="${period.available ? '' : 'no-data'}" style="${period.available ? `background:${shades[level]};color:${color}` : ''}" title="${period.from} — ${period.to}" aria-label="${esc(group.label)}, ${period.from}부터 ${period.to}, ${period.available ? period.count + '건' : '관측 없음'}">${period.available ? period.count : '—'}</button></td>`;
+      }).join('')}</tr>`;
+    }).join('')}</tbody>`;
+    if (!rows.length) $('heatmap').innerHTML = `<tbody><tr><td>${view.total ? '조건에 맞는 글 묶음 없음' : '최근 수록된 글 없음'}</td></tr></tbody>`;
   }
-  function nodeList() {
-    const q = state.nodeQuery.normalize('NFKC').toLowerCase().trim();
-    const candidates = q ? trend.current.rows : view.rows;
-    const matches = candidates.filter(n => n.label.normalize('NFKC').toLowerCase().includes(q));
-    $('node-count').textContent = `${matches.length}개`;
-    $('node-list').innerHTML = matches.slice(0, state.limitNodes).map(n => `<button type="button" class="topic-chip${n.id === state.focus ? ' selected' : ''}" data-node="${n.id}">${esc(n.label)} <span>${n.count}</span></button>`).join('') || '<p class="empty">결과 없음</p>';
-    $('more-nodes').hidden = matches.length <= state.limitNodes;
+  function groupList() {
+    const query = state.search.normalize('NFKC').toLowerCase().trim();
+    const candidates = query ? trend.rows : view.rows;
+    const matches = candidates.filter(group => [group.label, ...group.terms].join(' ').normalize('NFKC').toLowerCase().includes(query));
+    $('group-count').textContent = `${matches.length}개`;
+    $('group-list').innerHTML = matches.slice(0, state.limitGroups).map(group =>
+      `<button type="button" data-group="${group.id}" class="topic-chip${group.id === state.focus ? ' selected' : ''}">${esc(group.label)}<span>${group.count}</span></button>`
+    ).join('') || '<p class="empty">묶음 없음</p>';
+    $('more-groups').hidden = matches.length <= state.limitGroups;
+  }
+  function evidenceView() {
+    return state.history && !state.inventory ? A.query(D, {...state, span:'all'}) : view;
   }
   function selectedEvidence() {
-    if (!state.inventory && !state.focus) return [];
-    return A.evidence(D, view, state.inventory ? [] : [state.focus, state.pair].filter(Boolean));
+    if (!state.focus && !state.inventory) return [];
+    return A.evidence(D, evidenceView(), state.inventory ? [] : [state.focus]);
   }
   function detail() {
-    const node = view.allRows.find(n => n.id === state.focus);
-    const other = state.pair ? nodes.get(state.pair) : null;
-    $('detail-kind').textContent = state.inventory || !node ? '소식' : KINDS[node.kind];
-    $('detail-title').textContent = state.inventory ? '전체 소식' : !node ? '선택된 항목 없음' : node.label + (other ? ' × ' + other.label : '');
-    $('clear-pair').hidden = !state.pair;
+    const group = groups.get(state.focus);
+    $('detail-title').textContent = state.inventory ? '전체 소식' : group?.label || '선택된 묶음 없음';
+    $('group-terms').innerHTML = state.inventory || !group ? '' : group.terms.map(term => `<span>${esc(term)}</span>`).join('');
+    $('evidence-period').textContent = state.history ? '누적 관련 글' : `최근 ${state.span}일`;
+    const allCount = group ? A.evidence(D, A.query(D, {...state, span:'all'}), [group.id]).length : 0;
+    const currentCount = group ? A.evidence(D, view, [group.id]).length : 0;
+    $('group-history').hidden = state.inventory || !group || allCount <= currentCount;
+    $('group-history').textContent = state.history ? `최근 ${state.span}일만` : `연결 글 전체 ${allCount}건`;
     renderEvidence();
   }
   function renderEvidence() {
@@ -95,7 +99,7 @@
       return terms.every(term => text.includes(term));
     });
     $('evidence-count').textContent = `${matches.length}건`;
-    $('evidence-list').innerHTML = matches.slice(0, state.limit).map(item => {
+    $('evidence-list').innerHTML = matches.slice(0,state.limit).map(item => {
       const detail = D.details[item.index];
       return `<article class="evidence" data-id="${esc(item.id)}"><div class="evidence-meta">${item.date} · ${SECTIONS[item.section]}</div>
         <h3><a href="${esc(item.href)}" target="_blank" rel="noopener noreferrer">${esc(item.title)}</a></h3>
@@ -105,81 +109,55 @@
     $('more-evidence').hidden = matches.length <= state.limit;
   }
   function render() {
-    trend = A.recent(D, state);
-    view = {...trend.current, rows: state.ordering === 'rising' && trend.comparable ? trend.rising : trend.current.rows};
-    if (!state.inventory) {
-      const focus = state.explicitFocus ? A.selectFocus(D, view, state.focus, {explicit: true}) : view.rows[0]?.id || '';
-      if (focus !== state.focus) state.pair = '';
-      state.focus = focus;
-    }
-    $('kind').value = state.kind; $('span').value = state.custom ? 'custom' : state.span;
-    $('ordering').value = state.ordering;
+    trend = A.recent(D,state);
+    const rows = [...(state.ordering === 'rising' && trend.comparable ? trend.rising : trend.rows)].sort((a,b)=>
+      familyOrder.indexOf(a.family)-familyOrder.indexOf(b.family) ||
+      (state.ordering === 'rising' && trend.comparable ? b.delta-a.delta : b.count-a.count) ||
+      b.count-a.count || a.label.localeCompare(b.label));
+    view = {...trend.current,rows};
+    if (!state.inventory && (!state.explicit || !groups.has(state.focus))) state.focus = rows[0]?.id || '';
+    $('span').value = state.span; $('ordering').value = state.ordering;
     $('period-label').textContent = `${view.range.from} — ${view.range.to}`;
-    $('sample-label').textContent = `${view.total}건`;
-    $('sample-label').title = `중복 제외 · 게재 기록 ${view.occurrences}건`;
-    document.querySelectorAll('[data-unit]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.unit === state.unit)));
-    sectionCards(); graph(); heatmap(); nodeList(); detail();
+    $('data-through').textContent = `최신 수록 ${D.meta.to}`;
+    $('sample-label').textContent = `${view.total}개 글`;
+    document.querySelectorAll('[data-unit]').forEach(button => button.setAttribute('aria-pressed',String(button.dataset.unit === state.unit)));
+    sectionTabs();heatmap();groupList();detail();
   }
-  function choose(id) {
-    const node = nodes.get(id);
-    if (!node) throw new Error('Unknown graph node: ' + id);
-    state.focus = id; state.kind = node.kind; state.inventory = false; state.explicitFocus = true; clearSelection(); render();
-  }
-  function act(event) {
-    const button = event.target.closest('[data-node],[data-edge-source],[data-cell],[data-unit],[data-section]');
-    if (!button) return;
-    if (button.dataset.node) choose(button.dataset.node);
-    else if (button.dataset.edgeSource) {
-      clearSelection();
-      state.focus = button.dataset.edgeSource; state.pair = button.dataset.edgeTarget;
-      state.kind = nodes.get(state.focus).kind; state.explicitFocus = true;
-      state.inventory = false; render();
+  function refreshToday() {
+    const today = A.kstDay();
+    if (today !== state.asOf) {
+      state.asOf = today;state.explicit = false;clearEvidence();render();
     }
-    else if (button.dataset.cell) {
-      state.focus = button.dataset.cell; state.inventory = false; state.explicitFocus = true; state.custom = { from: button.dataset.from, to: button.dataset.to };
-      clearSelection(); render();
-    } else if (button.dataset.unit) { state.unit = button.dataset.unit; heatmap(); document.querySelectorAll('[data-unit]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.unit === state.unit))); }
-    else { state.section = state.section === button.dataset.section ? '' : button.dataset.section; state.explicitFocus = false; clearSelection(); render(); }
-    restoreKeyboardFocus(event, button);
-    if ((button.dataset.node || button.dataset.edgeSource) && matchMedia('(max-width:800px)').matches) $('detail-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-  globalThis.addEventListener('error', e => { $('fatal').hidden = false; $('fatal').textContent = '그래프 조회 오류: ' + e.message + ' · 페이지를 다시 열어 주세요.'; });
-  $('as-of').innerHTML = [...D.reports].reverse().map(r => `<option value="${r.date}">${r.date}</option>`).join('');
-  $('tag').innerHTML += D.tags.map(t => `<option value="${esc(t.id)}">${esc(t.label)}</option>`).join('');
-  document.addEventListener('click', act);
-  document.addEventListener('keydown', e => { if (e.target.matches('g[role=button]') && ['Enter', ' '].includes(e.key)) { e.preventDefault(); act(e); } });
-  for (const [id, key] of [['kind', 'kind'], ['span', 'span'], ['as-of', 'asOf'], ['tag', 'tag']]) {
-    $(id).addEventListener('change', e => {
-      state[key] = e.target.value;
-      if (key === 'span' && state.span === 'all') state.ordering = 'count';
-      if (key === 'span' || key === 'asOf') state.custom = null;
-      state.inventory = false; state.explicitFocus = false; clearSelection(); render();
-    });
+  document.addEventListener('click', event => {
+    const button = event.target.closest('[data-group],[data-unit],[data-section]');
+    if (!button) return;
+    if (button.dataset.group) {
+      if (!groups.has(button.dataset.group)) throw new Error('Unknown article group');
+      state.focus = button.dataset.group;state.explicit = true;state.inventory = false;clearEvidence();render();
+    } else if (button.dataset.unit) {
+      state.unit = button.dataset.unit;render();
+    } else {
+      state.section = button.dataset.section;state.explicit = false;state.inventory = false;clearEvidence();render();
+    }
+    recoverFocus(event,button);
+  });
+  for (const [id,key] of [['span','span'],['tag','tag'],['ordering','ordering']]) {
+    $(id).addEventListener('change',event=>{state[key]=event.target.value;state.asOf=A.kstDay();state.explicit=false;state.inventory=false;clearEvidence();render();});
   }
-  $('ordering').addEventListener('change', event => {
-    state.ordering = event.target.value;
-    if (state.ordering === 'rising' && state.span === 'all') state.span = '7';
-    state.explicitFocus = false; state.inventory = false; clearSelection(); render();
+  $('group-search').addEventListener('input',event=>{state.search=event.target.value;state.limitGroups=24;groupList();});
+  $('evidence-search').addEventListener('input',event=>{state.q=event.target.value;state.limit=6;renderEvidence();});
+  $('more-groups').addEventListener('click',event=>{state.limitGroups+=24;groupList();recoverFocus(event,event.currentTarget,'group-search');});
+  $('more-evidence').addEventListener('click',event=>{state.limit+=10;renderEvidence();recoverFocus(event,event.currentTarget);});
+  $('group-history').addEventListener('click',()=>{state.history=!state.history;state.limit=6;detail();});
+  $('inventory').addEventListener('click',()=>{state.inventory=true;state.focus='';state.explicit=false;clearEvidence();render();});
+  $('reset').addEventListener('click',()=>{
+    Object.assign(state,{asOf:A.kstDay(),span:'7',section:'',tag:'',ordering:'rising',focus:'',explicit:false,inventory:false,search:'',limitGroups:24});
+    $('tag').value='';$('group-search').value='';clearEvidence();render();
   });
-  $('evidence-search').addEventListener('input', e => { state.q = e.target.value; state.limit = 5; renderEvidence(); });
-  $('node-search').addEventListener('input', e => { state.nodeQuery = e.target.value; state.limitNodes = 24; nodeList(); });
-  $('more-evidence').addEventListener('click', event => {
-    state.limit += 10; renderEvidence(); restoreKeyboardFocus(event, event.currentTarget);
-  });
-  $('more-nodes').addEventListener('click', event => {
-    state.limitNodes += 24; nodeList(); restoreKeyboardFocus(event, event.currentTarget, 'node-search');
-  });
-  $('clear-pair').addEventListener('click', event => {
-    clearSelection(); graph(); detail(); restoreKeyboardFocus(event, event.currentTarget);
-  });
-  $('inventory').addEventListener('click', () => { state.inventory = true; state.focus = ''; state.explicitFocus = false; clearSelection(); render(); });
-  $('reset').addEventListener('click', () => {
-    Object.assign(state, { asOf: D.meta.to, span: '7', kind: 'phrase', section: '', tag: '', custom: null, focus: '', pair: '', inventory: false, nodeQuery: '', limitNodes: 24, unit: 'week', explicitFocus: false, ordering: 'rising' });
-    $('as-of').value = state.asOf; $('tag').value = ''; $('node-search').value = ''; clearSelection(); render();
-  });
-  $('zoom-in').addEventListener('click', () => renderer.zoomBy(1.3));
-  $('zoom-out').addEventListener('click', () => renderer.zoomBy(1 / 1.3));
-  $('fit-view').addEventListener('click', () => renderer.reset());
-  compactGraph.addEventListener('change', graph);
+  globalThis.addEventListener('focus',refreshToday);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshToday();});
+  globalThis.addEventListener('error',event=>{$('fatal').hidden=false;$('fatal').textContent='탐색 오류: '+event.message;});
+  $('tag').innerHTML += D.tags.map(tag=>`<option value="${esc(tag.id)}">${esc(tag.label)}</option>`).join('');
   render();
 })();
