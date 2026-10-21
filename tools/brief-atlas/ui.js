@@ -156,7 +156,7 @@
   $('group-history').addEventListener('click',()=>{state.history=!state.history;state.limit=6;detail();});
   $('inventory').addEventListener('click',()=>{state.inventory=true;state.focus='';state.explicit=false;clearEvidence();render();});
   $('reset').addEventListener('click',()=>{
-    Object.assign(state,{asOf:A.kstDay(),span:'7',section:'',tag:'',ordering:'rising',focus:'',explicit:false,inventory:false,search:'',limitGroups:24});
+    Object.assign(state,{asOf:A.kstDay(),span:'7',section:'',tag:'',unit:'week',ordering:'rising',focus:'',explicit:false,inventory:false,search:'',limitGroups:24});
     $('tag').value='';$('group-search').value='';clearEvidence();render();
   });
   globalThis.addEventListener('focus',refreshToday);

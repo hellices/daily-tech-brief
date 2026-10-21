@@ -71,6 +71,8 @@ the screen. These are reading candidates, not a complete topic taxonomy.
 - Selecting a heatmap cell selects its group without changing the today-relative
   range. **연결 글 전체** explicitly expands that group's evidence into the past
   without changing the main comparison window or including future items.
+- **초기화** restores the default recent-seven-day range and weekly heatmap,
+  as well as clearing filters and searches.
 - A source is counted using existing canonical identities. Different URLs about
   the same event are not automatically merged. Group definitions are rebuilt from
   the current archive and can change as articles are added or corrected.
@@ -90,6 +92,9 @@ The new page does not load the legacy graph renderer or D3 bundle. Those modules
 and their tests remain available for consumers of the existing graph export.
 Existing report anchor/URL helpers are reused. Both builders retain the shared
 site theme. No generated artifacts or dependency directories should be committed.
+
+The group adapter accepts only integer document indices within the original
+item array; malformed indices fail explicitly before membership is changed.
 
 Tests cover candidate gating, source deduplication, exact grouping provenance,
 non-chaining groups, standalone determinism, complete output regeneration,

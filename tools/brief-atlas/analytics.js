@@ -17,7 +17,7 @@
     const membership = data.items.map(() => []);
     for (const group of data.article_groups.groups) {
       for (const index of group.documents) {
-        if (!membership[index]) throw new Error('Invalid group document index');
+        if (!Number.isInteger(index) || index < 0 || index >= membership.length) throw new Error('Invalid group document index');
         membership[index].push(group.id);
       }
     }

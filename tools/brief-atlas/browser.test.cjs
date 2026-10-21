@@ -235,7 +235,7 @@ test('DOM parser handles spacing, comments and escaped literals without matching
   assert.deepEqual(domIds("$ /* x */ ('missing\\u002dtarget'); $(`other`); const s=\"$('not-a-call')\";"),['missing-target','other']);
 });
 async function neutral(page){
-  const texts=await page.evaluate(()=>[document.body.innerText,...[...document.querySelectorAll('[aria-label],[title],[placeholder]')].flatMap(e=>['aria-label','title','placeholder'].map(k=>e.getAttribute(k)||''))]);
+  const texts=await page.evaluate(()=>[document.body.innerText,...[...document.querySelectorAll('[aria-label],[title],[placeholder],[alt]')].flatMap(e=>['aria-label','title','placeholder','alt'].map(k=>e.getAttribute(k)||''))]);
   for(const text of texts)for(const forbidden of ['MODEL CALLS','STATIC GRAPH','다음 질문','해보세요','준비할지']){
     assert.ok(!text.normalize('NFKC').replace(/\s+/gu,' ').includes(forbidden),'Disallowed interface copy: '+forbidden);
   }
