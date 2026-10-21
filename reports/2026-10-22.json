@@ -1,0 +1,453 @@
+{
+  "cncf": [
+    {
+      "category": "operational guidance",
+      "impact": "운영팀은 에이전트 PoC 평가 지표에 incident history·runbook·서비스 의존성 전달 품질을 포함해야 하며, 단순 벤치마크 점수만으로 도입 결정을 내리기 어렵다.",
+      "published": "2026-10-21",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/21/before-you-evaluate-an-ai-sre-give-your-existing-agent-context/"
+      ],
+      "summary": "CNCF 블로그가 AI SRE 평가에서 모델 자체 성능 비교 전에 기존 운영 컨텍스트를 에이전트에 구조적으로 주입해야 한다는 실무 가이드를 제시했다.",
+      "tags": [
+        "agent",
+        "cloud-native",
+        "kubernetes"
+      ],
+      "title": "Before you evaluate an AI SRE, give your existing agent context",
+      "url": "https://www.cncf.io/blog/2026/10/21/before-you-evaluate-an-ai-sre-give-your-existing-agent-context/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-19~2026-10-22 구간에서 CNCF announcements 신규 항목은 없었고, CNCF blog에서 운영 관점의 신규 글 1건을 확인했다. 직전 호에 포함된 릴리스 항목은 중복 소개하지 않았다.",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/announcements/feed/",
+        "https://www.cncf.io/blog/2026/10/21/before-you-evaluate-an-ai-sre-give-your-existing-agent-context/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "최근 24~72시간 범위에서 HN RSS, 긱뉴스 공식 RSS, Reddit 공식 Atom feed를 검토해 보안 공지, 에이전트 제품, 데이터 인프라 릴리스를 중복 병합해 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-22 08시 기준 GitHub weekly Trending Top10을 캡처했다. Top10은 모두 이미 소개 이력에 포함되어 이번 호 repositories는 비워 두었다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 조건과 최근 7일 중복 제외 조건을 적용해 논문 5편을 선정했고, 각 논문의 PDF 본문에서 방법·실험 결과·한계 구간을 확인했다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.28601",
+        "https://arxiv.org/abs/2610.28577",
+        "https://arxiv.org/abs/2610.28380",
+        "https://arxiv.org/abs/2610.28491",
+        "https://arxiv.org/abs/2610.28340"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-22",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50181854",
+        "https://blog.railway.com/p/security-disclosure-wednesday-october-21st"
+      ],
+      "tags": [
+        "cloud-native",
+        "security"
+      ],
+      "title": "Railway 보안 사고 공개 및 후속 조치",
+      "url": "https://blog.railway.com/p/security-disclosure-wednesday-october-21st"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50181045",
+        "https://www.reddit.com/r/programming/comments/1xbxrns/todays_php_security_release_and_how_were/",
+        "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "PHP 보안 릴리스와 운영 강화 계획",
+      "url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50179859",
+        "https://news.hada.io/topic?id=35767",
+        "https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor/"
+      ],
+      "tags": [
+        "open-source",
+        "security"
+      ],
+      "title": "LiteLLM 1.107.0 PyPI 공급망 침해 분석",
+      "url": "https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50180016",
+        "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/"
+      ],
+      "tags": [
+        "gitops",
+        "release",
+        "security"
+      ],
+      "title": "GitLab Critical Patch Release",
+      "url": "https://docs.gitlab.com/releases/patches/patch-release-gitlab-19-5-1-released/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50179288",
+        "https://news.hada.io/topic?id=35773",
+        "https://claude.com/product/claude-duet"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "llm"
+      ],
+      "title": "Claude Duet 제품 공개",
+      "url": "https://claude.com/product/claude-duet"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50177722",
+        "https://duckdb.org/2026/10/21/announcing-duckdb-200"
+      ],
+      "tags": [
+        "developer-tools",
+        "release",
+        "storage"
+      ],
+      "title": "DuckDB 2.0.0 LTS 발표",
+      "url": "https://duckdb.org/2026/10/21/announcing-duckdb-200"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50178654",
+        "https://www.reddit.com/r/programming/comments/1xbl8y1/eight_bits_of_trust_emudhras_ca_keys_cracked_in/",
+        "https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/"
+      ],
+      "tags": [
+        "networking",
+        "security"
+      ],
+      "title": "eMudhra CA 키 취약점 심층 분석",
+      "url": "https://scotthelme.co.uk/eight-bits-of-trust-emudhras-ca-keys-cracked-in-milliseconds/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50177495",
+        "https://google.github.io/styleguide/rustguide.html"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "Google Rust 스타일 가이드 공개",
+      "url": "https://google.github.io/styleguide/rustguide.html"
+    }
+  ],
+  "generated_at": "2026-10-22T08:28:00+09:00",
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-21T08:05:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 201065
+      },
+      {
+        "rank": 2,
+        "repository": "MadsLorentzen/ai-job-search",
+        "weekly_stars": 9073
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 5441
+      },
+      {
+        "rank": 4,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 4224
+      },
+      {
+        "rank": 5,
+        "repository": "NationalSecurityAgency/ghidra",
+        "weekly_stars": 7152
+      },
+      {
+        "rank": 6,
+        "repository": "K-Dense-AI/scientific-agent-skills",
+        "weekly_stars": 4355
+      },
+      {
+        "rank": 7,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5945
+      },
+      {
+        "rank": 8,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 17291
+      },
+      {
+        "rank": 9,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 2543
+      },
+      {
+        "rank": 10,
+        "repository": "android/skills",
+        "weekly_stars": 1233
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-22T08:06:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 157631
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 5650
+      },
+      {
+        "rank": 3,
+        "repository": "K-Dense-AI/scientific-agent-skills",
+        "weekly_stars": 4549
+      },
+      {
+        "rank": 4,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 3143
+      },
+      {
+        "rank": 5,
+        "repository": "android/skills",
+        "weekly_stars": 1255
+      },
+      {
+        "rank": 6,
+        "repository": "NationalSecurityAgency/ghidra",
+        "weekly_stars": 6184
+      },
+      {
+        "rank": 7,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 17057
+      },
+      {
+        "rank": 8,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 3556
+      },
+      {
+        "rank": 9,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5994
+      },
+      {
+        "rank": 10,
+        "repository": "cursor/plugins",
+        "weekly_stars": 2040
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Evolving Agent Interfaces: Experience-Built Repositories for Computer-Use Agents",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.28601"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 컴퓨터 사용 에이전트의 성능 저하 원인을 모델 추론 부족이 아니라 인터페이스 고정성에서 찾는다. 저자들은 작업 에이전트가 수집한 trajectory를 메타 에이전트가 분석해 인터페이스 저장소를 수정·재조합하는 진화 절차를 설계했다. 즉, 모델과 하네스를 고정한 채 인터페이스 계층만 반복 개선해도 실제 업무형 과제의 성공률을 끌어올릴 수 있는지를 검증한다.",
+      "evidence": "full_text",
+      "findings": "저자 보고에 따르면 OSWorld V2 108개 과제에서 Qwen3.8-27B + evolved repository는 binary success 21.3%를 기록해 GPT-5.5(13.0%), Claude Opus 4.8(20.6%)보다 높았다. 동시에 비용은 각각 대비 약 4.3%, 1.5% 수준으로 제시됐다. ScienceBoard에서는 같은 모델 기준 성공률이 41.4%에서 58.6%로 상승해, 인터페이스 개선이 모델 교체 없이도 큰 성능 차이를 만들 수 있음을 보였다.",
+      "first_published": "2026-10-20",
+      "id": "arxiv:2610.28601",
+      "limitations": "결과는 제시된 벤치마크·예산·실행 환경에 의존하므로 다른 운영 조건에서 동일 비율의 이득이 재현된다고 단정할 수 없다. 또한 인터페이스 진화는 호스트 API 안정성, 권한 정책, 서비스 가용성 변화에 민감해 실서비스 적용 시 운영비용을 별도 평가해야 한다.",
+      "method": "초기 seed repository에서 시작해, 메타 에이전트가 실행 기록을 기반으로 인터페이스 구현 코드와 사용 지침을 업데이트한다. 각 후보 저장소는 검증 과제에서 점수를 받아 population으로 유지·교체되며, 우수 후보는 다음 세대 진화의 부모로 선택된다. 이 과정에서 작업 에이전트 모델은 동일하게 유지해 인터페이스 변화 효과를 분리했다.",
+      "practical_value": "에이전트 제품팀은 프롬프트/모델 튜닝만 반복하기보다, 관측·행동 인터페이스를 버전 관리하는 저장소 중심 개발 체계를 도입할 수 있다. 특히 다중 앱 자동화에서는 인터페이스 자산의 축적과 선택 전략이 성능·비용 모두에 핵심 변수가 된다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.28601",
+        "https://arxiv.org/pdf/2610.28601"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "performance",
+        "tool-use"
+      ],
+      "title": "Evolving Agent Interfaces",
+      "topics": [
+        "computer-use agents",
+        "interface evolution",
+        "meta-agent",
+        "cost-performance tradeoff"
+      ],
+      "url": "https://arxiv.org/abs/2610.28601"
+    },
+    {
+      "abstract_summary": "Cache Engineering for Agents는 장문 에이전트 실행에서 비용 병목이 모델 연산보다 KV cache I/O와 저장 비용으로 이동했다는 관찰에서 출발한다. 저자들은 history 요약·절단 대신 캐시 상태를 직접 제어하는 drop/restore 중심 정책을 제안하고, 이를 기존 stateless API 위에서 동작하도록 구성했다. 핵심 질문은 컨텍스트 품질을 해치지 않으면서 캐시 비용을 줄일 수 있는지다.",
+      "evidence": "full_text",
+      "findings": "논문은 rolling-drop 정책이 기존 threshold summarization 대비 평균 점수를 +1.7 point 높이고 평균 비용을 27.7% 절감했다고 보고한다. AKV 적용 시 출력 처리량은 최대 1.2배, P95 지연은 1.5배 개선됐으며, 정책 자기개선으로 비용이 추가 7.1% 줄어들었다고 제시했다. 또한 KV cache read가 전체 API 비용의 82.4%를 차지한다는 계측을 통해 병목 위치를 정량화했다.",
+      "first_published": "2026-10-20",
+      "id": "arxiv:2610.28577",
+      "limitations": "제안 방식은 서빙 계층에서 캐시 연산을 지원해야 하므로, 제공자 API 제약이 강한 환경에서는 그대로 적용하기 어렵다. 저자도 선형 attention 계열과의 확장, 훈련 단계 결합은 향후 과제로 남긴다.",
+      "method": "append, drop, repos 연산으로 활성 캐시를 제어하는 정책을 정의하고, tool-response rolling-drop 정책을 기준선 요약 방식과 비교했다. 실험은 여러 모델과 4개 벤치마크에서 수행됐고 정확도·비용·처리량·지연(P95) 지표를 함께 측정했다. 추가로 RSI(재귀적 자기개선)를 이용해 캐시 정책을 자동 탐색하는 설정도 평가했다.",
+      "practical_value": "운영 에이전트에서 context engineering을 텍스트 요약 문제로만 보지 않고 cache lifecycle 제어 문제로 분리해 다룰 수 있다. 비용이 큰 장기 세션 워크로드에서는 캐시 정책 튜닝이 모델 교체보다 빠른 효율 개선 수단이 될 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.28577",
+        "https://arxiv.org/pdf/2610.28577"
+      ],
+      "tags": [
+        "developer-tools",
+        "harness",
+        "performance"
+      ],
+      "title": "Cache Engineering for Agents",
+      "topics": [
+        "KV cache",
+        "agent efficiency",
+        "throughput",
+        "latency"
+      ],
+      "url": "https://arxiv.org/abs/2610.28577"
+    },
+    {
+      "abstract_summary": "이 연구는 하나의 전역 하네스를 모든 작업에 적용하는 방식이 장기 과제에서 성능 한계에 부딪힌다는 문제를 다룬다. 저자들은 객체지향 설계 원리를 도입해 하네스를 클래스 계층으로 분화하고, 과제 군집별로 특화된 하네스를 진화시키는 OO-Harness를 제안했다. 동시에 어떤 하네스를 어떤 과제에 적용할지에 대한 routing lesson을 실행 기록에서 축적한다.",
+      "evidence": "full_text",
+      "findings": "요약 수치에서 OO-Harness는 mean 기준 77.41±1.37로 base 61.62±0.15보다 높고, 보고된 최대 개선 폭은 base 대비 15.79%까지 제시됐다. 저자들은 단순 병렬 샘플링(예: K=2, K=5)만으로는 일관 개선이 어려운 반면, 구조적으로 분화된 하네스 계층이 세 개 장기 벤치마크에서 더 안정적인 성능을 냈다고 보고했다.",
+      "first_published": "2026-10-20",
+      "id": "arxiv:2610.28380",
+      "limitations": "결과는 제공된 호스트 API와 실행 환경의 안정성에 의존하며, 서비스 장애·레이트리밋·인터페이스 변경 시 하네스 유지 비용이 커질 수 있다. 인증이 필요한 외부 서비스 통합에서는 별도 보안 설계가 필요하다는 한계도 명시됐다.",
+      "method": "훈련 단계에서 discovery task를 군집화해 각 군집에 별도 하네스 진화 루프를 적용하고, 성공·실패 근거를 함께 저장한다. 테스트 시점에는 공통 실행 인터페이스를 유지한 채 과제 특성에 맞는 하네스를 선택해 실행한다. 비교는 base harness, test-time scaling, Meta-Harness, AHE, AAH와의 벤치마크 실험으로 구성했다.",
+      "practical_value": "복수 도메인 에이전트를 운영하는 팀은 단일 범용 하네스보다 작업군별 하네스 패밀리를 관리하는 전략으로 성능 변동을 줄일 수 있다. 라우팅 규칙을 경험 데이터로 지속 갱신하면 하네스 선택 자체를 최적화 대상으로 다룰 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.28380",
+        "https://arxiv.org/pdf/2610.28380"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness",
+        "multi-agent"
+      ],
+      "title": "Object-Oriented Harness: Evolving Agent Harnesses through Object-Oriented Design",
+      "topics": [
+        "harness evolution",
+        "specialized harness families",
+        "routing lessons",
+        "long-horizon tasks"
+      ],
+      "url": "https://arxiv.org/abs/2610.28380"
+    },
+    {
+      "abstract_summary": "OptionWorld는 장기 개인 비서형 에이전트가 왜 마감 이전에 작업을 끝내지 못하는지 실패 지점을 분해해 측정하는 벤치마크다. 저자들은 최종 성공 여부만 보는 대신, 정보 획득·판단 근거·행동 실행·기한 준수 단계를 분리한 점수를 설계했다. 목표는 에이전트가 '할 수 있었던 행동 기회'를 언제 잃는지 진단하는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 실패 사례의 35.5%에서 핵심 사실이 마지막 입력에 남아 있었음에도 완료로 이어지지 않았다고 보고한다. 또 주요 실패 유형으로 정보 미수집·미조합(30.2%), 가능한 행동 미실행/미조정(21.3%), 근거 없는 자기 제한 규칙이 제시됐다. 후속 지원 실험에서는 일부 사례에서 사실 보강과 제한 규칙 교정이 진행 재개를 복원했지만, 이후 단계에서 마감 실패가 다시 발생하는 경우도 확인됐다.",
+      "first_published": "2026-10-20",
+      "id": "arxiv:2610.28491",
+      "limitations": "평가는 8개 작성 월드와 설정된 예산 제약에 기반하므로, 실제 개인 비서 환경의 복잡한 사회적 변수까지 포괄하지 않는다. 또한 의미 판단 점수는 검토자 절차에 의존해 라벨 해석 편차 가능성이 남는다.",
+      "method": "보험·주거·업무 등 시뮬레이션 월드에서 다일 과제를 구성하고, 각 run에서 타깃별 이진 점수와 OPR(option-preservation rate)를 계산했다. 실패 분석에서는 미수집 정보, 행동 미실행, 자기 제한 규칙 같은 패턴을 라벨링했다. 추가 실험으로 missing fact 주입, action reminder, 잘못된 contact 제한 수정이 회복에 주는 효과를 분리 측정했다.",
+      "practical_value": "장기 비서형 에이전트 제품은 최종 정답률만으로는 개선 우선순위를 잡기 어렵고, 기회 보존·행동 타이밍·허용 규칙 관리 같은 중간 진단 지표가 필요하다는 근거를 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.28491",
+        "https://arxiv.org/pdf/2610.28491"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory"
+      ],
+      "title": "OptionWorld: A Benchmark for Diagnosing Failures of LLMs as Long-Term Personal Assistants",
+      "topics": [
+        "long-term assistants",
+        "failure diagnosis",
+        "option preservation",
+        "deadline tasks"
+      ],
+      "url": "https://arxiv.org/abs/2610.28491"
+    },
+    {
+      "abstract_summary": "DeclineCraft는 RAG 시스템이 답을 모를 때 '정확한 보류(abstention)'를 하는지, 아니면 근거 없는 부정이나 환각으로 흐르는지를 분리해 측정하는 벤치마크다. 저자들은 시간 축을 활용해 코퍼스 컷오프 이후 등장한 사실을 의도적으로 질문해, 모델 파라메트릭 지식과 검색 문맥이 모두 불충분한 상황을 만들었다. 핵심은 단순 정답률이 아니라 지식 공백 인식 능력 자체를 평가하는 데 있다.",
+      "evidence": "full_text",
+      "findings": "논문은 retrieval 도입 시 Correct Abstention이 평균 46.4% 향상됐고, Answer Accuracy는 68.5%에서 69.3%로 큰 변화가 없었다고 보고한다. 반면 일부 모델군에서는 premise denial이 평균 14%p 증가해, 검색이 들어가도 오답 형태가 더 교묘해질 수 있음을 보였다. 즉, '답하지 않기' 품질을 별도 지표로 보지 않으면 RAG 개선을 과대평가할 수 있다는 결론이다.",
+      "first_published": "2026-10-20",
+      "id": "arxiv:2610.28340",
+      "limitations": "코퍼스가 Minecraft Wiki 도메인에 집중되어 도메인 일반화에는 한계가 있고, 생성 절차의 규칙이 다른 지식 영역에 동일하게 적용되지는 않을 수 있다. 저자도 동적 재생성은 장점이지만 도메인 다변화가 후속 과제라고 명시한다.",
+      "method": "Minecraft Wiki의 날짜 기반 문서를 이용해 answerable/unanswerable 질문을 동적으로 생성하고, retrieval 파이프라인 6종 및 단발/반복 RAG 설정에서 27개 모델을 평가했다. 평가 지표는 Correct Abstention, Answer Accuracy, Premise Denial을 분리해 계산했다. 추가로 retrieval을 넣었을 때 어떤 실패가 줄고 어떤 실패가 늘어나는지 유형별 변화를 추적했다.",
+      "practical_value": "RAG 제품 운영팀은 정답률 외에 abstention·premise denial 지표를 동시에 모니터링해야 한다. 특히 최신성 격차가 큰 도메인에서는 '모를 때 안전하게 멈추는 능력'이 실제 신뢰성을 좌우한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.28340",
+        "https://arxiv.org/pdf/2610.28340"
+      ],
+      "tags": [
+        "evaluation",
+        "rag",
+        "retrieval"
+      ],
+      "title": "DeclineCraft: A RAG Abstention Benchmark for Jointly Measuring Combined Retrieval and Parametric Knowledge",
+      "topics": [
+        "RAG abstention",
+        "premise denial",
+        "stale knowledge",
+        "dynamic benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2610.28340"
+    }
+  ],
+  "repositories": [],
+  "schema_version": 2,
+  "summary": [
+    "오늘 Technical Spotlight는 Evolving Agent Interfaces다. 이 논문은 컴퓨터 사용 에이전트 성능을 모델 자체 능력이나 추론 예산만으로 설명하는 관점에서 벗어나, 에이전트가 실제 작업 중 축적한 실행 경험으로 인터페이스 저장소를 진화시키는 문제를 전면에 둔다. 저자들은 사람이 고정적으로 설계한 도구 세트가 새 애플리케이션과 작업 흐름을 빠르게 따라가지 못한다는 운영 상의 병목을 지적한다.",
+    "핵심 접근은 성공 라벨 없이 수집한 trajectory를 바탕으로 메타 에이전트가 인터페이스 구현과 사용 지침을 수정·조합하는 진화 루프다. 보고된 결과에서 Qwen3.8-27B는 OSWorld V2(108개 과제)에서 binary success 21.3%를 기록해 동일 비교군인 GPT-5.5(13.0%)와 Claude Opus 4.8(20.6%)를 넘었고, 비용은 각각 약 4.3%, 1.5% 수준으로 제시됐다. ScienceBoard에서는 같은 모델의 성공률이 고정 인터페이스 41.4%에서 진화 저장소 58.6%로 상승했다.",
+    "이 결과는 에이전트 성능 개선의 단위를 프롬프트 조정이 아니라 인터페이스 자산의 지속적 진화로 재정의할 수 있음을 시사한다. 특히 컴퓨터 사용형 제품에서는 어떤 관측·행동 API를 노출하느냐가 모델 교체만큼 큰 성능 변수를 만든다. 다만 논문 설정은 특정 벤치마크와 실행 환경에 맞춰져 있어, 실제 운영 도입 시에는 서비스 장애·권한 모델·인터페이스 변경 비용을 함께 포함한 장기 검증이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "papers",
+        "text": "Cache Engineering for Agents가 정확도와 비용을 동시에 최적화하는 캐시 제어 전략을 제시했습니다.",
+        "url": "https://arxiv.org/abs/2610.28577"
+      },
+      {
+        "section": "community",
+        "text": "LiteLLM 1.107.0 공급망 침해 분석이 HN·긱뉴스에서 확산됐습니다.",
+        "url": "https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor/"
+      },
+      {
+        "section": "cncf",
+        "text": "CNCF가 AI SRE 평가 전에 기존 운영 컨텍스트를 먼저 주입해야 한다는 가이드를 제시했습니다.",
+        "url": "https://www.cncf.io/blog/2026/10/21/before-you-evaluate-an-ai-sre-give-your-existing-agent-context/"
+      }
+    ],
+    "spotlight": [
+      "Evolving Agent Interfaces는 고정 도구 세트를 유지하는 대신, 에이전트의 실행 경험으로 인터페이스 저장소를 진화시키는 접근을 제시한다. 논문은 Qwen3.8-27B가 OSWorld V2에서 21.3% binary success를 기록해 GPT-5.5(13.0%)와 Opus 4.8(20.6%)를 넘고 비용은 훨씬 낮았다고 보고했다. 다만 실제 도입에서는 인터페이스 변경에 따른 운영 안정성과 권한 경계를 별도 검증해야 한다."
+    ]
+  }
+}
