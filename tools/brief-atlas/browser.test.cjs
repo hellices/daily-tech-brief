@@ -115,6 +115,17 @@ test('stale archives do not shift the window backwards or invent observations',a
   assert.equal(await page.locator('#evidence-count').innerText(),'0건');
   assert.equal(await page.locator('#comparison-label').innerText(),'비교 자료 부족');
 });
+test('reset restores weekly heatmap history after selecting monthly history',async t=>{
+  const page=await populated(t);
+  const weeklyHeaders=await page.locator('#heatmap thead th').allTextContents();
+  await page.locator('[data-unit="month"]').click();
+  assert.equal(await page.locator('[data-unit="month"]').getAttribute('aria-pressed'),'true');
+  assert.notDeepEqual(await page.locator('#heatmap thead th').allTextContents(),weeklyHeaders);
+  await page.locator('#reset').click();
+  assert.equal(await page.locator('[data-unit="week"]').getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('[data-unit="month"]').getAttribute('aria-pressed'),'false');
+  assert.deepEqual(await page.locator('#heatmap thead th').allTextContents(),weeklyHeaders);
+});
 test('a trailing collection gap is explicit even when recent groups remain visible',async t=>{
   const page=await populated(t);
   await page.clock.setFixedTime(new Date('2026-10-21T03:00:00Z'));
@@ -187,6 +198,7 @@ test('archive and grouped page share branding with plain active navigation',asyn
     }
     assert.deepEqual(await branding(atlas),await branding(archive));
     assert.equal(await atlas.locator('[data-site-link="insights"]').getAttribute('aria-current'),'page');
+    assert.equal(await archive.locator('[data-site-link="archive"]').getAttribute('aria-current'),'page');
     const state=await atlas.locator('[data-site-link="insights"]').evaluate(e=>{
       const s=getComputedStyle(e);return {background:s.backgroundColor,border:s.borderTopWidth,line:s.textDecorationLine};
     });
@@ -231,9 +243,9 @@ async function neutral(page){
 test('grouped interface does not add generated reading advice',async t=>{await neutral(await populated(t));});
 test('rendered copy guard detects runtime concatenation in text and labels',async t=>{
   const page=await populated(t);
-  for(const attribute of ['text','aria-label','title','placeholder']){
+  for(const attribute of ['text','aria-label','title','placeholder','alt']){
     await page.evaluate(attribute=>{
-      const e=document.createElement('input');e.id='bad-copy';const text='다음 '+'질문';
+      const e=document.createElement(attribute==='alt'?'img':'input');e.id='bad-copy';const text='다음 '+'질문';
       if(attribute==='text'){const p=document.createElement('p');p.id='bad-copy';p.textContent=text;document.body.append(p);}
       else{e.setAttribute(attribute,text);document.body.append(e);}
     },attribute);
