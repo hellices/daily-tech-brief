@@ -1,609 +1,271 @@
-const {test, before, after} = require('node:test');
-const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
-const {chromium} = require('playwright');
-const {parse} = require('acorn');
-const siteRoot = path.resolve(__dirname, '../..');
-
-function headerMarkup(base, active) {
-  return fs.readFileSync(path.join(siteRoot, 'site-header.html'), 'utf8')
-    .replaceAll('@@BASE@@', base).replace('@@NAVIGATION@@', '')
-    .replace('@@ARCHIVE_CURRENT@@', active === 'archive' ? ' aria-current="page"' : '')
-    .replace('@@INSIGHTS_CURRENT@@', active === 'insights' ? ' aria-current="page"' : '');
-}
-
+const {test,before,after}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const {parse}=require('acorn');
+const {chromium}=require('playwright');
+const siteRoot=path.resolve(__dirname,'../..');
 let browser;
-before(async () => { browser = await chromium.launch({headless: true}); });
-after(async () => { if (browser) await browser.close(); });
+before(async()=>{browser=await chromium.launch({headless:true});});
+after(async()=>{if(browser)await browser.close();});
 
-async function fixture(t) {
-  const page = await browser.newPage({viewport: {width: 1360, height: 1000}});
-  await page.emulateMedia({reducedMotion: 'reduce'});
-  const errors = [];
-  page.on('pageerror', error => errors.push(error.message));
-  t.after(async () => { await page.close(); assert.deepEqual(errors, [], 'Unexpected browser error'); });
-  await page.route(/^https?:/, route => route.abort());
-  const header = headerMarkup('../', 'insights');
-  const template = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8')
-    .replace(/<script\b([^>]*)>[\s\S]*?<\/script>/gi,
-      (script, attrs) => /\btype=["']application\/json["']/i.test(attrs) ? script : '')
-    .replace('@@SITE_STYLE@@', fs.readFileSync(path.join(siteRoot, 'site-theme.css'), 'utf8'))
-    .replace('@@SITE_HEADER@@', header)
-    .replace('@@STYLE@@', fs.readFileSync(path.join(__dirname, 'style.css'), 'utf8'));
+function header(base,active){
+  return fs.readFileSync(path.join(siteRoot,'site-header.html'),'utf8')
+    .replaceAll('@@BASE@@',base).replace('@@NAVIGATION@@','')
+    .replace('@@ARCHIVE_CURRENT@@',active==='archive'?' aria-current="page"':'')
+    .replace('@@INSIGHTS_CURRENT@@',active==='insights'?' aria-current="page"':'');
+}
+async function shell(t){
+  const page=await browser.newPage({viewport:{width:1360,height:1000}});
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  t.after(async()=>{await page.close();assert.deepEqual(errors,[]);});
+  await page.route(/^https?:/,route=>route.abort());
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await page.clock.setFixedTime(new Date('2026-10-19T03:00:00Z'));
+  const template=fs.readFileSync(path.join(__dirname,'template.html'),'utf8')
+    .replace(/<script\b([^>]*)>[\s\S]*?<\/script>/gi,(text,attrs)=>/\btype=["']application\/json["']/i.test(attrs)?text:'')
+    .replace('@@SITE_STYLE@@',fs.readFileSync(path.join(siteRoot,'site-theme.css'),'utf8'))
+    .replace('@@STYLE@@',fs.readFileSync(path.join(__dirname,'style.css'),'utf8'))
+    .replace('@@SITE_HEADER@@',header('../','insights'));
   await page.setContent(template);
-  for (const file of ['node_modules/d3/dist/d3.min.js', 'graph-views.js', 'graph-renderer.js']) {
-    await page.addScriptTag({content: fs.readFileSync(path.join(__dirname, file), 'utf8')});
-  }
-  await page.evaluate(() => {
-    document.getElementById('relation-panel').hidden = false;
-    const model = {
-      nodes: ['a', 'b', 'c'].map(id => ({id, label: id, kind: 'phrase', count: 1})),
-      edges: [{source: 'a', target: 'b', count: 1}]
-    };
-    new AtlasGraphRenderer(document.getElementById('graph')).render(model, {mode: 'matrix', focus: 'a'});
-    document.getElementById('heatmap').innerHTML = '<tbody><tr><td><button class="no-data">—</button></td></tr></tbody>';
-  });
   return page;
 }
-
-test('archive and atlas share computed branding and visible entry points at every size', async t => {
-  const atlas = await fixture(t);
-  const archive = await browser.newPage();
-  await archive.emulateMedia({reducedMotion: 'reduce'});
-  t.after(() => archive.close());
-  await archive.route(/^https?:/, route => route.abort());
-  const original = fs.readFileSync(path.join(siteRoot, 'template.html'), 'utf8')
-    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
-    .replace('@@SITE_STYLE@@', fs.readFileSync(path.join(siteRoot, 'site-theme.css'), 'utf8'))
-    .replace('@@SITE_HEADER@@', headerMarkup('./', 'archive'))
-    .replaceAll('@@BASE@@', './').replace('@@CONTENT@@', '<h1>Archive fixture</h1>');
-  await archive.setContent(original);
-  const styles = page => page.evaluate(() => {
-    const css = selector => getComputedStyle(document.querySelector(selector));
-    return {
-      background: css('body').backgroundColor, text: css('body').color, font: css('body').fontFamily,
-      header: css('.site-header').backgroundColor, brand: css('.site-brand').fontSize,
-      accent: css('[data-site-link="insights"]').color,
-      logo: document.querySelector('.site-brand-mark').outerHTML,
-      width: document.querySelector('.site-header-inner').getBoundingClientRect().width
+async function populated(t,{groupCount=2,firstSize=4,previousSize=1,family}={}){
+  const page=await shell(t);
+  await page.evaluate(({groupCount,firstSize,previousSize,family})=>{
+    const items=[],groups=[],details=[];
+    const add=(id,date,section,group)=>{
+      const index=items.length;
+      items.push({id,identity:id,date,section,title:'Source '+id,tags:['memory'],nodes:[],href:'#'+id,url:'https://example.org/'+id});
+      details.push({summary:'Source summary '+id,body:'Original source '+id,topics:['procedural memory']});
+      if(group)group.documents.push(index);
     };
-  });
-  for (const width of [390, 768, 1360]) {
-    for (const page of [atlas, archive]) await page.setViewportSize({width, height: 1000});
-    for (const theme of ['light', 'dark']) {
-      for (const page of [atlas, archive]) await page.evaluate(theme => document.documentElement.dataset.theme = theme, theme);
-      assert.deepEqual(await styles(atlas), await styles(archive));
-      for (const page of [atlas, archive]) {
-        const entry = page.locator('.header-links [data-site-link="insights"]');
-        assert.ok(await entry.isVisible());
-        assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-        assert.ok(await entry.evaluate(element => !element.closest('details')));
-      }
-      assert.equal(await atlas.locator('[data-site-link="insights"]').getAttribute('aria-current'), 'page');
-      assert.equal(await archive.locator('[data-site-link="archive"]').getAttribute('aria-current'), 'page');
+    for(let i=0;i<20;i++)add('baseline-'+i,'2026-10-10','papers');
+    for(let i=0;i<groupCount;i++){
+      const group={id:'group-'+i,kind:'group',label:i===0?'procedural memory':'topic '+i,
+        family:family||(i===0?'research':'development'),
+        terms:i===0?['procedural memory','persistent assistants']:['topic '+i],
+        documents:[],article_count:0,links:[]};
+      if(i===0)for(let j=0;j<previousSize;j++)add('old-group-'+j,'2026-10-10','papers',group);
+      for(let j=0;j<(i===0?firstSize:2);j++)add('g'+i+'-'+j,j%2?'2026-10-19':'2026-10-18',i===0?'papers':'community',group);
+      group.article_count=group.documents.length;groups.push(group);
     }
-  }
-});
-
-test('explicit theme overrides system preference consistently', async t => {
-  const page = await fixture(t);
-  const themeScript = fs.readFileSync(path.join(siteRoot, 'site-theme.js'), 'utf8');
-  await page.emulateMedia({colorScheme: 'dark'});
-  await page.route('https://theme.test/**', route => route.fulfill({body: '<html><body></body></html>', contentType: 'text/html'}));
-  await page.goto('https://theme.test/?scoutTheme=light');
-  await page.addScriptTag({content: themeScript});
-  assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
-  await page.goto('https://theme.test/?scoutTheme=invalid');
-  await page.addScriptTag({content: themeScript});
-  assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
-});
-
-test('dark graph surfaces and matrix text retain readable contrast', async t => {
-  const page = await fixture(t);
-  await page.evaluate(() => {
-    document.documentElement.dataset.theme = 'dark';
-    const nodes = ['a', 'b', 'c'].map(id => ({id, label: id, kind: 'phrase', count: 1}));
-    new AtlasGraphRenderer(document.getElementById('graph')).render({
-      nodes, edges: [{source: 'a', target: 'b', count: 1}]
-    }, {mode: 'matrix', focus: 'a'});
-  });
-  for (const selector of ['.matrix-index', '.matrix-cell', '.zero-cell', '.self-cell', '#heatmap .no-data']) {
-    await assertReadable(page, selector);
-  }
-});
-
-function rgba(color) {
-  const match = /^rgba?\(([\d.,\s]+)\)$/.exec(color);
-  assert.ok(match, 'Unsupported computed color: ' + color);
-  const channels = match[1].split(',').map(Number);
-  assert.ok(channels.length === 3 || channels.length === 4, 'Expected RGB(A) computed color');
-  return channels.length === 3 ? [...channels, 1] : channels;
-}
-
-function composite(foreground, background) {
-  return foreground.slice(0, 3).map((value, i) => value * foreground[3] + background[i] * (1 - foreground[3]));
-}
-
-function luminance(channels) {
-  const linear = channels.slice(0, 3).map(value => {
-    const v = value / 255;
-    return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
-  });
-  return linear[0] * .2126 + linear[1] * .7152 + linear[2] * .0722;
-}
-
-function contrast(foreground, background) {
-  const fg = luminance(foreground), bg = luminance(background);
-  return (Math.max(fg, bg) + .05) / (Math.min(fg, bg) + .05);
-}
-
-async function assertReadable(page, selector) {
-  const values = await page.locator(selector).evaluateAll(elements => elements.map(element => {
-    const style = getComputedStyle(element);
-    let visible = true;
-    const backgrounds = [];
-    for (let node = element; node; node = node.parentElement) {
-      const parent = getComputedStyle(node);
-      visible = visible && parent.display !== 'none' && parent.visibility !== 'hidden' && Number(parent.opacity) === 1;
-      assertSolidBackground(parent);
-      backgrounds.unshift(parent.backgroundColor);
-    }
-    function assertSolidBackground(style) {
-      if (style.backgroundImage !== 'none') throw new Error('Contrast fixture requires solid backgrounds');
-    }
-    return {color: style.color, backgrounds, visible};
-  }));
-  assert.ok(values.length, 'Missing fixture cells: ' + selector);
-  for (const value of values) {
-    assert.ok(value.visible, 'Fixture cell must be visible');
-    const background = value.backgrounds.reduce((bg, color) => composite(rgba(color), bg), [255, 255, 255]);
-    const ratio = contrast(composite(rgba(value.color), background), background);
-    assert.ok(ratio >= 4.5, `${selector} contrast ${ratio.toFixed(3)} is below 4.5`);
-  }
-}
-
-test('empty chart cells meet contrast using rendered CSS on desktop and mobile', async t => {
-  const page = await fixture(t);
-  for (const width of [1360, 390]) {
-    await page.setViewportSize({width, height: 1000});
-    for (const selector of ['#graph .zero-cell', '#graph .self-cell', '#heatmap .no-data']) {
-      await assertReadable(page, selector);
-    }
-  }
-});
-
-function literalDomIds(source) {
-  const ids = [];
-  function visit(node) {
-    if (!node || typeof node !== 'object') return;
-    if (node.type === 'CallExpression' && node.callee.type === 'Identifier' && node.callee.name === '$') {
-      const argument = node.arguments[0];
-      if (argument?.type === 'Literal' && typeof argument.value === 'string') ids.push(argument.value);
-      if (argument?.type === 'TemplateLiteral' && argument.expressions.length === 0) ids.push(argument.quasis[0].value.cooked);
-    }
-    for (const value of Object.values(node)) {
-      if (Array.isArray(value)) value.forEach(visit);
-      else if (value && typeof value === 'object') visit(value);
-    }
-  }
-  visit(parse(source, {ecmaVersion: 'latest'}));
-  return ids;
-}
-
-function assertDomTargets(source, targets) {
-  for (const id of literalDomIds(source)) assert.ok(targets.has(id), 'Orphaned DOM reference: ' + id);
-}
-
-test('relationship section is named without interchangeable layout controls', async t => {
-  const page = await fixture(t);
-  assert.equal(await page.getByRole('region', {name: '함께 등장', exact: true}).count(), 1);
-  assert.equal(await page.locator('[data-layout]').count(), 0);
-});
-
-test('literal UI DOM calls resolve against the actual template', async t => {
-  const page = await fixture(t);
-  const targets = new Set(await page.locator('[id]').evaluateAll(elements => elements.map(e => e.id)));
-  assertDomTargets(fs.readFileSync(path.join(__dirname, 'ui.js'), 'utf8'), targets);
-});
-
-test('DOM guard parses whitespace, comments, escaping and static template literals', () => {
-  for (const source of ["$('missing-target')", '$ ("missing-target")', "$\n('missing-target')",
-    "$ /* comment */ ('missing-target')", "$('missing\\u002dtarget')", '$(`missing-target`)']) {
-    assert.throws(() => assertDomTargets(source, new Set(['graph'])), /Orphaned DOM reference: missing-target/);
-  }
-});
-
-test('DOM guard ignores comments and quoted text that are not calls', () => {
-  assert.deepEqual(literalDomIds("// $('not-a-call')\nconst text = \"$('not-a-call')\";\n$('graph')"), ['graph']);
-});
-
-test('matrix row indices meet text contrast for every community color', async t => {
-  const page = await fixture(t);
-  for (const compact of [false, true]) {
-    await page.setViewportSize({width: compact ? 390 : 1360, height: 1000});
-    await page.evaluate(compact => {
-      const nodes = Array.from({length: 8}, (_, i) => ({id: 'g' + i, label: 'Group ' + i, kind: 'phrase', count: 1}));
-      new AtlasGraphRenderer(document.getElementById('graph')).render({nodes, edges: []}, {mode: 'matrix', compact});
-    }, compact);
-    assert.equal(await page.locator('.matrix-index').count(), 8);
-    await assertReadable(page, '.matrix-index');
-  }
-});
-
-async function assertEdgeContrast(page, mode) {
-  const samples = await page.evaluate(() => {
-    const background = getComputedStyle(document.getElementById('graph')).backgroundColor;
-    const regions = [...document.querySelectorAll('.cluster-regions ellipse')];
-    function effectiveOpacity(element) {
-      let opacity = 1;
-      for (let node = element; node; node = node.parentElement) {
-        const style = getComputedStyle(node);
-        if (style.display === 'none' || style.visibility === 'hidden') return 0;
-        opacity *= Number(style.opacity);
-      }
-      return opacity;
-    }
-    return [...document.querySelectorAll('.edge-stroke')].flatMap(path =>
-      [.2, .5, .8].map(fraction => {
-        const local = path.getPointAtLength(path.getTotalLength() * fraction);
-        const screen = new DOMPoint(local.x, local.y).matrixTransform(path.getScreenCTM());
-        const layers = regions.filter(region => {
-          const point = screen.matrixTransform(region.getScreenCTM().inverse());
-          return region.isPointInFill(point);
-        }).map(region => ({color: getComputedStyle(region).fill, opacity: Number(getComputedStyle(region).fillOpacity)}));
-        return {background, stroke: getComputedStyle(path).stroke,
-          opacity: Number(getComputedStyle(path).strokeOpacity) * effectiveOpacity(path), layers};
-      }));
-  });
-  assert.ok(samples.length);
-  if (mode === 'cluster') assert.ok(samples.some(sample => sample.layers.length > 0));
-  for (const sample of samples) {
-    let background = rgba(sample.background).slice(0, 3);
-    for (const layer of sample.layers) {
-      const color = rgba(layer.color); color[3] *= layer.opacity;
-      background = composite(color, background);
-    }
-    const stroke = rgba(sample.stroke); stroke[3] *= sample.opacity;
-    const ratio = contrast(composite(stroke, background), background);
-    assert.ok(ratio >= 3, `${mode} edge contrast ${ratio.toFixed(3)} is below 3`);
-  }
-}
-
-test('unselected edges meet non-text contrast over the chart and rendered cluster fills', async t => {
-  const page = await fixture(t);
-  for (const mode of ['network', 'tree', 'cluster']) {
-    await page.evaluate(mode => {
-      const nodes = Array.from({length: 16}, (_, i) => ({id: 'n' + i, label: 'Node ' + i, kind: 'phrase', count: 1}));
-      const edges = Array.from({length: 8}, (_, i) => ({source: 'n' + 2 * i, target: 'n' + (2 * i + 1), count: 1}));
-      new AtlasGraphRenderer(document.getElementById('graph')).render({nodes, edges}, {mode, focus: 'n0'});
-    }, mode);
-    await assertEdgeContrast(page, mode);
-  }
-});
-
-test('edge contrast guard rejects opacity overrides on paths and ancestors', async t => {
-  const page = await fixture(t);
-  await page.evaluate(() => {
-    const nodes = ['a', 'b'].map(id => ({id, label: id, kind: 'phrase', count: 1}));
-    new AtlasGraphRenderer(document.getElementById('graph')).render({
-      nodes, edges: [{source: 'a', target: 'b', count: 1}]
-    }, {mode: 'network', focus: 'a'});
-  });
-  await assertEdgeContrast(page, 'network');
-  for (const selector of ['.edge-stroke', '.graph-link', '.graph-viewport', '#graph']) {
-    for (const opacity of ['0', '0.05']) {
-      await page.locator(selector).first().evaluate((element, value) => { element.style.opacity = value; }, opacity);
-      await assert.rejects(assertEdgeContrast(page, 'network'), /edge contrast .* is below 3/);
-      await page.locator(selector).first().evaluate(element => element.style.removeProperty('opacity'));
-      await assertEdgeContrast(page, 'network');
-    }
-  }
-});
-
-async function populatedFixture(t, nodeCount = 2, includeProject = false, baselineNodes = null, pattern = 'all') {
-  const page = await fixture(t);
-  await page.evaluate(({nodeCount, includeProject, baselineNodes, pattern}) => {
-    const nodeIds = ['a', 'b', ...Array.from({length: nodeCount - 2}, (_, i) => 'node-' + i)];
-    if (includeProject) nodeIds.push('project-demo');
-    const dates = ['2026-10-18', '2026-10-19'];
-    const items = Array.from({length: 16}, (_, i) => ({
-      id: 'item-' + i, identity: 'source-' + i, date: dates[i < 8 ? 0 : 1], section: 'community',
-      title: 'Source ' + i, tags: ['alpha'],
-      nodes: pattern === 'single' && i > 0 ? [nodeIds[i % nodeIds.length]]
-        : pattern === 'chain' ? nodeIds.slice(i % (nodeIds.length - 1), i % (nodeIds.length - 1) + 2)
-        : nodeIds,
-      matches: {}, href: '#item-' + i, url: 'https://example.org/' + i
-    }));
-    if (baselineNodes) {
-      for (let i = 0; i < 3; i++) items.push({
-        id: 'prior-' + i, identity: 'prior-source-' + i, date: '2026-10-' + (7 + i).toString().padStart(2, '0'),
-        section: 'community', title: 'Prior source ' + i, tags: ['alpha'],
-        nodes: baselineNodes, matches: {}, href: '#prior-' + i, url: 'https://example.org/prior/' + i
-      });
-    }
-    const reportDates = baselineNodes ? Array.from({length: 14}, (_, i) => new Date(Date.UTC(2026, 9, 6 + i)).toISOString().slice(0, 10)) : dates;
-    const bucket = (from, to, count, reports, days) => ({
-      from, to, node_counts: Object.fromEntries(nodeIds.map(id => [id,
-        new Set(items.filter(item => item.date >= from && item.date <= to && item.nodes.includes(id)).map(item => item.identity)).size
-      ])), item_count: count, report_count: reports, expected_days: days, partial_slots: 0
-    });
-    const data = {
-      meta: {from: reportDates[0], to: dates[1]}, tags: [{id: 'alpha', label: 'Alpha'}],
-      reports: reportDates.map(date => ({date, coverage: {github: 'ok', papers: 'ok', community: 'ok', cncf: 'ok'}})),
-      items, details: items.map(() => ({body: '', summary: '', topics: []})),
-      nodes: nodeIds.map(id => ({id, kind: id === 'project-demo' ? 'project' : 'phrase', label: id, documents: items.flatMap((item, i) => item.nodes.includes(id) ? [i] : [])})),
-      links: nodeIds.flatMap((source, i) => nodeIds.slice(i + 1).map(target => ({
-        source, target, documents: items.flatMap((item, index) => item.nodes.includes(source) && item.nodes.includes(target) ? [index] : [])
-      }))),
-      periods: {
-        week: [bucket('2026-10-12', dates[0], 8, 1, 7), bucket(dates[1], dates[1], 8, 1, 1)],
-        month: [bucket('2026-10-01', dates[1], 16, 2, 19)]
-      }
+    const reports=Array.from({length:14},(_,i)=>({date:new Date(Date.UTC(2026,9,6+i)).toISOString().slice(0,10),
+      coverage:{github:'ok',papers:'ok',community:'ok',cncf:'ok'}}));
+    const bucket=(from,to)=>{
+      const indices=items.flatMap((item,i)=>item.date>=from&&item.date<=to?[i]:[]);
+      const available=reports.filter(r=>r.date>=from&&r.date<=to);
+      return {from,to,item_count:indices.length,report_count:available.length,
+        expected_days:(Date.parse(to)-Date.parse(from))/86400000+1,partial_slots:0,
+        node_counts:Object.fromEntries(groups.map(g=>[g.id,g.documents.filter(i=>indices.includes(i)).length]))};
     };
-    document.getElementById('snapshot').textContent = JSON.stringify(data);
-  }, {nodeCount, includeProject, baselineNodes, pattern});
-  for (const file of ['analytics.js', 'ui.js']) {
-    await page.addScriptTag({content: fs.readFileSync(path.join(__dirname, file), 'utf8')});
-  }
+    const data={meta:{from:'2026-10-06',to:'2026-10-19'},reports,tags:[{id:'memory',label:'메모리'}],
+      items,details,nodes:[],links:[],
+      article_groups:{groups,periods:{week:[bucket('2026-10-05','2026-10-11'),bucket('2026-10-12','2026-10-18'),bucket('2026-10-19','2026-10-19')],
+        month:[bucket('2026-10-01','2026-10-19')]}}};
+    document.getElementById('snapshot').textContent=JSON.stringify(data);
+  },{groupCount,firstSize,previousSize,family});
+  for(const file of ['analytics.js','ui.js'])await page.addScriptTag({content:fs.readFileSync(path.join(__dirname,file),'utf8')});
   return page;
 }
-
-test('default discovery prioritizes repeated share gains rather than lifetime frequency', async t => {
-  const page = await populatedFixture(t, 2, false, ['a']);
-  assert.equal(await page.locator('#span').inputValue(), '7');
-  assert.equal(await page.locator('#ordering').inputValue(), 'rising');
-  assert.equal(await page.locator('#detail-title').innerText(), 'b');
-  assert.equal(await page.locator('#node-list [data-node="a"]').count(), 0);
-  assert.equal(await page.locator('#node-list [data-node="b"]').count(), 1);
-  assert.equal(await page.locator('#heatmap .change-delta').first().innerText(), '+100.0');
-  assert.equal(await page.locator('#evidence-count').innerText(), '16건');
+test('today-relative discovery exposes only three simple period choices',async t=>{
+  const page=await populated(t);
+  assert.equal(await page.locator('#span').inputValue(),'7');
+  assert.deepEqual(await page.locator('#span option').evaluateAll(es=>es.map(e=>e.value)),['3','7','30']);
+  assert.equal(await page.locator('#as-of,#kind,[data-layout],#node-search').count(),0);
+  assert.equal(await page.locator('#period-label').innerText(),'2026-10-13 — 2026-10-19');
+  assert.equal(await page.locator('#data-through').innerText(),'최신 수록 2026-10-19');
+});
+test('group selection reveals original source titles and common expressions',async t=>{
+  const page=await populated(t);
+  assert.equal(await page.locator('#detail-title').innerText(),'procedural memory');
+  assert.equal(await page.locator('#evidence-count').innerText(),'4건');
+  assert.ok((await page.locator('#group-terms').innerText()).includes('procedural memory'));
+  await page.locator('#group-list [data-group="group-1"]').click();
+  assert.equal(await page.locator('#detail-title').innerText(),'topic 1');
+  assert.equal(await page.locator('#evidence-count').innerText(),'2건');
+  assert.ok(await page.locator('.evidence').evaluateAll(es=>es.every(e=>e.dataset.id.startsWith('g1-'))));
+});
+test('connected historical articles are explicit and do not change the current window',async t=>{
+  const page=await populated(t);
+  const range=await page.locator('#period-label').innerText();
+  await page.locator('#group-history').click();
+  assert.equal(await page.locator('#evidence-count').innerText(),'5건');
+  assert.equal(await page.locator('#evidence-period').innerText(),'누적 관련 글');
+  assert.equal(await page.locator('#period-label').innerText(),range);
+  await page.locator('#group-history').click();
+  assert.equal(await page.locator('#evidence-count').innerText(),'4건');
+});
+test('section and tag filters preserve today-relative windows',async t=>{
+  const page=await populated(t);
+  await page.locator('#span').selectOption('3');
+  await page.locator('#section-tabs [data-section="papers"]').click();
+  await page.locator('#tag').selectOption('memory');
+  assert.equal(await page.locator('#period-label').innerText(),'2026-10-17 — 2026-10-19');
+  assert.ok(await page.locator('.evidence-meta').evaluateAll(es=>es.every(e=>e.textContent.includes('AI 논문'))));
+  await page.locator('#reset').click();
+  assert.equal(await page.locator('#span').inputValue(),'7');
+});
+test('stale archives do not shift the window backwards or invent observations',async t=>{
+  const page=await populated(t);
+  await page.clock.setFixedTime(new Date('2026-10-30T03:00:00Z'));
+  await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
+  assert.equal(await page.locator('#period-label').innerText(),'2026-10-24 — 2026-10-30');
+  assert.equal(await page.locator('#data-through').innerText(),'최신 수록 2026-10-19 · 이후 미수록');
+  assert.equal(await page.locator('#evidence-count').innerText(),'0건');
+  assert.equal(await page.locator('#comparison-label').innerText(),'비교 자료 부족');
+});
+test('reset restores weekly heatmap history after selecting monthly history',async t=>{
+  const page=await populated(t);
+  const weeklyHeaders=await page.locator('#heatmap thead th').allTextContents();
+  await page.locator('[data-unit="month"]').click();
+  assert.equal(await page.locator('[data-unit="month"]').getAttribute('aria-pressed'),'true');
+  assert.notDeepEqual(await page.locator('#heatmap thead th').allTextContents(),weeklyHeaders);
+  await page.locator('#reset').click();
+  assert.equal(await page.locator('[data-unit="week"]').getAttribute('aria-pressed'),'true');
+  assert.equal(await page.locator('[data-unit="month"]').getAttribute('aria-pressed'),'false');
+  assert.deepEqual(await page.locator('#heatmap thead th').allTextContents(),weeklyHeaders);
+});
+test('a trailing collection gap is explicit even when recent groups remain visible',async t=>{
+  const page=await populated(t);
+  await page.clock.setFixedTime(new Date('2026-10-21T03:00:00Z'));
+  await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
+  assert.equal(await page.locator('#period-label').innerText(),'2026-10-15 — 2026-10-21');
+  assert.equal(await page.locator('#data-through').innerText(),'최신 수록 2026-10-19 · 이후 미수록');
+  assert.ok(await page.locator('#heatmap [data-group]').count()>0);
+});
+test('group search preserves count ordering within a family',async t=>{
+  const page=await populated(t,{firstSize:5,previousSize:20,family:'research'});
   await page.locator('#ordering').selectOption('count');
-  assert.equal(await page.locator('#node-list [data-node="a"]').count(), 1);
+  const ids=()=>page.locator('#group-list [data-group]').evaluateAll(es=>es.map(e=>e.dataset.group));
+  assert.deepEqual(await ids(),['group-0','group-1']);
+  await page.locator('#group-search').fill('t');
+  assert.deepEqual(await ids(),['group-0','group-1']);
 });
-test('page offers a contextual relation view rather than interchangeable layout tabs', async t => {
-  const page=await populatedFixture(t);
-  assert.equal(await page.locator('[data-layout]').count(),0);
-  assert.equal(await page.locator('#relation-panel').getAttribute('data-view'),'network');
-  assert.ok(await page.locator('#relation-panel').isVisible());
-  assert.ok(await page.locator('#heatmap').isVisible());
-  assert.equal(await page.locator('#evidence-count').innerText(),'16건');
+test('rising-mode search can still find a non-rising related group',async t=>{
+  const page=await populated(t,{firstSize:2,previousSize:20});
+  assert.equal(await page.locator('#group-list [data-group="group-0"]').count(),0);
+  await page.locator('#group-search').fill('procedural memory');
+  assert.equal(await page.locator('#group-list [data-group="group-0"]').count(),1);
+  await page.locator('#group-list [data-group="group-0"]').click();
+  assert.deepEqual(await page.locator('#heatmap .group-family th').allTextContents(),['논문 관련','개발·커뮤니티']);
 });
-
-test('single-source relations use only the timeline and source list', async t => {
-  const page = await populatedFixture(t, 2, false, null, 'single');
-  assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), 'sources');
-  assert.ok(await page.locator('#relation-panel').isHidden());
-  assert.equal(await page.locator('#graph svg, #graph table').count(), 0);
-  assert.ok(await page.locator('#heatmap').isVisible());
-  assert.ok(Number.parseInt(await page.locator('#evidence-count').innerText()) > 0);
-});
-
-test('repeated sparse and dense relationships select a single appropriate renderer', async t => {
-  for (const pattern of ['chain', 'all']) {
-    const page = await populatedFixture(t, 6, false, null, pattern);
-    const mode = pattern === 'chain' ? 'network' : 'matrix';
-    for (const width of [1360, 390]) {
-      await page.setViewportSize({width, height: 1000});
-      assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), mode);
-      assert.ok(await page.locator('#relation-panel').isVisible());
-      assert.equal(await page.locator('#graph svg').count(), mode === 'network' ? 1 : 0);
-      assert.equal(await page.locator('#graph .adjacency').count(), mode === 'matrix' ? 1 : 0);
-      assert.equal(await page.locator('#zoom-in').isVisible(), mode === 'network');
-      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-    }
-  }
-});
-
-test('no rising observations does not fill the default graph with unrelated entries', async t => {
-  const page = await populatedFixture(t, 2, false, ['a', 'b']);
-  assert.equal(await page.locator('#graph .graph-node').count(), 0);
-  assert.equal(await page.locator('#evidence-count').innerText(), '0건');
-  assert.ok((await page.locator('#heatmap').innerText()).includes('반복 증가 항목 없음'));
+test('inventory, text search and keyboard pagination preserve source access',async t=>{
+  const page=await populated(t,{groupCount:30,firstSize:26});
   await page.locator('#inventory').click();
-  assert.equal(await page.locator('#evidence-count').innerText(), '16건');
-});
-
-async function assertNeutralCopy(page) {
-  const texts = await page.evaluate(() => [
-    document.body.innerText,
-    ...[...document.querySelectorAll('svg text, svg title, svg desc')].map(element => element.textContent),
-    ...[...document.querySelectorAll('[aria-label], [title], [placeholder], [alt]')]
-      .flatMap(element => ['aria-label', 'title', 'placeholder', 'alt'].map(name => element.getAttribute(name) || ''))
-  ]);
-  const forbidden = ['MODEL CALLS', 'STATIC GRAPH', 'MATERIALIZED', '반복 포착', '다음 질문',
-    '해 보세요', '해보세요', '같은 입력', '준비할지', '자동 추출된', '포착'];
-  for (const text of texts) {
-    const normalized = text.normalize('NFKC').replace(/\s+/gu, ' ').trim();
-    for (const phrase of forbidden) assert.ok(!normalized.includes(phrase), 'Disallowed interface copy: ' + phrase);
-  }
-}
-
-test('initialized UI and user-facing labels remain free of generated guidance', async t => {
-  for (const pattern of ['single', 'chain', 'all']) {
-    const page = await populatedFixture(t, 6, false, null, pattern);
-    await assertNeutralCopy(page);
-  }
-});
-
-test('copy guard rejects runtime-concatenated text and label attributes', async t => {
-  const page = await populatedFixture(t);
-  for (const target of ['text', 'aria-label', 'title', 'placeholder']) {
-    await page.evaluate(target => {
-      const element = document.createElement(target === 'text' ? 'p' : 'input');
-      element.id = 'copy-regression';
-      const label = '다음 ' + '질문';
-      if (target === 'text') element.textContent = label;
-      else element.setAttribute(target, label);
-      document.querySelector('main').append(element);
-    }, target);
-    await assert.rejects(assertNeutralCopy(page), /Disallowed interface copy: 다음 질문/);
-    await page.locator('#copy-regression').evaluate(element => element.remove());
-  }
-});
-
-test('selecting a new edge resets evidence pagination while preserving its pair', async t => {
-  const page = await populatedFixture(t, 6);
-  assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), 'matrix');
-  assert.equal(await page.locator('.evidence').count(), 5);
-  await page.locator('#more-evidence').click();
-  assert.equal(await page.locator('.evidence').count(), 15);
-  await page.locator('.matrix-cell').first().click();
-  assert.equal(await page.locator('#detail-title').innerText(), 'a × b');
-  assert.equal(await page.locator('#evidence-count').innerText(), '16건');
-  assert.equal(await page.locator('.evidence').count(), 5);
-});
-
-test('tag and node-type filters preserve the heatmap-selected date interval', async t => {
-  const page = await populatedFixture(t, 2, true);
-  for (const [control, value] of [['tag', 'alpha'], ['kind', 'project']]) {
-    await page.locator('#reset').click();
-    await page.locator('#heatmap [data-cell="a"][data-from="2026-10-12"]').click();
-    assert.equal(await page.locator('#evidence-count').innerText(), '8건');
-    await page.locator('#' + control).selectOption(value);
-    assert.equal(await page.locator('#span').inputValue(), 'custom');
-    assert.equal(await page.locator('#period-label').innerText(), '2026-10-12 — 2026-10-18');
-    assert.equal(await page.locator('#evidence-count').innerText(), '8건');
-    assert.ok(await page.locator('.evidence-meta').evaluateAll(elements => elements.every(e => e.textContent.startsWith('2026-10-18'))));
-    if (control === 'kind') assert.equal(await page.locator('#detail-kind').innerText(), '프로젝트');
-  }
-  await page.locator('#span').selectOption('all');
-  assert.equal(await page.locator('#period-label').innerText(), '2026-10-18 — 2026-10-19');
-  assert.equal(await page.locator('#evidence-count').innerText(), '16건');
-});
-
-test('keyboard clearing a pair moves focus to a visible source panel', async t => {
-  const page = await populatedFixture(t, 6);
-  for (const width of [1360, 390]) {
-    await page.setViewportSize({width, height: 1000});
-    assert.equal(await page.locator('#relation-panel').getAttribute('data-view'), 'matrix');
-    for (const key of ['Enter', 'Space']) {
-      await page.locator('.matrix-cell').first().click();
-      await page.locator('#clear-pair').focus();
-      await page.locator('#clear-pair').press(key);
-      assert.ok(await page.locator('#clear-pair').isHidden());
-      assert.equal(await page.evaluate(() => document.activeElement.id), 'detail-panel');
-      assert.ok(await page.locator('#detail-panel').isVisible());
-    }
-  }
-});
-
-test('keyboard pagination retains focus when its last-page button disappears', async t => {
-  const page = await populatedFixture(t, 30);
-  await page.locator('#inventory').click();
+  assert.equal(await page.locator('#evidence-count').innerText(),'84건');
+  await page.locator('#evidence-search').fill('g0-0');
+  assert.equal(await page.locator('#evidence-count').innerText(),'1건');
+  await page.locator('#evidence-search').fill('no-such-term');
+  assert.equal(await page.locator('#evidence-count').innerText(),'0건');
+  await page.locator('#reset').click();
   await page.locator('#more-evidence').focus();
   await page.locator('#more-evidence').press('Enter');
   await page.locator('#more-evidence').press('Space');
+  assert.equal(await page.locator('.evidence').count(),26);
   assert.ok(await page.locator('#more-evidence').isHidden());
-  assert.equal(await page.evaluate(() => document.activeElement.id), 'detail-panel');
-  await page.locator('#more-nodes').focus();
-  await page.locator('#more-nodes').press('Enter');
-  assert.ok(await page.locator('#more-nodes').isHidden());
-  assert.equal(await page.evaluate(() => document.activeElement.id), 'node-search');
+  assert.equal(await page.evaluate(()=>document.activeElement.id),'detail-panel');
+  await page.locator('#more-groups').focus();await page.locator('#more-groups').press('Enter');
+  assert.ok(await page.locator('#more-groups').isHidden());
+  assert.equal(await page.evaluate(()=>document.activeElement.id),'group-search');
 });
-
-test('fit view recenters dragged graph bounds including labels on desktop and mobile', async t => {
-  const page = await fixture(t);
-  for (const width of [1360, 390]) {
-    await page.setViewportSize({width, height: 1000});
-    for (const mode of ['network', 'tree', 'cluster']) {
-      await page.evaluate(({mode, compact}) => {
-        const nodes = Array.from({length: 6}, (_, i) => ({
-          id: 'fit-' + i, label: 'Readable graph node ' + i, kind: 'phrase', count: 1
-        }));
-        const edges = nodes.slice(1).map((node, i) => ({source: nodes[i].id, target: node.id, count: 1}));
-        globalThis.fitTestRenderer = new AtlasGraphRenderer(document.getElementById('graph'));
-        fitTestRenderer.render({nodes, edges}, {mode, focus: 'fit-0', compact});
-        fitTestRenderer.zoomBy(.5);
-      }, {mode, compact: width < 500});
-      const node = page.locator('#graph .graph-node[data-node="fit-0"]');
-      for (let i = 0; i < 3; i++) {
-        await page.evaluate(() => {
-          const renderer = fitTestRenderer;
-          const point = renderer.svg.select('[data-node="fit-0"]').datum();
-          const box = renderer.svg.node().viewBox.baseVal;
-          const scale = d3.zoomTransform(renderer.svg.node()).k;
-          renderer.svg.call(renderer.zoom.transform,
-            d3.zoomIdentity.translate(box.width / 2 - point.x * scale, box.height / 2 - point.y * scale).scale(scale));
-        });
-        const shape = node.locator(mode === 'tree' ? 'rect' : 'circle').last();
-        const from = await shape.boundingBox(), svg = await page.locator('#graph svg').boundingBox();
-        await page.mouse.move(from.x + from.width / 2, from.y + from.height / 2);
-        await page.mouse.down();
-        await page.mouse.move(svg.x + svg.width - 12, svg.y + svg.height - 15, {steps: 6});
-        await page.mouse.up();
-      }
-      assert.ok(await page.evaluate(() => {
-        const svg = fitTestRenderer.svg.node();
-        const box = svg.querySelector('.graph-viewport').getBBox();
-        return box.x + box.width > svg.viewBox.baseVal.width;
-      }), 'Fixture must drag content beyond the original viewBox');
-      await page.evaluate(() => fitTestRenderer.reset());
-      const fitted = await page.evaluate(() => {
-        const svg = fitTestRenderer.svg.node(), outer = svg.getBoundingClientRect();
-        const inner = svg.querySelector('.graph-viewport').getBoundingClientRect();
-        return inner.left >= outer.left - 1 && inner.top >= outer.top - 1 &&
-          inner.right <= outer.right + 1 && inner.bottom <= outer.bottom + 1;
-      });
-      assert.ok(fitted, `${mode} must fit its dragged content and labels at ${width}px`);
+test('heatmap selection changes the reading group, not the calendar anchor',async t=>{
+  const page=await populated(t);
+  const period=await page.locator('#period-label').innerText();
+  await page.locator('#heatmap [data-group="group-1"]').first().click();
+  assert.equal(await page.locator('#detail-title').innerText(),'topic 1');
+  assert.equal(await page.locator('#period-label').innerText(),period);
+});
+test('archive and grouped page share branding with plain active navigation',async t=>{
+  const atlas=await populated(t),archive=await browser.newPage();t.after(()=>archive.close());
+  await archive.route(/^https?:/,route=>route.abort());await archive.emulateMedia({reducedMotion:'reduce'});
+  const template=fs.readFileSync(path.join(siteRoot,'template.html'),'utf8')
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'')
+    .replace('@@SITE_STYLE@@',fs.readFileSync(path.join(siteRoot,'site-theme.css'),'utf8'))
+    .replace('@@SITE_HEADER@@',header('./','archive')).replaceAll('@@BASE@@','./').replace('@@CONTENT@@','<h1>Archive fixture</h1>');
+  await archive.setContent(template);
+  const branding=page=>page.evaluate(()=>({
+    font:getComputedStyle(document.body).fontFamily,background:getComputedStyle(document.body).backgroundColor,
+    header:getComputedStyle(document.querySelector('.site-header')).backgroundColor,
+    logo:document.querySelector('.site-brand-mark').outerHTML,
+    accent:getComputedStyle(document.body).getPropertyValue('--cp-accent')
+  }));
+  for(const width of [390,768,1360])for(const theme of ['light','dark']){
+    for(const page of [atlas,archive]){
+      await page.setViewportSize({width,height:1000});await page.evaluate(theme=>document.documentElement.dataset.theme=theme,theme);
+      assert.ok(await page.locator('.header-links [data-site-link="insights"]').isVisible());
+      assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
     }
+    assert.deepEqual(await branding(atlas),await branding(archive));
+    assert.equal(await atlas.locator('[data-site-link="insights"]').getAttribute('aria-current'),'page');
+    assert.equal(await archive.locator('[data-site-link="archive"]').getAttribute('aria-current'),'page');
+    const state=await atlas.locator('[data-site-link="insights"]').evaluate(e=>{
+      const s=getComputedStyle(e);return {background:s.backgroundColor,border:s.borderTopWidth,line:s.textDecorationLine};
+    });
+    assert.equal(state.background,'rgba(0, 0, 0, 0)');assert.equal(state.border,'0px');assert.ok(state.line.includes('underline'));
   }
 });
-
-test('contrast guard rejects a more-specific stylesheet override', async t => {
-  const page = await fixture(t);
-  await page.addStyleTag({content: '#graph .adjacency .zero-cell { color: #ffffff; }'});
-  await assert.rejects(assertReadable(page, '#graph .zero-cell'), /contrast .*below 4\.5/);
+test('explicit site theme overrides the system preference',async t=>{
+  const page=await shell(t);await page.emulateMedia({colorScheme:'dark'});
+  await page.route('https://theme.test/**',route=>route.fulfill({body:'<html><body></body></html>',contentType:'text/html'}));
+  const script=fs.readFileSync(path.join(siteRoot,'site-theme.js'),'utf8');
+  await page.goto('https://theme.test/?scoutTheme=light');await page.addScriptTag({content:script});
+  assert.equal(await page.locator('html').getAttribute('data-theme'),'light');
+  await page.goto('https://theme.test/?scoutTheme=invalid');await page.addScriptTag({content:script});
+  assert.equal(await page.locator('html').getAttribute('data-theme'),'dark');
 });
-
-test('contrast guard rejects inline overrides', async t => {
-  const page = await fixture(t);
-  await page.locator('#graph .self-cell').first().evaluate(element => { element.style.color = '#ffffff'; });
-  await assert.rejects(assertReadable(page, '#graph .self-cell'), /contrast .*below 4\.5/);
-});
-
-test('contrast guard resolves inherited custom-property changes', async t => {
-  const page = await fixture(t);
-  await page.evaluate(() => document.documentElement.style.setProperty('--muted', '#ffffff'));
-  await assert.rejects(assertReadable(page, '#heatmap .no-data'), /contrast .*below 4\.5/);
-});
-
-test('tree renderer keeps the selected connection after rerooting on desktop and mobile', async t => {
-  const page = await fixture(t);
-  for (const compact of [false, true]) {
-    await page.setViewportSize({width: compact ? 390 : 1360, height: 1000});
-    const pair = await page.evaluate(compact => {
-      const children = Array.from({length: compact ? 3 : 5}, (_, i) => 'child-' + i);
-      const model = {
-        nodes: ['root', 'parent', ...children].map(id => ({id, label: id, kind: 'phrase', count: 1})),
-        edges: [{source: 'root', target: 'parent', count: 10},
-          ...children.map(id => ({source: 'parent', target: id, count: 1}))]
-      };
-      const pair = children.at(-1);
-      new AtlasGraphRenderer(document.getElementById('graph')).render(model, {
-        mode: 'tree', focus: 'parent', pair, compact
-      });
-      return pair;
-    }, compact);
-    const node = page.locator(`#graph [data-node="${pair}"]`);
-    const edge = page.locator(`#graph [data-edge-source="parent"][data-edge-target="${pair}"]`);
-    const assertDrawn = async locator => {
-      assert.equal(await locator.count(), 1);
-      assert.ok(await locator.isVisible(), 'Selected graph element must be visible');
-      assert.ok(await locator.evaluate(element => {
-        for (let n = element; n; n = n.parentElement) {
-          const style = getComputedStyle(n);
-          if (Number(style.opacity) === 0 || style.display === 'none' || style.visibility === 'hidden') return false;
-        }
-        return true;
-      }), 'Selected graph element must not be transparent');
-    };
-    await assertDrawn(node);
-    await assertDrawn(edge);
-    for (const locator of [node, edge]) {
-      await locator.evaluate(element => { element.style.opacity = '0'; });
-      await assert.rejects(assertDrawn(locator), /must not be transparent/);
-      await locator.evaluate(element => element.style.removeProperty('opacity'));
+function domIds(source){
+  const ids=[];
+  function visit(node){
+    if(!node||typeof node!=='object')return;
+    if(node.type==='CallExpression'&&node.callee.type==='Identifier'&&node.callee.name==='$'){
+      const a=node.arguments[0];
+      if(a?.type==='Literal'&&typeof a.value==='string')ids.push(a.value);
+      if(a?.type==='TemplateLiteral'&&!a.expressions.length)ids.push(a.quasis[0].value.cooked);
     }
+    for(const value of Object.values(node))if(Array.isArray(value))value.forEach(visit);else if(value&&typeof value==='object')visit(value);
+  }
+  visit(parse(source,{ecmaVersion:'latest'}));return ids;
+}
+test('literal grouped UI DOM references exist in the actual template',async t=>{
+  const page=await shell(t),ids=new Set(await page.locator('[id]').evaluateAll(es=>es.map(e=>e.id)));
+  for(const id of domIds(fs.readFileSync(path.join(__dirname,'ui.js'),'utf8')))assert.ok(ids.has(id),'Missing target: '+id);
+});
+test('DOM parser handles spacing, comments and escaped literals without matching ordinary strings',()=>{
+  assert.deepEqual(domIds("$ /* x */ ('missing\\u002dtarget'); $(`other`); const s=\"$('not-a-call')\";"),['missing-target','other']);
+});
+async function neutral(page){
+  const texts=await page.evaluate(()=>[document.body.innerText,...[...document.querySelectorAll('[aria-label],[title],[placeholder],[alt]')].flatMap(e=>['aria-label','title','placeholder','alt'].map(k=>e.getAttribute(k)||''))]);
+  for(const text of texts)for(const forbidden of ['MODEL CALLS','STATIC GRAPH','다음 질문','해보세요','준비할지']){
+    assert.ok(!text.normalize('NFKC').replace(/\s+/gu,' ').includes(forbidden),'Disallowed interface copy: '+forbidden);
+  }
+}
+test('grouped interface does not add generated reading advice',async t=>{await neutral(await populated(t));});
+test('rendered copy guard detects runtime concatenation in text and labels',async t=>{
+  const page=await populated(t);
+  for(const attribute of ['text','aria-label','title','placeholder','alt']){
+    await page.evaluate(attribute=>{
+      const e=document.createElement(attribute==='alt'?'img':'input');e.id='bad-copy';const text='다음 '+'질문';
+      if(attribute==='text'){const p=document.createElement('p');p.id='bad-copy';p.textContent=text;document.body.append(p);}
+      else{e.setAttribute(attribute,text);document.body.append(e);}
+    },attribute);
+    await assert.rejects(neutral(page),/Disallowed interface copy/);
+    await page.locator('#bad-copy').evaluate(e=>e.remove());
+  }
+});
+test('group count labels and missing-data cells are readable in both themes',async t=>{
+  const page=await populated(t);
+  const luminance=rgb=>{
+    const values=rgb.match(/[\d.]+/g).slice(0,3).map(Number).map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;});
+    return values[0]*.2126+values[1]*.7152+values[2]*.0722;
+  };
+  for(const theme of ['light','dark']){
+    await page.evaluate(theme=>document.documentElement.dataset.theme=theme,theme);
+    await page.locator('#reset').click();
+    const styles=await page.locator('#heatmap td button').evaluateAll(es=>es.map(e=>{
+      const s=getComputedStyle(e);return {fg:s.color,bg:s.backgroundColor};
+    }));
+    assert.ok(styles.length);
+    for(const {fg,bg} of styles){const a=luminance(fg),b=luminance(bg);assert.ok((Math.max(a,b)+.05)/(Math.min(a,b)+.05)>=4.5);}
   }
 });

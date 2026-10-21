@@ -18,46 +18,37 @@
   <a class="skip-link" href="#main">본문으로 바로가기</a>
 @@SITE_HEADER@@
   <main id="main" class="atlas-main" tabindex="-1">
-    <h1 class="sr-only">탐색</h1>
+    <h1 class="sr-only">최근 글 묶음</h1>
     <div class="toolbar">
-      <label><span class="sr-only">대상</span><select id="kind"><option value="phrase">표현</option><option value="project">프로젝트</option><option value="name">이름·약어</option></select></label>
-      <label><span class="sr-only">기간</span><select id="span"><option value="all">전체 기간</option><option value="7">최근 7일</option><option value="30">최근 30일</option><option value="custom" disabled>선택 구간</option></select></label>
-      <label><span class="sr-only">기준일</span><select id="as-of"></select></label>
+      <label><span class="sr-only">오늘 기준 기간</span><select id="span"><option value="3">최근 3일</option><option value="7" selected>최근 7일</option><option value="30">최근 30일</option></select></label>
       <label><span class="sr-only">영역</span><select id="tag"><option value="">전체 영역</option></select></label>
-      <label><span class="sr-only">정렬</span><select id="ordering" title="최근 증가는 서로 다른 글 2건·등장일 2일 이상인 표현의 비중 증가순입니다."><option value="rising">최근 증가</option><option value="count">등장량</option></select></label>
+      <label><span class="sr-only">정렬</span><select id="ordering" title="서로 다른 글 2건·등장일 2일 이상인 묶음의 비중 증가순"><option value="rising">최근 증가</option><option value="count">최근 글 수</option></select></label>
       <button type="button" id="reset" class="text-button">초기화</button>
+      <span class="today-label">오늘 기준 · 한국시간</span>
     </div>
-    <nav id="section-cards" class="section-tabs" aria-label="섹션"></nav>
-    <div class="periodline"><span id="period-label"></span><span id="sample-label"></span></div>
+    <nav id="section-tabs" class="section-tabs" aria-label="섹션"></nav>
+    <div class="periodline"><span id="period-label"></span><span id="data-through"></span><span id="sample-label"></span></div>
     <div id="fatal" class="error" role="alert" hidden></div>
     <div class="workspace">
       <div class="visuals">
-        <section class="matrix-panel" aria-label="최근 비중 변화">
+        <section class="matrix-panel" aria-label="최근 글 묶음의 변화">
           <div class="panel-head">
-            <h2>최근 변화 <span id="comparison-label" class="unit"></span></h2>
+            <h2>최근 글 묶음 <span id="comparison-label" class="unit"></span></h2>
             <div class="segmented"><button type="button" data-unit="week" aria-pressed="true">주</button><button type="button" data-unit="month" aria-pressed="false">월</button></div>
           </div>
-          <div class="heatmap-scroll"><table id="heatmap" aria-label="기간별 등장 횟수와 비중 변화"></table></div>
+          <div class="heatmap-scroll"><table id="heatmap" aria-label="글 묶음별 최근 건수와 비중 변화"></table></div>
         </section>
-        <section id="relation-panel" class="graph-panel" aria-labelledby="relation-heading" hidden>
-          <div class="panel-head">
-            <h2 id="relation-heading" title="서로 다른 글 2건 이상에서 함께 등장한 주제">함께 등장</h2>
-          </div>
-          <div class="graph-frame">
-            <div id="graph" class="graph" aria-label="공동 등장 관계도"></div>
-            <div class="graph-controls"><span id="view-count"></span><button id="zoom-out" aria-label="축소" title="축소">−</button><button id="zoom-in" aria-label="확대" title="확대">+</button><button id="fit-view" aria-label="화면 맞춤" title="화면 맞춤">↺</button></div>
-          </div>
-        </section>
-        <section class="node-panel" aria-label="노드 목록">
-          <div class="node-search"><input id="node-search" type="search" placeholder="노드 검색" aria-label="노드 검색"><span id="node-count"></span></div>
-          <div id="node-list" class="node-list"></div>
-          <button type="button" id="more-nodes" class="more-button" hidden>더 보기</button>
+        <section class="node-panel" aria-label="글 묶음 목록">
+          <div class="node-search"><input id="group-search" type="search" placeholder="글 묶음 검색" aria-label="글 묶음 검색"><span id="group-count"></span></div>
+          <div id="group-list" class="node-list"></div>
+          <button type="button" id="more-groups" class="more-button" hidden>더 보기</button>
         </section>
       </div>
-      <aside id="detail-panel" class="detail-panel" tabindex="-1" aria-label="관련 소식">
-        <div class="detail-head"><span id="detail-kind"></span><button type="button" id="inventory" class="text-button">전체 소식</button></div>
+      <aside id="detail-panel" class="detail-panel" tabindex="-1" aria-label="관련 글">
+        <div class="detail-head"><span id="evidence-period"></span><button type="button" id="inventory" class="text-button">전체 소식</button></div>
         <h2 id="detail-title"></h2>
-        <button type="button" id="clear-pair" class="text-button" hidden>연결 해제 ×</button>
+        <div id="group-terms" class="group-terms" aria-label="공통 표현"></div>
+        <button type="button" id="group-history" class="text-button" hidden>연결 글 전체</button>
         <div class="source-search"><input id="evidence-search" type="search" placeholder="소식 검색" aria-label="소식 검색"><span id="evidence-count" aria-live="polite"></span></div>
         <div id="evidence-list" class="evidence-list"></div>
         <button type="button" id="more-evidence" class="more-button" hidden>더 보기</button>
@@ -66,10 +57,7 @@
     <noscript>@@STATIC@@</noscript>
   </main>
   <script id="snapshot" type="application/json">@@DATA@@</script>
-  <script>@@D3@@</script>
   <script>@@ANALYTICS@@</script>
-  <script>@@VIEWS@@</script>
-  <script>@@RENDERER@@</script>
   <script>@@READER@@</script>
   <script>@@UI@@</script>
 </body>
