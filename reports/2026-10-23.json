@@ -1,0 +1,492 @@
+{
+  "cncf": [
+    {
+      "category": "operational guidance",
+      "impact": "에이전트 관측 데이터를 수집하는 플랫폼 팀은 high-cardinality 신호를 사전에 정리해 비용 상승을 억제하고, 보존이 필요한 진단 이벤트만 선별하는 정책을 적용할 수 있다.",
+      "published": "2026-10-22",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/22/filtering-and-reducing-ai-agent-telemetry-with-the-opentelemetry-collector/"
+      ],
+      "summary": "CNCF 블로그가 OpenTelemetry Collector 파이프라인으로 AI agent telemetry를 필터링·축약해 저장 비용과 분석 잡음을 동시에 줄이는 운영 패턴을 제시했다.",
+      "tags": [
+        "agent",
+        "cloud-native",
+        "observability"
+      ],
+      "title": "Filtering and reducing AI agent telemetry with the OpenTelemetry Collector",
+      "url": "https://www.cncf.io/blog/2026/10/22/filtering-and-reducing-ai-agent-telemetry-with-the-opentelemetry-collector/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-20~2026-10-23 구간에서 CNCF announcements 신규 항목은 없었고, CNCF blog의 OpenTelemetry Collector 운영 가이드 1건을 반영했다.",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/announcements/feed/",
+        "https://www.cncf.io/blog/2026/10/22/filtering-and-reducing-ai-agent-telemetry-with-the-opentelemetry-collector/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "최근 24~72시간 범위에서 HN RSS, 긱뉴스 공식 RSS, Reddit 공식 Atom feed를 검토해 보안 공지·에이전트 런타임·인프라 릴리스 중심 링크를 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-23 08시 기준 GitHub weekly Trending Top10을 캡처했고, 소개 이력에 없는 anomalyco/opencode와 akitaonrails/ai-memory 2개를 선별했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 기준과 최근 7일 소개 중복 제외 조건을 적용해 논문 5편을 선정했고, 각 논문의 PDF 본문에서 방법·결과·한계 구간을 확인했다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.30132",
+        "https://arxiv.org/abs/2610.30042",
+        "https://arxiv.org/abs/2610.30026",
+        "https://arxiv.org/abs/2610.29995",
+        "https://arxiv.org/abs/2610.30014"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-23",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50197766",
+        "https://quad9.net/news/blog/au-revoir-france/"
+      ],
+      "tags": [
+        "networking",
+        "security"
+      ],
+      "title": "Quad9 DNS Resolver의 프랑스 서비스 철수 공지",
+      "url": "https://quad9.net/news/blog/au-revoir-france/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50196629",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xcs9e2/nvidiaopenshell_safe_private_runtime_for/",
+        "https://news.hada.io/topic?id=35833",
+        "https://github.com/NVIDIA/OpenShell"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "open-source"
+      ],
+      "title": "NVIDIA OpenShell 런타임 공개",
+      "url": "https://github.com/NVIDIA/OpenShell"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50193416",
+        "https://news.hada.io/topic?id=35832"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Tell HN: PHP RCE 엠바고 위반 경위 공개",
+      "url": "https://news.ycombinator.com/item?id=50193416"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50194672",
+        "https://emudhra.com/en/press-release/emudhra-to-exit-global-ssl-tls-certificate-business"
+      ],
+      "tags": [
+        "release",
+        "security"
+      ],
+      "title": "eMudhra, 글로벌 SSL/TLS 인증서 사업 종료 발표",
+      "url": "https://emudhra.com/en/press-release/emudhra-to-exit-global-ssl-tls-certificate-business"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50196421",
+        "https://www.taler.net/en/news/2026-13.html"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "GNU Taler 독일 운영 준비 진행",
+      "url": "https://www.taler.net/en/news/2026-13.html"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xcijmb/kai_scheduler_how_nvidia_schedules_gpus_on/"
+      ],
+      "tags": [
+        "cloud-native",
+        "inference",
+        "kubernetes"
+      ],
+      "title": "NVIDIA KAI Scheduler on Kubernetes 공유",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xcijmb/kai_scheduler_how_nvidia_schedules_gpus_on/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50177722",
+        "https://duckdb.org/2026/10/21/announcing-duckdb-200"
+      ],
+      "tags": [
+        "developer-tools",
+        "release",
+        "storage"
+      ],
+      "title": "DuckDB 2.0.0 LTS 발표",
+      "url": "https://duckdb.org/2026/10/21/announcing-duckdb-200"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=35828",
+        "https://pwn.watch/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "pwn.watch 보안 사고·패치 추적 대시보드 공개",
+      "url": "https://pwn.watch/"
+    }
+  ],
+  "generated_at": "2026-10-23T08:29:00+09:00",
+  "github_featured": [
+    "anomalyco/opencode",
+    "akitaonrails/ai-memory"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-22T08:06:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 157631
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 5650
+      },
+      {
+        "rank": 3,
+        "repository": "K-Dense-AI/scientific-agent-skills",
+        "weekly_stars": 4549
+      },
+      {
+        "rank": 4,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 3143
+      },
+      {
+        "rank": 5,
+        "repository": "android/skills",
+        "weekly_stars": 1255
+      },
+      {
+        "rank": 6,
+        "repository": "NationalSecurityAgency/ghidra",
+        "weekly_stars": 6184
+      },
+      {
+        "rank": 7,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 17057
+      },
+      {
+        "rank": 8,
+        "repository": "mksglu/context-mode",
+        "weekly_stars": 3556
+      },
+      {
+        "rank": 9,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5994
+      },
+      {
+        "rank": 10,
+        "repository": "cursor/plugins",
+        "weekly_stars": 2040
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-23T08:06:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 129417
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 5703
+      },
+      {
+        "rank": 3,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 3590
+      },
+      {
+        "rank": 4,
+        "repository": "android/skills",
+        "weekly_stars": 1332
+      },
+      {
+        "rank": 5,
+        "repository": "K-Dense-AI/scientific-agent-skills",
+        "weekly_stars": 4719
+      },
+      {
+        "rank": 6,
+        "repository": "anomalyco/opencode",
+        "weekly_stars": 6545
+      },
+      {
+        "rank": 7,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 3681
+      },
+      {
+        "rank": 8,
+        "repository": "cursor/plugins",
+        "weekly_stars": 2049
+      },
+      {
+        "rank": 9,
+        "repository": "akitaonrails/ai-memory",
+        "weekly_stars": 2833
+      },
+      {
+        "rank": 10,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 15125
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Evolving Agent Interfaces: Repository-Driven Capability Evolution in Computer-Use Agents",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.30132"
+  },
+  "papers": [
+    {
+      "abstract_summary": "LongZero는 장문 추론 강화를 위해 외부 코퍼스에 의존해 학습 데이터를 만들던 관행을 재검토한다. 저자들은 모델이 스스로 질문·근거·정답의 구조 명세를 만들고 이를 장문 문서로 확장해, RL에 바로 투입 가능한 데이터를 생성하는 루프를 설계했다. 핵심은 정답 검증 가능성을 데이터 생성 단계에서 보장해 장문 추론 학습의 품질을 통제하는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 LongZero가 두 기반 모델 모두에서 평균 점수 최고치를 기록했고, 각 모델에서 5개 중 4개 벤치마크 최고 성능을 달성했다고 보고한다. 또한 비교군 일부가 특정 벤치마크에서 성능 하락을 보인 반면, LongZero는 성능 편차가 더 작아 일반화 균일성이 높았다고 제시했다. 저자들은 강한 베이스 모델일수록 self-synthesis 품질이 높아 개선 폭이 커지는 경향도 관찰했다.",
+      "first_published": "2026-10-21",
+      "id": "arxiv:2610.30132",
+      "limitations": "저자도 매우 긴 실제 문서 분포와 합성 데이터 분포 사이의 차이로 인해 일부 벤치마크에서는 개선 폭이 제한될 수 있음을 명시한다. 또한 데이터 합성 품질이 기반 모델 능력에 크게 의존하므로, 약한 모델에서는 동일한 이득이 재현되지 않을 수 있다.",
+      "method": "모델이 먼저 structured specification(question, evidence, answer)을 생성하고, 이후 이를 실제 장문 컨텍스트 형태로 확장해 학습 샘플을 만든다. 생성된 샘플은 규칙 기반 보상으로 평가되어 RL 업데이트에 사용된다. 실험은 Qwen3-8B, Qwen3-4B-Thinking-2507을 기반으로 5개 장문 추론 벤치마크에서 기존 외부 코퍼스 합성 기반 RL 방법들과 비교했다.",
+      "practical_value": "장문 QA나 보고서 분석을 운영하는 팀은 외부 데이터 수집비용을 줄이면서도 장문 추론 강화 실험을 빠르게 반복할 수 있다. 특히 내부 도메인 문서가 민감해 외부 데이터 혼합이 어려운 환경에서 zero-data 강화학습 전략의 실용성이 높다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.30132",
+        "https://arxiv.org/pdf/2610.30132"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "reasoning"
+      ],
+      "title": "LongZero: Enhancing Long-Context Reasoning in LLMs from Zero Data",
+      "topics": [
+        "long-context reasoning",
+        "zero-data RL",
+        "self-synthesis",
+        "benchmark generalization"
+      ],
+      "url": "https://arxiv.org/abs/2610.30132"
+    },
+    {
+      "abstract_summary": "HGM-Dual은 장기 계획 과제에서 기존 자기개선형 하네스 최적화가 같은 수정을 반복하거나 핵심 실패 원인을 빗맞추는 문제를 다룬다. 저자들은 조상 노드의 수정 이력, 개선·회귀 패턴, 실패 카테고리를 구조화한 lineage context를 편집기 입력으로 제공했다. 여기에 일반 탐색 경로와 실패 중심 경로를 병행하는 dual-path 진화 절차를 결합했다.",
+      "evidence": "full_text",
+      "findings": "논문은 strongest baseline 대비 case accuracy 기준 최대 14.45% 상대 개선을 보고했다. 동시에 HGM 변형이 쓰는 최종 성능 수준에 도달하는 데 필요한 평가 예산을 2~4배 줄였다고 제시했다. 기존 검색에서 관찰된 반복 수정(41.8%)과 우세 실패 카테고리 유지(64.2%) 문제를 lineage-aware 편집으로 줄일 수 있다는 해석을 제공했다.",
+      "first_published": "2026-10-21",
+      "id": "arxiv:2610.30042",
+      "limitations": "라인리지 요약 품질이 낮으면 편집기가 잘못된 인과를 학습해 비효율 수정을 반복할 위험이 있다. 또한 압축 요약 방식은 원시 실행 로그의 세부 맥락을 일부 버리므로, 복합 실패 원인 분해에는 추가 진단 도구가 필요하다.",
+      "method": "진화 트리에서 부모-자식 변경 이력을 요약해 compact memory로 만들고, 편집기가 이를 참조해 하네스 수정안을 생성한다. 한 경로는 개방형 개선을 탐색하고 다른 경로는 부모의 우선 실패 항목을 직접 겨냥한다. 쇼핑·여행 계획 과제에서 Seed Agent, HGM 계열 변형들과 동일 예산 또는 예산 제한 조건으로 비교했다.",
+      "practical_value": "장기 과제용 에이전트를 운영하는 팀은 하네스 개선 루프에 '무엇을 바꿨고 어떤 회귀가 났는지'를 정형 기록으로 남겨 예산 소모를 줄일 수 있다. 제한된 평가 비용에서도 실패 지점 중심 개선을 빠르게 시도할 수 있다는 점이 실무적 이점이다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.30042",
+        "https://arxiv.org/pdf/2610.30042"
+      ],
+      "tags": [
+        "evaluation",
+        "harness",
+        "performance"
+      ],
+      "title": "HGM-Dual: Lineage-Aware Guided Agent Harness Optimization for Long-Horizon Planning",
+      "topics": [
+        "harness optimization",
+        "long-horizon planning",
+        "lineage context",
+        "budget efficiency"
+      ],
+      "url": "https://arxiv.org/abs/2610.30042"
+    },
+    {
+      "abstract_summary": "이 논문은 엔터프라이즈 에이전트가 문서를 직접 읽는 것이 아니라 ingestion 레이어가 변환한 토큰만 읽는다는 전제를 실험적으로 검증한다. 저자들은 색상·하이라이트 같은 시각적 단서가 정책 의무 문장에서 사라지면, 에이전트가 핵심 요구사항을 놓치는 현상이 크게 증가한다고 보고했다. 즉 파서 점수와 실제 업무 정확도 사이에 숨은 단층이 존재한다는 주장이다.",
+      "evidence": "full_text",
+      "findings": "저자 보고에 따르면 작성자가 강조한 요구사항 회수 성능은 micro F1 기준 0.690에서 docling 0.150, plain text 0.075로 크게 붕괴했다. 문서 집합 분석에서는 32.8% 문서에 의도적 색상/하이라이트가 있었고, 10.3%는 의무 조항에 직접 걸려 있었다. typed cue 계층을 추가하면 per-document macro F1이 +0.085 개선됐고, 일부 설정에서는 +0.578 차이도 관측됐다.",
+      "first_published": "2026-10-21",
+      "id": "arxiv:2610.30026",
+      "limitations": "PDF는 OCR 없이 텍스트 레이어가 있는 경우에만 다뤄졌고, 시각 단서 표현 방식도 연구자가 정의한 role 스키마에 의존한다. 저자도 토큰 예산 증가(plain text 대비 약 2배)와 모델별 효과 편차를 명시해 비용-정확도 균형 과제가 남아 있음을 인정한다.",
+      "method": "실제 정책 문서 76개와 대규모 문서 집합 6,460개를 기반으로 변환 파이프라인별 cue 보존 여부를 측정했다. docling/plain text/typed cue 표현을 비교해 retrieval 및 질의응답 성능을 micro/macro F1로 평가했다. 추가로 cue 클래스(색상/하이라이트) 제거 실험으로 어떤 단서가 어떤 실패를 유발하는지 분리 분석했다.",
+      "practical_value": "컴플라이언스·정책 QA 에이전트를 운영하는 조직은 파서 벤치마크 점수만으로 ingestion 품질을 판단하면 위험하다. 강조 단서 보존 여부를 별도 지표로 관리하고, 변환 단계에서 의무 문장 타이핑 계층을 넣는 것이 실질적 오류 감소에 직접 연결된다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.30026",
+        "https://arxiv.org/pdf/2610.30026"
+      ],
+      "tags": [
+        "developer-tools",
+        "evaluation",
+        "retrieval"
+      ],
+      "title": "What the Author Wrote, What the Agent Reads: Silent Cue Loss in Enterprise Document Ingestion",
+      "topics": [
+        "enterprise document ingestion",
+        "format cues",
+        "policy QA",
+        "compliance agents"
+      ],
+      "url": "https://arxiv.org/abs/2610.30026"
+    },
+    {
+      "abstract_summary": "MHG-Mem은 멀티모달 에이전트 메모리에서 시각 세부 정보 보존과 엔터티 상태 변화 추적을 동시에 달성하기 위한 하이퍼그래프 기반 구조를 제안한다. 기존 추상화 중심 메모리는 조직화에 유리하지만 시각 근거를 잃기 쉽고, 원본 보존형 메모리는 시간적 연결이 약하다는 한계를 겨냥했다. 저자들은 provenance를 유지한 n-ary hyperedge로 관측·사실·진화 기록을 연결한다.",
+      "evidence": "full_text",
+      "findings": "논문은 strongest baseline 대비 평균 성능이 8.20~9.98% 개선됐다고 보고한다. 예시로 Avg. judge score는 Qwen3-VL-8B에서 57.98%(+8.20%), GPT-4.1-mini 67.95%(+9.89%), Qwen3.8-27B 73.28%(+9.98%)가 제시됐다. WorldMemArena-S의 temporal reasoning은 48%에서 87%로 개선됐다는 분석도 포함됐다.",
+      "first_published": "2026-10-21",
+      "id": "arxiv:2610.29995",
+      "limitations": "하이퍼그래프 구축과 유지에는 구조화 비용이 추가되며, 노드·엣지 품질이 낮으면 잘못된 provenance 경로가 누적될 수 있다. 또한 평가는 특정 멀티모달 메모리 벤치마크에 집중되어 실제 서비스 로그의 잡음 조건을 완전히 대변하지 않는다.",
+      "method": "메모리 노드를 엔터티 언급, 원자 사실, 진화 기록으로 분리하고 typed hyperedge로 연결하는 저장 구조를 설계했다. retrieval 단계에서는 질의에 필요한 근거 경로를 하이퍼그래프에서 검색해 응답 모델에 전달한다. MemEye, Mem-Gallery, WorldMemArena-S 세 벤치마크에서 여러 백본 모델과 기존 메모리 시스템을 비교했다.",
+      "practical_value": "멀티세션 시각 에이전트를 운영하는 팀은 단순 요약 메모리 대신 provenance 보존형 구조 메모리를 채택해 장기 질의 정확도를 높일 수 있다. 특히 상태 변화 추적이 중요한 고객 지원·현장 점검 시나리오에서 효과가 크다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.29995",
+        "https://arxiv.org/pdf/2610.29995"
+      ],
+      "tags": [
+        "evaluation",
+        "memory",
+        "multimodal"
+      ],
+      "title": "Remembering Through Change: Provenance-Preserving Hypergraph Memory for Multimodal Agents",
+      "topics": [
+        "multimodal memory",
+        "hypergraph provenance",
+        "entity evolution",
+        "long-term memory"
+      ],
+      "url": "https://arxiv.org/abs/2610.29995"
+    },
+    {
+      "abstract_summary": "Agent Behavior Maps는 실제 에이전트를 환경에서 반복 실행하지 않고도, 공통 참조 trajectory에서의 행동 확률만으로 에이전트 위치를 추정하는 방법을 제안한다. 연구 질문은 '같은 히스토리에서의 행동 유사도'가 실제 성공률 유사도를 얼마나 예측하는지다. 저자들은 모델 크기 같은 메타 정보보다 행동 지문 자체가 더 강한 예측 신호가 될 수 있는지 검증했다.",
+      "evidence": "full_text",
+      "findings": "논문은 ALFWorld에서 behavior map 기반 예측이 Pearson r=0.88로 모델 크기 baseline r=0.63을 유의하게 상회했다고 보고한다. 네 벤치마크 평균 상관은 0.83으로 크기 baseline 0.74보다 높았고, 일부 지표에서는 r=0.86~0.90 수준의 강한 상관이 제시됐다. 저자들은 미실행 모델의 성공률 추정을 사전 스크리닝 도구로 활용할 수 있다고 해석했다.",
+      "first_published": "2026-10-21",
+      "id": "arxiv:2610.30014",
+      "limitations": "참조 trajectory 품질이 낮거나 도메인 편향이 크면 좌표 공간 자체가 왜곡될 수 있다. 또한 방법이 성공률 예측에는 유용해도, 실패 원인 교정까지 직접 제공하지는 않으므로 추가 진단 계층이 필요하다.",
+      "method": "teacher forcing으로 참조 trajectory에 대한 행동 확률을 수집해 좌표 공간을 만들고, kNN·ridge로 미실행 모델의 성공률을 예측했다. ALFWorld, TextWorld, BFCL, MiniWoB++ 등 다중 벤치마크에서 leave-one-model-out 설정으로 상관 계수와 RMSE를 비교했다. 추가로 크기 기반 baseline과 결합했을 때의 교차환경 전이 성능도 측정했다.",
+      "practical_value": "대규모 에이전트 후보를 모두 실행하기 전에 행동 기반 지도로 우선순위를 추려 평가 비용을 줄일 수 있다. 특히 벤치마크 실행 시간이 긴 환경에서 사전 모델 선별 단계로 실무 활용성이 높다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.30014",
+        "https://arxiv.org/pdf/2610.30014"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "performance"
+      ],
+      "title": "Agent Behavior Maps: Locating Agents by What They Would Do, Without Running Them",
+      "topics": [
+        "agent behavior mapping",
+        "teacher forcing",
+        "success prediction",
+        "cross-benchmark transfer"
+      ],
+      "url": "https://arxiv.org/abs/2610.30014"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "빠른 릴리스 속도 · 워크플로 고정 전 버전 호환성 검증 필요",
+      "novelty": "new_entry",
+      "rank": 6,
+      "repository": "anomalyco/opencode",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/anomalyco/opencode"
+      ],
+      "summary": "오픈소스 코딩 에이전트 · 다국어 README·CLI 배포",
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/anomalyco/opencode",
+      "use_case": "팀이 자체 코딩 에이전트 워크플로를 도입할 때 CLI 기반 실행 환경을 내부 정책에 맞게 포크·확장하는 출발점으로 활용할 수 있다.",
+      "why_now": "weekly Top10 신규 진입 · 6,545 stars this week"
+    },
+    {
+      "caution": "메모리 공유 범위 설정 중요 · 팀 환경에서 권한 분리 정책 필요",
+      "novelty": "new_entry",
+      "rank": 9,
+      "repository": "akitaonrails/ai-memory",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/akitaonrails/ai-memory"
+      ],
+      "summary": "코딩 에이전트 장기 메모리 레이어 · cross-agent handoff 프로토콜",
+      "tags": [
+        "agent",
+        "memory",
+        "open-source"
+      ],
+      "url": "https://github.com/akitaonrails/ai-memory",
+      "use_case": "Claude Code에서 중단한 작업을 Codex나 다른 에이전트로 넘길 때 실패 이력과 미해결 항목을 동일 저장소 컨텍스트로 이어받는 운영 흐름을 만들 수 있다.",
+      "why_now": "weekly Top10 신규 진입 · 2,833 stars this week"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘 Technical Spotlight는 LongZero다. 이 연구는 장문 컨텍스트 추론 강화에 필요한 학습 데이터를 외부 코퍼스에서 수집하는 기존 방식이 비용·다양성·정답 검증 측면에서 병목을 만든다는 문제를 다룬다. 저자들은 모델이 스스로 질문·근거·정답의 구조를 먼저 작성한 뒤 이를 장문 문서로 확장해 RL 학습 데이터를 만드는 zero-data 루프를 제안한다.",
+    "핵심은 정답이 구성적으로 검증 가능한 합성 절차를 내부화해, 데이터 생산과 추론 학습을 같은 모델 루프에서 연결하는 점이다. 논문은 Qwen3-8B와 Qwen3-4B-Thinking-2507 두 기반 모델에서 5개 장문 추론 벤치마크를 비교했고, LongZero가 두 모델 모두에서 평균 점수 최고치를 기록하며 5개 중 4개 벤치마크에서 가장 좋은 성능을 냈다고 보고한다. 저자들은 외부 코퍼스 합성 기반 RL 대비 일반화 균일성이 더 높았다고 제시한다.",
+    "이 접근은 장문 추론 성능 개선을 데이터 확보 문제에서 데이터 생성 설계 문제로 전환한다는 점에서 실무적 의미가 크다. 특히 사내 문서 QA나 다중 문서 분석처럼 긴 입력을 다루는 환경에서, 학습 데이터 품질을 모델 내부 규칙으로 통제할 수 있는 가능성을 보여준다. 다만 저자도 매우 긴 실제 문서 길이에 대한 추가 확장과 분포 이동 대응은 후속 과제로 남겼다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "opencode가 주간 Trending Top10에 신규 진입하며 오픈소스 코딩 에이전트 경쟁이 확대됐습니다.",
+        "url": "https://github.com/anomalyco/opencode"
+      },
+      {
+        "section": "community",
+        "text": "NVIDIA OpenShell이 HN·Reddit·긱뉴스에서 동시에 주목받았습니다.",
+        "url": "https://github.com/NVIDIA/OpenShell"
+      },
+      {
+        "section": "cncf",
+        "text": "CNCF가 OpenTelemetry Collector 기반 AI agent telemetry 절감 가이드를 공개했습니다.",
+        "url": "https://www.cncf.io/blog/2026/10/22/filtering-and-reducing-ai-agent-telemetry-with-the-opentelemetry-collector/"
+      }
+    ],
+    "spotlight": [
+      "LongZero는 장문 추론 학습 데이터를 외부에서 모으는 대신 모델이 스스로 질문·근거·정답 구조를 만든 뒤 확장해 RL에 쓰는 zero-data 방식을 제시한다. 논문은 두 기반 모델과 5개 벤치마크에서 평균 최고 성능과 더 균일한 일반화를 보고했다. 다만 실제 초장문 문서 분포로의 확장은 후속 검증이 필요하다."
+    ]
+  }
+}
