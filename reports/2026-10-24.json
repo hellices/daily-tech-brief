@@ -1,0 +1,508 @@
+{
+  "cncf": [
+    {
+      "category": "operational guidance",
+      "impact": "GPU 자원을 공유하는 플랫폼 팀은 control plane 비용과 테넌트 격리 요구를 동시에 다뤄야 할 때, 클러스터 분할 대신 하드웨어 가상화·스케줄링 계층 조합을 우선 검토할 근거를 얻는다.",
+      "published": "2026-10-23",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/"
+      ],
+      "summary": "CNCF 블로그는 팀별 클러스터 분리 비용과 단일 클러스터 격리 한계 사이의 충돌을 GPU 멀티테넌트 운영 문제로 정리하고, Kamaji와 HAMi를 결합한 시뮬레이션 기반 설계를 소개했다.",
+      "tags": [
+        "cloud-native",
+        "inference",
+        "kubernetes"
+      ],
+      "title": "Multi-tenant GPU Kubernetes on simulated hardware with Kamaji and HAMi",
+      "url": "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/"
+    },
+    {
+      "category": "operational guidance",
+      "impact": "에이전트 관측을 운영 중인 조직은 수집 후 분석보다 수집 경로 선별을 먼저 적용해 로그 비용을 제어하고, 진단 가치가 높은 이벤트 중심으로 파이프라인을 재구성할 수 있다.",
+      "published": "2026-10-22",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/22/filtering-and-reducing-ai-agent-telemetry-with-the-opentelemetry-collector/"
+      ],
+      "summary": "AI 코딩 에이전트 텔레메트리가 고카디널리티 텍스트로 급증하는 상황에서, OpenTelemetry Collector 단계에서 필터링·축약을 적용해 저장 비용과 해석 복잡도를 낮추는 구성 패턴을 제시했다.",
+      "tags": [
+        "agent",
+        "cloud-native",
+        "observability"
+      ],
+      "title": "Filtering and reducing AI agent telemetry with the OpenTelemetry Collector",
+      "url": "https://www.cncf.io/blog/2026/10/22/filtering-and-reducing-ai-agent-telemetry-with-the-opentelemetry-collector/"
+    },
+    {
+      "category": "evaluation",
+      "impact": "신규 도입 검토 팀은 도구 교체 이전에 기존 에이전트의 문맥 결합 수준을 먼저 계측해, 평가 기준을 기능 데모가 아니라 운영 재현성과 문제 해결 시간으로 맞출 수 있다.",
+      "published": "2026-10-21",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/21/before-you-evaluate-an-ai-sre-give-your-existing-agent-context/"
+      ],
+      "summary": "새 AI SRE 제품 평가 전에 기존 코딩 에이전트가 Kubernetes 조사 작업을 수행할 수 있도록 클러스터 문맥과 운영 신호를 연결하라는 실무 체크리스트를 제안했다.",
+      "tags": [
+        "agent",
+        "kubernetes",
+        "observability"
+      ],
+      "title": "Before you evaluate an AI SRE, give your existing agent context",
+      "url": "https://www.cncf.io/blog/2026/10/21/before-you-evaluate-an-ai-sre-give-your-existing-agent-context/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-21~2026-10-24 구간에서 announcements 신규 항목은 없었고, CNCF blog의 운영 가이드성 변경 3건을 반영했다.",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/announcements/feed/",
+        "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/",
+        "https://www.cncf.io/blog/2026/10/22/filtering-and-reducing-ai-agent-telemetry-with-the-opentelemetry-collector/",
+        "https://www.cncf.io/blog/2026/10/21/before-you-evaluate-an-ai-sre-give-your-existing-agent-context/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "최근 24~72시간 구간에서 HN RSS, 긱뉴스 공식 RSS, Reddit 공식 Atom 피드를 검토해 AI 에이전트 실행·보안·인프라 운영 관련 고신호 링크를 통합 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-24 08시 기준 GitHub weekly Trending Top10을 캡처했고, 소개 이력 미등재 항목은 Comfy-Org/ComfyUI 1건이었다.",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://raw.githubusercontent.com/HKUDS/CLI-Anything/main/README.md",
+        "https://raw.githubusercontent.com/Comfy-Org/ComfyUI/master/README.md"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 창(2026-04-24 이후)과 최근 7일 소개 중복 제외 조건을 적용해 5편을 선정했고, arXiv HTML 본문에서 방법·실험·한계 섹션을 확인했다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31461",
+        "https://arxiv.org/abs/2610.31667",
+        "https://arxiv.org/abs/2610.31650",
+        "https://arxiv.org/abs/2610.31522",
+        "https://arxiv.org/abs/2610.31355"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-24",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50206181",
+        "https://news.hada.io/topic?id=35879",
+        "https://www.kimi.ai/blog/kimi-k3-1-pro"
+      ],
+      "tags": [
+        "llm",
+        "performance",
+        "release"
+      ],
+      "title": "Kimi K3.1 Pro 공개: 100만 토큰 컨텍스트와 고속 추론 구성",
+      "url": "https://www.kimi.ai/blog/kimi-k3-1-pro"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50202756",
+        "https://rune.build/blog/rune-1-3-release"
+      ],
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": "Rune 1.3 릴리스: TypeScript 지원·Helix 에디터·Kitty graphics 추가",
+      "url": "https://rune.build/blog/rune-1-3-release"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50205393",
+        "https://cve.0xosprey.com/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "CVE Tracker 공개: 취약점 검색·추적 대시보드",
+      "url": "https://cve.0xosprey.com/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50200976",
+        "https://quantum5.ca/2025/03/22/whirlwind-tour-of-systemd-nspawn-containers/"
+      ],
+      "tags": [
+        "cloud-native",
+        "containers"
+      ],
+      "title": "systemd-nspawn 컨테이너 운영 개요 정리",
+      "url": "https://quantum5.ca/2025/03/22/whirlwind-tour-of-systemd-nspawn-containers/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=35885"
+      ],
+      "tags": [
+        "release",
+        "security"
+      ],
+      "title": "OpenSSL 4.1.0 발표: DTLS 1.3·GREASE 지원 추가",
+      "url": "https://news.hada.io/topic?id=35885"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=35884"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "pgrust 벤치마크 왜곡 사례 분석 공유",
+      "url": "https://news.hada.io/topic?id=35884"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xdmmj9/lessons_learned_benchmarking_ebpf_grafana_beyla/"
+      ],
+      "tags": [
+        "kubernetes",
+        "observability",
+        "performance"
+      ],
+      "title": "Kubernetes에서 eBPF(Beyla)와 OTel+PSI+cAdvisor 비교 벤치마크 토론",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xdmmj9/lessons_learned_benchmarking_ebpf_grafana_beyla/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xdhawc/nvidia_openshell_vs_anthropic_sandboxruntime_vs/"
+      ],
+      "tags": [
+        "agent",
+        "containers",
+        "harness"
+      ],
+      "title": "OpenShell·sandbox-runtime·Docker Sandboxes 격리 모델 비교 논의",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xdhawc/nvidia_openshell_vs_anthropic_sandboxruntime_vs/"
+    }
+  ],
+  "generated_at": "2026-10-24T08:05:45+09:00",
+  "github_featured": [
+    "Comfy-Org/ComfyUI"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-23T08:06:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 129417
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 5703
+      },
+      {
+        "rank": 3,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 3590
+      },
+      {
+        "rank": 4,
+        "repository": "android/skills",
+        "weekly_stars": 1332
+      },
+      {
+        "rank": 5,
+        "repository": "K-Dense-AI/scientific-agent-skills",
+        "weekly_stars": 4719
+      },
+      {
+        "rank": 6,
+        "repository": "anomalyco/opencode",
+        "weekly_stars": 6545
+      },
+      {
+        "rank": 7,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 3681
+      },
+      {
+        "rank": 8,
+        "repository": "cursor/plugins",
+        "weekly_stars": 2049
+      },
+      {
+        "rank": 9,
+        "repository": "akitaonrails/ai-memory",
+        "weekly_stars": 2833
+      },
+      {
+        "rank": 10,
+        "repository": "debpalash/VoiceStudio",
+        "weekly_stars": 15125
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-24T08:05:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 106341
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 5649
+      },
+      {
+        "rank": 3,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 3708
+      },
+      {
+        "rank": 4,
+        "repository": "android/skills",
+        "weekly_stars": 1384
+      },
+      {
+        "rank": 5,
+        "repository": "anomalyco/opencode",
+        "weekly_stars": 6750
+      },
+      {
+        "rank": 6,
+        "repository": "stablyai/orca",
+        "weekly_stars": 9401
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 2046
+      },
+      {
+        "rank": 8,
+        "repository": "akitaonrails/ai-memory",
+        "weekly_stars": 3322
+      },
+      {
+        "rank": 9,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 3275
+      },
+      {
+        "rank": 10,
+        "repository": "Comfy-Org/ComfyUI",
+        "weekly_stars": 4375
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Adaptive Skill Granularity: Runtime Routing and Recovery for Coding Agents",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.31461"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 코딩 에이전트가 스킬을 찾은 뒤 실제 실행 단계에서 어떤 추상화 수준으로 행동할지 결정하는 문제가 성능을 좌우한다는 점을 다룬다. 저자들은 단일 고정 전략 대신 태스크 구조와 실행 상태를 읽어 매크로·마이크로·하이브리드 경로를 선택하는 Adaptive Skill Granularity 프레임워크를 제안했다. 핵심 기여는 매크로 실패 시 즉시 미시 도구 호출로 복구하는 finite-state 실행기를 결합해 실패 전파를 줄이는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 고정 매크로 전략이 적용 가능한 과제에서는 비용 이점이 있지만 스킬-태스크 불일치 상황에서 쉽게 깨지는 패턴을 보고한다. 반면 런타임 라우팅과 명시적 macro-to-micro recovery를 도입하면 불일치 상황에서 미해결로 남던 실패를 회수해 전체 강건성이 개선됐다. 저자들은 스킬 라이브러리 운영에서 retrieval 품질만이 아니라 실행 추상화 제어 정책이 성능의 독립 변수임을 실험으로 제시한다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31461",
+      "limitations": "평가가 제안한 코딩 벤치마크 프로토콜과 해당 도구 체인에 집중되어 있어, 다른 개발 도메인이나 장기 멀티리포지토리 작업으로 바로 일반화하기 어렵다. 또한 controller가 의존하는 특징 설계가 바뀌면 라우팅 품질이 변할 수 있어, 운영 환경에서는 태스크 분포 변화에 대한 재튜닝이 필요하다.",
+      "method": "프레임워크는 사전 실행 특징을 입력으로 받는 granularity controller와 macro failure 이후 전환 규칙을 가진 recovery executor로 구성된다. 평가는 verifier-defined success를 사용하는 결정적 코딩 에이전트 프로토콜에서 수행되며, 성공률·총비용과 함께 macro adoption, route match, transition correctness 같은 과정 지표를 동시에 측정한다. 비교군은 고정 매크로 실행, 고정 마이크로 실행, 그리고 런타임 라우팅·복구를 포함한 제안 방식이다.",
+      "practical_value": "실무 코딩 에이전트 운영에서는 '항상 매크로' 또는 '항상 도구 호출' 같은 단일 정책을 버리고, 실패 시 전환 가능한 계층형 실행 정책을 도입할 근거를 준다. 특히 CI 수정·핫픽스처럼 복구 시간이 중요한 워크로드에서 재시도 비용을 낮추는 운영 설계로 연결할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31461",
+        "https://arxiv.org/html/2610.31461v1",
+        "https://arxiv.org/pdf/2610.31461v1"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "tool-use"
+      ],
+      "title": "Adaptive Skill Granularity for Coding Agents: Runtime Routing and Macro-to-Micro Recovery",
+      "topics": [
+        "coding agent runtime control",
+        "skill granularity policy",
+        "macro-to-micro recovery"
+      ],
+      "url": "https://arxiv.org/abs/2610.31461"
+    },
+    {
+      "abstract_summary": "이 연구는 테스트 시점 추론에서 후보 경로를 중간에 가지치기할 때, 품질 점수 중심 방법과 다양성 중심 방법이 서로 충돌한다는 문제를 출발점으로 삼는다. 저자들은 두 목표를 분리 최적화하지 않고, 선택된 후보 집합의 pass@k를 직접 최대화하는 pruning 절차(PKTP)를 제안했다. 즉 '정답 가능성이 높은 경로'와 '서로 다른 해법 경로'를 한 목적함수에서 동시에 다루는 접근이다.",
+      "evidence": "full_text",
+      "findings": "논문은 제안 방식이 8개 모델 전반에서 기존 품질 중심·다양성 중심 가지치기보다 우세하다고 보고한다. 특히 중간 규모의 후보만 남기는 실전형 예산 구간에서 개선 폭이 더 두드러져, 탐색-활용 균형을 목적함수로 직접 다루는 효과를 보여줬다. 저자 해석에 따르면 ad-hoc 가중치 조합 없이도 품질·다양성 균형을 안정적으로 확보할 수 있다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31667",
+      "limitations": "효과가 후보 생성 품질과 모델별 추론 분포에 영향을 받으므로, 매우 약한 베이스 모델이나 극단적으로 짧은 prefix 조건에서는 이득이 제한될 수 있다. 또한 pruning 목적은 정답 포함 확률 최대화에 맞춰져 있어, 답변 설명 가능성이나 계산 지연 분산 같은 운영 지표는 별도 최적화가 필요하다.",
+      "method": "모델이 생성한 부분 추론 후보를 확률 모형으로 표현하고, 최종 정답 도달 확률을 높이는 후보 조합을 선택하는 방식으로 pruning을 수행한다. 실험은 소형·대형을 포함한 8개 오픈웨이트 추론 모델에서 기존 quality-based, diversity-based 가지치기 전략과 비교했다. 평가는 완주 계산량을 줄이는 조건에서 pass@k 개선 여부를 중심으로 보고된다.",
+      "practical_value": "다수 후보를 생성하는 추론 서버에서 계산 예산을 줄이면서 정확도를 유지하려는 팀에게 직접 적용 가능한 후보 선택 원칙을 제공한다. 특히 reasoning API 비용이 큰 환경에서 pass@k 기준 라우팅 정책을 설계할 때 기준선으로 활용하기 좋다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31667",
+        "https://arxiv.org/html/2610.31667v1",
+        "https://arxiv.org/pdf/2610.31667v1"
+      ],
+      "tags": [
+        "llm",
+        "performance",
+        "reasoning"
+      ],
+      "title": "Direct Pass@$k$ Optimization for Thought Pruning: Balancing Quality and Diversity in Test-Time Reasoning",
+      "topics": [
+        "test-time scaling",
+        "thought pruning",
+        "pass@k optimization"
+      ],
+      "url": "https://arxiv.org/abs/2610.31667"
+    },
+    {
+      "abstract_summary": "EpiSEM-Bench는 도구 응답이 사실상 참이더라도 안전에 필요한 핵심 증거가 빠지면 에이전트가 금지 동작을 실행할 수 있다는 현실적 실패를 벤치마크로 만든다. 벤치는 6개 도메인에서 300개 unsafe/safe 매칭 과제를 제공해, 결측 증거 상황에서의 위험 실행과 복구 행동을 분리 측정한다. 논문은 안전 경계와 증거 탐색 능력이 동일하지 않다는 점을 강조한다.",
+      "evidence": "full_text",
+      "findings": "연구는 10개 모델 사이에 누락 증거 저항성, 증거 확보 행동, 최종 실행 적절성에서 큰 편차가 있음을 보고한다. 특히 누락 증거에 버티는 모델이 항상 높은 복구 성능을 내지는 않았고, 복구 경로를 열어주면 모든 모델에서 unsafe execution이 줄었지만 능동적으로 증거를 수집해 양쪽 세계에서 올바르게 행동하는 정도는 모델마다 달랐다. 즉 안전 추론과 증거 탐색을 별도 축으로 평가해야 함을 보여준다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31650",
+      "limitations": "벤치가 정의한 6개 도메인과 과업 스키마 밖의 도구 환경에서는 동일한 편차 구조가 그대로 재현되지 않을 수 있다. 또한 안전성 측정이 주어진 실행 프레임워크와 태스크 설계에 의존하므로, 운영 시스템 적용 시 조직별 정책 규칙을 반영한 추가 평가가 필요하다.",
+      "method": "평가 파이프라인은 완전 증거 조건 성능, 핵심 증거 누락 조건 취약성, 그리고 선택적 증거 복구 조건을 단계적으로 분리한다. 10개 모델에 동일한 태스크, 동일한 도구 스키마, 동일한 평가 프레임워크를 적용해 omission robustness와 recovery behavior를 비교했다. 추가 감사 도구로 '누락 사실을 실제로 다시 찾았는지'와 '찾은 뒤 금지 동작을 보류했는지'를 함께 검증한다.",
+      "practical_value": "에이전트 도입 조직은 '정답률'만으로 안전성을 추정하지 말고, 결측 증거 복구 능력을 독립 지표로 모니터링해야 한다는 실무 기준을 얻는다. 정책 위반 리스크가 큰 결제·권한 변경 자동화에서 사전 검증 벤치로 즉시 활용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31650",
+        "https://arxiv.org/html/2610.31650v1",
+        "https://arxiv.org/pdf/2610.31650v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "EpiSEM-Bench: Evaluating Safety and Evidence Recovery in LLM Agents under Missing Evidence",
+      "topics": [
+        "agent safety benchmark",
+        "missing evidence",
+        "evidence recovery"
+      ],
+      "url": "https://arxiv.org/abs/2610.31650"
+    },
+    {
+      "abstract_summary": "이 논문은 causal attention mask가 맞아도 구현 내부 경로에서 미래 토큰 정보가 새어들면 모델이 교사강요 평가에서만 좋아 보일 수 있다는 문제를 실증한다. 저자들은 prefix-invariance 기준과 LeakScore를 이용해 누수를 탐지하고, 어떤 층·모듈 경로에서 발생하는지 위치를 추적했다. 즉 '낮은 검증 손실'이 곧 올바른 자기회귀 구현을 뜻하지 않는다는 경고다.",
+      "evidence": "full_text",
+      "findings": "문제 체크포인트는 baseline 검증 손실 3.5958 대비 1.4259로 크게 낮았지만, prefix-invariance 감사에 실패하고 생성 시 참조 모델 perplexity가 악화됐다. 저자들이 제시한 두 개의 12-layer causal repair 모델에서는 탐지 가능한 누수가 사라졌고, 검증 손실과 참조 perplexity가 대조군 규모로 복귀했다. 이 결과는 teacher-forced 개선만으로 아키텍처 우위를 주장하면 오판할 수 있음을 보여준다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31522",
+      "limitations": "논문의 주 사례는 특정 adaptive residual-routing 구현에 초점을 두므로, 모든 시퀀스 모델 계열에 동일한 누수 메커니즘이 존재한다고 일반화하긴 어렵다. 또한 감사 절차가 누수를 찾아도, 실제 다운스트림 과제에서 어떤 비용으로 수정할지에 대한 엔지니어링 가이드는 별도 작업이 필요하다.",
+      "method": "적응형 residual-routing 디코더를 대상으로 suffix를 바꿔도 prefix 출력이 변하지 않아야 한다는 인과 계약을 검사했다. 합성 실험과 실제 사전학습 모델, 결함 주입 실험, 수치 정밀도·캐시 일관성 점검을 함께 구성해 누수 탐지의 특이도와 재현성을 확인했다. 이후 layer-wise 진단으로 full-sequence summary broadcast가 누수의 직접 경로인지 구현 수준에서 검증했다.",
+      "practical_value": "모델 서빙·학습 팀은 아키텍처 실험에서 validation loss만 보지 말고 prefix-invariance와 자유생성 지표를 함께 배치해야 한다는 운영 체크리스트를 얻는다. 특히 새로운 라우팅 모듈을 도입할 때 회귀 테스트 항목으로 바로 편입할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31522",
+        "https://arxiv.org/html/2610.31522v1",
+        "https://arxiv.org/pdf/2610.31522v1"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "performance"
+      ],
+      "title": "Beyond Causal Masks: Auditing and Localizing Hidden Future-Token Leakage in Adaptive Sequence Models",
+      "topics": [
+        "causal audit",
+        "future-token leakage",
+        "prefix invariance"
+      ],
+      "url": "https://arxiv.org/abs/2610.31522"
+    },
+    {
+      "abstract_summary": "Muffin은 다중 에이전트 토론에서 동기식 턴 교환이 정보 전달 병목을 만든다는 문제를 겨냥해, 비동기 공유 메모리 버퍼 기반 상호작용 프로토콜을 제안한다. 오케스트레이터가 과업 난이도를 분기해 어려운 요청만 멀티에이전트 경로로 보내고, 각 에이전트는 중간 산출물을 버퍼에 공유하되 사적 추론은 로컬에 유지한다. 목적은 성능 향상과 토큰 비용 절감의 동시 달성이다.",
+      "evidence": "full_text",
+      "findings": "저자 보고에 따르면 Muffin은 20개 벤치마크 설정 중 17개에서 최고 정확도를 기록했다. 또한 multi-agent debate 대비 정확도 19.2포인트를 높이면서 토큰 사용량은 77.4% 줄여, full-trace 공유 없이도 더 나은 비용-성능 균형을 달성했다고 제시한다. 이는 비동기 공유 메모리가 정보 교환 효율을 높인다는 주장과 일치한다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31355",
+      "limitations": "효과가 오케스트레이터 라우팅 품질과 버퍼 기록 품질에 크게 의존하므로, 잘못된 난이도 판정이나 저품질 중간 산출물은 성능을 빠르게 떨어뜨릴 수 있다. 또한 벤치마크 중심 비교 결과가 실제 장기 운영 트래픽에서 동일하게 유지되는지는 추가 운영 데이터 검증이 필요하다.",
+      "method": "프레임워크는 질의 라우팅 단계와 비동기 버퍼 상호작용 단계를 결합하며, 기존 debate 계열과 single-agent 기준선을 함께 비교한다. 실험은 정확도와 토큰 사용량을 동시에 측정해 quality-cost tradeoff를 평가하도록 설계됐다. 추가 실험에서 모델 백본별 5-step 정확도와 토큰 소비 추이를 부록으로 제시해 안정성을 점검한다.",
+      "practical_value": "복수 에이전트를 운영하는 팀은 토론 라운드를 늘리는 대신 비동기 공유 메모리 구조로 정보 전달을 재설계해 토큰 비용을 줄일 수 있다. 대화형 지원·분석형 워크플로에서 정확도와 지연비용을 동시에 관리하는 실험 설계에 직접 활용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31355",
+        "https://arxiv.org/html/2610.31355v1",
+        "https://arxiv.org/pdf/2610.31355v1"
+      ],
+      "tags": [
+        "memory",
+        "multi-agent",
+        "performance"
+      ],
+      "title": "Muffin - A Shared Memory Buffer for Asynchronous AI Agents",
+      "topics": [
+        "asynchronous multi-agent",
+        "shared memory buffer",
+        "quality-cost tradeoff"
+      ],
+      "url": "https://arxiv.org/abs/2610.31355"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "복잡한 그래프 의존성 · 워크플로 템플릿 버전 관리 필요",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "Comfy-Org/ComfyUI",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/Comfy-Org/ComfyUI",
+        "https://raw.githubusercontent.com/Comfy-Org/ComfyUI/master/README.md"
+      ],
+      "summary": "노드 그래프 기반 생성 워크플로 엔진 · 이미지·영상·오디오·3D 파이프라인",
+      "tags": [
+        "developer-tools",
+        "inference",
+        "open-source"
+      ],
+      "url": "https://github.com/Comfy-Org/ComfyUI",
+      "use_case": "내부 크리에이티브 팀이 모델 교체가 잦은 생성 파이프라인을 운영할 때 워크플로 JSON과 App Mode를 활용해 실험과 재현 배포를 같은 경로로 묶을 수 있다.",
+      "why_now": "weekly Top10 신규 진입 · 4,375 stars this week"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘 Technical Spotlight는 Adaptive Skill Granularity다. 이 연구는 코딩 에이전트가 스킬을 찾은 뒤에도 실제 실행 단계에서 매크로 스킬, 원시 도구 호출, 하이브리드 경로 중 무엇을 택할지 판단하지 못해 실패가 커지는 문제를 정면으로 다룬다. 저자들은 태스크 구조와 실행 상태를 기준으로 실행 추상화 수준을 바꾸는 런타임 정책을 제시했다.",
+    "핵심은 매크로 스킬을 일괄 강제하지 않고, 실패 신호가 나오면 macro-to-micro recovery로 즉시 전환하는 점이다. 논문은 결정적 검증기 기반 코딩 에이전트 프로토콜에서 성공률, 총비용, 경로 일치와 전환 정확도 같은 과정 지표를 함께 비교했다. 그 결과 고정 매크로 전략은 비용 효율은 좋지만 불일치 상황에 취약했고, 런타임 라우팅과 복구 경로를 둔 구성은 실패 회복력과 전체 강건성이 더 높았다.",
+    "이 결과는 스킬 라이브러리를 '검색 자산'이 아니라 '제어 가능한 실행 추상화'로 운영해야 한다는 실무 방향을 제시한다. 특히 CI 실패 수정이나 리팩터링처럼 중간에 전략 전환이 잦은 작업에서, 에이전트가 단일 실행 모드에 고착되는 위험을 낮출 수 있다. 다만 논문도 특정 코딩 벤치마크 프로토콜 중심 평가이므로 다른 도메인·도구 체인으로 일반화할 때는 추가 검증이 필요하다고 본다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "ComfyUI가 주간 Trending Top10 신규 진입하며 로컬·클라우드 혼합형 생성 워크플로 수요를 반영했습니다.",
+        "url": "https://github.com/Comfy-Org/ComfyUI"
+      },
+      {
+        "section": "papers",
+        "text": "EpiSEM-Bench가 결측 증거 상황에서 LLM 에이전트의 안전 경계와 복구 능력을 분리 평가했습니다.",
+        "url": "https://arxiv.org/abs/2610.31650"
+      },
+      {
+        "section": "cncf",
+        "text": "CNCF 블로그가 Kamaji·HAMi 조합으로 멀티테넌트 GPU Kubernetes 운영 절충안을 제시했습니다.",
+        "url": "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/"
+      }
+    ],
+    "spotlight": [
+      "Adaptive Skill Granularity는 코딩 에이전트가 매크로 스킬과 원시 도구 호출 사이를 런타임에 전환하고, 실패 시 macro-to-micro recovery로 복구하는 실행 정책을 제시한다. 고정 매크로 방식 대비 불일치 상황의 실패 회복력과 전체 강건성이 개선됐지만, 결과는 특정 코딩 벤치마크 프로토콜 중심이라 운영 환경별 재검증이 필요하다."
+    ]
+  }
+}
