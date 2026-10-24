@@ -1,0 +1,470 @@
+{
+  "cncf": [
+    {
+      "category": "operational guidance",
+      "impact": "GPU 자원 공유 플랫폼을 운영하는 팀은 control plane 비용 절감과 테넌트 격리 요구를 동시에 만족시키기 위한 대안 아키텍처를 사전 검토할 수 있다.",
+      "published": "2026-10-23",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/"
+      ],
+      "summary": "CNCF 블로그가 팀별 전용 클러스터 비용과 공유 클러스터 격리 한계 사이의 충돌을 GPU 멀티테넌트 운영 문제로 정리하고, Kamaji와 HAMi 기반 시뮬레이션 접근을 제시했다.",
+      "tags": [
+        "cloud-native",
+        "inference",
+        "kubernetes"
+      ],
+      "title": "Multi-tenant GPU Kubernetes on simulated hardware with Kamaji and HAMi",
+      "url": "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/"
+    },
+    {
+      "category": "operational guidance",
+      "impact": "에이전트 관측 파이프라인을 운영하는 조직은 수집 후 정리보다 수집 중 선별 정책을 우선 적용해 비용 급증과 분석 병목을 완화할 수 있다.",
+      "published": "2026-10-22",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/22/filtering-and-reducing-ai-agent-telemetry-with-the-opentelemetry-collector/"
+      ],
+      "summary": "AI agent telemetry의 고카디널리티 로그를 OpenTelemetry Collector 단계에서 필터링·축약해 저장비용과 분석 잡음을 줄이는 운영 패턴을 설명했다.",
+      "tags": [
+        "agent",
+        "cloud-native",
+        "observability"
+      ],
+      "title": "Filtering and reducing AI agent telemetry with the OpenTelemetry Collector",
+      "url": "https://www.cncf.io/blog/2026/10/22/filtering-and-reducing-ai-agent-telemetry-with-the-opentelemetry-collector/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-22~2026-10-25 구간에서 announcements 신규 항목은 없었고, 조건에 맞는 CNCF blog 변경 2건만 확인됐다.",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/announcements/feed/",
+        "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/",
+        "https://www.cncf.io/blog/2026/10/22/filtering-and-reducing-ai-agent-telemetry-with-the-opentelemetry-collector/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "최근 24~72시간 범위에서 HN RSS, 긱뉴스 RSS, Reddit Atom 피드를 검토해 보안·개발도구·AI 실행환경 관련 링크를 교차 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-25 08시 기준 GitHub weekly Trending Top10을 캡처했고, 상위 10개 저장소가 모두 기존 소개 이력에 포함되어 신규 repositories 항목은 비웠다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 조건(2026-04-25 이후)과 최근 7일 중복 제외를 적용해 5편을 선정했고, 각 논문의 arXiv HTML 본문에서 방법·실험·한계 구간을 확인했다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31657",
+        "https://arxiv.org/abs/2610.31639",
+        "https://arxiv.org/abs/2610.31593",
+        "https://arxiv.org/abs/2610.31633",
+        "https://arxiv.org/abs/2610.31636"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-25",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50219358",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xecgrf/kimi_k31_removes_cyberattack_training_data_from/",
+        "https://www.kimi.ai/blog/kimi-k3-1-pro"
+      ],
+      "tags": [
+        "llm",
+        "performance",
+        "release"
+      ],
+      "title": "Kimi K3.1 Pro 공개와 오픈웨이트 정책 변경 논의",
+      "url": "https://www.kimi.ai/blog/kimi-k3-1-pro"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50218217",
+        "https://news.hada.io/topic?id=35934",
+        "https://blog.roku.com/developer/gitlab-move"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "Roku 개발자 저장소의 GitHub→GitLab 이전 공지",
+      "url": "https://blog.roku.com/developer/gitlab-move"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50213214",
+        "https://thomasunise.com/argus"
+      ],
+      "tags": [
+        "agent",
+        "open-source",
+        "security"
+      ],
+      "title": "Argus 오픈소스 에이전트형 보안 운영 플랫폼 소개",
+      "url": "https://thomasunise.com/argus"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50219428",
+        "https://news.hada.io/topic?id=35941",
+        "https://stealmybitcoin.com/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Show HN: Steal My Bitcoin 보안 훈련 사이트 공유",
+      "url": "https://stealmybitcoin.com/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50218657",
+        "https://news.hada.io/topic?id=35942",
+        "https://aardappel.github.io/goose/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "Goose 시스템 언어: 힙 없는 메모리 안전성 접근",
+      "url": "https://aardappel.github.io/goose/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xe3xhk/optimize_kserve_cold_starts_134_s_9_s_with_warmctl/"
+      ],
+      "tags": [
+        "inference",
+        "kubernetes",
+        "performance"
+      ],
+      "title": "KServe 콜드스타트 134초→9초 최적화 사례 공유",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xe3xhk/optimize_kserve_cold_starts_134_s_9_s_with_warmctl/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1xe7dp8/broccoli2shell_brotli_decoder_rce_cve2026111497/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Broccoli2Shell(CVE-2026-111497) 다중 런타임 RCE 이슈 토론",
+      "url": "https://www.reddit.com/r/programming/comments/1xe7dp8/broccoli2shell_brotli_decoder_rce_cve2026111497/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=35938"
+      ],
+      "tags": [
+        "developer-tools",
+        "inference",
+        "performance"
+      ],
+      "title": "NVIDIA 3000 시리즈 FP/BF16 제한 해제 도구 소개",
+      "url": "https://news.hada.io/topic?id=35938"
+    }
+  ],
+  "generated_at": "2026-10-25T08:04:48+09:00",
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-24T08:05:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "morluto/rea",
+        "weekly_stars": 106341
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 5649
+      },
+      {
+        "rank": 3,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 3708
+      },
+      {
+        "rank": 4,
+        "repository": "android/skills",
+        "weekly_stars": 1384
+      },
+      {
+        "rank": 5,
+        "repository": "anomalyco/opencode",
+        "weekly_stars": 6750
+      },
+      {
+        "rank": 6,
+        "repository": "stablyai/orca",
+        "weekly_stars": 9401
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 2046
+      },
+      {
+        "rank": 8,
+        "repository": "akitaonrails/ai-memory",
+        "weekly_stars": 3322
+      },
+      {
+        "rank": 9,
+        "repository": "HKUDS/CLI-Anything",
+        "weekly_stars": 3275
+      },
+      {
+        "rank": 10,
+        "repository": "Comfy-Org/ComfyUI",
+        "weekly_stars": 4375
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-25T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 11223
+      },
+      {
+        "rank": 2,
+        "repository": "morluto/rea",
+        "weekly_stars": 88243
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 4250
+      },
+      {
+        "rank": 4,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 3349
+      },
+      {
+        "rank": 5,
+        "repository": "stablyai/orca",
+        "weekly_stars": 9545
+      },
+      {
+        "rank": 6,
+        "repository": "anomalyco/opencode",
+        "weekly_stars": 6765
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1946
+      },
+      {
+        "rank": 8,
+        "repository": "android/skills",
+        "weekly_stars": 1471
+      },
+      {
+        "rank": 9,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 2625
+      },
+      {
+        "rank": 10,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5553
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Cost-Aware Abstention: Calibration-Gated IT Ticket Routing for LLM Ops",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.31657"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 IT 지원 티켓 분류에서 정확도만 높아도 운영비용이 낮아진다는 가정을 반박한다. 잘못 자동 라우팅하는 비용이 사람 triage 비용보다 큰 상황을 명시적으로 모델링해, 자동 처리 여부를 임계값 기반으로 보류할 수 있는 cost-aware abstention 절차를 제안했다. 핵심은 운영 전 캘리브레이션에서 정책을 고정하고 홀드아웃 테스트로 준비도를 평가하는 방식이다.",
+      "evidence": "full_text",
+      "findings": "예시 비용 모델 (0,1,5)에서 TF-IDF+Logistic Regression(임계값 0.60)은 테스트 비용을 0.763에서 0.472로 38.1% 줄였고, wrong-route 비율을 15.3%에서 3.5%로 낮췄다. 논문은 고정 정책이 16개 설정 중 14개에서 always-route와 always-defer를 동시에 상회했다고 보고한다. LLM은 일부 설정에서 경쟁력을 보였지만, 동일 데이터에서 비용 관점 우위는 전통 분류기가 더 안정적이었다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31657",
+      "limitations": "비용 절감 폭은 정의한 비용 행렬과 클래스 불균형에 크게 의존하므로, 다른 조직에선 최적 임계값과 우세 모델이 달라질 수 있다. 또한 공개 코퍼스 기반 오프라인 실험이라 실제 운영 큐의 시간대 편향·정책 변경·라벨 지연 같은 동적 요인은 별도 검증이 필요하다.",
+      "method": "연구진은 47,837개 티켓·8개 클래스 공개 데이터에서 4개 비LLM 분류기와 4개 LLM(제로샷·퓨샷)을 비교했다. 캘리브레이션 세트에서 비용 함수(c_ok, c_triage, c_wrong)를 조건으로 임계값 정책을 선택하고, 선택한 정책을 테스트 세트에서 단 한 번 적용해 비용·오분류를 측정했다. 또한 always-route, always-defer 같은 기준 정책과의 상대 우위를 통계구간으로 비교했다.",
+      "practical_value": "도입 팀은 모델 교체 전에 '정확도 리더보드' 대신 비용 조건별 준비도 곡선을 먼저 만들 수 있다. 특히 잘못 분기 비용이 큰 헬프데스크 자동화에서, 보수적 자동화 경계를 정하는 기준선으로 즉시 활용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31657",
+        "https://arxiv.org/html/2610.31657v1",
+        "https://arxiv.org/pdf/2610.31657v1"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "performance"
+      ],
+      "title": "Cost-Aware Abstention for LLM-Based IT Ticket Classification",
+      "topics": [
+        "ticket routing",
+        "cost-aware abstention",
+        "calibration policy",
+        "LLM readiness"
+      ],
+      "url": "https://arxiv.org/abs/2610.31657"
+    },
+    {
+      "abstract_summary": "CausalCoT는 CoT 문장이 그럴듯해 보여도 실제 정답 계산 경로를 반영하지 않을 수 있다는 문제를 다룬다. 저자들은 각 추론 단계를 DAG의 원자 하위 질문으로 분해하고, 직접 부모 노드 정보만 남긴 격리 컨텍스트에서 단계별 추론을 수행하도록 설계했다. 목표는 설명 문장의 자연스러움이 아니라 추론 인과 경로의 충실도다.",
+      "evidence": "full_text",
+      "findings": "논문은 CausalCoT가 표준 CoT 대비 reasoning faithfulness를 높이면서도 주요 벤치마크 정확도를 유지했다고 보고한다. 특히 단계별 격리 추론을 적용하면 전역 컨텍스트를 통한 우회 정답 생성 경로가 줄어, 설명과 예측 간 불일치가 완화되는 경향이 관찰됐다. 저자들은 고신뢰 도메인에서 설명문 검증 가능성을 높이는 방향으로 해석했다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31639",
+      "limitations": "DAG 분해 품질이 낮거나 하위 질문 설계가 부정확하면 오히려 계산 경로가 끊겨 성능이 흔들릴 수 있다. 또한 추가 추론 단계로 인한 지연·비용 증가를 모든 온라인 서비스에 그대로 적용하긴 어려워, 업무별 지연 예산 기준 최적화가 필요하다.",
+      "method": "기존 autoregressive CoT가 전체 문맥에 광범위하게 주의를 분산시키는 구조를 분석하고, 비부모 정보 경로를 차단하는 Markovian 분해 추론 프레임워크를 구현했다. 실험은 다중 추론 벤치마크에서 정확도 유지 여부와 reasoning faithfulness 변화를 함께 측정하도록 구성됐다. 또한 사람 개입 시나리오에서 노드 단위 개입이 결과에 미치는 영향을 별도 점검했다.",
+      "practical_value": "설명 가능성이 중요한 업무에서는 CoT 출력을 그대로 신뢰하기보다 단계 격리형 추론을 적용해 근거 일치도를 측정할 수 있다. 모델 감사 파이프라인에서 faithfulness 점검 항목을 운영 지표로 추가하는 근거로 쓸 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31639",
+        "https://arxiv.org/html/2610.31639v1",
+        "https://arxiv.org/pdf/2610.31639v1"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "reasoning"
+      ],
+      "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+      "topics": [
+        "chain-of-thought faithfulness",
+        "context isolation",
+        "causal reasoning"
+      ],
+      "url": "https://arxiv.org/abs/2610.31639"
+    },
+    {
+      "abstract_summary": "Simulated Control Evals(SCE)는 실제 실행 환경 대신 언어모델이 도구 응답을 시뮬레이션해 통제 평가를 확장하는 접근을 제시한다. 기존 control eval은 목적형 테스트 환경에서 얻은 결과를 배포 환경으로 외삽할 때 환경 차이 위험이 컸다. 저자들은 시뮬레이션 기반 평가가 배포 과제 집합에 대한 예측력을 어느 수준까지 유지하는지 LinuxArena를 기준으로 검증했다.",
+      "evidence": "full_text",
+      "findings": "논문은 SCE가 독립 표본 배포 과제에서 control metric 변화를 일정 수준 예측할 수 있으며, 예측 오차가 별도 control setting 전이 오차와 비교 가능한 구간이 존재한다고 보고한다. 즉 실제 환경 접근이 제한된 초기 단계에서도, 완전 무작위 추정보다 더 정보가 있는 사전 리스크 신호를 만들 수 있다는 결론이다. 저자들은 실환경 대체가 아니라 우선순위 선별 도구로 위치를 한정한다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31593",
+      "limitations": "시뮬레이터가 배포 환경의 도구 응답 분포를 충분히 반영하지 못하면 전이 오차가 급격히 커질 수 있다. 또한 고위험 운영 판단을 SCE 단독 결과에 의존하는 것은 부적절하며, 최종 승인은 실제 실행 검증과 병행해야 한다는 제약이 남는다.",
+      "method": "SCE는 평가 대상 모델과 분리된 시뮬레이터 모델이 도구 응답을 생성하고, 동일한 safeguard 지표를 계산하는 구조다. 연구진은 LinuxArena의 실제 실행 결과를 ground truth로 두고, BashArena 및 내부 변동성과 함께 SCE 예측 오차를 비교했다. 실험은 공격 성공·모니터 성능·행동 전이 같은 지표가 배포 과제 집합에서 얼마나 보존되는지 측정한다.",
+      "practical_value": "보안·안전 평가 인프라가 제한된 팀은 실제 환경 테스트 전 후보 safeguard 조합을 빠르게 스크리닝하는 단계로 SCE를 도입할 수 있다. 평가 예산이 작은 상황에서 우선 검증 대상을 좁히는 운영 효율이 기대된다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31593",
+        "https://arxiv.org/html/2610.31593v1",
+        "https://arxiv.org/pdf/2610.31593v1"
+      ],
+      "tags": [
+        "evaluation",
+        "harness",
+        "security"
+      ],
+      "title": "Simulated Control Evals",
+      "topics": [
+        "control evals",
+        "simulated environments",
+        "safeguard transfer"
+      ],
+      "url": "https://arxiv.org/abs/2610.31593"
+    },
+    {
+      "abstract_summary": "이 논문은 looped architecture가 파라미터 효율은 좋지만 반복 단계마다 KV-cache가 늘어나 추론 메모리 비용이 선형 증가하는 문제를 다룬다. 저자들은 KV-shareability가 모델마다 들쭉날쭉하게 나타나는 원인을 분석하고, 이를 안정적으로 유도하는 2단계 학습 절차 BeNice를 제안했다. 목적은 품질 저하 없이 메모리 병목을 줄이는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 동일 계열 모델에서도 불안정하던 KV-shareability가 BeNice 절차 후 더 일관되게 확보되며, 품질 손실을 크게 늘리지 않고 추론 메모리 사용을 줄일 수 있다고 보고한다. 저자 해석은 공유 실패의 핵심이 반복 단계 간 표현 불일치이며, 이를 수축 동역학과 잔차 보정으로 완화할 수 있다는 것이다. 결과적으로 looped 모델의 실전 배치 장벽이었던 메모리-품질 간격을 좁히는 방향을 제시한다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31633",
+      "limitations": "효과가 looped 구조와 학습 설정에 의존하므로, 다른 아키텍처에 동일 절차를 바로 이식하면 재현성이 떨어질 수 있다. 또한 공유 정책이 잘못 적용되면 특정 길이·도메인에서 성능 저하가 발생할 수 있어, 배치 전 길이 구간별 회귀 검증이 필요하다.",
+      "method": "1단계에서 stochastic depth pretraining으로 contractive residual dynamics를 형성해 반복 단계 표현을 수렴시키고, 2단계에서 recurrence 간 잔여 오차를 보정하는 post-training을 적용한다. 이후 KV-cache 공유 가능성과 품질 보존 여부를 루프드 모델 계열에서 비교 평가했다. 분석에는 shareability가 실패하는 경우와 성공하는 경우를 분리한 메커니즘 진단이 포함된다.",
+      "practical_value": "추론 메모리 제약이 큰 환경에서 looped 모델을 운영하려는 팀은 KV 공유를 도입할 때 BeNice류 사전 조건을 체크리스트로 활용할 수 있다. GPU 메모리 예산이 촉박한 실서비스에서 모델 크기 유지와 비용 절감을 함께 노릴 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31633",
+        "https://arxiv.org/html/2610.31633v1",
+        "https://arxiv.org/pdf/2610.31633v1"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+      "topics": [
+        "looped architecture",
+        "KV sharing",
+        "inference memory"
+      ],
+      "url": "https://arxiv.org/abs/2610.31633"
+    },
+    {
+      "abstract_summary": "이 연구는 다국어 웹 코퍼스 파이프라인이 언어별 실패 모드를 충분히 포착하지 못한다는 문제를 슬로바키아어 FineWeb2 사례로 점검한다. 저자들은 분류기 한 번으로 끝내지 않고, 읽기 전용·예산 제한 API를 사용하는 도구형 에이전트가 코퍼스 결함 후보를 탐색하도록 설계했다. 이후 네이티브 스피커 검증을 붙여 에이전트 발견 결과를 실행 가능한 테스트로 전환한다.",
+      "evidence": "full_text",
+      "findings": "논문은 에이전트형 감사가 언어별 결함을 발견하고 테스트 자산으로 축적하는 데 유의미한 운영 경로를 제공한다고 보고한다. 특히 단일 레시피 기반 자동 수집 파이프라인에서 놓치기 쉬운 지역 언어 특화 오류를, 도구 호출형 탐색과 사람 검증 조합으로 더 체계적으로 식별할 수 있음을 보였다. 저자들은 코퍼스 품질 개선을 모델 재학습 이전 단계의 필수 작업으로 제시한다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31636",
+      "limitations": "감사 성능은 사용 가능한 코퍼스 API와 사람 검증자 가용성에 크게 의존하므로, 자동화만으로 완결되기 어렵다. 또한 단일 언어 파티션 사례 중심 결과라 다른 언어군으로 일반화할 때는 추가 검증과 도구 튜닝이 필요하다.",
+      "method": "감사 환경은 corpus view와 도구 집합, 프롬프트 위생 규칙, 발견-검증-배포 루프를 명시적으로 분리한다. 에이전트는 코퍼스에서 이상 징후를 찾고 각 항목을 재현 가능한 테스트 케이스로 변환하며, 사람 검토자가 이를 확인해 최종 품질 게이트에 반영한다. 연구는 26.5M 문서 규모 슬로바키아어 파티션을 대상으로 파이프라인 동작을 점검했다.",
+      "practical_value": "대규모 데이터 수집 파이프라인을 운영하는 팀은 학습 전 단계에 에이전트 감사 루프를 넣어 언어별 결함을 테스트화할 수 있다. 품질 이슈를 '발견 보고'가 아니라 재실행 가능한 품질 게이트로 관리한다는 점이 실무적으로 유용하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31636",
+        "https://arxiv.org/html/2610.31636v1",
+        "https://arxiv.org/pdf/2610.31636v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "retrieval"
+      ],
+      "title": "Can an Agent Debug a Web Corpus? Agentic Auditing of Slovak FineWeb2",
+      "topics": [
+        "corpus auditing",
+        "agentic evaluation",
+        "multilingual data quality"
+      ],
+      "url": "https://arxiv.org/abs/2610.31636"
+    }
+  ],
+  "repositories": [],
+  "schema_version": 2,
+  "summary": [
+    "오늘 Technical Spotlight는 Cost-Aware Abstention이다. 이 연구는 IT 티켓 자동 분류에서 '잘못 자동 라우팅하는 비용'이 사람에게 재분류를 넘기는 비용보다 커질 수 있다는 운영 현실을 문제로 둔다. 저자들은 모델 정확도만 비교하는 대신, 캘리브레이션 단계에서 명시적 비용 조건으로 자동 처리와 보류(사람 triage) 경계를 고정하는 평가 절차를 제안했다.",
+    "핵심은 운영 전에 정책을 한 번 고정하고, 홀드아웃 테스트에서 비용 절감과 오분류 감소를 함께 검증하는 점이다. 47,837건·8개 클래스 공개 코퍼스에서 (c_ok, c_triage, c_wrong)=(0,1,5) 조건을 적용했을 때 TF-IDF+Logistic Regression 임계값 0.60 정책은 테스트 비용을 0.763에서 0.472로 38.1% 줄였고, 잘못 라우팅 비율도 15.3%에서 3.5%로 낮췄다. 고정 정책은 다수 설정에서 always-route와 always-defer를 동시에 이겼다.",
+    "이 결과는 LLM 도입 판단을 '정확도 우위'가 아니라 '비용 조건에서의 배치 준비도'로 바꿔야 한다는 실무 기준을 제공한다. 특히 헬프데스크·사내 지원 자동화처럼 잘못 분기 비용이 큰 환경에서 보수적 자동화 경계 설정에 직접 쓸 수 있다. 다만 비용 행렬과 클래스 분포가 조직마다 다르므로, 동일 임계값을 그대로 이전하는 대신 현장 캘리브레이션을 다시 수행해야 한다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "community",
+        "text": "Kimi K3.1 Pro가 100만 토큰 컨텍스트를 전면에 내세우며 커뮤니티에서 재검증 논의가 확산됐습니다.",
+        "url": "https://www.kimi.ai/blog/kimi-k3-1-pro"
+      },
+      {
+        "section": "papers",
+        "text": "CausalCoT가 CoT 설명의 attention leakage를 줄이기 위해 DAG 기반 context isolation 추론 프레임워크를 제시했습니다.",
+        "url": "https://arxiv.org/abs/2610.31639"
+      },
+      {
+        "section": "cncf",
+        "text": "CNCF가 멀티테넌트 GPU Kubernetes에서 비용·격리 절충을 다루는 Kamaji+HAMi 운영 설계를 공유했습니다.",
+        "url": "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/"
+      }
+    ],
+    "spotlight": [
+      "Cost-Aware Abstention은 IT 티켓 자동 라우팅에서 정확도 대신 비용 조건을 먼저 고정해 자동 처리와 사람 triage 경계를 정하는 방법을 제시했다. 47,837건 공개 코퍼스 실험에서 예시 비용 모델 기준 테스트 비용 38.1% 절감과 오라우팅 비율 15.3%→3.5% 감소가 보고됐다. 다만 임계값은 조직별 비용 구조와 분포에 맞춰 재캘리브레이션이 필요하다."
+    ]
+  }
+}
