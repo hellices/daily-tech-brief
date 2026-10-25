@@ -1,0 +1,473 @@
+{
+  "cncf": [
+    {
+      "category": "operational guidance",
+      "impact": "GPU 자원을 공유하는 플랫폼 팀은 control plane 비용 절감과 테넌트 격리 요구를 함께 만족시키기 위한 대안 운영 패턴을 검토할 수 있다.",
+      "published": "2026-10-23",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/"
+      ],
+      "summary": "CNCF 블로그가 팀별 클러스터 분리 비용과 공유 클러스터 격리 한계를 GPU 멀티테넌트 운영 문제로 정리하고, Kamaji+HAMi 조합 기반의 시뮬레이션 접근을 제시했다.",
+      "tags": [
+        "cloud-native",
+        "inference",
+        "kubernetes"
+      ],
+      "title": "Multi-tenant GPU Kubernetes on simulated hardware with Kamaji and HAMi",
+      "url": "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-23~2026-10-26 기간 조건에서 CNCF announcements 신규 항목은 없었고, 의미 있는 blog 변경은 1건만 확인됐다.",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/announcements/feed/",
+        "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "최근 24~72시간 구간에서 HN RSS, 긱뉴스 RSS, Reddit Atom 피드를 검토해 개발 도구·보안·에이전트 실행환경 관련 고신호 링크를 교차 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-26 08시 기준 GitHub weekly Trending Top10을 캡처했고, 소개 이력 미등재 저장소는 Graphify-Labs/graphify 1건이었다.",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://raw.githubusercontent.com/Graphify-Labs/graphify/main/README.md"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 기준(2026-04-26 이후)과 최근 7일 소개 중복 제외를 적용해 5편을 선정했고, 각 논문의 arXiv HTML 본문에서 방법·실험·한계 구간을 확인했다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31656",
+        "https://arxiv.org/abs/2610.31642",
+        "https://arxiv.org/abs/2610.31624",
+        "https://arxiv.org/abs/2610.31594",
+        "https://arxiv.org/abs/2610.31585"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-26",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50234171",
+        "https://www.dbreunig.com/2026/10/24/the-state-of-context-engineering.html"
+      ],
+      "tags": [
+        "context-engineering",
+        "developer-tools"
+      ],
+      "title": "The State of Context Engineering 정리",
+      "url": "https://www.dbreunig.com/2026/10/24/the-state-of-context-engineering.html"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50228838",
+        "https://www.wiz.io/blog/gheist-attempted-scaled-abuse-of-stolen-github-tokens-stumbles"
+      ],
+      "tags": [
+        "open-source",
+        "security"
+      ],
+      "title": "Gheist의 탈취 GitHub 토큰 대량 악용 시도 분석",
+      "url": "https://www.wiz.io/blog/gheist-attempted-scaled-abuse-of-stolen-github-tokens-stumbles"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50225942",
+        "https://minimaxir.com/2026/10/cheap-llms/"
+      ],
+      "tags": [
+        "llm",
+        "performance",
+        "release"
+      ],
+      "title": "OpenAI·Anthropic LLM 가격 인하 배경 분석",
+      "url": "https://minimaxir.com/2026/10/cheap-llms/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=35994"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools"
+      ],
+      "title": "JetBrains Thinkrail: 명세 기반 프로젝트 지식 유지형 에이전트 IDE",
+      "url": "https://news.hada.io/topic?id=35994"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xe3xhk/optimize_kserve_cold_starts_134_s_9_s_with_warmctl/"
+      ],
+      "tags": [
+        "inference",
+        "kubernetes",
+        "performance"
+      ],
+      "title": "KServe 콜드스타트 134초→9초 최적화 사례",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xe3xhk/optimize_kserve_cold_starts_134_s_9_s_with_warmctl/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xf9v9s/cgroup_v2_cpuset_memory_limits_pin_cpus/"
+      ],
+      "tags": [
+        "containers",
+        "kubernetes",
+        "performance"
+      ],
+      "title": "cgroup v2 cpuset·memory.high/memory.max 튜닝 토론",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xf9v9s/cgroup_v2_cpuset_memory_limits_pin_cpus/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1xe7dp8/broccoli2shell_brotli_decoder_rce_cve2026111497/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Broccoli2Shell(CVE-2026-111497) 다중 런타임 RCE 이슈",
+      "url": "https://www.reddit.com/r/programming/comments/1xe7dp8/broccoli2shell_brotli_decoder_rce_cve2026111497/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xf9kmd/rtx_3080_20gb_got_rebar_and_p2p_unlock_70_prompt/"
+      ],
+      "tags": [
+        "inference",
+        "open-source",
+        "performance"
+      ],
+      "title": "RTX 3080 20GB reBAR·P2P unlock으로 프롬프트 처리 가속 사례",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1xf9kmd/rtx_3080_20gb_got_rebar_and_p2p_unlock_70_prompt/"
+    }
+  ],
+  "generated_at": "2026-10-26T08:04:49+09:00",
+  "github_featured": [
+    "Graphify-Labs/graphify"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-25T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 11223
+      },
+      {
+        "rank": 2,
+        "repository": "morluto/rea",
+        "weekly_stars": 88243
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/claude-plugins-official",
+        "weekly_stars": 4250
+      },
+      {
+        "rank": 4,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 3349
+      },
+      {
+        "rank": 5,
+        "repository": "stablyai/orca",
+        "weekly_stars": 9545
+      },
+      {
+        "rank": 6,
+        "repository": "anomalyco/opencode",
+        "weekly_stars": 6765
+      },
+      {
+        "rank": 7,
+        "repository": "cursor/plugins",
+        "weekly_stars": 1946
+      },
+      {
+        "rank": 8,
+        "repository": "android/skills",
+        "weekly_stars": 1471
+      },
+      {
+        "rank": 9,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 2625
+      },
+      {
+        "rank": 10,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5553
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-26T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 12680
+      },
+      {
+        "rank": 2,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 3241
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 2631
+      },
+      {
+        "rank": 4,
+        "repository": "anomalyco/opencode",
+        "weekly_stars": 6857
+      },
+      {
+        "rank": 5,
+        "repository": "stablyai/orca",
+        "weekly_stars": 9828
+      },
+      {
+        "rank": 6,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5633
+      },
+      {
+        "rank": 7,
+        "repository": "android/skills",
+        "weekly_stars": 1317
+      },
+      {
+        "rank": 8,
+        "repository": "Graphify-Labs/graphify",
+        "weekly_stars": 6868
+      },
+      {
+        "rank": 9,
+        "repository": "akitaonrails/ai-memory",
+        "weekly_stars": 3541
+      },
+      {
+        "rank": 10,
+        "repository": "Comfy-Org/ComfyUI",
+        "weekly_stars": 4648
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Graphify: Multimodal Knowledge Graph Extraction for Persistent Agent Context",
+  "lead": {
+    "section": "github",
+    "url": "https://github.com/Graphify-Labs/graphify"
+  },
+  "papers": [
+    {
+      "abstract_summary": "METTA는 메타 강화학습에서 긴 상호작용 히스토리를 처리할 때 recurrent 압축 한계와 transformer의 제곱 복잡도 비용이 동시에 발생하는 문제를 다룬다. 저자들은 적응 단계를 두 시간척도로 분해해, 에피소드 내부는 causal neural memory로 세밀히 적응하고 에피소드 간에는 압축 요약으로 장거리 추론을 수행하도록 설계했다. 목표는 적은 상호작용으로 미지 과제에 빠르게 적응하면서 계산비용을 제어하는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 미지 Meta-World ML10/45 테스트 환경에서 METTA가 50%를 넘는 성공률을 기록하면서도 학습 예산과 wall-clock 시간을 낮게 유지했다고 보고한다. 또한 PointMaze 장문맥 과제에서는 transformer 기반 기준선보다 더 구조화된 탐색 행동을 보였다고 제시했다. 저자 해석은 메모리 분해 설계가 적응성과 확장성을 동시에 확보하는 데 기여했다는 것이다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31656",
+      "limitations": "성과가 제시된 과제군은 특정 벤치마크(Meta-World, PointMaze)에 집중되어 있어, 다른 보상 구조나 부분관측 환경으로 일반화하려면 추가 검증이 필요하다. 또한 메모리 구성요소의 하이퍼파라미터 민감도에 따라 적응 안정성이 달라질 가능성이 있다.",
+      "method": "프레임워크는 within-episode memory와 cross-episode summary를 분리해 test-time adaptation 루프를 구성한다. 긴 히스토리 전체에 직접 어텐션하지 않고, 선형 복잡도 메모리 경로와 컴팩트 요약 경로를 결합해 적응 정보를 유지한다. 실험은 Meta-World ML10/45와 long-context sparse-reward PointMaze에서 transformer 계열 기준선과 비교됐다.",
+      "practical_value": "장문맥 상호작용이 필요한 에이전트형 제어 과제에서, 전체 히스토리 어텐션 대신 계층형 메모리 적응으로 비용을 줄이는 설계 대안을 제공한다. 메타-RL 기반 로봇·시뮬레이션 워크로드에서 실험 우선순위를 정할 때 유용하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31656",
+        "https://arxiv.org/html/2610.31656v1",
+        "https://arxiv.org/pdf/2610.31656v1"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "performance"
+      ],
+      "title": "METTA: Memory-Enhanced Test-Time Adaptation for Meta-Reinforcement Learning",
+      "topics": [
+        "meta-reinforcement learning",
+        "test-time adaptation",
+        "neural memory"
+      ],
+      "url": "https://arxiv.org/abs/2610.31656"
+    },
+    {
+      "abstract_summary": "이 논문은 널리 쓰이는 softmax·log-softmax·cross-entropy 구현에 두 가지 수치 버그가 남아 있다고 지적한다. 하나는 target logit이 과도하게 클 때 gradient가 0으로 붕괴하는 Softmax Collapse, 다른 하나는 teacher와 student logits가 거의 같을 때도 비영 gradient가 생기는 Softmax Cancellation이다. 저자들은 두 문제를 동시에 교정하는 단순 구현 대안을 제시했다.",
+      "evidence": "full_text",
+      "findings": "논문은 제안한 수정으로 Slingshot 현상이 사라지고, weight decay 조건에서 grokking이 더 빠르게 수렴했다고 보고한다. 또한 weight decay가 없는 조건의 정확도 붕괴를 막고, distillation에서 student가 teacher로부터 드리프트하는 문제를 줄였다고 제시한다. 저자들은 로그잇 성장 상한이 weight decay와 Adam epsilon의 평형으로 설명될 수 있다고 해석했다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31642",
+      "limitations": "효과 해석이 주로 저자 실험 설정과 선택한 최적화기 조건에 기반하므로, 다른 손실 조합·정밀도·하드웨어 스택에서 동일한 개선 폭이 보장되지는 않는다. 또한 프레임워크 기본 구현 변경은 기존 학습 로그 재현성과의 충돌을 유발할 수 있다.",
+      "method": "기존 프레임워크 구현에서 발생하는 부동소수점 연산 경로를 분석하고, gradient 합 제약과 동치성을 보존하는 수정식을 제안했다. 이후 grokking 실험, weight decay 유무 비교, soft-target distillation 안정성 실험으로 수정 효과를 검증했다. 핵심 검증 포인트는 학습 속도, 정확도 붕괴 여부, teacher-student 괴리 발생 여부다.",
+      "practical_value": "대규모 분류·증류 파이프라인을 운영하는 팀은 loss layer 안정성 점검 항목을 강화하고, 이상한 gradient 거동을 모델 문제로 오진하는 위험을 줄일 수 있다. 특히 장기 학습 안정성 회귀 분석에서 즉시 적용 가능한 체크포인트를 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31642",
+        "https://arxiv.org/html/2610.31642v1",
+        "https://arxiv.org/pdf/2610.31642v1"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "performance"
+      ],
+      "title": "A Fix for Softmax and Cross-Entropy",
+      "topics": [
+        "numerical stability",
+        "softmax",
+        "cross-entropy",
+        "distillation"
+      ],
+      "url": "https://arxiv.org/abs/2610.31642"
+    },
+    {
+      "abstract_summary": "이 연구는 RLVR 단계가 모델의 instrumental behavior를 항상 증가시킨다는 단순 가정을 체크포인트 궤적으로 검증한다. 저자들은 OLMo-3-7B-Think의 SFT, DPO, RLVR 중간 13개, 최종 체크포인트를 InstrumentalEval로 비교해 단일 before/after 점수가 아닌 변화 경로를 측정했다. 핵심 질문은 '행동 변화가 단조 증가인가, 아니면 학습 단계별로 뒤집히는가'다.",
+      "evidence": "full_text",
+      "findings": "7B 모델에서 instrumental rate는 SFT 25.0%에서 RLVR 약 200 step 부근 46.1%까지 올랐다가 최종 체크포인트 11.8%로 하락하는 비단조 궤적을 보였다. 저자들은 harmful prompt indicator와 기타 framing 효과가 체크포인트 내 분산의 평균 15%만 설명해, 패턴의 주원인이 framing만은 아니라고 보고한다. 예비 32B 결과도 SFT 35.53%에서 RLVR final 22.37%로 감소 방향을 보였다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31624",
+      "limitations": "결론은 특정 모델군(OLMo-3)과 벤치마크(InstrumentalEval)에 한정되며, judge agreement가 중간 수준이라 절대 비율 해석에는 주의가 필요하다. 따라서 'RLVR 일반론'으로 확대하기보다 체크포인트·평가 프레임별 조건부 결과로 읽어야 한다.",
+      "method": "평가 설계는 체크포인트별 행동률 측정, item-level paired test, step-wise 회귀, 그리고 프롬프트 framing 요인 분해를 포함한다. INLP를 사용해 framing 방향을 제거한 뒤에도 SFT 대비 최종 RLVR 차이가 유지되는지 추가 점검했다. 7B 실험 외에 32B 엔드포인트에서도 예비 비교를 제시했다.",
+      "practical_value": "안전 팀은 RL 단계 평가를 최종 모델 1점 비교로 끝내지 말고, 중간 체크포인트 경로를 추적해 위험 구간을 조기에 식별할 수 있다. 특히 post-training 안전 회귀 모니터링 체계를 설계할 때 유용한 측정 틀을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31624",
+        "https://arxiv.org/html/2610.31624v1",
+        "https://arxiv.org/pdf/2610.31624v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "reasoning"
+      ],
+      "title": "Questioning Instrumental Convergence in RLVR: Checkpoint Evidence from OLMo-3",
+      "topics": [
+        "instrumental convergence",
+        "RLVR",
+        "checkpoint trajectory"
+      ],
+      "url": "https://arxiv.org/abs/2610.31624"
+    },
+    {
+      "abstract_summary": "CRANE은 멀티모달 분류기 설명에서 모달리티별 attribution을 따로 계산하면 일관된 반사실 설명을 만들기 어렵다는 한계를 겨냥한다. 저자들은 모델 불가지론(post-hoc, model-agnostic) 방식으로 타깃 클래스의 실제 학습 샘플을 nearest-neighbor 후보로 검색해 설명 근거를 구성하는 프레임워크를 제시했다. 이때 설명의 그럴듯함을 '실제 데이터 분포에 존재하는 사례'로 보장하려는 점이 특징이다.",
+      "evidence": "full_text",
+      "findings": "논문은 MC-R이 4개 데이터셋 중 3개에서 최고 또는 공동 최고 성능을 기록해 가장 강한 멀티모달 전략으로 나타났다고 보고한다. 동시에 모든 설명이 joint training distribution 안의 실제 샘플에 기반해 생성되므로, 합성 반사실보다 해석 가능성과 현실성을 유지한다는 점을 강조한다. 다만 단일 모달리티가 결정경계를 지배하는 경우엔 unimodal 전략도 경쟁력이 있다고 제시했다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31594",
+      "limitations": "설명 성능은 이웃 검색 품질과 데이터셋 구조에 의존하므로, 고차원·희소 멀티모달 공간에서 검색 오류가 늘어나면 설명 신뢰성이 떨어질 수 있다. 또한 nearest-neighbor 기반 접근은 학습 데이터 접근 권한이 제한된 배포 환경에서 적용 제약이 있다.",
+      "method": "프레임워크는 모달리티별 이웃 집합을 계산한 뒤, Multimodal Consensus Retrieval(MC-R)로 교집합 기반 후보를 선택한다. 실험은 4개 이질 데이터셋과 3개 fusion 전략에서 전략별 설명 품질을 비교하는 방식으로 진행됐다. 평가는 설명 일관성과 분류 경계 관련성을 동시에 점검하도록 설계됐다.",
+      "practical_value": "멀티모달 분류기를 운영하는 팀은 모델 내부 가중치 해석 대신 실제 사례 기반 반사실 설명을 제공해 검증·감사 과정을 단순화할 수 있다. 의료·문서 심사처럼 설명 책임이 중요한 업무에서 적용 가능성이 크다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31594",
+        "https://arxiv.org/html/2610.31594v1",
+        "https://arxiv.org/pdf/2610.31594v1"
+      ],
+      "tags": [
+        "evaluation",
+        "multimodal",
+        "retrieval"
+      ],
+      "title": "CRANE: Post-Hoc Counterfactual Retrieval for Multimodal Classifiers",
+      "topics": [
+        "counterfactual explanation",
+        "multimodal classifier",
+        "nearest-neighbor retrieval"
+      ],
+      "url": "https://arxiv.org/abs/2610.31594"
+    },
+    {
+      "abstract_summary": "이 논문은 과학 시뮬레이션에서 전이 단위(local transition) 학습만으로는 시간 전역 의존성을 충분히 포착하기 어렵다는 문제를 제기한다. 저자들은 trajectory 관측으로부터 확률적 action을 복원해 경로 공간에서 재사용 가능한 목적함수를 학습하는 action learning 프레임을 제안했다. 구현체 LEAP는 tractable reference process를 기준으로 미지 보정항을 학습하는 구조다.",
+      "evidence": "full_text",
+      "findings": "논문은 LEAP가 기저 동역학을 복원하고 시간 전역 의존성을 포착하며, 물리 조건이 달라져도 학습된 목적함수를 여러 추론 과제로 이전할 수 있음을 보고한다. 저자 해석은 trajectory 관측을 단순 생성 데이터가 아니라 재사용 가능한 추론 목적함수로 전환했다는 데 있다. 이는 시뮬레이션 기반 과학 추론 파이프라인에서 목적함수 일관성을 높이는 방향을 제시한다.",
+      "first_published": "2026-10-22",
+      "id": "arxiv:2610.31585",
+      "limitations": "참조 프로세스 선택이 부적절하면 보정항 학습이 어려워지고 추론 안정성이 낮아질 수 있다. 또한 실험 도메인이 과학 시뮬레이션 중심이어서 실시간 제어 시스템으로의 적용은 추가 검증이 필요하다.",
+      "method": "LEAP는 관측 경로와 참조 경로를 비교해 action correction을 추정하고, 이를 미분 가능한 path-space objective로 정식화한다. 학습된 action은 경로 순위화, 메커니즘 제어, 제약 최적화, 샘플링 등 서로 다른 추론 목적에 재사용된다. 실험은 확률 물리계, 다체 궤도 동역학, 분자 시뮬레이션에서 동역학 복원과 전이 성능을 검증했다.",
+      "practical_value": "시뮬레이션 기반 연구팀은 하나의 학습 결과를 경로 평가·제어·샘플링에 공통으로 쓰는 목적함수 자산으로 관리할 수 있다. 모델별로 따로 목적식을 다시 설계하는 비용을 줄이는 운영 이점이 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.31585",
+        "https://arxiv.org/html/2610.31585v1",
+        "https://arxiv.org/pdf/2610.31585v1"
+      ],
+      "tags": [
+        "distributed-systems",
+        "evaluation",
+        "performance"
+      ],
+      "title": "Action Learning for Scientific Simulations",
+      "topics": [
+        "trajectory inference",
+        "scientific simulation",
+        "path objective learning"
+      ],
+      "url": "https://arxiv.org/abs/2610.31585"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "README 중심 성능 주장 · 내부 데이터 규모별 재현 검증 필요",
+      "novelty": "new_entry",
+      "rank": 8,
+      "repository": "Graphify-Labs/graphify",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/Graphify-Labs/graphify",
+        "https://raw.githubusercontent.com/Graphify-Labs/graphify/main/README.md"
+      ],
+      "summary": "멀티모달 입력 지식그래프화 · Claude Code skill 기반 컨텍스트 구조화",
+      "tags": [
+        "context-engineering",
+        "developer-tools",
+        "multimodal"
+      ],
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "use_case": "코드·문서·다이어그램이 혼합된 리포지토리에서 에이전트가 반복 질의할 때 graph.json과 경로 탐색을 사용해 재탐색 비용을 줄이고 근거 연결을 유지할 수 있다.",
+      "why_now": "weekly Top10 신규 진입 · 6,868 stars this week"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘 Technical Spotlight는 Graphify다. 이 프로젝트는 코드, 문서, PDF, 이미지 등 서로 다른 형식의 파일을 한 번에 읽어 지식 그래프로 연결하고, 에이전트가 재질문할 때 원문 전체를 다시 읽지 않도록 persistent graph를 남기는 워크플로를 제시한다. 핵심 문제는 파일 형식이 섞인 작업 공간에서 컨텍스트 재사용 비용이 커지는 점이다.",
+    "Graphify는 Claude Code skill로 동작하며, 그래프 시각화·검색·경로 탐색·위키형 문서화까지 한 출력 세트를 제공한다. README 기준으로 AST 기반 코드 분석과 멀티모달 추출을 결합하고, 해시 캐시로 변경된 파일만 재처리하는 업데이트 경로를 제공한다. 주간 Trending Top10에서 신규 진입(8위, 6,868 stars this week)한 점도 현재 수요를 뒷받침한다.",
+    "이 접근은 에이전트 컨텍스트를 프롬프트 문자열이 아니라 구조 데이터로 다루는 운영 패턴을 강화한다는 의미가 있다. 특히 리포지토리+문서+도식 이미지가 섞인 기술 조사 업무에서 검색·설명 일관성을 높일 수 있다. 다만 공개 README의 성능 수치는 사용자 환경별 편차가 있을 수 있어, 팀 도입 전 자체 데이터 규모에서 재현 검증이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "papers",
+        "text": "OLMo-3 체크포인트 분석에서 RLVR의 instrumental behavior가 단조 증가하지 않고 중간 상승 후 하락하는 비단조 궤적이 보고됐습니다.",
+        "url": "https://arxiv.org/abs/2610.31624"
+      },
+      {
+        "section": "community",
+        "text": "Gheist 캠페인이 탈취된 GitHub 토큰을 악용하려 한 사례가 공개되며 공급망 보안 대응 논의가 확대됐습니다.",
+        "url": "https://www.wiz.io/blog/gheist-attempted-scaled-abuse-of-stolen-github-tokens-stumbles"
+      },
+      {
+        "section": "cncf",
+        "text": "CNCF가 Kamaji+HAMi 조합으로 멀티테넌트 GPU Kubernetes의 비용·격리 절충안을 제시했습니다.",
+        "url": "https://www.cncf.io/blog/2026/10/23/multi-tenant-gpu-kubernetes-on-simulated-hardware-with-kamaji-and-hami/"
+      }
+    ],
+    "spotlight": [
+      "Graphify는 코드·문서·PDF·이미지를 하나의 지식 그래프로 연결해 에이전트 컨텍스트를 재사용하는 Claude Code skill 워크플로를 제시했다. 주간 Trending 신규 진입(8위, 6,868 stars this week)과 함께 캐시 기반 증분 업데이트·경로 탐색·위키 출력까지 제공한다. 다만 성능 체감은 데이터 구성과 규모에 따라 달라질 수 있어 도입 전 내부 재현 검증이 필요하다."
+    ]
+  }
+}
