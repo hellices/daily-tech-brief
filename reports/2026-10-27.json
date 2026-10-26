@@ -1,0 +1,498 @@
+{
+  "cncf": [
+    {
+      "category": "operational guidance",
+      "impact": "플랫폼 팀은 멀티테넌트 환경에서 성능 최적화만이 아니라 격리 경계와 보안 모델을 함께 설계하는 검토 체크리스트를 강화할 수 있다.",
+      "published": "2026-10-26",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/26/isolation-security-scale/"
+      ],
+      "summary": "CNCF 블로그가 클라우드 네이티브 운영에서 격리, 보안, 확장성의 상충 관계를 정리하고 실무 아키텍처 선택 기준을 제시했다.",
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "security"
+      ],
+      "title": "Isolation. Security. Scale.",
+      "url": "https://www.cncf.io/blog/2026/10/26/isolation-security-scale/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-24~2026-10-27 기간 조건에서 CNCF announcements 신규 항목은 없었고, 조건을 만족하는 CNCF blog 변경은 1건만 확인됐다.",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/announcements/feed/",
+        "https://www.cncf.io/blog/2026/10/26/isolation-security-scale/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "최근 24~72시간 구간에서 HN RSS, 긱뉴스 RSS, Reddit Atom 피드를 검토해 보안·에이전트 실행·개발도구 관련 고신호 링크를 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-27 08시 기준 GitHub weekly Trending Top10을 캡처했고, 소개 이력 미등재 저장소는 multica-ai/andrej-karpathy-skills와 TauricResearch/TradingAgents 2건이었다.",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://raw.githubusercontent.com/multica-ai/andrej-karpathy-skills/main/README.md",
+        "https://raw.githubusercontent.com/TauricResearch/TradingAgents/main/README.md"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 기준(2026-04-27 이후)과 최근 7일 중복 제외를 적용해 5편을 선정했고, arXiv HTML 본문에서 방법·실험·한계 구간을 확인했다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.32813",
+        "https://arxiv.org/abs/2610.32752",
+        "https://arxiv.org/abs/2610.32770",
+        "https://arxiv.org/abs/2610.32955",
+        "https://arxiv.org/abs/2610.32851"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-27",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50251695",
+        "https://news.hada.io/topic?id=36068",
+        "https://github.com/microsoft/pylance-release/blob/main/docs/tsp/type-server-protocol.md"
+      ],
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": "Type Server Protocol 공개: Python 타입 분석 JSON-RPC 인터페이스",
+      "url": "https://github.com/microsoft/pylance-release/blob/main/docs/tsp/type-server-protocol.md"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50250375",
+        "https://blog.cloudflare.com/kv-cache-exposure-remediation/"
+      ],
+      "tags": [
+        "llm",
+        "security"
+      ],
+      "title": "Cloudflare Workers AI GLM-5.3 KV cache 노출 사고 분석",
+      "url": "https://blog.cloudflare.com/kv-cache-exposure-remediation/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50251572",
+        "https://magazine.sebastianraschka.com/p/building-reasoning-models"
+      ],
+      "tags": [
+        "llm",
+        "reasoning"
+      ],
+      "title": "Sebastian Raschka의 reasoning model from-scratch 코스 공개",
+      "url": "https://magazine.sebastianraschka.com/p/building-reasoning-models"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=36062",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xg78oq/i_now_have_definitive_proofs_that_my_qwen_flash/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "오픈웨이트 모델 원격 전송 의심 행위 조사 이슈 확산",
+      "url": "https://news.hada.io/topic?id=36062"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xfovxr/researchers_from_stanford_and_uc_berkeley/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "TokenGate 기반 장문맥 prefill 가속(최대 11.3x) 커뮤니티 주목",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1xfovxr/researchers_from_stanford_and_uc_berkeley/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xft6ot/potential_bug_gke_anetd_mtu_shrinking_leads_to/"
+      ],
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "networking"
+      ],
+      "title": "GKE Dataplane V2 anetd MTU 축소로 인한 네트워크 장애 사례",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xft6ot/potential_bug_gke_anetd_mtu_shrinking_leads_to/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1xfszv3/from_27_minutes_to_4_cutting_ci_build_time_by_85/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "CI 빌드 시간 85% 단축 사례 공유",
+      "url": "https://www.reddit.com/r/programming/comments/1xfszv3/from_27_minutes_to_4_cutting_ci_build_time_by_85/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1xfu0wk/pharo_14_released/"
+      ],
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": "Pharo 14 릴리스 토론",
+      "url": "https://www.reddit.com/r/programming/comments/1xfu0wk/pharo_14_released/"
+    }
+  ],
+  "generated_at": "2026-10-27T08:05:40+09:00",
+  "github_featured": [
+    "multica-ai/andrej-karpathy-skills",
+    "TauricResearch/TradingAgents"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-26T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 12680
+      },
+      {
+        "rank": 2,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 3241
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 2631
+      },
+      {
+        "rank": 4,
+        "repository": "anomalyco/opencode",
+        "weekly_stars": 6857
+      },
+      {
+        "rank": 5,
+        "repository": "stablyai/orca",
+        "weekly_stars": 9828
+      },
+      {
+        "rank": 6,
+        "repository": "heygen-com/hyperframes",
+        "weekly_stars": 5633
+      },
+      {
+        "rank": 7,
+        "repository": "android/skills",
+        "weekly_stars": 1317
+      },
+      {
+        "rank": 8,
+        "repository": "Graphify-Labs/graphify",
+        "weekly_stars": 6868
+      },
+      {
+        "rank": 9,
+        "repository": "akitaonrails/ai-memory",
+        "weekly_stars": 3541
+      },
+      {
+        "rank": 10,
+        "repository": "Comfy-Org/ComfyUI",
+        "weekly_stars": 4648
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-27T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 15072
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 2790
+      },
+      {
+        "rank": 3,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 2987
+      },
+      {
+        "rank": 4,
+        "repository": "anomalyco/opencode",
+        "weekly_stars": 5921
+      },
+      {
+        "rank": 5,
+        "repository": "stablyai/orca",
+        "weekly_stars": 9622
+      },
+      {
+        "rank": 6,
+        "repository": "Graphify-Labs/graphify",
+        "weekly_stars": 6903
+      },
+      {
+        "rank": 7,
+        "repository": "android/skills",
+        "weekly_stars": 1070
+      },
+      {
+        "rank": 8,
+        "repository": "akitaonrails/ai-memory",
+        "weekly_stars": 3254
+      },
+      {
+        "rank": 9,
+        "repository": "multica-ai/andrej-karpathy-skills",
+        "weekly_stars": 2937
+      },
+      {
+        "rank": 10,
+        "repository": "TauricResearch/TradingAgents",
+        "weekly_stars": 2461
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "HarnessMM: Guarded Decision Reuse for Harness Token Efficiency",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.32813"
+  },
+  "papers": [
+    {
+      "abstract_summary": "HarnessMM은 도구 피드백 이후에도 하네스가 불필요하게 reasoning callback을 반복 호출하는 비용 문제를 다룬다. 저자들은 actor 모델을 재학습하지 않고, 모델-도구 경계에서 검증 가능한 결정 재사용을 수행하는 실행 계층 최적화를 제안했다. 목표는 품질 저하 없이 task당 토큰 사용량을 줄이는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 HumanEval에서 Codex 성공률 90.82%를 유지하면서 tokens/task를 66.72k에서 47.02k로 29.54% 줄였다고 보고한다. DeepSeek Harness에서는 성공률이 71.43%에서 85.71%로 상승했고 tokens/task는 96.28k에서 11.62k로 87.93% 감소했다. MBPP ablation에서도 단일사용 그래프 대비 26.91%, retained callback 대비 19.52% 비용 절감이 제시됐다.",
+      "first_published": "2026-10-23",
+      "id": "arxiv:2610.32813",
+      "limitations": "결정 재사용의 안정성은 가드 설계 품질과 unsupported evidence 처리 규칙에 의존한다. 새로운 의미 결정이 자주 등장하는 도메인에서는 actor fallback 비율이 높아져 절감 폭이 축소될 수 있으며, 하네스 계측 비용 자체에 대한 추가 운영 측정이 필요하다.",
+      "method": "프레임워크는 Executable Decision Graph로 이전 결정의 액션, 리터럴 인자, 인과 의존성, 공개 가드를 저장한다. Guarded Decision Reuse가 수신된 receipt와 가드를 대조해 재사용 가능 여부를 판정하고, Certified Callback Substitution이 안전한 경우 기존 느린 callback을 대체 실행한다. 재사용 불가 사례나 선택자 abstention에서는 원래 actor 경로로 즉시 복귀하며, RSI 루프가 companion harness 구성을 반복 개선한다.",
+      "practical_value": "도구 호출 빈도가 높은 코딩/운영 에이전트에서 모델 변경 없이 하네스 층만 조정해 비용과 지연을 낮출 수 있는 실천 경로를 제공한다. 기존 에이전트 스택에 점진적으로 붙일 수 있어 도입 장벽이 낮다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.32813",
+        "https://arxiv.org/html/2610.32813v1",
+        "https://arxiv.org/pdf/2610.32813v1"
+      ],
+      "tags": [
+        "coding-agent",
+        "harness",
+        "performance"
+      ],
+      "title": "HarnessMM: Recursive Self-Improvement for Harness Token Efficiency",
+      "topics": [
+        "harness optimization",
+        "decision reuse",
+        "token efficiency",
+        "recursive self-improvement"
+      ],
+      "url": "https://arxiv.org/abs/2610.32813"
+    },
+    {
+      "abstract_summary": "ActionRAG는 에이전트 장기 메모리에서 초기 similarity 점수에 과도하게 의존하면 사실 관계가 어긋난 증거를 고정하는 문제를 다룬다. 저자들은 인덱싱 단계의 엔터티 분리/병합 오류와 질의 단계의 증거 갱신 실패를 함께 교정하는 그래프 메모리 아키텍처를 제안했다. 핵심은 검색 후 그래프 구조를 이용해 증거 점수를 재평가하는 것이다.",
+      "evidence": "full_text",
+      "findings": "MemoryAgentBench의 8개 deterministic scoring column 평균에서 ActionRAG는 55.1 정확도를 기록해 가장 강한 retrieval 기반 베이스라인 대비 5.4포인트 향상을 보고했다. 동시에 질의당 평균 synthesis cost는 보고된 4개 cost column에서 0.001달러 미만으로 유지됐고, retrieval-side p99 구성요소 합은 Apple Silicon 기준 440.7ms로 제시됐다. 저자들은 정확도 개선과 비용 제약을 함께 달성한 점을 강조한다.",
+      "first_published": "2026-10-23",
+      "id": "arxiv:2610.32752",
+      "limitations": "그래프 구축 품질이 낮거나 엔터티 정규화 정책이 도메인 어휘를 충분히 반영하지 못하면 확산 단계가 오히려 오류를 전파할 수 있다. 또한 보고된 지연은 특정 하드웨어 및 구현 조건에 한정되어 운영 환경에서 별도 성능 재측정이 필요하다.",
+      "method": "인덱싱 파이프라인에서 타입 라벨 정합성과 계층형 entity resolution을 수행한 뒤, 질의 시 dual-channel entity/triple retrieval로 초기 증거 집합을 만든다. 이후 bounded local graph에서 query-conditioned receiver-normalized diffusion을 적용해 triple 점수를 갱신한다. seed protection, hub-penalized flux, triple materialization으로 직접 증거 보존과 누락 연결 복원을 동시에 관리한다.",
+      "practical_value": "지식 관계 의존 질의가 많은 에이전트 서비스에서 벡터 검색 단독 경로를 보완해 증거 일관성을 높일 수 있다. 메모리 검색의 정밀도와 비용을 함께 관리해야 하는 엔터프라이즈 적용에 유용하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.32752",
+        "https://arxiv.org/html/2610.32752v1",
+        "https://arxiv.org/pdf/2610.32752v1"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "retrieval"
+      ],
+      "title": "ActionRAG: Evidence-Refining Graph Diffusion for Long-Term Memory in LLM Agents",
+      "topics": [
+        "long-term memory",
+        "graph diffusion",
+        "evidence refinement",
+        "agent retrieval"
+      ],
+      "url": "https://arxiv.org/abs/2610.32752"
+    },
+    {
+      "abstract_summary": "이 논문은 on-policy self-distillation이 여전히 정답 라벨이나 큐레이션된 문제 세트에 의존한다는 한계를 지적한다. 저자들은 고수준 토픽 설명만 입력으로 받아 모델이 질문·정답·추론 시연을 스스로 생성하는 data-free self-training 프레임워크로 문제를 재정의했다. 목표는 외부 교사 없이도 다중 도메인 성능을 안정적으로 끌어올리는 것이다.",
+      "evidence": "full_text",
+      "findings": "저자들은 완전 합성 supervision만으로도 여러 언어 벤치마크와 VQA에서 일관된 self-improvement가 관찰됐다고 보고한다. 특히 self-trained하지 않은 도메인의 기존 능력을 유지하면서 타깃 도메인 성능을 끌어올리는 결과를 제시했다. 이는 foundation model 내부 잠재 역량을 외부 라벨 없이 증폭할 수 있다는 주장으로 이어진다.",
+      "first_published": "2026-10-23",
+      "id": "arxiv:2610.32770",
+      "limitations": "합성 데이터 품질이 모델 초기 능력에 종속되므로 약한 베이스 모델에서는 오류가 자기증폭될 위험이 있다. 또한 외부 정답 신호가 없는 만큼, 장기 반복 시 성능 착시를 방지하기 위한 독립 검증 세트 관리가 필수다.",
+      "method": "프레임워크는 topic-seeded curriculum generation, pseudo-verification, consensus gate를 결합해 합성 샘플의 품질을 필터링한다. 이후 on-policy self-distillation 루프에서 privileged reasoning demonstration을 이용해 반복 갱신하고, 반복 단계마다 성능 변화를 추적한다. 텍스트와 멀티모달(VQA) 설정을 포함해 도메인 전이 성능을 평가했다.",
+      "practical_value": "라벨 수집 비용이 큰 도메인에서 최소한의 주제 힌트로 post-training 실험을 시작할 수 있는 경량 경로를 제공한다. 내부 데이터 반출이 어려운 환경의 폐쇄형 개선 루프 설계에도 활용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.32770",
+        "https://arxiv.org/html/2610.32770v1",
+        "https://arxiv.org/pdf/2610.32770v1"
+      ],
+      "tags": [
+        "fine-tuning",
+        "llm",
+        "multimodal"
+      ],
+      "title": "On-Policy Self-Training: Data-Free Self-Improvement in Large Language Models",
+      "topics": [
+        "self-distillation",
+        "data-free post-training",
+        "synthetic curriculum",
+        "multimodal improvement"
+      ],
+      "url": "https://arxiv.org/abs/2610.32770"
+    },
+    {
+      "abstract_summary": "Foyer 연구는 개인 메일 에이전트의 라벨이 시스템 자체 출력으로 오염되어 실제 오류율이 측정되지 않는 문제를 다룬다. 저자들은 층화 샘플링, 동결 스냅샷, thread-grouped split, 사전가설 등록, 사람 라벨을 결합한 측정 프로토콜을 먼저 구축한 뒤 모델 비교를 수행했다. 핵심 메시지는 학습 전에 측정 체계를 고정해야 한다는 점이다.",
+      "evidence": "full_text",
+      "findings": "운영 규칙은 message type에서 28%로 다수 클래스(58%)보다 낮아 주요 표시 필드가 무의미했다고 보고됐다. 약 200개 라벨 조건에서 로지스틱 회귀가 type 0.79, urgency 0.74, needs-reply 0.83, is-noise 0.90으로 필드 정확도 최고를 기록했지만 희소 클래스 예측은 취약했다. 또한 가장 정확한 시스템도 행동 합성 시 action-needed 메일을 18% 놓치는 반면, 노이즈 확률 임계값 조정으로 해당 비율을 절반 수준으로 낮춰 총비용을 최소화할 수 있었다.",
+      "first_published": "2026-10-23",
+      "id": "arxiv:2610.32955",
+      "limitations": "데이터가 개인 inbox 도메인과 특정 언어 조합에 집중되어 다른 조직 메일 분포로 일반화할 때 성능 편차가 발생할 수 있다. 또한 라벨링 비용과 사람 검토 루프 유지 비용이 실운영 확장성의 제약으로 남는다.",
+      "method": "739개 실사용 이탈리아어/영어 메일(비편향 231 + adversarial 500)에 대해 규칙 기반, TF-IDF+로지스틱 회귀, 로컬/호스티드 decision model, 생성형 LLM을 thread-grouped cross-validation으로 비교했다. 메일 타입, 긴급도, 답장 필요 여부, 노이즈 여부를 독립 필드로 평가하고, 최종적으로 행동 비용 기반 의사결정 지표를 산출했다. 관계 라벨은 단일 메일이 아닌 contact graph에서 복원 가능성도 별도 실험했다.",
+      "practical_value": "메일/티켓 자동화 팀은 모델 학습보다 먼저 ground-truth 프로토콜과 행동비용 함수를 확정해야 한다는 실행 원칙을 얻는다. 정확도 단일 지표 대신 action loss 기반 운영 임계값 설계에 직접 적용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.32955",
+        "https://arxiv.org/html/2610.32955v1",
+        "https://arxiv.org/pdf/2610.32955v1"
+      ],
+      "tags": [
+        "developer-tools",
+        "evaluation",
+        "llm"
+      ],
+      "title": "Measure Before You Train: Typed Decision Models vs. a Classical Baseline vs. a Generative LLM for Routing a Personal Multilingual Inbox",
+      "topics": [
+        "inbox routing",
+        "typed decision models",
+        "measurement protocol",
+        "action cost"
+      ],
+      "url": "https://arxiv.org/abs/2610.32955"
+    },
+    {
+      "abstract_summary": "이 논문은 엔터프라이즈 에이전트가 실제로 필요한 것은 문서 텍스트 자체보다 시스템 행동 로직인데, 평면 벡터 검색이 서비스 간 유사 규칙을 자주 혼동한다는 문제를 다룬다. 저자들은 7개 에이전트 리버스엔지니어링 파이프라인으로 18개 서비스·241개 저장소를 분석한 뒤, 검색 전에 구조를 정렬하는 knowledge layer를 제안했다. 핵심은 콘텐츠 온톨로지가 아니라 아티팩트 수준 provenance를 우선 인덱싱하는 점이다.",
+      "evidence": "full_text",
+      "findings": "저자들은 제안한 knowledge layer를 1주 내 구축했고 신규 서비스도 규약 기반으로 편입 가능했다고 보고한다. 운영 적용에서 개발자 검증을 거쳐 100건 이상 프로덕션 결함의 원인 분석과 해결을 지원했고, 35건의 릴리스 회귀 실패를 특정 규칙·서비스로 귀속했다고 제시한다. 이는 retrieval 품질을 유사도 미세조정이 아닌 구조적 분리로 개선한 사례로 해석된다.",
+      "first_published": "2026-10-23",
+      "id": "arxiv:2610.32851",
+      "limitations": "artifact 메타데이터 품질이 낮거나 서비스 규약이 일관되지 않으면 구조적 분리 이점이 약화될 수 있다. 또한 제시된 성과는 특정 엔터프라이즈 SDLC 맥락 기반이라 조직 규모·데이터 거버넌스 수준에 따라 재현 난도가 달라질 수 있다.",
+      "method": "프레임워크는 self-describing catalog, sparse metadata registry, artifact 간 navigation hypergraph로 구성된다. 질의는 먼저 artifact identifier로 해석되어 검색 범위를 구조적으로 제한한 다음 벡터 검색이 수행된다. 즉 잘못된 서비스의 유사 규칙은 낮은 순위가 아니라 검색 후보 집합 자체에서 배제되도록 설계했다.",
+      "practical_value": "멀티에이전트 RAG를 운영하는 기업은 벡터 인덱스 확장 전에 provenance 중심 지식 계층을 도입해 교차서비스 오검색을 줄일 수 있다. 특히 회귀 원인 추적과 규칙 수준 감사가 중요한 팀에서 실무 효용이 크다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.32851",
+        "https://arxiv.org/html/2610.32851v1",
+        "https://arxiv.org/pdf/2610.32851v1"
+      ],
+      "tags": [
+        "multi-agent",
+        "rag",
+        "retrieval"
+      ],
+      "title": "Reimagining Enterprise RAG for Multi-Agent Systems: A Knowledge Layer That Organizes Before It Retrieves",
+      "topics": [
+        "enterprise RAG",
+        "artifact ontology",
+        "multi-agent reverse engineering"
+      ],
+      "url": "https://arxiv.org/abs/2610.32851"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "행동 가이드 중심 저장소 · 자동 강제 장치 부재",
+      "novelty": "new_entry",
+      "rank": 9,
+      "repository": "multica-ai/andrej-karpathy-skills",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/multica-ai/andrej-karpathy-skills",
+        "https://raw.githubusercontent.com/multica-ai/andrej-karpathy-skills/main/README.md"
+      ],
+      "summary": "Karpathy 관찰 기반 Claude Code 가이드 · 단일 CLAUDE.md 운영 원칙 패키지",
+      "tags": [
+        "coding-agent",
+        "context-engineering",
+        "developer-tools"
+      ],
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "use_case": "코딩 에이전트 품질 편차가 큰 팀에서 가정 명시·단순화·수술식 변경·검증 루프를 공통 실행 규약으로 묶어 프롬프트 운영 변동성을 줄일 수 있다.",
+      "why_now": "weekly Top10 신규 진입 · 2,937 stars this week"
+    },
+    {
+      "caution": "연구용 프레임워크 명시 · 실거래 성능 보장 아님",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "TauricResearch/TradingAgents",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/TauricResearch/TradingAgents",
+        "https://raw.githubusercontent.com/TauricResearch/TradingAgents/main/README.md"
+      ],
+      "summary": "멀티에이전트 금융 트레이딩 프레임워크 · 분석·리서치·리스크 역할 분리",
+      "tags": [
+        "developer-tools",
+        "multi-agent",
+        "open-source"
+      ],
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "use_case": "다중 에이전트 의사결정 흐름을 실험하려는 팀이 백테스트·역할 분리·리포트 생성이 포함된 오픈소스 참조 구조로 워크플로를 빠르게 프로토타이핑할 수 있다.",
+      "why_now": "weekly Top10 신규 진입 · 2,461 stars this week"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘 Technical Spotlight는 HarnessMM이다. 이 연구는 도구 피드백 이후에도 하네스가 동일 결정을 반복 추론하는 토큰 낭비를 문제로 삼고, 기존 actor 가중치는 고정한 채 실행 경계에서 결정 재사용만 최적화하는 경로를 제시한다. 핵심은 새 모델 학습보다 하네스 실행 구조를 바꿔 비용을 줄이는 접근이다.",
+    "저자들은 Executable Decision Graph로 과거 결정의 인자·의존성·가드를 저장하고, Guarded Decision Reuse와 Certified Callback Substitution으로 후속 reasoning callback을 안전하게 대체한다. HumanEval에서 Codex 성공률 90.82%를 유지하며 task당 토큰을 66.72k에서 47.02k로 29.54% 줄였고, DeepSeek Harness에서는 성공률 71.43%→85.71%와 토큰 96.28k→11.62k(87.93% 절감)를 함께 보고했다. MBPP 실험에서도 단일 사용 그래프 대비 26.91%, retained callback 대비 19.52% 추가 비용 절감을 제시했다.",
+    "이 결과는 에이전트 성능 개선을 모델 교체가 아니라 하네스 재구성으로 달성할 수 있다는 실무 신호다. 특히 도구 호출이 많은 코딩·운영 에이전트에서 반복 추론 구간을 선별적으로 제거해 비용과 지연을 함께 줄일 수 있다. 다만 결정 재사용 품질은 가드 정확도와 지원되지 않는 증거 처리 정책에 의존하므로, 운영 도입 전 실패 복귀 경로 검증이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "TradingAgents가 주간 Trending Top10 신규 진입하며 멀티에이전트 금융 분석 프레임워크 수요를 반영했습니다.",
+        "url": "https://github.com/TauricResearch/TradingAgents"
+      },
+      {
+        "section": "papers",
+        "text": "ActionRAG가 그래프 확산 기반 증거 재평가로 장기 메모리 검색 정확도를 5.4포인트 높였다고 보고했습니다.",
+        "url": "https://arxiv.org/abs/2610.32752"
+      },
+      {
+        "section": "cncf",
+        "text": "CNCF가 격리·보안·확장성의 균형을 다루는 신규 운영 가이드를 공개했습니다.",
+        "url": "https://www.cncf.io/blog/2026/10/26/isolation-security-scale/"
+      }
+    ],
+    "spotlight": [
+      "HarnessMM은 도구 피드백 이후 반복되는 reasoning callback을 가드 기반 결정 재사용으로 치환해 하네스 비용을 줄이는 방법을 제시했다. HumanEval에서 정확도 90.82%를 유지하며 토큰 29.54% 절감, DeepSeek Harness에선 성공률 개선과 87.93% 토큰 절감을 동시에 보고했다. 다만 가드 설계와 callback 복귀 경로 검증이 미흡하면 재사용 오류가 누적될 수 있다."
+    ]
+  }
+}
