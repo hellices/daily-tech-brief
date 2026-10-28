@@ -1,0 +1,525 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "GPU·배치 워크로드를 운영하는 쿠버네티스 팀은 큐 격리와 공정 자원 배분 정책을 재검토할 근거를 얻는다.",
+      "published": "2026-10-28",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/28/volcano-v1-16-released-namespacequeue-fairshare-and-a-broader-hypernode-ecosystem/"
+      ],
+      "summary": "Volcano v1.16 릴리스가 NamespaceQueue와 fairshare 개선, HyperNode 생태계 확장을 포함해 배치 스케줄링 기능 강화를 발표했다.",
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "release"
+      ],
+      "title": "Volcano v1.16 Released: NamespaceQueue, fairshare, and a broader HyperNode ecosystem",
+      "url": "https://www.cncf.io/blog/2026/10/28/volcano-v1-16-released-namespacequeue-fairshare-and-a-broader-hypernode-ecosystem/"
+    },
+    {
+      "category": "governance and ecosystem program",
+      "impact": "플랫폼 조직은 클라우드 네이티브 교육·채용 체계에서 커뮤니티 인증 경로를 활용하는 실행 모델을 점검할 수 있다.",
+      "published": "2026-10-27",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/27/over-500-golden-kubestronauts-the-evolving-standard-for-cloud-native-mastery/"
+      ],
+      "summary": "CNCF가 Golden Kubestronaut 프로그램 참여자가 500명을 넘었다고 발표하며 학습·인증 프로그램의 확장 현황을 공유했다.",
+      "tags": [
+        "cloud-native",
+        "governance",
+        "kubernetes"
+      ],
+      "title": "Over 500 Golden Kubestronauts: The evolving standard for cloud native mastery",
+      "url": "https://www.cncf.io/blog/2026/10/27/over-500-golden-kubestronauts-the-evolving-standard-for-cloud-native-mastery/"
+    },
+    {
+      "category": "operational architecture guidance",
+      "impact": "AI/멀티테넌트 플랫폼 팀은 성능 튜닝과 함께 격리 경계·보안 모델을 동시 설계하는 기준을 강화할 수 있다.",
+      "published": "2026-10-26",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/26/isolation-security-scale/"
+      ],
+      "summary": "CNCF 블로그가 멀티테넌트 환경에서 격리·보안·확장성 트레이드오프를 운영 관점에서 정리했다.",
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "security"
+      ],
+      "title": "Isolation. Security. Scale.",
+      "url": "https://www.cncf.io/blog/2026/10/26/isolation-security-scale/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-26~2026-10-29 기간 조건에서 CNCF blog의 의미 있는 변경 3건을 확인했으며 announcements는 신규 항목이 없었다.",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/announcements/feed/",
+        "https://www.cncf.io/blog/2026/10/28/volcano-v1-16-released-namespacequeue-fairshare-and-a-broader-hypernode-ecosystem/",
+        "https://www.cncf.io/blog/2026/10/27/over-500-golden-kubestronauts-the-evolving-standard-for-cloud-native-mastery/",
+        "https://www.cncf.io/blog/2026/10/26/isolation-security-scale/"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "최근 24~72시간 구간에서 HN RSS, 긱뉴스 RSS, Reddit Atom 피드를 교차 검토해 모델 보안·에이전트 평가·개발 인프라 이슈를 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-29 08시(KST) 기준 weekly Trending Top10을 캡처했고, 소개 이력 미등재 저장소는 Leonxlnx/taste-skill 1건이었다.",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/Leonxlnx/taste-skill",
+        "https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/README.md"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 기준(2026-04-29 이후)과 최근 7일 중복 제외를 적용해 5편을 선정했고, arXiv HTML/PDF 본문에서 방법·실험·한계 구간을 확인했다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.37657",
+        "https://arxiv.org/abs/2610.37461",
+        "https://arxiv.org/abs/2610.37648",
+        "https://arxiv.org/abs/2610.37405",
+        "https://arxiv.org/abs/2610.37281"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-29",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50276792",
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+      ],
+      "tags": [
+        "inference",
+        "llm"
+      ],
+      "title": "Gemini 4 Carbon 공개",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50275626",
+        "https://news.hada.io/topic?id=36188",
+        "https://surgehq.ai/blog/dayjob-tax"
+      ],
+      "tags": [
+        "agent",
+        "evaluation"
+      ],
+      "title": "DAYJOB: Tax로 전문 세무 과제 50개 기반 에이전트 평가",
+      "url": "https://surgehq.ai/blog/dayjob-tax"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50276998",
+        "https://news.hada.io/topic?id=36185",
+        "https://nullpt.rs/fingerprinting-bioweapons"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "브라우저 지문 수집 스크립트 악용 사례 분석",
+      "url": "https://nullpt.rs/fingerprinting-bioweapons"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1xhbl06/python_jettisons_the_native_jit_at_least_for_now/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance",
+        "release"
+      ],
+      "title": "Python 실험적 JIT 제거 논의 재점화",
+      "url": "https://www.reddit.com/r/programming/comments/1xhbl06/python_jettisons_the_native_jit_at_least_for_now/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1xi16s3/ifstatement_that_caused_http2shell_was_itself/"
+      ],
+      "tags": [
+        "release",
+        "security"
+      ],
+      "title": "HTTP2Shell 연관 패치 공개 방식 논쟁",
+      "url": "https://www.reddit.com/r/programming/comments/1xi16s3/ifstatement_that_caused_http2shell_was_itself/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/MachineLearning/comments/1xhnoo2/a_harness_that_records_where_an_llm_agents_tool/"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "tool-use"
+      ],
+      "title": "LLM 에이전트 tool 인자 출처 추적 하네스 공유",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1xhnoo2/a_harness_that_records_where_an_llm_agents_tool/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xgqjt9/passwordless_postgresql_on_kubernetes_with/"
+      ],
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "security"
+      ],
+      "title": "CloudNativePG + workload identity 기반 무비밀번호 Postgres 운영 사례",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xgqjt9/passwordless_postgresql_on_kubernetes_with/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xho98v/quick_breakdown_of_containers_vs_gvisor_vs_kata/"
+      ],
+      "tags": [
+        "containers",
+        "kubernetes",
+        "security"
+      ],
+      "title": "컨테이너·gVisor·Kata·VM 격리 특성 비교 토론",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xho98v/quick_breakdown_of_containers_vs_gvisor_vs_kata/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xhouci/ama_announcement_moss_the_team_behind_mossimage/"
+      ],
+      "tags": [
+        "llm",
+        "multimodal"
+      ],
+      "title": "MOSS 팀 AMA 공지: MOSS-Image·MOSS-TTS 로드맵",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1xhouci/ama_announcement_moss_the_team_behind_mossimage/"
+    }
+  ],
+  "generated_at": "2026-10-29T08:12:40+09:00",
+  "github_featured": [
+    "Leonxlnx/taste-skill"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-28T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 16593
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 2822
+      },
+      {
+        "rank": 3,
+        "repository": "AgriciDaniel/claude-seo",
+        "weekly_stars": 2546
+      },
+      {
+        "rank": 4,
+        "repository": "multica-ai/andrej-karpathy-skills",
+        "weekly_stars": 3286
+      },
+      {
+        "rank": 5,
+        "repository": "TauricResearch/TradingAgents",
+        "weekly_stars": 3437
+      },
+      {
+        "rank": 6,
+        "repository": "Graphify-Labs/graphify",
+        "weekly_stars": 7183
+      },
+      {
+        "rank": 7,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 2683
+      },
+      {
+        "rank": 8,
+        "repository": "anomalyco/opencode",
+        "weekly_stars": 5070
+      },
+      {
+        "rank": 9,
+        "repository": "stablyai/orca",
+        "weekly_stars": 9241
+      },
+      {
+        "rank": 10,
+        "repository": "android/skills",
+        "weekly_stars": 823
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-29T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 16388
+      },
+      {
+        "rank": 2,
+        "repository": "AgriciDaniel/claude-seo",
+        "weekly_stars": 3081
+      },
+      {
+        "rank": 3,
+        "repository": "multica-ai/andrej-karpathy-skills",
+        "weekly_stars": 4039
+      },
+      {
+        "rank": 4,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 2789
+      },
+      {
+        "rank": 5,
+        "repository": "TauricResearch/TradingAgents",
+        "weekly_stars": 4882
+      },
+      {
+        "rank": 6,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 6713
+      },
+      {
+        "rank": 7,
+        "repository": "Graphify-Labs/graphify",
+        "weekly_stars": 7268
+      },
+      {
+        "rank": 8,
+        "repository": "Leonxlnx/taste-skill",
+        "weekly_stars": 3941
+      },
+      {
+        "rank": 9,
+        "repository": "ruvnet/ruflo",
+        "weekly_stars": 2296
+      },
+      {
+        "rank": 10,
+        "repository": "anomalyco/opencode",
+        "weekly_stars": 4334
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Heads of Security: Attention-Gated Instruction-Data Separation",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.37657"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 에이전트가 외부 텍스트를 처리할 때 지시와 데이터를 분리하지 못해 인젝션을 따르는 문제를 다룬다. 저자들은 Heads of Security(HoS)라는 per-head attention gate를 도입해 신뢰 토큰과 비신뢰 토큰 사이의 주의 분배를 학습시키고, 비신뢰 입력을 읽으면서도 실행 지시는 차단하도록 설계했다. 목표는 보안 강화를 위해 모델 전체를 재구성하지 않고, 작은 구조적 개입으로 공격 성공률을 낮추는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 RL-Hammer 공격에서 GPT-OSS-20B가 97% ASR, SecAlign이 85% ASR까지 올라간 반면 HoS는 10%로 억제됐다고 보고한다. 또한 HoS에 맞춰 강화한 Claudini 공격은 동일 ASR 도달에 비교군 대비 약 3배 FLOPs가 필요했다고 제시한다. 정적 공격 기반 agentic 벤치마크에서는 HoS와 SecAlign이 유사 성능을 보였고, ASIDE는 tool-use utility가 10% 수준으로 낮게 보고됐다.",
+      "first_published": "2026-10-27",
+      "id": "arxiv:2610.37657",
+      "limitations": "저자들은 instruction-data separation이 단독 완결 방어가 아니라고 명시한다. 어떤 소스를 신뢰할지 결정하는 정책, 사용자 권한 경계, 합법적 외부 지시 수행 시나리오(예: 설치 절차 실행)는 별도 계층에서 해결해야 한다. 따라서 실제 운영에서는 입력 신뢰도 분류 정책과 함께 결합되어야 한다.",
+      "method": "HoS는 각 attention head에 학습된 게이트를 부여해 trusted/untrusted 토큰으로의 주의량을 재분배한다. 실험은 Llama-3.3-70B-Instruct와 GPT-OSS-20B에서 SecAlign++(파인튜닝 기반), ASIDE(구조 기반 분리)와 비교했으며, RL-Hammer 블랙박스 공격과 Claudini 화이트박스 공격을 포함한 적응형 공격 설정을 사용했다. utility 평가는 표준 객관식 벤치마크와 agentic prompt injection 벤치마크를 함께 측정했다.",
+      "practical_value": "도구 호출형 에이전트를 운영하는 팀은 프롬프트 템플릿 강화만으로 해결되지 않는 인젝션 리스크를 모델 내부 게이팅으로 보완할 수 있다. 특히 고가치 액션(환불·계정 변경·시스템 명령) 전 단계에서 신뢰 경계를 엄격히 두는 보안 아키텍처 설계에 직접 참고할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.37657",
+        "https://arxiv.org/html/2610.37657v1",
+        "https://arxiv.org/pdf/2610.37657v1"
+      ],
+      "tags": [
+        "agent",
+        "reasoning",
+        "security"
+      ],
+      "title": "Heads of Security: Learned Attention Gates Improve Prompt Injection Robustness",
+      "topics": [
+        "prompt injection defense",
+        "attention gating",
+        "instruction-data separation"
+      ],
+      "url": "https://arxiv.org/abs/2610.37657"
+    },
+    {
+      "abstract_summary": "Concordat은 LLM 에이전트의 행동 규칙을 프롬프트 문장에만 맡기지 않고, 유한 상태 프로토콜로 강제하는 런타임 라이브러리를 제안한다. 모델은 현재 상태에서 합법적인 도구만 호출할 수 있고, 범위를 벗어난 호출은 부작용 이전에 차단된다. 핵심은 정책 준수 여부를 모델의 자율성에 위임하지 않고 인터페이스 수준 제약으로 바꾸는 데 있다.",
+      "evidence": "full_text",
+      "findings": "표준 에이전트는 gpt-4.1에서 50개 중 13건, Claude Haiku 5.5에서는 128회 실행 중 29건에서 명시 확인 없이 상태 변경을 수행했다. Concordat 에이전트는 해당 위반을 0건으로 억제했고, 태스크 성공률은 유의미한 하락 없이 유지됐다고 보고됐다. 또한 tau-bench 기본 보상은 이런 규칙 위반 대부분을 포착하지 못했다고 저자들이 명시했다.",
+      "first_published": "2026-10-27",
+      "id": "arxiv:2610.37461",
+      "limitations": "프로토콜 강제의 비용은 제약 자체보다 차단 후 모델의 대화 전략(설명/재질의)에서 발생할 수 있다. 도메인별 규칙 정의 품질이 낮으면 과잉 차단이나 사용자 경험 저하가 생길 수 있으며, 복잡한 다중 핸드오프 워크플로에서는 상태 모델링 유지 비용이 증가한다. 따라서 프로토콜 설계·검증 체계가 함께 필요하다.",
+      "method": "프레임워크는 typestate/session type 개념을 Python 에이전트 인터페이스에 적용해 상태 전이를 정의하고 검증한다. 평가는 tau-bench 항공 50개 태스크에 '변경 전 명시적 yes 확인' 규칙을 추가한 시뮬레이션 고객 압박 시나리오에서 수행했다. 표준 에이전트와 Concordat 에이전트를 gpt-4.1, Claude Haiku 5.5 조건에서 비교해 규칙 위반과 태스크 성공률을 함께 측정했다.",
+      "practical_value": "고위험 액션을 수행하는 고객지원·금융·운영 자동화 에이전트에서 '행동 가능 범위'를 코드로 고정하는 안전장치로 활용할 수 있다. 감사 가능성과 규정 준수 증빙이 필요한 환경에서 프롬프트 규칙보다 재현성 높은 통제 방법을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.37461",
+        "https://arxiv.org/html/2610.37461v1",
+        "https://arxiv.org/pdf/2610.37461v1"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "security"
+      ],
+      "title": "Concordat: Typed Sessions for LLM Agents",
+      "topics": [
+        "typed protocol enforcement",
+        "session types",
+        "runtime safety"
+      ],
+      "url": "https://arxiv.org/abs/2610.37461"
+    },
+    {
+      "abstract_summary": "이 연구는 도구 사용 에이전트 학습에서 데이터 '양'보다 데이터 '구성'이 어떤 영향을 주는지 정량화하려는 문제를 다룬다. 저자들은 SynthAPI 파이프라인으로 도구 종류, 태스크 종류, 데이터베이스 다양성을 제어해 대규모 합성 환경을 만든 뒤 일반화 성능과의 관계를 분석했다. 목적은 에이전트 데이터 스케일링을 경험칙이 아니라 예측 가능한 법칙으로 다루는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 데이터 예산이 커질수록 단순 태스크 수 증가보다 tool 다양성과 database 다양성 확장이 더 큰 일반화 이득을 준다고 보고한다. 또한 데이터 복잡도 상승이 성능 향상 폭을 키우며, 해당 스케일링 규칙을 따른 모델이 기존 합성 데이터 기반 선행 접근보다 4개 평가 벤치마크에서 우수했다고 제시한다. 즉 학습 샘플 수 확장만으로는 설명되지 않는 구성비 효과를 정량적으로 확인했다.",
+      "first_published": "2026-10-27",
+      "id": "arxiv:2610.37648",
+      "limitations": "연구는 합성 환경 생성 파이프라인과 선택된 벤치마크 계열에 의존하므로, 실제 운영 로그 기반 환경에서 같은 스케일링 계수가 유지되는지는 별도 검증이 필요하다. 또한 환경 생성 비용 자체가 커질 수 있어, 품질 이득과 생성 예산의 균형점을 프로젝트별로 재계산해야 한다. 복잡도 증가는 평가 안정성 저하 가능성도 동반한다.",
+      "method": "총 458,752개 태스크와 849개 학습 모델(4개 모델 크기)을 생성해 조합별 학습 곡선을 관측했다. 연구는 admissible 데이터 예산 내에서 도구 다양성·DB 다양성·태스크 수를 독립 변수로 바꾸며 downstream 벤치마크 성능을 추적했다. 이를 통해 환경 합성 구성비와 일반화 성능 간의 scaling law를 회귀 형태로 도출했다.",
+      "practical_value": "도구형 에이전트 데이터셋을 설계하는 팀이 '무작정 더 많이 생성' 대신 어떤 다양성 축을 우선 확장해야 하는지 실험 우선순위를 세우는 데 유용하다. 특히 합성 시뮬레이터를 내부 구축한 조직에서 데이터 예산 배분 정책을 수립하는 근거로 활용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.37648",
+        "https://arxiv.org/html/2610.37648v1",
+        "https://arxiv.org/pdf/2610.37648v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "tool-use"
+      ],
+      "title": "Scaling Laws for Tool-Use Agents via Controllable Environment Synthesis",
+      "topics": [
+        "tool-use scaling law",
+        "synthetic environment generation",
+        "data composition control"
+      ],
+      "url": "https://arxiv.org/abs/2610.37648"
+    },
+    {
+      "abstract_summary": "FoG는 지식그래프 기반 에이전트가 정답을 맞춰도 근거 트리플을 회수하지 못하는 문제를 다룬다. 기존 학습이 답안 정확도 중심 보상에 치우쳐 evidence coverage를 직접 학습하지 못한다는 진단에서 출발한다. 저자들은 근거를 함께 포함한 합성 질문 생성, KG 상호작용 에이전트, evidence-coverage process reward(ECPR)를 결합한 프레임워크를 제안했다.",
+      "evidence": "full_text",
+      "findings": "논문은 FoG가 3B~4B 오픈소스 에이전트에서도 더 큰 베이스라인 대비 answer accuracy와 evidence coverage를 동시에 개선했다고 보고한다. 특히 정답 성능뿐 아니라 Cov·RetQ 같은 근거 회수 지표에서 개선을 확인해, '맞는 답이지만 근거 없음' 문제를 완화했다고 제시한다. 또한 학습에 쓰지 않은 KG로의 zero-shot transfer에서도 성능 이득이 유지되는 경향을 보였다.",
+      "first_published": "2026-10-27",
+      "id": "arxiv:2610.37405",
+      "limitations": "저자들은 Wikidata 자체의 누락·노이즈·시의성 한계가 있을 때 에이전트가 올바른 경로를 따라도 실패할 수 있다고 명시한다. 그래프 내부 근거가 부족한 상황에서 외부 검색 연계가 없으면 회복력이 떨어질 수 있으며, 도메인 KG 품질 편차가 성능 재현성의 핵심 변수다. 실서비스에서는 KG 품질 관리와 외부 근거 보완 경로가 필요하다.",
+      "method": "evidence-grounded synthesis가 명시 엔터티를 검증 가능한 하위 질문으로 분해해 질문마다 지원 트리플을 내재화한다. 에이전트는 질의 과정에서 회수한 트리플을 turn별로 기록하고, ECPR이 각 근거 트리플 최초 회수 시점을 해당 행동에 귀속해 보상을 부여한다. 실험은 WikiWebQuestions, QALD10-en, GTSQA와 cross-KG 전이(WebQSP/Freebase) 조건에서 진행됐다.",
+      "practical_value": "감사 가능성이 중요한 기업 QA·규정 질의 시스템에서 '답변 정확도'와 '근거 추적성'을 동시에 최적화하는 학습 설계에 바로 적용할 수 있다. 근거 회수 과정을 행동 보상으로 환원해 정책 개선 루프를 만드는 방식은 다른 Retrieval Agent에도 확장 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.37405",
+        "https://arxiv.org/html/2610.37405v1",
+        "https://arxiv.org/pdf/2610.37405v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "retrieval"
+      ],
+      "title": "Clearing the FoG: Training KG Agents to Retrieve the Evidence Behind Their Answers",
+      "topics": [
+        "knowledge-graph agents",
+        "evidence retrieval",
+        "process reward"
+      ],
+      "url": "https://arxiv.org/abs/2610.37405"
+    },
+    {
+      "abstract_summary": "RPSD는 LLM 기반 순차 추천에서 시퀀스 단위 보상을 토큰 단위로 세밀하게 분배하지 못하는 credit-blind 문제와, 단일 사용자 신호에 갇히는 collaborative-blind 문제를 동시에 다룬다. 저자들은 privileged teacher가 학생의 on-policy 응답을 재평가하는 self-distillation에, 유사 사용자 행동을 optimal transport로 검색해 보강하는 구조를 제안했다. 목표는 추천 성능과 학습 안정성을 함께 높이는 것이다.",
+      "evidence": "full_text",
+      "findings": "저자들은 RPSD가 non-LLM 및 LLM 기반 비교군 대비 표준 설정에서 일관된 SOTA 성능을 보였다고 보고한다. 논문 본문은 단순 LLM 치환(Qwen3-4B+SFT)만으로는 강한 추천 베이스라인을 안정적으로 넘기 어렵고, retrieval-privileged 토큰 credit 설계가 성능 개선의 핵심이라고 해석한다. 교차 도메인에서는 MicroLens에서 강세를 보였지만 Netflix에서는 SFT가 약간 우세한 구간이 보고됐다.",
+      "first_published": "2026-10-27",
+      "id": "arxiv:2610.37281",
+      "limitations": "성능 이득은 privileged evidence 구성 방식과 도메인 유사도에 민감해, 타 도메인 전이에서 이득이 감소하거나 역전될 수 있다. 또한 추천 로그 품질과 후보 생성 정책에 따라 OT 검색 신호가 편향될 가능성이 있으며, 학습 복잡도 증가에 따른 운영 비용도 고려해야 한다. 따라서 배포 전 도메인별 어블레이션과 전이 리스크 검증이 필요하다.",
+      "method": "OPSD 단계에서 teacher confidence와 student confidence 차이를 이용해 공유 advantage를 토큰별 credit로 재형성한다. 여기에 시간 정보를 반영한 OT로 사용자 간 상호작용 궤적 유사도를 계산하고, diversity-aware selection으로 보완 증거를 선택해 teacher 컨텍스트를 구성한다. 실험은 다중 실제 데이터셋, 후보 집합 크기 nc=10/100 설정, 교차 도메인(MovieLens→MicroLens/Netflix) 평가를 포함한다.",
+      "practical_value": "추천형 에이전트를 운영하는 팀이 sequence-level RL의 거친 보상 신호를 세분화하고, 사용자 간 구조적 유사성을 활용한 학습 파이프라인을 설계하는 데 실용적 참고점을 제공한다. 특히 다도메인 추천 서비스를 가진 조직에서 전이 성능과 안정성 트레이드오프 분석에 유용하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.37281",
+        "https://arxiv.org/html/2610.37281v1",
+        "https://arxiv.org/pdf/2610.37281v1"
+      ],
+      "tags": [
+        "fine-tuning",
+        "llm",
+        "retrieval"
+      ],
+      "title": "RPSD: Retrieval-Privileged On-Policy Self-Distillation with Optimal Transport",
+      "topics": [
+        "on-policy self-distillation",
+        "sequential recommendation",
+        "optimal transport retrieval"
+      ],
+      "url": "https://arxiv.org/abs/2610.37281"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "시각 품질 중심 워크플로 · 토큰/실행 시간 비용 큼",
+      "novelty": "new_entry",
+      "rank": 8,
+      "repository": "Leonxlnx/taste-skill",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/Leonxlnx/taste-skill",
+        "https://raw.githubusercontent.com/Leonxlnx/taste-skill/main/README.md"
+      ],
+      "summary": "디자인 지향 코딩 에이전트 스킬 · 247개 사이트 연구 기반 6단계 제작 루프",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/Leonxlnx/taste-skill",
+      "use_case": "프론트엔드 팀이 에이전트 기반 랜딩/앱 화면 제작에서 브리프 해석·시각 방향 선택·브라우저 검수 루프를 표준화하는 참조 스킬 체인으로 활용할 수 있다.",
+      "why_now": "weekly Top10 신규 진입 · 3,941 stars this week"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘 Technical Spotlight는 Heads of Security(HoS)다. 이 연구는 외부 문서나 웹 콘텐츠를 읽는 에이전트가 프롬프트 인젝션 지시를 따라가는 문제를, 모델 내부 attention head 단위 게이팅으로 분리해 해결하려고 한다. 핵심은 신뢰된 토큰과 비신뢰 토큰 사이의 주의 분배를 학습해, 비신뢰 데이터를 읽되 지시 실행은 차단하는 것이다.",
+    "저자들은 GPT-OSS-20B와 Llama-3.3-70B에서 HoS를 SecAlign++·ASIDE와 비교했다. 블랙박스 RL-Hammer 공격은 GPT-OSS-20B에서 97% ASR, SecAlign에서 85% ASR까지 올라가지만 HoS에서는 10%로 낮아졌다고 보고됐다. 또 Claudini 화이트박스 공격은 HoS에서 같은 ASR에 도달하려면 비교군 대비 약 3배 FLOPs가 필요했다고 제시했다.",
+    "실무적으로 HoS는 에이전트 보안에서 프롬프트 규칙 텍스트를 늘리는 방식 대신, 모델 내부 연산 경계에 방어를 배치하는 접근의 가능성을 보여준다. 다만 저자들도 밝히듯 instruction-data separation은 단독 완결 방어가 아니며, 어떤 입력을 신뢰할지 결정하는 정책 계층과 함께 운영해야 한다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "taste-skill이 주간 Trending Top10에 신규 진입하며 디자인 지향 코딩 에이전트 스킬 체인 수요를 보여줬다.",
+        "url": "https://github.com/Leonxlnx/taste-skill"
+      },
+      {
+        "section": "community",
+        "text": "Gemini 4 Carbon 공개가 HN 상위 토론으로 부상하며 모델 라인업·성능·운영비 논의가 확산됐다.",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+      },
+      {
+        "section": "cncf",
+        "text": "Volcano v1.16 릴리스가 공정 스케줄링과 NamespaceQueue 개선을 포함해 배치 워크로드 운영 논의를 이끌었다.",
+        "url": "https://www.cncf.io/blog/2026/10/28/volcano-v1-16-released-namespacequeue-fairshare-and-a-broader-hypernode-ecosystem/"
+      }
+    ],
+    "spotlight": [
+      "Heads of Security(HoS)는 attention head 게이팅으로 신뢰/비신뢰 토큰의 주의 분배를 학습해 프롬프트 인젝션을 줄이는 방어 기법이다. RL-Hammer 기준으로 GPT-OSS-20B 97%, SecAlign 85% ASR 대비 HoS 10%를 보고했고, 강화된 Claudini 공격도 같은 ASR에 도달하려면 약 3배 FLOPs가 필요했다고 제시했다. 다만 신뢰 입력 판정 정책까지 자동으로 해결하는 방식은 아니어서 운영 정책 계층과 함께 써야 한다."
+    ]
+  }
+}
