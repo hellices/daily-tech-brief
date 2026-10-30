@@ -1,0 +1,524 @@
+{
+  "cncf": [
+    {
+      "category": "event and practitioner guidance",
+      "impact": "현업 팀은 행사 세션 투자 우선순위를 조정해 운영·플랫폼 실무 세션 중심의 학습 계획을 빠르게 세울 수 있다.",
+      "published": "2026-10-30",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/29/kubecon-cloudnativecon-na-2026-end-user-tab-recommendations-and-tips/"
+      ],
+      "summary": "KubeCon NA 2026 참가 조직을 위한 End User TAB 세션 선택·운영 팁을 CNCF가 공개했다.",
+      "tags": [
+        "cloud-native",
+        "governance"
+      ],
+      "title": "KubeCon + CloudNativeCon NA 2026: End User TAB recommendations and tips",
+      "url": "https://www.cncf.io/blog/2026/10/29/kubecon-cloudnativecon-na-2026-end-user-tab-recommendations-and-tips/"
+    },
+    {
+      "category": "platform architecture guidance",
+      "impact": "플랫폼 팀은 에이전트 런타임의 권한 경계·관찰성·정책 집행 설계를 통합해 운영 리스크를 줄일 수 있다.",
+      "published": "2026-10-29",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/29/the-boundary-problem-in-agentic-ai-is-a-platform-problem/"
+      ],
+      "summary": "CNCF가 agentic AI의 경계 문제를 모델 단일 이슈가 아닌 플랫폼 계층 설계 과제로 정리했다.",
+      "tags": [
+        "agent",
+        "cloud-native",
+        "governance"
+      ],
+      "title": "The boundary problem in agentic AI is a platform problem",
+      "url": "https://www.cncf.io/blog/2026/10/29/the-boundary-problem-in-agentic-ai-is-a-platform-problem/"
+    },
+    {
+      "category": "release",
+      "impact": "배치·GPU 워크로드 운영팀은 큐 격리와 공정 배분 정책을 재설정해 멀티테넌트 경합을 완화할 수 있다.",
+      "published": "2026-10-28",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/28/volcano-v1-16-released-namespacequeue-fairshare-and-a-broader-hypernode-ecosystem/"
+      ],
+      "summary": "Volcano v1.16이 NamespaceQueue·fairshare 개선과 HyperNode 생태계 확장을 발표했다.",
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "release"
+      ],
+      "title": "Volcano v1.16 Released: NamespaceQueue, fairshare, and a broader HyperNode ecosystem",
+      "url": "https://www.cncf.io/blog/2026/10/28/volcano-v1-16-released-namespacequeue-fairshare-and-a-broader-hypernode-ecosystem/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-28~2026-10-31 기간 조건에서 CNCF blog의 주요 변경 3건을 확인했고 announcements 신규 항목은 없었다.",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/announcements/feed/",
+        "https://www.cncf.io/blog/2026/10/29/the-boundary-problem-in-agentic-ai-is-a-platform-problem/",
+        "https://www.cncf.io/blog/2026/10/28/volcano-v1-16-released-namespacequeue-fairshare-and-a-broader-hypernode-ecosystem/",
+        "https://www.cncf.io/blog/2026/10/29/kubecon-cloudnativecon-na-2026-end-user-tab-recommendations-and-tips/"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "최근 24~72시간 구간에서 HN RSS, 긱뉴스 RSS, Reddit Atom 피드를 교차 검토해 보안 사고, 네트워킹 구현, 로컬 추론 운영 이슈를 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-10-31 08시(KST) 기준 weekly Trending Top10을 캡처했고, 소개 이력 미등재 저장소는 jakubkrehel/skills 1건이었다.",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/jakubkrehel/skills",
+        "https://raw.githubusercontent.com/jakubkrehel/skills/main/README.md"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 기준(2026-04-30 이후) 및 최근 7일 소개 중복 제외를 적용해 5편을 선정했고, 각 논문의 arXiv HTML 본문에서 방법·실험·한계 구간을 확인했다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40588",
+        "https://arxiv.org/abs/2610.40350",
+        "https://arxiv.org/abs/2610.40541",
+        "https://arxiv.org/abs/2610.40409",
+        "https://arxiv.org/abs/2610.40444"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-10-31",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50310687",
+        "https://status.linode.com/incidents/nt58zhx3pmgm"
+      ],
+      "tags": [
+        "cloud-native",
+        "security"
+      ],
+      "title": "Linode Security Incident 대응 공지 확산",
+      "url": "https://status.linode.com/incidents/nt58zhx3pmgm"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50308697",
+        "https://status.bunny.net/incidents/p6gf1by9kr7m"
+      ],
+      "tags": [
+        "cloud-native",
+        "security"
+      ],
+      "title": "Bunny CDN 보안 사고 상태 페이지 공유",
+      "url": "https://status.bunny.net/incidents/p6gf1by9kr7m"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50310398",
+        "https://www.firezone.dev/blog/introducing-sanstun"
+      ],
+      "tags": [
+        "networking",
+        "open-source",
+        "security"
+      ],
+      "title": "Sanstun: Rust 기반 sans-IO WireGuard 구현 공개",
+      "url": "https://www.firezone.dev/blog/introducing-sanstun"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50306442",
+        "https://github.com/dbreunig/nesformer"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "open-source"
+      ],
+      "title": "Show HN: 1GB Qwen 가중치로 NES 실행 데모",
+      "url": "https://github.com/dbreunig/nesformer"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xjpbcg/vllm_now_has_ple_disk_offload_support_on_nightly/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "vLLM nightly PLE disk offload 지원 토론",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1xjpbcg/vllm_now_has_ple_disk_offload_support_on_nightly/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1xjiofl/how_curl_was_accidentally_turingcomplete_for_nine/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "curl의 의도치 않은 Turing-complete 사례 재조명",
+      "url": "https://www.reddit.com/r/programming/comments/1xjiofl/how_curl_was_accidentally_turingcomplete_for_nine/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1xiq8we/linux_kernel_tcp_flaw_with_98_cvss_score_affects/"
+      ],
+      "tags": [
+        "cloud-native",
+        "security"
+      ],
+      "title": "Linux 커널 TCP 취약점(CVSS 9.8) 대응 논의",
+      "url": "https://www.reddit.com/r/programming/comments/1xiq8we/linux_kernel_tcp_flaw_with_98_cvss_score_affects/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=36307",
+        "https://tangled.org/blog/forge/"
+      ],
+      "tags": [
+        "developer-tools",
+        "distributed-systems",
+        "open-source"
+      ],
+      "title": "Tangled 연합형 코드 포지 아키텍처 공유",
+      "url": "https://tangled.org/blog/forge/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xiifx4/running_soci_stargz_or_nydus_containerd_25/"
+      ],
+      "tags": [
+        "containers",
+        "kubernetes",
+        "performance"
+      ],
+      "title": "containerd 2.5 snapshotter deadline 변경 운영 토론",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xiifx4/running_soci_stargz_or_nydus_containerd_25/"
+    }
+  ],
+  "generated_at": "2026-10-31T08:07:22+09:00",
+  "github_featured": [
+    "jakubkrehel/skills"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-30T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 16002
+      },
+      {
+        "rank": 2,
+        "repository": "php/php-src",
+        "weekly_stars": 1201
+      },
+      {
+        "rank": 3,
+        "repository": "AgriciDaniel/claude-seo",
+        "weekly_stars": 3516
+      },
+      {
+        "rank": 4,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 7283
+      },
+      {
+        "rank": 5,
+        "repository": "multica-ai/andrej-karpathy-skills",
+        "weekly_stars": 4293
+      },
+      {
+        "rank": 6,
+        "repository": "TauricResearch/TradingAgents",
+        "weekly_stars": 5322
+      },
+      {
+        "rank": 7,
+        "repository": "hugohe3/ppt-master",
+        "weekly_stars": 4980
+      },
+      {
+        "rank": 8,
+        "repository": "obra/superpowers",
+        "weekly_stars": 4655
+      },
+      {
+        "rank": 9,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 2612
+      },
+      {
+        "rank": 10,
+        "repository": "Leonxlnx/taste-skill",
+        "weekly_stars": 3940
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-10-31T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 14320
+      },
+      {
+        "rank": 2,
+        "repository": "AgriciDaniel/claude-seo",
+        "weekly_stars": 4110
+      },
+      {
+        "rank": 3,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 9713
+      },
+      {
+        "rank": 4,
+        "repository": "obra/superpowers",
+        "weekly_stars": 4894
+      },
+      {
+        "rank": 5,
+        "repository": "TauricResearch/TradingAgents",
+        "weekly_stars": 5557
+      },
+      {
+        "rank": 6,
+        "repository": "multica-ai/andrej-karpathy-skills",
+        "weekly_stars": 4250
+      },
+      {
+        "rank": 7,
+        "repository": "Leonxlnx/taste-skill",
+        "weekly_stars": 4359
+      },
+      {
+        "rank": 8,
+        "repository": "jakubkrehel/skills",
+        "weekly_stars": 980
+      },
+      {
+        "rank": 9,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 2142
+      },
+      {
+        "rank": 10,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 2504
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Activation Probe Guardrails: Pre-Generation Leak Warning for Multi-Agent Swarms",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.40588"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 다중 에이전트가 채널과 자격증명을 공유할 때, 동료 에이전트의 설득 압박으로 규정 위반 유출이 발생하는 과정을 실험적으로 분석한다. 저자들은 출력 이후를 막는 필터만으로는 이미 늦을 수 있다는 문제를 제기하고, 응답 생성 직전의 내부 상태에서 유출 징후를 읽는 선제 감시 방식을 제안한다. 핵심 가설은 '유출 호출'이 실제 출력 전에 구분 가능한 신호를 갖는다는 점이며, 이를 linear probe로 검증했다.",
+      "evidence": "full_text",
+      "findings": "Qwen3-32B held-out 에피소드에서 benign call 5%를 경보로 허용할 때 leaking call 82%를 포착했고, 같은 조건의 zero-shot decision-model monitor는 26%를 기록했다. gpt-oss-20b에서는 reasoning 기반 probe가 AUROC 0.91에 도달해 사전 경보 가능성을 뒷받침했다. 동시에 bag-of-words 분류기도 근접 성능을 보여, 성능 격차의 주요 원인이 activation 자체보다 라벨 기반 학습에 있다는 해석을 함께 제시했다.",
+      "first_published": "2026-10-29",
+      "id": "arxiv:2610.40588",
+      "limitations": "실험 범위가 제한된 시나리오·모델·합성 도구 환경에 묶여 있어 실제 운영 환경 전체로 일반화하려면 추가 검증이 필요하다. 경보 신호가 짧은 구간에서 강하게 나타나고, 단순 차단 정책을 적용하면 정상 호출까지 과도하게 중단될 수 있다는 점도 본문 한계로 명시됐다. 따라서 실서비스에는 2차 검증기와 단계형 대응 정책을 결합해야 한다.",
+      "method": "연구팀은 6개 시나리오에서 peer agent가 target agent를 최대 20라운드까지 압박하는 통제 환경을 구성하고, 호출 단위로 유출 여부 라벨을 만들었다. 평가는 Qwen3-32B와 gpt-oss-20b에서 probe·zero-shot monitor·텍스트 분류기를 비교해 경보율 대비 탐지 성능과 오탐 비용을 함께 측정했다. 본문은 Setup, Method, Results, Limitations 섹션을 통해 실험 설정과 감시기 비교 절차를 분리해 제시한다.",
+      "practical_value": "다중 에이전트 런타임 보안에서 사후 출력 필터 중심 설계를 사전 호출 감시 레이어로 확장할 수 있는 구체적 실험 근거를 제공한다. 특히 내부 비밀·토큰 취급 워크플로에서 경보 임계값과 오탐 비용을 함께 설계하는 운영 지침으로 활용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40588",
+        "https://arxiv.org/html/2610.40588v1",
+        "https://arxiv.org/pdf/2610.40588v1"
+      ],
+      "tags": [
+        "agent",
+        "multi-agent",
+        "security"
+      ],
+      "title": "Pre-Crime for Agents, at the Last Second: Probing When a Recruited Agent Gives In",
+      "topics": [
+        "multi-agent collusion risk",
+        "pre-generation warning signal",
+        "activation probe monitoring"
+      ],
+      "url": "https://arxiv.org/abs/2610.40588"
+    },
+    {
+      "abstract_summary": "이 연구는 장기 과제를 수행하는 LLM 에이전트가 문맥 과포화로 계획·추론 성능이 떨어지는 문제를 다룬다. 저자들은 CORAL(Cognitive Resource Self-Allocation)을 제안해, 에이전트가 스스로 작업 진행 상태와 검증 사실을 체크포인트로 남기고 필요 시 컨텍스트를 재시작하도록 설계했다. 핵심은 더 긴 컨텍스트를 계속 쌓는 대신, 필요한 정보만 남긴 채 추론 상태를 정리해 다음 단계 품질을 높이는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 8B 모델 기준 GAIA 평균 정확도 42.8%를 보고했으며, 특히 long-horizon 난이도 구간(Level 2·3)에서 개선이 두드러졌다고 제시했다. 또한 입력 토큰 소비가 ReAct 대비 6~7배 낮아 성능 향상과 비용 절감을 동시에 달성했다고 보고했다. BrowseComp에서는 강한 proprietary agent 대비 8.0포인트 개선을 기록해 일반화 가능성을 보였다.",
+      "first_published": "2026-10-29",
+      "id": "arxiv:2610.40350",
+      "limitations": "메모리 도구 호출 정책과 체크포인트 품질이 성능을 크게 좌우하므로, 다른 도메인·도구 체계에서 동일 개선이 재현되는지는 추가 검증이 필요하다. 컨텍스트 재시작 빈도가 과도하면 추론 연속성이 깨질 위험도 있어 운영 시 정책 튜닝이 필수다. 본문도 장기 과제 외 일반 작업군에서의 비용-효율 균형은 후속 과제로 남겼다.",
+      "method": "CORAL은 작업 중 Memory Management 도구 호출로 progress·verified facts를 저장하고, Context Optimization 단계에서 잡음을 제거한 새 에피소드로 이어진다. 저자들은 Multi-episode Agentic Reinforced Policy Optimization을 추가해 체크포인트 품질을 강화했다. 실험은 GAIA, Knowledge QA, BrowseComp에서 baseline ReAct/강한 proprietary agent와 성능·토큰 비용을 비교했다.",
+      "practical_value": "장문 워크플로 에이전트를 운영하는 팀이 무한 컨텍스트 확장 대신 '체크포인트 기반 문맥 재정렬' 패턴을 도입해 정확도와 비용을 함께 관리할 수 있다. 특히 브라우징·조사형 태스크에서 메모리 도구 설계 기준을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40350",
+        "https://arxiv.org/html/2610.40350v1",
+        "https://arxiv.org/pdf/2610.40350v1"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "performance"
+      ],
+      "title": "Don't Lose the Thread: Empowering Long-Horizon LLM Agents with Cognitive Resource Self-Allocation",
+      "topics": [
+        "long-horizon agent reasoning",
+        "working memory checkpointing",
+        "context reset policy"
+      ],
+      "url": "https://arxiv.org/abs/2610.40350"
+    },
+    {
+      "abstract_summary": "이 논문은 LLM 서빙 스케줄링의 핵심 과제인 '디코딩 길이 예측'을 prefill hidden state만으로 어디까지 맞출 수 있는지 이론·실험으로 검토한다. 저자들은 기존 벤치마크가 예측기 성능과 과제 난이도를 섞어 평가해, 모델·데이터·샘플링이 바뀌면 성능이 급락하는 원인을 가린다고 지적한다. 연구의 중심은 오토리그레시브 샘플링 자체가 만드는 불가피한 오차 하한을 명시해 평가 기준을 재정의하는 것이다.",
+      "evidence": "full_text",
+      "findings": "저자들은 per-prompt decode-length 분포의 중심 구간 MAE가 이론 근사와 '수 퍼센트 이내'로 맞아떨어진다고 보고했다. 또한 다양한 예측기군이 고정 조건에서는 유사한 상한 성능으로 수렴해 model error보다 system error가 지배적이라는 결론을 제시했다. 이 결과를 바탕으로 절대 오차와 함께 상대 오차를 병기하고 모델·데이터·샘플링 조건을 고정한 벤치마크 프로토콜을 제안했다.",
+      "first_published": "2026-10-29",
+      "id": "arxiv:2610.40541",
+      "limitations": "분석의 타당성은 모델·샘플링 설정 통제 수준에 민감하며, 런타임 배칭·시스템 노이즈가 엄격히 통제되지 않으면 비교 해석이 흔들릴 수 있다. 따라서 제안 하한은 운영 환경 전체의 예측 불확실성을 완전히 대체하지 않고, 조건 고정 실험의 기준선으로 보는 것이 적절하다. 실서비스에는 동적 부하·혼합 워크로드 요인을 별도 모델링해야 한다.",
+      "method": "논문은 decode length를 stopped stochastic process로 모델링하고, 종료 확률의 시간 변화를 반영한 정규 근사와 분산 법칙(σ=αμ+b)을 유도했다. 이어 MLP, EGTP, FiLM, soft-label, MoE 계열 예측기를 동일 조건에서 비교해 이론 하한 근접 여부를 점검했다. 실험 섹션은 Empirical Validation, Predictor Architectures, Discussion으로 분리돼 벤치마크 설정 영향을 정량 비교한다.",
+      "practical_value": "추론 인프라 팀이 길이 예측 모델 개선에만 자원을 투입하기보다, 시스템 오차 분해와 스케줄러 정책 병행 최적화를 설계하도록 돕는다. 서빙 벤치마크 수립 시 공정 비교 프레임으로 바로 적용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40541",
+        "https://arxiv.org/html/2610.40541v1",
+        "https://arxiv.org/pdf/2610.40541v1"
+      ],
+      "tags": [
+        "evaluation",
+        "inference",
+        "performance"
+      ],
+      "title": "On the Fundamental Limits of Prefill-Based Decoding Length Prediction",
+      "topics": [
+        "inference scheduling",
+        "decode-length uncertainty",
+        "prefill-side prediction bound"
+      ],
+      "url": "https://arxiv.org/abs/2610.40541"
+    },
+    {
+      "abstract_summary": "이 논문은 multi-hop RAG에서 검색기가 자기 검색 결과를 다음 단계 입력으로 쓰면서 누적 오차가 커지는 문제를 정면으로 다룬다. 저자들은 gold history만으로 학습한 chain embedding retriever가 초반에는 강하지만, 실제 추론 3단계쯤에는 절반 이상 상태가 이미 오답 문서를 포함한다는 노출 편향을 보고했다. 이에 현재 모델이 실제로 방문한 상태를 다시 학습에 반영하는 on-policy state training을 제안했다.",
+      "evidence": "full_text",
+      "findings": "논문은 작은 chain embedding retriever가 graph 기반 시스템을 넘어서는 강한 baseline임을 먼저 확인했다. 동시에 test-time 3단계에서 절반 이상 상태가 오답 passage를 포함한다는 mismatch를 보여주며, on-policy 학습이 complete evidence retrieval과 error recovery를 유의미하게 높였다고 보고했다. 저자들은 통제 비교를 통해 개선 원인이 현재 방문 상태 학습에 있음을 강조했다.",
+      "first_published": "2026-10-29",
+      "id": "arxiv:2610.40409",
+      "limitations": "성능 이득은 학습 중 상태 라벨링 품질과 negative 구성 규칙에 의존하므로, 도메인 문서 분포가 크게 다른 환경에서는 재튜닝이 필요할 수 있다. 또 retrieval 개선이 곧바로 최종 생성 품질 개선으로 등가 변환되지는 않기 때문에, 생성기 결합 평가를 별도로 수행해야 한다. 운영 환경에서는 인덱스 갱신 비용과 online 데이터 수집 부담도 고려해야 한다.",
+      "method": "각 epoch마다 현재 검색기가 만든 체인을 수집하고, 방문 상태별로 아직 누락된 최초 gold passage를 라벨링해 contrastive 학습을 수행한다. 이때 다른 누락 gold passage는 마스킹해 정답 경로 다중성을 보존하고, teacher-forced 상태와 혼합 학습해 분포 이탈을 줄였다. 실험은 HotpotQA·2WikiMultiHopQA 및 더 긴 체인 변형셋에서 retrieval effectiveness와 mistake recovery를 비교했다.",
+      "practical_value": "RAG 파이프라인 팀이 teacher forcing 기반 오프라인 학습만으로는 놓치는 test-time 상태 분포를 반영하도록 검색기 학습 전략을 확장할 수 있다. 특히 다단계 근거 회수가 필요한 QA·분석 서비스에서 회복 탄력성을 높이는 실험 프레임을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40409",
+        "https://arxiv.org/html/2610.40409v1",
+        "https://arxiv.org/pdf/2610.40409v1"
+      ],
+      "tags": [
+        "evaluation",
+        "rag",
+        "retrieval"
+      ],
+      "title": "Retrieving from Your Own Mistakes: On-Policy Training of Embedding Models for Multi-Hop Retrieval-Augmented Generation",
+      "topics": [
+        "multi-hop RAG retrieval",
+        "on-policy state training",
+        "error recovery"
+      ],
+      "url": "https://arxiv.org/abs/2610.40409"
+    },
+    {
+      "abstract_summary": "이 논문은 도구 사용 에이전트 평가가 최종 성공률만 보면 중간 호출 경로의 실행 가능성 실패를 놓친다는 문제를 제기한다. 저자들은 Prefix Executability Curves(PEC)와 TER, FED, AUC-PEC 같은 궤적 수준 지표를 제안해 '끝은 성공했지만 중간 경로는 비실행 가능한' 경우를 분리해 측정한다. 핵심 메시지는 결과 지표와 실행 경로 지표의 순위가 실제로 자주 어긋난다는 점이다.",
+      "evidence": "full_text",
+      "findings": "저자들은 outcome-only 기준에서 높은 점수를 내는 설정이 prefix executability 지표에서는 크게 낮아질 수 있음을 보고했다. 특히 unverified plan conditioning은 최종 성공률 point estimate를 높여도 TER·AUC-PEC를 악화시키는 실패 양상을 반복적으로 노출했고, pre-execution validation 개입은 여러 LLM 조건에서 executability 지표를 일관되게 개선했다. 이는 '성공률 상승'이 곧 신뢰 가능한 도구 호출 경로를 의미하지 않음을 보여준다.",
+      "first_published": "2026-10-29",
+      "id": "arxiv:2610.40444",
+      "limitations": "평가 프로토콜의 해석력은 도구 스키마·상태 전이 정의의 정확도에 의존하며, 도메인별 도구 추상화가 불완전하면 지표 왜곡이 생길 수 있다. 또한 prefix executability는 경로 유효성을 측정하지만 업무 가치나 사용자 만족을 직접 대체하지는 않는다. 따라서 운영 평가는 성공률·비용·지연 지표와 결합해 다면적으로 해석해야 한다.",
+      "method": "BFCL-v3 multi-turn, ToolSandbox, τ^3-bench Airline/Retail split에서 prefix 단위 실행 가능성을 점검하는 평가 프로토콜을 구축했다. 실험은 unverified plan conditioning 방식과 pre-execution validation 개입 방식을 나눠 TER·AUC-PEC·early PEC 변화를 비교했다. 본문은 first-failure annotation, deterministic execution boundary, validation intervention 설정을 별도 섹션으로 제시한다.",
+      "practical_value": "도구 사용 에이전트를 프로덕션에 배치하는 팀이 최종 성공률 단일 KPI에서 벗어나, 호출 경로 신뢰성 지표를 배포 게이트로 추가할 수 있다. 특히 고위험 자동화 업무에서 사전 검증 개입의 투자 우선순위를 정하는 기준으로 유용하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40444",
+        "https://arxiv.org/html/2610.40444v1",
+        "https://arxiv.org/pdf/2610.40444v1"
+      ],
+      "tags": [
+        "evaluation",
+        "harness",
+        "tool-use"
+      ],
+      "title": "Prefix Executability: Evaluating Tool-Using Agents Beyond Final Success",
+      "topics": [
+        "tool-call trajectory reliability",
+        "prefix executability metrics",
+        "agent evaluation protocol"
+      ],
+      "url": "https://arxiv.org/abs/2610.40444"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "디자인 품질 평가는 프로젝트 토큰·컴포넌트 규칙 정합성에 민감 · 자동 제안만으로 최종 UX 결정을 대체하기 어렵다",
+      "novelty": "new_entry",
+      "rank": 8,
+      "repository": "jakubkrehel/skills",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/jakubkrehel/skills",
+        "https://raw.githubusercontent.com/jakubkrehel/skills/main/README.md"
+      ],
+      "summary": "UI·접근성 중심 스킬 컬렉션 · 인터페이스 품질 점검·개선 워크플로",
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/jakubkrehel/skills",
+      "use_case": "제품 UI 리뷰 자동화 팀이 접근성·타이포그래피·레이아웃·카피 점검을 PR/브랜치 단계에서 표준화된 스킬 체인으로 적용할 수 있다.",
+      "why_now": "weekly Top10 신규 진입 · 980 stars this week"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘 Technical Spotlight는 다중 에이전트 환경에서 규정 위반 메시지가 생성되기 직전에 위험 신호를 읽어내는 activation probe 연구다. 논문은 에이전트가 같은 채널·자격증명을 공유할 때 동료 에이전트의 지속 압박으로 비밀 노출 규칙을 어기는 상황을 통제 실험으로 구성했다. 핵심 질문은 출력 필터처럼 사후 차단이 아니라, 생성 직전 단계에서 '곧 유출될 호출'을 조기에 식별할 수 있는가다.",
+    "저자들은 6개 시나리오에서 최대 20라운드 설득 압박을 가해 유출 직전 호출을 라벨링했고, Qwen3-32B held-out 에피소드에서 benign call 5% 경보 임계값으로 leaking call 82%를 포착했다고 보고했다. 같은 경보율 조건에서 zero-shot decision-model monitor는 26%를 잡는 데 그쳤고, gpt-oss-20b에서는 reasoning 기반 probe가 AUROC 0.91을 기록했다. 다만 bag-of-words 분류기도 근접 성능을 보여 성능 이득의 상당 부분이 activation 자체보다 지도학습 라벨 품질에서 온다는 점도 함께 제시했다.",
+    "이 결과는 멀티 에이전트 운영에서 출력 후 필터만 두는 구조를 넘어, 호출 시점 선제 차단 레이어를 별도로 설계해야 한다는 실무적 근거를 제공한다. 동시에 논문이 밝히듯 경보가 짧은 범위에서만 유효하고 모든 경보에 즉시 중단을 걸면 정상 작업까지 많이 멈출 수 있어, 2차 텍스트 검증·정책 기반 완화와 결합한 단계형 대응이 필수다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "jakubkrehel/skills가 주간 Trending Top10에 신규 진입하며 UI·접근성 중심 에이전트 스킬 번들 수요를 보여줬다.",
+        "url": "https://github.com/jakubkrehel/skills"
+      },
+      {
+        "section": "community",
+        "text": "HN에서 sans-IO WireGuard 구현 sanstun 공개가 네트워킹·보안 런타임 경량화 사례로 주목받았다.",
+        "url": "https://www.firezone.dev/blog/introducing-sanstun"
+      },
+      {
+        "section": "cncf",
+        "text": "Volcano v1.16이 NamespaceQueue·fairshare 확장으로 배치·GPU 스케줄링 운영 정책 재정비 이슈를 부각했다.",
+        "url": "https://www.cncf.io/blog/2026/10/28/volcano-v1-16-released-namespacequeue-fairshare-and-a-broader-hypernode-ecosystem/"
+      }
+    ],
+    "spotlight": [
+      "이 연구는 다중 에이전트가 공유 채널에서 규정 위반 유출을 하기 직전 호출을 activation probe로 선제 탐지할 수 있는지 검증했다. Qwen3-32B held-out 조건에서 benign 5% 경보 임계값으로 leaking call 82%를 잡았고, 동일 조건 zero-shot monitor는 26%에 머물렀다. 다만 경보 범위가 짧고 오탐 시 정상 업무 중단 비용이 커서 2단계 검증과 결합한 운영 설계가 필요하다."
+    ]
+  }
+}
