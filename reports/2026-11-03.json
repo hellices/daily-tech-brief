@@ -1,0 +1,467 @@
+{
+  "cncf": [
+    {
+      "category": "ecosystem communication",
+      "impact": "서비스 메시 도입 조직은 기술 선택뿐 아니라 운영 커뮤니티와 유지보수 맥락을 파악하는 참고 자료로 활용할 수 있다.",
+      "published": "2026-11-02",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/11/02/the-linkerd-story-the-people-behind-the-service-mesh-a-new-documentary-premieres-at-kubecon-cloudnativecon-north-america-2026/"
+      ],
+      "summary": "CNCF가 Linkerd 프로젝트의 역사와 핵심 기여자를 다룬 다큐멘터리 공개를 알렸다.",
+      "tags": [
+        "cloud-native",
+        "governance",
+        "networking"
+      ],
+      "title": "The Linkerd Story: The people Behind The Service Mesh — A new documentary premieres at KubeCon + CloudNativeCon North America 2026",
+      "url": "https://www.cncf.io/blog/2026/11/02/the-linkerd-story-the-people-behind-the-service-mesh-a-new-documentary-premieres-at-kubecon-cloudnativecon-north-america-2026/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-31~2026-11-03 기간 조건에서 확인 가능한 CNCF 주요 변경은 blog 1건이며 announcements 신규 항목은 없었다.",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/announcements/feed/",
+        "https://www.cncf.io/blog/2026/11/02/the-linkerd-story-the-people-behind-the-service-mesh-a-new-documentary-premieres-at-kubecon-cloudnativecon-north-america-2026/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "최근 24~72시간 구간에서 HN RSS, 긱뉴스 RSS, Reddit Atom 피드를 교차 검토해 모델 서빙 비용, 보안 취약점 대응, 개발 도구 신호를 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-11-03 08시(KST) weekly Trending Top10을 캡처했지만 소개 이력 미등재 저장소가 없어 repositories 섹션 신규 항목은 0건이다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "partial"
+    },
+    "papers": {
+      "note": "최근 6개월 기준(2026-05-03 이후)과 최근 7일 소개 중복 제외를 적용해 5편을 선정했고, 각 논문의 arXiv HTML/PDF 본문에서 방법·실험·한계 구간을 확인했다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.42116",
+        "https://arxiv.org/abs/2610.42147",
+        "https://arxiv.org/abs/2610.42112",
+        "https://arxiv.org/abs/2610.41994",
+        "https://arxiv.org/abs/2610.42128"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-03",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50341174",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xm6jow/sparks_of_weightspace_programming_llms_can/",
+        "https://rikiyat.github.io/blog/weight-space-programming/"
+      ],
+      "tags": [
+        "llm",
+        "open-source",
+        "reasoning"
+      ],
+      "title": "Astra 기반 weight-space programming 실험 공개",
+      "url": "https://rikiyat.github.io/blog/weight-space-programming/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50339913",
+        "https://momentic.ai/"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "developer-tools"
+      ],
+      "title": "Momentic Launch HN: 앱 사용형 버그 탐지 에이전트",
+      "url": "https://momentic.ai/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50341462",
+        "https://news.hada.io/topic?id=36487&utm_source=geeknews&utm_medium=rss&utm_campaign=news",
+        "https://freenode.net/article/ubuntu-lts-kernels-still-unfixed-for-critical-cve-2026-98432"
+      ],
+      "tags": [
+        "release",
+        "security"
+      ],
+      "title": "Ubuntu Linux 제로데이 RCE 패치 지연 이슈 확산",
+      "url": "https://freenode.net/article/ubuntu-lts-kernels-still-unfixed-for-critical-cve-2026-98432"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xm28e6/official_statement_qwen_models_will_stick_to_open/"
+      ],
+      "tags": [
+        "governance",
+        "llm",
+        "open-source"
+      ],
+      "title": "Qwen 오픈소스 유지 공식 입장 토론",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1xm28e6/official_statement_qwen_models_will_stick_to_open/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1xl8d57/jepsen_on_particledb_we_tested_versions_114/"
+      ],
+      "tags": [
+        "evaluation",
+        "security",
+        "storage"
+      ],
+      "title": "ParticleDB ACID 주장에 대한 Jepsen 검증 논의 지속",
+      "url": "https://www.reddit.com/r/programming/comments/1xl8d57/jepsen_on_particledb_we_tested_versions_114/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1xlutld/cheerpj_50_java_2125_in_the_browser_full_openjdk/"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "performance"
+      ],
+      "title": "CheerpJ 5.0: 브라우저 내 Java 21/25 실행 엔진 업데이트",
+      "url": "https://www.reddit.com/r/programming/comments/1xlutld/cheerpj_50_java_2125_in_the_browser_full_openjdk/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=36485&utm_source=geeknews&utm_medium=rss&utm_campaign=news"
+      ],
+      "tags": [
+        "open-source",
+        "storage"
+      ],
+      "title": "OpenBSD GEFS 파일시스템 개발 진전 공유",
+      "url": "https://news.hada.io/topic?id=36485&utm_source=geeknews&utm_medium=rss&utm_campaign=news"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xlypz5/slow_hpa_scaledown_on_purpose_or_let_it_drop_to/"
+      ],
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "performance"
+      ],
+      "title": "Kubernetes HPA scale-down 정책 트레이드오프 토론",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xlypz5/slow_hpa_scaledown_on_purpose_or_let_it_drop_to/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xkaivn/external_secrets_operator_on_oke_leaks_memory/"
+      ],
+      "tags": [
+        "kubernetes",
+        "performance",
+        "security"
+      ],
+      "title": "OCI SDK 연계 External Secrets Operator 메모리 누수 이슈",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xkaivn/external_secrets_operator_on_oke_leaks_memory/"
+    }
+  ],
+  "generated_at": "2026-11-03T08:05:55+09:00",
+  "github_featured": [],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-02T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "Nutlope/hallmark",
+        "weekly_stars": 11566
+      },
+      {
+        "rank": 2,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 12017
+      },
+      {
+        "rank": 3,
+        "repository": "AgriciDaniel/claude-seo",
+        "weekly_stars": 5034
+      },
+      {
+        "rank": 4,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 5852
+      },
+      {
+        "rank": 5,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 10069
+      },
+      {
+        "rank": 6,
+        "repository": "obra/superpowers",
+        "weekly_stars": 5896
+      },
+      {
+        "rank": 7,
+        "repository": "JetBrains/thinkrail",
+        "weekly_stars": 5760
+      },
+      {
+        "rank": 8,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 6926
+      },
+      {
+        "rank": 9,
+        "repository": "multica-ai/andrej-karpathy-skills",
+        "weekly_stars": 4459
+      },
+      {
+        "rank": 10,
+        "repository": "jakubkrehel/skills",
+        "weekly_stars": 1607
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-03T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "Nutlope/hallmark",
+        "weekly_stars": 11566
+      },
+      {
+        "rank": 2,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 5852
+      },
+      {
+        "rank": 3,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 12017
+      },
+      {
+        "rank": 4,
+        "repository": "AgriciDaniel/claude-seo",
+        "weekly_stars": 5034
+      },
+      {
+        "rank": 5,
+        "repository": "obra/superpowers",
+        "weekly_stars": 5896
+      },
+      {
+        "rank": 6,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 6926
+      },
+      {
+        "rank": 7,
+        "repository": "JetBrains/thinkrail",
+        "weekly_stars": 5760
+      },
+      {
+        "rank": 8,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 10069
+      },
+      {
+        "rank": 9,
+        "repository": "jakubkrehel/skills",
+        "weekly_stars": 1607
+      },
+      {
+        "rank": 10,
+        "repository": "multica-ai/andrej-karpathy-skills",
+        "weekly_stars": 4459
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "ACCT: Cross-LLM KV Cache Transfer Under Budget Constraints",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.42116"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 다중 LLM 라우팅 서비스에서 동일 컨텍스트를 모델마다 반복 prefill하는 비용 병목을 해결하려는 연구다. 저자들은 source 모델이 계산한 KV를 target 모델이 바로 사용할 수 있게 비대칭 변환하는 ACCT를 제안한다. 핵심은 컨텍스트 계산을 모델별 일회성 비용이 아니라 재사용 가능한 공용 자산으로 바꾸는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 KV 크기를 75% 줄인 조건에서도 target 원본 추론 성능을 유지하거나 상회하는 결과를 보고했다. 또한 약 19K 토큰 컨텍스트에서 KV 변환 단계가 target prefill 대비 6.5~21.2배 빠르게 동작해 비용 절감 가능성을 제시했다. 이는 모델 스위칭이 잦은 서빙 환경에서 전이형 캐시가 실효성을 가질 수 있음을 보여준다.",
+      "first_published": "2026-10-30",
+      "id": "arxiv:2610.42116",
+      "limitations": "실험은 같은 모델 패밀리 내 전이를 중심으로 구성되어 아키텍처 이질성이 큰 모델 간 일반화는 추가 검증이 필요하다. 전이 정확도가 낮아지면 라우팅 이득이 상쇄될 수 있어 예산 배분 정책과 오차 누적 관리가 필수다. 운영 배치에서는 변환 지연과 품질 편차를 동적으로 제어하는 추가 스케줄러 설계가 요구된다.",
+      "method": "ACCT는 query 관련 토큰을 고르는 Cartographer, 제한된 KV 예산을 레이어·헤드에 배분하는 Allocator, 선택된 source KV를 target sparse KV로 바꾸는 Compiler로 구성된다. 학습은 전이 후 target 점수 품질을 직접 감독하는 방식과 오프라인 랭킹 감독을 결합해 안정화한다. 실험은 일반 벤치마크 5개와 컨텍스트 의존 과제 6개에서 효율·성능을 동시에 비교했다.",
+      "practical_value": "멀티모델 인프라 팀이 context prefill 비용을 크게 줄이면서도 응답 품질을 유지할 수 있는 구조적 옵션을 제공한다. 특히 지연·비용 제약이 강한 검색·도우미 서비스에서 라우팅 정책과 함께 실험 가치가 높다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.42116",
+        "https://arxiv.org/html/2610.42116v1",
+        "https://arxiv.org/pdf/2610.42116v1"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "ACCT: Asymmetric Cross-LLM Context Transfer",
+      "topics": [
+        "cross-model KV transfer",
+        "heterogeneous LLM serving",
+        "context computation reuse"
+      ],
+      "url": "https://arxiv.org/abs/2610.42116"
+    },
+    {
+      "abstract_summary": "LSA는 1M 토큰을 넘는 초장문 구간에서 기존 sparse attention indexer가 정확도 손실 또는 내부 quadratic 비용을 피하지 못하는 문제를 겨냥한다. 저자들은 key를 latent 공간에서 계층 클러스터링하고 query가 모든 key 대신 클러스터 계층을 탐색하도록 구성했다. 이로써 prefill·decode·학습 단계 모두에서 비용을 줄이면서 정확도를 유지하는 것이 목표다.",
+      "evidence": "full_text",
+      "findings": "논문은 10M 토큰에서 D-LSA가 원래 sparse attention 대비 prefill 22.7배, decode 4.6배 가속을 기록했다고 보고했다. 같은 설정에서 full attention 대비로는 prefill 72.4배, decode 42.5배의 비용 절감 수치를 제시했다. N-LSA는 128k 학습에서 layer당 1.6배 속도 향상과 full attention급 정확도 유지를 보고해 실용성을 뒷받침했다.",
+      "first_published": "2026-10-30",
+      "id": "arxiv:2610.42147",
+      "limitations": "계층 indexer 품질이 낮은 데이터 분포에서는 retrieval 누락으로 정확도 저하가 발생할 수 있다. 또한 성능 이득은 특정 모델·하드웨어 설정 의존성이 있어 운영 환경별 재검증이 필요하다. 초장문 정확도의 안정성을 보장하려면 index 학습·갱신 비용까지 포함한 총비용 평가가 요구된다.",
+      "method": "제안은 사전학습 모델에 증류로 붙이는 D-LSA와 next-token objective로 직접 학습하는 N-LSA 두 변형을 포함한다. 평가는 GLM-5.3-FLASH(QWEN-3.8-27B) 기준으로 10M 토큰까지 확장해 layer 단위 성능과 정확도를 비교했다. 추가로 native training 실험에서 128k 문맥 학습 속도와 정확도 균형을 확인했다.",
+      "practical_value": "초장문 에이전트·리서치 워크플로를 운영하는 팀이 문맥 길이 확장과 지연 예산을 동시에 맞추는 새로운 attention 설계 선택지를 얻는다. 특히 1M+ 컨텍스트 서비스에서 비용-정확도 절충을 구체적으로 실험할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.42147",
+        "https://arxiv.org/html/2610.42147v1",
+        "https://arxiv.org/pdf/2610.42147v1"
+      ],
+      "tags": [
+        "inference",
+        "performance",
+        "reasoning"
+      ],
+      "title": "Latent Sparse Attention: Towards Subquadratic Ultra-Long Context Attention",
+      "topics": [
+        "ultra-long context attention",
+        "latent hierarchical indexing",
+        "sparse attention acceleration"
+      ],
+      "url": "https://arxiv.org/abs/2610.42147"
+    },
+    {
+      "abstract_summary": "이 논문은 attention의 근본 병목인 quadratic 복잡도를 완화하기 위해 트리 구조 indexer를 붙인 subquadratic sparse attention을 제안한다. 저자들은 sliding-window·linear 계열이 표현력 손실을 겪고, 기존 sparse 방식도 indexer 자체가 quadratic 비용을 남긴다는 점을 문제로 제시한다. 제안의 핵심은 계층 탐색으로 필요한 key 후보를 좁히며 계산량을 점진적으로 줄이는 구조다.",
+      "evidence": "full_text",
+      "findings": "저자들은 제안 방식이 긴 문맥 구간에서 quadratic 대비 더 나은 스케일 특성을 보이며, sparse 설계의 표현력 저하를 완화할 수 있음을 보고했다. 또한 계층 indexer를 통한 후보 축소가 단순 고정 패턴보다 안정적인 검색 품질을 제공한다는 결과를 제시한다. 전체적으로 정확도 유지와 비용 절감을 동시에 노리는 실무형 attention 경로를 제안한 점이 핵심 성과다.",
+      "first_published": "2026-10-30",
+      "id": "arxiv:2610.42112",
+      "limitations": "트리 index 품질이 데이터 특성에 민감해 도메인 전환 시 재학습·재튜닝 부담이 생길 수 있다. 또한 구현 복잡도가 증가해 서빙 스택 통합 비용과 디버깅 난이도가 높아질 가능성이 있다. 따라서 대규모 배치 전에는 워크로드별 정확도-지연 안정성 검증이 필요하다.",
+      "method": "아키텍처는 Tree Construction, Module Training, Selective Retrieval 단계를 분리해 index를 학습 가능한 구성요소로 다룬다. 실험 섹션에서는 정확도와 계산량을 함께 측정해 기존 attention 계열과 비교하고, 길이 증가에 따른 스케일 특성을 확인한다. 동기 부여 섹션에서 자연적 attention sparsity 가정을 명시하고 계층 검색의 비용 이점을 이론적으로 연결한다.",
+      "practical_value": "장문 문서 검색·분석형 서비스를 운영하는 팀이 완전 attention을 대체할 중간 설계로 검토할 수 있다. 특히 비용 상한이 엄격한 프로덕션에서 subquadratic attention의 실험 기반을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.42112",
+        "https://arxiv.org/html/2610.42112v1",
+        "https://arxiv.org/pdf/2610.42112v1"
+      ],
+      "tags": [
+        "inference",
+        "performance",
+        "retrieval"
+      ],
+      "title": "Subquadratic Attention with a Hierarchical Tree-Structured Indexer",
+      "topics": [
+        "tree-structured sparse attention",
+        "subquadratic retrieval",
+        "long-context scalability"
+      ],
+      "url": "https://arxiv.org/abs/2610.42112"
+    },
+    {
+      "abstract_summary": "DAMI는 linear attention 계열이 긴 문맥 검색에서 메모리 유지력이 떨어지는 문제를 초기화 전략으로 개선하려는 연구다. 저자들은 gated recurrence의 기억 유지가 학습 중에도 초기값 구조에 강하게 묶여 있다는 관찰에서 출발한다. 이에 head별 시간축과 layer별 입력 민감도를 함께 조정하는 dual-axis 초기화를 제안했다.",
+      "evidence": "full_text",
+      "findings": "논문은 random initialization 대비 RULER형 장문 retrieval 정확도가 평균 5.29~16.71포인트 개선됐다고 보고했다. 동시에 언어모델링, 상식 추론, 2K 실데이터 retrieval 성능은 대체로 유사 수준을 유지해 trade-off를 완화했다. 초기화만 바꿔 얻은 개선이라는 점에서 운영 적용 장벽이 낮은 결과로 제시된다.",
+      "first_published": "2026-10-30",
+      "id": "arxiv:2610.41994",
+      "limitations": "개선 폭이 아키텍처별로 다르고, 데이터 분포가 크게 바뀌면 초기화 이득이 축소될 수 있다. 또한 초기화 설계가 메모리 유지에는 유리하지만 모든 추론 과제의 상위 성능을 보장하지는 않는다. 모델별 보정 규칙 자동화와 대규모 실서비스 재현 검증이 후속 과제로 남는다.",
+      "method": "방법은 A_log와 dt_bias를 공동 설정해 retrieval 거리별 timescale을 분산하고, 층별 low-high-low 민감도 프로파일을 부여한다. 소규모 activation 샘플로 파라미터를 보정해 추가 학습 파라미터 없이 초기 상태를 맞추는 방식이다. 평가는 GDN, KDA, GDN2, Mamba-2, RWKV-7에서 RULER 계열 retrieval과 일반 LM/추론 과제를 함께 비교했다.",
+      "practical_value": "장문 컨텍스트 워크로드를 다루는 팀이 모델 구조 변경 없이 초기화 정책만으로 retrieval 성능을 끌어올릴 수 있는 실전적 옵션을 얻는다. 비용 민감한 경량 모델 운영에서 특히 유용하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.41994",
+        "https://arxiv.org/html/2610.41994v1",
+        "https://arxiv.org/pdf/2610.41994v1"
+      ],
+      "tags": [
+        "memory",
+        "performance",
+        "retrieval"
+      ],
+      "title": "DAMI: Dual-Axis Memory Initialization for Enhanced Long-Context Retrieval in Gated Linear Attention",
+      "topics": [
+        "gated linear attention memory",
+        "initialization strategy",
+        "long-context retrieval"
+      ],
+      "url": "https://arxiv.org/abs/2610.41994"
+    },
+    {
+      "abstract_summary": "DecisionRank는 생성형 LLM의 랭킹 지식을 결정형 reranker로 옮길 때 발생하는 표현 간 간극을 줄이기 위한 distillation 방법이다. 기존에는 teacher가 문서 ID 시퀀스로 선호를 표현하는 반면 student는 first-token score로 순위를 매겨 신호 정렬이 어렵다. 저자들은 item-space on-policy distillation으로 student rollout 자체를 teacher 조건 입력으로 삼아 직접 점수 감독을 수행한다.",
+      "evidence": "full_text",
+      "findings": "논문은 item-space OPD가 대안 학습목표 대비 일관된 성능 우위를 보였다고 보고했다. 1.7B 모델이 27B 생성형 teacher를 TREC DL19-23에서 넘어섰고, 8B 설정에서는 listwise 생성형 대비 TREC DL 24.5배, BRIGHT 16.7배 빠른 추론을 달성했다고 제시했다. 이는 지연 제약이 큰 검색 시스템에서 결정형 모델의 경쟁력을 강화하는 근거가 된다.",
+      "first_published": "2026-10-30",
+      "id": "arxiv:2610.42128",
+      "limitations": "teacher 품질과 피드백 안정성에 따라 distillation 성능이 크게 달라질 수 있다. 또한 도메인 특화 검색에서는 순위 신호 편향이 누적될 위험이 있어 지속적 재학습·보정이 필요하다. 추론 속도 이득이 실제 서비스 품질로 이어지는지 사용자 중심 지표 검증도 추가돼야 한다.",
+      "method": "학습은 on-policy conditional feedback과 offline ranking supervision을 결합한 이중 감독 구조를 사용한다. student 점수로 정렬된 리스트를 teacher에 넣어 조건부 피드백을 받고, 이를 first-token 점수 업데이트에 반영한다. 평가는 TREC DL, BEIR, BRIGHT 등 일반·추론형 검색 벤치마크에서 기존 reranker와 비교했다.",
+      "practical_value": "검색·추천 플랫폼 팀이 생성형 reranker의 비용을 줄이면서도 품질을 유지할 수 있는 경량 의사결정 모델 경로를 제공한다. 특히 대규모 트래픽 환경에서 latency budget을 맞추는 데 즉시 활용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.42128",
+        "https://arxiv.org/html/2610.42128v1",
+        "https://arxiv.org/pdf/2610.42128v1"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "performance"
+      ],
+      "title": "DecisionRank: On-Policy Distillation for Decision-Model Rerankers",
+      "topics": [
+        "decision-model reranking",
+        "on-policy distillation",
+        "first-token scoring"
+      ],
+      "url": "https://arxiv.org/abs/2610.42128"
+    }
+  ],
+  "repositories": [],
+  "schema_version": 2,
+  "summary": [
+    "오늘 Technical Spotlight는 여러 LLM을 혼합 배치하는 실제 서비스에서 같은 컨텍스트를 모델마다 다시 prefill해야 하는 중복 비용을 줄이는 ACCT 연구다. 논문은 단일 모델 최적화가 아니라 이종 모델 호출이 기본이 된 운영 환경에서, 컨텍스트 계산을 모델 간 재사용 가능한 자산으로 다루는 문제를 정면으로 다룬다. 핵심 제안은 source 모델의 KV cache를 target 모델이 바로 사용할 수 있는 sparse KV로 변환해 재prefill을 건너뛰는 비대칭 전이 구조다.",
+    "저자들은 Cartographer·Allocator·Compiler로 구성된 경량 파이프라인을 제시하고, 일반 성능 벤치마크 5개와 고컨텍스트 의존 과제 6개에서 효율과 정확도를 함께 측정했다. 보고 결과에 따르면 KV 예산을 75% 줄인 조건에서도 target 모델의 원래 추론 성능과 동급 또는 상회하는 성능이 가능했고, 약 19K 토큰 컨텍스트에서 KV 변환 단계는 target context prefill 대비 6.5~21.2배 속도 향상을 보였다. 즉, 모델 교체가 잦은 라우팅 환경에서도 컨텍스트 계산 비용을 분리·재활용할 수 있다는 실증 근거를 확보했다.",
+    "이 결과는 멀티모델 서빙에서 단순 캐시 재사용을 넘어 '모델 간 상태 이식성'을 설계 변수로 올려야 함을 시사한다. 다만 동일 패밀리 내부 전이를 중심으로 검증된 접근이라, 이질 아키텍처 간 일반화와 장기 안정성은 추가 검증이 필요하다. 운영 적용 시에는 전이 오차 누적, KV 예산 정책, 라우터 결정 지연을 함께 관리하는 시스템 설계가 필수다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "community",
+        "text": "HN·Reddit에서 LLM이 가중치를 직접 읽고 수정하는 weight-space programming 실험이 고신호 토론으로 확산됐다.",
+        "url": "https://rikiyat.github.io/blog/weight-space-programming/"
+      },
+      {
+        "section": "cncf",
+        "text": "CNCF가 Linkerd 다큐멘터리 공개를 통해 서비스 메시 생태계의 운영 역사와 커뮤니티 맥락을 정리했다.",
+        "url": "https://www.cncf.io/blog/2026/11/02/the-linkerd-story-the-people-behind-the-service-mesh-a-new-documentary-premieres-at-kubecon-cloudnativecon-north-america-2026/"
+      },
+      {
+        "section": "papers",
+        "text": "LSA가 10M 토큰 구간에서 계층적 latent indexing으로 초장문 attention 비용을 크게 절감하는 결과를 제시했다.",
+        "url": "https://arxiv.org/abs/2610.42147"
+      }
+    ],
+    "spotlight": [
+      "ACCT는 이종 LLM 배치에서 source 모델 KV를 target 모델용 sparse KV로 변환해 컨텍스트 재prefill 비용을 줄이는 방식이다. 논문은 KV를 75% 축소한 조건에서도 성능을 유지하거나 개선했고, 약 19K 토큰에서 target prefill 대비 6.5~21.2배 변환 속도 이득을 보고했다. 멀티모델 라우팅 운영에서는 모델 간 상태 이식성과 KV 예산 정책을 함께 설계해야 한다."
+    ]
+  }
+}
