@@ -1,0 +1,511 @@
+{
+  "cncf": [
+    {
+      "category": "event and practitioner guidance",
+      "impact": "플랫폼·SRE 팀은 행사 세션 투자 우선순위를 재정렬해 운영·거버넌스·실전 사례 중심으로 학습 계획을 빠르게 구성할 수 있다.",
+      "published": "2026-10-30",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/blog/2026/10/29/kubecon-cloudnativecon-na-2026-end-user-tab-recommendations-and-tips/"
+      ],
+      "summary": "CNCF가 KubeCon NA 2026에서 엔드유저 조직이 우선 확인할 세션군과 참가 전략을 공개했다.",
+      "tags": [
+        "cloud-native",
+        "governance"
+      ],
+      "title": "KubeCon + CloudNativeCon NA 2026: End User TAB recommendations and tips",
+      "url": "https://www.cncf.io/blog/2026/10/29/kubecon-cloudnativecon-na-2026-end-user-tab-recommendations-and-tips/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "2026-10-30~2026-11-02 기간 조건에서 확인 가능한 CNCF blog 주요 변경은 1건이었고 announcements 신규 항목은 없었다.",
+      "sources": [
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/announcements/feed/",
+        "https://www.cncf.io/blog/2026/10/29/kubecon-cloudnativecon-na-2026-end-user-tab-recommendations-and-tips/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "최근 24~72시간 구간에서 HN RSS, 긱뉴스 RSS, Reddit Atom 피드를 교차 검토해 개발 도구, 보안·데이터 무결성, 로컬 추론 운영 이슈를 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/MachineLearning/.rss",
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/kubernetes/.rss"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "2026-11-02 08시(KST) 기준 weekly Trending Top10을 캡처했고, 소개 이력 미등재 저장소는 Nutlope/hallmark와 JetBrains/thinkrail 2건이었다.",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/Nutlope/hallmark",
+        "https://raw.githubusercontent.com/Nutlope/hallmark/main/README.md",
+        "https://github.com/JetBrains/thinkrail",
+        "https://raw.githubusercontent.com/JetBrains/thinkrail/main/README.md"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 기준(2026-05-02 이후)과 최근 7일 소개 중복 제외를 적용해 5편을 선정했고, 각 논문의 arXiv HTML/PDF 본문에서 방법·실험·한계 구간을 확인했다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40589",
+        "https://arxiv.org/abs/2610.40578",
+        "https://arxiv.org/abs/2610.40545",
+        "https://arxiv.org/abs/2610.40535",
+        "https://arxiv.org/abs/2610.40246"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-02",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50326821",
+        "https://hackerbooks.org"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "HackerBooks: HN 추천 도서 큐레이션 서비스 공개",
+      "url": "https://hackerbooks.org"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50325253",
+        "https://github.com/ivankovic/omnidiff"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "performance"
+      ],
+      "title": "OmniDiff: Rust 기반 콘텐츠 인지 Git difftool 공개",
+      "url": "https://github.com/ivankovic/omnidiff"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50312408",
+        "https://rhaas.blogspot.com/2026/10/postgres-19-is-late-and-its-ais-fault.html"
+      ],
+      "tags": [
+        "developer-tools",
+        "storage"
+      ],
+      "title": "Postgres 19 일정 지연 원인 분석 글 확산",
+      "url": "https://rhaas.blogspot.com/2026/10/postgres-19-is-late-and-its-ais-fault.html"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50325454",
+        "https://arxiv.org/abs/2610.39302"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "reasoning"
+      ],
+      "title": "JEPA 기반 Platonic Representation 가설 검증 논문 토론",
+      "url": "https://arxiv.org/abs/2610.39302"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/.rss",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xjpbcg/vllm_now_has_ple_disk_offload_support_on_nightly/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "vLLM nightly PLE disk offload 지원 논의",
+      "url": "https://www.reddit.com/r/LocalLLaMA/comments/1xjpbcg/vllm_now_has_ple_disk_offload_support_on_nightly/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/.rss",
+        "https://www.reddit.com/r/kubernetes/comments/1xkaivn/external_secrets_operator_on_oke_leaks_memory/"
+      ],
+      "tags": [
+        "kubernetes",
+        "performance",
+        "security"
+      ],
+      "title": "외부 비밀 연동 시 OKE 메모리 누수 이슈 공유",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xkaivn/external_secrets_operator_on_oke_leaks_memory/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/.rss",
+        "https://www.reddit.com/r/programming/comments/1xl8d57/jepsen_on_particledb_we_tested_versions_114/"
+      ],
+      "tags": [
+        "evaluation",
+        "security",
+        "storage"
+      ],
+      "title": "Jepsen 기반 ParticleDB ACID 검증 결과 논의",
+      "url": "https://www.reddit.com/r/programming/comments/1xl8d57/jepsen_on_particledb_we_tested_versions_114/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news",
+        "https://news.hada.io/topic?id=36426&utm_source=geeknews&utm_medium=rss&utm_campaign=news"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "OpenQodex 코드 리뷰 에이전트 도구 소개",
+      "url": "https://news.hada.io/topic?id=36426&utm_source=geeknews&utm_medium=rss&utm_campaign=news"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50319510",
+        "https://karpathy.bearblog.dev/hacker-tube/"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "HackerTube: HN 추천 영상 큐레이션 프로젝트 공개",
+      "url": "https://karpathy.bearblog.dev/hacker-tube/"
+    }
+  ],
+  "generated_at": "2026-11-02T10:47:47+09:00",
+  "github_featured": [
+    "Nutlope/hallmark",
+    "JetBrains/thinkrail"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-10-31T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 14320
+      },
+      {
+        "rank": 2,
+        "repository": "AgriciDaniel/claude-seo",
+        "weekly_stars": 4110
+      },
+      {
+        "rank": 3,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 9713
+      },
+      {
+        "rank": 4,
+        "repository": "obra/superpowers",
+        "weekly_stars": 4894
+      },
+      {
+        "rank": 5,
+        "repository": "TauricResearch/TradingAgents",
+        "weekly_stars": 5557
+      },
+      {
+        "rank": 6,
+        "repository": "multica-ai/andrej-karpathy-skills",
+        "weekly_stars": 4250
+      },
+      {
+        "rank": 7,
+        "repository": "Leonxlnx/taste-skill",
+        "weekly_stars": 4359
+      },
+      {
+        "rank": 8,
+        "repository": "jakubkrehel/skills",
+        "weekly_stars": 980
+      },
+      {
+        "rank": 9,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 2142
+      },
+      {
+        "rank": 10,
+        "repository": "anthropics/knowledge-work-plugins",
+        "weekly_stars": 2504
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-02T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "Nutlope/hallmark",
+        "weekly_stars": 11566
+      },
+      {
+        "rank": 2,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 12017
+      },
+      {
+        "rank": 3,
+        "repository": "AgriciDaniel/claude-seo",
+        "weekly_stars": 5034
+      },
+      {
+        "rank": 4,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 5852
+      },
+      {
+        "rank": 5,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 10069
+      },
+      {
+        "rank": 6,
+        "repository": "obra/superpowers",
+        "weekly_stars": 5896
+      },
+      {
+        "rank": 7,
+        "repository": "JetBrains/thinkrail",
+        "weekly_stars": 5760
+      },
+      {
+        "rank": 8,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 6926
+      },
+      {
+        "rank": 9,
+        "repository": "multica-ai/andrej-karpathy-skills",
+        "weekly_stars": 4459
+      },
+      {
+        "rank": 10,
+        "repository": "jakubkrehel/skills",
+        "weekly_stars": 1607
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "EnvOS: Stale-Information Drift Auditing for Computer-Use Agents",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2610.40246"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 computer-use agent가 작업 중인 소프트웨어 상태가 바뀌는 현실 조건에서 평가 파이프라인이 어떻게 왜곡되는지를 다룬다. 저자들은 단순 성공률 비교가 모델 성능 저하와 환경 변화 미적용, 채점기 오판을 구분하지 못해 잘못된 결론을 만들 수 있다고 지적한다. EnvOS는 변화 이벤트 검증, 과제 해결 가능성 점검, 사후 판정 재검증을 결합해 결과를 감사 가능한 증거 체인으로 남기는 프레임워크다.",
+      "evidence": "full_text",
+      "findings": "clinic booking에서 Claude Opus 5는 추가 정보가 없을 때 0/16, 재확인 프롬프트 2/16, 갱신값 재노출 15/16을 기록했으며 후자 개선은 보정 후에도 유의했다고 보고됐다(p=0.00293). insurance claim approval에서는 Opus 5가 10/10으로 안정적이었던 반면 Sonnet 5는 1/10에서 9/10으로 크게 변해, 모델·UI 설계 조합이 결과에 미치는 영향이 확인됐다. 저자들은 grading stress test에서도 단순 로그 체크 대비 감사 파이프라인이 오류 탐지를 크게 개선했다고 제시했다.",
+      "first_published": "2026-10-29",
+      "id": "arxiv:2610.40246",
+      "limitations": "평가 과제 수와 도메인이 제한적이라 모든 업무군의 동적 변경 시나리오로 일반화하려면 추가 실험이 필요하다. 또한 특정 모델·인터페이스 조합에서 효과가 달라져, 프레임워크 도입 시 조직별 워크플로 맞춤 설정과 검증 비용이 발생한다. 따라서 운영 적용 전에는 대상 업무의 변화 패턴과 채점 기준을 별도로 재정의해야 한다.",
+      "method": "프레임워크는 실행 전 단계에서 변화 이벤트가 실제로 발화하는지, 과제가 여전히 풀 수 있는지, 채점기가 정·오답을 분리하는지 먼저 인증한다. 실행 후에는 별도 코드 경로로 로그·증거를 다시 읽어 판정을 재검사하며, seed 기반 재생성을 통해 환경과 판정 과정을 반복 검증한다. 실험은 clinic booking과 insurance claim approval에서 stale-information 개입 조건을 달리해 모델 반응을 비교했다.",
+      "practical_value": "에이전트 운영팀이 벤치마크 설계 단계에서 환경 변동성과 채점기 신뢰성을 분리해 관리할 수 있어, 잘못된 성능 회귀 판단을 줄일 수 있다. RLVR·데이터 큐레이션 파이프라인에서 verifiable reward 설계의 기반 환경으로도 활용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40246",
+        "https://arxiv.org/html/2610.40246v1",
+        "https://arxiv.org/pdf/2610.40246v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness"
+      ],
+      "title": "EnvOS: Auditing Computer-Use Agents When the World Moves On : Phenomenon-Based Task Construction, Certification, and Evidence-Based Evaluation",
+      "topics": [
+        "computer-use agent auditing",
+        "stale-information intervention",
+        "evidence-based grading"
+      ],
+      "url": "https://arxiv.org/abs/2610.40246"
+    },
+    {
+      "abstract_summary": "VeriCUA는 computer-using agent의 과제 완료 여부를 정적 판정기가 아니라 능동 탐색 기반 검증 문제로 재정의한다. 저자들은 VLM judge나 상태 검사 코드 생성 방식이 복잡한 UI 환경에서는 부분 관측에 갇혀 결정적 증거를 놓치기 쉽다고 본다. 이에 플랫폼 공통 절차로 루브릭 합성, GUI·코드 하이브리드 점검, 증거 규칙 기반 판정을 결합한 검증기를 제시했다.",
+      "evidence": "full_text",
+      "findings": "저자들은 비교 baseline 대비 reference label 일치도가 개선됐고, 특히 hard case의 offline 검증과 online false completion 거절 능력에서 이득이 컸다고 보고했다. 분석 섹션에서는 GUI 단독보다 하이브리드 행동 공간과 test-time exploration이 성능 개선에 기여하는 경향을 제시했다. 또한 stronger backbone을 쓸수록 검증기 자체의 판단 안정성이 높아지지만, 증거 규칙 설계가 동반되지 않으면 개선 폭이 제한됨을 보여준다.",
+      "first_published": "2026-10-29",
+      "id": "arxiv:2610.40578",
+      "limitations": "검증 절차가 더 강해질수록 실행 비용과 지연 시간이 증가할 수 있으며, 관측 가능한 상태가 제한된 앱에서는 여전히 판정 불확실성이 남는다. 과제별 루브릭 합성 품질이 낮으면 하이브리드 탐색도 잘못된 검증 경로를 강화할 위험이 있다. 실무 적용 시에는 비용 예산과 신뢰 임계값을 함께 튜닝해야 한다.",
+      "method": "방법론은 먼저 주어진 과제 맥락에서 환경 인지형 루브릭을 만들고, 미해결 요구사항마다 GUI 확인과 코드 확인 중 적절한 행동을 선택한다. 이후 source-aware evidence 규칙과 arbitration 규칙으로 충돌 신호를 정리해 최종 완료 여부를 낸다. 논문은 온라인·오프라인 조건, action-space ablation, 관측 입력 변화 실험을 포함해 검증기 성능 기여 요인을 분해했다.",
+      "practical_value": "데이터 큐레이션·RL 보상 생성에서 CUA 완료 판정을 표준화해야 하는 팀이 플랫폼별 별도 검증기 유지비를 줄이면서도 거짓 완료율을 낮출 수 있다. 특히 웹·모바일·데스크톱 혼합 업무 자동화 환경에서 공통 검증 레이어로 적용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40578",
+        "https://arxiv.org/html/2610.40578v1",
+        "https://arxiv.org/pdf/2610.40578v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "tool-use"
+      ],
+      "title": "VeriCUA: Verification as Agentic Exploration for Computer-Using Agents",
+      "topics": [
+        "task-completion verification",
+        "agentic evidence gathering",
+        "online-offline CUA evaluation"
+      ],
+      "url": "https://arxiv.org/abs/2610.40578"
+    },
+    {
+      "abstract_summary": "이 연구는 다중 LLM 에이전트가 연구 질문 선정부터 이론 도출, 실험 설계와 원고 작성까지 이어지는 자율 연구 루프를 얼마나 안정적으로 수행하는지 검증한다. 논문은 단순 자동화가 아니라 에이전트 간 상호 검토·중단·재설계를 통해 잘못된 결론을 막는 협업 구조를 핵심으로 둔다. 적용 사례로 고체 스핀 양자계 실험을 선택해 계산 예측과 물리 실험 결과를 교차 검증했다.",
+      "evidence": "full_text",
+      "findings": "저자들은 에이전트 협업이 연구 질문을 생성·기각하고, 이론 예측을 계산적으로 검증한 뒤 경쟁 가설을 구분하는 실험 설계를 도출할 수 있음을 보여줬다. 특히 첫 실험의 겉보기 성공을 그대로 채택하지 않고 데이터 수집 드리프트를 근거로 재측정을 요구한 점이 핵심 결과로 제시됐다. 수정된 프로토콜에서는 사전에 정한 기준을 충족해 이론 예측을 지지하는 결과를 얻었다고 보고됐다.",
+      "first_published": "2026-10-29",
+      "id": "arxiv:2610.40589",
+      "limitations": "도메인이 고체 스핀 실험으로 제한되어 있어 생물·화학·소프트웨어 실험 전반으로 곧바로 일반화하기 어렵다. 또한 연구 운영 규칙과 사람의 개입 경계가 결과 품질에 크게 작용해, 완전 무인 실험실로 해석하기에는 제약이 남는다. 반복 재현성과 비용 효율을 다양한 과제로 검증하는 후속 연구가 필요하다.",
+      "method": "에이전트는 제안 생성, 독립 이론 검토, 실험 설계, 판정 검토 역할로 분리되어 문서 교환과 리뷰 규칙 아래 동작한다. 초기 실험 결과가 이론과 맞아 보였더라도 기준 신호 드리프트가 감지되면 결과를 보류하고, 측정 프로토콜을 수정해 동일 수용 기준으로 재실험하는 절차를 적용했다. 논문 Methods 섹션은 context allocation, verification analysis, acquisition protocol amendment를 세부 단계로 제시한다.",
+      "practical_value": "산학 연구팀이 AI 기반 연구 자동화를 도입할 때 '결론 생성'보다 '검증과 중단 권한'을 우선 설계해야 한다는 운영 원칙을 제공한다. 하이리스크 실험 도메인에서 다중 에이전트 검증 프로토콜의 실험적 출발점으로 활용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40589",
+        "https://arxiv.org/html/2610.40589v1",
+        "https://arxiv.org/pdf/2610.40589v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "multi-agent"
+      ],
+      "title": "Collaborative AI agents for autonomous experimental research with solid-state quantum spins",
+      "topics": [
+        "autonomous research lab",
+        "multi-agent scientific workflow",
+        "theory-experiment cross-check"
+      ],
+      "url": "https://arxiv.org/abs/2610.40589"
+    },
+    {
+      "abstract_summary": "이 논문은 약한 검증자가 강한 AI 계산 결과를 어떻게 점검할지에 대한 scalable oversight 문제를 상호작용 증명 관점에서 다룬다. 저자들은 기존 debate류 접근이 '적어도 한 prover는 정직하다'는 가정에 크게 의존한다는 한계를 지적하고, verifier가 prover 상태를 되감아 재질의할 수 있는 RIP(Rewindable Interactive Proof) 모델을 제안한다. 아이디어는 모델 상태 스냅샷 복원이 가능한 AI 실행 환경을 검증 절차에 직접 활용하는 것이다.",
+      "evidence": "full_text",
+      "findings": "저자들은 truthful prover 가정을 쓰지 않는 기존 relativizing 증명 대비 더 효율적인 검증 경로를 제시했고, 암호학적 가정 없이도 동작하는 구성을 보였다고 보고했다. 또한 프로토타입 실험에서 RIP 접근이 최신 배포형 proof system보다 빠를 수 있음을 예비적으로 보여줬다. 이는 AI 모델을 prover로 둘 때 상태 되감기 능력 자체가 검증 비용을 낮추는 실용적 자산이 될 수 있음을 시사한다.",
+      "first_published": "2026-10-29",
+      "id": "arxiv:2610.40535",
+      "limitations": "현재 실험은 예비 단계로 범용 대규모 태스크에서의 안정성과 비용을 충분히 입증하지 못했다. 강한 가정이 줄어든 대신, verifier가 prover 실행 환경을 통제할 수 있어야 한다는 운영 조건이 필요하다. 따라서 공개 환경·분산 환경에서 동일 장점을 유지하는지 추가 검증이 요구된다.",
+      "method": "프로토콜은 robust oracle-aided computation에 대해 relativizing RIP를 구성하고, IOP에서 RIP로 변환하는 이론 경로를 제시한다. 구현 파트에서는 프로토타입 시스템과 MNIST 기반 예비 실험을 통해 실행 가능성을 점검하고, 기존 배포형 proof system과 시간 비용을 비교했다. 검증자 온라인 비용을 입력 길이에 준선형으로 낮추기 위한 전처리-재사용 구조도 함께 설명한다.",
+      "practical_value": "AI 거버넌스·안전성 팀이 고비용 감독 절차를 설계할 때 상태 스냅샷 기반 재검증 기법을 도입하는 근거를 제공한다. 특히 내부 추론 서비스 검증에서 검증자 비용을 낮추는 아키텍처 옵션으로 참고할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40535",
+        "https://arxiv.org/html/2610.40535v1",
+        "https://arxiv.org/pdf/2610.40535v1"
+      ],
+      "tags": [
+        "evaluation",
+        "governance",
+        "security"
+      ],
+      "title": "Efficient Scalable Oversight via Rewinding",
+      "topics": [
+        "scalable oversight",
+        "rewindable interactive proofs",
+        "AI verifier-prover protocol"
+      ],
+      "url": "https://arxiv.org/abs/2610.40535"
+    },
+    {
+      "abstract_summary": "이 논문은 장문 컨텍스트 모델이 매 스텝마다 비슷한 검색 문제를 반복하는 비효율을 줄이기 위해 retrieval을 '재탐색'이 아닌 '상태 기반 이동'으로 재해석한다. 저자들은 메모리 콘텐츠와 주소 기하를 분리하고, 지역 이웃에서 정보가치와 검색비용을 함께 최적화하는 value-indexed objective를 제안했다. 목표는 보완 정보는 함께 끌어오고 중복 정보는 같은 집합에 몰리지 않게 하는 상태형 메모리 구조를 만드는 것이다.",
+      "evidence": "full_text",
+      "findings": "논문은 persistent local traversal head가 5-token 컨텍스트에서 0.59M step에 평균 리턴 0.95에 도달했다고 보고했다. 같은 조건에서 Gaussian absolute addressing은 0.94M, categorical absolute addressing은 2M 이상 step이 필요해 학습 효율 차이가 나타났다. 저자들은 이를 상태형 retrieval 가설의 초기 근거로 제시하면서도, 아직 반복 검색과 학습형 기하를 직접 검증한 단계는 아니라고 명확히 밝혔다.",
+      "first_published": "2026-10-29",
+      "id": "arxiv:2610.40545",
+      "limitations": "실험이 매우 단순화된 고정 기하 설정에 머물러 있어 제안한 전체 이론을 곧바로 일반화할 수는 없다. 실제 장문 에이전트 작업에서의 반복 검색 이득, 학습형 주소 구조 안정성, 대규모 메모리 비용은 후속 검증이 필요하다. 따라서 현재 결과는 개념 타당성 확인으로 해석해야 한다.",
+      "method": "방법론은 cost-regularized local index를 정의하고, retrieval step을 address space traversal로 지속시키는 persistent head를 설계한다. 실험은 완전한 학습형 기하 대신 고정 기하의 단순 proof-of-principle 설정으로 MiniGrid Memory 태스크를 사용했다. 비교군은 Gaussian absolute addressing과 categorical absolute addressing이며, 동일한 짧은 컨텍스트 조건에서 학습 속도를 비교했다.",
+      "practical_value": "장기 문맥 에이전트를 설계하는 팀이 메모리 압축 대 확장 이분법을 넘어 상태 기반 retrieval 구조를 실험할 수 있는 새로운 설계 축을 얻는다. 특히 메모리 검색 비용이 큰 워크로드에서 학습 효율 개선 아이디어로 활용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2610.40545",
+        "https://arxiv.org/html/2610.40545v1",
+        "https://arxiv.org/pdf/2610.40545v1"
+      ],
+      "tags": [
+        "memory",
+        "performance",
+        "retrieval"
+      ],
+      "title": "Retrieval as Traversal: Value-Indexed Memory for Stateful Long-Context Agents",
+      "topics": [
+        "stateful retrieval memory",
+        "value-indexed addressing",
+        "long-context agent memory"
+      ],
+      "url": "https://arxiv.org/abs/2610.40545"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "브랜드 가이드·실서비스 UX 맥락 미반영 위험 · 자동 lint 통과가 비즈니스 적합성 보장을 의미하지 않음",
+      "novelty": "new_entry",
+      "rank": 1,
+      "repository": "Nutlope/hallmark",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/Nutlope/hallmark",
+        "https://raw.githubusercontent.com/Nutlope/hallmark/main/README.md"
+      ],
+      "summary": "디자인 품질 게이트 스킬 · 50개 테마 기반 페이지 생성·감사 워크플로",
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/Nutlope/hallmark",
+      "use_case": "프로덕트 웹 UI를 자동 생성·개선하는 팀이 접근성·레이아웃·카피 품질 체크를 릴리즈 전 파이프라인에 일관되게 넣어 AI 산출물 품질 편차를 줄일 수 있다.",
+      "why_now": "weekly Top10 신규 진입 · 11,566 stars this week"
+    },
+    {
+      "caution": "워크스페이스·브랜치 운영 복잡도 증가 · 기존 IDE 플러그인·사내 정책 연동 검증 필요",
+      "novelty": "new_entry",
+      "rank": 7,
+      "repository": "JetBrains/thinkrail",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/JetBrains/thinkrail",
+        "https://raw.githubusercontent.com/JetBrains/thinkrail/main/README.md"
+      ],
+      "summary": "worktree 격리형 에이전트 IDE · living specs·재사용 스킬 기반 개발 루프",
+      "tags": [
+        "agent",
+        "coding-agent",
+        "developer-tools"
+      ],
+      "url": "https://github.com/JetBrains/thinkrail",
+      "use_case": "대형 코드베이스 팀이 병렬 에이전트 작업을 git worktree 단위로 분리해 충돌을 줄이고, 스펙·변경 이력 기반 PR 초안을 자동화하는 실험에 활용할 수 있다.",
+      "why_now": "weekly Top10 신규 진입 · 5,760 stars this week"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "오늘 Technical Spotlight는 소프트웨어 상태가 실행 중 바뀌는 환경에서 computer-use agent를 어떻게 신뢰성 있게 평가할지 다룬 EnvOS 연구다. 논문은 실패 원인을 모델 자체 결함, 환경 변경 미적용, 채점기 오판으로 분리하지 않으면 잘못된 결론을 내리기 쉽다는 문제를 제기한다. 핵심은 에이전트 실행 전·후 검증 단계를 분리해 변화 이벤트와 판정 근거를 모두 재구성 가능한 감사 체계로 묶는 것이다.",
+    "저자들은 stale-information 시나리오에서 환경 인증, 실행 통제, 사후 증거 재검증을 포함한 파이프라인을 제시하고 clinic booking·insurance claim approval 과제로 평가했다. clinic booking에서는 Claude Opus 5가 추가 정보 없이 0/16, 재확인 프롬프트만 있을 때 2/16, 갱신값을 다시 노출할 때 15/16을 기록했으며, 후자 개선은 다중검정 보정 후에도 유의하다고 보고했다(p=0.00293). 보험 승인 과제에서도 모델별로 재확인 행동과 성공률 차이가 크게 나타나, 인터페이스 설계가 성능 변동을 키운다는 점을 함께 보여줬다.",
+    "이 결과는 에이전트 벤치마크를 만들 때 단순 성공률 비교보다 변화 이벤트의 발화 여부와 채점기의 신뢰성까지 함께 감사해야 한다는 실무 기준을 제시한다. 다만 논문에서도 과제 규모가 제한적이고 특정 모델·도메인 중심이라는 한계를 명시해, 범용 운영 정책으로 확장하려면 더 넓은 업무군에서 재현 검증이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "JetBrains/thinkrail이 주간 Trending Top10에 신규 진입하며 worktree 기반 병렬 코딩 에이전트 IDE 수요를 보여줬다.",
+        "url": "https://github.com/JetBrains/thinkrail"
+      },
+      {
+        "section": "community",
+        "text": "HN에서 Rust 기반 고속 콘텐츠 인지 Git difftool OmniDiff 공개가 개발 도구 생산성 이슈로 부상했다.",
+        "url": "https://github.com/ivankovic/omnidiff"
+      },
+      {
+        "section": "cncf",
+        "text": "CNCF End User TAB 가이드가 KubeCon NA 2026 세션 선택·운영 우선순위 실무 지침으로 공유됐다.",
+        "url": "https://www.cncf.io/blog/2026/10/29/kubecon-cloudnativecon-na-2026-end-user-tab-recommendations-and-tips/"
+      }
+    ],
+    "spotlight": [
+      "EnvOS는 실행 중 세계 상태가 바뀌는 과제에서 실패 원인을 모델·환경·채점기로 분해해 감사하는 평가 프레임워크다. clinic booking에서 Opus 5는 추가 정보 없이 0/16, 재확인 프롬프트 2/16, 갱신값 재노출 15/16로 큰 차이를 보였고, 개선은 보정 후에도 유의했다(p=0.00293). 운영팀은 에이전트 성능 비교 전에 변화 이벤트 적용·채점기 무결성 검증을 별도 단계로 설계해야 한다."
+    ]
+  }
+}
