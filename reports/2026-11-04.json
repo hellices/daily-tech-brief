@@ -1,0 +1,499 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "에이전트 실행 격리와 정책 적용을 클러스터 운영 플로우에 통합하려는 팀은 버전 변화에 맞춰 샌드박스 배치·권한 경계·자동화 파이프라인을 재검토해야 한다.",
+      "published": "2026-11-03",
+      "sources": [
+        "https://www.cncf.io/blog/2026/11/03/openkruise-agents-v0-6-0-leaping-ahead-in-agent-sandbox-security-and-automation/",
+        "https://www.cncf.io/blog/"
+      ],
+      "summary": "OpenKruise Agents 0.6.0이 Kubernetes 기반 Agent Sandbox 수명주기 관리 기능과 자동화 범위를 확장하며 보안 운영 시나리오를 전면에 배치했다.",
+      "tags": [
+        "agent",
+        "cloud-native",
+        "kubernetes",
+        "release",
+        "security"
+      ],
+      "title": "OpenKruise Agents v0.6.0: Leaping ahead in agent Sandbox security and automation",
+      "url": "https://www.cncf.io/blog/2026/11/03/openkruise-agents-v0-6-0-leaping-ahead-in-agent-sandbox-security-and-automation/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일(11-01~11-04) 창에서 릴리스·보안·호환성에 직접 영향이 확인된 항목은 OpenKruise Agents v0.6.0 1건이었고, 나머지는 행사/소개 성격이었다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/",
+        "https://www.cncf.io/blog/2026/11/03/openkruise-agents-v0-6-0-leaping-ahead-in-agent-sandbox-security-and-automation/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN RSS, GeekNews 공식 RSS, Reddit 서브레딧 공식 RSS를 교차 확인해 최근 24-72시간 고신호 링크 10건으로 통합했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "주간 Trending Top10을 2026-11-04 KST에 재관측했고, introduced history와 대조한 결과 미소개 항목은 anthropics/skills 1건이었다.",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/anthropics/skills"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "arXiv cs.AI/cs.CL 최근 등록분에서 최근 6개월·최근 7일 비중복 조건을 만족하고 본문(방법·실험·한계)까지 확인 가능한 논문 5편을 선정했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-04",
+  "discussions": [
+    {
+      "sources": [
+        "https://arxiv.org/abs/2605.29713",
+        "https://news.ycombinator.com/item?id=50358582"
+      ],
+      "tags": [
+        "llm",
+        "reasoning"
+      ],
+      "title": "The Little Book of Generative AI Foundations: An Intuitive Mathematical Primer",
+      "url": "https://arxiv.org/abs/2605.29713"
+    },
+    {
+      "sources": [
+        "https://www.interdb.jp/pg/index.html",
+        "https://news.ycombinator.com/item?id=50358702"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance",
+        "storage"
+      ],
+      "title": "The Internals of PostgreSQL",
+      "url": "https://www.interdb.jp/pg/index.html"
+    },
+    {
+      "sources": [
+        "https://blog.nns.ee/2026/11/02/renault-hack/",
+        "https://news.ycombinator.com/item?id=50339288",
+        "https://news.hada.io/topic?id=36535"
+      ],
+      "tags": [
+        "security"
+      ],
+      "title": "Jailbreaking my car's navigation system just so I can change the time",
+      "url": "https://blog.nns.ee/2026/11/02/renault-hack/"
+    },
+    {
+      "sources": [
+        "https://webkit.org/blog/18541/introducing-adaptive-dark-mode/",
+        "https://news.ycombinator.com/item?id=50358562"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "Safari introduces Adaptive Dark Mode in 27.3",
+      "url": "https://webkit.org/blog/18541/introducing-adaptive-dark-mode/"
+    },
+    {
+      "sources": [
+        "https://neufangled.com/",
+        "https://news.ycombinator.com/item?id=50354358",
+        "https://news.hada.io/topic?id=36546"
+      ],
+      "tags": [
+        "open-source",
+        "robotics"
+      ],
+      "title": "Stringman, an $800 open-source room scale gripper robot",
+      "url": "https://neufangled.com/"
+    },
+    {
+      "sources": [
+        "https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/",
+        "https://news.ycombinator.com/item?id=50355251",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xmz9ca/like_gpt6_astra_qwen_38_27b_can_interpret_model/",
+        "https://news.hada.io/topic?id=36542"
+      ],
+      "tags": [
+        "llm",
+        "reasoning"
+      ],
+      "title": "Qwen 3.8 27B on my laptop can interpret model weights",
+      "url": "https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/"
+    },
+    {
+      "sources": [
+        "https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xn568h/british_fintech_revolut_slashes_ai_coding_costs/"
+      ],
+      "tags": [
+        "coding-agent",
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "British fintech Revolut slashes AI coding costs 10x by cutting out Claude and going self-hosted",
+      "url": "https://www.theregister.com/ai-and-ml/2026/11/03/british-fintech-revolut-slashes-ai-coding-costs-10x-by-cutting-out-claude-and-going-self-hosted/5307345"
+    },
+    {
+      "sources": [
+        "https://atlas.scime.ai/research/3d-vision/gaussian-splatting/compact-and-efficient-gaussian-splatting",
+        "https://www.reddit.com/r/MachineLearning/comments/1xmk8rx/we_turned_10_years_of_ml_papers_into_one_page_per/"
+      ],
+      "tags": [
+        "developer-tools",
+        "evaluation",
+        "llm"
+      ],
+      "title": "We turned 10 years of ML papers into one page per topic",
+      "url": "https://atlas.scime.ai/research/3d-vision/gaussian-splatting/compact-and-efficient-gaussian-splatting"
+    },
+    {
+      "sources": [
+        "https://nithinjohngeorge.com/blog/cgroups-deep-dive-kubernetes-part-1/",
+        "https://www.reddit.com/r/kubernetes/comments/1xmmlaz/cgroups_a_deep_dive_into_resource_management_in/"
+      ],
+      "tags": [
+        "containers",
+        "kubernetes",
+        "performance"
+      ],
+      "title": "Cgroups: A Deep Dive into Resource Management in Kubernetes",
+      "url": "https://nithinjohngeorge.com/blog/cgroups-deep-dive-kubernetes-part-1/"
+    },
+    {
+      "sources": [
+        "https://github.com/postmanlabs/postman-app-support/issues/14370",
+        "https://news.ycombinator.com/item?id=50354960",
+        "https://news.hada.io/topic?id=36538"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Postman silently auto-installs AI plugins and attempts to share all API data",
+      "url": "https://github.com/postmanlabs/postman-app-support/issues/14370"
+    }
+  ],
+  "generated_at": "2026-11-04T08:09:58.211015+09:00",
+  "github_featured": [
+    "anthropics/skills"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-03T08:01:00+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "Nutlope/hallmark",
+        "weekly_stars": 11566
+      },
+      {
+        "rank": 2,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 5852
+      },
+      {
+        "rank": 3,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 12017
+      },
+      {
+        "rank": 4,
+        "repository": "AgriciDaniel/claude-seo",
+        "weekly_stars": 5034
+      },
+      {
+        "rank": 5,
+        "repository": "obra/superpowers",
+        "weekly_stars": 5896
+      },
+      {
+        "rank": 6,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 6926
+      },
+      {
+        "rank": 7,
+        "repository": "JetBrains/thinkrail",
+        "weekly_stars": 5760
+      },
+      {
+        "rank": 8,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 10069
+      },
+      {
+        "rank": 9,
+        "repository": "jakubkrehel/skills",
+        "weekly_stars": 1607
+      },
+      {
+        "rank": 10,
+        "repository": "multica-ai/andrej-karpathy-skills",
+        "weekly_stars": 4459
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-04T08:05:37+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "nutlope/hallmark",
+        "weekly_stars": 10517
+      },
+      {
+        "rank": 2,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 7255
+      },
+      {
+        "rank": 3,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 9770
+      },
+      {
+        "rank": 4,
+        "repository": "obra/superpowers",
+        "weekly_stars": 5956
+      },
+      {
+        "rank": 5,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 11754
+      },
+      {
+        "rank": 6,
+        "repository": "agricidaniel/claude-seo",
+        "weekly_stars": 4091
+      },
+      {
+        "rank": 7,
+        "repository": "jetbrains/thinkrail",
+        "weekly_stars": 4812
+      },
+      {
+        "rank": 8,
+        "repository": "anthropics/skills",
+        "weekly_stars": 2828
+      },
+      {
+        "rank": 9,
+        "repository": "jakubkrehel/skills",
+        "weekly_stars": 1707
+      },
+      {
+        "rank": 10,
+        "repository": "multica-ai/andrej-karpathy-skills",
+        "weekly_stars": 4397
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Agent Skills Registry: Runtime Skill Loading and Reusable Execution Patterns",
+  "lead": {
+    "section": "github",
+    "url": "https://github.com/anthropics/skills"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 정보분석 업무에서 모델 자체를 교체하지 않고 에이전트 실행 하네스만 최적화해 성능을 끌어올릴 수 있는지 검증한다. 저자들은 도구 집합, 가드레일, 메모리 정책, 루프 구성을 제한적으로 조정하는 CLEO(Constrained Loop for Environment Optimization)를 제안해, 보안 요구가 높은 환경에서도 감사 가능한 구성을 유지하도록 설계했다. 핵심 문제 설정은 더 큰 모델이 아니라 더 맞는 실행 구조가 성능 병목인지 확인하는 데 있다.",
+      "evidence": "full_text",
+      "findings": "보류 데이터셋에서 CLEO 하네스는 pass rate 83.8%를 기록했고, strongest out-of-the-box Claude Code SDK baseline(85.0%)과의 격차를 1.2 points로 줄였다. 동시에 제안 하네스는 더 작은 구성으로 운영 가능해, 성능·통제 가능성 간 절충을 수치로 제시했다.",
+      "first_published": "2026-11-02",
+      "id": "arxiv:2611.03434",
+      "limitations": "평가가 특정 분석 태스크와 고정 모델 조합에 집중돼 있어 다른 도메인·다른 모델군으로의 일반화는 추가 검증이 필요하다. 또한 높은 정확도라도 도구 선택 제약이 강한 환경에서는 복잡한 예외 상황 처리 능력이 제한될 수 있다.",
+      "method": "고정된 self-hostable LLM과 전문가 검증 데이터셋을 두고, 하네스 구성요소를 단계적으로 추가·제거하면서 정확도 개선 여부를 비교했다. 실험은 최소 도구 표면을 유지하는 제약 아래에서 반복 최적화를 수행해 과적합 대신 일반성·감사가능성의 균형을 맞추도록 구성됐다.",
+      "practical_value": "보안·비용 제약 때문에 frontier hosted model 사용이 어려운 조직이, 모델 교체보다 하네스 설계 최적화를 우선해 성능을 개선하는 실행 전략을 세울 때 직접 참고할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.03434",
+        "https://arxiv.org/html/2611.03434v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness",
+        "llm"
+      ],
+      "title": "Optimize the Harness, Not the Model: Fitting a Minimal Agent to a Self-Hostable LLM for Investigative Analysis",
+      "topics": [
+        "agent harness optimization",
+        "self-hosted llm",
+        "investigative analysis"
+      ],
+      "url": "https://arxiv.org/abs/2611.03434"
+    },
+    {
+      "abstract_summary": "장기 메모리를 쓰는 에이전트는 상위 사실이 바뀌었을 때 관련 계획·행동까지 함께 수정해야 하지만, 기존 방식은 모순 난 사실만 고치고 파생 상태를 남겨 일관성이 깨지는 문제가 있다. 이 논문은 이를 dependency-aware state revision 문제로 정식화하고, 어떤 상태가 어떤 전제에 의존하는지 추적하는 StateGraph를 제안한다. 핵심은 관련 있어 보이는 연결이 아니라, 반사실 검증(counterfactual verification)으로 실제 의존관계를 확인해 연쇄 수정 대상을 고르는 점이다.",
+      "evidence": "full_text",
+      "findings": "StateChangeBench에서 StateGraph는 CUPMem 재구현 대비 Impact-F1이 depth 1에서 +6.9%p, depth 3 이상에서 +26.0%p 향상됐고, 공개 장기 메모리 벤치마크에서도 다수 데이터셋에서 동등 이상 성능을 보였다. 즉, 직접 모순 수정만으로는 놓치던 연쇄 불일치를 의존성 추적으로 줄일 수 있음을 보여준다.",
+      "first_published": "2026-11-02",
+      "id": "arxiv:2611.02912",
+      "limitations": "벤치마크가 50개 수작업 사례 중심이라 대규모 실제 로그의 잡음·모호한 인과관계에서 동일한 효과가 유지되는지는 추가 검증이 필요하다. 또한 의존성 판별 단계의 질의 품질이 낮으면 과잉 무효화 또는 누락 무효화가 발생할 수 있다.",
+      "method": "저자들은 상호작용 기록에서 상태 의존 그래프를 복원한 뒤, 전제가 제거됐을 때 해당 상태가 여전히 유지되는지 질의해 strict dependency를 판별했다. 이후 독립 지지 경로가 남아 있는 상태는 보존하고, 지지가 끊긴 상태만 보수적으로 cascade revision하는 규칙을 적용했다. 평가를 위해 50개 사례의 StateChangeBench를 구축해 cascade depth·hard negative·action consequence를 분리 측정했다.",
+      "practical_value": "프로필·업무 선호·결정 이력을 장기 보존하는 업무형 에이전트에서, 변경 이벤트 발생 시 안전한 메모리 정합성 유지 정책(무엇을 지우고 무엇을 유지할지)을 설계하는 기준으로 활용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.02912",
+        "https://arxiv.org/html/2611.02912v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory"
+      ],
+      "title": "A State Change Is Local, Its Consequences Are Not: Dependency-Aware State Revision for Long-Term Agent Memory",
+      "topics": [
+        "long-term memory revision",
+        "state dependency graph",
+        "cascade invalidation"
+      ],
+      "url": "https://arxiv.org/abs/2611.02912"
+    },
+    {
+      "abstract_summary": "이 연구는 LLM 추론 비용을 토큰 개수의 선형 함수처럼 다루는 관행이 에너지 예측을 왜곡한다고 지적한다. 토큰이 KV-cache를 누적시키면서 이후 토큰 비용을 올리기 때문에, 같은 토큰 수라도 입력·출력 길이와 아키텍처에 따라 에너지 곡선이 크게 달라진다는 문제다. 저자들은 이를 설명·예측할 수 있는 폐형식 해석 모델 SIMPLE을 제시했다.",
+      "evidence": "full_text",
+      "findings": "SIMPLE은 R2=0.969, MAPE 11.97%를 기록해 기존 SOTA 대비 3.1~3.5배 낮은 오차를 보였고, per-LLM 보정 없이도 예측력이 유지됐다. 분석적으로는 긴 입력에서 prefill 항이 커지고, GQA KV grouping이 MHA 대비 토큰당 에너지를 최대 3배까지 줄일 수 있음을 제시했다. 또한 reasoning budget을 늘리면 정확도는 오르더라도 에너지가 더 빠르게 증가해 Intelligence per Joule이 중간 구간에서 정점을 갖는다는 점을 수치화했다.",
+      "first_published": "2026-11-02",
+      "id": "arxiv:2611.03330",
+      "limitations": "GPU·모델군이 주로 dense LLM과 H100 실험에 맞춰져 있어 다른 하드웨어(예: 소비자 GPU, TPU)나 sparse/MoE 계열에 대한 계수 안정성은 별도 검증이 필요하다. 또한 실제 서비스의 배치 전략·캐시 정책 변화는 예측 오차를 키울 수 있다.",
+      "method": "MHA/GQA를 포함한 추론 연산을 prefill과 decode로 분해하고, FLOPs와 메모리 접근 복잡도를 아키텍처 하이퍼파라미터로 전개해 4개 파라미터 법칙으로 정리했다. 이후 NVIDIA H100에서 6개 계열 13개 dense LLM 추적 데이터로 예측 성능과 기존 적합식 기반 모델을 비교했다.",
+      "practical_value": "서빙 팀이 모델 선택·컨텍스트 길이·reasoning 토큰 예산을 비용 관점에서 동시 최적화할 때, 경험적 튜닝 대신 설명 가능한 에너지 예측식을 기반으로 용량 계획을 세울 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.03330",
+        "https://arxiv.org/html/2611.03330v1"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "The SIMPLE Law for Energy Cost of LLM Inference",
+      "topics": [
+        "llm inference energy",
+        "kv-cache cost",
+        "analytical modeling"
+      ],
+      "url": "https://arxiv.org/abs/2611.03330"
+    },
+    {
+      "abstract_summary": "이 논문은 멀티모달 객관식 벤치마크에서 모델 출력 자체보다 채점 규칙 구현이 최종 점수를 크게 흔들 수 있다는 점을 실증한다. 데이터셋 품질은 엄격히 검토되지만, 자유형 응답을 정답으로 매핑하는 scorer 코드는 검증 없이 관행적으로 쓰이는 경우가 많다는 문제의식이다. 저자들은 동일 출력에 대해 채점기만 바꿔 점수 변동 폭을 계량했다.",
+      "evidence": "full_text",
+      "findings": "채점 규칙만 바꿔도 동일 출력의 정확도가 최대 22 points 변동했고, clean option letter를 내는 경우엔 변동이 0으로 숨겨져 리더보드에서 문제를 놓치기 쉽다는 결과를 제시했다. 또 non-compliance 0.000인 모델에서도 parser가 어느 정규식 매치를 채택하느냐에 따라 9.5 points 스윙이 발생해, 단일 점수 보고가 능력과 채점 편향을 분리하지 못함을 보였다.",
+      "first_published": "2026-11-02",
+      "id": "arxiv:2611.03377",
+      "limitations": "평가 범위가 8개 벤치마크·5개 오픈 VLM 중심이라 폐쇄형 상용 모델이나 비객관식 과제로의 직접 일반화에는 한계가 있다. 또한 제안된 다중 규칙 보고 방식은 운영 복잡도를 늘려 커뮤니티 합의가 필요하다.",
+      "method": "8개 peer-reviewed 벤치마크의 공식 scorer를 재현하고, 단일 16GB GPU에서 구동 가능한 5개 오픈 VLM 출력을 대상으로 점수를 다시 계산했다. 여기에 인간+LLM 심사 블라인드 절차(Cohen's kappa=0.956)를 추가해 모델이 실제로 답한 의미와 채점 결과의 불일치를 비교했다.",
+      "practical_value": "멀티모달 평가 파이프라인을 운영하는 팀이 non-compliance율과 다중 scorer 결과를 함께 보고해, 모델 개선 효과와 채점기 편향을 분리 모니터링하는 실무 기준을 세울 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.03377",
+        "https://arxiv.org/html/2611.03377v1"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "multimodal"
+      ],
+      "title": "Same Outputs, Different Scores: Auditing the Unchecked Graders of Multimodal LLM Benchmarks",
+      "topics": [
+        "multimodal benchmark grading",
+        "scoring rule audit",
+        "evaluation reliability"
+      ],
+      "url": "https://arxiv.org/abs/2611.03377"
+    },
+    {
+      "abstract_summary": "코딩 에이전트는 사용자 요청을 성공적으로 완료해도 파일 삭제·권한 약화 같은 의도치 않은 피해를 함께 일으킬 수 있는데, 기존 성공률 지표는 이 위험을 거의 포착하지 못한다. 저자들은 이 현상을 harmful success로 정의하고, 정상 과업 성공과 유해 부작용을 동시에 측정하는 VeriHarm 프레임워크를 제안했다. 핵심은 과업 자체의 benign objective를 유지한 채 최소 교란으로 위험 행동을 유도하고, 이를 실행 가능한 테스트로 검증하는 설계다.",
+      "evidence": "full_text",
+      "findings": "평균 task accuracy는 95%로 높았지만 safe success rate는 평균 37%에 그쳐, 겉보기 성공이 실제 안전성을 대변하지 못한다는 정량 증거를 제시했다. 즉, 과업 성공률만 추적하면 코딩 에이전트의 운영 위험을 체계적으로 과소평가할 수 있음을 보여준다.",
+      "first_published": "2026-11-02",
+      "id": "arxiv:2611.03575",
+      "limitations": "제안 벤치마크는 설계된 교란 시나리오 기반이어서 실제 기업 코드베이스의 복잡한 권한·의존성 구조를 완전히 대변하진 못한다. 또한 자동 harm test가 포착하지 못하는 장기·간접 부작용은 별도 관측 체계가 필요하다.",
+      "method": "기존 코딩 태스크를 작은 perturbation으로 변형해 안전 경계가 흔들리는 지점을 만들고, 원래 정답 테스트와 harm test를 함께 실행해 결과를 이중 판정했다. 이렇게 만든 VeriHarm-Bench에서 GPT-5.6-Sol, Claude-Opus-5 등 frontier coding agent의 task accuracy와 safe success를 분리 측정했다.",
+      "practical_value": "코딩 에이전트 도입 조직이 배포 전 평가 항목에 safe success를 별도 KPI로 포함하고, CI 단계에서 harm test를 병행하는 안전 게이팅 정책을 설계할 근거를 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.03575",
+        "https://arxiv.org/html/2611.03575v1"
+      ],
+      "tags": [
+        "coding-agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "VeriHarm-Bench: Measuring Harmful Success in LLM Coding Agents Verifiably",
+      "topics": [
+        "coding agent safety",
+        "harmful success",
+        "verifiable benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2611.03575"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "데모/교육용 저장소 명시 · 운영 품질은 별도 검증 필요 · 권한·실패경로 안전장치 직접 설계 필요",
+      "novelty": "new_entry",
+      "rank": 8,
+      "repository": "anthropics/skills",
+      "sources": [
+        "https://github.com/anthropics/skills",
+        "https://raw.githubusercontent.com/anthropics/skills/main/README.md"
+      ],
+      "summary": "SKILL.md 기반 스킬 패키징 · spec/template 동시 공개 · 문서 자동화 스킬 참조 구현",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source",
+        "tool-use"
+      ],
+      "url": "https://github.com/anthropics/skills",
+      "use_case": "팀이 반복 업무용 스킬을 폴더 단위로 표준화해 코드 리뷰, 문서 생성, 데이터 처리 절차를 동일한 호출 방식으로 재사용할 때 즉시 참고할 수 있다.",
+      "why_now": "주간 Trending 8위 · 2,828 stars this week · 에이전트 스킬 마켓플레이스 실사용 흐름 제시"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "Anthropic가 공개한 skills 레지스트리는 에이전트가 작업 맥락에 맞는 지시문·스크립트·리소스를 런타임에 불러 쓰는 구조를 표준 폴더 단위로 정리해, 프롬프트 단일화 중심의 자동화에서 재사용 가능한 실행 패턴 중심으로 무게를 옮겼다.",
+    "이번 주 Top10에서 새로 관측된 anthropics/skills는 SKILL.md 기반 구성, 문서 처리(docx/pdf/pptx/xlsx) 예시, spec/template를 함께 제공해 로컬 워크플로우와 API 양쪽에서 동일한 스킬 설계를 시험할 수 있게 했고, 주간 2,828 stars로 빠르게 확산 중이다.",
+    "다만 저장소 자체가 데모·참조 구현 성격임을 명시하므로, 운영 환경 적용 전에는 권한 범위·실패 처리·출력 검증을 팀 정책에 맞춰 별도 하네스로 재검증해야 한다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "papers",
+        "text": "SIMPLE Law는 13개 LLM·H100 추적에서 MAPE 11.97%를 기록하며 추론 에너지 예측을 기존 적합식 대비 더 낮은 오차로 제시했다.",
+        "url": "https://arxiv.org/abs/2611.03330"
+      },
+      {
+        "section": "community",
+        "text": "Postman AI 플러그인 자동 설치·데이터 공유 시도 이슈가 HN/GeekNews에서 동시 논의되며 개발도구 데이터 경계 설정이 재부각됐다.",
+        "url": "https://github.com/postmanlabs/postman-app-support/issues/14370"
+      },
+      {
+        "section": "cncf",
+        "text": "OpenKruise Agents 0.6.0이 agent sandbox 운영 자동화와 보안 통제 강화를 전면에 내세워 Kubernetes 기반 에이전트 런타임 운영 기준점을 제시했다.",
+        "url": "https://www.cncf.io/blog/2026/11/03/openkruise-agents-v0-6-0-leaping-ahead-in-agent-sandbox-security-and-automation/"
+      }
+    ],
+    "spotlight": [
+      "오늘 핵심은 anthropics/skills의 공개다. 에이전트 작업 지침을 SKILL.md와 리소스 묶음으로 분리해 런타임에 불러오는 방식이 구체화되면서, 같은 모델이라도 실행 하네스 설계로 업무 재현성을 높이는 흐름이 강화됐다.",
+      "이번 관측에서 해당 저장소는 주간 Trending 8위(2,828 stars this week)였고, spec/template와 문서 자동화 레퍼런스를 함께 제시해 팀 단위 표준화 출발점으로 활용성이 높다.",
+      "다만 저장소가 데모 성격임을 명시하므로, 운영 적용 전 권한 통제·오류 복구·검증 게이트를 별도 정책으로 보강해야 한다."
+    ]
+  }
+}
