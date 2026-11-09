@@ -1,0 +1,628 @@
+{
+  "cncf": [
+    {
+      "category": "security",
+      "impact": "코드 실행형 AI 워크로드를 운영하는 팀은 샌드박스 경계 재설계와 함께 성능·격리 수준의 트레이드오프를 재평가해야 한다.",
+      "published": "2026-11-09",
+      "sources": [
+        "https://www.cncf.io/blog/2026/11/09/run-linux-applications-in-hypervisor-isolated-micro-vms-with-hyperlight/",
+        "https://www.cncf.io/blog/"
+      ],
+      "summary": "Hyperlight는 에이전트가 생성한 코드나 플러그인을 마이크로VM 경계 안에서 실행해 프로세스 격리보다 강한 런타임 경계를 제공하는 운영 패턴을 소개했다.",
+      "tags": [
+        "cloud-native",
+        "containers",
+        "security"
+      ],
+      "title": "Run Linux applications in hypervisor-isolated micro-VMs with Hyperlight",
+      "url": "https://www.cncf.io/blog/2026/11/09/run-linux-applications-in-hypervisor-isolated-micro-vms-with-hyperlight/"
+    },
+    {
+      "category": "release",
+      "impact": "멀티 OS 개발 환경을 관리하는 플랫폼 팀은 로컬 실행 표준을 단일 도구 체계로 통합할 수 있는 선택지를 얻었다.",
+      "published": "2026-11-08",
+      "sources": [
+        "https://www.cncf.io/blog/2026/11/08/lima-v2-3-native-on-windows-vmnet-on-linux-and-menu-tui/",
+        "https://www.cncf.io/blog/"
+      ],
+      "summary": "Lima v2.3은 Windows 네이티브 구동, Linux VMnet, 메뉴 기반 TUI를 추가해 개발용 로컬 VM 환경의 이식성과 운영 편의성을 강화했다.",
+      "tags": [
+        "cloud-native",
+        "containers",
+        "release"
+      ],
+      "title": "Lima v2.3: Native on Windows, VMnet on Linux, and menu TUI",
+      "url": "https://www.cncf.io/blog/2026/11/08/lima-v2-3-native-on-windows-vmnet-on-linux-and-menu-tui/"
+    },
+    {
+      "category": "governance",
+      "impact": "플랫폼 아키텍처 의사결정에서 \"컨테이너 단일화\" 가정보다 워크로드별 격리 계층 선택 기준을 명시적으로 두는 방향이 필요하다.",
+      "published": "2026-11-09",
+      "sources": [
+        "https://www.cncf.io/blog/2026/11/09/new-research-virtual-machines-remain-central-to-cloud-native-infrastructure-as-ai-workloads-evolve/",
+        "https://www.cncf.io/blog/"
+      ],
+      "summary": "CNCF·Broadcom 연구 결과는 AI 워크로드 확산 국면에서도 VM과 컨테이너의 혼합 운영이 실무 표준으로 유지되고, 격리 요구가 다시 커지고 있음을 제시했다.",
+      "tags": [
+        "cloud-native",
+        "containers",
+        "governance"
+      ],
+      "title": "New research: Virtual machines remain central to cloud native infrastructure as AI workloads evolve",
+      "url": "https://www.cncf.io/blog/2026/11/09/new-research-virtual-machines-remain-central-to-cloud-native-infrastructure-as-ai-workloads-evolve/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일(11-07~11-10) 창에서 운영 영향이 있는 CNCF 블로그 업데이트 3건을 확인했다.",
+      "sources": [
+        "https://www.cncf.io/blog/",
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/2026/11/09/run-linux-applications-in-hypervisor-isolated-micro-vms-with-hyperlight/",
+        "https://www.cncf.io/blog/2026/11/08/lima-v2-3-native-on-windows-vmnet-on-linux-and-menu-tui/",
+        "https://www.cncf.io/blog/2026/11/09/new-research-virtual-machines-remain-central-to-cloud-native-infrastructure-as-ai-workloads-evolve/"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, GeekNews 공식 RSS, Reddit 4개 서브레딧 RSS를 교차해 최근 24-72시간 중심의 고신호 링크 10건을 통합했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/.rss?t=week",
+        "https://www.reddit.com/r/programming/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "주간 Trending Top10을 2026-11-10 KST에 재관측했고 소개 이력 대조 결과 미소개 저장소 5건을 확인했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/NVIDIA/auto-ontology",
+        "https://github.com/vercel-labs/agent-desktop",
+        "https://github.com/donchitos/claude-code-game-studios",
+        "https://github.com/vercel-labs/agent-browser",
+        "https://github.com/D4Vinci/Scrapling"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "arXiv 최근 등록(11-06 중심)에서 최근 7일 중복 제외 조건을 적용하고 본문 HTML/PDF 접근 가능한 논문 5편을 선별했다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&start=0&max_results=80",
+        "https://arxiv.org/html/2611.09847v1",
+        "https://arxiv.org/html/2611.09891v1",
+        "https://arxiv.org/html/2611.09798v1",
+        "https://arxiv.org/html/2611.09807v1",
+        "https://arxiv.org/html/2611.09802v1"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-10",
+  "discussions": [
+    {
+      "sources": [
+        "https://postalpro.usps.com/zcb",
+        "https://news.ycombinator.com/item?id=50431058",
+        "https://news.hada.io/topic?id=36906"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "USPS, ZIP Code 경계 폴리곤 공식 공개",
+      "url": "https://postalpro.usps.com/zcb"
+    },
+    {
+      "sources": [
+        "https://e-means.github.io/",
+        "https://news.ycombinator.com/item?id=50429734",
+        "https://news.hada.io/topic?id=36907"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "performance"
+      ],
+      "title": "e-means: 동일 손실에서 약 10배 빠른 k-means 학습",
+      "url": "https://e-means.github.io/"
+    },
+    {
+      "sources": [
+        "https://research.meta.ai/blog/muse-ember",
+        "https://news.ycombinator.com/item?id=50429024",
+        "https://news.hada.io/topic?id=36903"
+      ],
+      "tags": [
+        "llm",
+        "release"
+      ],
+      "title": "Meta, Muse Ember 소형 모델 공개",
+      "url": "https://research.meta.ai/blog/muse-ember"
+    },
+    {
+      "sources": [
+        "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/",
+        "https://news.ycombinator.com/item?id=50432831"
+      ],
+      "tags": [
+        "inference",
+        "performance",
+        "release"
+      ],
+      "title": "Google TPU 8i Max/8Tx 인프라 발표",
+      "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/"
+    },
+    {
+      "sources": [
+        "https://blog.cloudflare.com/dns-cache-memory-optimization-1111/",
+        "https://www.reddit.com/r/programming/comments/1xs558h/how_we_saved_100_terabytes_of_memory_by/"
+      ],
+      "tags": [
+        "distributed-systems",
+        "performance"
+      ],
+      "title": "Cloudflare 1.1.1.1 DNS 캐시 메모리 100TB 절감 사례",
+      "url": "https://blog.cloudflare.com/dns-cache-memory-optimization-1111/"
+    },
+    {
+      "sources": [
+        "https://headlamp.dev/blog/2026/09/29/ai-assistant-six-months",
+        "https://www.reddit.com/r/kubernetes/comments/1xrp6ev/kubernetessigsheadlamp_ai_assistant_updates/"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "kubernetes"
+      ],
+      "title": "Headlamp AI Assistant, Skills·자동 진단 업데이트",
+      "url": "https://headlamp.dev/blog/2026/09/29/ai-assistant-six-months"
+    },
+    {
+      "sources": [
+        "https://github.com/freelensapp/freelens-agentbridge-extension",
+        "https://www.reddit.com/r/kubernetes/comments/1xs45vo/agentbridge_clusterspecific_ai_agent_workspaces/"
+      ],
+      "tags": [
+        "agent",
+        "kubernetes",
+        "tool-use"
+      ],
+      "title": "Freelens AgentBridge: 클러스터별 AI 에이전트 워크스페이스",
+      "url": "https://github.com/freelensapp/freelens-agentbridge-extension"
+    },
+    {
+      "sources": [
+        "https://ugobruzadin.github.io/storm-outage-risk/",
+        "https://www.reddit.com/r/MachineLearning/comments/1xs4hq8/forecasting_new_power_outages_per_county_hourly_2/"
+      ],
+      "tags": [
+        "distributed-systems",
+        "evaluation"
+      ],
+      "title": "Storm Outage Risk: 카운티 단위 정전 예측 공개",
+      "url": "https://ugobruzadin.github.io/storm-outage-risk/"
+    },
+    {
+      "sources": [
+        "https://github.com/thisisme6598/gemini_files/",
+        "https://news.ycombinator.com/item?id=50429426"
+      ],
+      "tags": [
+        "agent",
+        "security"
+      ],
+      "title": "Gemini 파일/메일 처리 범위 검증 저장소 토론",
+      "url": "https://github.com/thisisme6598/gemini_files/"
+    },
+    {
+      "sources": [
+        "https://artificialanalysis.ai/models/claude-fable-5-2",
+        "https://news.ycombinator.com/item?id=50431144"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "Claude Fable 5.2, Artificial Analysis 지표 업데이트",
+      "url": "https://artificialanalysis.ai/models/claude-fable-5-2"
+    }
+  ],
+  "generated_at": "2026-11-10T08:34:21.805111+09:00",
+  "github_featured": [
+    "nvidia/auto-ontology",
+    "vercel-labs/agent-desktop",
+    "d4vinci/scrapling"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-06T08:04:01+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 8822
+      },
+      {
+        "rank": 2,
+        "repository": "nutlope/hallmark",
+        "weekly_stars": 7622
+      },
+      {
+        "rank": 3,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 14580
+      },
+      {
+        "rank": 4,
+        "repository": "anthropics/skills",
+        "weekly_stars": 3003
+      },
+      {
+        "rank": 5,
+        "repository": "hkuds/deeptutor",
+        "weekly_stars": 7512
+      },
+      {
+        "rank": 6,
+        "repository": "max-sixty/worktrunk",
+        "weekly_stars": 1261
+      },
+      {
+        "rank": 7,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 5847
+      },
+      {
+        "rank": 8,
+        "repository": "obra/superpowers",
+        "weekly_stars": 5565
+      },
+      {
+        "rank": 9,
+        "repository": "pbakaus/impeccable",
+        "weekly_stars": 10921
+      },
+      {
+        "rank": 10,
+        "repository": "hyprwm/hyprland",
+        "weekly_stars": 1325
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-10T08:30:10+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "nvidia/auto-ontology",
+        "weekly_stars": 9327
+      },
+      {
+        "rank": 2,
+        "repository": "vercel-labs/agent-desktop",
+        "weekly_stars": 13712
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/skills",
+        "weekly_stars": 3169
+      },
+      {
+        "rank": 4,
+        "repository": "max-sixty/worktrunk",
+        "weekly_stars": 2313
+      },
+      {
+        "rank": 5,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 7621
+      },
+      {
+        "rank": 6,
+        "repository": "thedotmack/claude-mem",
+        "weekly_stars": 6443
+      },
+      {
+        "rank": 7,
+        "repository": "donchitos/claude-code-game-studios",
+        "weekly_stars": 5235
+      },
+      {
+        "rank": 8,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 2190
+      },
+      {
+        "rank": 9,
+        "repository": "pingdotgg/t3code",
+        "weekly_stars": 15379
+      },
+      {
+        "rank": 10,
+        "repository": "d4vinci/scrapling",
+        "weekly_stars": 8342
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Auto Ontology: Ontology-Grounded Agentic Analytics Runtime",
+  "lead": {
+    "section": "github",
+    "url": "https://github.com/NVIDIA/auto-ontology"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 연구는 컴퓨터 사용을 수행하도록 학습된 에이전트가 단순 데스크톱 작업을 넘어, 시각·언어·행동이 결합된 embodied 과제로 일반화될 수 있는지를 검증한다. 저자들은 하나의 공통 에이전트 구조를 유지한 채 VLNVerse, DialNav, OpenSUN3D, MeViSv2처럼 과제 형태가 다른 벤치마크에 동일한 상호작용 원리를 이식하는 데 초점을 맞췄다. 핵심 질문은 \"도구 조작 능력\"이 독립 기능이 아니라 보다 넓은 embodied 일반성의 기반이 될 수 있는가이다.",
+      "evidence": "full_text",
+      "findings": "결과 섹션은 단일 계열 에이전트가 서로 다른 embodied 벤치마크에서 의미 있는 성능을 유지하며, 특정 과제 전용 설계 없이도 이전 가능성이 있음을 보여준다. 이는 computer-use 능력을 별도 도구 기술로만 보지 않고 범용 embodied 에이전트 설계의 한 축으로 다뤄야 한다는 근거를 제공한다.",
+      "first_published": "2026-11-06",
+      "id": "arxiv:2611.09847",
+      "limitations": "과제군이 모두 디지털/시뮬레이션 환경에 머물러 있어 실제 물리 로봇 환경의 지연·센서 노이즈·안전 제약까지 일반화된다고 보기는 어렵다. 또한 인터페이스 정렬 품질이 낮아지면 전이 성능이 급격히 떨어질 가능성이 남아 있다.",
+      "method": "본문 Methodology는 공유 컴퓨터-유즈 에이전트를 기준으로 각 과제의 관찰·행동 인터페이스만 맞추고 정책의 핵심을 유지하는 전이 설계를 제시한다. 즉 과제마다 모델을 새로 설계하기보다 공통 행동 추상화를 두고, 환경별 어댑터로 입력·출력을 정렬하는 방식이다.",
+      "practical_value": "데스크톱 자동화 에이전트를 운영하는 팀은 인터페이스 추상화와 정책 재사용 구조를 분리해 설계함으로써, 이후 브라우저·3D·비디오 과제로 확장 가능한 공통 런타임 전략을 세울 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.09847",
+        "https://arxiv.org/html/2611.09847v1",
+        "https://arxiv.org/pdf/2611.09847v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "multimodal",
+        "robotics"
+      ],
+      "title": "Computer-Use Agents Are Embodied Generalists",
+      "topics": [
+        "computer-use agents",
+        "embodied transfer",
+        "accessibility interfaces"
+      ],
+      "url": "https://arxiv.org/abs/2611.09847"
+    },
+    {
+      "abstract_summary": "이 논문은 고비용 추론을 매번 다시 수행하는 대신, reasoning trace를 CPU에서 재사용 가능한 캐시 단위로 변환해 에이전트 실행 비용을 줄이는 방법을 제안한다. 저자들은 ARC(Agentic Reasoning Cache)를 통해 복잡 문제 해결 과정을 재조합 가능한 함수형 조각으로 저장하고, 경량 모델이 이를 호출해 결과를 구성하도록 설계했다. 목표는 고성능 모델 의존도를 줄이면서도 정확도를 유지하는 운영형 추론 파이프라인이다.",
+      "evidence": "full_text",
+      "findings": "실험은 수학·과학 과제에서 ARC가 고성능 모델 대비 유사한 정답률 구간을 보이면서 호출 비용을 낮출 수 있음을 보고한다. 특히 작은 frontier 계열 모델을 캐시 실행 계층으로 사용해도 성능 저하가 제한적이라는 결과는, 추론 품질과 인프라 비용 사이의 균형점을 실무적으로 제시한다.",
+      "first_published": "2026-11-06",
+      "id": "arxiv:2611.09891",
+      "limitations": "캐시 구축 단계가 충분히 축적되지 않은 신규 도메인에서는 초기 성능 이점이 작을 수 있고, 잘못된 trace가 캐시에 들어가면 오류가 반복 재사용될 위험이 있다. 따라서 캐시 수명주기 관리와 검증 규칙이 없으면 장기 운영 안정성이 떨어질 수 있다.",
+      "method": "Method 섹션은 reasoning trace를 semantic function과 runtime primitive로 구조화하고, 타입 안전성을 갖춘 조합 규칙으로 CPU 실행 캐시를 생성하는 절차를 설명한다. 또한 캐시 선택·로드·합성을 에이전트 루프에 통합해, 동일 유형 문제에서 재추론 대신 재사용 경로를 우선하도록 구성한다.",
+      "practical_value": "온프레미스 또는 비용 민감 환경에서 에이전트 추론을 운영하는 팀은 고가 모델을 상시 호출하기보다, 검증된 reasoning 캐시를 중심으로 CPU 우선 실행 계층을 두는 하이브리드 아키텍처를 설계할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.09891",
+        "https://arxiv.org/html/2611.09891v1",
+        "https://arxiv.org/pdf/2611.09891v1"
+      ],
+      "tags": [
+        "agent",
+        "llm",
+        "performance",
+        "reasoning"
+      ],
+      "title": "CPU-ARC: Agentic Reasoning Caching for on-CPU Reasoning Reuse",
+      "topics": [
+        "reasoning cache",
+        "on-CPU inference",
+        "agent runtime"
+      ],
+      "url": "https://arxiv.org/abs/2611.09891"
+    },
+    {
+      "abstract_summary": "이 연구는 테스트 시점 연산 예산을 늘릴 때, 단일 에이전트의 긴 추론 경로를 확장하는 방식보다 병렬 에이전트 팀 구성이 더 효율적인지 비교한다. 저자들은 Best-of-N, 독립 에이전트 다중 실행, 팀 기반 협업을 같은 비용 축에서 정렬해 성능 증가율을 분석했다. 핵심 문제는 추가 연산을 어디에 배치할 때 가장 큰 정확도 이득이 나는가이다.",
+      "evidence": "full_text",
+      "findings": "본문 결과는 다수 과제에서 병렬 팀 구성이 단일 장기 추론보다 더 높은 성능 상승을 보이며, 50개 에이전트 팀이 100개 팀 성능 증가분의 81~100%를 달성한 구간이 보고된다. 이는 연산 확장을 깊이보다 폭에 배치하는 전략이 실제 운영 예산에서 더 효율적일 수 있음을 시사한다.",
+      "first_published": "2026-11-06",
+      "id": "arxiv:2611.09798",
+      "limitations": "대형 팀 실험은 일부 과제에서 실행 횟수가 적어 통계적 신뢰구간 해석에 주의가 필요하고, 태스크 난이도 천장 효과가 있는 구간에서는 방법 간 차이가 축소된다. 협업 규칙 설계가 바뀌면 결과가 달라질 여지도 크다.",
+      "method": "Parallel Agent Teams 설계에서 에이전트들이 역할 태그 기반으로 중간 결론을 교환하고, 동일 예산에서 팀 크기·시도 횟수·협업 규칙을 체계적으로 바꿔 실험했다. 부록의 비용 회계 모델로 실행 예산을 맞춘 뒤 성능 곡선을 비교해 방법 간 수익 체감을 계량했다.",
+      "practical_value": "에이전트 서비스 팀은 동일 비용에서 응답 품질을 올려야 할 때, 단일 모델 추론 길이만 늘리기보다 소규모 병렬 팀+합의 레이어를 먼저 검토하는 의사결정 근거로 활용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.09798",
+        "https://arxiv.org/html/2611.09798v1",
+        "https://arxiv.org/pdf/2611.09798v1"
+      ],
+      "tags": [
+        "evaluation",
+        "multi-agent",
+        "performance",
+        "reasoning"
+      ],
+      "title": "Test-Time Compute Scales Better with Parallel Agent Teams",
+      "topics": [
+        "parallel agent teams",
+        "test-time compute",
+        "multi-agent scaling"
+      ],
+      "url": "https://arxiv.org/abs/2611.09798"
+    },
+    {
+      "abstract_summary": "이 논문은 대화형 에이전트 메모리를 \"모두 저장 후 검색\" 방식으로만 처리할 때 생기는 장기 문맥 혼잡 문제를 다루며, 2계층 메모리에서 compaction·decay·reinforcement를 결합한 대안을 제시한다. 저자들은 기억 강화와 망각을 함께 설계해야 실제 질의 응답 품질이 안정화된다고 보고, RAG 기반 대조군과 짝비교 실험을 수행했다. 문제의 초점은 장기 대화에서 정보 보존과 노이즈 억제의 균형이다.",
+      "evidence": "full_text",
+      "findings": "저자들은 특정 장기 대화 조건에서 2계층 메모리 접근이 단순 검색 기반 대비 응답 일관성과 관련 근거 회수 품질을 개선할 수 있다고 보고한다. 즉 메모리 운영을 저장량 경쟁이 아니라 선택적 강화·감쇠의 정책 문제로 다뤄야 한다는 실험적 근거를 제시한다.",
+      "first_published": "2026-11-06",
+      "id": "arxiv:2611.09807",
+      "limitations": "논문이 명시하듯 LoCoMo는 합성 벤치마크라 실제 대화의 중단·수정·주제 급변 패턴을 충분히 반영하지 못할 수 있다. 또한 참조 문장 구조가 길고 적대적이어서 일반 사용자 질의 분포와 차이가 존재한다.",
+      "method": "Method 섹션은 추출·통합, 감쇠(decay), 강화(reinforcement), graded hydration, answer-type gate로 이어지는 파이프라인을 제안한다. 이후 LoCoMo 기반 paired evaluation에서 동일 질의에 대해 2계층 메모리와 RAG 응답을 나란히 비교해 정답성과 근거 일치를 측정한다.",
+      "practical_value": "장기 상담·지원 챗봇을 운영하는 팀은 세션 메모리를 전량 검색에 의존하기보다, 중요도 기반 강화와 감쇠 규칙을 분리한 메모리 정책을 적용해 누적 노이즈를 줄이는 방향을 검토할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.09807",
+        "https://arxiv.org/html/2611.09807v1",
+        "https://arxiv.org/pdf/2611.09807v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "memory",
+        "retrieval"
+      ],
+      "title": "Compaction, decay and reinforcement in a two-tier conversational memory: a paired evaluation against retrieval-augmented generation",
+      "topics": [
+        "conversational memory",
+        "compaction and decay",
+        "paired evaluation"
+      ],
+      "url": "https://arxiv.org/abs/2611.09807"
+    },
+    {
+      "abstract_summary": "이 연구는 코딩 에이전트가 저장소의 오래된 지시 파일을 그대로 따를 때, 테스트 통과 여부와 별개로 작업 효율과 수정 품질이 어떻게 악화되는지를 분석한다. 저자들은 실제 사례 기반 stale instruction 세트를 만들고, 지시 파일 유무·신선도에 따라 에이전트 경로와 결과를 비교했다. 문제의 핵심은 \"문서 부채\"가 자동화된 코드 수정 비용을 숨겨서 키운다는 점이다.",
+      "evidence": "full_text",
+      "findings": "결과는 stale instruction이 남아 있을 때 에이전트가 우회 경로나 무효 수정을 더 자주 수행하며, 동일 과제를 해결해도 실행 비용과 실패 재시도가 늘어나는 경향을 보여준다. 이는 코딩 에이전트 품질 관리에서 모델 선택만큼 저장소 문서 최신화가 성능 변수임을 시사한다.",
+      "first_published": "2026-11-06",
+      "id": "arxiv:2611.09802",
+      "limitations": "사례 수와 과제 유형이 제한적이어서 모든 언어·개발 문화에 동일한 영향 크기를 일반화하기 어렵고, 테스트 스위트가 약한 프로젝트에서는 왜곡이 더 크게 숨겨질 수 있다. 또한 관찰 기반 분석이라 장기 조직 효과를 직접 계량하진 못한다.",
+      "method": "Study Design은 실제 저장소에서 구식 지시 규칙을 추출해 통제된 과제에 주입하고, 성공률뿐 아니라 불필요한 작업 단계와 잘못된 수정 경로를 함께 기록한다. 결과 해석에서 pass rate 단독 지표의 한계를 별도 분석해, 겉보기 성공 뒤에 남는 낭비를 분리한다.",
+      "practical_value": "에이전트 기반 개발 조직은 릴리스 체크리스트에 instruction 파일 검토와 만료 정책을 추가해, 모델 업그레이드 이전에 문서 부채가 만드는 불필요 재작업을 줄일 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.09802",
+        "https://arxiv.org/html/2611.09802v1",
+        "https://arxiv.org/pdf/2611.09802v1"
+      ],
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "evaluation"
+      ],
+      "title": "When Instruction Files Go Stale: Documentation Debt and Hidden Cost in Coding Agents",
+      "topics": [
+        "coding agents",
+        "stale instructions",
+        "documentation debt"
+      ],
+      "url": "https://arxiv.org/abs/2611.09802"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "도메인 온톨로지 정비 선행 필요 · 메타데이터 품질 의존 · 운영 거버넌스 비용 큼",
+      "novelty": "new_entry",
+      "rank": 1,
+      "repository": "nvidia/auto-ontology",
+      "sources": [
+        "https://github.com/NVIDIA/auto-ontology",
+        "https://raw.githubusercontent.com/nvidia/auto-ontology/main/README.md"
+      ],
+      "summary": "온톨로지 기반 agentic analytics · 지표/엔티티/관계 의미 정합화 · 질의 검증+provenance 반환",
+      "tags": [
+        "agent",
+        "open-source",
+        "rag",
+        "retrieval"
+      ],
+      "url": "https://github.com/NVIDIA/auto-ontology",
+      "use_case": "데이터 플랫폼 팀이 텍스트-투-SQL 에이전트 결과를 운영 지표 정의와 계보 규칙으로 교차 검증하는 신뢰성 계층을 설계할 때 참고할 수 있다.",
+      "why_now": "주간 Trending 1위 · 9,327 stars this week · NVIDIA 공개"
+    },
+    {
+      "caution": "민감 화면 데이터 로그 노출 위험 · OS 권한 승인 절차 필요 · 앱별 접근성 품질 편차",
+      "novelty": "new_entry",
+      "rank": 2,
+      "repository": "vercel-labs/agent-desktop",
+      "sources": [
+        "https://github.com/vercel-labs/agent-desktop",
+        "https://raw.githubusercontent.com/vercel-labs/agent-desktop/main/README.md"
+      ],
+      "summary": "접근성 트리 기반 desktop computer-use · macOS/Windows/Linux 공통 CLI · 픽셀매칭 비의존 조작",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "harness",
+        "tool-use"
+      ],
+      "url": "https://github.com/vercel-labs/agent-desktop",
+      "use_case": "QA 자동화 팀이 화면 좌표 기반 스크립트 대신 접근성 노드 기준으로 데스크톱 앱 회귀 테스트를 구성할 때 공통 조작 계층으로 활용할 수 있다.",
+      "why_now": "주간 Trending 2위 · 13,712 stars this week · cross-platform 접근성 런타임"
+    },
+    {
+      "caution": "생성 코드 품질 편차 · 라이선스/에셋 출처 검토 필요 · 대규모 프로젝트 확장 한계",
+      "novelty": "new_entry",
+      "rank": 7,
+      "repository": "donchitos/claude-code-game-studios",
+      "sources": [
+        "https://github.com/donchitos/claude-code-game-studios",
+        "https://raw.githubusercontent.com/donchitos/claude-code-game-studios/main/README.md"
+      ],
+      "summary": "게임 아이디어→브리프→브라우저 게임 생성 워크플로우 · Claude Code 기반 프롬프트 템플릿 · 제작 반복 루프",
+      "tags": [
+        "coding-agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/donchitos/claude-code-game-studios",
+      "use_case": "프로토타이핑 팀이 짧은 기획 문장에서 플레이 가능한 데모를 빠르게 만들고 반복 개선하는 내부 게임잼 파이프라인을 만들 때 참고할 수 있다.",
+      "why_now": "주간 Trending 7위 · 5,235 stars this week · 제작형 coding-agent 사례"
+    },
+    {
+      "caution": "사이트 정책·레이트리밋 준수 필수 · 브라우저 의존성 설치 필요 · 동적 UI 변동 민감",
+      "novelty": "new_entry",
+      "rank": 8,
+      "repository": "vercel-labs/agent-browser",
+      "sources": [
+        "https://github.com/vercel-labs/agent-browser",
+        "https://raw.githubusercontent.com/vercel-labs/agent-browser/main/README.md"
+      ],
+      "summary": "접근성 스냅샷 기반 browser automation · Rust CLI 단일 명령 조작 · headless/headed 제어",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source",
+        "tool-use"
+      ],
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "use_case": "데이터 수집 팀이 웹 UI 상호작용을 사람이 읽을 수 있는 접근성 트리 형태로 기록해 재현 가능한 브라우저 작업 흐름을 만들 때 활용할 수 있다.",
+      "why_now": "주간 Trending 8위 · 2,190 stars this week · shell 중심 에이전트 브라우징"
+    },
+    {
+      "caution": "대상 사이트 이용약관 검토 필요 · 우회 기능 오남용 리스크 · 유지보수 비용 변동",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "d4vinci/scrapling",
+      "sources": [
+        "https://github.com/D4Vinci/Scrapling",
+        "https://raw.githubusercontent.com/d4vinci/scrapling/main/README.md"
+      ],
+      "summary": "현대 웹 스크래핑 프레임워크 · anti-bot 대응 유틸리티 · 다국어 문서/도구 체계",
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "performance"
+      ],
+      "url": "https://github.com/D4Vinci/Scrapling",
+      "use_case": "리서치 자동화 팀이 구조화되지 않은 웹 페이지에서 안정적으로 텍스트·메타데이터를 추출하는 파이프라인을 구축할 때 수집 모듈 후보로 검토할 수 있다.",
+      "why_now": "주간 Trending 10위 · 8,342 stars this week · 스크래핑 툴체인 재주목"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "NVIDIA의 Auto Ontology는 에이전트가 데이터 질의 결과를 더 빨리 만드는 데서 그치지 않고, 지표 정의와 계보(lineage)로 답변을 검증하는 계층을 런타임에 결합한 점이 핵심 변화다. 이번 관측에서 주간 Trending 1위와 9,327 stars를 기록하며 미소개 항목 중 가장 강한 신호를 보였다.",
+    "README 기준으로 이 프로젝트는 메타데이터에서 온톨로지를 생성하고 기존 시맨틱 모델을 연결한 뒤, 생성된 질의를 인증된 정의와 계보로 검증해 출처를 함께 반환하도록 설계되어 있다. 또한 MCP·CLI·API를 함께 제공해 기존 에이전트 하네스에 붙일 수 있는 통합 경로를 명시한다.",
+    "다만 온톨로지 품질, 데이터 정의 충돌, 검증 규칙 운영이 동시에 요구되기 때문에 실제 도입 난도는 높다. 특히 팀별 용어 사전과 지표 소유권이 정리되지 않은 조직에서는 정확도 향상보다 거버넌스 병목이 먼저 드러날 수 있다는 점이 주요 주의사항이다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "papers",
+        "text": "동일 예산에서 단일 장기 추론보다 병렬 에이전트 팀이 더 크게 성능을 올린다는 실험 결과가 제시됐다.",
+        "url": "https://arxiv.org/abs/2611.09798"
+      },
+      {
+        "section": "community",
+        "text": "e-means가 같은 테스트 손실에서 기존 k-means 대비 약 10배 빠른 학습을 제시하며 커뮤니티 토론이 집중됐다.",
+        "url": "https://e-means.github.io/"
+      },
+      {
+        "section": "cncf",
+        "text": "Hyperlight가 마이크로VM 격리 경계를 통해 에이전트 생성 코드 실행 리스크를 줄이는 운영 모델을 제시했다.",
+        "url": "https://www.cncf.io/blog/2026/11/09/run-linux-applications-in-hypervisor-isolated-micro-vms-with-hyperlight/"
+      }
+    ],
+    "spotlight": [
+      "오늘의 Technical Spotlight는 NVIDIA Auto Ontology다. 에이전트 분석 결과를 온톨로지와 계보 검증으로 다시 확인하는 구조를 전면에 둔 데이터 신뢰성 중심 런타임이라는 점이 핵심이다.",
+      "11월 10일 관측 기준 GitHub 주간 Trending 1위, 9,327 stars를 기록했고 MCP·CLI·API를 함께 제공해 기존 하네스에 연결 가능한 통합 경로를 제시한다.",
+      "단, 온톨로지 정합성과 지표 거버넌스가 선행되지 않으면 운영 복잡도가 급증할 수 있어 도입 전 데이터 정의 체계를 먼저 고정해야 한다."
+    ]
+  }
+}
