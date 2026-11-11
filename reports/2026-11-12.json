@@ -1,0 +1,543 @@
+{
+  "cncf": [
+    {
+      "category": "governance",
+      "impact": "플랫폼 팀은 컨테이너+VM 혼합 전략에서 KubeVirt 채택 리스크를 낮추고 운영 표준화 계획을 구체화할 수 있다.",
+      "published": "2026-11-10",
+      "sources": [
+        "https://www.cncf.io/announcements/2026/11/10/cloud-native-computing-foundation-announces-kubevirt-graduation/",
+        "https://www.cncf.io/announcements/"
+      ],
+      "summary": "KubeVirt가 CNCF Graduation 단계에 도달해 Kubernetes 위 VM 워크로드 운영의 성숙도와 장기 지원 신뢰성이 강화됐다.",
+      "tags": [
+        "cloud-native",
+        "governance",
+        "kubernetes"
+      ],
+      "title": "Cloud Native Computing Foundation Announces KubeVirt Graduation",
+      "url": "https://www.cncf.io/announcements/2026/11/10/cloud-native-computing-foundation-announces-kubevirt-graduation/"
+    },
+    {
+      "category": "governance",
+      "impact": "이벤트 기반 분산 시스템을 운영하는 조직은 메시징 백본 선택에서 NATS의 장기 유지 가능성을 더 높은 확신으로 검토할 수 있다.",
+      "published": "2026-11-10",
+      "sources": [
+        "https://www.cncf.io/announcements/2026/11/10/cncf-announces-nats-graduation-solidifying-a-production-ready-foundation-for-messaging-across-cloud-and-edge/",
+        "https://www.cncf.io/announcements/"
+      ],
+      "summary": "NATS가 Graduation에 진입해 클라우드·엣지 메시징 인프라의 거버넌스 안정성과 운영 성숙도가 공식적으로 강화됐다.",
+      "tags": [
+        "cloud-native",
+        "distributed-systems",
+        "governance"
+      ],
+      "title": "CNCF Announces NATS Graduation, Solidifying a Production-Ready Foundation for Messaging Across Cloud and Edge",
+      "url": "https://www.cncf.io/announcements/2026/11/10/cncf-announces-nats-graduation-solidifying-a-production-ready-foundation-for-messaging-across-cloud-and-edge/"
+    },
+    {
+      "category": "governance",
+      "impact": "멀티클러스터 거버넌스 체계를 설계하는 팀은 OCM 생태계 채택 시 장기 로드맵 가시성을 높일 수 있다.",
+      "published": "2026-11-10",
+      "sources": [
+        "https://www.cncf.io/blog/2026/11/10/open-cluster-management-ocm-becomes-a-cncf-incubating-project/",
+        "https://www.cncf.io/blog/"
+      ],
+      "summary": "OCM이 CNCF Incubating으로 승격되며 멀티클러스터 라이프사이클 관리 프로젝트의 커뮤니티 성숙도가 한 단계 올라섰다.",
+      "tags": [
+        "cloud-native",
+        "governance",
+        "kubernetes"
+      ],
+      "title": "Open Cluster Management (OCM) becomes a CNCF Incubating Project",
+      "url": "https://www.cncf.io/blog/2026/11/10/open-cluster-management-ocm-becomes-a-cncf-incubating-project/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일(11-09~11-12) 창에서 프로젝트 성숙도·거버넌스 변화에 해당하는 CNCF 공식 공지/블로그 3건을 선별했다.",
+      "sources": [
+        "https://www.cncf.io/blog/",
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/announcements/2026/11/10/cloud-native-computing-foundation-announces-kubevirt-graduation/",
+        "https://www.cncf.io/announcements/2026/11/10/cncf-announces-nats-graduation-solidifying-a-production-ready-foundation-for-messaging-across-cloud-and-edge/",
+        "https://www.cncf.io/blog/2026/11/10/open-cluster-management-ocm-becomes-a-cncf-incubating-project/"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, GeekNews 공식 RSS, Reddit 4개 서브레딧 RSS를 교차해 최근 24-72시간 중심 고신호 링크 10건을 통합했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/.rss?t=week",
+        "https://www.reddit.com/r/programming/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "주간 Trending Top10을 2026-11-12 KST에 재관측했고 소개 이력 대조 결과 미소개 신규 저장소는 1건(zed-industries/zed)으로 확인됐다.",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/zed-industries/zed"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "arXiv 2026-11-10 등록분에서 최근 7일 중복 제외를 적용하고 본문 HTML/PDF 접근 가능한 논문 5편을 선별했다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&start=0&max_results=100",
+        "https://arxiv.org/html/2611.14515v1",
+        "https://arxiv.org/html/2611.14505v1",
+        "https://arxiv.org/html/2611.14493v1",
+        "https://arxiv.org/html/2611.14492v1",
+        "https://arxiv.org/html/2611.14477v1"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-12",
+  "discussions": [
+    {
+      "sources": [
+        "https://github.com/aws/aws-emulator",
+        "https://news.ycombinator.com/item?id=50456631"
+      ],
+      "tags": [
+        "cloud-native",
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "AWS Emulator 공개",
+      "url": "https://github.com/aws/aws-emulator"
+    },
+    {
+      "sources": [
+        "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+        "https://news.ycombinator.com/item?id=50456791",
+        "https://news.hada.io/topic?id=37011"
+      ],
+      "tags": [
+        "developer-tools",
+        "llm",
+        "tool-use"
+      ],
+      "title": "Gemini Decisions API 공개",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/"
+    },
+    {
+      "sources": [
+        "https://hugovk.dev/blog/2026/lock-github-actions/",
+        "https://news.ycombinator.com/item?id=50459485"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "GitHub Actions 공급망 보안 가이드 논의",
+      "url": "https://hugovk.dev/blog/2026/lock-github-actions/"
+    },
+    {
+      "sources": [
+        "https://machinelearning.apple.com/research/faster-retrieval",
+        "https://news.ycombinator.com/item?id=50455633"
+      ],
+      "tags": [
+        "performance",
+        "rag",
+        "retrieval"
+      ],
+      "title": "Apple Faster Retrieval for Efficient RAG 연구 공개",
+      "url": "https://machinelearning.apple.com/research/faster-retrieval"
+    },
+    {
+      "sources": [
+        "https://go.dev/blog/17years",
+        "https://www.reddit.com/r/programming/comments/1xtm606/go_turns_17_the_go_programming_language/"
+      ],
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": "Go 17주년 공식 블로그",
+      "url": "https://go.dev/blog/17years"
+    },
+    {
+      "sources": [
+        "https://www.shielder.com/blog/2026/11/kubernetes-non-core-security-audit/",
+        "https://www.reddit.com/r/kubernetes/comments/1xsprfn/kubernetes_noncore_security_audit/"
+      ],
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "security"
+      ],
+      "title": "Kubernetes Non-Core Security Audit 결과 공유",
+      "url": "https://www.shielder.com/blog/2026/11/kubernetes-non-core-security-audit/"
+    },
+    {
+      "sources": [
+        "https://github.com/headlamp-k8s/plugins/releases/tag/knative-0.4.0-beta",
+        "https://www.reddit.com/r/kubernetes/comments/1xtgtih/event_driven_architectures_with/"
+      ],
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "release"
+      ],
+      "title": "Headlamp+Knative 이벤트 구동 아키텍처 플러그인 릴리스",
+      "url": "https://github.com/headlamp-k8s/plugins/releases/tag/knative-0.4.0-beta"
+    },
+    {
+      "sources": [
+        "https://unsloth.ai/docs/models/qwen3.8#dynamic-v3.1-update-november-11th-2026",
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xtlyhe/new_qwen3827b_unsloth_dynamic_v31_ggufs/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "open-source"
+      ],
+      "title": "Qwen3.8-27B Unsloth Dynamic V3.1 GGUF 업데이트",
+      "url": "https://unsloth.ai/docs/models/qwen3.8#dynamic-v3.1-update-november-11th-2026"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=37009"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools"
+      ],
+      "title": "Atuin Threads: 멀티 머신 에이전트 세션 통합",
+      "url": "https://news.hada.io/topic?id=37009"
+    },
+    {
+      "sources": [
+        "https://devblogs.microsoft.com/dotnet/announcing-dotnet-11/",
+        "https://www.reddit.com/r/programming/comments/1xstxzv/announcing_net_11/"
+      ],
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": ".NET 11 발표 후속 토론",
+      "url": "https://devblogs.microsoft.com/dotnet/announcing-dotnet-11/"
+    }
+  ],
+  "generated_at": "2026-11-12T08:06:00.127591+09:00",
+  "github_featured": [
+    "zed-industries/zed"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-11T08:04:52+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "nvidia/auto-ontology",
+        "weekly_stars": 10159
+      },
+      {
+        "rank": 2,
+        "repository": "vercel-labs/agent-desktop",
+        "weekly_stars": 12120
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/skills",
+        "weekly_stars": 3796
+      },
+      {
+        "rank": 4,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 8325
+      },
+      {
+        "rank": 5,
+        "repository": "max-sixty/worktrunk",
+        "weekly_stars": 2395
+      },
+      {
+        "rank": 6,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 2994
+      },
+      {
+        "rank": 7,
+        "repository": "donchitos/claude-code-game-studios",
+        "weekly_stars": 4324
+      },
+      {
+        "rank": 8,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 9800
+      },
+      {
+        "rank": 9,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 10695
+      },
+      {
+        "rank": 10,
+        "repository": "the-pr-agent/pr-agent",
+        "weekly_stars": 1822
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-12T08:04:21+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "nvidia/auto-ontology",
+        "weekly_stars": 9621
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/skills",
+        "weekly_stars": 5014
+      },
+      {
+        "rank": 3,
+        "repository": "vercel-labs/agent-desktop",
+        "weekly_stars": 9502
+      },
+      {
+        "rank": 4,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 8951
+      },
+      {
+        "rank": 5,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 3606
+      },
+      {
+        "rank": 6,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 10967
+      },
+      {
+        "rank": 7,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 9872
+      },
+      {
+        "rank": 8,
+        "repository": "d4vinci/scrapling",
+        "weekly_stars": 7291
+      },
+      {
+        "rank": 9,
+        "repository": "zed-industries/zed",
+        "weekly_stars": 2262
+      },
+      {
+        "rank": 10,
+        "repository": "donchitos/claude-code-game-studios",
+        "weekly_stars": 3730
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "AutoScaffold: AI-Guided RLVR Scaffolding for Language Models",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2611.14515"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 RLVR에서 시도별 결과가 보상 점수 하나로 축약되며 학습 신호 대부분이 버려지는 문제를 다룬다. 저자들은 훈련 중 프롬프트 스캐폴드를 동적으로 설계해 실패 패턴을 직접 학습 가이드로 바꾸는 AutoScaffold를 제안한다. 즉 사람이 과제별 힌트를 손으로 고정하는 방식 대신, 모델이 학습 궤적을 보고 스스로 힌트 구조를 조정하도록 만든다.",
+      "evidence": "full_text",
+      "findings": "실험 결과는 자동 스캐폴드가 기준선 대비 성능 향상과 안정적인 학습 진전을 보일 수 있음을 보고한다. 특히 outcome reward만으로 포착되지 않던 중간 과정 신호를 재활용했을 때, 어려운 문제에서 학습 정체 구간을 줄이는 경향이 제시된다.",
+      "first_published": "2026-11-10",
+      "id": "arxiv:2611.14515",
+      "limitations": "교사 모델 품질과 스캐폴드 정책이 부정확하면 잘못된 학습 편향이 강화될 수 있고, 도메인별로 최적 스캐폴드 형태가 달라 추가 튜닝 비용이 필요하다. 또한 과도한 가이드가 학생의 일반화 능력을 제한할 위험이 남아 있다.",
+      "method": "AutoScaffold는 교사 모델이 학생의 해결 경로를 분석해 class-level과 instance-level scaffold를 생성하고, 이를 RL 루프에 주입하는 scaffold-augmented training 절차를 사용한다. 본문은 동일 학생 모델 크기 조건에서 기존 RL 기반 대비 성능과 학습 효율을 비교한다.",
+      "practical_value": "RL 기반 에이전트를 운영하는 팀은 수작업 프롬프트 엔지니어링 대신 학습 로그 기반 자동 스캐폴드 계층을 도입해 성능 개선과 운영 자동화를 동시에 노릴 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.14515",
+        "https://arxiv.org/html/2611.14515v1",
+        "https://arxiv.org/pdf/2611.14515v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "llm",
+        "reasoning"
+      ],
+      "title": "AutoScaffold: AI-Guided Scaffolding for Reinforcement Learning of Language Models",
+      "topics": [
+        "RLVR",
+        "scaffold-augmented training",
+        "teacher-student guidance"
+      ],
+      "url": "https://arxiv.org/abs/2611.14515"
+    },
+    {
+      "abstract_summary": "Continual-ARC는 에이전트가 장기 업무 흐름에서 실제로 기술을 축적하는지 평가하기 위해 설계된 lifelong 벤치마크다. 기존 벤치마크가 단발 과제와 단일 학습 방식에 치우쳐 메모리 기반 학습과 파라미터 기반 학습을 같은 축에서 비교하기 어려웠다는 점을 문제로 삼는다. 저자들은 ARC-AGI 계열 과제를 스트림 형태로 재구성해 장기 적응 능력을 측정한다.",
+      "evidence": "full_text",
+      "findings": "결과는 단일 점수보다 장기 누적 성능과 일반화 테스트에서 방법 간 격차가 크게 나타남을 보여준다. 이는 \"한 번의 벤치 점수\"가 아니라 지속적 작업 생애에서의 skill acquisition 곡선을 봐야 에이전트 성능을 제대로 해석할 수 있음을 시사한다.",
+      "first_published": "2026-11-10",
+      "id": "arxiv:2611.14505",
+      "limitations": "실험이 특정 하네스와 모델군 중심으로 구성되어 다른 운영 스택으로의 일반화에는 추가 검증이 필요하다. 또한 ARC 계열 과제 특성이 실제 기업 도메인 분포를 완전히 대변하지는 않는다.",
+      "method": "논문은 인스턴스 스트림 처리, 스트림 후 평가, 학습량 계량을 분리한 프로토콜을 정의하고, 에이전트 하네스·프롬프트 기준선·학생 모델 가중치 기반 접근을 함께 비교한다. 메모리 유지 전략과 파라미터 업데이트 전략의 장단을 동일 조건에서 관찰하도록 설계했다.",
+      "practical_value": "장기 운영형 에이전트를 구축하는 조직은 릴리스 평가에 일회성 정답률만 넣지 말고, 스트림 기반 누적 학습 지표를 함께 넣어 실제 생산성 향상 여부를 추적할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.14505",
+        "https://arxiv.org/html/2611.14505v1",
+        "https://arxiv.org/pdf/2611.14505v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness",
+        "memory"
+      ],
+      "title": "Continual-ARC: Measuring Skill Acquisition over a Working Lifetime",
+      "topics": [
+        "continual learning",
+        "agent benchmark",
+        "memory vs weights"
+      ],
+      "url": "https://arxiv.org/abs/2611.14505"
+    },
+    {
+      "abstract_summary": "이 논문은 엔터프라이즈 분석 에이전트 평가 프레임워크를 안정성·기지 위험 탐지·미지 위험 발견의 3단계로 비교한다. 저자들은 trace 기반 LLM 판단, 텍스트 기반 red-teaming, 규칙형 휴리스틱이라는 서로 다른 평가 패러다임을 같은 고정 실행 기록에서 대조해 프레임워크별 약점을 드러낸다. 핵심은 평가 도구 자체의 신뢰성을 먼저 계량해야 한다는 점이다.",
+      "evidence": "full_text",
+      "findings": "실험은 프레임워크가 잘 잡는 오류 유형과 놓치는 오류 유형이 서로 다르며, 단일 평가기만으로는 운영 리스크를 포괄하기 어렵다는 결과를 제시한다. 특히 안정성과 탐지력 사이의 트레이드오프가 명확해 다층 평가 전략의 필요성이 강조된다.",
+      "first_published": "2026-11-10",
+      "id": "arxiv:2611.14493",
+      "limitations": "연구 환경이 통제된 trace 기반 구성이라 실시간 운영 중 상호작용 변수를 완전히 반영하지 못한다. 또한 비교 대상 프레임워크 수와 에이전트 종류가 제한되어 일반화 범위에 제약이 있다.",
+      "method": "Methodology는 RQ1~RQ3로 평가 하네스 안정성, known risk 검출, unknown risk 발견 능력을 분리 측정하고, 두 개 분석 에이전트를 동일 조건에서 반복 평가한다. 정보 접근 수준 차이가 결과 편향에 미치는 영향도 함께 분석한다.",
+      "practical_value": "기업 에이전트 운영팀은 평가를 단일 점수 체계로 단순화하지 말고, 안정성 검증·기지 취약점 회귀·미지 실패 탐색을 분리한 다층 평가 파이프라인을 구축할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.14493",
+        "https://arxiv.org/html/2611.14493v1",
+        "https://arxiv.org/pdf/2611.14493v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness",
+        "security"
+      ],
+      "title": "Comparative Analysis of Agent Evaluation Frameworks: Stability, Detection, and Discovery in Enterprise Analytics Agents",
+      "topics": [
+        "agent evaluation",
+        "enterprise analytics",
+        "risk detection"
+      ],
+      "url": "https://arxiv.org/abs/2611.14493"
+    },
+    {
+      "abstract_summary": "ReTrace는 표준운영절차(SOP)를 반복 실행하는 업무에서, 매 실행마다 LLM이 다음 단계를 계획해 생기는 지연과 비용 문제를 줄이기 위해 제안된 접근이다. 논문은 에이전트 실행 로그와 SOP를 사용해 코드 기반 재사용 워크플로로 증류하고, 런타임 의사결정을 최소화한다. 즉 \"계획형 에이전트\"를 \"실행형 워크플로\"로 컴파일하는 관점이다.",
+      "evidence": "full_text",
+      "findings": "결과는 반복 업무 구간에서 증류된 워크플로가 지연과 비용을 줄이면서도 실무 성능을 유지하거나 개선할 수 있음을 보여준다. 또한 에이전트 추론 텍스트가 단계 전환 규칙 추출에 실질적 신호를 제공한다는 분석이 제시된다.",
+      "first_published": "2026-11-10",
+      "id": "arxiv:2611.14492",
+      "limitations": "증류 품질이 초기 로그 다양성과 정확도에 크게 의존하며, 업무 절차가 자주 바뀌는 환경에서는 워크플로 재생성 비용이 커질 수 있다. 실패 로그 혼합 시 안전성 영향도 추가 검증이 필요하다.",
+      "method": "저자들은 로그에서 단계 의존성을 추출하고 규칙을 집계한 뒤, 합성·검증 과정을 통해 planner-free workflow를 생성한다. 이후 벤치마크와 내부 데이터셋에서 task outcome, repair 비용, 실행 시간, 운영 비용을 기존 에이전트 방식과 비교한다.",
+      "practical_value": "대규모 반복 백오피스 자동화를 운영하는 팀은 고비용 LLM 플래너를 상시 호출하기보다, 안정 구간을 workflow artifact로 증류해 실행비를 낮추는 하이브리드 운영 전략을 설계할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.14492",
+        "https://arxiv.org/html/2611.14492v1",
+        "https://arxiv.org/pdf/2611.14492v1"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "performance",
+        "tool-use"
+      ],
+      "title": "ReTrace: Distilling Tool-Using Agents into Planner-Free Workflows",
+      "topics": [
+        "workflow distillation",
+        "tool-using agents",
+        "planner-free execution"
+      ],
+      "url": "https://arxiv.org/abs/2611.14492"
+    },
+    {
+      "abstract_summary": "FERN은 대규모 테이블 카탈로그 환경의 Text-to-SQL에서 핵심 병목인 테이블 검색 단계를 개선하는 연구다. 생성형 LLM으로 키워드를 뽑아 테이블을 고르는 방식 대신, 고정 retriever 여러 개의 후보를 결합하고 feature-engineered ranking으로 재정렬하는 구조를 제안한다. 목표는 추론 비용을 낮추면서도 벤치마크 간 전이 성능을 확보하는 것이다.",
+      "evidence": "full_text",
+      "findings": "저자 보고에 따르면 FERN은 생성형 링크 방식 대비 비용 효율을 확보하면서 경쟁력 있는 테이블 회수 성능을 보인다. 특히 크로스 벤치마크 전이 구간에서 구조적 랭킹 신호가 안정적으로 작동할 수 있음을 제시한다.",
+      "first_published": "2026-11-10",
+      "id": "arxiv:2611.14477",
+      "limitations": "특징 설계와 랭커 학습 파이프라인 유지보수 부담이 있고, 스키마 표현이 크게 다른 도메인에서는 feature generalization이 약해질 수 있다. 또한 상위 후보 생성 품질이 낮으면 후단 랭킹 개선 폭이 제한된다.",
+      "method": "논문은 세 개의 frozen retriever로 1차 후보를 만들고, 질문-테이블 관계 특징을 다수 추출해 LightGBM ranker로 재정렬한다. BIRD·Spider·Fiben 풀드 카탈로그에서 published LLM 기반 접근과 recall/비용을 비교하고, 엔터프라이즈 벤치마크 전이도 측정한다.",
+      "practical_value": "엔터프라이즈 Text-to-SQL 팀은 생성형 링크 단계를 전부 LLM에 의존하기보다, 고정 검색기+학습형 랭커를 결합한 저비용 검색 계층으로 운영비를 줄일 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.14477",
+        "https://arxiv.org/html/2611.14477v1",
+        "https://arxiv.org/pdf/2611.14477v1"
+      ],
+      "tags": [
+        "evaluation",
+        "performance",
+        "rag",
+        "retrieval"
+      ],
+      "title": "FERN: Cross-Benchmark Table Retrieval for Text-to-SQL with Frozen Retrievers and Learned Ranking",
+      "topics": [
+        "text-to-sql retrieval",
+        "frozen retrievers",
+        "learning-to-rank"
+      ],
+      "url": "https://arxiv.org/abs/2611.14477"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "GPL 중심 라이선스 검토 필요 · 팀 표준 플러그인/워크플로 마이그레이션 비용 · 기존 IDE 통합 정책 점검",
+      "novelty": "new_entry",
+      "rank": 9,
+      "repository": "zed-industries/zed",
+      "sources": [
+        "https://github.com/zed-industries/zed",
+        "https://raw.githubusercontent.com/zed-industries/zed/main/README.md"
+      ],
+      "summary": "고성능 멀티플레이어 코드에디터 · Rust 기반 구현 · macOS/Linux/Windows 지원",
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "performance"
+      ],
+      "url": "https://github.com/zed-industries/zed",
+      "use_case": "개발 플랫폼 팀이 원격 페어프로그래밍과 대형 코드베이스 탐색 성능을 동시에 개선하려 할 때, 협업형 에디터 표준 후보로 검토할 수 있다.",
+      "why_now": "주간 Trending 9위 · 2,262 stars this week · Top10 신규 진입"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "AutoScaffold는 RLVR에서 보상 점수 하나로 압축되어 버리던 학습 경험을, 학습 중 스캐폴드로 다시 주입해 성능을 끌어올리는 프레임워크를 제안한다. 핵심 변화는 사람이 과제별 힌트를 수작업으로 고정하는 대신, 교사 모델이 학생의 실패 패턴을 보고 스캐폴드를 생성·조정한다는 점이다.",
+    "논문은 scaffold-augmented RL 훈련 루프와 instance-level scaffold 설계를 결합해 여러 에이전트 과제에서 비교 실험을 수행했고, 동일 학생 모델 크기 조건에서 자동 스캐폴드 전략이 기준선 대비 학습 효율과 최종 성능을 개선할 수 있음을 보고한다. 특히 단순 outcome reward만으로는 회수되지 않던 중간 학습 신호를 구조적으로 재활용한 점이 주요 근거다.",
+    "이 접근은 도메인별 프롬프트 장인화 부담을 줄이면서 RL 운영 파이프라인을 자동화할 가능성을 보여주지만, 교사 품질과 스캐폴드 정책이 잘못 맞물리면 편향된 학습 경로를 강화할 위험이 있다. 따라서 실제 적용에서는 안전한 스캐폴드 경계와 도메인별 검증 지표를 함께 설계해야 한다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "주간 Trending Top10에 zed-industries/zed가 신규 진입하며 고성능 협업형 코드에디터 수요가 계속 확대되고 있다.",
+        "url": "https://github.com/zed-industries/zed"
+      },
+      {
+        "section": "community",
+        "text": "AWS Emulator 공개가 HN 상위에 오르며 로컬 클라우드 테스트·시뮬레이션 워크플로 논의가 급증했다.",
+        "url": "https://github.com/aws/aws-emulator"
+      },
+      {
+        "section": "cncf",
+        "text": "NATS Graduation으로 클라우드·엣지 메시징 백본의 거버넌스 성숙도 신호가 강화됐다.",
+        "url": "https://www.cncf.io/announcements/2026/11/10/cncf-announces-nats-graduation-solidifying-a-production-ready-foundation-for-messaging-across-cloud-and-edge/"
+      }
+    ],
+    "spotlight": [
+      "오늘의 Technical Spotlight는 AutoScaffold다. 이 연구는 RLVR 학습에서 버려지던 중간 경험 신호를 자동 스캐폴드로 재주입해 학습 효율을 높이는 구조를 제시한다.",
+      "교사 모델이 과제별 실패 패턴을 바탕으로 스캐폴드를 동적으로 조정하는 방식이라, 수작업 힌트 설계 의존도를 낮추면서도 성능 개선 가능성을 보여준다.",
+      "다만 교사 정책이 편향되면 잘못된 학습 경로를 강화할 수 있어, 운영 환경에서는 스캐폴드 안전 경계와 검증 지표를 함께 두어야 한다."
+    ]
+  }
+}
