@@ -1,0 +1,564 @@
+{
+  "cncf": [
+    {
+      "category": "release",
+      "impact": "플랫폼 조직은 네트워킹 운영 인력의 숙련도 기준을 채용·육성 체계에 직접 반영할 수 있다.",
+      "published": "2026-11-10",
+      "sources": [
+        "https://www.cncf.io/announcements/2026/11/10/cncf-launches-certified-kubernetes-network-engineer-certification-ckne-to-advance-production-ready-networking-skills-for-ai-era/",
+        "https://www.cncf.io/announcements/"
+      ],
+      "summary": "CNCF가 CKNE 인증을 출시해 AI 워크로드 시대 Kubernetes 네트워킹 운영 역량에 대한 공식 자격 기준을 제시했다.",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "release"
+      ],
+      "title": "CNCF Launches Certified Kubernetes Network Engineer Certification (CKNE) to Advance Production Ready Networking Skills for AI Era",
+      "url": "https://www.cncf.io/announcements/2026/11/10/cncf-launches-certified-kubernetes-network-engineer-certification-ckne-to-advance-production-ready-networking-skills-for-ai-era/"
+    },
+    {
+      "category": "governance",
+      "impact": "이벤트 기반 분산 시스템 팀은 메시징 인프라 표준화에서 NATS의 장기 안정성을 더 높은 신뢰도로 검토할 수 있다.",
+      "published": "2026-11-10",
+      "sources": [
+        "https://www.cncf.io/announcements/2026/11/10/cncf-announces-nats-graduation-solidifying-a-production-ready-foundation-for-messaging-across-cloud-and-edge/",
+        "https://www.cncf.io/announcements/"
+      ],
+      "summary": "NATS가 CNCF Graduation 단계로 승격되어 클라우드·엣지 메시징 백본의 거버넌스 성숙도가 강화됐다.",
+      "tags": [
+        "cloud-native",
+        "distributed-systems",
+        "governance"
+      ],
+      "title": "CNCF Announces NATS Graduation, Solidifying a Production-Ready Foundation for Messaging Across Cloud and Edge",
+      "url": "https://www.cncf.io/announcements/2026/11/10/cncf-announces-nats-graduation-solidifying-a-production-ready-foundation-for-messaging-across-cloud-and-edge/"
+    },
+    {
+      "category": "governance",
+      "impact": "멀티클러스터 운영팀은 OCM 도입 시 장기 로드맵과 커뮤니티 지속가능성을 더 명확히 평가할 수 있다.",
+      "published": "2026-11-10",
+      "sources": [
+        "https://www.cncf.io/blog/2026/11/10/open-cluster-management-ocm-becomes-a-cncf-incubating-project/",
+        "https://www.cncf.io/blog/"
+      ],
+      "summary": "OCM이 CNCF Incubating으로 이동해 멀티클러스터 제어면 운영 생태계의 성숙 신호가 강화됐다.",
+      "tags": [
+        "cloud-native",
+        "governance",
+        "kubernetes"
+      ],
+      "title": "Open Cluster Management (OCM) becomes a CNCF Incubating Project",
+      "url": "https://www.cncf.io/blog/2026/11/10/open-cluster-management-ocm-becomes-a-cncf-incubating-project/"
+    }
+  ],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일(11-10~11-13) 창에서 CNCF 거버넌스·인증 체계 변화 3건을 선별했다.",
+      "sources": [
+        "https://www.cncf.io/blog/",
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/announcements/2026/11/10/cncf-launches-certified-kubernetes-network-engineer-certification-ckne-to-advance-production-ready-networking-skills-for-ai-era/",
+        "https://www.cncf.io/announcements/2026/11/10/cncf-announces-nats-graduation-solidifying-a-production-ready-foundation-for-messaging-across-cloud-and-edge/",
+        "https://www.cncf.io/blog/2026/11/10/open-cluster-management-ocm-becomes-a-cncf-incubating-project/"
+      ],
+      "status": "ok"
+    },
+    "community": {
+      "note": "HN RSS, GeekNews 공식 RSS, Reddit 4개 서브레딧 RSS를 교차해 최근 24-72시간 중심 고신호 링크 10건을 통합했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/.rss?t=week",
+        "https://www.reddit.com/r/programming/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "주간 Trending Top10을 2026-11-13 KST에 재관측했고 소개 이력 대조 결과 미소개 신규 저장소 2건(google-deepmind/mujoco, google/skills)을 확인했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/google-deepmind/mujoco",
+        "https://github.com/google/skills"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "arXiv 2026-11-10 등록분에서 최근 7일 중복 제외를 적용하고 본문 HTML/PDF 접근 가능한 논문 5편을 선별했다.",
+      "sources": [
+        "https://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&start=0&max_results=100",
+        "https://arxiv.org/html/2611.14514v1",
+        "https://arxiv.org/html/2611.14511v1",
+        "https://arxiv.org/html/2611.14491v1",
+        "https://arxiv.org/html/2611.14469v1",
+        "https://arxiv.org/html/2611.14483v1"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-13",
+  "discussions": [
+    {
+      "sources": [
+        "https://blog.rust-lang.org/2026/11/12/Rust-1.100.0/",
+        "https://news.ycombinator.com/item?id=50472038"
+      ],
+      "tags": [
+        "developer-tools",
+        "release"
+      ],
+      "title": "Rust 1.100 릴리스",
+      "url": "https://blog.rust-lang.org/2026/11/12/Rust-1.100.0/"
+    },
+    {
+      "sources": [
+        "https://developer.apple.com/foundation-models-framework/",
+        "https://news.ycombinator.com/item?id=50474361"
+      ],
+      "tags": [
+        "developer-tools",
+        "llm"
+      ],
+      "title": "Apple Foundation Models framework 공개",
+      "url": "https://developer.apple.com/foundation-models-framework/"
+    },
+    {
+      "sources": [
+        "https://github.com/aws/aws-emulator",
+        "https://news.ycombinator.com/item?id=50456631"
+      ],
+      "tags": [
+        "cloud-native",
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "AWS Emulator 오픈소스 공개",
+      "url": "https://github.com/aws/aws-emulator"
+    },
+    {
+      "sources": [
+        "https://mehmetince.net/part-3-6-how-i-ended-up-turning-a-22-year-old-postgresql-type-confusion-primitive-into-rce-cve-2026-6460/",
+        "https://news.ycombinator.com/item?id=50471761"
+      ],
+      "tags": [
+        "security",
+        "storage"
+      ],
+      "title": "PostgreSQL CVE-2026-6460 RCE 분석 공개",
+      "url": "https://mehmetince.net/part-3-6-how-i-ended-up-turning-a-22-year-old-postgresql-type-confusion-primitive-into-rce-cve-2026-6460/"
+    },
+    {
+      "sources": [
+        "https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/",
+        "https://news.ycombinator.com/item?id=50472260",
+        "https://news.hada.io/topic?id=37077"
+      ],
+      "tags": [
+        "llm",
+        "release"
+      ],
+      "title": "Gemini 4 Hydrogen·Orchestrator 발표",
+      "url": "https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity/"
+    },
+    {
+      "sources": [
+        "https://c3-lang.org/blog/c3_0_8_6_fetching_libraries/",
+        "https://www.reddit.com/r/programming/comments/1xuci0t/c3_086_released_library_fetching_30_smaller/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance",
+        "release"
+      ],
+      "title": "C3 0.8.6 릴리스",
+      "url": "https://c3-lang.org/blog/c3_0_8_6_fetching_libraries/"
+    },
+    {
+      "sources": [
+        "https://github.com/Azure/aks-desktop/releases/tag/v0.11.0",
+        "https://www.reddit.com/r/kubernetes/comments/1xurh90/new_aks_desktop_performance_ai_improvements_plus/"
+      ],
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "release"
+      ],
+      "title": "AKS Desktop v0.11.0 릴리스",
+      "url": "https://github.com/Azure/aks-desktop/releases/tag/v0.11.0"
+    },
+    {
+      "sources": [
+        "https://raw.githubusercontent.com/Whosekey-Labs/kr-career-skill/main/SKILL.md",
+        "https://news.hada.io/topic?id=37079"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "kr-career-skill 공개",
+      "url": "https://raw.githubusercontent.com/Whosekey-Labs/kr-career-skill/main/SKILL.md"
+    },
+    {
+      "sources": [
+        "https://github.com/simpsoka/zigzag",
+        "https://news.ycombinator.com/item?id=50470488",
+        "https://news.hada.io/topic?id=37076"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "GitHub zigzag: 자수기 앱 오픈소스",
+      "url": "https://github.com/simpsoka/zigzag"
+    },
+    {
+      "sources": [
+        "https://status.cloud.microsoft/",
+        "https://news.ycombinator.com/item?id=50471731",
+        "https://news.hada.io/topic?id=37073"
+      ],
+      "tags": [
+        "cloud-native",
+        "observability"
+      ],
+      "title": "Outlook/Microsoft 상태 페이지 장애 토론",
+      "url": "https://status.cloud.microsoft/"
+    }
+  ],
+  "generated_at": "2026-11-13T08:06:10.774953+09:00",
+  "github_featured": [
+    "google/skills",
+    "google-deepmind/mujoco"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-12T08:04:21+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "nvidia/auto-ontology",
+        "weekly_stars": 9621
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/skills",
+        "weekly_stars": 5014
+      },
+      {
+        "rank": 3,
+        "repository": "vercel-labs/agent-desktop",
+        "weekly_stars": 9502
+      },
+      {
+        "rank": 4,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 8951
+      },
+      {
+        "rank": 5,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 3606
+      },
+      {
+        "rank": 6,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 10967
+      },
+      {
+        "rank": 7,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 9872
+      },
+      {
+        "rank": 8,
+        "repository": "d4vinci/scrapling",
+        "weekly_stars": 7291
+      },
+      {
+        "rank": 9,
+        "repository": "zed-industries/zed",
+        "weekly_stars": 2262
+      },
+      {
+        "rank": 10,
+        "repository": "donchitos/claude-code-game-studios",
+        "weekly_stars": 3730
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-13T08:04:23+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "anthropics/skills",
+        "weekly_stars": 5738
+      },
+      {
+        "rank": 2,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 9257
+      },
+      {
+        "rank": 3,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 4183
+      },
+      {
+        "rank": 4,
+        "repository": "nvidia/auto-ontology",
+        "weekly_stars": 7947
+      },
+      {
+        "rank": 5,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 11507
+      },
+      {
+        "rank": 6,
+        "repository": "vercel-labs/agent-desktop",
+        "weekly_stars": 7772
+      },
+      {
+        "rank": 7,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 9575
+      },
+      {
+        "rank": 8,
+        "repository": "zed-industries/zed",
+        "weekly_stars": 2310
+      },
+      {
+        "rank": 9,
+        "repository": "google-deepmind/mujoco",
+        "weekly_stars": 1535
+      },
+      {
+        "rank": 10,
+        "repository": "google/skills",
+        "weekly_stars": 2013
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "AutoScaffold: Reward-Dense RLVR Scaffolding Loop",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2611.14514"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 과학 탐색 에이전트가 가설을 단일 명제로 판정하는 pointwise 방식 때문에, 반증 이후 어떤 대안이 타당한지 학습하지 못하는 문제를 다룬다. 저자들은 가설을 상호 배타적 대안 집합(contrast set)으로 바꾸고, 증거를 대안 간 경쟁 구조에서 평가하는 Contrastive Discovery를 제안한다. 핵심은 반증을 종결 신호가 아니라 다음 탐색 방향을 결정하는 분기 신호로 재해석하는 것이다.",
+      "evidence": "full_text",
+      "findings": "저자들은 contrastive 루프가 단일 가설 거절 대비 해결 가능한 대안을 더 빨리 좁히고, 탐색 실패 이후 재시작 비용을 줄이는 경향을 보고한다. 이는 과학형 에이전트에서 \"정오 판정\"보다 \"대안 식별\"이 성능 차이를 만드는 핵심 축임을 보여준다.",
+      "first_published": "2026-11-10",
+      "id": "arxiv:2611.14514",
+      "limitations": "대안 집합 생성 품질이 낮으면 비교 자체가 왜곡되고, 대안 수가 많아질수록 평가 비용이 증가한다. 또한 특정 도메인 데이터 분포에서의 성능 이득이 모든 과학 분야에 동일하게 일반화된다고 단정하기 어렵다.",
+      "method": "방법은 contrast set 구성, 대안별 믿음 추정, 증거 기반 점수화 단계를 연결해 에이전트가 여러 설명을 동시 비교하도록 만든다. 본문 실험은 pointwise 거절 루프와 contrastive 루프를 동일 조건에서 비교해 대안 해소 효율을 측정한다.",
+      "practical_value": "실험 자동화 플랫폼은 실패 가설을 버리기보다 대안 집합 기반 재평가 루프를 도입해, 탐색 예산 대비 발견률을 높이는 운영 전략을 설계할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.14514",
+        "https://arxiv.org/html/2611.14514v1",
+        "https://arxiv.org/pdf/2611.14514v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "multi-agent",
+        "reasoning"
+      ],
+      "title": "Contrastive Discovery: Open-Ended Scientific Discovery over Competing Explanations",
+      "topics": [
+        "contrast sets",
+        "scientific discovery agents",
+        "evidence resolution"
+      ],
+      "url": "https://arxiv.org/abs/2611.14514"
+    },
+    {
+      "abstract_summary": "Pyrite는 단백질-리간드 결합 자세 후보를 순위화하는 작업이 실제 신약 탐색에서 얼마나 어려운지 정량화한 에이전트 벤치마크다. 논문은 1,500개 자세 쌍으로 구성된 pairwise 랭킹 세트를 만들고, 전문가와 물리 점수 기반 접근도 근접한 성능에 머무는 난도를 제시한다. 목표는 LLM 기반 추론 에이전트가 구조 생물학 신호를 얼마나 활용할 수 있는지 검증하는 것이다.",
+      "evidence": "full_text",
+      "findings": "결과는 구조적 표현을 보강한 에이전트가 단순 텍스트 추론 대비 성능을 개선할 수 있음을 보이면서도, 고전 ML이 여전히 강한 경쟁력을 유지함을 보고한다. 이는 과학 에이전트에서 언어 추론만으로는 한계가 있고, 도메인 특징 결합이 중요하다는 근거를 제공한다.",
+      "first_published": "2026-11-10",
+      "id": "arxiv:2611.14511",
+      "limitations": "데이터셋과 랭킹 과제 설계가 특정 결합 시나리오에 의존해 범용 화학 공간 전체로 일반화하기 어렵다. 또한 confidence score 해석이 불안정한 구간에서 순위 품질이 흔들릴 수 있다.",
+      "method": "저자들은 PyriteRep 표현, 텍스트 추론형 PyriteReasoner, 특징 탐색형 PyriteFeaturizer, GRPO 개선 단계를 포함한 에이전트 설계를 비교한다. 실험은 zero-shot, 고전 ML, 강화학습 보강 조건을 나눠 성능 차이를 평가한다.",
+      "practical_value": "컴퓨테이셔널 케미스트리 팀은 LLM 보조 랭킹을 도입할 때, 텍스트 추론과 물리·특징 기반 모델을 결합한 하이브리드 평가 파이프라인을 설계하는 근거로 활용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.14511",
+        "https://arxiv.org/html/2611.14511v1",
+        "https://arxiv.org/pdf/2611.14511v1"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "multimodal"
+      ],
+      "title": "Pyrite: Building and Benchmarking Protein-Ligand Pose Ranking Agents",
+      "topics": [
+        "pose ranking",
+        "drug discovery agents",
+        "benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2611.14511"
+    },
+    {
+      "abstract_summary": "이 논문은 시계열 파운데이션 모델이 특정 태스크 중심 사전학습에 묶여 범용 분석 성능이 제한되는 문제를 다룬다. TimeSeek는 다중 도메인 특징 추출과 멀티태스크 협업 학습을 결합해 예측·이상탐지·분류를 하나의 사전학습 체계에서 다루도록 설계됐다. 핵심은 파라미터 확장보다 도메인·태스크 적응 구조를 먼저 강화하는 접근이다.",
+      "evidence": "full_text",
+      "findings": "저자 보고에 따르면 TimeSeek는 다수 벤치마크에서 경쟁 모델 대비 일관된 성능 향상을 보이며, 단일 태스크 전용 모델보다 범용 전이에서 이점을 보인다. 이는 시계열 FM의 확장 전략에서 모델 크기만 늘리는 방식의 한계를 보여준다.",
+      "first_published": "2026-11-10",
+      "id": "arxiv:2611.14491",
+      "limitations": "평가 셋이 특정 공개 벤치마크 구성에 집중되어 실제 산업 데이터 분포에서 동일한 우위가 유지되는지는 추가 검증이 필요하다. 또한 멀티태스크 학습 비용이 높아 배포 환경에 따라 적용 제약이 생길 수 있다.",
+      "method": "방법론은 progressive multi-scale modeling, adaptive slot channel modeling, task customization으로 구성된 프레임워크를 제시하고, 8개 예측 벤치마크와 이상탐지·분류 세트를 통합 평가한다. ablation으로 각 구성요소의 기여도를 분리 측정한다.",
+      "practical_value": "시계열 운영팀은 예측·탐지·분류를 분리 모델로 유지하기보다 공통 표현 기반 멀티태스크 사전학습으로 통합해 유지보수 복잡도를 낮출 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.14491",
+        "https://arxiv.org/html/2611.14491v1",
+        "https://arxiv.org/pdf/2611.14491v1"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "performance"
+      ],
+      "title": "TimeSeek: Multi-Task and Multi-Domain Pretraining for Generalized Time Series Analytics",
+      "topics": [
+        "time series foundation model",
+        "multi-task pretraining",
+        "multi-domain"
+      ],
+      "url": "https://arxiv.org/abs/2611.14491"
+    },
+    {
+      "abstract_summary": "C²-Routing은 VQA 중심 VLM 추론에서 토큰 상한만 강제할 때 필요한 시각 정보까지 손실되는 문제를 겨냥한다. 저자들은 입력 축소를 단일 전략으로 처리하지 않고, 보완적인 cropping과 compression 경로를 함께 라우팅해 질문별로 다른 축소 경로를 선택한다. 목표는 블랙박스 포함 다양한 VLM에 적용 가능한 모델 비종속 추론 효율화다.",
+      "evidence": "full_text",
+      "findings": "실험은 단일 축소 전략 대비 정확도 손실을 억제하면서 계산량과 지연을 줄일 수 있음을 보고한다. 특히 성능-연산 tradeoff 곡선에서 보완적 라우팅이 더 안정적인 절충점을 제공한다는 점이 제시된다.",
+      "first_published": "2026-11-10",
+      "id": "arxiv:2611.14469",
+      "limitations": "라우팅 정책이 데이터 분포 변화에 민감할 수 있고, 안전 게이트 설정이 부정확하면 비용 절감 효과가 줄거나 정확도 손실이 커질 수 있다. 다양한 실환경 입력 품질 변동에 대한 추가 검증이 필요하다.",
+      "method": "방법은 adaptive cropping/compression과 정확도 보호용 safety gate를 결합하고, 전체 성능·지연·메모리·FLOPs를 기존 입력 축소 기법과 비교한다. 추가로 visual token pruning과의 결합 안정성도 평가한다.",
+      "practical_value": "멀티모달 서비스 운영팀은 모델 교체 없이 입력 전처리 라우팅 계층만 추가해 추론비와 지연을 줄이는 최적화 전략을 적용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.14469",
+        "https://arxiv.org/html/2611.14469v1",
+        "https://arxiv.org/pdf/2611.14469v1"
+      ],
+      "tags": [
+        "evaluation",
+        "inference",
+        "multimodal",
+        "performance"
+      ],
+      "title": "C$^2$-Routing: Complementary Cropping and Compression for Efficient Vision-Language Inference",
+      "topics": [
+        "vision-language inference",
+        "input reduction",
+        "compute tradeoff"
+      ],
+      "url": "https://arxiv.org/abs/2611.14469"
+    },
+    {
+      "abstract_summary": "이 논문은 mechanistic interpretability 연구가 내부 패턴 관찰 능력은 빠르게 늘었지만, 관찰에서 인과적 메커니즘 주장으로 넘어가는 추론 논리가 약하다는 점을 지적한다. 저자들은 신경과학 사례와의 역사적 비교를 통해 \"무엇을 봤는가\"와 \"무엇을 입증했는가\"를 분리해야 한다고 주장한다. 핵심은 해석 도구 정확도보다 주장 정당화 규칙의 명시화다.",
+      "evidence": "full_text",
+      "findings": "저자들은 현재 MI 실무에서 관찰 신호와 인과 설명이 혼합되어 과대해석 위험이 반복된다고 보고한다. 따라서 해석 결과를 정책·안전 의사결정에 쓰려면 추론 단계의 형식적 기준이 필요하다는 결론을 제시한다.",
+      "first_published": "2026-11-10",
+      "id": "arxiv:2611.14483",
+      "limitations": "이 연구는 주로 개념·방법론 제안 중심이라 대규모 정량 벤치마크로 원칙의 우열을 직접 비교하지 않는다. 또한 도메인별 해석 관행 차이를 단일 프레임으로 완전히 포괄하긴 어렵다.",
+      "method": "논문은 MI 문헌의 대표적 관찰-주장 전환 경로를 분석하고, 해석 결과를 메커니즘 주장으로 승격하기 위한 원칙 집합을 제안한다. 실험적 검증 설계와 반증 가능성 기준을 함께 요구하는 추론 프레임을 제시한다.",
+      "practical_value": "모델 해석 팀은 feature/circuit 관찰 결과를 배포 의사결정에 연결할 때, 관찰-가설-검증-반증 단계를 문서화한 추론 프로토콜을 표준화할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.14483",
+        "https://arxiv.org/html/2611.14483v1",
+        "https://arxiv.org/pdf/2611.14483v1"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "reasoning"
+      ],
+      "title": "Mechanistic Interpretability Needs a Logic of Inference",
+      "topics": [
+        "mechanistic interpretability",
+        "inference logic",
+        "causal claims"
+      ],
+      "url": "https://arxiv.org/abs/2611.14483"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "Node/npx 의존 · 스킬 범위 과다 설치 시 운영 복잡도 증가 · 조직별 권한 경계 검토 필요",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "google/skills",
+      "sources": [
+        "https://github.com/google/skills",
+        "https://raw.githubusercontent.com/google/skills/main/README.md"
+      ],
+      "summary": "Google 제품/Cloud용 agent skills 레지스트리 · skills.sh 설치/업데이트 경로 · 멀티 제품 자동화 레시피",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source",
+        "tool-use"
+      ],
+      "url": "https://github.com/google/skills",
+      "use_case": "플랫폼 팀이 사내 에이전트에 Google Cloud 인증·기반구축·운영 절차를 표준 스킬로 배포할 때 재사용 가능한 설치/업데이트 패턴으로 참고할 수 있다.",
+      "why_now": "주간 Trending 10위 · 2,013 stars this week · Top10 신규 진입"
+    },
+    {
+      "caution": "저수준 API 학습비용 · 시뮬레이터-실환경 간 갭 보정 필요 · 대규모 실험 인프라 비용 고려",
+      "novelty": "new_entry",
+      "rank": 9,
+      "repository": "google-deepmind/mujoco",
+      "sources": [
+        "https://github.com/google-deepmind/mujoco",
+        "https://raw.githubusercontent.com/google-deepmind/mujoco/main/README.md"
+      ],
+      "summary": "고정밀 물리 시뮬레이션 엔진 · 로보틱스/강화학습 핵심 런타임 · C API+XML 컴파일러 구조",
+      "tags": [
+        "evaluation",
+        "open-source",
+        "performance",
+        "robotics"
+      ],
+      "url": "https://github.com/google-deepmind/mujoco",
+      "use_case": "로보틱스·강화학습 연구팀이 접촉 동역학 시뮬레이션 기반 정책 검증 파이프라인을 구축할 때 표준 물리 엔진으로 활용할 수 있다.",
+      "why_now": "주간 Trending 9위 · 1,535 stars this week · 시뮬레이션 툴체인 재부상"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "Contrastive Discovery는 LLM 과학 탐색이 가설을 단일 명제로 판정하던 방식에서 벗어나, 상호 배타적 대안 집합을 함께 평가하도록 바꾼 접근이다. 핵심은 \"틀렸다\"에서 멈추지 않고 \"어떤 대안이 더 맞는가\"를 같은 실험 루프에서 분해하는 데 있다.",
+    "논문은 contrast set 구성, 대안별 신뢰도 추정, 증거 기반 점수화를 연결해 pointwise 검증 대비 해결 가능한 대안을 더 빠르게 좁히는 결과를 보고한다. 특히 거절된 가설 이후 탐색 방향을 재설계하는 과정에서 정보 손실을 줄인다는 실험 근거를 제시한다.",
+    "이 방식은 과학·분석형 에이전트의 시행착오 비용을 줄일 수 있지만, 대안 집합 품질이 낮으면 잘못된 비교축을 강화할 위험이 있다. 운영 적용 시에는 대안 생성 규칙과 신뢰도 보정 절차를 별도 검증 계층으로 관리해야 한다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "google/skills가 주간 Trending Top10에 신규 진입하며 에이전트 스킬 배포·운영 레시피 수요가 확대됐다.",
+        "url": "https://github.com/google/skills"
+      },
+      {
+        "section": "community",
+        "text": "Rust 1.100 공개가 HN 상위에 오르며 생태계 마이그레이션·빌드체인 업데이트 논의가 집중됐다.",
+        "url": "https://blog.rust-lang.org/2026/11/12/Rust-1.100.0/"
+      },
+      {
+        "section": "cncf",
+        "text": "CNCF가 CKNE 인증을 출시해 AI 시대 Kubernetes 네트워킹 운영 역량의 공식 기준을 제시했다.",
+        "url": "https://www.cncf.io/announcements/2026/11/10/cncf-launches-certified-kubernetes-network-engineer-certification-ckne-to-advance-production-ready-networking-skills-for-ai-era/"
+      }
+    ],
+    "spotlight": [
+      "오늘의 Technical Spotlight는 Contrastive Discovery다. 이 연구는 과학 탐색 에이전트가 단일 가설 판정에서 벗어나 대안 가설 집합을 동시에 평가하도록 루프를 재설계했다.",
+      "실험에서는 pointwise 검증보다 대안 축소 속도와 해결 가능한 설명 선택이 개선되는 경향이 보고되어, 실패 후 재탐색 비용을 줄일 수 있는 근거를 제시한다.",
+      "다만 대안 집합 생성이 부정확하면 비교 자체가 왜곡될 수 있어, 실제 운영에서는 대안 품질 검증과 신뢰도 보정 규칙이 필수다."
+    ]
+  }
+}
