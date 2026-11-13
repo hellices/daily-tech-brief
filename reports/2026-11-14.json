@@ -1,0 +1,496 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "2026-11-11부터 2026-11-14까지 CNCF announcements/blog 및 연계 공지를 확인했지만 유의미한 신규 항목을 확인하지 못해 본문 항목을 비웠다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN·Reddit RSS는 정상 수집했고 GeekNews는 RSS 항목만 확인했다. GeekNews 개별 토픽 원문 페이지는 이번 실행에서 접근 제한으로 세부 아웃바운드 링크 확인이 제한됐다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/.rss?t=week",
+        "https://www.reddit.com/r/programming/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/.rss?t=week"
+      ],
+      "status": "partial"
+    },
+    "github": {
+      "note": "GitHub Trending weekly Top10을 2026-11-14 08:04 KST에 캡처했고, 소개 이력 미포함 저장소 3건을 선별했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 조건과 최근 7일 소개 제외 조건을 적용해 arXiv 5건을 본문(방법·실험·한계)까지 확인했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://arxiv.org/list/cs.LG/recent"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-14",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50491097",
+        "https://news.ycombinator.com/rss"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools"
+      ],
+      "title": "Claude Meetings 공개",
+      "url": "https://claude.com/resources/articles/claude-meetings"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50487185",
+        "https://news.hada.io/topic?id=37130&utm_source=geeknews&utm_medium=rss&utm_campaign=news"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "reasoning"
+      ],
+      "title": "JEPA 월드 모델 600회 실험 회고",
+      "url": "https://haddyalchaer.com/jepa"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50488464"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "llm"
+      ],
+      "title": "Perplexity Decider v1.3 학습·평가 공개",
+      "url": "https://www.perplexity.ai/hub/blog/perplexity-decider"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xv8t2e/llamacpp_v10_is_here/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "open-source"
+      ],
+      "title": "llama.cpp v1.0 릴리스 정리",
+      "url": "https://huggingface.co/blog/ggml-org/llama-cpp-v1"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/comments/1xuv4ux/how_cloudflare_uses_quepaxaa_leaderless/"
+      ],
+      "tags": [
+        "cloud-native",
+        "distributed-systems",
+        "performance"
+      ],
+      "title": "Cloudflare QuePaxa 글로벌 제어평면 적용기",
+      "url": "https://blog.cloudflare.com/choosing-quepaxa/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/comments/1xv8oe9/formatting_an_entire_25_million_line_codebase/"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "Stripe 2,500만 줄 코드베이스 rubyfmt 적용 사례",
+      "url": "https://stripe.dev/blog/formatting-an-entire-25-million-line-codebase-overnight-the-rubyfmt-story"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50474959",
+        "https://news.hada.io/topic?id=37119&utm_source=geeknews&utm_medium=rss&utm_campaign=news"
+      ],
+      "tags": [
+        "open-source",
+        "security"
+      ],
+      "title": "Coway 공기청정기 로컬 제어 역공학",
+      "url": "https://scottjg.com/posts/2026-11-11-reverse-engineering-my-coway-air-purifier-to-ditch-the-cloud/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/comments/1xupnmw/proactive_measures_against_password_breaches_and/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Slack 계정 탈취 대응 정책 공유",
+      "url": "https://slack.engineering/proactive-measures-against-password-breaches-and-cookie-hijacking/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/comments/1xvmjn4/ubers_rate_limiting_system/"
+      ],
+      "tags": [
+        "cloud-native",
+        "distributed-systems",
+        "performance"
+      ],
+      "title": "Uber Rate Limiting System 설계 공개",
+      "url": "https://www.uber.com/in/en/blog/ubers-rate-limiting-system/"
+    }
+  ],
+  "generated_at": "2026-11-14T08:10:04+09:00",
+  "github_featured": [
+    "sherlock-project/sherlock",
+    "google/elephant-goldfish-model"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-13T08:04:23+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "anthropics/skills",
+        "weekly_stars": 5738
+      },
+      {
+        "rank": 2,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 9257
+      },
+      {
+        "rank": 3,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 4183
+      },
+      {
+        "rank": 4,
+        "repository": "nvidia/auto-ontology",
+        "weekly_stars": 7947
+      },
+      {
+        "rank": 5,
+        "repository": "cloudflare/security-audit-skill",
+        "weekly_stars": 11507
+      },
+      {
+        "rank": 6,
+        "repository": "vercel-labs/agent-desktop",
+        "weekly_stars": 7772
+      },
+      {
+        "rank": 7,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 9575
+      },
+      {
+        "rank": 8,
+        "repository": "zed-industries/zed",
+        "weekly_stars": 2310
+      },
+      {
+        "rank": 9,
+        "repository": "google-deepmind/mujoco",
+        "weekly_stars": 1535
+      },
+      {
+        "rank": 10,
+        "repository": "google/skills",
+        "weekly_stars": 2013
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-14T08:04:43+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "sherlock-project/sherlock",
+        "weekly_stars": 14381
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/skills",
+        "weekly_stars": 6055
+      },
+      {
+        "rank": 3,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 9104
+      },
+      {
+        "rank": 4,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 4601
+      },
+      {
+        "rank": 5,
+        "repository": "google/elephant-goldfish-model",
+        "weekly_stars": 5555
+      },
+      {
+        "rank": 6,
+        "repository": "zhulinsen/daily_stock_analysis",
+        "weekly_stars": 3569
+      },
+      {
+        "rank": 7,
+        "repository": "nvidia/auto-ontology",
+        "weekly_stars": 5802
+      },
+      {
+        "rank": 8,
+        "repository": "google-deepmind/mujoco",
+        "weekly_stars": 1671
+      },
+      {
+        "rank": 9,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 8731
+      },
+      {
+        "rank": 10,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 3199
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "AgentSSL: Program-Search Semi-Supervised Pipeline Discovery",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2611.17323"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 연구는 라벨 데이터가 부족하고 비라벨 데이터가 많은 현실 환경에서 MLE 에이전트가 반지도학습(SSL) 파이프라인을 자동 설계할 수 있는지 검증한다. 저자들은 SSL을 단일 알고리즘 선택이 아니라 프로그램 탐색 문제로 모델링해, 데이터 처리·학습 루프·검증 지표 조합을 에이전트가 반복 탐색하도록 구성했다. 실험은 여러 도메인에서 라벨 비율을 낮춘 조건으로 수행됐고, 에이전트가 과제별로 다른 전략을 선택할 때 성능과 비용이 함께 개선되는 경향을 제시한다.",
+      "evidence": "full_text",
+      "findings": "Results/Analysis 기준 라벨 21.8% 조건에서 지도학습 대비 성능 격차를 45.2%까지 축소했고, 생태 탐지 적용 사례에서는 83.1% 성능을 보고했다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17323",
+      "limitations": "Discussion 기준 실험 도메인과 평가 설정이 제한적이며, 비라벨 데이터 품질이 크게 달라지는 현장 환경에서 같은 개선 폭이 재현되는지는 추가 검증이 필요하다.",
+      "method": "Problem Setup과 Experiment Design에서 SSL 파이프라인 요소를 검색 공간으로 정의하고, 에이전트가 피드백 지표를 받아 후보 워크플로를 점진적으로 개선하는 탐색 절차를 사용했다.",
+      "practical_value": "라벨 수집 비용이 큰 산업 데이터셋에서 에이전트 기반 반지도 파이프라인 탐색을 도입할 때, 사람이 직접 조합하던 초기 실험 주기를 단축하는 근거로 활용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17323",
+        "https://arxiv.org/html/2611.17323"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "llm"
+      ],
+      "title": "AgentSSL: Can MLE Agents Leverage Unlabeled Data?",
+      "topics": [
+        "agentic ssl",
+        "program search",
+        "low-label regime"
+      ],
+      "url": "https://arxiv.org/abs/2611.17323"
+    },
+    {
+      "abstract_summary": "CoReMem은 연속 코딩 과제에서 어떤 메모리를 남기고 언제 읽을지를 비용 관점으로 함께 최적화하는 프레임워크다. 논문은 메모리 작성·조회 비용과 다음 과제에서의 잠재 효용을 같은 목적함수로 다루면서, 저장할 정보의 밀도와 액터의 활용 시점을 함께 학습한다. 기존처럼 메모리를 많이 남기는 전략이 항상 유리하지 않다는 점을 실험으로 보이며, 비용-성공률 균형을 맞추는 설정을 제안한다.",
+      "evidence": "full_text",
+      "findings": "논문 본문 수치 예시에서는 총 노력 지표가 최대 26% 감소하고, 일부 설정에서 성공률 저하를 2% 내외로 제한하는 결과를 제시한다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17316",
+      "limitations": "저자도 밝히듯 저장소 규모·과제 난이도·메모리 표현 방식이 바뀌면 비용 추정 정확도가 떨어질 수 있어, 장기 운영 환경에서는 재보정이 필요하다.",
+      "method": "Cost-Internalizing Memory 절에서 메모리 선택 정책과 액터 정책을 분리해 학습하고, Experiments에서 successive coding task 벤치마크로 메모리 비용 대비 성과를 비교했다.",
+      "practical_value": "코딩 에이전트 운영 시 토큰/시간 예산을 통제하면서 장기 메모리 효과를 유지하려는 팀에게, 메모리 정책을 비용 지표와 함께 튜닝하는 실무 프레임을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17316",
+        "https://arxiv.org/html/2611.17316"
+      ],
+      "tags": [
+        "coding-agent",
+        "memory",
+        "performance"
+      ],
+      "title": "CoReMem: Cost-Internalizing Memory for Successive Coding Tasks with Prospective Valuation",
+      "topics": [
+        "coding repository memory",
+        "prospective valuation",
+        "successive tasks"
+      ],
+      "url": "https://arxiv.org/abs/2611.17316"
+    },
+    {
+      "abstract_summary": "이 논문은 프롬프트의 어떤 토큰이 출력에 실제 영향을 주는지 추정하는 context attribution 문제를 다룬다. 모든 토큰에 대해 leave-one-out(LOO) 값을 직접 계산하면 토큰 수만큼 모델 호출이 필요하다는 비용 문제가 있는데, 저자들은 안정성 가정 아래 더 적은 호출로 전체 영향을 근사하는 스케치 알고리즘을 제안했다. 이론적으로 필요한 호출 수 상한과 하한을 함께 제시해, 계산량 절감이 가능한 조건을 명시한 점이 특징이다.",
+      "evidence": "full_text",
+      "findings": "논문은 O(sqrt(log(1/epsilon))/epsilon) 호출 복잡도 상한을 제시하고, 실험에서 고정 예산 대비 LOO 근사 품질을 개선하는 경향을 보고했다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17313",
+      "limitations": "안정성 가정이 약해지는 프롬프트나 모델 설정에서는 추정 오차가 커질 수 있고, attribution 신뢰도를 실제 다운스트림 의사결정으로 바로 전이하기 어렵다.",
+      "method": "Context Attribution 절에서 LOO 값을 직접 계산하지 않고 스케치 기반 추정으로 대체하며, Experiments에서 추정 오차와 호출 횟수의 균형을 평가했다.",
+      "practical_value": "긴 컨텍스트 서비스에서 토큰 기여도 분석을 저비용으로 수행하려는 팀이 프롬프트 압축·디버깅 우선순위를 정할 때 적용 가능한 계산 프레임을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17313",
+        "https://arxiv.org/html/2611.17313"
+      ],
+      "tags": [
+        "context-engineering",
+        "evaluation",
+        "llm"
+      ],
+      "title": "Sketching Language Models for Context Attribution",
+      "topics": [
+        "context attribution",
+        "leave-one-out",
+        "sample complexity"
+      ],
+      "url": "https://arxiv.org/abs/2611.17313"
+    },
+    {
+      "abstract_summary": "Metal Sandbox는 Apple Silicon 환경에서 코딩 에이전트가 GPU 작업과 쉘 명령을 섞어 실행할 때 생기는 유휴 시간을 줄이기 위한 실행 인프라를 제안한다. 연구진은 인스턴스별 파일 접근 격리와 명령 단위 스케줄링을 결합해, 다중 에이전트 롤아웃에서 GPU 자원 활용률을 높이는 구조를 설계했다. 핵심은 단순 격리 보안 강화에 그치지 않고, 큐 지연과 장시간 명령 처리까지 함께 최적화했다는 점이다.",
+      "evidence": "full_text",
+      "findings": "Evaluation 결과로 기준선 대비 처리량 1.68x~2.14x 향상, 마이그레이션 오버헤드 약 2.32% 수준을 보고했다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17294",
+      "limitations": "Discussion and Limitations에 따라 Apple Silicon 및 특정 워크로드 구성에 최적화돼 있어, 이기종 GPU 클러스터나 원격 실행 환경으로 일반화할 때 추가 검증이 필요하다.",
+      "method": "System Architecture와 Evaluation에서 제한된 파일 시스템 샌드박스, 명령 스케줄러, Harbor 통합 경로를 구성하고 처리량·대기시간·마이그레이션 오버헤드를 기준으로 비교했다.",
+      "practical_value": "온디바이스 코딩 에이전트 실험을 운영하는 팀이 보안 격리와 GPU 활용률 개선을 동시에 달성하려는 경우, 실행 계층 설계의 참고 아키텍처로 사용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17294",
+        "https://arxiv.org/html/2611.17294"
+      ],
+      "tags": [
+        "coding-agent",
+        "harness",
+        "performance",
+        "security"
+      ],
+      "title": "Metal Sandbox: Isolated Execution and Command Scheduling for GPU Coding Agents on Apple Silicon",
+      "topics": [
+        "apple silicon",
+        "agent sandbox",
+        "gpu scheduling"
+      ],
+      "url": "https://arxiv.org/abs/2611.17294"
+    },
+    {
+      "abstract_summary": "Ballad는 자동 휴리스틱 발견(AHD) 과정에서 여러 LLM을 상황별로 라우팅해 비용 대비 성능을 높이려는 접근이다. 저자들은 큰 모델이 항상 더 좋은 해를 주지 않는다는 관찰에서 출발해, 밴딧 기반 정책으로 문제 단계마다 다른 모델을 선택하도록 설계했다. NP-hard 조합최적화 과제를 대상으로 모델 크기·비용·품질 사이의 비선형 관계를 정량화하고, 라우팅이 단일 모델 고정보다 유리한 구간을 보여준다.",
+      "evidence": "full_text",
+      "findings": "실험에서는 과제별로 대형 모델 우위가 일관되지 않았고, 라우팅 정책이 특정 설정에서 최대 5.30배 수준의 비용 효율 개선을 보고했다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17241",
+      "limitations": "Conclusions and Limitations에 따르면 평가 과제군이 조합최적화 중심이며, 다른 도메인(코드·멀티모달)으로 확장 시 라우팅 보상 설계를 재정의해야 한다.",
+      "method": "Preliminaries와 Experiments에서 멀티암드 밴딧 라우팅 정책을 AHD 루프에 결합하고, 단일 대형 모델·단일 소형 모델 대비 목적함수와 비용을 함께 비교했다.",
+      "practical_value": "다중 모델 API를 운영하는 팀이 품질을 유지하면서 추론비를 낮추고자 할 때, 정적 모델 고정보다 적응형 라우팅 정책을 도입할 근거를 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17241",
+        "https://arxiv.org/html/2611.17241"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "performance",
+        "reasoning"
+      ],
+      "title": "Ballad: Bandit-Based LLM Routing for Automated Heuristic Discovery",
+      "topics": [
+        "llm routing",
+        "automated heuristic discovery",
+        "bandit"
+      ],
+      "url": "https://arxiv.org/abs/2611.17241"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "플랫폼 응답/차단 정책 의존 · 합법적 조사 범위 준수 필요",
+      "novelty": "new_entry",
+      "rank": 1,
+      "repository": "sherlock-project/sherlock",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/sherlock-project/sherlock"
+      ],
+      "summary": "사용자명 기반 400+ 소셜 계정 탐색 도구 · CLI/사이트 필터 중심 워크플로",
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "security"
+      ],
+      "url": "https://github.com/sherlock-project/sherlock",
+      "use_case": "브랜드 계정 운영팀이 신규 채널 개설 전 동일 핸들 점유 여부를 여러 플랫폼에서 빠르게 점검하는 데 활용할 수 있다.",
+      "why_now": "Top10 1위 · 주간 14,381 stars · OSINT 자동화 수요 집중"
+    },
+    {
+      "caution": "서브에이전트 생성 미지원 환경에서는 리뷰 루프가 중단되며 테스트·인간 검토를 대체하지 못함",
+      "novelty": "new_entry",
+      "rank": 5,
+      "repository": "google/elephant-goldfish-model",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/google/elephant-goldfish-model"
+      ],
+      "summary": "컨텍스트 작성(Elephant)·블라인드 리뷰(Goldfish) 분리 설계 · 스펙 리뷰 루프 제공",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "multi-agent",
+        "open-source"
+      ],
+      "url": "https://github.com/google/elephant-goldfish-model",
+      "use_case": "제품팀이 설계 문서를 작성한 뒤 독립된 리뷰 컨텍스트로 가정 누락과 구현 위험을 사전 점검하는 품질 게이트로 적용할 수 있다.",
+      "why_now": "Top10 5위 · 주간 5,555 stars · 스킬 기반 설계 검토 자동화 공개"
+    },
+    {
+      "caution": "README 기준 다수 외부 비밀키·웹훅 설정 필요 · 투자판단 자동화 결과의 책임 한계 명시",
+      "novelty": "new_entry",
+      "rank": 6,
+      "repository": "zhulinsen/daily_stock_analysis",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/ZhuLinsen/daily_stock_analysis"
+      ],
+      "summary": "다중 시장 일일 분석 대시보드 자동 생성 · GitHub Actions/Docker 배포 경로 제공",
+      "tags": [
+        "developer-tools",
+        "llm",
+        "open-source"
+      ],
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "use_case": "개인 투자 리서치팀이 장 마감 후 지표 요약을 자동 생성해 내부 알림 채널로 배포하는 운영 파이프라인의 출발점으로 쓸 수 있다.",
+      "why_now": "Top10 6위 · 주간 3,569 stars · 메신저/메일 다중 채널 리포트 자동화 관심"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "AgentSSL은 라벨이 부족한 현업 데이터셋에서 반지도학습 파이프라인을 에이전트가 직접 탐색하도록 설계한 프레임워크다. 저자들은 반지도학습을 모델 선택 문제가 아니라 프로그램 탐색 문제로 재정의해, 데이터 전처리·의사라벨링·학습 루프를 함께 최적화하도록 구성했다.",
+    "논문은 Results와 Analysis 섹션에서 라벨 21.8% 조건에서도 지도학습 대비 성능 격차를 45.2%까지 줄였고, 생태 탐지 태스크 적용에서 83.1% 성능을 보고했다. 핵심은 비라벨 데이터 활용 전략을 고정 템플릿으로 두지 않고, 과제별로 다른 조합을 탐색해 성능을 끌어올린 점이다.",
+    "의미는 MLE 에이전트가 라벨 수집 비용이 큰 도메인에서도 실무 파이프라인 설계에 기여할 수 있음을 수치로 보여줬다는 데 있다. 다만 실험군이 한정된 도메인 중심이라, 다른 산업 데이터 분포에서도 동일한 개선 폭이 유지되는지는 후속 검증이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "EGM가 컨텍스트 작성과 블라인드 리뷰를 분리한 스펙 검토 루프를 오픈소스로 공개",
+        "url": "https://github.com/google/elephant-goldfish-model"
+      },
+      {
+        "section": "community",
+        "text": "HN에서 Claude Meetings 공개가 협업 기록·요약 워크플로 관점으로 빠르게 확산",
+        "url": "https://claude.com/resources/articles/claude-meetings"
+      },
+      {
+        "section": "papers",
+        "text": "Metal Sandbox는 Apple Silicon 환경 코딩 에이전트 실행을 1.68x~2.14x 처리량으로 보고",
+        "url": "https://arxiv.org/abs/2611.17294"
+      }
+    ],
+    "spotlight": [
+      "AgentSSL은 라벨이 부족한 환경에서 반지도학습 파이프라인을 에이전트 탐색 문제로 바꿔 성능을 끌어올린 연구입니다.",
+      "논문 기준으로 라벨 21.8% 조건에서도 성능 격차를 45.2%까지 축소했고, 생태 탐지 태스크에서 83.1%를 보고했습니다. 다만 도메인 다양성은 아직 제한적이라 일반화 검증이 남아 있습니다."
+    ]
+  }
+}
