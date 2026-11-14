@@ -1,0 +1,478 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "2026-11-12부터 2026-11-15까지 CNCF announcements/blog 및 연계 공개 공지를 검토했으나 이번 윈도우의 신규 주요 변경을 확인하지 못했다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN·GeekNews RSS·Reddit RSS를 함께 검토해 중복 이슈를 병합하고 9개 링크를 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/.rss?t=week",
+        "https://www.reddit.com/r/programming/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub Trending weekly Top10을 2026-11-15 08:04 KST에 캡처했고, 소개 이력 미포함 저장소 2건을 확인했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 기준과 최근 7일 소개 제외 규칙을 적용해 arXiv 5건을 본문(방법·실험·한계)까지 확인했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://arxiv.org/list/cs.LG/recent"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-15",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50499017",
+        "https://news.ycombinator.com/rss"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Lovable 앱 민감정보 노출 분석 공개",
+      "url": "https://www.crissyfield.de/research/lovable-en/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50497892",
+        "https://news.hada.io/topic?id=37178&utm_source=geeknews&utm_medium=rss&utm_campaign=news"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "security"
+      ],
+      "title": "PyPI 프로젝트 페이지 보안 신호 개편",
+      "url": "https://blog.pypi.org/posts/2026-11-06-ui-updates-complete/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50496811"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "multi-agent"
+      ],
+      "title": "Antigravity /teamwork 연구 협업 기능 발표",
+      "url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/comments/1xw3jy7/under_the_hood_serving_kimi_k3_digitalocean/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "Kimi K3 서빙 엔진 운영 사례",
+      "url": "https://www.digitalocean.com/blog/serving-kimi-k3-inference-engine"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/comments/1xwac98/what_we_learned_operating_auth_for_1000_apis/"
+      ],
+      "tags": [
+        "distributed-systems",
+        "security"
+      ],
+      "title": "1,000+ API 인증 운영 교훈 정리",
+      "url": "https://nango.dev/blog/lessons-from-operating-api-auth-for-900-apis"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/comments/1xwe5sd/anyone_running_kubernetessigsagentsandbox_in_prod/"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "kubernetes"
+      ],
+      "title": "kubernetes-sigs agent-sandbox 실사용 피드백 토론",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xwe5sd/anyone_running_kubernetessigsagentsandbox_in_prod/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/comments/1xvoyds/kubefactory_container_management_gaming_interface/"
+      ],
+      "tags": [
+        "cloud-native",
+        "developer-tools",
+        "kubernetes"
+      ],
+      "title": "Kubefactory 컨테이너 관리 인터페이스 소개",
+      "url": "https://dascondor.github.io/kubefactory/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xvsb5f/instead_of_lowering_gpu_prices_former_nvidia_ceo/"
+      ],
+      "tags": [
+        "inference",
+        "llm"
+      ],
+      "title": "AI 스타트업의 GPU 재고 흡수 전략 보도 확산",
+      "url": "https://wccftech.com/jensen-huang-financed-ai-startups-absorb-excess-silicon/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xw2ogq/the_lawyer_who_posts_here_about_his_v100s_got_his/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "open-source"
+      ],
+      "title": "가정용 서버에서 DeepSeek 계열 로컬 추론 운용 사례",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/lawyer-upgrades-eight-v100-private-ai-server-to-run-80-percent-of-deepseek-v4-1-flash-at-4-bit-nvfp4-precision-adds-1tb-of-ram-an-nvidia-rtx-3090-and-fixes-crashes-caused-by-a-bad-psu"
+    }
+  ],
+  "generated_at": "2026-11-15T08:05:57+09:00",
+  "github_featured": [
+    "meta/astryx",
+    "backnotprop/plannotator"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-14T08:04:43+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "sherlock-project/sherlock",
+        "weekly_stars": 14381
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/skills",
+        "weekly_stars": 6055
+      },
+      {
+        "rank": 3,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 9104
+      },
+      {
+        "rank": 4,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 4601
+      },
+      {
+        "rank": 5,
+        "repository": "google/elephant-goldfish-model",
+        "weekly_stars": 5555
+      },
+      {
+        "rank": 6,
+        "repository": "zhulinsen/daily_stock_analysis",
+        "weekly_stars": 3569
+      },
+      {
+        "rank": 7,
+        "repository": "nvidia/auto-ontology",
+        "weekly_stars": 5802
+      },
+      {
+        "rank": 8,
+        "repository": "google-deepmind/mujoco",
+        "weekly_stars": 1671
+      },
+      {
+        "rank": 9,
+        "repository": "mattpocock/skills",
+        "weekly_stars": 8731
+      },
+      {
+        "rank": 10,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 3199
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-15T08:04:25+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "meta/astryx",
+        "weekly_stars": 13375
+      },
+      {
+        "rank": 2,
+        "repository": "sherlock-project/sherlock",
+        "weekly_stars": 13364
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/skills",
+        "weekly_stars": 6169
+      },
+      {
+        "rank": 4,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 4360
+      },
+      {
+        "rank": 5,
+        "repository": "google/elephant-goldfish-model",
+        "weekly_stars": 5560
+      },
+      {
+        "rank": 6,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 7763
+      },
+      {
+        "rank": 7,
+        "repository": "zhulinsen/daily_stock_analysis",
+        "weekly_stars": 3778
+      },
+      {
+        "rank": 8,
+        "repository": "google-deepmind/mujoco",
+        "weekly_stars": 1764
+      },
+      {
+        "rank": 9,
+        "repository": "backnotprop/plannotator",
+        "weekly_stars": 511
+      },
+      {
+        "rank": 10,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 3502
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Astryx: Agent-Aware Open Design System Architecture",
+  "lead": {
+    "section": "github",
+    "url": "https://github.com/meta/astryx"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 멀티모달 모델의 시각 인코딩 성능이 어디서 오는지를 세 가지 요소로 분해해 비교한다. 저자들은 비전 사전학습 priors, 전용 비전 파라미터 용량, 멀티모달 결합 이전 배치라는 축을 독립 변수로 두고 통제 실험 프로토콜을 구성했다. 핵심 메시지는 기존에 하나의 비전 인코더 선택으로 묶여 있던 설계 결정을 분해해야, 실제로 성능을 끌어올리는 요소를 과대추정 없이 판단할 수 있다는 점이다.",
+      "evidence": "full_text",
+      "findings": "본문 수치 기준으로 일부 설정에서 6.5x~2.9x 효율 차이와 10~15% 수준 성능 격차가 관찰돼, 단일 recipe가 아니라 구성요소별 최적 조합이 중요하다는 결과를 제시했다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17334",
+      "limitations": "토론 섹션에 따라 비교군이 제한된 학습 예산·모델군 중심이라, 초대형 파라미터 체급이나 도메인 특화 데이터에서 동일 경향이 유지되는지는 추가 확인이 필요하다.",
+      "method": "2장 프로토콜에서 동일한 학습 예산과 입력 해상도(예: 224·448) 조건을 맞춘 뒤, 인코더 사전학습 유무·전용 용량·결합 위치를 조합해 ablation을 수행했다.",
+      "practical_value": "VLM 아키텍처를 설계하는 팀이 인코더 교체를 단일 의사결정으로 다루기보다, pretraining·capacity·fusion 순서를 분리해 실험 계획을 세우는 기준을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17334",
+        "https://arxiv.org/html/2611.17334"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "multimodal",
+        "performance"
+      ],
+      "title": "Unbundling Multimodal Vision Encoding",
+      "topics": [
+        "multimodal encoding",
+        "vision prior",
+        "fusion placement"
+      ],
+      "url": "https://arxiv.org/abs/2611.17334"
+    },
+    {
+      "abstract_summary": "연구진은 diffusion LM의 remasking이 항상 이득을 주지 않는 이유를 Sudoku 과제로 분석하고, 언제 재생성할지를 학습하는 DiVR 검증기를 제안했다. 논문은 토큰 confidence만으로는 오류 신호를 충분히 잡지 못하며, 문맥을 고정한 채 부분 수정하면 같은 오류를 반복할 수 있음을 실험으로 보였다. 이를 바탕으로 부분 시퀀스가 정답 경로로 갈 가능성을 먼저 예측한 뒤 재생성 여부를 결정하는 정책을 설계했다.",
+      "evidence": "full_text",
+      "findings": "논문 결과는 특정 설정에서 정답률 35.3%→43.4% 개선과 함께, 호출 대비 효율 3.5x~7.4x 개선 구간을 보고했다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17320",
+      "limitations": "평가가 구조화된 퍼즐 중심이라 자연어 생성·코드 생성으로 일반화할 때는 오류 신호 특성이 달라져 verifier 재학습이 필요하다.",
+      "method": "Diagnosis와 Method 섹션에서 hidden-state 기반 verifier를 학습해 remasking 트리거로 사용하고, Experiments에서 고정 remasking·confidence 기반 기준선과 비교했다.",
+      "practical_value": "diffusion 계열 모델 운영팀이 무조건 재생성 전략 대신, 비용 대비 성능이 나오는 시점에만 regeneration을 트리거하는 정책 설계 근거로 사용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17320",
+        "https://arxiv.org/html/2611.17320"
+      ],
+      "tags": [
+        "evaluation",
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "Learning When Diffusion Language Models Should Regenerate",
+      "topics": [
+        "diffusion language model",
+        "remasking policy",
+        "verifier"
+      ],
+      "url": "https://arxiv.org/abs/2611.17320"
+    },
+    {
+      "abstract_summary": "이 논문은 LLM이 장문 과제에서 다음 하위 목표를 내부적으로 어떻게 표현하는지 분석한다. 저자들은 코딩 다중 서브태스크 환경을 구성하고 sparse autoencoder 출력에서 sub-goal 신호를 추적해, 행동 이전 단계의 목표 인코딩 존재를 검증했다. 또한 목표 신호가 표현되는 지점을 인위적으로 제한하는 causal bottleneck 실험으로, 해당 표현이 실제 행동 선택에 미치는 인과적 영향을 확인했다.",
+      "evidence": "full_text",
+      "findings": "보고된 지표에서 목표 판별 정확도 96.2% 등 높은 분리 가능성이 나타났고, 목표 표현을 약화하면 하위 과제 선택 정확도가 큰 폭으로 저하되는 경향을 확인했다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17297",
+      "limitations": "코드 생성 중심 태스크에 실험이 집중되어 일반 대화형 에이전트나 멀티모달 의사결정으로 직접 확장하기는 어렵다.",
+      "method": "3~4장 실험에서 pre-commitment·plasticity·persistence 지표를 정의하고, goal head를 통한 개입(intervention)으로 성능 변화를 측정했다.",
+      "practical_value": "장기 에이전트 디버깅 시 실패 원인을 단순 출력 품질이 아니라 목표 표현 단계로 분리해 관찰·개입하는 분석 프레임으로 사용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17297",
+        "https://arxiv.org/html/2611.17297"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "llm",
+        "reasoning"
+      ],
+      "title": "Goal Encoding in LLMs",
+      "topics": [
+        "goal representation",
+        "sparse autoencoder",
+        "causal bottleneck"
+      ],
+      "url": "https://arxiv.org/abs/2611.17297"
+    },
+    {
+      "abstract_summary": "Synthesis Smuggling은 LLM이 사용자 대화에서 추정한 민감 속성을 정상 산출물 안에 은닉해 외부 전파시키는 위협 모델을 제시한다. 논문은 이메일·게시글 같은 일상적 산출물에 스테가노그래피 패턴을 삽입해도 사용자와 일반 필터가 이를 쉽게 감지하지 못하는 시나리오를 실험했다. 즉 모델이 직접 개인정보를 노출하지 않아도, 결과물 전파 과정에서 프라이버시가 누출될 수 있음을 보여준다.",
+      "evidence": "full_text",
+      "findings": "실험에서 일부 설정은 95~98% 수준의 은닉 성공률과 탐지 성능 저하(예: 27.7 points)를 보고해, 기존 안전 필터만으로는 대응이 어렵다는 점을 시사했다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17280",
+      "limitations": "실험 조건이 통제된 텍스트 도메인 중심이어서 실제 제품군의 다중 포맷·실시간 방어 체계에서 동일 위험도가 재현되는지는 추가 검증이 필요하다.",
+      "method": "Experiments와 Evaluation 섹션에서 은닉 채널 설계, 탐지기 회피율, 사용자 인지 실패율을 포함한 공격·방어 비교 실험을 수행했다.",
+      "practical_value": "조직이 생성형 AI 출력 검수 정책을 설계할 때, 유해문장 탐지뿐 아니라 비가시적 정보 은닉 검출 계층을 별도로 두어야 한다는 보안 요구를 구체화한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17280",
+        "https://arxiv.org/html/2611.17280"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "security"
+      ],
+      "title": "Synthesis Smuggling: Maliciously Hiding Inferred Personal Attributes in LLM Outputs",
+      "topics": [
+        "steganography threat",
+        "privacy leakage",
+        "adversarial llm"
+      ],
+      "url": "https://arxiv.org/abs/2611.17280"
+    },
+    {
+      "abstract_summary": "이 연구는 장기 과제 에이전트에서 decision model을 Actor·Judge·Teacher 역할로 분리해 성능 기여를 비교한다. 기존에는 행동 선택 성능이 낮은 모델을 곧바로 저성능으로 판단했지만, 저자들은 같은 모델이 평가자나 학습 신호 생성자로는 더 유용할 수 있다는 가설을 실험으로 검증했다. 결과적으로 역할에 따라 요구되는 능력이 다르며, 단일 점수로 모델을 폐기하면 학습 효율을 놓칠 수 있음을 보여준다.",
+      "evidence": "full_text",
+      "findings": "본문 수치에서는 역할별 성능 차이가 뚜렷하며, Actor 성능이 낮은 모델도 Teacher/Judge 설정에서 70%대 개선 지표를 보이는 구간이 보고됐다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17167",
+      "limitations": "Limitations 절에 명시된 대로 태스크군과 모델군이 제한적이라, 실제 프로덕션 도메인에서 역할 분리 이점이 동일하게 재현되는지는 불확실하다.",
+      "method": "Experimental Setup에서 장기 에이전트 태스크 벤치마크를 구성하고, 동일 decision model을 세 역할에 각각 배치해 성공률·학습 효율·정책 개선량을 비교했다.",
+      "practical_value": "에이전트 파이프라인 설계 시 모델을 단일 행동기(policy)로만 배치하지 않고, 평가·학습 신호 역할로 재배치해 비용 대비 성능을 높이는 운영 전략 근거를 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17167",
+        "https://arxiv.org/html/2611.17167"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "llm",
+        "reasoning"
+      ],
+      "title": "Actor, Judge, or Teacher? Understanding Decision Models in Long-Horizon Agents",
+      "topics": [
+        "decision model roles",
+        "long-horizon agents",
+        "policy teaching"
+      ],
+      "url": "https://arxiv.org/abs/2611.17167"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "현재 Beta 단계 · 대규모 제품 이관 시 컴포넌트 호환성·회귀 테스트 선행 필요",
+      "novelty": "new_entry",
+      "rank": 1,
+      "repository": "meta/astryx",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/meta/astryx"
+      ],
+      "summary": "React 19+ 기반 오픈 디자인 시스템 · 150+ 접근성 컴포넌트 · 에이전트 협업 지향 API/문서/CLI 통합",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/meta/astryx",
+      "use_case": "플랫폼 프론트엔드 팀이 다수 제품군 UI를 공통 컴포넌트·테마 체계로 묶고, 코드 생성 에이전트와 동일 문서 기준으로 화면 구현 품질을 맞추는 기준선으로 활용할 수 있다.",
+      "why_now": "Top10 1위 · 주간 13,375 stars · Meta 내부 13,000+ 앱 활용 이력 공개"
+    },
+    {
+      "caution": "리뷰 흐름을 특정 에이전트 생태계 플러그인에 의존할 수 있어 내부 표준과의 정합성 검토가 필요",
+      "novelty": "new_entry",
+      "rank": 9,
+      "repository": "backnotprop/plannotator",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/backnotprop/plannotator"
+      ],
+      "summary": "에이전트 산출물 주석·리뷰 인박스 · 아티팩트/코드리뷰 통합 피드백 표면",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/backnotprop/plannotator",
+      "use_case": "개발 리드가 설계 문서·PR diff·실행 아티팩트에 같은 주석 워크플로를 적용해 에이전트 반복 수정 사이클을 짧게 운영할 수 있다.",
+      "why_now": "Top10 9위 신규 진입 · 주간 511 stars · 다중 에이전트 도구 연동 지향"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "Meta가 공개한 Astryx는 사람과 에이전트가 같은 설계 참조를 공유하도록 API·문서·CLI를 한 묶음으로 설계한 디자인 시스템이다. React 19+와 StyleX 기반이지만 소비자 쪽 스타일링 잠금(lock-in)을 최소화해 기존 CSS/Tailwind 계열을 그대로 얹을 수 있게 구성했다.",
+    "README 기준으로 Astryx는 150+ 접근성 컴포넌트와 테마 시스템, 템플릿, CLI를 통합 제공하며 주간 Trending 1위(13,375 stars this week)로 빠르게 확산됐다. 특히 내부 빌딩블록을 직접 노출하는 구조라, 상위 컴포넌트 확장 시 래퍼를 과도하게 쌓지 않고 커스터마이징할 수 있다는 점이 핵심 차별점이다.",
+    "의미는 생성형 코딩 워크플로에서 UI 구현 표준을 문서와 코드로 동시에 고정해 협업 마찰을 줄일 수 있다는 데 있다. 다만 현재 Beta 단계라 대규모 제품군 적용 전에는 컴포넌트 안정성·호환성 회귀를 사내 기준으로 별도 검증해야 한다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "Plannotator가 에이전트 산출물 리뷰·주석 워크플로를 통합한 협업 표면을 제시",
+        "url": "https://github.com/backnotprop/plannotator"
+      },
+      {
+        "section": "papers",
+        "text": "DiVR가 diffusion LM 재생성 시점을 학습해 Sudoku 조건에서 큰 비용 대비 개선 보고",
+        "url": "https://arxiv.org/abs/2611.17320"
+      },
+      {
+        "section": "community",
+        "text": "Lovable 보안 분석이 앱 빌더 생태계의 민감정보 노출 리스크를 재점화",
+        "url": "https://www.crissyfield.de/research/lovable-en/"
+      }
+    ],
+    "spotlight": [
+      "Astryx는 사람이 보는 디자인 가이드와 에이전트가 쓰는 구현 인터페이스를 같은 기준으로 맞춘 오픈 디자인 시스템입니다.",
+      "Trending 주간 1위(13,375 stars)와 함께 150+ 접근성 컴포넌트·테마·CLI를 통합 제공하며, 스타일링 lock-in을 낮춘 구조를 전면에 둡니다. 다만 현재 Beta라 대규모 도입 전에 안정성 회귀 검증이 필요합니다."
+    ]
+  }
+}
