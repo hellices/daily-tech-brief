@@ -1,0 +1,454 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "2026-11-13부터 2026-11-16까지 CNCF announcements/blog와 연계 공개 공지를 확인했지만 신규 주요 변경을 확인하지 못했다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN·GeekNews RSS·Reddit RSS를 함께 확인해 중복 이슈를 병합하고 9개 링크를 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/.rss?t=week",
+        "https://www.reddit.com/r/programming/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub Trending weekly Top10을 2026-11-16 08:04 KST에 캡처했고, 소개 이력 미포함 신규 항목 1건을 선별했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 조건과 최근 7일 소개 제외 규칙을 적용해 arXiv 5건의 방법·실험·한계를 본문으로 확인했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://arxiv.org/list/cs.LG/recent"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-16",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50511395",
+        "https://news.ycombinator.com/rss"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Bitly 단축 링크 하이재킹 사례 분석",
+      "url": "https://ransomnews.com/burger-king-tweet-bitly-link-hijack-2026/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50510799"
+      ],
+      "tags": [
+        "agent",
+        "security"
+      ],
+      "title": "Your Agent Will Pick the Hackable One 토론",
+      "url": "https://geoffstearns.com/blog/your-agent-will-pick-the-hackable-one/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/comments/1xwsbxo/slacks_migration_to_a_cellular_architecture/"
+      ],
+      "tags": [
+        "cloud-native",
+        "distributed-systems",
+        "performance"
+      ],
+      "title": "Slack Cellular Architecture 전환 사례",
+      "url": "https://slack.engineering/slacks-migration-to-a-cellular-architecture/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/comments/1xwyhpm/544_unmaintained_pypi_packages_with_imports_that/"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Python 3.12+ 비호환 PyPI 패키지 대량 다운로드 이슈",
+      "url": "https://py-code.org/blog/removed-stdlib-modules-pypi/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/LocalLLaMA/comments/1xx1cu9/basalt_040_more_models_still_as_fast_qwen_27b_up/"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "Basalt 0.4.0 로컬 추론 성능 업데이트",
+      "url": "https://basalt.jgulfo.com/"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/rss/news"
+      ],
+      "tags": [
+        "inference",
+        "llm"
+      ],
+      "title": "vLLM 기반 GLM-5.3 DGX Station 서빙 사례",
+      "url": "https://news.hada.io/topic?id=37221&utm_source=geeknews&utm_medium=rss&utm_campaign=news"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/comments/1xwe5sd/anyone_running_kubernetessigsagentsandbox_in_prod/"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "kubernetes"
+      ],
+      "title": "kubernetes-sigs agent-sandbox 실사용 논의 지속",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xwe5sd/anyone_running_kubernetessigsagentsandbox_in_prod/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/comments/1xwrwl9/how_do_you_handle_prod_promotion_with_argo_cd/"
+      ],
+      "tags": [
+        "cloud-native",
+        "gitops",
+        "kubernetes"
+      ],
+      "title": "Argo CD + Image Updater 프로덕션 승격 운영 토론",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xwrwl9/how_do_you_handle_prod_promotion_with_argo_cd/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50509411",
+        "https://news.hada.io/topic?id=37222&utm_source=geeknews&utm_medium=rss&utm_campaign=news"
+      ],
+      "tags": [
+        "cloud-native",
+        "observability"
+      ],
+      "title": "Microsoft 365 장애 연쇄 사고 보도 공유",
+      "url": "https://www1.wdr.de/nrw/rheinland/rhein-erft-kreis/technischer-defekt-chlor-phantasialand-100.html"
+    }
+  ],
+  "generated_at": "2026-11-16T08:06:40+09:00",
+  "github_featured": [
+    "we-promise/sure"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-15T08:04:25+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "meta/astryx",
+        "weekly_stars": 13375
+      },
+      {
+        "rank": 2,
+        "repository": "sherlock-project/sherlock",
+        "weekly_stars": 13364
+      },
+      {
+        "rank": 3,
+        "repository": "anthropics/skills",
+        "weekly_stars": 6169
+      },
+      {
+        "rank": 4,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 4360
+      },
+      {
+        "rank": 5,
+        "repository": "google/elephant-goldfish-model",
+        "weekly_stars": 5560
+      },
+      {
+        "rank": 6,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 7763
+      },
+      {
+        "rank": 7,
+        "repository": "zhulinsen/daily_stock_analysis",
+        "weekly_stars": 3778
+      },
+      {
+        "rank": 8,
+        "repository": "google-deepmind/mujoco",
+        "weekly_stars": 1764
+      },
+      {
+        "rank": 9,
+        "repository": "backnotprop/plannotator",
+        "weekly_stars": 511
+      },
+      {
+        "rank": 10,
+        "repository": "addyosmani/agent-skills",
+        "weekly_stars": 3502
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-16T08:04:33+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "meta/astryx",
+        "weekly_stars": 13660
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/skills",
+        "weekly_stars": 6220
+      },
+      {
+        "rank": 3,
+        "repository": "sherlock-project/sherlock",
+        "weekly_stars": 12401
+      },
+      {
+        "rank": 4,
+        "repository": "backnotprop/plannotator",
+        "weekly_stars": 818
+      },
+      {
+        "rank": 5,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 4601
+      },
+      {
+        "rank": 6,
+        "repository": "zhulinsen/daily_stock_analysis",
+        "weekly_stars": 4526
+      },
+      {
+        "rank": 7,
+        "repository": "we-promise/sure",
+        "weekly_stars": 4483
+      },
+      {
+        "rank": 8,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 6413
+      },
+      {
+        "rank": 9,
+        "repository": "google/elephant-goldfish-model",
+        "weekly_stars": 5539
+      },
+      {
+        "rank": 10,
+        "repository": "google-deepmind/mujoco",
+        "weekly_stars": 1859
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "CapLite: Model-Written Artifact-Free Prompt-Injection Defense",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2611.17115"
+  },
+  "papers": [
+    {
+      "abstract_summary": "CapLite는 소형 언어모델(SLM) 에이전트가 스스로 보안 정책·프로그램 같은 아티팩트를 생성하는 기존 방어 설계의 근본 한계를 분석한다. 저자들은 다수 오픈웨이트 모델에서 self-written artifact 접근이 공격자 프롬프트 영향에서 충분히 독립적이지 않다는 점을 실험으로 확인했다. 이를 바탕으로 모델이 방어 아티팩트를 작성하지 않아도 적용 가능한 경량 방어 경로를 제안해, 신뢰 경계를 모델 바깥으로 이동시키는 설계를 채택했다.",
+      "evidence": "full_text",
+      "findings": "Results 기준으로 baseline 계열은 68% 실패 구간과 29.0%, 27.2% 수준의 취약 지표를 보였고, CapLite는 일부 설정에서 59.4%, 43.8% 등 개선 수치를 보고했다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17115",
+      "limitations": "실험군이 특정 공격 패턴과 툴 호출 설정 중심이라, 실제 프로덕션의 복합 멀티스텝 워크플로 전체에서 동일한 개선 폭이 유지되는지는 추가 검증이 필요하다.",
+      "method": "2장·3장에서 기존 방식의 실패 양상을 측정한 뒤, 4장·5장에서 CapLite를 동일 벤치마크에 적용해 공격 성공률과 정상 태스크 유지율을 비교했다.",
+      "practical_value": "SLM 기반 에이전트를 배포하는 팀이 방어 정책 생성을 모델에게 위임하지 않고, 검증 가능한 외부 규칙 계층으로 분리하는 보안 아키텍처를 설계할 때 직접적인 기준으로 활용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17115",
+        "https://arxiv.org/html/2611.17115"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "llm",
+        "security"
+      ],
+      "title": "CapLite: Prompt-Injection Defense for Small Language Model Agents without Model-Written Security Artifacts",
+      "topics": [
+        "prompt injection defense",
+        "slm agents",
+        "security artifacts"
+      ],
+      "url": "https://arxiv.org/abs/2611.17115"
+    },
+    {
+      "abstract_summary": "이 연구는 RAG 시스템의 인용(citation)이 실제 답변 생성에 사용된 근거를 정확히 반영하는지 반사실 실험으로 점검한다. 저자들은 검색 문서의 사실값을 의도적으로 바꾼 뒤 재질의해, 모델이 해당 근거를 실제로 활용했는지 여부를 정량화하는 provenance 측정 절차를 제안했다. 핵심은 인용이 붙어 있어도 모델 내부 파라메트릭 지식으로 답을 만들면, 표면상 인용 검증만으로는 허위 근거를 탐지하기 어렵다는 점이다.",
+      "evidence": "full_text",
+      "findings": "논문은 모델·설정별로 1.2%~15.7% 수준의 provenance 불일치율을 보고하며, 단순 citation 검사만으로는 고위험 사례를 충분히 걸러내지 못한다고 분석했다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17161",
+      "limitations": "평가 데이터와 질의 분포가 제한적이어서, 도메인 특화 지식베이스나 멀티홉 검색 시나리오에서 불일치율이 어떻게 변하는지는 후속 연구가 필요하다.",
+      "method": "3장 Measuring Provenance에서 counterfactual value substitution 실험을 정의하고, 4~6장에서 다중 모델 크기군의 prevalence·detection 성능을 비교했다.",
+      "practical_value": "RAG 운영 팀이 “인용 존재=근거 사용” 가정을 버리고, 회귀 테스트에 반사실 교란 기반 provenance 체크를 추가해야 한다는 실무 기준을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17161",
+        "https://arxiv.org/html/2611.17161"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "rag",
+        "retrieval"
+      ],
+      "title": "Cited but Unused: Parametric Provenance in Retrieval-Augmented Generation",
+      "topics": [
+        "rag provenance",
+        "counterfactual substitution",
+        "citation reliability"
+      ],
+      "url": "https://arxiv.org/abs/2611.17161"
+    },
+    {
+      "abstract_summary": "ArchSpace는 LLM 아키텍처 연구에서 “성공한 아이디어만 남고 실패 맥락이 사라지는 문제”를 줄이기 위해, 실험 기록·검토·재참조를 구조화한 공개 프레임워크를 제안한다. 논문은 업계 보고서와 학계 실험의 기준 불일치가 비교 가능성을 낮춘다는 점을 지적하고, 통일된 baseline ladder와 validation 체크를 포함한 운영 절차를 제시했다. 목표는 단일 모델 성능 자랑이 아니라, 아키텍처 선택의 재현 가능한 의사결정 로그를 누적하는 것이다.",
+      "evidence": "full_text",
+      "findings": "본문은 설정별 1.4x·7.2x 등 비용/효율 차이를 제시해, 동일 성능 비교라도 실험 프로토콜 불일치가 결론을 크게 바꿀 수 있음을 보여준다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17332",
+      "limitations": "프레임워크 자체는 기록 표준에 의존하므로, 참여자들이 동일한 품질 기준으로 메타데이터를 남기지 않으면 비교 신뢰도가 빠르게 저하될 수 있다.",
+      "method": "2~5장에서 community 기록 포맷, validation framework, baseline scaling 실험 단계를 정의하고, 1B급 기준선과 학습 레시피 비교를 수행했다.",
+      "practical_value": "모델 아키텍처 실험을 반복하는 팀이 실패 실험까지 검색 가능한 형태로 남겨, 중복 시도와 잘못된 비교를 줄이는 연구 운영 체계를 만드는 데 도움을 준다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17332",
+        "https://arxiv.org/html/2611.17332"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "open-source"
+      ],
+      "title": "ArchSpace: Recording, Reviewing, and Referencing LLM Architecture Research",
+      "topics": [
+        "architecture research registry",
+        "validation framework",
+        "scaling baselines"
+      ],
+      "url": "https://arxiv.org/abs/2611.17332"
+    },
+    {
+      "abstract_summary": "이 논문은 연합학습(Federated Learning) 실험에서 코드가 정상 실행돼도 논문 의도와 다른 프로토콜로 인해 결론이 왜곡될 수 있다는 문제를 다룬다. 저자들은 FedBrew라는 재현 지향 코드베이스를 제시하고, 설정·데이터 분할·집계·평가·체크포인트 복원 등 과학적 조건을 자동 점검하는 체크 체계를 설계했다. 즉 “돌아가는 코드”와 “논문에 충실한 실험”을 분리해 검증해야 한다는 원칙을 강조한다.",
+      "evidence": "full_text",
+      "findings": "논문은 구성 오류가 눈에 띄는 런타임 실패 없이도 비교 결과를 바꿀 수 있음을 사례 중심으로 보여주며, 체크리스트 기반 검증이 재현성 품질을 높인다고 보고한다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17129",
+      "limitations": "정량 벤치마크 폭이 제한적이고 도메인 편중이 있어, 대규모 산업 FL 파이프라인 전체로 일반화하려면 추가 사례 축적이 필요하다.",
+      "method": "2~4장에서 FedBrew 설계와 software/scientific condition 체크 항목을 정의하고, 실무자와 에이전트가 동일 검증 절차를 거치도록 개발 루프를 구성했다.",
+      "practical_value": "FL 실험 자동화를 도입하는 조직이 에이전트 생성 코드에도 동일한 과학적 검증 게이트를 강제해, 보고서 품질과 재현 가능성을 높이는 운영 표준을 세우는 데 유용하다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17129",
+        "https://arxiv.org/html/2611.17129"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "llm"
+      ],
+      "title": "Paper-Faithful Federated Learning: Scientific Checks for Practitioner and Agent Development",
+      "topics": [
+        "federated learning reproducibility",
+        "scientific checks",
+        "agent-ready development"
+      ],
+      "url": "https://arxiv.org/abs/2611.17129"
+    },
+    {
+      "abstract_summary": "이 연구는 소형 모델의 시맨틱 파싱에서 출력 포맷 선택이 “겉보기로는 그럴듯하지만 잘못된 결과”를 얼마나 유발하는지 분석한다. 저자들은 동일 트리 의미를 보존하는 여섯 가지 포맷을 준비하고, Qwen3.5-0.8B와 LFM2.5-350M에 LoRA 학습을 적용해 포맷별 오류 양상을 비교했다. 결론적으로 같은 의미 표현이라도 토큰 구조와 형식 제약이 silent error 비율을 크게 바꿀 수 있음을 보였다.",
+      "evidence": "full_text",
+      "findings": "Results 기준으로 포맷에 따라 87.5% vs 78.6% 성능 차이와 4.1x 토큰 길이 차이가 나타나, 모델 크기보다 출력 형식 선택이 더 큰 영향을 주는 구간을 확인했다.",
+      "first_published": "2026-11-12",
+      "id": "arxiv:2611.17169",
+      "limitations": "평가가 PIZZA 벤치마크 중심이라 다른 구조 예측 과제(코드 AST, API 호출 계획)에서 동일한 민감도가 유지되는지는 추가 검증이 필요하다.",
+      "method": "3~6장에서 데이터셋과 6개 인코딩, 통계 설정을 정의하고 matched-length 조건까지 포함해 형식 차이의 영향을 분리 측정했다.",
+      "practical_value": "소형 모델 파서를 제품에 탑재할 때 모델 교체 전에 출력 포맷부터 재설계하면, 비용 증가 없이 silent error를 줄일 수 있다는 실무 우선순위를 제시한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.17169",
+        "https://arxiv.org/html/2611.17169"
+      ],
+      "tags": [
+        "developer-tools",
+        "evaluation",
+        "llm",
+        "performance"
+      ],
+      "title": "Parsed, Plausible, Wrong: Output Format Controls Silent Errors in Small-Model Semantic Parsing",
+      "topics": [
+        "semantic parsing",
+        "output format design",
+        "silent errors"
+      ],
+      "url": "https://arxiv.org/abs/2611.17169"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "원 프로젝트 중단 이력 존재 · 포크 기반 유지보수 지속성·보안 업데이트 체계 검증 필요",
+      "novelty": "new_entry",
+      "rank": 7,
+      "repository": "we-promise/sure",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/we-promise/sure"
+      ],
+      "summary": "오픈소스 개인재무 앱 커뮤니티 포크 · 대시보드+AI 어시스턴트 결합 · 다국어 README·셀프호스팅 지향",
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/we-promise/sure",
+      "use_case": "내부 재무 도구를 직접 운영하려는 팀이 기존 중단 프로젝트를 커뮤니티 포크로 이어받아 기능 유지·배포를 계속하는 운영 모델의 참고 사례로 활용할 수 있다.",
+      "why_now": "Top10 7위 신규 진입 · 주간 4,483 stars · abandoned 프로젝트 재활성화 사례"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "CapLite는 소형 언어모델 에이전트가 스스로 보안 아티팩트를 생성해 방어하는 기존 방식의 취약점을 짚고, 모델이 보안 규칙을 직접 작성하지 않아도 동작하는 프롬프트 인젝션 방어 경로를 제시했다. 핵심 문제는 방어 로직의 출발점이 되는 정책·프로그램을 공격 표면 위의 동일 모델에게 맡길 때 신뢰 경계가 무너진다는 점이다.",
+    "논문은 1.7B~12B를 포함한 15개 오픈웨이트 모델에서 기존 self-written artifact 계열 방어를 비교해 높은 실패율을 보고했고, CapLite 실험에서는 공격 성공률을 더 낮추는 결과를 제시했다. Results 기준 수치 예시로 baseline 계열의 68% 실패 구간과 CapLite 적용 후 개선 지표(예: 59.4%, 43.8%)를 함께 제시해 방어 구조 차이를 정량화했다.",
+    "의미는 에이전트 보안 설계에서 모델 능력 향상만 기다리기보다, 보안 판단 경로를 모델 외부의 단순·검증 가능한 절차로 분리해야 한다는 운영 원칙을 강화한 데 있다. 다만 평가 태스크가 제한된 공격군 중심이라 도구 사용 범위가 넓은 실제 프로덕션 에이전트에서의 일반화 성능은 추가 검증이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "we-promise/sure가 주간 Top10 신규 진입으로 커뮤니티 포크 기반 서비스 유지보수 모델을 재점화",
+        "url": "https://github.com/we-promise/sure"
+      },
+      {
+        "section": "community",
+        "text": "HN에서 Bitly 단축링크 하이재킹 사례가 링크 신뢰 경로 점검 이슈로 확산",
+        "url": "https://ransomnews.com/burger-king-tweet-bitly-link-hijack-2026/"
+      },
+      {
+        "section": "papers",
+        "text": "RAG 인용이 실제 사용 근거와 불일치하는 provenance 문제를 반사실 실험으로 계량",
+        "url": "https://arxiv.org/abs/2611.17161"
+      }
+    ],
+    "spotlight": [
+      "CapLite는 소형 모델 에이전트가 자기 손으로 방어 정책을 쓰는 구조의 한계를 실험으로 보이고, 모델 외부 절차 중심 방어를 제안한 연구입니다.",
+      "논문은 15개 오픈웨이트 모델 비교에서 기존 접근의 높은 실패 구간(예: 68%)을 보고하고, CapLite 적용 시 공격 성공률을 낮추는 지표를 제시했습니다. 다만 태스크 범위가 제한적이어서 실제 대규모 운영 환경 검증은 더 필요합니다."
+    ]
+  }
+}
