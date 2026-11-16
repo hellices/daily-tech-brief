@@ -1,0 +1,450 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "2026-11-14부터 2026-11-17까지 CNCF announcements/blog 및 공개 변경 공지를 검토했으나 신규 주요 변경을 확인하지 못했다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN·GeekNews RSS·Reddit RSS를 교차 검토해 중복 이슈를 병합하고 9개 링크를 선별했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/.rss?t=week",
+        "https://www.reddit.com/r/programming/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/.rss?t=week"
+      ],
+      "status": "ok"
+    },
+    "github": {
+      "note": "GitHub Trending weekly Top10을 2026-11-17 08:04 KST에 캡처했고, 소개 이력 미포함 신규 진입 1건을 확인했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 조건·최근 7일 중복 제외 규칙을 적용해 arXiv 5건을 본문(방법·실험·한계)까지 확인했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://arxiv.org/list/cs.LG/recent"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-17",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50522980"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "CMU 컴퓨터공학 강의 무료 공개",
+      "url": "https://www.cs.cmu.edu/learn/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50523459"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools"
+      ],
+      "title": "OpenCode Browse 공개",
+      "url": "https://opencode.ai/product/browse"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50511395"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Bitly 링크 하이재킹 사례 분석",
+      "url": "https://ransomnews.com/burger-king-tweet-bitly-link-hijack-2026/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50523784"
+      ],
+      "tags": [
+        "cloud-native",
+        "security"
+      ],
+      "title": "Spamhaus 신규 이메일 발신자 가이드라인",
+      "url": "https://www.spamhaus.org/sender-guidelines/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/programming/comments/1xxp5pe/microsoft_outage_preliminary_postmortem/"
+      ],
+      "tags": [
+        "cloud-native",
+        "observability"
+      ],
+      "title": "Microsoft 장애 예비 포스트모템 공유",
+      "url": "https://x.com/clamanna/status/2122209697226948729"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/comments/1xxqa3i/aistats_2027_paper_discussion_d/"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "AISTATS 2027 논문 토론 스레드",
+      "url": "https://www.reddit.com/r/MachineLearning/comments/1xxqa3i/aistats_2027_paper_discussion_d/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/MachineLearning/comments/1xxsqro/marimba_a_system_one_model_for_speech_r/"
+      ],
+      "tags": [
+        "llm",
+        "multimodal"
+      ],
+      "title": "Marimba 음성 모델 논문 공유",
+      "url": "https://arxiv.org/abs/2611.18330"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/comments/1xxu89a/how_are_you_handling_multicluster_kubernetes/"
+      ],
+      "tags": [
+        "cloud-native",
+        "kubernetes",
+        "networking"
+      ],
+      "title": "멀티클러스터 Kubernetes 네트워킹 운영 토론",
+      "url": "https://www.reddit.com/r/kubernetes/comments/1xxu89a/how_are_you_handling_multicluster_kubernetes/"
+    },
+    {
+      "sources": [
+        "https://www.reddit.com/r/kubernetes/comments/1xxzn2f/do_we_have_enough_handson_practice_for_realworld/"
+      ],
+      "tags": [
+        "developer-tools",
+        "kubernetes",
+        "observability"
+      ],
+      "title": "SnowOpsLabs 기반 DevOps 사고 대응 훈련 논의",
+      "url": "https://github.com/snowops-oss/snowopslabs"
+    }
+  ],
+  "generated_at": "2026-11-17T08:05:43+09:00",
+  "github_featured": [
+    "googlechrome/modern-web-guidance-src"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-16T08:04:33+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "meta/astryx",
+        "weekly_stars": 13660
+      },
+      {
+        "rank": 2,
+        "repository": "anthropics/skills",
+        "weekly_stars": 6220
+      },
+      {
+        "rank": 3,
+        "repository": "sherlock-project/sherlock",
+        "weekly_stars": 12401
+      },
+      {
+        "rank": 4,
+        "repository": "backnotprop/plannotator",
+        "weekly_stars": 818
+      },
+      {
+        "rank": 5,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 4601
+      },
+      {
+        "rank": 6,
+        "repository": "zhulinsen/daily_stock_analysis",
+        "weekly_stars": 4526
+      },
+      {
+        "rank": 7,
+        "repository": "we-promise/sure",
+        "weekly_stars": 4483
+      },
+      {
+        "rank": 8,
+        "repository": "milind-soni/openmausbot",
+        "weekly_stars": 6413
+      },
+      {
+        "rank": 9,
+        "repository": "google/elephant-goldfish-model",
+        "weekly_stars": 5539
+      },
+      {
+        "rank": 10,
+        "repository": "google-deepmind/mujoco",
+        "weekly_stars": 1859
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-17T08:04:26+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "googlechrome/modern-web-guidance-src",
+        "weekly_stars": 5692
+      },
+      {
+        "rank": 2,
+        "repository": "meta/astryx",
+        "weekly_stars": 13501
+      },
+      {
+        "rank": 3,
+        "repository": "backnotprop/plannotator",
+        "weekly_stars": 1719
+      },
+      {
+        "rank": 4,
+        "repository": "anthropics/skills",
+        "weekly_stars": 6077
+      },
+      {
+        "rank": 5,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 4217
+      },
+      {
+        "rank": 6,
+        "repository": "we-promise/sure",
+        "weekly_stars": 4556
+      },
+      {
+        "rank": 7,
+        "repository": "zhulinsen/daily_stock_analysis",
+        "weekly_stars": 4548
+      },
+      {
+        "rank": 8,
+        "repository": "sherlock-project/sherlock",
+        "weekly_stars": 10412
+      },
+      {
+        "rank": 9,
+        "repository": "google/elephant-goldfish-model",
+        "weekly_stars": 5060
+      },
+      {
+        "rank": 10,
+        "repository": "google-deepmind/mujoco",
+        "weekly_stars": 1922
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "ModHarness-RL: Learnable Harness Programs for Agentic RL",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2611.18533"
+  },
+  "papers": [
+    {
+      "abstract_summary": "ModHarness-RL은 에이전트 RL에서 하네스를 고정된 부속물로 두지 않고, 학습 중 진화하는 프로그램으로 다루는 접근을 제안한다. 논문은 하네스가 관찰 범위·피드백 형태·가이드 밀도를 결정하기 때문에 모델 정책만 학습하는 설정은 구조적으로 비효율적일 수 있다고 본다. 저자들은 하네스 변형 규칙을 명시적으로 두고 학습 루프 안에서 하네스를 업데이트해, 도메인과 학습 단계에 맞는 scaffold를 동적으로 선택한다.",
+      "evidence": "full_text",
+      "findings": "실험 결과로 과제별 성능이 24%, 53%, 67%까지 개선되는 구간이 보고됐고, 초기 학습 구간의 수렴 안정성에서도 우위가 관찰됐다.",
+      "first_published": "2026-11-13",
+      "id": "arxiv:2611.18533",
+      "limitations": "평가 과제와 모델군이 제한적이어서 도구 사용이 복잡한 장기 생산 환경에서 동일한 개선 폭과 비용 효율이 유지되는지는 추가 검증이 필요하다.",
+      "method": "3장·4장에서 하네스 프로그램 공간을 정의하고, 고정 하네스 baseline 대비 학습형/진화형 하네스를 동일 에이전트 RL 과제에서 비교했다.",
+      "practical_value": "에이전트 RL 파이프라인을 운영하는 팀이 프롬프트·툴 체인을 고정하지 않고 하네스 설계를 지속적으로 재탐색하는 자동화 루프를 설계할 때 근거로 활용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.18533",
+        "https://arxiv.org/html/2611.18533"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "harness",
+        "reasoning"
+      ],
+      "title": "ModHarness-RL: Recasting Harnesses as Learnable and Evolving Programs for Agentic RL",
+      "topics": [
+        "agentic rl",
+        "learnable harness",
+        "program evolution"
+      ],
+      "url": "https://arxiv.org/abs/2611.18533"
+    },
+    {
+      "abstract_summary": "TradeGauntlet는 자율 트레이딩 에이전트의 컴플라이언스 제어를 재현 가능한 시뮬레이터에서 계량하는 프레임워크다. 저자들은 탐지(detection), 예방(prevention), 실행 비용(cost)을 분리 측정해, 경보를 줄이는 정책이 실제 거래 성능에 어떤 비용을 만드는지 함께 본다. 1,680회 시뮬레이션 세션에서 서로 다른 모델과 동일 제어 규칙을 비교해 규칙 강도와 우회 가능성의 균형을 분석했다.",
+      "evidence": "full_text",
+      "findings": "논문은 특정 게이트 설정에서 conduct alert를 크게 줄이지만, 15% 규칙·95% 임계치 조합 등에서는 합법적 전략에도 비용이 전가되는 구간이 있음을 보고했다.",
+      "first_published": "2026-11-13",
+      "id": "arxiv:2611.18493",
+      "limitations": "시뮬레이션이 제한된 시장 구조와 에이전트 설정에 기반하므로 실제 거래소 미시구조와 규제 요건 전체를 대체하지 못한다.",
+      "method": "3~9장에서 limit-order-book 기반 재생 시뮬레이터를 구성하고, 경보 정책·캡(cap) 정책·가격 반응을 분리해 다중 설정 실험을 수행했다.",
+      "practical_value": "금융 도메인 에이전트 팀이 “경보 0건”만 목표로 두기보다, 예방 효과와 정상 업무 비용을 동시 최적화하는 제어 정책 튜닝 절차를 설계하는 데 쓸 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.18493",
+        "https://arxiv.org/html/2611.18493"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "TradeGauntlet: Evaluating Compliance Controls for Autonomous Trading Agents",
+      "topics": [
+        "autonomous trading agents",
+        "compliance controls",
+        "simulator"
+      ],
+      "url": "https://arxiv.org/abs/2611.18493"
+    },
+    {
+      "abstract_summary": "이 논문은 LLM verifier가 에이전트 실행 궤적의 표현 수준이 바뀌어도 같은 판단을 유지하는지 검증한다. 실제 운영에서는 도구 조합, delegation 경계, 컨텍스트 압축 때문에 동일 실행이라도 verifier가 보는 증거 밀도가 달라지는데, 기존 평가는 이를 거의 다루지 못했다. 저자들은 verification transport 개념을 도입해 표현 변환 전후 판정 일관성과 손실을 정량화했다.",
+      "evidence": "full_text",
+      "findings": "Results 기준으로 원표현 정확도 85.5% 대비 추상화 후 31%대까지 하락하는 구간과 클래스별 편향 이동(예: 20.3%)이 보고됐다.",
+      "first_published": "2026-11-13",
+      "id": "arxiv:2611.18471",
+      "limitations": "검증 대상 태스크와 추상화 연산의 종류가 제한적이라, 다른 에이전트 프레임워크나 장기 멀티툴 작업에 바로 일반화하기는 어렵다.",
+      "method": "3~5장에서 추상화 단계별 궤적 변환을 정의하고, 동일 실행 로그를 여러 표현으로 바꿔 verifier 판정 변화를 비교 측정했다.",
+      "practical_value": "에이전트 평가 체계를 운영하는 팀이 verifier 점수를 단일 표현에서만 신뢰하지 않고, 로그 압축·요약 파이프라인을 포함한 transport 안정성 테스트를 도입해야 함을 보여준다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.18471",
+        "https://arxiv.org/html/2611.18471"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "llm"
+      ],
+      "title": "Do Verifier Judgments Survive Abstraction? Measuring Verification Transport for LLM Agent Evaluation",
+      "topics": [
+        "verifier robustness",
+        "trajectory abstraction",
+        "agent evaluation"
+      ],
+      "url": "https://arxiv.org/abs/2611.18471"
+    },
+    {
+      "abstract_summary": "연구진은 LLM 에이전트의 웹 요소 환각 실패를 대상으로, 기존 mechanistic interpretability(MI) 도구가 실제 에이전트 실패 원인을 설명할 수 있는지 점검한다. 논문은 단순 텍스트 추론보다 에이전트 실행 맥락에서 상태 전이가 복잡해져 MI 적용 난도가 급격히 높아진다고 분석한다. 사례 연구를 통해 attention·회로 추적만으로는 실패 원인을 충분히 국소화하기 어렵고, 실행 컨텍스트를 반영한 해석 체계가 필요하다는 결론을 제시한다.",
+      "evidence": "full_text",
+      "findings": "본문 지표로 85%/7% 구간의 불균형과 8.9%·32.6% 수준의 오차 신호가 보고돼, 기존 MI가 에이전트 실패 설명에 직접 이식되기 어렵다는 점을 보였다.",
+      "first_published": "2026-11-13",
+      "id": "arxiv:2611.18514",
+      "limitations": "단일 실패 유형(웹 요소 환각) 중심 사례라 다른 에이전트 실패 모드(도구 권한 오남용, 계획 붕괴)로의 확장 검증이 남아 있다.",
+      "method": "3~5장에서 웹 에이전트 환각 사례를 재현하고, MI 도구를 단계별로 적용해 원인 추정 성공률과 오판 패턴을 비교했다.",
+      "practical_value": "에이전트 장애 분석 시 MI 결과를 단독 근거로 쓰기보다 실행 로그·도구 상태와 결합한 다층 디버깅 절차를 설계해야 한다는 실무 지침을 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.18514",
+        "https://arxiv.org/html/2611.18514"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "reasoning"
+      ],
+      "title": "Can Mechanistic Interpretability Help Explain LLM Agent Failures? A Case Study on Web Element Hallucination",
+      "topics": [
+        "mechanistic interpretability",
+        "agent failure analysis",
+        "web hallucination"
+      ],
+      "url": "https://arxiv.org/abs/2611.18514"
+    },
+    {
+      "abstract_summary": "ARCHER는 소형 언어모델의 수학 추론 정확도를 높이기 위해 rationale imitation을 실행 가능한 reasoning 체인으로 연결하는 2단계 프레임워크를 제안한다. 핵심은 설명 문장을 모방하는 데서 멈추지 않고, 계산기 기반 행동 추적(action-trace)을 강화학습으로 정렬해 실제 계산·검증 단계를 모델 출력에 고정하는 것이다. 이를 통해 로컬/저비용 모델에서도 고난도 문제의 분해·계산·검증 루프를 안정화하려는 접근을 보여준다.",
+      "evidence": "full_text",
+      "findings": "논문은 8.95 points, 5.34 points 등 점수 개선과 2.0x~5.0x 효율 지표를 보고하며, 실행형 reasoning 신호가 소형 모델 성능을 유의미하게 끌어올린다고 제시했다.",
+      "first_published": "2026-11-13",
+      "id": "arxiv:2611.18494",
+      "limitations": "실험 도메인이 수학 추론 중심이며 외부 도구가 계산기로 제한돼, 개방형 코드/웹 작업으로 일반화할 때는 추가 도구 정렬이 필요하다.",
+      "method": "Methodology와 Results에서 rationale imitation 사전학습 후 calculator-grounded hierarchical RL을 적용해, 다중 벤치마크에서 baseline SLM들과 비교했다.",
+      "practical_value": "온디바이스 SLM을 쓰는 팀이 체인오브쏘트 모방만으로 끝내지 않고, 실행 가능한 도구 호출을 학습 목표로 포함해 추론 신뢰도를 높이는 설계에 참고할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.18494",
+        "https://arxiv.org/html/2611.18494"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "reasoning",
+        "tool-use"
+      ],
+      "title": "ARCHER: From Rationale Imitation to Executable Reasoning in Small Language Models",
+      "topics": [
+        "small language models",
+        "executable reasoning",
+        "calculator-grounded rl"
+      ],
+      "url": "https://arxiv.org/abs/2611.18494"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "도구 권고가 최신 브라우저 기능 중심이므로 레거시 런타임 지원 정책과 fallback 전략을 별도 검증해야 한다.",
+      "novelty": "new_entry",
+      "rank": 1,
+      "repository": "googlechrome/modern-web-guidance-src",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/googlechrome/modern-web-guidance-src"
+      ],
+      "summary": "브라우저 벤더 공동 웹 코딩 가이드 소스 · 에이전트 컨텍스트 최적화 스킬/CLI · 호환성·접근성 중심 규칙",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/googlechrome/modern-web-guidance-src",
+      "use_case": "프론트엔드 팀이 AI 코딩 에이전트의 레거시 웹 API 생성을 줄이고, 최신 웹 플랫폼 패턴으로 코드리뷰 기준을 통일하는 내부 가이드 파이프라인에 적용할 수 있다.",
+      "why_now": "Top10 1위 · 주간 5,692 stars · Chrome/Edge/Firefox/MDN 공동 스튜어드십 공개"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "ModHarness-RL은 에이전트 RL 성능을 고정 프롬프트나 규칙이 아니라 학습·진화 가능한 하네스 프로그램 자체의 문제로 재정의한다. 저자들은 모델 내부 정책만 업데이트하던 기존 방식에서 벗어나, 관찰·피드백·가이드 신호를 결정하는 바깥 레이어를 함께 최적화해야 한다고 주장한다.",
+    "논문 Experiments 기준으로 고정 하네스 대비 과제별 성능 개선이 24%, 53%, 67% 구간까지 보고됐고, 초기 학습 안정화에서도 유의미한 차이를 제시했다. 핵심은 하네스를 도메인·데이터·학습 단계에 맞춰 지속적으로 재구성할 때 정책 탐색 효율이 높아진다는 점이다.",
+    "의미는 에이전트 학습 스택에서 모델 파라미터만이 아니라 실행 환경 설계가 1급 최적화 대상임을 수치로 보여준 데 있다. 다만 실험 벤치마크가 제한적이라 범용 제품 환경에서의 비용 대비 이득은 추가 검증이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "modern-web-guidance-src가 주간 1위로 진입하며 브라우저 벤더 공동 웹 코딩 가이드 체계를 공개",
+        "url": "https://github.com/googlechrome/modern-web-guidance-src"
+      },
+      {
+        "section": "papers",
+        "text": "TradeGauntlet가 자율 트레이딩 에이전트의 컴플라이언스 제어를 시뮬레이션으로 계량",
+        "url": "https://arxiv.org/abs/2611.18493"
+      },
+      {
+        "section": "community",
+        "text": "Bitly 링크 하이재킹 사례가 링크 신뢰 경로와 보안 운영 점검 이슈로 확산",
+        "url": "https://ransomnews.com/burger-king-tweet-bitly-link-hijack-2026/"
+      }
+    ],
+    "spotlight": [
+      "ModHarness-RL은 에이전트 RL에서 고정 하네스를 버리고, 하네스 자체를 학습 가능한 프로그램으로 다루는 접근입니다.",
+      "실험에서 고정 하네스 대비 최대 67% 개선 구간을 보고했지만, 벤치마크 범위가 제한적이라 실제 운영 환경 일반화는 후속 검증이 필요합니다."
+    ]
+  }
+}
