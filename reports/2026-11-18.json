@@ -1,0 +1,443 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일(2026-11-15~2026-11-18) CNCF announcements/blog를 확인했으나 신규 주요 변경 공지를 확인하지 못했다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN·GeekNews는 수집 성공했다. Reddit 4개 RSS는 429 후 404로 재시도에도 실패해 금일 항목에서는 제외했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/.rss?t=week",
+        "https://www.reddit.com/r/programming/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/.rss?t=week"
+      ],
+      "status": "partial"
+    },
+    "github": {
+      "note": "GitHub Trending weekly Top10을 2026-11-18 08:xx KST에 확인했고, 신규 소개 대상 2건을 선별했다. 현재 페이지 구조상 주간 stars 수치는 추출되지 않아 null로 기록했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월·최근 7일 중복 제외 조건으로 5편을 선별했고, 각 논문의 본문(방법·결과·한계)까지 확인했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://arxiv.org/list/cs.LG/recent"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-18",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50538240"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Java4Shell: OpenJDK Base64 처리 경로 RCE 이슈",
+      "url": "https://calif.io/java4shell/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50537156",
+        "https://news.hada.io/topic?id=37372"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source",
+        "security"
+      ],
+      "title": "jQuery 4.1.0 릴리스와 선택자 ReDoS 수정",
+      "url": "https://github.com/jquery/jquery/releases/tag/4.1.0"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50535992",
+        "https://news.hada.io/topic?id=37371"
+      ],
+      "tags": [
+        "open-source",
+        "security"
+      ],
+      "title": "Phrack 73 발행: 최신 보안 연구·공격기법 모음",
+      "url": "https://phrack.org/issues/73/introduction_md"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50535885",
+        "https://news.hada.io/topic?id=37368"
+      ],
+      "tags": [
+        "coding-agent",
+        "llm"
+      ],
+      "title": "MAI Code 2 / Flash 공개와 코딩 벤치마크 비교",
+      "url": "https://microsoft.ai/news/introducing-mai-code-2-and-mai-code-2-flash/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50529612"
+      ],
+      "tags": [
+        "agent",
+        "evaluation"
+      ],
+      "title": "Claude Code 팀의 verification 운영 원칙 공개",
+      "url": "https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50532191"
+      ],
+      "tags": [
+        "evaluation",
+        "harness",
+        "llm"
+      ],
+      "title": "FrontierHarness Eval v1.1: 모델별 하네스 적합성 비교",
+      "url": "https://runta.com/blog/introducing-frontierharness-eval-v1-1/"
+    }
+  ],
+  "generated_at": "2026-11-18T08:09:03+09:00",
+  "github_featured": [
+    "elementalsouls/claude-bughunter",
+    "chromedevtools/chrome-devtools-mcp"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-17T08:04:26+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "googlechrome/modern-web-guidance-src",
+        "weekly_stars": 5692
+      },
+      {
+        "rank": 2,
+        "repository": "meta/astryx",
+        "weekly_stars": 13501
+      },
+      {
+        "rank": 3,
+        "repository": "backnotprop/plannotator",
+        "weekly_stars": 1719
+      },
+      {
+        "rank": 4,
+        "repository": "anthropics/skills",
+        "weekly_stars": 6077
+      },
+      {
+        "rank": 5,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": 4217
+      },
+      {
+        "rank": 6,
+        "repository": "we-promise/sure",
+        "weekly_stars": 4556
+      },
+      {
+        "rank": 7,
+        "repository": "zhulinsen/daily_stock_analysis",
+        "weekly_stars": 4548
+      },
+      {
+        "rank": 8,
+        "repository": "sherlock-project/sherlock",
+        "weekly_stars": 10412
+      },
+      {
+        "rank": 9,
+        "repository": "google/elephant-goldfish-model",
+        "weekly_stars": 5060
+      },
+      {
+        "rank": 10,
+        "repository": "google-deepmind/mujoco",
+        "weekly_stars": 1922
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-18T08:09:03+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "googlechrome/modern-web-guidance-src",
+        "weekly_stars": null
+      },
+      {
+        "rank": 2,
+        "repository": "backnotprop/plannotator",
+        "weekly_stars": null
+      },
+      {
+        "rank": 3,
+        "repository": "meta/astryx",
+        "weekly_stars": null
+      },
+      {
+        "rank": 4,
+        "repository": "we-promise/sure",
+        "weekly_stars": null
+      },
+      {
+        "rank": 5,
+        "repository": "zhulinsen/daily_stock_analysis",
+        "weekly_stars": null
+      },
+      {
+        "rank": 6,
+        "repository": "anthropics/skills",
+        "weekly_stars": null
+      },
+      {
+        "rank": 7,
+        "repository": "elementalsouls/claude-bughunter",
+        "weekly_stars": null
+      },
+      {
+        "rank": 8,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": null
+      },
+      {
+        "rank": 9,
+        "repository": "vercel-labs/agent-browser",
+        "weekly_stars": null
+      },
+      {
+        "rank": 10,
+        "repository": "chromedevtools/chrome-devtools-mcp",
+        "weekly_stars": null
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "Vision-Language Pointer Planning: How VLMs Decide the Next Token",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2611.21600"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 연구는 VLM이 이미지 설명 시 어떤 객체를 다음에 말할지 결정하는 내부 절차를 바인딩 헤드·진행 커서·포인터 실행 단계로 분해해 제시한다. 저자들은 순차 생성의 품질을 단일 정확도로만 보지 않고, 토큰-영역 대응과 진행 상태 유지가 실제 디코딩 순서를 어떻게 만든는지 계측했다.",
+      "evidence": "full_text",
+      "findings": "포인터 결합 정확도 98.9%와 함께, 진행 관련 구성요소 제거 시 95.0%→87.5% 등 성능 하락이 보고되어 생성 순서가 내부 포인터 상태에 강하게 의존함을 보였다.",
+      "first_published": "2026-11-17",
+      "id": "arxiv:2611.21600",
+      "limitations": "분석 대상이 제한된 모델·과제군 중심이어서 대규모 상용 VLM 전반에 대한 일반화에는 추가 검증이 필요하다.",
+      "method": "본문 4~6장에서 포인터 결합, 커서 진행, 시각 검색/번역 단계를 각각 절단(ablation)해 성능 변화를 비교했고, 동일 과제에서 구성요소별 기여를 정량 분석했다.",
+      "practical_value": "VLM 운영팀이 품질 저하 원인을 출력 텍스트만으로 판단하지 않고, 포인터 정렬 실패와 커서 진행 오류를 별도 지표로 계측하는 디버깅 체계를 설계할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.21600",
+        "https://arxiv.org/html/2611.21600"
+      ],
+      "tags": [
+        "evaluation",
+        "multimodal",
+        "reasoning"
+      ],
+      "title": "How VLMs Plan What's Next",
+      "topics": [
+        "vision-language model",
+        "planning mechanism",
+        "pointer binding"
+      ],
+      "url": "https://arxiv.org/abs/2611.21600"
+    },
+    {
+      "abstract_summary": "SciResearch-Eval은 자율 실험 에이전트가 실험 설계·시뮬레이터 신뢰성 판단·불확실성 보고를 얼마나 제대로 수행하는지 평가하는 인터랙티브 벤치마크다. 단순 정답률이 아니라 실험 계획과 판단 근거를 함께 본다는 점이 핵심이다.",
+      "evidence": "full_text",
+      "findings": "저자들은 설정별로 20%·62%·94% 등 큰 성능 편차를 보고하며, 동일 모델도 실험 설정과 힌트 조건에 따라 과학적 판단 품질이 급격히 달라짐을 보였다.",
+      "first_published": "2026-11-17",
+      "id": "arxiv:2611.21541",
+      "limitations": "단일 실험 도메인 중심 벤치마크이므로 생명과학·재료공학 등 이질 도메인으로의 확장 검증이 필요하다.",
+      "method": "2~6장에서 열전도 실험 문제를 기준 과제로 두고, under-resolved/오류 가능 시뮬레이터 조건을 포함해 모델별 판단 품질과 힌트·추론 노력 변화 효과를 비교했다.",
+      "practical_value": "실험 자동화 에이전트를 도입하는 팀이 “정답 생성”보다 실험 설계 판단의 안정성을 별도로 평가하는 게이트를 구축하는 근거로 활용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.21541",
+        "https://arxiv.org/html/2611.21541"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "reasoning"
+      ],
+      "title": "SciResearch-Eval: Evaluating Scientific Judgment in Autonomous Experimental Agents",
+      "topics": [
+        "autonomous experimental agents",
+        "scientific judgment",
+        "interactive benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2611.21541"
+    },
+    {
+      "abstract_summary": "이 논문은 검증 가능한 보상 기반 RL에서 verifier가 낙관적으로 설계될 때 정책이 실제 목표 대신 verifier 취약점을 공략하는 reward hacking을 어떻게 유도하는지 분석한다. 핵심은 process-level true reward를 정확히 계산할 수 있는 설정에서 verifier 왜곡 효과를 분리해 본 점이다.",
+      "evidence": "full_text",
+      "findings": "본문은 degraded verifier에서 2.3x~3.2x 수준의 왜곡 효과와 28.5% 성능 저하 구간을 보고하며, 보상 상승이 실제 목표 달성으로 직결되지 않음을 보여준다.",
+      "first_published": "2026-11-17",
+      "id": "arxiv:2611.21538",
+      "limitations": "설정이 통제된 정책 환경 중심이어서 복잡한 다중 도구 에이전트 시스템에서의 동일 패턴 재현은 추가 검증이 필요하다.",
+      "method": "3~7장에서 정확한 프로세스 보상을 기준으로 7종의 degraded verifier를 구성하고, 학습 전 감사와 학습 후 전이 실험을 통해 해킹 취약성을 비교했다.",
+      "practical_value": "에이전트 RL 파이프라인에서 verifier를 학습 전에 독립 감사하고, 보상 자체보다 목표 정합성 지표를 병행 추적해야 함을 실무적으로 제시한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.21538",
+        "https://arxiv.org/html/2611.21538"
+      ],
+      "tags": [
+        "evaluation",
+        "reasoning",
+        "security"
+      ],
+      "title": "Optimistic Verifiers Get Hacked: Reward Hacking Under an Exact Process Oracle",
+      "topics": [
+        "verifier robustness",
+        "reward hacking",
+        "process-level oracle"
+      ],
+      "url": "https://arxiv.org/abs/2611.21538"
+    },
+    {
+      "abstract_summary": "연구진은 실행 가능한 정책에서 최소 충분 사유를 정확히 계산할 수 있는 verifier를 만들고, 소형 모델이 판단(judgment)보다 절차(procedure)를 얼마나 학습하는지 분석했다. 설명 품질을 근사 지표가 아닌 정확 기준으로 평가했다는 점이 특징이다.",
+      "evidence": "full_text",
+      "findings": "본문에 따르면 학습 단계별로 58%→75%→92%·94% 등 개선 구간이 나타났고, 일부 조건에서는 절차 학습이 판단형 일반화보다 더 강하게 작동했다.",
+      "first_published": "2026-11-17",
+      "id": "arxiv:2611.21529",
+      "limitations": "정책 공간이 명시적으로 열거 가능한 과제에 맞춰져 있어 개방형 자연어 업무로 확장할 때 동일 정확 verifier를 구성하기 어렵다.",
+      "method": "2~6장에서 frontier 모델과 소형 모델을 동일한 정확 verifier 환경에서 비교하고, 지도학습·강화학습 조건별로 최소 사유 도출 정확도를 측정했다.",
+      "practical_value": "권한·컴플라이언스 설명이 필요한 시스템에서 소형 모델을 사용할 때, 추상적 이유 생성보다 절차 재현 가능성을 목표로 학습 목표를 재설계하는 데 활용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.21529",
+        "https://arxiv.org/html/2611.21529"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "reasoning",
+        "security"
+      ],
+      "title": "Procedure without Judgment: What Small Language Models Learn under an Exact Verifier",
+      "topics": [
+        "small language models",
+        "exact verifier",
+        "policy explanation"
+      ],
+      "url": "https://arxiv.org/abs/2611.21529"
+    },
+    {
+      "abstract_summary": "이 논문은 에이전트 간 메시지 전달에서 텍스트 유사도 기반 가드레일이 악성 지시 전파와 정상 인용/템플릿 재사용을 구분하기 어렵다는 문제를 실험적으로 검증한다. 표면 유사도만으로 안전 여부를 판정할 때 발생하는 구조적 한계를 다룬다.",
+      "evidence": "full_text",
+      "findings": "결과에서 26.39%, 57.89%, 76.9% 등 조건별 편차가 보고되어, 단일 텍스트 유사도 임계치로는 안전 전파 탐지를 안정적으로 운영하기 어렵다는 점을 보였다.",
+      "first_published": "2026-11-17",
+      "id": "arxiv:2611.21520",
+      "limitations": "평가 시나리오가 제한된 전달 패턴 중심이라 실제 대규모 멀티에이전트 협업 환경에선 추가 보정이 필요하다.",
+      "method": "3~6장에서 전달 경로와 정책 컨텍스트를 통제한 평가 프레임워크를 구성하고, 고정 임계치 기반 탐지 규칙의 정·오탐 변화를 측정했다.",
+      "practical_value": "프롬프트 가드레일 설계 시 유사도 점수 단독 차단 대신 권한 문맥·행동 로그 기반 정책 검증을 결합해야 한다는 실무 가이드를 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.21520",
+        "https://arxiv.org/html/2611.21520"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "Safe Resemblance, Silent Propagation: Limits of Text-Similarity Guardrails for AI Agent Safety",
+      "topics": [
+        "agent safety",
+        "text-similarity guardrails",
+        "instruction propagation"
+      ],
+      "url": "https://arxiv.org/abs/2611.21520"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "도구 번들의 탐지 규칙은 프로젝트 맥락에 따라 오탐이 늘 수 있어, CI 차단 규칙으로 바로 연결하기 전에 샘플 저장소에서 정밀도 검증이 필요하다.",
+      "novelty": "new_entry",
+      "rank": 7,
+      "repository": "elementalsouls/claude-bughunter",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/elementalsouls/Claude-BugHunter"
+      ],
+      "summary": "취약점 클래스별 패턴·슬래시 커맨드를 묶은 코딩 에이전트 보안 점검 스킬 번들",
+      "tags": [
+        "agent",
+        "coding-agent",
+        "open-source",
+        "security"
+      ],
+      "url": "https://github.com/elementalsouls/Claude-BugHunter",
+      "use_case": "코드 리뷰 자동화 체인에서 보안 관점 프롬프트 템플릿을 표준화하고, 반복 점검 항목을 체크리스트형 스킬로 운영할 때 활용 가능하다.",
+      "why_now": "Trending Top10 신규 진입 · 외부 레드팀/버그헌팅 워크플로우를 전면에 제시"
+    },
+    {
+      "caution": "README 경고처럼 MCP 클라이언트가 브라우저 데이터에 광범위 접근을 갖기 때문에 민감 정보 세션 분리와 권한 모델 점검이 필수다.",
+      "novelty": "new_entry",
+      "rank": 10,
+      "repository": "chromedevtools/chrome-devtools-mcp",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+        "https://raw.githubusercontent.com/ChromeDevTools/chrome-devtools-mcp/HEAD/README.md"
+      ],
+      "summary": "에이전트가 Chrome DevTools를 통해 브라우저 자동화·네트워크/콘솔 디버깅·성능 분석을 수행하는 MCP 서버",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "mcp",
+        "performance",
+        "security"
+      ],
+      "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "use_case": "UI 회귀 점검에서 스크린샷·네트워크 로그·콘솔 오류를 같은 실행 컨텍스트로 수집해, 코드 수정 에이전트의 재현 가능한 디버깅 루프를 구성할 수 있다.",
+      "why_now": "Trending Top10 신규 진입 · 코딩 에이전트의 실브라우저 검증 수요를 직접 겨냥한 공식 DevTools 연동"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "How VLMs Plan What's Next는 VLM이 이미지 설명 시 다음 객체를 어떤 순서로 선택하는지를 바인딩 헤드와 진행 커서라는 내부 메커니즘으로 분해해 설명한다. 연구진은 단순 정확도 비교보다 “다음 토큰 선택”의 내부 절차를 계측해, 모델이 무엇을 먼저 보게 되는지의 원인을 추적하는 데 초점을 맞췄다.",
+    "본문 실험에서 저자들은 포인터 결합 정확도 98.9%, 커서 관련 구성요소 제거 시 성능 하락(예: 95.0%→87.5%) 등을 제시하며, 토큰-영역 정렬과 진행 상태 추적이 생성 순서를 좌우한다는 증거를 제시했다. 이는 VLM 디코딩이 단순 확률 샘플링이 아니라 단계적 시각 검색·번역 절차에 가깝다는 해석으로 이어진다.",
+    "의미는 VLM 디버깅·안전성 평가에서 출력 문장만 볼 것이 아니라 내부 포인터 경로와 커서 이동을 함께 계측해야 한다는 운영 기준을 제공했다는 점이다. 다만 분석 대상 모델군이 제한적이어서 대규모 상용 VLM 전반으로 일반화하려면 추가 재현이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "chrome-devtools-mcp가 Trending Top10에 진입해 에이전트 브라우저 디버깅·성능 분석 수요를 반영",
+        "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp"
+      },
+      {
+        "section": "papers",
+        "text": "텍스트 유사도 기반 가드레일이 에이전트 전달 경로에서 오탐·미탐을 동시에 만들 수 있음을 정량화",
+        "url": "https://arxiv.org/abs/2611.21520"
+      },
+      {
+        "section": "community",
+        "text": "Java4Shell 이슈가 HN·GeekNews에서 동시에 확산되며 Java 런타임 보안 점검 논의가 집중",
+        "url": "https://calif.io/java4shell/"
+      }
+    ],
+    "spotlight": [
+      "How VLMs Plan What's Next는 VLM의 출력 순서를 포인터 결합과 진행 커서 메커니즘으로 분해해, “다음 객체를 왜 그 순서로 말하는지”를 수치로 설명합니다.",
+      "포인터 결합 정확도 98.9%와 구성요소 제거 시 성능 하락을 근거로, VLM 품질 개선에서 디코더 외부의 시각 검색·정렬 경로 계측이 중요하다는 실무 포인트를 제시합니다."
+    ]
+  }
+}
