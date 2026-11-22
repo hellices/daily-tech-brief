@@ -1,0 +1,465 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일(2026-11-19~2026-11-22) CNCF announcements/blog 공개 페이지를 점검했으나 보고서 포함 기준의 신규 주요 변경을 확인하지 못했다.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN·GeekNews는 수집 성공했다. Reddit 4개 공개 RSS는 429 이후 404로 재시도에서도 접근되지 않아 금일 링크 목록에서 제외했다.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/top/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/top/.rss?t=week",
+        "https://www.reddit.com/r/programming/top/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/top/.rss?t=week"
+      ],
+      "status": "partial"
+    },
+    "github": {
+      "note": "GitHub Trending weekly Top10을 2026-11-22 KST에 캡처했고, 소개 이력 미포함 신규 진입 3건 중 실무 연관성이 높은 2건을 선별했다.",
+      "sources": [
+        "https://github.com/trending?since=weekly"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 조건과 최근 7일 중복 제외 규칙을 적용해 arXiv 신규 5편을 선정했고, 각 논문의 방법·결과·한계 섹션을 본문에서 확인했다.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://arxiv.org/list/cs.LG/recent"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-22",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50595554"
+      ],
+      "tags": [
+        "cloud-native",
+        "llm",
+        "security"
+      ],
+      "title": "Inference provider 데이터 처리 사고 공지",
+      "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50592097"
+      ],
+      "tags": [
+        "developer-tools",
+        "security"
+      ],
+      "title": "Upload2Shell 취약점(CVE-2026-125396) 공개",
+      "url": "https://pwn.ai/upload2shell"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50587208"
+      ],
+      "tags": [
+        "open-source",
+        "security"
+      ],
+      "title": "GnuPG 원격 코드 실행 취약점 공지",
+      "url": "https://lists.gnupg.org/pipermail/gnupg-announce/2026q4/000517.html"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=37604"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "developer-tools"
+      ],
+      "title": "ClawDOS: DOS 환경 AI 코딩 에이전트 구현",
+      "url": "https://news.hada.io/topic?id=37604"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=37600"
+      ],
+      "tags": [
+        "agent",
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "UI SDK: 에이전트용 조합형 UI 동작 라이브러리",
+      "url": "https://news.hada.io/topic?id=37600"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=37594"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance",
+        "security"
+      ],
+      "title": "Android Binder C 구현 제거 및 Rust 전환",
+      "url": "https://news.hada.io/topic?id=37594"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=37595"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "Inkling-2-Mini 5.4GB 양자화 결과 공유",
+      "url": "https://news.hada.io/topic?id=37595"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=37602"
+      ],
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "title": "Astra 6.2·Sol 6.2 SimpleBench 점수 하락 논의",
+      "url": "https://news.hada.io/topic?id=37602"
+    }
+  ],
+  "generated_at": "2026-11-22T13:15:19+09:00",
+  "github_featured": [
+    "ag-ui-protocol/ag-ui",
+    "mvanhorn/last30days-skill"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-19T08:08:28+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "googlechrome/modern-web-guidance-src",
+        "weekly_stars": 7015
+      },
+      {
+        "rank": 2,
+        "repository": "backnotprop/plannotator",
+        "weekly_stars": 2926
+      },
+      {
+        "rank": 3,
+        "repository": "elementalsouls/claude-bughunter",
+        "weekly_stars": 2508
+      },
+      {
+        "rank": 4,
+        "repository": "meta/astryx",
+        "weekly_stars": 8700
+      },
+      {
+        "rank": 5,
+        "repository": "we-promise/sure",
+        "weekly_stars": 4786
+      },
+      {
+        "rank": 6,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 3675
+      },
+      {
+        "rank": 7,
+        "repository": "google-labs-code/stitch-skills",
+        "weekly_stars": 1197
+      },
+      {
+        "rank": 8,
+        "repository": "tradermonty/claude-trading-skills",
+        "weekly_stars": 2985
+      },
+      {
+        "rank": 9,
+        "repository": "chromedevtools/chrome-devtools-mcp",
+        "weekly_stars": 2948
+      },
+      {
+        "rank": 10,
+        "repository": "anthropics/skills",
+        "weekly_stars": 4847
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-22T13:15:19+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "backnotprop/plannotator",
+        "weekly_stars": 3396
+      },
+      {
+        "rank": 2,
+        "repository": "google-labs-code/stitch-skills",
+        "weekly_stars": 2431
+      },
+      {
+        "rank": 3,
+        "repository": "googlechrome/modern-web-guidance-src",
+        "weekly_stars": 4400
+      },
+      {
+        "rank": 4,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 4032
+      },
+      {
+        "rank": 5,
+        "repository": "mvanhorn/last30days-skill",
+        "weekly_stars": 4198
+      },
+      {
+        "rank": 6,
+        "repository": "chromedevtools/chrome-devtools-mcp",
+        "weekly_stars": 2795
+      },
+      {
+        "rank": 7,
+        "repository": "tradermonty/claude-trading-skills",
+        "weekly_stars": 3113
+      },
+      {
+        "rank": 8,
+        "repository": "ag-ui-protocol/ag-ui",
+        "weekly_stars": 3792
+      },
+      {
+        "rank": 9,
+        "repository": "meta/astryx",
+        "weekly_stars": 3967
+      },
+      {
+        "rank": 10,
+        "repository": "pookjw/hermesenabler",
+        "weekly_stars": 524
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "AG-UI 1.0: Event-Native Agent↔App Protocol Standardization",
+  "lead": {
+    "section": "github",
+    "url": "https://github.com/ag-ui-protocol/ag-ui"
+  },
+  "papers": [
+    {
+      "abstract_summary": "GLiDE는 장문의 추론 과정을 생성하지 않고 단일 포워드 패스로 후보 답안을 점수화하는 decision model을, reasoning teacher에서 증류해 구축하는 방법을 제안한다. 연구진은 기존 reasoner가 정확도는 높아도 지연·비용이 큰 문제를 겨냥해, 속도와 신뢰도 보정을 함께 확보하는 경량 의사결정 모델 설계를 목표로 했다. 핵심은 교사의 추론 신호를 정답 레이블로만 축약하지 않고, 결정 경계와 confidence 정보를 함께 전달하는 증류 절차다.",
+      "evidence": "full_text",
+      "findings": "Results 기준으로 정확도 차이를 작게 유지하면서 255× 수준의 추론 효율 이득을 보고했고, 일부 설정에서 0.6~1.77 points 성능 차이 내에서 지연·비용 절감 효과를 제시했다.",
+      "first_published": "2026-11-19",
+      "id": "arxiv:2611.26509",
+      "limitations": "평가가 특정 교사 모델과 과제군 중심이라, 복잡한 도구 사용이 필요한 개방형 태스크에서 동일한 보정 품질이 유지되는지는 추가 검증이 필요하다.",
+      "method": "논문은 Decision Model Architecture와 Training 절에서 교사 모델의 추론 결과를 학생 decision model로 증류하고, calibration objective를 병행 학습해 점수 신뢰도를 맞췄다. 결과는 다중 벤치마크에서 reasoner/분류기 baseline과 비교했다.",
+      "practical_value": "실시간 의사결정이 필요한 에이전트 시스템에서 고비용 reasoner를 상시 호출하지 않고, calibrated decision model을 1차 게이트로 두는 하이브리드 추론 아키텍처 설계에 활용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.26509",
+        "https://arxiv.org/html/2611.26509"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "performance"
+      ],
+      "title": "GLiDE: A Fast, Calibrated Decision Model Distilled from Reasoning Teachers",
+      "topics": [
+        "decision model",
+        "distillation",
+        "calibration"
+      ],
+      "url": "https://arxiv.org/abs/2611.26509"
+    },
+    {
+      "abstract_summary": "MemFolder는 장기 상호작용 에이전트에서 누적 메모리가 커질수록 저장·검색·응답 비용이 급증하는 문제를 구조 기반 메모리 폴딩으로 완화하는 방법을 제안한다. 단순 요약 압축이 아니라 메모리 구조를 유지한 채 중복·저가치 정보를 접어 넣어 검색 대상 공간을 줄이는 접근이다. 연구는 메모리 유지율과 검색 정확도를 함께 추적해 비용 절감과 정보 보존의 균형을 검증한다.",
+      "evidence": "full_text",
+      "findings": "논문은 99.0% 수준의 정보 유지율과 함께 2.12×~3.87× 범위의 비용/효율 개선 구간을 보고하며, 장기 대화 메모리 운영에서 유의미한 절감 가능성을 제시했다.",
+      "first_published": "2026-11-19",
+      "id": "arxiv:2611.26427",
+      "limitations": "평가 데이터와 에이전트 시나리오가 제한적이어서, 도메인 특화 메모리(코드·법률·의료)에서 동일한 folding 규칙이 안정적으로 동작하는지는 추가 실험이 필요하다.",
+      "method": "Methodology와 Experiments에서 구조 신호를 이용한 folding 규칙을 정의하고, 기존 메모리 관리 baseline 대비 저장 크기·검색 비용·정답 유지율을 비교했다.",
+      "practical_value": "장기 메모리를 쓰는 에이전트 제품에서 저장소 폭증을 줄이기 위해, 일정 주기 재요약 대신 구조 기반 폴딩 파이프라인을 도입하는 근거로 사용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.26427",
+        "https://arxiv.org/html/2611.26427"
+      ],
+      "tags": [
+        "agent",
+        "memory",
+        "retrieval"
+      ],
+      "title": "MemFolder: Structure-Guided Memory Folding for Efficient Agent Memory Management",
+      "topics": [
+        "agent memory",
+        "memory folding",
+        "retrieval efficiency"
+      ],
+      "url": "https://arxiv.org/abs/2611.26427"
+    },
+    {
+      "abstract_summary": "AutoMaster는 별도 외부 교사 모델 없이 동일 모델을 점진적으로 더 나은 교사로 만드는 자율 post-training 절차를 제안한다. 저자들은 태스크 성공 여부만으로는 강화할 행동 품질을 구분하기 어렵다는 점에 주목하고, 성공 궤적 내부의 품질 차이를 재평가해 학습 신호를 정제한다. 이를 통해 자기증폭 학습 루프에서 품질 저하와 반복 오류 누적을 줄이는 것을 목표로 한다.",
+      "evidence": "full_text",
+      "findings": "논문은 설정별로 20.22%·35.58%·45.77% 등 성능 개선 구간을 제시하며, 단순 성공 라벨 기반 학습보다 정제된 자기교사 루프가 더 안정적인 향상을 보인다고 보고했다.",
+      "first_published": "2026-11-19",
+      "id": "arxiv:2611.26510",
+      "limitations": "자기교사 품질 추정이 잘못되면 오류를 증폭할 가능성이 있어, 안전성이 중요한 도메인에서는 외부 검증자와 병행한 통제 장치가 필요하다.",
+      "method": "Autonomous Post-Training with Skill-FT 절에서 자기교사 생성·선별 루프를 정의하고, Experiments/Analysis에서 일반 post-training baseline과 성공률·일반화 지표를 비교했다.",
+      "practical_value": "모델 업데이트 주기가 빠른 팀이 외부 대형 교사 의존도를 줄이면서도 post-training 품질을 개선하는 내부 자기개선 파이프라인을 설계할 때 참고할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.26510",
+        "https://arxiv.org/html/2611.26510"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "fine-tuning",
+        "llm"
+      ],
+      "title": "AutoMaster: Autonomous Post-Training by Making the Same Model a Better Teacher",
+      "topics": [
+        "autonomous post-training",
+        "self-teaching",
+        "skill-ft"
+      ],
+      "url": "https://arxiv.org/abs/2611.26510"
+    },
+    {
+      "abstract_summary": "FLUID는 실시간 작업 가이드 에이전트에서 단일 정답이 아닌 여러 합리적 반응과 타이밍이 존재한다는 문제를 전제로, evidence-grounded guidance 프레임워크를 제안한다. 연구진은 사용자의 현재 상태와 맥락 증거를 근거로 안내 강도와 개입 시점을 조정해, 지나친 개입과 늦은 개입을 동시에 줄이려 했다. 이는 고정 스크립트형 튜터보다 상황 적응형 안내를 목표로 한 접근이다.",
+      "evidence": "full_text",
+      "findings": "본문은 12.9%·17.5% 개선과 65.9%·69.6% 수준 지표를 포함해, 상황 근거를 반영한 안내가 고정 규칙 대비 더 안정적인 성능을 보였다고 보고한다.",
+      "first_published": "2026-11-19",
+      "id": "arxiv:2611.26491",
+      "limitations": "평가 환경이 제한된 태스크 가이드 시나리오 중심이라, 복잡한 멀티도메인 업무 지원으로 확장할 때는 사용자 다양성과 장기 피로도 검증이 필요하다.",
+      "method": "FLUID-Modeling과 FLUID-Agent 절에서 상호작용 동역학을 모델링하고, Experiments & Results에서 다양한 안내 전략을 비교해 정확도·적시성 지표를 측정했다.",
+      "practical_value": "온보딩·지원 봇에서 일괄 스크립트 대신 증거 기반 개입 정책을 도입해, 사용자 상태에 맞는 안내 빈도와 깊이를 조정하는 설계 근거로 활용할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.26491",
+        "https://arxiv.org/html/2611.26491"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "reasoning"
+      ],
+      "title": "FLUID: Flexible, Evidence-Grounded Situated Task Guidance",
+      "topics": [
+        "task guidance",
+        "evidence grounding",
+        "real-time agents"
+      ],
+      "url": "https://arxiv.org/abs/2611.26491"
+    },
+    {
+      "abstract_summary": "ProtoDiffusion은 그래픽 디자인처럼 다층 RGBA 레이어로 구성된 이미지를 전체 캔버스 단위가 아닌 레이어 단위 토큰으로 생성하는 모델링 방식을 제안한다. 기존 방식이 레이어 수 증가와 해상도 확장에 취약한 점을 해결하기 위해, 레이어별 생성 구조를 명시해 편집 가능한 출력 표현을 유지하는 데 초점을 맞췄다. 결과적으로 생성 품질뿐 아니라 후속 편집 가능성까지 고려한 생성 파이프라인을 겨냥한다.",
+      "evidence": "full_text",
+      "findings": "논문은 19.1×, 19.9×, 4.0× 등 다수의 효율 지표와 함께 고해상도(예: 640×, 2048× 관련 설정) 조건에서 확장성 개선을 보고했다.",
+      "first_published": "2026-11-19",
+      "id": "arxiv:2611.26586",
+      "limitations": "실험 데이터셋과 편집 작업 종류가 제한적이어서, 실제 상업 디자인 워크플로우의 복잡한 레이어 의존성을 완전히 대변하진 못한다.",
+      "method": "Method와 Experiments 절에서 token-per-layer 구조를 정의하고, 기존 layered generation baseline 대비 메모리·속도·품질 지표를 비교했다.",
+      "practical_value": "디자인 자동화 도구에서 생성 결과를 즉시 편집 가능한 레이어 구조로 유지하고자 할 때, 후편집 비용을 줄이는 생성 백엔드 설계에 참고할 수 있다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.26586",
+        "https://arxiv.org/html/2611.26586"
+      ],
+      "tags": [
+        "inference",
+        "multimodal",
+        "performance"
+      ],
+      "title": "ProtoDiffusion: Token-per-Layer Generative Modeling of Multi-Layer Images",
+      "topics": [
+        "layered image generation",
+        "diffusion model",
+        "token-per-layer"
+      ],
+      "url": "https://arxiv.org/abs/2611.26586"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "조직별 기존 프로토콜·권한 체계와 충돌 가능성이 있어 도입 전에 이벤트 스키마 버전 관리와 보안 경계 매핑 검증이 필요하다.",
+      "novelty": "new_entry",
+      "rank": 8,
+      "repository": "ag-ui-protocol/ag-ui",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/ag-ui-protocol/ag-ui",
+        "https://raw.githubusercontent.com/ag-ui-protocol/ag-ui/HEAD/README.md"
+      ],
+      "summary": "에이전트-앱 연결 이벤트 프로토콜 · AG-UI 1.0 고정 스펙·JSON Schema · TS/Python/.NET SDK 자동 생성",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "mcp",
+        "open-source"
+      ],
+      "url": "https://github.com/ag-ui-protocol/ag-ui",
+      "use_case": "웹·모바일·채팅 클라이언트와 서로 다른 에이전트 런타임을 연결할 때 이벤트 계약을 공통화해 프런트엔드 통합 계층을 단순화할 수 있다.",
+      "why_now": "Top10 신규 진입 · 주간 3,792 stars · any agent to any app 연결 표준 메시지 제시"
+    },
+    {
+      "caution": "랭킹 신호가 커뮤니티 반응에 의존해 품질 편향이 생길 수 있으므로, 도메인별 신뢰도 필터와 출처 검증 규칙을 함께 둬야 한다.",
+      "novelty": "new_entry",
+      "rank": 5,
+      "repository": "mvanhorn/last30days-skill",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/mvanhorn/last30days-skill",
+        "https://raw.githubusercontent.com/mvanhorn/last30days-skill/HEAD/README.md"
+      ],
+      "summary": "Agent Skills 기반 검색 스킬 · 업보트·좋아요·결제 신호 결합 랭킹 · 다중 에이전트 호스트 설치 경로 제공",
+      "tags": [
+        "agent",
+        "developer-tools",
+        "evaluation",
+        "open-source"
+      ],
+      "url": "https://github.com/mvanhorn/last30days-skill",
+      "use_case": "시장·커뮤니티 동향 수집 자동화에서 편집자 큐레이션 대신 사용자 반응 신호 기반의 공개 콘텐츠 탐색 파이프라인을 구성할 때 활용할 수 있다.",
+      "why_now": "Top10 신규 진입 · 주간 4,198 stars · 스킬 마켓플레이스/CLI 동시 배포"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "AG-UI가 GitHub Trending Top10에 신규 진입하면서, 에이전트와 사용자 애플리케이션을 요청/응답 API가 아니라 이벤트 스트림으로 연결하는 프로토콜 표준화 흐름이 가시화됐다. 프로젝트는 AG-UI 1.0 규격을 고정 스펙으로 제시하고 JSON Schema 기반 계약을 전면에 두며, 프레임워크별 개별 어댑터 난립을 줄이는 데 초점을 맞춘다.",
+    "저장소 문서 기준으로 TypeScript·Python·.NET SDK가 1.0 스펙에서 생성되고, 앱 스캐폴딩 CLI(create-ag-ui-app)로 프런트엔드와 에이전트 연결 경로를 빠르게 구성할 수 있다. 이는 토큰 스트리밍·도구 호출·상태 업데이트·human-in-the-loop 같은 에이전트 상호작용을 단일 이벤트 모델로 일관되게 다루려는 시도다.",
+    "의미는 멀티런타임 에이전트 제품에서 통신 계층 재구현 비용을 줄일 수 있다는 점이지만, 실제 도입 시에는 기존 내부 프로토콜과의 호환성, 이벤트 스키마 버전 관리, 권한 경계 설계가 선행되어야 한다. 특히 1.0 고정 스펙을 채택하더라도 조직별 보안·감사 요구사항 매핑은 별도 검증이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "last30days-skill이 Top10 신규 진입하며 Agent Skills 기반 검색 워크플로우 확산",
+        "url": "https://github.com/mvanhorn/last30days-skill"
+      },
+      {
+        "section": "papers",
+        "text": "MemFolder가 구조 기반 메모리 폴딩으로 에이전트 메모리 비용 절감 가능성을 제시",
+        "url": "https://arxiv.org/abs/2611.26427"
+      },
+      {
+        "section": "community",
+        "text": "OpenRouter가 inference provider 데이터 처리 사고 공지를 통해 운영 리스크를 공개",
+        "url": "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/"
+      }
+    ],
+    "spotlight": [
+      "AG-UI 1.0은 에이전트와 앱 연결을 이벤트 기반 표준 프로토콜로 고정해, 프레임워크마다 달라지는 통신 레이어를 줄이려는 시도입니다.",
+      "문서 기준으로 TS·Python·.NET SDK와 앱 스캐폴딩 경로가 함께 제공되지만, 운영 도입 전에는 기존 내부 프로토콜·권한 경계와의 정합성 검증이 필요합니다."
+    ]
+  }
+}
