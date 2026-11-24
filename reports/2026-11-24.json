@@ -1,0 +1,466 @@
+{
+  "cncf": [],
+  "coverage": {
+    "cncf": {
+      "note": "최근 3일(2026-11-21~2026-11-24) 범위에서 CNCF announcements/blog의 신규 게시를 확인하지 못해 이번 호는 CNCF 변경 항목을 비워 둠.",
+      "sources": [
+        "https://www.cncf.io/announcements/",
+        "https://www.cncf.io/blog/",
+        "https://www.cncf.io/blog/feed/",
+        "https://www.cncf.io/announcements/feed/"
+      ],
+      "status": "partial"
+    },
+    "community": {
+      "note": "HN·GeekNews는 확인했으나 Reddit 주요 서브레딧 피드는 접근 제한으로 최신 항목을 확보하지 못해 커뮤니티 범위를 HN·GeekNews 중심으로 구성함.",
+      "sources": [
+        "https://news.ycombinator.com/rss",
+        "https://news.hada.io/rss/news",
+        "https://www.reddit.com/r/LocalLLaMA/top/.rss?t=week",
+        "https://www.reddit.com/r/MachineLearning/top/.rss?t=week",
+        "https://www.reddit.com/r/programming/top/.rss?t=week",
+        "https://www.reddit.com/r/kubernetes/top/.rss?t=week"
+      ],
+      "status": "partial"
+    },
+    "github": {
+      "note": "주간 Trending Top10을 2026-11-24에 관측했으며, 소개 이력 기준 미소개 항목은 1건(HermesEnabler)만 확인됨.",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/pookjw/HermesEnabler"
+      ],
+      "status": "ok"
+    },
+    "papers": {
+      "note": "최근 6개월 조건과 최근 7일 소개 제외 조건을 적용해 5편을 선별했고, 각 논문은 arXiv 본문(HTML) 기준으로 방법·평가·한계 구간을 확인함.",
+      "sources": [
+        "https://arxiv.org/list/cs.AI/recent",
+        "https://arxiv.org/list/cs.CL/recent",
+        "https://arxiv.org/list/cs.LG/recent"
+      ],
+      "status": "ok"
+    }
+  },
+  "date": "2026-11-24",
+  "discussions": [
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50614249",
+        "https://ladybird.org/posts/alpha/"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "Ladybird 브라우저 알파 공개",
+      "url": "https://ladybird.org/posts/alpha/"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50619103",
+        "https://news.hada.io/topic?id=37752"
+      ],
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "title": "GPUI 저장소 분리 발표",
+      "url": "https://github.com/zed-industries/gpui"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50609685"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "performance"
+      ],
+      "title": "GLM-5.4 loop transformer 발표",
+      "url": "https://z.ai/blog/glm-5.4"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50620328"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "security"
+      ],
+      "title": "Latent Introspection: 개념 주입 탐지 연구 토론",
+      "url": "https://arxiv.org/abs/2602.20031"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50611402",
+        "https://news.hada.io/topic?id=37749"
+      ],
+      "tags": [
+        "inference",
+        "llm",
+        "open-source"
+      ],
+      "title": "NariQ: Qwen3.8-27B 10GB GGUF 양자화 모델",
+      "url": "https://huggingface.co/nari-labs/Qwen3.8-27B-NariQ-GGUF"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=37768"
+      ],
+      "tags": [
+        "agent",
+        "coding-agent",
+        "developer-tools"
+      ],
+      "title": "orca-orchestration-kit 다중 에이전트 개발 운영 키트",
+      "url": "https://news.hada.io/topic?id=37768"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=37742"
+      ],
+      "tags": [
+        "agent",
+        "harness",
+        "tool-use"
+      ],
+      "title": "Pine: 이벤트 반응형 AI 에이전트 하네스 토론",
+      "url": "https://news.hada.io/topic?id=37742"
+    },
+    {
+      "sources": [
+        "https://news.hada.io/topic?id=37741",
+        "https://news.hada.io/topic?id=37740"
+      ],
+      "tags": [
+        "cloud-native",
+        "networking",
+        "security"
+      ],
+      "title": "Shirudo: BPF 기반 런타임 보안 인프라 토론",
+      "url": "https://news.hada.io/topic?id=37741"
+    },
+    {
+      "sources": [
+        "https://news.ycombinator.com/item?id=50624497",
+        "https://news.hada.io/topic?id=37769"
+      ],
+      "tags": [
+        "developer-tools",
+        "performance"
+      ],
+      "title": "trynix.dev와 unkernel 기반 브라우저 실행 스택 토론",
+      "url": "https://fzakaria.com/2026/11/23/2035-came-early"
+    }
+  ],
+  "generated_at": "2026-11-24T21:07:08+09:00",
+  "github_featured": [
+    "pookjw/HermesEnabler"
+  ],
+  "github_previous_snapshot": {
+    "captured_at": "2026-11-22T13:15:19+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "backnotprop/plannotator",
+        "weekly_stars": 3396
+      },
+      {
+        "rank": 2,
+        "repository": "google-labs-code/stitch-skills",
+        "weekly_stars": 2431
+      },
+      {
+        "rank": 3,
+        "repository": "googlechrome/modern-web-guidance-src",
+        "weekly_stars": 4400
+      },
+      {
+        "rank": 4,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 4032
+      },
+      {
+        "rank": 5,
+        "repository": "mvanhorn/last30days-skill",
+        "weekly_stars": 4198
+      },
+      {
+        "rank": 6,
+        "repository": "chromedevtools/chrome-devtools-mcp",
+        "weekly_stars": 2795
+      },
+      {
+        "rank": 7,
+        "repository": "tradermonty/claude-trading-skills",
+        "weekly_stars": 3113
+      },
+      {
+        "rank": 8,
+        "repository": "ag-ui-protocol/ag-ui",
+        "weekly_stars": 3792
+      },
+      {
+        "rank": 9,
+        "repository": "meta/astryx",
+        "weekly_stars": 3967
+      },
+      {
+        "rank": 10,
+        "repository": "pookjw/hermesenabler",
+        "weekly_stars": 524
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "github_snapshot": {
+    "captured_at": "2026-11-24T21:00:37+09:00",
+    "entries": [
+      {
+        "rank": 1,
+        "repository": "backnotprop/plannotator",
+        "weekly_stars": 2395
+      },
+      {
+        "rank": 2,
+        "repository": "google-labs-code/stitch-skills",
+        "weekly_stars": 2572
+      },
+      {
+        "rank": 3,
+        "repository": "GoogleChrome/modern-web-guidance-src",
+        "weekly_stars": 2694
+      },
+      {
+        "rank": 4,
+        "repository": "alibaba/open-code-review",
+        "weekly_stars": 3015
+      },
+      {
+        "rank": 5,
+        "repository": "mvanhorn/last30days-skill",
+        "weekly_stars": 5448
+      },
+      {
+        "rank": 6,
+        "repository": "ChromeDevTools/chrome-devtools-mcp",
+        "weekly_stars": 1581
+      },
+      {
+        "rank": 7,
+        "repository": "tradermonty/claude-trading-skills",
+        "weekly_stars": 1903
+      },
+      {
+        "rank": 8,
+        "repository": "ag-ui-protocol/ag-ui",
+        "weekly_stars": 2966
+      },
+      {
+        "rank": 9,
+        "repository": "meta/astryx",
+        "weekly_stars": 3165
+      },
+      {
+        "rank": 10,
+        "repository": "pookjw/HermesEnabler",
+        "weekly_stars": 390
+      }
+    ],
+    "source": "https://github.com/trending?since=weekly"
+  },
+  "headline": "LiveLoRA: LoRA 업데이트 시 KV 캐시 무재생 전환",
+  "lead": {
+    "section": "papers",
+    "url": "https://arxiv.org/abs/2611.31105"
+  },
+  "papers": [
+    {
+      "abstract_summary": "이 논문은 패키지 출처 확인이나 정적 분석만으로는 애플리케이션 실행 문맥에서의 실제 동작을 판별하기 어렵다는 문제를 다룬다. 저자들은 Preflight를 통해 애플리케이션이 실제 호출하는 심볼을 추출하고, 함수 단위 하네스를 합성해 제한된 환경에서 의존성 동작을 실행 검증한다. 같은 패키지라도 호출 경로가 다르면 판정이 달라질 수 있다는 점을 중심에 두고, 다운스트림 프로그램 기준으로 악성 동작 노출 여부를 판단하는 설계를 제시한다.",
+      "evidence": "full_text",
+      "findings": "4건의 실제 공급망 사고를 5개 애플리케이션 맥락에서 평가해 4개 맥락에서는 악성 판정, LiteLLM client 맥락에서는 clean 판정을 보고했다. 또한 100개 benign 패키지에서 관측된 오탐이 0건이라고 제시했다.",
+      "first_published": "2026-11-23",
+      "id": "arxiv:2611.31110",
+      "limitations": "검증 결과가 프로그램이 실제로 실행하는 경로에 의존하므로, 미실행 경로에 숨은 동작은 놓칠 수 있다. 저자도 논의 섹션에서 커버리지·하네스 품질·기준 버전 가용성에 따라 탐지 민감도가 달라질 수 있음을 명시했다.",
+      "method": "다운스트림 프로그램과 고정된 의존성 상태를 입력으로 받아, 호출 심볼 기반 하네스를 반복 합성·검증한 뒤 실행 지문을 수집한다. 적절한 기준 버전이 있을 때는 버전 간 차이를 함께 비교해 동작 변화 신호를 결합한다.",
+      "practical_value": "Python 의존성 업데이트 전 CI 단계에 프로그램-조건부 실행 검증을 붙여, 정적 SBOM/서명 점검에서 놓치는 런타임 행위를 보완하는 운영 절차로 적용하기 좋다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.31110",
+        "https://arxiv.org/html/2611.31110v1",
+        "https://arxiv.org/pdf/2611.31110"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "security"
+      ],
+      "title": "Preflight: Agentic Last-Mile Verification for AI Software Supply Chains",
+      "topics": [
+        "software-supply-chain verification",
+        "program-scoped analysis",
+        "function-level harness"
+      ],
+      "url": "https://arxiv.org/abs/2611.31110"
+    },
+    {
+      "abstract_summary": "LiveLoRA는 LoRA 어댑터가 갱신될 때 활성 세션의 전체 히스토리를 다시 프리필해야 하는 운영 병목을 줄이려는 연구다. 저자들은 하위 디코더 블록을 고정하고 최종 블록 중심으로 캐시를 이전하는 구조를 설계해, 버전 혼합 없이 상태를 전환하는 절차를 제시한다. 핵심은 어댑터 버전·캐시·다음 토큰 로그잇을 한 번에 커밋해 버전 일관성을 보장하는 데 있다.",
+      "evidence": "full_text",
+      "findings": "Qwen2.5-3B-Instruct에서 32개 활성 세션(각 8K 토큰) 기준, full-history re-prefill 대비 중앙값 68.98배 게시 속도 향상을 보고했다. 기본 캐시 디코딩 대비 오버헤드는 약 4.8%, retained-boundary replay 대비 추가 세션 저장량은 3.42배 절감으로 제시했다.",
+      "first_published": "2026-11-23",
+      "id": "arxiv:2611.31105",
+      "limitations": "최종 블록 중심 적응과 고정된 K/V 다운프로젝션 가정에 성능 근거가 묶여 있으며, 조기 블록 적응·분산 서빙·paged cache와의 통합은 후속 과제로 남아 있다. 따라서 바로 모든 LoRA 서빙 아키텍처에 일반화하기는 어렵다.",
+      "method": "최종 블록 K/V 어댑터의 다운프로젝션을 고정하는 가정 아래, 기존 세션의 좌표를 이용해 후보 K/V를 재구성하고 최신 토큰을 재평가해 새 버전 상태를 확정한다. 논문은 정확 산술 조건에서 full-history re-prefill과 연속 동등성을 증명한다.",
+      "practical_value": "긴 대화 세션을 유지한 채 모델 어댑터를 자주 교체해야 하는 에이전트 운영에서, 재프리필 비용을 줄이고 업데이트 반영 지연을 낮추는 런타임 패턴으로 활용 가능하다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.31105",
+        "https://arxiv.org/html/2611.31105v1",
+        "https://arxiv.org/pdf/2611.31105"
+      ],
+      "tags": [
+        "agent",
+        "inference",
+        "llm"
+      ],
+      "title": "LiveLoRA: Exact KV Cache Migration Across LoRA Updates for LLM Agents",
+      "topics": [
+        "KV cache migration",
+        "LoRA serving",
+        "persistent agent sessions"
+      ],
+      "url": "https://arxiv.org/abs/2611.31105"
+    },
+    {
+      "abstract_summary": "ToolSmith는 멀티모달 검색 에이전트가 고정된 수작업 도구 라이브러리에 묶여 새 질의 유형을 처리하지 못하는 문제를 겨냥한다. 저자들은 실패 궤적에서 능력 공백을 찾아 기존 도구 재사용 여부를 먼저 판단하고, 필요할 때만 새 도구 코드를 생성·검증해 라이브러리를 확장하는 파이프라인을 제시했다. 즉, 도구 생성을 일회성 실험이 아니라 운영 중 지속 확장 메커니즘으로 다룬다는 점이 핵심이다.",
+      "evidence": "full_text",
+      "findings": "3개 in-domain 벤치마크와 10개 out-of-domain 벤치마크에서 base tools 대비 일관된 성능 향상을 보고했으며, 특히 큰 백본일수록 개선폭이 커지는 경향을 제시했다. 본문 메인 결과 섹션은 direct inference와 base tools, ToolSmith 확장 라이브러리를 나눠 비교한다.",
+      "first_published": "2026-11-23",
+      "id": "arxiv:2611.31198",
+      "limitations": "평가가 VLM-as-a-Judge 프로토콜과 선택된 벤치마크 구성에 의존하므로, 실제 운영 환경의 장기 안정성·비용·보안 검증을 그대로 대체하긴 어렵다. 생성 도구의 품질은 검증 게이트 설계와 실패 케이스 다양성에 민감하다.",
+      "method": "파이프라인은 (1) 실패 궤적 기반 capability gap 추출, (2) reuse-or-grow 결정, (3) LLM 기반 Python 도구 생성, (4) 검증 게이트 통과 시 반영의 4단계로 구성된다. 실험에서는 검색·비전·코드 실행 기반 8개 primitive 도구를 기본 라이브러리로 두고 비교했다.",
+      "practical_value": "사내 검색 에이전트에서 신규 질의 유형이 반복될 때, 도구 결손을 수동 스크립트 추가가 아니라 자동 갭 탐지+검증 루프로 운영하는 아키텍처 설계 근거를 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.31198",
+        "https://arxiv.org/html/2611.31198v1",
+        "https://arxiv.org/pdf/2611.31198"
+      ],
+      "tags": [
+        "agent",
+        "multimodal",
+        "tool-use"
+      ],
+      "title": "ToolSmith: An Automatic Tool-Generation Framework for Multimodal Search Agents",
+      "topics": [
+        "multimodal search agents",
+        "automatic tool generation",
+        "tool library evolution"
+      ],
+      "url": "https://arxiv.org/abs/2611.31198"
+    },
+    {
+      "abstract_summary": "PRIMEAPE는 LLM judge가 자기 논리와 판정의 일관성은 보여도 인간 선호와는 어긋날 수 있다는 문제를 정면으로 측정하는 벤치마크다. 영어 포함 7개 언어, 243개 지시문, 2,205개 응답쌍, 1.1만 건의 인간 주석을 바탕으로 관련성·자연스러움·진실성·안전성·종합 품질을 분해해 본다. 논문은 “설명 일관성”과 “인간 정렬”을 분리해 봐야 한다는 평가 관점을 강조한다.",
+      "evidence": "full_text",
+      "findings": "집계 점수만 보면 가려지던 언어·기준별 편차가 크게 나타났고, 근거를 쓰게 하는 설정이 인간 선호 일치도를 일관되게 높이지 못했다. 또한 judges가 first-position, 긴 응답, 유사 계열 모델 응답을 선호하는 편향을 보고했다.",
+      "first_published": "2026-11-23",
+      "id": "arxiv:2611.30925",
+      "limitations": "언어별 표본 구성과 과제 분포가 균등하지 않아, 언어 간 수치 차이를 순수한 언어 효과로 단정하기 어렵다. 본문도 다수결 앙상블이 단일 최고 모델을 항상 이기지 못한다고 밝혀, 배치 전략의 보수적 해석이 필요하다.",
+      "method": "12개 open/closed weight judge를 대상으로 joint·criterion 분리·근거 생성 여부·응답 위치 교환 등 7개 평가 조건을 설계해 zero-shot 비교를 수행했다. 언어·기준별 편향과 tie 예측 성향까지 함께 측정한다.",
+      "practical_value": "LLM-as-a-judge 파이프라인을 운영할 때, 단일 종합 점수 대신 기준별·언어별 분해 지표와 편향 점검 루틴을 기본 품질 게이트로 도입하는 근거를 제공한다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.30925",
+        "https://arxiv.org/html/2611.30925v1",
+        "https://arxiv.org/pdf/2611.30925"
+      ],
+      "tags": [
+        "evaluation",
+        "llm",
+        "reasoning"
+      ],
+      "title": "PRIMEAPE: A Multilingual Benchmark for Fine-Grained Meta-Evaluation of Judge Models",
+      "topics": [
+        "LLM judge evaluation",
+        "multilingual benchmarking",
+        "rationale-vs-verdict consistency"
+      ],
+      "url": "https://arxiv.org/abs/2611.30925"
+    },
+    {
+      "abstract_summary": "TrialAgentBench는 임상시험 분석과 신약 개발 의사결정을 장기 연쇄 과제로 평가할 수 있도록, 반사실을 알 수 있는 시뮬레이션 기반 환경을 제시한다. 실제 임상은 비용과 윤리 제약 때문에 대조 경로를 관측할 수 없다는 한계를, 가상 스폰서 데이터와 재실행 가능한 평가 루프로 보완한 것이 핵심이다. 논문은 분석 정확도와 프로그램 가치(의사결정 품질)를 분리해 측정한다.",
+      "evidence": "full_text",
+      "findings": "24개 모델 비교에서 상위 에이전트는 raw trial record 분석 오차를 process-aware 분석 대비 6% 이내까지 낮추고, 95% 신뢰구간의 포함률을 94~95%로 보고했다. 반면 프로그램 가치는 최고 모델도 오라클의 48% 수준으로, 장기 의사결정 구간에서 큰 손실이 남았다.",
+      "first_published": "2026-11-23",
+      "id": "arxiv:2611.30916",
+      "limitations": "시뮬레이션 환경이므로 실제 규제·운영 제약의 모든 복잡성을 재현하지 못하며, 모델이 보수적으로 과도 교정하는 행동(논문 보고: 83%)이 실제 임상 의사결정으로 곧바로 일반화되진 않는다.",
+      "method": "약 3,500개 과제를 단일 시험 분석부터 다단계 프로그램 운용까지 구성하고, 에이전트가 제출한 분석 코드를 새 시뮬레이션 trial에 재실행해 점수를 산출한다. 프로그램 의사결정은 예산·시간 제약 아래 오라클 대비 가치 비율로 평가한다.",
+      "practical_value": "의료·바이오 도메인 에이전트 평가에서 단답형 QA를 넘어 “분석은 맞지만 의사결정은 손실”인 구간을 분리 진단할 수 있어, 운영 전 위험 평가 체계를 정교화하는 데 유용하다.",
+      "sources": [
+        "https://arxiv.org/abs/2611.30916",
+        "https://arxiv.org/html/2611.30916v1",
+        "https://arxiv.org/pdf/2611.30916"
+      ],
+      "tags": [
+        "agent",
+        "evaluation",
+        "reasoning"
+      ],
+      "title": "TrialAgentBench: Evaluating AI Agents for Clinical-Trial Analysis and Long-Horizon Drug-Development Decisions",
+      "topics": [
+        "clinical-trial agents",
+        "long-horizon decisions",
+        "counterfactual simulation benchmark"
+      ],
+      "url": "https://arxiv.org/abs/2611.30916"
+    }
+  ],
+  "repositories": [
+    {
+      "caution": "지원 버전 제한(26 미지원) · 개발자 모드/서명 필요 · 잘못된 번들 ID 설정 시 데이터 유지 실패 위험",
+      "novelty": "first_introduction",
+      "rank": 10,
+      "repository": "pookjw/HermesEnabler",
+      "sources": [
+        "https://github.com/trending?since=weekly",
+        "https://github.com/pookjw/HermesEnabler",
+        "https://raw.githubusercontent.com/pookjw/HermesEnabler/main/README.md"
+      ],
+      "summary": "watchOS 27.0~27.3b1 지원 · Apple Watch 개발자 모드 기반 설치 가이드 · 멀티언어 문서 제공",
+      "tags": [
+        "developer-tools",
+        "open-source"
+      ],
+      "url": "https://github.com/pookjw/HermesEnabler",
+      "use_case": "사내 테스트 기기에서 watchOS 기능 검증 앱을 빠르게 배포해야 할 때 설치 절차와 주의사항을 표준 작업지침으로 재사용할 수 있다.",
+      "why_now": "주간 Trending 10위 · weekly stars 390 · 소개 이력 기준 미소개 항목"
+    }
+  ],
+  "schema_version": 2,
+  "summary": [
+    "LiveLoRA는 에이전트 세션이 길어질수록 커지는 재프리필 비용을 줄이기 위해, LoRA 어댑터 버전이 바뀌어도 기존 대화 전체를 다시 실행하지 않고 KV 캐시를 새 버전에 옮기는 절차를 제안했다.",
+    "저자들은 Qwen2.5-3B-Instruct, 세션 32개, 세션당 8K 토큰 조건에서 전체 히스토리 재프리필 대비 중앙값 기준 68.98배 게시 속도 향상을 보고했고, 기본 캐시 디코딩 대비 디코딩 오버헤드는 약 4.8%로 제시했다.",
+    "운영 관점에서는 장기 세션을 끊지 않고 모델 업데이트를 반영할 수 있다는 점이 핵심이지만, 최종 블록 중심의 구조 가정과 분산 캐시 통합이 후속 과제로 남아 있어 적용 범위 점검이 필요하다."
+  ],
+  "teams": {
+    "highlights": [
+      {
+        "section": "github",
+        "text": "GitHub Top10에서 HermesEnabler가 390 weekly stars로 관측되며 신규 소개 후보로 남음",
+        "url": "https://github.com/pookjw/HermesEnabler"
+      },
+      {
+        "section": "papers",
+        "text": "Preflight는 4개 실제 공급망 사고 맥락에서 악성 판정, 100개 benign 패키지에서 오탐 0건을 보고",
+        "url": "https://arxiv.org/abs/2611.31110"
+      },
+      {
+        "section": "community",
+        "text": "GeekNews에서 AI 코딩 에이전트 다중 세션 오케스트레이션 키트가 상위 토론으로 부상",
+        "url": "https://news.hada.io/topic?id=37768"
+      }
+    ],
+    "spotlight": [
+      "LiveLoRA는 LoRA 버전 교체 시 세션 히스토리를 다시 재생하지 않고 KV 캐시를 새 버전으로 이전하는 런타임 절차를 제안합니다.",
+      "Qwen2.5-3B-Instruct 실험에서 32개 활성 세션·8K 토큰 기준 재프리필 대비 중앙값 68.98배 속도 향상과 약 4.8% 디코딩 오버헤드를 보고했습니다.",
+      "다만 최종 블록 중심 설계와 분산 캐시 연동은 후속 검증 항목이라, 운영 도입 시 모델 구조 제약을 먼저 확인해야 합니다."
+    ]
+  }
+}
